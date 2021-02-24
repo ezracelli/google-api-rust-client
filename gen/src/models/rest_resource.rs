@@ -5,6 +5,6 @@ use super::rest_method::RestMethod;
 #[serde(deny_unknown_fields)]
 #[serde(rename_all = "camelCase")]
 pub struct RestResource {
-    pub methods: Option<std::collections::HashMap<String, RestMethod>>,
-    pub resources: Option<std::collections::HashMap<String, RestResource>>,
+    pub methods: Option<std::collections::BTreeMap<String, RestMethod>>,
+    pub resources: Option<std::collections::BTreeMap<String, RestResource>>,
 }

@@ -81,7 +81,7 @@ pub struct RestMethod {
     pub id: Option<String>,
     pub media_upload: Option<RestMethodMediaUpload>,
     pub parameter_order: Option<Vec<String>>,
-    pub parameters: Option<std::collections::HashMap<String, JsonSchema>>,
+    pub parameters: Option<std::collections::BTreeMap<String, JsonSchema>>,
     pub path: Option<String>,
     pub request: Option<RestMethodRequest>,
     pub response: Option<RestMethodResponse>,

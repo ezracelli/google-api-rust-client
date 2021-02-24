@@ -409,20 +409,20 @@ async fn main() -> anyhow::Result<()> {
             }
 
             let results = futures::future::join_all(directory_items.into_iter().map(|item| {
-                let rest_description_path = output_dir
-                    .join(change_case::snake_case(&*item.name))
-                    .join(change_case::snake_case(&*item.version))
-                    .join(&*rest_description_path);
+                let crate_path_relative =
+                    std::path::PathBuf::from(change_case::snake_case(&*item.name))
+                        .join(change_case::snake_case(&*item.version));
+                let crate_path = output_dir.join(&*crate_path_relative);
+
+                let rest_description_path = crate_path.join(&*rest_description_path);
+                let cargo_toml_path = crate_path.join("Cargo.toml");
+                let lib_rs_path = crate_path.join("src").join("lib.rs");
 
                 let crate_name = format!(
                     "{}_{}",
                     change_case::snake_case(&*item.name),
                     change_case::snake_case(&*item.version)
                 );
-
-                let crate_path = rest_description_path.parent().unwrap();
-                let cargo_toml_path = crate_path.join("Cargo.toml");
-                let lib_rs_path = crate_path.join("src").join("lib.rs");
 
                 async move {
                     let rest_description: RestDescription = {
@@ -472,152 +472,37 @@ async fn main() -> anyhow::Result<()> {
                     })?;
 
                     log::debug!("{}: constructing ast", &*crate_name);
-                    let tokens = schemas
-                        .iter()
-                        .map(|(schema_name, schema)| {
-                            log::debug!("{}::{}: constructing ast", &*crate_name, &*schema_name);
 
-                            let schema_doc = if let Some(ref description) = schema.description {
-                                quote::quote!(#[doc = #description])
-                            } else {
-                                quote::quote!()
-                            };
+                    let mut seen = std::collections::HashSet::with_capacity(schemas.len());
+                    let mut code = Vec::with_capacity(schemas.len());
 
-                            let schema_ident = quote::format_ident!("{}", schema_name);
+                    for (schema_name, schema) in schemas.iter() {
+                        if seen.insert(change_case::snake_case(&*schema_name)) {
+                            let (_, ty, tokens) =
+                                util::generate_tokens_for_schema(None, schema_name, schema)?;
 
-                            let schema_properties =
-                                schema.properties.as_ref().ok_or_else(|| {
-                                    log::error!(
-                                        "{}::{}: `schema.properties` was `None`",
-                                        &*crate_name,
-                                        &*schema_name
-                                    );
-                                    anyhow::anyhow!(
-                                        "{}::{}: `schema.properties` was `None`",
-                                        &*crate_name,
-                                        &*schema_name
-                                    )
-                                })?;
+                            code.push(tokens.unwrap_or_else(|| {
+                                let doc = schema
+                                    .description
+                                    .as_ref()
+                                    .map(|doc| quote::quote!(#[doc = #doc]));
+                                let ident = quote::format_ident!("{}", schema_name);
 
-                            let schema_fields = schema_properties
-                                .iter()
-                                .map(|(property_name, property)| {
-                                    let property_doc =
-                                        if let Some(ref description) = property.description {
-                                            quote::quote!(#[doc = #description])
-                                        } else {
-                                            quote::quote!()
-                                        };
-
-                                    lazy_static::lazy_static! {
-                                        static ref RE_RESERVED: regex::Regex =
-                                            regex::Regex::new(r"(?x)^(
-                                                    as|
-                                                    async|
-                                                    await|
-                                                    break|
-                                                    const|
-                                                    continue|
-                                                    crate|
-                                                    dyn|
-                                                    else|
-                                                    enum|
-                                                    extern|
-                                                    false|
-                                                    final|
-                                                    fn|
-                                                    for|
-                                                    if|
-                                                    impl|
-                                                    in|
-                                                    let|
-                                                    loop|
-                                                    macro|
-                                                    match|
-                                                    mod|
-                                                    move|
-                                                    mut|
-                                                    pub|
-                                                    ref|
-                                                    return|
-                                                    self|
-                                                    static|
-                                                    struct|
-                                                    super|
-                                                    trait|
-                                                    true|
-                                                    type|
-                                                    union|
-                                                    unsafe|
-                                                    use|
-                                                    where|
-                                                    while
-                                                )$").unwrap();
-                                    }
-
-                                    let property_ident = change_case::snake_case(&*property_name);
-                                    let property_ident =
-                                        RE_RESERVED.replace_all(&*property_ident, "_${1}");
-
-                                    let serde_rename = if property_name
-                                        != &change_case::camel_case(&*property_ident)
-                                        || &*property_ident
-                                            != &change_case::snake_case(&*property_name)
-                                    {
-                                        quote::quote!(#[serde(rename = #property_name)])
-                                    } else {
-                                        quote::quote!()
-                                    };
-
-                                    let property_ident = quote::format_ident!("{}", property_ident);
-
-                                    let property_ty = util::property_ty(property)?;
-                                    let property_ty = if property.required == Some(true) {
-                                        property_ty
-                                    } else {
-                                        quote::quote!(Option<#property_ty>)
-                                    };
-
-                                    Ok::<_, anyhow::Error>(quote::quote! {
-                                        #property_doc
-                                        #serde_rename
-                                        pub #property_ident: #property_ty
-                                    })
-                                })
-                                .collect::<Result<Vec<_>, _>>()
-                                .with_context(|| {
-                                    log::error!(
-                                        "{}::{}: error constructing ast",
-                                        &*crate_name,
-                                        &*schema_name
-                                    );
-                                    format!(
-                                        "{}::{}: error constructing ast",
-                                        &*crate_name, &*schema_name
-                                    )
-                                })?;
-
-                            Ok::<_, anyhow::Error>(quote::quote! {
-                                #[serde_with::skip_serializing_none]
-                                #[derive(Debug, serde::Serialize, serde::Deserialize)]
-                                #schema_doc
-                                #[serde(deny_unknown_fields)]
-                                #[serde(rename_all = "camelCase")]
-                                pub struct #schema_ident {
-                                    #(#schema_fields),*
+                                quote::quote! {
+                                    #doc
+                                    pub type #ident = #ty;
                                 }
-                            })
-                        })
-                        .collect::<Result<Vec<_>, _>>()
-                        .with_context(|| {
-                            log::error!("{}: error constructing ast", &*crate_name,);
-                            format!("{}: error constructing ast", &*crate_name,)
-                        })?;
-
-                    let tokens = quote::quote!(#(#tokens)*);
-                    if tokens.is_empty() {
-                        log::warn!("{}: no code generated", &*crate_name);
+                            }));
+                        } else {
+                            log::warn!(
+                                "{}: skipping duplicate schema {}",
+                                &*crate_name,
+                                &*schema_name
+                            );
+                        }
                     }
+
+                    let code = quote::quote!(#(#code)*);
 
                     {
                         let output_dir = lib_rs_path.parent().unwrap();
@@ -650,7 +535,7 @@ async fn main() -> anyhow::Result<()> {
                             log::error!("{}: error opening {:?}", &*crate_name, &*lib_rs_path);
                             format!("{}: error opening {:?}", &*crate_name, &*lib_rs_path)
                         })?
-                        .write_all(tokens.to_string().as_bytes())
+                        .write_all(code.to_string().as_bytes())
                         .await
                         .with_context(|| {
                             log::error!("{}: error writing {:?}", &*crate_name, &*lib_rs_path);
@@ -732,7 +617,6 @@ async fn main() -> anyhow::Result<()> {
                                 [dependencies]
                                 serde = { version = "1", features = ["derive"] }
                                 serde_json = "1"
-                                serde_with = "1"
                             })?)
                             .await
                             .with_context(|| {
@@ -751,12 +635,10 @@ async fn main() -> anyhow::Result<()> {
                         );
                     }
 
-                    Ok::<_, anyhow::Error>(())
+                    Ok::<_, anyhow::Error>(crate_path_relative)
                 }
             }))
             .await;
-
-            results.into_iter().collect::<Result<_, _>>()?;
 
             let cargo_toml_path = std::path::PathBuf::from(".").join("Cargo.toml");
             let mut cargo_toml: cargo_toml::Manifest = {
@@ -782,22 +664,29 @@ async fn main() -> anyhow::Result<()> {
                 toml::from_slice(&buf)?
             };
 
-            println!("{:?}", cargo_toml);
-
             {
-                let workspace = cargo_toml.workspace.get_or_insert(cargo_toml::Workspace::default());
+                let workspace = cargo_toml
+                    .workspace
+                    .get_or_insert(cargo_toml::Workspace::default());
                 let members = workspace.members.get_or_insert(Vec::default());
 
-                *members = vec![
-                    String::from("gen"),
-                    std::fs::canonicalize(output_dir)?
-                        .strip_prefix(std::env::current_dir()?)?
-                        .join("**/*")
-                        .as_os_str()
-                        .to_str()
-                        .unwrap()
-                        .to_owned()
-                ];
+                *members = vec![String::from("gen")];
+
+                let output_dir = std::fs::canonicalize(output_dir)?;
+                let output_dir = output_dir.strip_prefix(std::env::current_dir()?)?;
+
+                members.extend(
+                    results
+                        .iter()
+                        .filter(|result| result.is_ok())
+                        .map(|crate_path| {
+                            output_dir
+                                .join(crate_path.as_ref().unwrap())
+                                .to_str()
+                                .unwrap()
+                                .to_owned()
+                        }),
+                );
 
                 members.sort();
             }
@@ -822,291 +711,9 @@ async fn main() -> anyhow::Result<()> {
 
             log::info!("wrote `Cargo.toml` to {:?}", &*cargo_toml_path);
 
+            results.into_iter().collect::<Result<Vec<_>, _>>()?;
+
             Ok(())
         }
     }
-
-    // if let Some(items) = directory_list.items {
-    //     let results = futures::future::join_all(items.into_iter().map(|item| {
-    //         let client = client.clone();
-
-    //         async move {
-    //             if let Some(discovery_rest_url) = item.discovery_rest_url {
-    //                 let crate_path = std::env::current_dir()?
-    //                     .join("crates")
-    //                     .join(change_case::snake_case(&*item.name))
-    //                     .join(change_case::snake_case(&*item.version));
-
-    //                 let crate_name = format!(
-    //                     "{}-{}",
-    //                     change_case::snake_case(&*item.name),
-    //                     change_case::snake_case(&*item.version)
-    //                 );
-
-    //                 tokio::fs::create_dir_all(&*crate_path).await?;
-
-    //                 let rest_description = client.get(&*discovery_rest_url).send().await?;
-
-    //                 if !rest_description.status().is_success() {
-    //                     anyhow::bail!(
-    //                         "GET {} HTTP/1.1 -> {:?} {}",
-    //                         &*discovery_rest_url,
-    //                         rest_description.version(),
-    //                         rest_description.status()
-    //                     );
-    //                 }
-
-    //                 let rest_description = rest_description
-    //                     .json::<crate::models::rest_description::RestDescription>()
-    //                     .await
-    //                     .with_context(|| format!("{}: decoding response body", crate_name))?;
-
-    //                 {
-    //                     let discovery_json_path = crate_path.join("discovery.json");
-
-    //                     log::debug!("{}: writing {:?}", crate_name, discovery_json_path);
-    //                     tokio::fs::OpenOptions::new()
-    //                         .create(true)
-    //                         .truncate(true)
-    //                         .write(true)
-    //                         .open(&*discovery_json_path)
-    //                         .await?
-    //                         .write_all(&*serde_json::to_vec_pretty(&rest_description)?)
-    //                         .await?;
-    //                 }
-
-    //                 {
-    //                     let crate_name_long = format!("google-api-rust-client-{}", crate_name);
-
-    //                     let crate_description =
-    //                         rest_description.description.unwrap_or(String::new());
-
-    //                     let crate_version = format!(
-    //                         "{}+{}",
-    //                         env!("CARGO_PKG_VERSION"),
-    //                         &*rest_description.revision
-    //                     );
-
-    //                     let cargo_toml_path = crate_path.join("Cargo.toml");
-
-    //                     log::debug!("{}: writing {:?}", crate_name, cargo_toml_path);
-    //                     tokio::fs::OpenOptions::new()
-    //                         .create(true)
-    //                         .truncate(true)
-    //                         .write(true)
-    //                         .open(&*cargo_toml_path)
-    //                         .await?
-    //                         .write_all(&*toml::to_vec(&toml::toml! {
-    //                             [package]
-    //                             name = crate_name_long
-    //                             description = crate_description
-    //                             version = crate_version
-    //                             authors = ["Ezra Celli <ezra@ezracelli.com>"]
-    //                             edition = "2018"
-
-    //                             [dependencies]
-    //                             serde = { version = "1", features = ["derive"] }
-    //                             serde_json = "1"
-    //                             serde_with = "1"
-    //                         })?)
-    //                         .await?;
-    //                 }
-
-    //                 {
-    //                     let lib_rs_path = crate_path.join("src").join("lib.rs");
-    //                     tokio::fs::create_dir_all(lib_rs_path.parent().unwrap()).await?;
-
-    //                     let mut lib_rs = tokio::fs::OpenOptions::new()
-    //                         .create(true)
-    //                         .truncate(true)
-    //                         .write(true)
-    //                         .open(&*lib_rs_path)
-    //                         .await?;
-
-    //                     if let Some(schemas) = rest_description.schemas {
-    //                         let tokens = schemas
-    //                             .iter()
-    //                             .map(|(schema_name, schema)| {
-    //                                 let schema_doc =
-    //                                     if let Some(ref description) = schema.description {
-    //                                         quote::quote!(#[doc = #description])
-    //                                     } else {
-    //                                         quote::quote!()
-    //                                     };
-
-    //                                 let schema_ident = quote::format_ident!("{}", schema_name);
-
-    //                                 let schema_fields = if let Some(ref properties) =
-    //                                     schema.properties
-    //                                 {
-    //                                     properties
-    //                                         .iter()
-    //                                         .map(|(property_name, property)| {
-    //                                             let property_doc = if let Some(ref description) =
-    //                                                 property.description
-    //                                             {
-    //                                                 quote::quote!(#[doc = #description])
-    //                                             } else {
-    //                                                 quote::quote!()
-    //                                             };
-
-    //                                             lazy_static::lazy_static! {
-    //                                                 static ref RE_RESERVED: regex::Regex =
-    //                                                     regex::Regex::new(r"(?x)^(
-    //                                                         as|
-    //                                                         async|
-    //                                                         await|
-    //                                                         break|
-    //                                                         const|
-    //                                                         continue|
-    //                                                         crate|
-    //                                                         dyn|
-    //                                                         else|
-    //                                                         enum|
-    //                                                         extern|
-    //                                                         false|
-    //                                                         final|
-    //                                                         fn|
-    //                                                         for|
-    //                                                         if|
-    //                                                         impl|
-    //                                                         in|
-    //                                                         let|
-    //                                                         loop|
-    //                                                         macro|
-    //                                                         match|
-    //                                                         mod|
-    //                                                         move|
-    //                                                         mut|
-    //                                                         pub|
-    //                                                         ref|
-    //                                                         return|
-    //                                                         self|
-    //                                                         static|
-    //                                                         struct|
-    //                                                         super|
-    //                                                         trait|
-    //                                                         true|
-    //                                                         type|
-    //                                                         union|
-    //                                                         unsafe|
-    //                                                         use|
-    //                                                         where|
-    //                                                         while
-    //                                                     )$").unwrap();
-    //                                             }
-
-    //                                             let property_ident =
-    //                                                 change_case::snake_case(&*property_name);
-    //                                             let property_ident = RE_RESERVED
-    //                                                 .replace_all(&*property_ident, "_${1}");
-
-    //                                             let serde_rename = if property_name
-    //                                                 != &change_case::camel_case(&*property_ident)
-    //                                                 || &*property_ident
-    //                                                     != &change_case::snake_case(&*property_name)
-    //                                             {
-    //                                                 quote::quote!(#[serde(rename = #property_name)])
-    //                                             } else {
-    //                                                 quote::quote!()
-    //                                             };
-
-    //                                             let property_ident =
-    //                                                 quote::format_ident!("{}", property_ident);
-
-    //                                             let property_ty = util::property_ty(property)?;
-    //                                             let property_ty = if property.required == Some(true)
-    //                                             {
-    //                                                 property_ty
-    //                                             } else {
-    //                                                 quote::quote!(Option<#property_ty>)
-    //                                             };
-
-    //                                             Ok::<_, anyhow::Error>(quote::quote! {
-    //                                                 #property_doc
-    //                                                 #serde_rename
-    //                                                 pub #property_ident: #property_ty
-    //                                             })
-    //                                         })
-    //                                         .collect::<Result<Vec<_>, _>>()
-    //                                         .with_context(|| {
-    //                                             format!(
-    //                                                 "error when constructing ast for {}::{}",
-    //                                                 crate_name, schema_name
-    //                                             )
-    //                                         })?
-    //                                 } else {
-    //                                     Vec::new()
-    //                                 };
-
-    //                                 Ok::<_, anyhow::Error>(quote::quote! {
-    //                                     #[serde_with::skip_serializing_none]
-    //                                     #[derive(Debug, serde::Serialize, serde::Deserialize)]
-    //                                     #schema_doc
-    //                                     #[serde(deny_unknown_fields)]
-    //                                     #[serde(rename_all = "camelCase")]
-    //                                     pub struct #schema_ident {
-    //                                         #(#schema_fields),*
-    //                                     }
-    //                                 })
-    //                             })
-    //                             .collect::<Result<Vec<_>, _>>()?;
-
-    //                         let code = quote::quote!(#(#tokens)*);
-    //                         if code.is_empty() {
-    //                             anyhow::bail!("{}: no code generated", crate_name);
-    //                         }
-
-    //                         log::debug!("{}: writing {:?}", crate_name, lib_rs_path);
-    //                         lib_rs.write_all(code.to_string().as_bytes()).await?;
-
-    //                         let rustfmt_output = tokio::process::Command::new(
-    //                             std::env::var_os("RUSTFMT").unwrap_or("rustfmt".into()),
-    //                         )
-    //                         .args(&["--edition", "2018"])
-    //                         .arg(lib_rs_path)
-    //                         .env_remove("RUST_LOG")
-    //                         .output()
-    //                         .await?;
-
-    //                         if rustfmt_output.stderr.len() > 0 {
-    //                             anyhow::bail!(
-    //                                 "{}: rustfmt said:\n{}",
-    //                                 crate_name,
-    //                                 String::from_utf8(rustfmt_output.stderr)?
-    //                             );
-    //                         }
-    //                     }
-    //                 }
-
-    //                 Ok::<_, anyhow::Error>(())
-    //             } else {
-    //                 anyhow::bail!(
-    //                     "DirectoryItem.discovery_rest_url for {:?} was null or not provided",
-    //                     item.id
-    //                 );
-    //             }
-    //         }
-    //     }))
-    //     .await;
-
-    //     let errors = results
-    //         .into_iter()
-    //         .filter(Result::is_err)
-    //         .map(Result::unwrap_err)
-    //         .collect::<Vec<_>>();
-
-    //     for error in errors.iter() {
-    //         log::warn!("{:?}", error)
-    //     }
-
-    //     if errors.len() > 0 {
-    //         std::process::exit(1);
-    //     }
-    // } else {
-    //     log::error!("DirectoryList.items was null or not provided");
-    //     std::process::exit(1);
-    // }
-
-    // Ok(())
 }

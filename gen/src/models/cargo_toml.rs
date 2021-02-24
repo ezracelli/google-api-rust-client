@@ -46,7 +46,7 @@ pub struct Package {
     pub license_file: Option<String>,
     pub license: Option<String>,
     pub links: Option<String>,
-    pub metadata: Option<std::collections::HashMap<String, toml::Value>>,
+    pub metadata: Option<std::collections::BTreeMap<String, toml::Value>>,
     pub name: String,
     pub publish: Option<Publish>,
     pub readme: Option<String>,
@@ -63,7 +63,7 @@ pub struct Workspace {
     pub default_members: Option<Vec<String>>,
     pub exclude: Option<Vec<String>>,
     pub members: Option<Vec<String>>,
-    pub metadata: Option<std::collections::HashMap<String, toml::Value>>,
+    pub metadata: Option<std::collections::BTreeMap<String, toml::Value>>,
 }
 
 #[serde_with::skip_serializing_none]
@@ -71,10 +71,10 @@ pub struct Workspace {
 #[serde(rename_all = "kebab-case")]
 #[serde(deny_unknown_fields)]
 pub struct Manifest {
-    pub build_dependencies: Option<std::collections::HashMap<String, Dependency>>,
-    pub dependencies: Option<std::collections::HashMap<String, Dependency>>,
-    pub dev_dependencies: Option<std::collections::HashMap<String, Dependency>>,
-    pub features: Option<std::collections::HashMap<String, Vec<String>>>,
+    pub build_dependencies: Option<std::collections::BTreeMap<String, Dependency>>,
+    pub dependencies: Option<std::collections::BTreeMap<String, Dependency>>,
+    pub dev_dependencies: Option<std::collections::BTreeMap<String, Dependency>>,
+    pub features: Option<std::collections::BTreeMap<String, Vec<String>>>,
     pub package: Option<Package>,
     pub workspace: Option<Workspace>,
 }

@@ -15,7 +15,7 @@ pub struct RestDescriptionAuthOAuth2Scope {
 #[serde(deny_unknown_fields)]
 #[serde(rename_all = "camelCase")]
 pub struct RestDescriptionAuthOAuth2 {
-    pub scopes: Option<std::collections::HashMap<String, RestDescriptionAuthOAuth2Scope>>,
+    pub scopes: Option<std::collections::BTreeMap<String, RestDescriptionAuthOAuth2Scope>>,
 }
 
 #[serde_with::skip_serializing_none]
@@ -60,19 +60,19 @@ pub struct RestDescription {
     #[serde(default = "rest_description_defaults::kind")]
     pub kind: String,
     pub labels: Option<Vec<String>>,
-    pub methods: Option<std::collections::HashMap<String, RestMethod>>,
+    pub methods: Option<std::collections::BTreeMap<String, RestMethod>>,
     pub mtls_root_url: Option<String>,
     pub name: String,
     pub owner_domain: Option<String>,
     pub owner_name: Option<String>,
     pub package_path: Option<String>,
-    pub parameters: Option<std::collections::HashMap<String, JsonSchema>>,
+    pub parameters: Option<std::collections::BTreeMap<String, JsonSchema>>,
     #[serde(default = "rest_description_defaults::protocol")]
     pub protocol: String,
-    pub resources: Option<std::collections::HashMap<String, RestResource>>,
+    pub resources: Option<std::collections::BTreeMap<String, RestResource>>,
     pub revision: String,
     pub root_url: Option<String>,
-    pub schemas: Option<std::collections::HashMap<String, JsonSchema>>,
+    pub schemas: Option<std::collections::BTreeMap<String, JsonSchema>>,
     pub service_path: Option<String>,
     pub title: Option<String>,
     #[serde(rename = "version_module")]

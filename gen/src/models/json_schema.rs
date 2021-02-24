@@ -6,9 +6,8 @@ pub struct JsonSchemaAnnotations {
     pub required: Option<Vec<String>>,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
-// #[serde(untagged)]
 pub enum JsonSchemaType {
     Any,
     Array,
@@ -57,7 +56,7 @@ pub struct JsonSchema {
     pub maximum: Option<String>,
     pub minimum: Option<String>,
     pub pattern: Option<String>,
-    pub properties: Option<std::collections::HashMap<String, JsonSchema>>,
+    pub properties: Option<std::collections::BTreeMap<String, JsonSchema>>,
     pub r#enum: Option<Vec<String>>,
     #[serde(rename = "$ref")]
     pub r#ref: Option<String>,
