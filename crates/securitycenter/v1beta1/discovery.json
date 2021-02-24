@@ -15,29 +15,27 @@
   "description": "Security Command Center API provides access to temporal views of assets and findings within an organization.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/security-command-center",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "securitycenter:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://securitycenter.mtls.googleapis.com/",
   "name": "securitycenter",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "getOrganizationSettings": {
           "description": "Gets the settings for an organization.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1/organizations/{organizationsId}/organizationSettings",
           "id": "securitycenter.organizations.getOrganizationSettings",
           "parameterOrder": [
             "name"
@@ -120,8 +117,8 @@
               "description": "Required. Name of the organization to get organization settings for. Its format is \"organizations/[organization_id]/organizationSettings\".",
               "location": "path",
               "pattern": "^organizations/[^/]+/organizationSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/{+name}",
@@ -135,7 +132,6 @@
         "updateOrganizationSettings": {
           "description": "Updates an organization's settings.",
           "httpMethod": "PATCH",
-          "flatPath": "v1beta1/organizations/{organizationsId}/organizationSettings",
           "id": "securitycenter.organizations.updateOrganizationSettings",
           "parameterOrder": [
             "name"
@@ -145,8 +141,8 @@
               "description": "The relative resource name of the settings. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/organizationSettings\".",
               "location": "path",
               "pattern": "^organizations/[^/]+/organizationSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "The FieldMask to use when updating the settings resource.",
@@ -173,7 +169,6 @@
             "group": {
               "description": "Filters an organization's assets and groups them by their specified properties.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/organizations/{organizationsId}/assets:group",
               "id": "securitycenter.organizations.assets.group",
               "parameterOrder": [
                 "parent"
@@ -183,8 +178,8 @@
                   "description": "Required. Name of the organization to groupBy. Its format is \"organizations/[organization_id]\".",
                   "location": "path",
                   "pattern": "^organizations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/assets:group",
@@ -201,7 +196,6 @@
             "list": {
               "description": "Lists an organization's assets.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/organizations/{organizationsId}/assets",
               "id": "securitycenter.organizations.assets.list",
               "parameterOrder": [
                 "parent"
@@ -244,8 +238,8 @@
                   "description": "Required. Name of the organization assets should belong to. Its format is \"organizations/[organization_id]\".",
                   "location": "path",
                   "pattern": "^organizations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "readTime": {
                   "description": "Time used as a reference point when filtering assets. The filter is limited to assets existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
@@ -265,7 +259,6 @@
             "runDiscovery": {
               "description": "Runs asset discovery. The discovery is tracked with a long-running operation. This API can only be called with limited frequency for an organization. If it is called too frequently the caller will receive a TOO_MANY_REQUESTS error.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/organizations/{organizationsId}/assets:runDiscovery",
               "id": "securitycenter.organizations.assets.runDiscovery",
               "parameterOrder": [
                 "parent"
@@ -275,8 +268,8 @@
                   "description": "Required. Name of the organization to run asset discovery for. Its format is \"organizations/[organization_id]\".",
                   "location": "path",
                   "pattern": "^organizations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/assets:runDiscovery",
@@ -293,7 +286,6 @@
             "updateSecurityMarks": {
               "description": "Updates security marks.",
               "httpMethod": "PATCH",
-              "flatPath": "v1beta1/organizations/{organizationsId}/assets/{assetsId}/securityMarks",
               "id": "securitycenter.organizations.assets.updateSecurityMarks",
               "parameterOrder": [
                 "name"
@@ -303,8 +295,8 @@
                   "description": "The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: \"organizations/{organization_id}/assets/{asset_id}/securityMarks\" \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/assets/[^/]+/securityMarks$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "startTime": {
                   "description": "The time at which the updated SecurityMarks take effect.",
@@ -337,7 +329,6 @@
             "cancel": {
               "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}:cancel",
               "id": "securitycenter.organizations.operations.cancel",
               "parameterOrder": [
                 "name"
@@ -347,8 +338,8 @@
                   "description": "The name of the operation resource to be cancelled.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/operations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:cancel",
@@ -365,7 +356,6 @@
             "delete": {
               "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}",
               "id": "securitycenter.organizations.operations.delete",
               "parameterOrder": [
                 "name"
@@ -375,8 +365,8 @@
                   "description": "The name of the operation resource to be deleted.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/operations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -390,7 +380,6 @@
             "get": {
               "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}",
               "id": "securitycenter.organizations.operations.get",
               "parameterOrder": [
                 "name"
@@ -400,8 +389,8 @@
                   "description": "The name of the operation resource.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/operations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -415,7 +404,6 @@
             "list": {
               "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/organizations/{organizationsId}/operations",
               "id": "securitycenter.organizations.operations.list",
               "parameterOrder": [
                 "name"
@@ -430,8 +418,8 @@
                   "description": "The name of the operation's parent resource.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/operations$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -460,7 +448,6 @@
             "create": {
               "description": "Creates a source.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources",
               "id": "securitycenter.organizations.sources.create",
               "parameterOrder": [
                 "parent"
@@ -470,8 +457,8 @@
                   "description": "Required. Resource name of the new source's parent. Its format should be \"organizations/[organization_id]\".",
                   "location": "path",
                   "pattern": "^organizations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/sources",
@@ -488,7 +475,6 @@
             "get": {
               "description": "Gets a source.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}",
               "id": "securitycenter.organizations.sources.get",
               "parameterOrder": [
                 "name"
@@ -498,8 +484,8 @@
                   "description": "Required. Relative resource name of the source. Its format is \"organizations/[organization_id]/source/[source_id]\".",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -513,7 +499,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy on the specified Source.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:getIamPolicy",
               "id": "securitycenter.organizations.sources.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -523,8 +508,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+resource}:getIamPolicy",
@@ -541,7 +526,6 @@
             "list": {
               "description": "Lists all sources belonging to an organization.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources",
               "id": "securitycenter.organizations.sources.list",
               "parameterOrder": [
                 "parent"
@@ -562,8 +546,8 @@
                   "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id]\".",
                   "location": "path",
                   "pattern": "^organizations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/sources",
@@ -577,7 +561,6 @@
             "patch": {
               "description": "Updates a source.",
               "httpMethod": "PATCH",
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}",
               "id": "securitycenter.organizations.sources.patch",
               "parameterOrder": [
                 "name"
@@ -587,8 +570,8 @@
                   "description": "The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}\"",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "The FieldMask to use when updating the source resource.",
@@ -611,7 +594,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified Source.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:setIamPolicy",
               "id": "securitycenter.organizations.sources.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -621,8 +603,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+resource}:setIamPolicy",
@@ -639,7 +621,6 @@
             "testIamPermissions": {
               "description": "Returns the permissions that a caller has on the specified source.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:testIamPermissions",
               "id": "securitycenter.organizations.sources.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -649,8 +630,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+resource}:testIamPermissions",
@@ -671,7 +652,6 @@
                 "create": {
                   "description": "Creates a finding. The corresponding source must exist for finding creation to succeed.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings",
                   "id": "securitycenter.organizations.sources.findings.create",
                   "parameterOrder": [
                     "parent"
@@ -686,8 +666,8 @@
                       "description": "Required. Resource name of the new finding's parent. Its format should be \"organizations/[organization_id]/sources/[source_id]\".",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/findings",
@@ -704,7 +684,6 @@
                 "group": {
                   "description": "Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1beta1/organizations/{organization_id}/sources/-/findings",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings:group",
                   "id": "securitycenter.organizations.sources.findings.group",
                   "parameterOrder": [
                     "parent"
@@ -714,8 +693,8 @@
                       "description": "Required. Name of the source to groupBy. Its format is \"organizations/[organization_id]/sources/[source_id]\". To groupBy across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/findings:group",
@@ -732,7 +711,6 @@
                 "list": {
                   "description": "Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1beta1/organizations/{organization_id}/sources/-/findings",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings",
                   "id": "securitycenter.organizations.sources.findings.list",
                   "parameterOrder": [
                     "parent"
@@ -769,8 +747,8 @@
                       "description": "Required. Name of the source the findings belong to. Its format is \"organizations/[organization_id]/sources/[source_id]\". To list across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "readTime": {
                       "description": "Time used as a reference point when filtering findings. The filter is limited to findings existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
@@ -790,7 +768,6 @@
                 "patch": {
                   "description": "Creates or updates a finding. The corresponding source must exist for a finding creation to succeed.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}",
                   "id": "securitycenter.organizations.sources.findings.patch",
                   "parameterOrder": [
                     "name"
@@ -800,8 +777,8 @@
                       "description": "The relative resource name of this finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\"",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "The FieldMask to use when updating the finding resource. This field should not be specified when creating a finding.",
@@ -824,7 +801,6 @@
                 "setState": {
                   "description": "Updates the state of a finding.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}:setState",
                   "id": "securitycenter.organizations.sources.findings.setState",
                   "parameterOrder": [
                     "name"
@@ -834,8 +810,8 @@
                       "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\".",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:setState",
@@ -852,7 +828,6 @@
                 "updateSecurityMarks": {
                   "description": "Updates security marks.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
                   "id": "securitycenter.organizations.sources.findings.updateSecurityMarks",
                   "parameterOrder": [
                     "name"
@@ -862,8 +837,8 @@
                       "description": "The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: \"organizations/{organization_id}/assets/{asset_id}/securityMarks\" \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "startTime": {
                       "description": "The time at which the updated SecurityMarks take effect.",
@@ -896,7 +871,7 @@
       }
     }
   },
-  "revision": "20210212",
+  "revision": "20210219",
   "rootUrl": "https://securitycenter.googleapis.com/",
   "schemas": {
     "Asset": {
@@ -920,12 +895,12 @@
           "type": "object"
         },
         "securityCenterProperties": {
-          "description": "Security Command Center managed properties. These properties are managed by Security Command Center and cannot be modified by the user.",
-          "$ref": "SecurityCenterProperties"
+          "$ref": "SecurityCenterProperties",
+          "description": "Security Command Center managed properties. These properties are managed by Security Command Center and cannot be modified by the user."
         },
         "securityMarks": {
-          "description": "User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the asset.",
-          "$ref": "GoogleCloudSecuritycenterV1beta1SecurityMarks"
+          "$ref": "GoogleCloudSecuritycenterV1beta1SecurityMarks",
+          "description": "User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the asset."
         },
         "updateTime": {
           "description": "The time at which the asset was last updated, added, or deleted in Security Command Center.",
@@ -941,15 +916,15 @@
       "properties": {
         "inclusionMode": {
           "description": "The mode to use for filtering asset discovery.",
-          "enumDescriptions": [
-            "Unspecified. Setting the mode with this value will disable inclusion/exclusion filtering for Asset Discovery.",
-            "Asset Discovery will capture only the resources within the projects specified. All other resources will be ignored.",
-            "Asset Discovery will ignore all resources under the projects specified. All other resources will be retrieved."
-          ],
           "enum": [
             "INCLUSION_MODE_UNSPECIFIED",
             "INCLUDE_ONLY",
             "EXCLUDE"
+          ],
+          "enumDescriptions": [
+            "Unspecified. Setting the mode with this value will disable inclusion/exclusion filtering for Asset Discovery.",
+            "Asset Discovery will capture only the resources within the projects specified. All other resources will be ignored.",
+            "Asset Discovery will ignore all resources under the projects specified. All other resources will be retrieved."
           ],
           "type": "string"
         },
@@ -994,17 +969,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -1016,8 +991,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1103,25 +1078,25 @@
           "type": "string"
         },
         "securityMarks": {
-          "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
           "$ref": "SecurityMarks",
+          "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
           "readOnly": true
         },
         "severity": {
           "description": "The severity of the finding. This field is managed by the source that writes the finding.",
-          "enumDescriptions": [
-            "This value is used for findings when a source doesn't write a severity value.",
-            "Vulnerability: A critical vulnerability is easily discoverable by an external actor, exploitable, and results in the direct ability to execute arbitrary code, exfiltrate data, and otherwise gain additional access and privileges to cloud resources and workloads. Examples include publicly accessible unprotected user data, public SSH access with weak or no passwords, etc. Threat: Indicates a threat that is able to access, modify, or delete data or execute unauthorized code within existing resources.",
-            "Vulnerability: A high risk vulnerability can be easily discovered and exploited in combination with other vulnerabilities in order to gain direct access and the ability to execute arbitrary code, exfiltrate data, and otherwise gain additional access and privileges to cloud resources and workloads. An example is a database with weak or no passwords that is only accessible internally. This database could easily be compromised by an actor that had access to the internal network. Threat: Indicates a threat that is able to create new computational resources in an environment but not able to access data or execute code in existing resources.",
-            "Vulnerability: A medium risk vulnerability could be used by an actor to gain access to resources or privileges that enable them to eventually (through multiple steps or a complex exploit) gain access and the ability to execute arbitrary code or exfiltrate data. An example is a service account with access to more projects than it should have. If an actor gains access to the service account, they could potentially use that access to manipulate a project the service account was not intended to. Threat: Indicates a threat that is able to cause operational impact but may not access data or execute unauthorized code.",
-            "Vulnerability: A low risk vulnerability hampers a security organization’s ability to detect vulnerabilities or active threats in their deployment, or prevents the root cause investigation of security issues. An example is monitoring and logs being disabled for resource configurations and access. Threat: Indicates a threat that has obtained minimal access to an environment but is not able to access data, execute code, or create resources."
-          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "CRITICAL",
             "HIGH",
             "MEDIUM",
             "LOW"
+          ],
+          "enumDescriptions": [
+            "This value is used for findings when a source doesn't write a severity value.",
+            "Vulnerability: A critical vulnerability is easily discoverable by an external actor, exploitable, and results in the direct ability to execute arbitrary code, exfiltrate data, and otherwise gain additional access and privileges to cloud resources and workloads. Examples include publicly accessible unprotected user data, public SSH access with weak or no passwords, etc. Threat: Indicates a threat that is able to access, modify, or delete data or execute unauthorized code within existing resources.",
+            "Vulnerability: A high risk vulnerability can be easily discovered and exploited in combination with other vulnerabilities in order to gain direct access and the ability to execute arbitrary code, exfiltrate data, and otherwise gain additional access and privileges to cloud resources and workloads. An example is a database with weak or no passwords that is only accessible internally. This database could easily be compromised by an actor that had access to the internal network. Threat: Indicates a threat that is able to create new computational resources in an environment but not able to access data or execute code in existing resources.",
+            "Vulnerability: A medium risk vulnerability could be used by an actor to gain access to resources or privileges that enable them to eventually (through multiple steps or a complex exploit) gain access and the ability to execute arbitrary code or exfiltrate data. An example is a service account with access to more projects than it should have. If an actor gains access to the service account, they could potentially use that access to manipulate a project the service account was not intended to. Threat: Indicates a threat that is able to cause operational impact but may not access data or execute unauthorized code.",
+            "Vulnerability: A low risk vulnerability hampers a security organization’s ability to detect vulnerabilities or active threats in their deployment, or prevents the root cause investigation of security issues. An example is monitoring and logs being disabled for resource configurations and access. Threat: Indicates a threat that has obtained minimal access to an environment but is not able to access data, execute code, or create resources."
           ],
           "type": "string"
         },
@@ -1134,15 +1109,15 @@
         },
         "state": {
           "description": "The state of the finding.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "The finding requires attention and has not been addressed yet.",
-            "The finding has been fixed, triaged as a non-issue or otherwise addressed and is no longer active."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ACTIVE",
             "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The finding requires attention and has not been addressed yet.",
+            "The finding has been fixed, triaged as a non-issue or otherwise addressed and is no longer active."
           ],
           "type": "string"
         }
@@ -1169,8 +1144,8 @@
       "id": "GetIamPolicyRequest",
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.",
-          "$ref": "GetPolicyOptions"
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`."
         }
       },
       "type": "object"
@@ -1192,16 +1167,16 @@
       "id": "GoogleCloudSecuritycenterV1NotificationMessage",
       "properties": {
         "finding": {
-          "description": "If it's a Finding based notification config, this field will be populated.",
-          "$ref": "Finding"
+          "$ref": "Finding",
+          "description": "If it's a Finding based notification config, this field will be populated."
         },
         "notificationConfigName": {
           "description": "Name of the notification config that generated current notification.",
           "type": "string"
         },
         "resource": {
-          "description": "The Cloud resource tied to this notification's Finding.",
-          "$ref": "GoogleCloudSecuritycenterV1Resource"
+          "$ref": "GoogleCloudSecuritycenterV1Resource",
+          "description": "The Cloud resource tied to this notification's Finding."
         }
       },
       "type": "object"
@@ -1215,8 +1190,8 @@
           "items": {
             "$ref": "Folder"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "name": {
           "description": "The full resource name of the resource. See: https://cloud.google.com/apis/design/resource_names#full_resource_name",
@@ -1252,17 +1227,17 @@
         },
         "state": {
           "description": "The state of an asset discovery run.",
-          "enumDescriptions": [
-            "Asset discovery run state was unspecified.",
-            "Asset discovery run completed successfully.",
-            "Asset discovery run was cancelled with tasks still pending, as another run for the same organization was started with a higher priority.",
-            "Asset discovery run was killed and terminated."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "COMPLETED",
             "SUPERSEDED",
             "TERMINATED"
+          ],
+          "enumDescriptions": [
+            "Asset discovery run state was unspecified.",
+            "Asset discovery run completed successfully.",
+            "Asset discovery run was cancelled with tasks still pending, as another run for the same organization was started with a higher priority.",
+            "Asset discovery run was killed and terminated."
           ],
           "type": "string"
         }
@@ -1304,8 +1279,8 @@
           "type": "string"
         },
         "securityMarks": {
-          "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
           "$ref": "GoogleCloudSecuritycenterV1beta1SecurityMarks",
+          "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
           "readOnly": true
         },
         "sourceProperties": {
@@ -1317,15 +1292,15 @@
         },
         "state": {
           "description": "The state of the finding.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "The finding requires attention and has not been addressed yet.",
-            "The finding has been fixed, triaged as a non-issue or otherwise addressed and is no longer active."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ACTIVE",
             "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The finding requires attention and has not been addressed yet.",
+            "The finding has been fixed, triaged as a non-issue or otherwise addressed and is no longer active."
           ],
           "type": "string"
         }
@@ -1343,17 +1318,17 @@
         },
         "state": {
           "description": "The state of an asset discovery run.",
-          "enumDescriptions": [
-            "Asset discovery run state was unspecified.",
-            "Asset discovery run completed successfully.",
-            "Asset discovery run was cancelled with tasks still pending, as another run for the same organization was started with a higher priority.",
-            "Asset discovery run was killed and terminated."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "COMPLETED",
             "SUPERSEDED",
             "TERMINATED"
+          ],
+          "enumDescriptions": [
+            "Asset discovery run state was unspecified.",
+            "Asset discovery run completed successfully.",
+            "Asset discovery run was cancelled with tasks still pending, as another run for the same organization was started with a higher priority.",
+            "Asset discovery run was killed and terminated."
           ],
           "type": "string"
         }
@@ -1413,25 +1388,25 @@
           "type": "string"
         },
         "securityMarks": {
-          "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
           "$ref": "GoogleCloudSecuritycenterV1p1beta1SecurityMarks",
+          "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
           "readOnly": true
         },
         "severity": {
           "description": "The severity of the finding. This field is managed by the source that writes the finding.",
-          "enumDescriptions": [
-            "No severity specified. The default value.",
-            "Critical severity.",
-            "High severity.",
-            "Medium severity.",
-            "Low severity."
-          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "CRITICAL",
             "HIGH",
             "MEDIUM",
             "LOW"
+          ],
+          "enumDescriptions": [
+            "No severity specified. The default value.",
+            "Critical severity.",
+            "High severity.",
+            "Medium severity.",
+            "Low severity."
           ],
           "type": "string"
         },
@@ -1444,15 +1419,15 @@
         },
         "state": {
           "description": "The state of the finding.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "The finding requires attention and has not been addressed yet.",
-            "The finding has been fixed, triaged as a non-issue or otherwise addressed and is no longer active."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ACTIVE",
             "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The finding requires attention and has not been addressed yet.",
+            "The finding has been fixed, triaged as a non-issue or otherwise addressed and is no longer active."
           ],
           "type": "string"
         }
@@ -1479,16 +1454,16 @@
       "id": "GoogleCloudSecuritycenterV1p1beta1NotificationMessage",
       "properties": {
         "finding": {
-          "description": "If it's a Finding based notification config, this field will be populated.",
-          "$ref": "GoogleCloudSecuritycenterV1p1beta1Finding"
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1Finding",
+          "description": "If it's a Finding based notification config, this field will be populated."
         },
         "notificationConfigName": {
           "description": "Name of the notification config that generated current notification.",
           "type": "string"
         },
         "resource": {
-          "description": "The Cloud resource tied to the notification.",
-          "$ref": "GoogleCloudSecuritycenterV1p1beta1Resource"
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1Resource",
+          "description": "The Cloud resource tied to the notification."
         }
       },
       "type": "object"
@@ -1502,8 +1477,8 @@
           "items": {
             "$ref": "GoogleCloudSecuritycenterV1p1beta1Folder"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "name": {
           "description": "The full resource name of the resource. See: https://cloud.google.com/apis/design/resource_names#full_resource_name",
@@ -1539,17 +1514,17 @@
         },
         "state": {
           "description": "The state of an asset discovery run.",
-          "enumDescriptions": [
-            "Asset discovery run state was unspecified.",
-            "Asset discovery run completed successfully.",
-            "Asset discovery run was cancelled with tasks still pending, as another run for the same organization was started with a higher priority.",
-            "Asset discovery run was killed and terminated."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "COMPLETED",
             "SUPERSEDED",
             "TERMINATED"
+          ],
+          "enumDescriptions": [
+            "Asset discovery run state was unspecified.",
+            "Asset discovery run completed successfully.",
+            "Asset discovery run was cancelled with tasks still pending, as another run for the same organization was started with a higher priority.",
+            "Asset discovery run was killed and terminated."
           ],
           "type": "string"
         }
@@ -1735,24 +1710,24 @@
       "id": "ListAssetsResult",
       "properties": {
         "asset": {
-          "description": "Asset matching the search request.",
-          "$ref": "Asset"
+          "$ref": "Asset",
+          "description": "Asset matching the search request."
         },
         "state": {
           "description": "State of the asset.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Request did not specify use of this field in the result.",
-            "Asset was added between the points in time.",
-            "Asset was removed between the points in time.",
-            "Asset was active at both point(s) in time."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "UNUSED",
             "ADDED",
             "REMOVED",
             "ACTIVE"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Request did not specify use of this field in the result.",
+            "Asset was added between the points in time.",
+            "Asset was removed between the points in time.",
+            "Asset was active at both point(s) in time."
           ],
           "type": "string"
         }
@@ -1832,8 +1807,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1863,8 +1838,8 @@
       "id": "OrganizationSettings",
       "properties": {
         "assetDiscoveryConfig": {
-          "description": "The configuration used for Asset Discovery runs.",
-          "$ref": "AssetDiscoveryConfig"
+          "$ref": "AssetDiscoveryConfig",
+          "description": "The configuration used for Asset Discovery runs."
         },
         "enableAssetDiscovery": {
           "description": "A flag that indicates if Asset Discovery should be enabled. If the flag is set to `true`, then discovery of assets will occur. If it is set to `false, all historical assets will remain, but discovery of future assets will not occur.",
@@ -1973,15 +1948,15 @@
         },
         "state": {
           "description": "Required. The desired State of the finding.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "The finding requires attention and has not been addressed yet.",
-            "The finding has been fixed, triaged as a non-issue or otherwise addressed and is no longer active."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ACTIVE",
             "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The finding requires attention and has not been addressed yet.",
+            "The finding has been fixed, triaged as a non-issue or otherwise addressed and is no longer active."
           ],
           "type": "string"
         }
@@ -1993,8 +1968,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -2081,6 +2056,6 @@
   },
   "servicePath": "",
   "title": "Security Command Center API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

@@ -15,29 +15,27 @@
   "description": "Manage Cloud Database Migration Service resources on Google Cloud Platform.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/database-migration/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "datamigration:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://datamigration.mtls.googleapis.com/",
   "name": "datamigration",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}",
               "id": "datamigration.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations",
               "id": "datamigration.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -152,8 +148,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -182,7 +178,6 @@
                 "create": {
                   "description": "Creates a new connection profile in a given project and location.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectionProfiles",
                   "id": "datamigration.projects.locations.connectionProfiles.create",
                   "parameterOrder": [
                     "parent"
@@ -197,8 +192,8 @@
                       "description": "Required. The parent, which owns this collection of connection profiles.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.",
@@ -220,7 +215,6 @@
                 "delete": {
                   "description": "Deletes a single Database Migration Service connection profile. A connection profile can only be deleted if it is not in use by any active migration jobs.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}",
                   "id": "datamigration.projects.locations.connectionProfiles.delete",
                   "parameterOrder": [
                     "name"
@@ -235,8 +229,8 @@
                       "description": "Required. Name of the connection profile resource to delete.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/connectionProfiles/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.",
@@ -255,7 +249,6 @@
                 "get": {
                   "description": "Gets details of a single connection profile.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}",
                   "id": "datamigration.projects.locations.connectionProfiles.get",
                   "parameterOrder": [
                     "name"
@@ -265,8 +258,8 @@
                       "description": "Required. Name of the connection profile resource to get.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/connectionProfiles/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -280,7 +273,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}:getIamPolicy",
                   "id": "datamigration.projects.locations.connectionProfiles.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -296,8 +288,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/connectionProfiles/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:getIamPolicy",
@@ -311,7 +303,6 @@
                 "list": {
                   "description": "Retrieve a list of all connection profiles in a given project and location.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectionProfiles",
                   "id": "datamigration.projects.locations.connectionProfiles.list",
                   "parameterOrder": [
                     "parent"
@@ -342,8 +333,8 @@
                       "description": "Required. The parent, which owns this collection of connection profiles.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/connectionProfiles",
@@ -357,7 +348,6 @@
                 "patch": {
                   "description": "Update the configuration of a single connection profile.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}",
                   "id": "datamigration.projects.locations.connectionProfiles.patch",
                   "parameterOrder": [
                     "name"
@@ -367,8 +357,8 @@
                       "description": "The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/connectionProfiles/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.",
@@ -396,7 +386,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}:setIamPolicy",
                   "id": "datamigration.projects.locations.connectionProfiles.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -406,8 +395,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/connectionProfiles/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:setIamPolicy",
@@ -424,7 +413,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectionProfiles/{connectionProfilesId}:testIamPermissions",
                   "id": "datamigration.projects.locations.connectionProfiles.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -434,8 +422,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/connectionProfiles/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:testIamPermissions",
@@ -456,7 +444,6 @@
                 "create": {
                   "description": "Creates a new migration job in a given project and location.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs",
                   "id": "datamigration.projects.locations.migrationJobs.create",
                   "parameterOrder": [
                     "parent"
@@ -471,8 +458,8 @@
                       "description": "Required. The parent, which owns this collection of migration jobs.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.",
@@ -494,7 +481,6 @@
                 "delete": {
                   "description": "Deletes a single migration job.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}",
                   "id": "datamigration.projects.locations.migrationJobs.delete",
                   "parameterOrder": [
                     "name"
@@ -509,8 +495,8 @@
                       "description": "Required. Name of the migration job resource to delete.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.",
@@ -529,7 +515,6 @@
                 "generateSshScript": {
                   "description": "Generate a SSH configuration script to configure the reverse SSH connectivity.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:generateSshScript",
                   "id": "datamigration.projects.locations.migrationJobs.generateSshScript",
                   "parameterOrder": [
                     "migrationJob"
@@ -539,8 +524,8 @@
                       "description": "Name of the migration job resource to generate the SSH script.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+migrationJob}:generateSshScript",
@@ -557,7 +542,6 @@
                 "get": {
                   "description": "Gets details of a single migration job.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}",
                   "id": "datamigration.projects.locations.migrationJobs.get",
                   "parameterOrder": [
                     "name"
@@ -567,8 +551,8 @@
                       "description": "Required. Name of the migration job resource to get.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -582,7 +566,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:getIamPolicy",
                   "id": "datamigration.projects.locations.migrationJobs.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -598,8 +581,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:getIamPolicy",
@@ -613,7 +596,6 @@
                 "list": {
                   "description": "Lists migration jobs in a given project and location.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs",
                   "id": "datamigration.projects.locations.migrationJobs.list",
                   "parameterOrder": [
                     "parent"
@@ -644,8 +626,8 @@
                       "description": "Required. The parent, which owns this collection of migrationJobs.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/migrationJobs",
@@ -659,7 +641,6 @@
                 "patch": {
                   "description": "Updates the parameters of a single migration job.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}",
                   "id": "datamigration.projects.locations.migrationJobs.patch",
                   "parameterOrder": [
                     "name"
@@ -669,8 +650,8 @@
                       "description": "The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.",
@@ -698,7 +679,6 @@
                 "promote": {
                   "description": "Promote a migration job, stopping replication to the destination and promoting the destination to be a standalone database.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:promote",
                   "id": "datamigration.projects.locations.migrationJobs.promote",
                   "parameterOrder": [
                     "name"
@@ -708,8 +688,8 @@
                       "description": "Name of the migration job resource to promote.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:promote",
@@ -726,7 +706,6 @@
                 "restart": {
                   "description": "Restart a stopped or failed migration job, resetting the destination instance to its original state and starting the migration process from scratch.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:restart",
                   "id": "datamigration.projects.locations.migrationJobs.restart",
                   "parameterOrder": [
                     "name"
@@ -736,8 +715,8 @@
                       "description": "Name of the migration job resource to restart.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:restart",
@@ -754,7 +733,6 @@
                 "resume": {
                   "description": "Resume a migration job that is currently stopped and is resumable (was stopped during CDC phase).",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:resume",
                   "id": "datamigration.projects.locations.migrationJobs.resume",
                   "parameterOrder": [
                     "name"
@@ -764,8 +742,8 @@
                       "description": "Name of the migration job resource to resume.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:resume",
@@ -782,7 +760,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:setIamPolicy",
                   "id": "datamigration.projects.locations.migrationJobs.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -792,8 +769,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:setIamPolicy",
@@ -810,7 +787,6 @@
                 "start": {
                   "description": "Start an already created migration job.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:start",
                   "id": "datamigration.projects.locations.migrationJobs.start",
                   "parameterOrder": [
                     "name"
@@ -820,8 +796,8 @@
                       "description": "Name of the migration job resource to start.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:start",
@@ -838,7 +814,6 @@
                 "stop": {
                   "description": "Stops a running migration job.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:stop",
                   "id": "datamigration.projects.locations.migrationJobs.stop",
                   "parameterOrder": [
                     "name"
@@ -848,8 +823,8 @@
                       "description": "Name of the migration job resource to stop.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:stop",
@@ -866,7 +841,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:testIamPermissions",
                   "id": "datamigration.projects.locations.migrationJobs.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -876,8 +850,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:testIamPermissions",
@@ -894,7 +868,6 @@
                 "verify": {
                   "description": "Verify a migration job, making sure the destination can reach the source and that all configuration and prerequisites are met.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:verify",
                   "id": "datamigration.projects.locations.migrationJobs.verify",
                   "parameterOrder": [
                     "name"
@@ -904,8 +877,8 @@
                       "description": "Name of the migration job resource to verify.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:verify",
@@ -926,7 +899,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "datamigration.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -936,8 +908,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:cancel",
@@ -954,7 +926,6 @@
                 "delete": {
                   "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "datamigration.projects.locations.operations.delete",
                   "parameterOrder": [
                     "name"
@@ -964,8 +935,8 @@
                       "description": "The name of the operation resource to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -979,7 +950,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "datamigration.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -989,8 +959,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -1004,7 +974,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
                   "id": "datamigration.projects.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -1019,8 +988,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -1083,17 +1052,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -1105,8 +1074,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1134,22 +1103,22 @@
       "properties": {
         "cloudSqlId": {
           "description": "Output only. The Cloud SQL instance ID that this connection profile is associated with.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "privateIp": {
           "description": "Output only. The Cloud SQL database instance's private IP.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "publicIp": {
           "description": "Output only. The Cloud SQL database instance's public IP.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "settings": {
-          "description": "Immutable. Metadata used to create the destination Cloud SQL database.",
-          "$ref": "CloudSqlSettings"
+          "$ref": "CloudSqlSettings",
+          "description": "Immutable. Metadata used to create the destination Cloud SQL database."
         }
       },
       "type": "object"
@@ -1160,15 +1129,15 @@
       "properties": {
         "activationPolicy": {
           "description": "The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.",
-          "enumDescriptions": [
-            "unspecified policy.",
-            "The instance is always up and running.",
-            "The instance should never spin up."
-          ],
           "enum": [
             "SQL_ACTIVATION_POLICY_UNSPECIFIED",
             "ALWAYS",
             "NEVER"
+          ],
+          "enumDescriptions": [
+            "unspecified policy.",
+            "The instance is always up and running.",
+            "The instance should never spin up."
           ],
           "type": "string"
         },
@@ -1183,15 +1152,15 @@
         },
         "dataDiskType": {
           "description": "The type of storage: `PD_SSD` (default) or `PD_HDD`.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "SSD disk.",
-            "HDD disk."
-          ],
           "enum": [
             "SQL_DATA_DISK_TYPE_UNSPECIFIED",
             "PD_SSD",
             "PD_HDD"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "SSD disk.",
+            "HDD disk."
           ],
           "type": "string"
         },
@@ -1204,23 +1173,23 @@
         },
         "databaseVersion": {
           "description": "The database engine type and version.",
-          "enumDescriptions": [
-            "Unspecified version.",
-            "MySQL 5.6.",
-            "MySQL 5.7.",
-            "MySQL 8.0."
-          ],
           "enum": [
             "SQL_DATABASE_VERSION_UNSPECIFIED",
             "MYSQL_5_6",
             "MYSQL_5_7",
             "MYSQL_8_0"
           ],
+          "enumDescriptions": [
+            "Unspecified version.",
+            "MySQL 5.6.",
+            "MySQL 5.7.",
+            "MySQL 8.0."
+          ],
           "type": "string"
         },
         "ipConfig": {
-          "description": "The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.",
-          "$ref": "SqlIpConfig"
+          "$ref": "SqlIpConfig",
+          "description": "The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled."
         },
         "rootPassword": {
           "description": "Input only. Initial root password.",
@@ -1228,8 +1197,8 @@
         },
         "rootPasswordSet": {
           "description": "Output only. Indicates If this connection profile root password is stored.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "sourceId": {
           "description": "The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`",
@@ -1263,22 +1232,22 @@
       "id": "ConnectionProfile",
       "properties": {
         "cloudsql": {
-          "description": "A CloudSQL database connection profile.",
-          "$ref": "CloudSqlConnectionProfile"
+          "$ref": "CloudSqlConnectionProfile",
+          "description": "A CloudSQL database connection profile."
         },
         "createTime": {
           "description": "Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds. Example: \"2014-10-02T15:01:23.045123456Z\".",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "displayName": {
           "description": "The connection profile display name.",
           "type": "string"
         },
         "error": {
-          "description": "Output only. The error details in case of state FAILED.",
           "$ref": "Status",
+          "description": "Output only. The error details in case of state FAILED.",
           "readOnly": true
         },
         "labels": {
@@ -1289,8 +1258,8 @@
           "type": "object"
         },
         "mysql": {
-          "description": "A MySQL database connection profile.",
-          "$ref": "MySqlConnectionProfile"
+          "$ref": "MySqlConnectionProfile",
+          "description": "A MySQL database connection profile."
         },
         "name": {
           "description": "The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.",
@@ -1298,30 +1267,20 @@
         },
         "provider": {
           "description": "The database provider.",
-          "enumDescriptions": [
-            "The database provider is unknown.",
-            "CloudSQL runs the database.",
-            "RDS runs the database."
-          ],
           "enum": [
             "DATABASE_PROVIDER_UNSPECIFIED",
             "CLOUDSQL",
             "RDS"
           ],
+          "enumDescriptions": [
+            "The database provider is unknown.",
+            "CloudSQL runs the database.",
+            "RDS runs the database."
+          ],
           "type": "string"
         },
         "state": {
           "description": "The current connection profile state (e.g. DRAFT, READY, or FAILED).",
-          "enumDescriptions": [
-            "The state of the connection profile is unknown.",
-            "The connection profile is in draft mode and fully editable.",
-            "The connection profile is being created.",
-            "The connection profile is ready.",
-            "The connection profile is being updated.",
-            "The connection profile is being deleted.",
-            "The connection profile has been deleted.",
-            "The last action on the connection profile failed."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "DRAFT",
@@ -1332,13 +1291,23 @@
             "DELETED",
             "FAILED"
           ],
+          "enumDescriptions": [
+            "The state of the connection profile is unknown.",
+            "The connection profile is in draft mode and fully editable.",
+            "The connection profile is being created.",
+            "The connection profile is ready.",
+            "The connection profile is being updated.",
+            "The connection profile is being deleted.",
+            "The connection profile has been deleted.",
+            "The last action on the connection profile failed."
+          ],
           "type": "string"
         },
         "updateTime": {
           "description": "Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds. Example: \"2014-10-02T15:01:23.045123456Z\".",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1349,27 +1318,27 @@
       "properties": {
         "engine": {
           "description": "The database engine.",
-          "enumDescriptions": [
-            "The source database engine of the migration job is unknown.",
-            "The source engine is MySQL."
-          ],
           "enum": [
             "DATABASE_ENGINE_UNSPECIFIED",
             "MYSQL"
+          ],
+          "enumDescriptions": [
+            "The source database engine of the migration job is unknown.",
+            "The source engine is MySQL."
           ],
           "type": "string"
         },
         "provider": {
           "description": "The database provider.",
-          "enumDescriptions": [
-            "The database provider is unknown.",
-            "CloudSQL runs the database.",
-            "RDS runs the database."
-          ],
           "enum": [
             "DATABASE_PROVIDER_UNSPECIFIED",
             "CLOUDSQL",
             "RDS"
+          ],
+          "enumDescriptions": [
+            "The database provider is unknown.",
+            "CloudSQL runs the database.",
+            "RDS runs the database."
           ],
           "type": "string"
         }
@@ -1414,8 +1383,8 @@
           "type": "string"
         },
         "vmCreationConfig": {
-          "description": "The VM creation configuration",
-          "$ref": "VmCreationConfig"
+          "$ref": "VmCreationConfig",
+          "description": "The VM creation configuration"
         },
         "vmPort": {
           "description": "The port that will be open on the bastion host",
@@ -1423,8 +1392,8 @@
           "type": "integer"
         },
         "vmSelectionConfig": {
-          "description": "The VM selection configuration",
-          "$ref": "VmSelectionConfig"
+          "$ref": "VmSelectionConfig",
+          "description": "The VM selection configuration"
         }
       },
       "type": "object"
@@ -1435,40 +1404,40 @@
       "properties": {
         "apiVersion": {
           "description": "Output only. API version used to start the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. The time the operation was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "endTime": {
           "description": "Output only. The time the operation finished running.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "requestedCancellation": {
           "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "statusMessage": {
           "description": "Output only. Human-readable status of the operation, if any.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "target": {
           "description": "Output only. Server-defined resource path for the target of the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "verb": {
           "description": "Output only. Name of the verb executed by the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1600,16 +1569,16 @@
         "createTime": {
           "description": "Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds. Example: \"2014-10-02T15:01:23.045123456Z\".",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "destination": {
           "description": "Required. The resource name (URI) of the destination connection profile.",
           "type": "string"
         },
         "destinationDatabase": {
-          "description": "The database engine type and provider of the destination.",
-          "$ref": "DatabaseType"
+          "$ref": "DatabaseType",
+          "description": "The database engine type and provider of the destination."
         },
         "displayName": {
           "description": "The migration job display name.",
@@ -1622,18 +1591,18 @@
         "duration": {
           "description": "Output only. The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: \"3.5s\".",
           "format": "google-duration",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "endTime": {
           "description": "Output only. If the migration job is completed, the time when it was completed.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "error": {
-          "description": "Output only. The error details in case of state FAILED.",
           "$ref": "Status",
+          "description": "Output only. The error details in case of state FAILED.",
           "readOnly": true
         },
         "labels": {
@@ -1649,14 +1618,6 @@
         },
         "phase": {
           "description": "Output only. The current migration job phase.",
-          "enumDescriptions": [
-            "The phase of the migration job is unknown.",
-            "The migration job is in the full dump phase.",
-            "The migration job is CDC phase.",
-            "The migration job is running the promote phase.",
-            "Only RDS flow - waiting for source writes to stop",
-            "Only RDS flow - the sources writes stopped, waiting for dump to begin"
-          ],
           "enum": [
             "PHASE_UNSPECIFIED",
             "FULL_DUMP",
@@ -1665,41 +1626,31 @@
             "WAITING_FOR_SOURCE_WRITES_TO_STOP",
             "PREPARING_THE_DUMP"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "The phase of the migration job is unknown.",
+            "The migration job is in the full dump phase.",
+            "The migration job is CDC phase.",
+            "The migration job is running the promote phase.",
+            "Only RDS flow - waiting for source writes to stop",
+            "Only RDS flow - the sources writes stopped, waiting for dump to begin"
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "reverseSshConnectivity": {
-          "description": "The details needed to communicate to the source over Reverse SSH tunnel connectivity.",
-          "$ref": "ReverseSshConnectivity"
+          "$ref": "ReverseSshConnectivity",
+          "description": "The details needed to communicate to the source over Reverse SSH tunnel connectivity."
         },
         "source": {
           "description": "Required. The resource name (URI) of the source connection profile.",
           "type": "string"
         },
         "sourceDatabase": {
-          "description": "The database engine type and provider of the source.",
-          "$ref": "DatabaseType"
+          "$ref": "DatabaseType",
+          "description": "The database engine type and provider of the source."
         },
         "state": {
           "description": "The current migration job state.",
-          "enumDescriptions": [
-            "The state of the migration job is unknown.",
-            "The migration job is down for maintenance.",
-            "The migration job is in draft mode and no resources are created.",
-            "The migration job is being created.",
-            "The migration job is created, not started and is fully editable.",
-            "The migration job is running.",
-            "The migration job failed.",
-            "The migration job has been completed.",
-            "The migration job is being deleted.",
-            "The migration job is being stopped.",
-            "The migration job is currently stopped.",
-            "The migration job has been deleted.",
-            "The migration job is being updated.",
-            "The migration job is starting.",
-            "The migration job is restarting.",
-            "The migration job is resuming."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "MAINTENANCE",
@@ -1718,35 +1669,53 @@
             "RESTARTING",
             "RESUMING"
           ],
+          "enumDescriptions": [
+            "The state of the migration job is unknown.",
+            "The migration job is down for maintenance.",
+            "The migration job is in draft mode and no resources are created.",
+            "The migration job is being created.",
+            "The migration job is created, not started and is fully editable.",
+            "The migration job is running.",
+            "The migration job failed.",
+            "The migration job has been completed.",
+            "The migration job is being deleted.",
+            "The migration job is being stopped.",
+            "The migration job is currently stopped.",
+            "The migration job has been deleted.",
+            "The migration job is being updated.",
+            "The migration job is starting.",
+            "The migration job is restarting.",
+            "The migration job is resuming."
+          ],
           "type": "string"
         },
         "staticIpConnectivity": {
-          "description": "static ip connectivity data (default, no additional details needed).",
-          "$ref": "StaticIpConnectivity"
+          "$ref": "StaticIpConnectivity",
+          "description": "static ip connectivity data (default, no additional details needed)."
         },
         "type": {
           "description": "Required. The migration job type.",
-          "enumDescriptions": [
-            "The type of the migration job is unknown.",
-            "The migration job is a one time migration.",
-            "The migration job is a continuous migration."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "ONE_TIME",
             "CONTINUOUS"
+          ],
+          "enumDescriptions": [
+            "The type of the migration job is unknown.",
+            "The migration job is a one time migration.",
+            "The migration job is a continuous migration."
           ],
           "type": "string"
         },
         "updateTime": {
           "description": "Output only. The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds. Example: \"2014-10-02T15:01:23.045123456Z\".",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "vpcPeeringConnectivity": {
-          "description": "The details of the VPC network that the source database is located in.",
-          "$ref": "VpcPeeringConnectivity"
+          "$ref": "VpcPeeringConnectivity",
+          "description": "The details of the VPC network that the source database is located in."
         }
       },
       "type": "object"
@@ -1757,16 +1726,6 @@
       "properties": {
         "errorCode": {
           "description": "Output only. An instance of ErrorCode specifying the error that occurred.",
-          "enumDescriptions": [
-            "An unknown error occurred",
-            "We failed to connect to one of the connection profile.",
-            "We failed to authenticate to one of the connection profile.",
-            "One of the involved connection profiles has an invalid configuration.",
-            "The versions of the source and the destination are incompatible.",
-            "The types of the source and the destination are incompatible.",
-            "The gtid_mode is not supported, applicable for MySQL.",
-            "The definer is not supported."
-          ],
           "enum": [
             "ERROR_CODE_UNSPECIFIED",
             "CONNECTION_FAILURE",
@@ -1777,18 +1736,28 @@
             "UNSUPPORTED_GTID_MODE",
             "UNSUPPORTED_DEFINER"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "An unknown error occurred",
+            "We failed to connect to one of the connection profile.",
+            "We failed to authenticate to one of the connection profile.",
+            "One of the involved connection profiles has an invalid configuration.",
+            "The versions of the source and the destination are incompatible.",
+            "The types of the source and the destination are incompatible.",
+            "The gtid_mode is not supported, applicable for MySQL.",
+            "The definer is not supported."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "errorDetailMessage": {
           "description": "Output only. A specific detailed error message, if supplied by the engine.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "errorMessage": {
           "description": "Output only. A formatted message with further details about the error and a CTA.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1811,8 +1780,8 @@
         },
         "passwordSet": {
           "description": "Output only. Indicates If this connection profile password is stored.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "port": {
           "description": "Required. The network port of the source MySQL database.",
@@ -1820,8 +1789,8 @@
           "type": "integer"
         },
         "ssl": {
-          "description": "SSL configuration for the destination to connect to the source database.",
-          "$ref": "SslConfig"
+          "$ref": "SslConfig",
+          "description": "SSL configuration for the destination to connect to the source database."
         },
         "username": {
           "description": "Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.",
@@ -1839,8 +1808,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1943,8 +1912,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -2034,18 +2003,18 @@
         },
         "type": {
           "description": "Output only. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Only 'ca_certificate' specified.",
-            "Both server ('ca_certificate'), and client ('client_key', 'client_certificate') specified."
-          ],
           "enum": [
             "SSL_TYPE_UNSPECIFIED",
             "SERVER_ONLY",
             "SERVER_CLIENT"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Unspecified.",
+            "Only 'ca_certificate' specified.",
+            "Both server ('ca_certificate'), and client ('client_key', 'client_certificate') specified."
+          ],
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2173,6 +2142,6 @@
   },
   "servicePath": "",
   "title": "Database Migration API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

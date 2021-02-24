@@ -30,22 +30,21 @@
   },
   "id": "deploymentmanager:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://deploymentmanager.mtls.googleapis.com/",
   "name": "deploymentmanager",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -56,17 +55,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -118,7 +117,6 @@
         "cancelPreview": {
           "description": "Cancels and removes the preview currently associated with the deployment.",
           "httpMethod": "POST",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/cancelPreview",
           "id": "deploymentmanager.deployments.cancelPreview",
           "parameterOrder": [
             "project",
@@ -129,15 +127,15 @@
               "description": "The name of the deployment for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/cancelPreview",
@@ -155,7 +153,6 @@
         "delete": {
           "description": "Deletes a deployment and all of the resources in the deployment.",
           "httpMethod": "DELETE",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
           "id": "deploymentmanager.deployments.delete",
           "parameterOrder": [
             "project",
@@ -165,29 +162,29 @@
             "deletePolicy": {
               "default": "DELETE",
               "description": "Sets the policy to use for deleting resources.",
+              "enum": [
+                "DELETE",
+                "ABANDON"
+              ],
               "enumDescriptions": [
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "DELETE",
-                "ABANDON"
-              ],
               "type": "string"
             },
             "deployment": {
               "description": "The name of the deployment for this request.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
@@ -202,7 +199,6 @@
         "get": {
           "description": "Gets information about a specific deployment.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
           "id": "deploymentmanager.deployments.get",
           "parameterOrder": [
             "project",
@@ -213,15 +209,15 @@
               "description": "The name of the deployment for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
@@ -238,7 +234,6 @@
         "getIamPolicy": {
           "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/getIamPolicy",
           "id": "deploymentmanager.deployments.getIamPolicy",
           "parameterOrder": [
             "project",
@@ -255,15 +250,15 @@
               "description": "Project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "resource": {
               "description": "Name or id of the resource for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/getIamPolicy",
@@ -278,7 +273,6 @@
         "insert": {
           "description": "Creates a deployment and all of the resources described by the deployment manifest.",
           "httpMethod": "POST",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments",
           "id": "deploymentmanager.deployments.insert",
           "parameterOrder": [
             "project"
@@ -287,15 +281,15 @@
             "createPolicy": {
               "default": "CREATE_OR_ACQUIRE",
               "description": "Sets the policy to use for creating new resources.",
+              "enum": [
+                "CREATE_OR_ACQUIRE",
+                "ACQUIRE"
+              ],
               "enumDescriptions": [
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "CREATE_OR_ACQUIRE",
-                "ACQUIRE"
-              ],
               "type": "string"
             },
             "preview": {
@@ -307,8 +301,8 @@
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments",
@@ -326,7 +320,6 @@
         "list": {
           "description": "Lists all deployments for a given project.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments",
           "id": "deploymentmanager.deployments.list",
           "parameterOrder": [
             "project"
@@ -359,8 +352,8 @@
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments",
@@ -377,7 +370,6 @@
         "patch": {
           "description": "Patches a deployment and all of the resources described by the deployment manifest.",
           "httpMethod": "PATCH",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
           "id": "deploymentmanager.deployments.patch",
           "parameterOrder": [
             "project",
@@ -387,37 +379,37 @@
             "createPolicy": {
               "default": "CREATE_OR_ACQUIRE",
               "description": "Sets the policy to use for creating new resources.",
+              "enum": [
+                "CREATE_OR_ACQUIRE",
+                "ACQUIRE"
+              ],
               "enumDescriptions": [
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "CREATE_OR_ACQUIRE",
-                "ACQUIRE"
-              ],
               "type": "string"
             },
             "deletePolicy": {
               "default": "DELETE",
               "description": "Sets the policy to use for deleting resources.",
+              "enum": [
+                "DELETE",
+                "ABANDON"
+              ],
               "enumDescriptions": [
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "DELETE",
-                "ABANDON"
-              ],
               "type": "string"
             },
             "deployment": {
               "description": "The name of the deployment for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "preview": {
               "default": "false",
@@ -429,8 +421,8 @@
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
@@ -448,7 +440,6 @@
         "setIamPolicy": {
           "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
           "httpMethod": "POST",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/setIamPolicy",
           "id": "deploymentmanager.deployments.setIamPolicy",
           "parameterOrder": [
             "project",
@@ -459,15 +450,15 @@
               "description": "Project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "resource": {
               "description": "Name or id of the resource for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/setIamPolicy",
@@ -485,7 +476,6 @@
         "stop": {
           "description": "Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents any new work from being started.",
           "httpMethod": "POST",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/stop",
           "id": "deploymentmanager.deployments.stop",
           "parameterOrder": [
             "project",
@@ -496,15 +486,15 @@
               "description": "The name of the deployment for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/stop",
@@ -522,7 +512,6 @@
         "testIamPermissions": {
           "description": "Returns permissions that a caller has on the specified resource.",
           "httpMethod": "POST",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/testIamPermissions",
           "id": "deploymentmanager.deployments.testIamPermissions",
           "parameterOrder": [
             "project",
@@ -533,15 +522,15 @@
               "description": "Project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "resource": {
               "description": "Name or id of the resource for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/testIamPermissions",
@@ -559,7 +548,6 @@
         "update": {
           "description": "Updates a deployment and all of the resources described by the deployment manifest.",
           "httpMethod": "PUT",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
           "id": "deploymentmanager.deployments.update",
           "parameterOrder": [
             "project",
@@ -569,37 +557,37 @@
             "createPolicy": {
               "default": "CREATE_OR_ACQUIRE",
               "description": "Sets the policy to use for creating new resources.",
+              "enum": [
+                "CREATE_OR_ACQUIRE",
+                "ACQUIRE"
+              ],
               "enumDescriptions": [
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "CREATE_OR_ACQUIRE",
-                "ACQUIRE"
-              ],
               "type": "string"
             },
             "deletePolicy": {
               "default": "DELETE",
               "description": "Sets the policy to use for deleting resources.",
+              "enum": [
+                "DELETE",
+                "ABANDON"
+              ],
               "enumDescriptions": [
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "DELETE",
-                "ABANDON"
-              ],
               "type": "string"
             },
             "deployment": {
               "description": "The name of the deployment for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "preview": {
               "default": "false",
@@ -611,8 +599,8 @@
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
@@ -634,7 +622,6 @@
         "get": {
           "description": "Gets information about a specific manifest.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests/{manifest}",
           "id": "deploymentmanager.manifests.get",
           "parameterOrder": [
             "project",
@@ -646,22 +633,22 @@
               "description": "The name of the deployment for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "manifest": {
               "description": "The name of the manifest for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests/{manifest}",
@@ -678,7 +665,6 @@
         "list": {
           "description": "Lists all manifests for a given deployment.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests",
           "id": "deploymentmanager.manifests.list",
           "parameterOrder": [
             "project",
@@ -689,8 +675,8 @@
               "description": "The name of the deployment for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "filter": {
               "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
@@ -719,8 +705,8 @@
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests",
@@ -741,7 +727,6 @@
         "get": {
           "description": "Gets information about a specific operation.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/operations/{operation}",
           "id": "deploymentmanager.operations.get",
           "parameterOrder": [
             "project",
@@ -751,15 +736,15 @@
             "operation": {
               "description": "The name of the operation for this request.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/operations/{operation}",
@@ -776,7 +761,6 @@
         "list": {
           "description": "Lists all operations for a project.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/operations",
           "id": "deploymentmanager.operations.list",
           "parameterOrder": [
             "project"
@@ -809,8 +793,8 @@
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/operations",
@@ -831,7 +815,6 @@
         "get": {
           "description": "Gets information about a single resource.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources/{resource}",
           "id": "deploymentmanager.resources.get",
           "parameterOrder": [
             "project",
@@ -843,21 +826,21 @@
               "description": "The name of the deployment for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "resource": {
               "description": "The name of the resource for this request.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources/{resource}",
@@ -874,7 +857,6 @@
         "list": {
           "description": "Lists all resources in a given deployment.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources",
           "id": "deploymentmanager.resources.list",
           "parameterOrder": [
             "project",
@@ -885,8 +867,8 @@
               "description": "The name of the deployment for this request.",
               "location": "path",
               "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "filter": {
               "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
@@ -915,8 +897,8 @@
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources",
@@ -937,7 +919,6 @@
         "list": {
           "description": "Lists all resource types for Deployment Manager.",
           "httpMethod": "GET",
-          "flatPath": "deploymentmanager/v2/projects/{project}/global/types",
           "id": "deploymentmanager.types.list",
           "parameterOrder": [
             "project"
@@ -970,8 +951,8 @@
               "description": "The project ID for this request.",
               "location": "path",
               "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "deploymentmanager/v2/projects/{project}/global/types",
@@ -1022,17 +1003,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -1044,8 +1025,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1107,20 +1088,20 @@
           "type": "string"
         },
         "operation": {
-          "description": "Output only. The Operation that most recently ran, or is currently running, on this deployment.",
-          "$ref": "Operation"
+          "$ref": "Operation",
+          "description": "Output only. The Operation that most recently ran, or is currently running, on this deployment."
         },
         "selfLink": {
           "description": "Output only. Server defined URL for the resource.",
           "type": "string"
         },
         "target": {
-          "description": "[Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.",
-          "$ref": "TargetConfiguration"
+          "$ref": "TargetConfiguration",
+          "description": "[Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates."
         },
         "update": {
-          "description": "Output only. If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.",
-          "$ref": "DeploymentUpdate"
+          "$ref": "DeploymentUpdate",
+          "description": "Output only. If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here."
         },
         "updateTime": {
           "description": "Output only. Update timestamp in RFC3339 text format.",
@@ -1259,8 +1240,8 @@
           "type": "string"
         },
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them."
         }
       },
       "type": "object"
@@ -1283,8 +1264,8 @@
       "id": "Manifest",
       "properties": {
         "config": {
-          "description": "Output only. The YAML configuration for this manifest.",
-          "$ref": "ConfigFile"
+          "$ref": "ConfigFile",
+          "description": "Output only. The YAML configuration for this manifest."
         },
         "expandedConfig": {
           "description": "Output only. The fully-expanded configuration file, including any templates and references.",
@@ -1449,15 +1430,15 @@
         },
         "status": {
           "description": "[Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "PENDING",
             "RUNNING",
             "DONE"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -1484,33 +1465,6 @@
             "properties": {
               "code": {
                 "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
-                "enumDescriptions": [
-                  "A link to a deprecated resource was created.",
-                  "No results are present on a particular list page.",
-                  "A given scope cannot be reached.",
-                  "The route's nextHopIp address is not assigned to an instance on the network.",
-                  "The route's nextHopInstance URL refers to an instance that does not exist.",
-                  "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
-                  "The route's next hop instance cannot ip forward.",
-                  "The route's next hop instance does not have a status of RUNNING.",
-                  "The operation involved use of an injected kernel, which is deprecated.",
-                  "The user attempted to use a resource that requires a TOS they have not accepted.",
-                  "The user created a boot disk that is larger than image size.",
-                  "One or more of the resources set to auto-delete could not be deleted because they were in use.",
-                  "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
-                  "Error which is not critical. We decided to continue the process despite the mentioned error.",
-                  "Warning about failed cleanup of transient changes made by a failed operation.",
-                  "Warning that value of a field has been overridden. Deprecated unused field.",
-                  "Warning that a resource is in use.",
-                  "A resource depends on a missing type",
-                  "Warning that is present in an external api call",
-                  "When a resource schema validation is ignored.",
-                  "When undeclared properties in the schema are present",
-                  "When deploying and at least one of the resources has a type marked as experimental",
-                  "When deploying and at least one of the resources has a type marked as deprecated",
-                  "Success is reported, but some results may be missing due to errors",
-                  "When deploying a deployment with a exceedingly large number of resources"
-                ],
                 "enum": [
                   "DEPRECATED_RESOURCE_USED",
                   "NO_RESULTS_ON_PAGE",
@@ -1537,6 +1491,33 @@
                   "DEPRECATED_TYPE_USED",
                   "PARTIAL_SUCCESS",
                   "LARGE_DEPLOYMENT_WARNING"
+                ],
+                "enumDescriptions": [
+                  "A link to a deprecated resource was created.",
+                  "No results are present on a particular list page.",
+                  "A given scope cannot be reached.",
+                  "The route's nextHopIp address is not assigned to an instance on the network.",
+                  "The route's nextHopInstance URL refers to an instance that does not exist.",
+                  "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+                  "The route's next hop instance cannot ip forward.",
+                  "The route's next hop instance does not have a status of RUNNING.",
+                  "The operation involved use of an injected kernel, which is deprecated.",
+                  "The user attempted to use a resource that requires a TOS they have not accepted.",
+                  "The user created a boot disk that is larger than image size.",
+                  "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+                  "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+                  "Error which is not critical. We decided to continue the process despite the mentioned error.",
+                  "Warning about failed cleanup of transient changes made by a failed operation.",
+                  "Warning that value of a field has been overridden. Deprecated unused field.",
+                  "Warning that a resource is in use.",
+                  "A resource depends on a missing type",
+                  "Warning that is present in an external api call",
+                  "When a resource schema validation is ignored.",
+                  "When undeclared properties in the schema are present",
+                  "When deploying and at least one of the resources has a type marked as experimental",
+                  "When deploying and at least one of the resources has a type marked as deprecated",
+                  "Success is reported, but some results may be missing due to errors",
+                  "When deploying a deployment with a exceedingly large number of resources"
                 ],
                 "type": "string"
               },
@@ -1626,8 +1607,8 @@
       "id": "Resource",
       "properties": {
         "accessControl": {
-          "description": "The Access Control Policy set on this resource.",
-          "$ref": "ResourceAccessControl"
+          "$ref": "ResourceAccessControl",
+          "description": "The Access Control Policy set on this resource."
         },
         "finalProperties": {
           "description": "Output only. The evaluated properties of the resource with references expanded. Returned as serialized YAML.",
@@ -1658,8 +1639,8 @@
           "type": "string"
         },
         "update": {
-          "description": "Output only. If Deployment Manager is currently updating or previewing an update to this resource, the updated configuration appears here.",
-          "$ref": "ResourceUpdate"
+          "$ref": "ResourceUpdate",
+          "description": "Output only. If Deployment Manager is currently updating or previewing an update to this resource, the updated configuration appears here."
         },
         "updateTime": {
           "description": "Output only. Update timestamp in RFC3339 text format.",
@@ -1675,33 +1656,6 @@
             "properties": {
               "code": {
                 "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
-                "enumDescriptions": [
-                  "A link to a deprecated resource was created.",
-                  "No results are present on a particular list page.",
-                  "A given scope cannot be reached.",
-                  "The route's nextHopIp address is not assigned to an instance on the network.",
-                  "The route's nextHopInstance URL refers to an instance that does not exist.",
-                  "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
-                  "The route's next hop instance cannot ip forward.",
-                  "The route's next hop instance does not have a status of RUNNING.",
-                  "The operation involved use of an injected kernel, which is deprecated.",
-                  "The user attempted to use a resource that requires a TOS they have not accepted.",
-                  "The user created a boot disk that is larger than image size.",
-                  "One or more of the resources set to auto-delete could not be deleted because they were in use.",
-                  "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
-                  "Error which is not critical. We decided to continue the process despite the mentioned error.",
-                  "Warning about failed cleanup of transient changes made by a failed operation.",
-                  "Warning that value of a field has been overridden. Deprecated unused field.",
-                  "Warning that a resource is in use.",
-                  "A resource depends on a missing type",
-                  "Warning that is present in an external api call",
-                  "When a resource schema validation is ignored.",
-                  "When undeclared properties in the schema are present",
-                  "When deploying and at least one of the resources has a type marked as experimental",
-                  "When deploying and at least one of the resources has a type marked as deprecated",
-                  "Success is reported, but some results may be missing due to errors",
-                  "When deploying a deployment with a exceedingly large number of resources"
-                ],
                 "enum": [
                   "DEPRECATED_RESOURCE_USED",
                   "NO_RESULTS_ON_PAGE",
@@ -1728,6 +1682,33 @@
                   "DEPRECATED_TYPE_USED",
                   "PARTIAL_SUCCESS",
                   "LARGE_DEPLOYMENT_WARNING"
+                ],
+                "enumDescriptions": [
+                  "A link to a deprecated resource was created.",
+                  "No results are present on a particular list page.",
+                  "A given scope cannot be reached.",
+                  "The route's nextHopIp address is not assigned to an instance on the network.",
+                  "The route's nextHopInstance URL refers to an instance that does not exist.",
+                  "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+                  "The route's next hop instance cannot ip forward.",
+                  "The route's next hop instance does not have a status of RUNNING.",
+                  "The operation involved use of an injected kernel, which is deprecated.",
+                  "The user attempted to use a resource that requires a TOS they have not accepted.",
+                  "The user created a boot disk that is larger than image size.",
+                  "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+                  "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+                  "Error which is not critical. We decided to continue the process despite the mentioned error.",
+                  "Warning about failed cleanup of transient changes made by a failed operation.",
+                  "Warning that value of a field has been overridden. Deprecated unused field.",
+                  "Warning that a resource is in use.",
+                  "A resource depends on a missing type",
+                  "Warning that is present in an external api call",
+                  "When a resource schema validation is ignored.",
+                  "When undeclared properties in the schema are present",
+                  "When deploying and at least one of the resources has a type marked as experimental",
+                  "When deploying and at least one of the resources has a type marked as deprecated",
+                  "Success is reported, but some results may be missing due to errors",
+                  "When deploying a deployment with a exceedingly large number of resources"
                 ],
                 "type": "string"
               },
@@ -1775,8 +1756,8 @@
       "id": "ResourceUpdate",
       "properties": {
         "accessControl": {
-          "description": "The Access Control Policy to set on this resource after updating the resource itself.",
-          "$ref": "ResourceAccessControl"
+          "$ref": "ResourceAccessControl",
+          "description": "The Access Control Policy to set on this resource after updating the resource itself."
         },
         "error": {
           "description": "Output only. If errors are generated during update of the resource, this field will be populated.",
@@ -1811,14 +1792,6 @@
         },
         "intent": {
           "description": "Output only. The intent of the resource: `PREVIEW`, `UPDATE`, or `CANCEL`.",
-          "enumDescriptions": [
-            "The resource is scheduled to be created, or if it already exists, acquired.",
-            "The resource is scheduled to be deleted.",
-            "The resource is scheduled to be acquired.",
-            "The resource is scheduled to be updated via the UPDATE method.",
-            "The resource is scheduled to be abandoned.",
-            "The resource is scheduled to be created."
-          ],
           "enum": [
             "CREATE_OR_ACQUIRE",
             "DELETE",
@@ -1826,6 +1799,14 @@
             "UPDATE",
             "ABANDON",
             "CREATE"
+          ],
+          "enumDescriptions": [
+            "The resource is scheduled to be created, or if it already exists, acquired.",
+            "The resource is scheduled to be deleted.",
+            "The resource is scheduled to be acquired.",
+            "The resource is scheduled to be updated via the UPDATE method.",
+            "The resource is scheduled to be abandoned.",
+            "The resource is scheduled to be created."
           ],
           "type": "string"
         },
@@ -1839,19 +1820,19 @@
         },
         "state": {
           "description": "Output only. The state of the resource.",
-          "enumDescriptions": [
-            "There are changes pending for this resource.",
-            "The service is executing changes on the resource.",
-            "The service is previewing changes on the resource.",
-            "The service has failed to change the resource.",
-            "The service has aborted trying to change the resource."
-          ],
           "enum": [
             "PENDING",
             "IN_PROGRESS",
             "IN_PREVIEW",
             "FAILED",
             "ABORTED"
+          ],
+          "enumDescriptions": [
+            "There are changes pending for this resource.",
+            "The service is executing changes on the resource.",
+            "The service is previewing changes on the resource.",
+            "The service has failed to change the resource.",
+            "The service has aborted trying to change the resource."
           ],
           "type": "string"
         },
@@ -1861,33 +1842,6 @@
             "properties": {
               "code": {
                 "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
-                "enumDescriptions": [
-                  "A link to a deprecated resource was created.",
-                  "No results are present on a particular list page.",
-                  "A given scope cannot be reached.",
-                  "The route's nextHopIp address is not assigned to an instance on the network.",
-                  "The route's nextHopInstance URL refers to an instance that does not exist.",
-                  "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
-                  "The route's next hop instance cannot ip forward.",
-                  "The route's next hop instance does not have a status of RUNNING.",
-                  "The operation involved use of an injected kernel, which is deprecated.",
-                  "The user attempted to use a resource that requires a TOS they have not accepted.",
-                  "The user created a boot disk that is larger than image size.",
-                  "One or more of the resources set to auto-delete could not be deleted because they were in use.",
-                  "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
-                  "Error which is not critical. We decided to continue the process despite the mentioned error.",
-                  "Warning about failed cleanup of transient changes made by a failed operation.",
-                  "Warning that value of a field has been overridden. Deprecated unused field.",
-                  "Warning that a resource is in use.",
-                  "A resource depends on a missing type",
-                  "Warning that is present in an external api call",
-                  "When a resource schema validation is ignored.",
-                  "When undeclared properties in the schema are present",
-                  "When deploying and at least one of the resources has a type marked as experimental",
-                  "When deploying and at least one of the resources has a type marked as deprecated",
-                  "Success is reported, but some results may be missing due to errors",
-                  "When deploying a deployment with a exceedingly large number of resources"
-                ],
                 "enum": [
                   "DEPRECATED_RESOURCE_USED",
                   "NO_RESULTS_ON_PAGE",
@@ -1914,6 +1868,33 @@
                   "DEPRECATED_TYPE_USED",
                   "PARTIAL_SUCCESS",
                   "LARGE_DEPLOYMENT_WARNING"
+                ],
+                "enumDescriptions": [
+                  "A link to a deprecated resource was created.",
+                  "No results are present on a particular list page.",
+                  "A given scope cannot be reached.",
+                  "The route's nextHopIp address is not assigned to an instance on the network.",
+                  "The route's nextHopInstance URL refers to an instance that does not exist.",
+                  "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+                  "The route's next hop instance cannot ip forward.",
+                  "The route's next hop instance does not have a status of RUNNING.",
+                  "The operation involved use of an injected kernel, which is deprecated.",
+                  "The user attempted to use a resource that requires a TOS they have not accepted.",
+                  "The user created a boot disk that is larger than image size.",
+                  "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+                  "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+                  "Error which is not critical. We decided to continue the process despite the mentioned error.",
+                  "Warning about failed cleanup of transient changes made by a failed operation.",
+                  "Warning that value of a field has been overridden. Deprecated unused field.",
+                  "Warning that a resource is in use.",
+                  "A resource depends on a missing type",
+                  "Warning that is present in an external api call",
+                  "When a resource schema validation is ignored.",
+                  "When undeclared properties in the schema are present",
+                  "When deploying and at least one of the resources has a type marked as experimental",
+                  "When deploying and at least one of the resources has a type marked as deprecated",
+                  "Success is reported, but some results may be missing due to errors",
+                  "When deploying a deployment with a exceedingly large number of resources"
                 ],
                 "type": "string"
               },
@@ -1968,8 +1949,8 @@
       "id": "TargetConfiguration",
       "properties": {
         "config": {
-          "description": "The configuration to use for this deployment.",
-          "$ref": "ConfigFile"
+          "$ref": "ConfigFile",
+          "description": "The configuration to use for this deployment."
         },
         "imports": {
           "description": "Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template.",
@@ -2024,8 +2005,8 @@
           "type": "string"
         },
         "operation": {
-          "description": "Output only. The Operation that most recently ran, or is currently running, on this type.",
-          "$ref": "Operation"
+          "$ref": "Operation",
+          "description": "Output only. The Operation that most recently ran, or is currently running, on this type."
         },
         "selfLink": {
           "description": "Output only. Server defined URL for the resource.",

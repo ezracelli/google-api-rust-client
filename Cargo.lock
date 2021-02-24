@@ -152,12 +152,36 @@ checksum = "ea221b5284a47e40033bf9b66f35f984ec0ea2931eb03505246cd27a963f981b"
 
 [[package]]
 name = "darling"
+version = "0.10.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0d706e75d87e35569db781a9b5e2416cff1236a47ed380831f959382ccd5f858"
+dependencies = [
+ "darling_core 0.10.2",
+ "darling_macro 0.10.2",
+]
+
+[[package]]
+name = "darling"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9bfca34df8d0d73d61f26ce03a8be6da606d6c419a10c099009a879c165d2a71"
 dependencies = [
- "darling_core",
- "darling_macro",
+ "darling_core 0.12.1",
+ "darling_macro 0.12.1",
+]
+
+[[package]]
+name = "darling_core"
+version = "0.10.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f0c960ae2da4de88a91b2d920c2a7233b400bc33cb28453a2987822d8392519b"
+dependencies = [
+ "fnv",
+ "ident_case",
+ "proc-macro2",
+ "quote",
+ "strsim 0.9.3",
+ "syn",
 ]
 
 [[package]]
@@ -176,11 +200,47 @@ dependencies = [
 
 [[package]]
 name = "darling_macro"
+version = "0.10.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d9b5a2f4ac4969822c62224815d069952656cadc7084fdca9751e6d959189b72"
+dependencies = [
+ "darling_core 0.10.2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "darling_macro"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "86184131efd474ebc1264537cfc8bbe9710f73846d02cc0305370410b848ef0f"
 dependencies = [
- "darling_core",
+ "darling_core 0.12.1",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "derive_builder"
+version = "0.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a2658621297f2cf68762a6f7dc0bb7e1ff2cfd6583daef8ee0fed6f7ec468ec0"
+dependencies = [
+ "darling 0.10.2",
+ "derive_builder_core",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "derive_builder_core"
+version = "0.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2791ea3e372c8495c0bc2033991d76b512cd799d07491fbd6890124db9458bef"
+dependencies = [
+ "darling 0.10.2",
+ "proc-macro2",
  "quote",
  "syn",
 ]
@@ -267,28 +327,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "futures"
-version = "0.3.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "da9052a1a50244d8d5aa9bf55cbc2fb6f357c86cc52e46c62ed390a7180cf150"
-dependencies = [
- "futures-channel",
- "futures-core",
- "futures-executor",
- "futures-io",
- "futures-sink",
- "futures-task",
- "futures-util",
-]
-
-[[package]]
 name = "futures-channel"
 version = "0.3.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f2d31b7ec7efab6eefc7c57233bb10b847986139d88cc2f5a02a1ae6871a1846"
 dependencies = [
  "futures-core",
- "futures-sink",
 ]
 
 [[package]]
@@ -296,35 +340,6 @@ name = "futures-core"
 version = "0.3.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "79e5145dde8da7d1b3892dad07a9c98fc04bc39892b1ecc9692cf53e2b780a65"
-
-[[package]]
-name = "futures-executor"
-version = "0.3.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e9e59fdc009a4b3096bf94f740a0f2424c082521f20a9b08c5c07c48d90fd9b9"
-dependencies = [
- "futures-core",
- "futures-task",
- "futures-util",
-]
-
-[[package]]
-name = "futures-io"
-version = "0.3.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "28be053525281ad8259d47e4de5de657b25e7bac113458555bb4b70bc6870500"
-
-[[package]]
-name = "futures-macro"
-version = "0.3.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c287d25add322d9f9abdcdc5927ca398917996600182178774032e9f8258fedd"
-dependencies = [
- "proc-macro-hack",
- "proc-macro2",
- "quote",
- "syn",
-]
 
 [[package]]
 name = "futures-sink"
@@ -337,9 +352,6 @@ name = "futures-task"
 version = "0.3.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13de07eb8ea81ae445aca7b69f5f7bf15d7bf4912d8ca37d6645c77ae8a58d86"
-dependencies = [
- "once_cell",
-]
 
 [[package]]
 name = "futures-util"
@@ -347,18 +359,10 @@ version = "0.3.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "632a8cd0f2a4b3fdea1657f08bde063848c3bd00f9bbf6e256b8be78802e624b"
 dependencies = [
- "futures-channel",
  "futures-core",
- "futures-io",
- "futures-macro",
- "futures-sink",
  "futures-task",
- "memchr",
  "pin-project-lite",
  "pin-utils",
- "proc-macro-hack",
- "proc-macro-nested",
- "slab",
 ]
 
 [[package]]
@@ -374,12 +378,12 @@ dependencies = [
 
 [[package]]
 name = "google-api-rust-client-gen"
-version = "0.1.0"
+version = "0.2.1"
 dependencies = [
  "anyhow",
  "change-case",
+ "derive_builder",
  "dialoguer",
- "futures",
  "lazy_static",
  "log",
  "pretty_env_logger",
@@ -397,2576 +401,2898 @@ dependencies = [
 
 [[package]]
 name = "google_api_rust_client_abusiveexperiencereport_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_acceleratedmobilepageurl_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_accessapproval_v1"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_accesscontextmanager_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_accesscontextmanager_v1beta"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_adexchangebuyer2_v2beta1"
-version = "0.1.0+20210223"
+version = "0.2.1+20210224"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_adexchangebuyer_v1_2"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_adexchangebuyer_v1_3"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_adexchangebuyer_v1_4"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_adexperiencereport_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_admin_datatransfer_v1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_admin_directory_v1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_admin_reports_v1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_admob_v1"
-version = "0.1.0+20210223"
+version = "0.2.1+20210224"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_admob_v1beta"
-version = "0.1.0+20210223"
+version = "0.2.1+20210224"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_adsense_v1_4"
-version = "0.1.0+20201002"
+version = "0.2.1+20201002"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_adsensehost_v4_1"
-version = "0.1.0+20200930"
+version = "0.2.1+20200930"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_alertcenter_v1beta1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_analytics_v3"
-version = "0.1.0+20190807"
+version = "0.2.1+20190807"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_analyticsadmin_v1alpha"
-version = "0.1.0+20210223"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_analyticsdata_v1alpha"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_analyticsreporting_v4"
-version = "0.1.0+20210223"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_androiddeviceprovisioning_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_androidenterprise_v1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_androidmanagement_v1"
-version = "0.1.0+20210215"
+version = "0.2.1+20210215"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_androidpublisher_v3"
-version = "0.1.0+20210223"
+version = "0.2.1+20210224"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_apigateway_v1"
-version = "0.1.0+20210126"
+version = "0.2.1+20210126"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_apigateway_v1beta"
-version = "0.1.0+20210126"
+version = "0.2.1+20210126"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_apigee_v1"
-version = "0.1.0+20210215"
+version = "0.2.1+20210215"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_appengine_v1"
-version = "0.1.0+20210129"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_appengine_v1alpha"
-version = "0.1.0+20210129"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_appengine_v1beta"
-version = "0.1.0+20210129"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_area120tables_v1alpha1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_artifactregistry_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_artifactregistry_v1beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_artifactregistry_v1beta2"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_assuredworkloads_v1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_bigquery_v2"
-version = "0.1.0+20210215"
+version = "0.2.1+20210215"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_bigqueryconnection_v1beta1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_bigquerydatatransfer_v1"
-version = "0.1.0+20210206"
+version = "0.2.1+20210206"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_bigqueryreservation_v1"
-version = "0.1.0+20210206"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_bigqueryreservation_v1beta1"
-version = "0.1.0+20210206"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_bigtableadmin_v1"
-version = "0.1.0+20210127"
+version = "0.2.1+20210127"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_bigtableadmin_v2"
-version = "0.1.0+20210127"
+version = "0.2.1+20210127"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_billingbudgets_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_billingbudgets_v1beta1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_binaryauthorization_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_binaryauthorization_v1beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_blogger_v2"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_blogger_v3"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_books_v1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_calendar_v3"
-version = "0.1.0+20210215"
+version = "0.2.1+20210215"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_chat_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_chromemanagement_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_chromeuxreport_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_civicinfo_v2"
-version = "0.1.0+20210108"
+version = "0.2.1+20210108"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_classroom_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudasset_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudasset_v1beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudasset_v1p1beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudasset_v1p4beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudasset_v1p5beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudasset_v1p7beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudbilling_v1"
-version = "0.1.0+20201017"
+version = "0.2.1+20201017"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudbuild_v1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudbuild_v1alpha1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudbuild_v1alpha2"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudchannel_v1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_clouddebugger_v2"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_clouderrorreporting_v1beta1"
-version = "0.1.0+20210210"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudfunctions_v1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudidentity_v1"
-version = "0.1.0+20210204"
+version = "0.2.1+20210204"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudidentity_v1beta1"
-version = "0.1.0+20210204"
+version = "0.2.1+20210204"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudiot_v1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudkms_v1"
-version = "0.1.0+20210210"
+version = "0.2.1+20210210"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudprofiler_v2"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudresourcemanager_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudresourcemanager_v1beta1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudresourcemanager_v2"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudresourcemanager_v2beta1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudresourcemanager_v3"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudscheduler_v1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudscheduler_v1beta1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudsearch_v1"
-version = "0.1.0+20210202"
+version = "0.2.1+20210202"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudshell_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudshell_v1alpha1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudtasks_v2"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudtasks_v2beta2"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudtasks_v2beta3"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudtrace_v1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudtrace_v2"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_cloudtrace_v2beta1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_composer_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_composer_v1beta1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_compute_alpha"
-version = "0.1.0+20210209"
+version = "0.2.1+20210111"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_compute_beta"
-version = "0.1.0+20210111"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_compute_v1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210111"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_container_v1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_container_v1beta1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_containeranalysis_v1alpha1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_containeranalysis_v1beta1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_content_v2"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_content_v2_1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_customsearch_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_datacatalog_v1beta1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dataflow_v1b3"
-version = "0.1.0+20210203"
+version = "0.2.1+20210203"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_datafusion_v1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_datafusion_v1beta1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_datalabeling_v1beta1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_datamigration_v1beta1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dataproc_v1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dataproc_v1beta2"
-version = "0.1.0+20210205"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_datastore_v1"
-version = "0.1.0+20201003"
+version = "0.2.1+20201003"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_datastore_v1beta1"
-version = "0.1.0+20201003"
+version = "0.2.1+20201003"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_datastore_v1beta3"
-version = "0.1.0+20201003"
+version = "0.2.1+20201003"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_deploymentmanager_alpha"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_deploymentmanager_v2"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_deploymentmanager_v2beta"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dfareporting_v3_3"
-version = "0.1.0+20210210"
+version = "0.2.1+20210210"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dfareporting_v3_4"
-version = "0.1.0+20210210"
+version = "0.2.1+20210210"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dialogflow_v2"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dialogflow_v2beta1"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dialogflow_v3"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dialogflow_v3beta1"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_digitalassetlinks_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_discovery_v1"
-version = "0.1.0+20200806"
+version = "0.2.1+20200806"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_displayvideo_v1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dlp_v2"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dns_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_dns_v1beta2"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_docs_v1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_documentai_v1beta2"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_documentai_v1beta3"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_domains_v1alpha2"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_domains_v1beta1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_domainsrdap_v1"
-version = "0.1.0+20210223"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_doubleclickbidmanager_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_doubleclickbidmanager_v1_1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_doubleclicksearch_v2"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_drive_v2"
-version = "0.1.0+20210214"
+version = "0.2.1+20210214"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_drive_v3"
-version = "0.1.0+20210214"
+version = "0.2.1+20210214"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_driveactivity_v2"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_eventarc_v1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_eventarc_v1beta1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_factchecktools_v1alpha1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_fcm_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_file_v1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_file_v1beta1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firebase_v1beta1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firebasedatabase_v1beta"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firebasedynamiclinks_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firebasehosting_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firebasehosting_v1beta1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firebaseml_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firebaseml_v1beta2"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firebaserules_v1"
-version = "0.1.0+20210126"
+version = "0.2.1+20210126"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firestore_v1"
-version = "0.1.0+20201003"
+version = "0.2.1+20201003"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firestore_v1beta1"
-version = "0.1.0+20201003"
+version = "0.2.1+20201003"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_firestore_v1beta2"
-version = "0.1.0+20201003"
+version = "0.2.1+20201003"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_fitness_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_games_configuration_v1configuration"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_games_management_v1management"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_games_v1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_gameservices_v1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210126"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_gameservices_v1beta"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_genomics_v1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_genomics_v1alpha2"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_genomics_v2alpha1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_gmail_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_gmailpostmastertools_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_gmailpostmastertools_v1beta1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_groupsmigration_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_groupssettings_v1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_healthcare_v1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210210"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_healthcare_v1beta1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210210"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_homegraph_v1"
-version = "0.1.0+20210210"
+version = "0.2.1+20210210"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_iam_v1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_iamcredentials_v1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_iap_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_iap_v1beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_identitytoolkit_v3"
-version = "0.1.0+20180723"
+version = "0.2.1+20180723"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_indexing_v3"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_jobs_v3"
-version = "0.1.0+20210107"
+version = "0.2.1+20210107"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_jobs_v3p1beta1"
-version = "0.1.0+20210107"
+version = "0.2.1+20210107"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_jobs_v4"
-version = "0.1.0+20210107"
+version = "0.2.1+20210107"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_kgsearch_v1"
-version = "0.1.0+20201113"
+version = "0.2.1+20201113"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_language_v1"
-version = "0.1.0+20210206"
+version = "0.2.1+20210206"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_language_v1beta1"
-version = "0.1.0+20210206"
+version = "0.2.1+20210206"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_language_v1beta2"
-version = "0.1.0+20210206"
+version = "0.2.1+20210206"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_libraryagent_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_licensing_v1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_lifesciences_v2beta"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_localservices_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_logging_v2"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_managedidentities_v1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_managedidentities_v1alpha1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_managedidentities_v1beta1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_manufacturers_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_memcache_v1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_memcache_v1beta2"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_metastore_v1alpha"
-version = "0.1.0+20210210"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_metastore_v1beta"
-version = "0.1.0+20210210"
+version = "0.2.1+20210210"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_ml_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_monitoring_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_monitoring_v3"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_mybusinessaccountmanagement_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_networkconnectivity_v1alpha1"
-version = "0.1.0+20210129"
+version = "0.2.1+20210129"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_networkmanagement_v1"
-version = "0.1.0+20201105"
+version = "0.2.1+20201105"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_networkmanagement_v1beta1"
-version = "0.1.0+20201105"
+version = "0.2.1+20201105"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_notebooks_v1"
-version = "0.1.0+20210122"
+version = "0.2.1+20210122"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_oauth2_v2"
-version = "0.1.0+20200213"
+version = "0.2.1+20200213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_ondemandscanning_v1beta1"
-version = "0.1.0+20210223"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_osconfig_v1"
-version = "0.1.0+20210122"
+version = "0.2.1+20210122"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_osconfig_v1beta"
-version = "0.1.0+20210122"
+version = "0.2.1+20210122"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_oslogin_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_oslogin_v1alpha"
-version = "0.1.0+20210222"
+version = "0.2.1+20210206"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_oslogin_v1beta"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_pagespeedonline_v5"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_people_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_playablelocations_v3"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_playcustomapp_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_policysimulator_v1beta1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_policytroubleshooter_v1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_policytroubleshooter_v1beta"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_poly_v1"
-version = "0.1.0+20201208"
+version = "0.2.1+20201208"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_privateca_v1beta1"
-version = "0.1.0+20210208"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_prod_tt_sasportal_v1alpha1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_pubsub_v1"
-version = "0.1.0+20210208"
+version = "0.2.1+20210208"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_pubsub_v1beta1a"
-version = "0.1.0+20210208"
+version = "0.2.1+20210208"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_pubsub_v1beta2"
-version = "0.1.0+20210208"
+version = "0.2.1+20210208"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_pubsublite_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_realtimebidding_v1"
-version = "0.1.0+20210223"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_realtimebidding_v1alpha"
-version = "0.1.0+20210223"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_recommendationengine_v1beta1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_recommender_v1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_recommender_v1beta1"
-version = "0.1.0+20210216"
+version = "0.2.1+20210216"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_redis_v1"
-version = "0.1.0+20210128"
+version = "0.2.1+20210128"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_redis_v1beta1"
-version = "0.1.0+20210128"
+version = "0.2.1+20210128"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_remotebuildexecution_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_remotebuildexecution_v1alpha"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_remotebuildexecution_v2"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_reseller_v1"
-version = "0.1.0+20210221"
+version = "0.2.1+20210221"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_retail_v2"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_retail_v2alpha"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_retail_v2beta"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_run_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_run_v1alpha1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_runtimeconfig_v1"
-version = "0.1.0+20210208"
+version = "0.2.1+20210208"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_runtimeconfig_v1beta1"
-version = "0.1.0+20210208"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_safebrowsing_v4"
-version = "0.1.0+20210213"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_sasportal_v1alpha1"
-version = "0.1.0+20210218"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_script_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_searchconsole_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_secretmanager_v1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_secretmanager_v1beta1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_securitycenter_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_securitycenter_v1beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_securitycenter_v1beta2"
-version = "0.1.0+20210212"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_serviceconsumermanagement_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_serviceconsumermanagement_v1beta1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_servicecontrol_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_servicecontrol_v2"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_servicedirectory_v1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_servicedirectory_v1beta1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_servicemanagement_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_servicenetworking_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_servicenetworking_v1beta"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_serviceusage_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_serviceusage_v1beta1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_sheets_v4"
-version = "0.1.0+20210209"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_site_verification_v1"
-version = "0.1.0+20191119"
+version = "0.2.1+20191119"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_slides_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_smartdevicemanagement_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_sourcerepo_v1"
-version = "0.1.0+20210125"
+version = "0.2.1+20210125"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_spanner_v1"
-version = "0.1.0+20210206"
+version = "0.2.1+20210206"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_speech_v1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_speech_v1p1beta1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_speech_v2beta1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_sqladmin_v1beta4"
-version = "0.1.0+20210130"
+version = "0.2.1+20210130"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_storage_v1"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_storagetransfer_v1"
-version = "0.1.0+20210211"
+version = "0.2.1+20210211"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_streetviewpublish_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_sts_v1"
-version = "0.1.0+20210206"
+version = "0.2.1+20210206"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_sts_v1beta"
-version = "0.1.0+20210206"
+version = "0.2.1+20210206"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_tagmanager_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_tagmanager_v2"
-version = "0.1.0+20210222"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_tasks_v1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_testing_v1"
-version = "0.1.0+20210215"
+version = "0.2.1+20210215"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_texttospeech_v1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_texttospeech_v1beta1"
-version = "0.1.0+20210205"
+version = "0.2.1+20210205"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_toolresults_v1beta3"
-version = "0.1.0+20210223"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_tpu_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_tpu_v1alpha1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_trafficdirector_v2"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_transcoder_v1beta1"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_translate_v2"
-version = "0.1.0+20170525"
+version = "0.2.1+20170525"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_translate_v3"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_translate_v3beta1"
-version = "0.1.0+20210219"
+version = "0.2.1+20210219"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_vault_v1"
-version = "0.1.0+20210129"
+version = "0.2.1+20210129"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_vectortile_v1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_verifiedaccess_v1"
-version = "0.1.0+20200828"
+version = "0.2.1+20200828"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_videointelligence_v1"
-version = "0.1.0+20210128"
+version = "0.2.1+20210128"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_videointelligence_v1beta2"
-version = "0.1.0+20210128"
+version = "0.2.1+20210128"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_videointelligence_v1p1beta1"
-version = "0.1.0+20210128"
+version = "0.2.1+20210128"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_videointelligence_v1p2beta1"
-version = "0.1.0+20210128"
+version = "0.2.1+20210128"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_videointelligence_v1p3beta1"
-version = "0.1.0+20210128"
+version = "0.2.1+20210128"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_vision_v1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_vision_v1p1beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_vision_v1p2beta1"
-version = "0.1.0+20210212"
+version = "0.2.1+20210212"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_webfonts_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_webmasters_v3"
-version = "0.1.0+20190428"
+version = "0.2.1+20190428"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_webrisk_v1"
-version = "0.1.0+20210213"
+version = "0.2.1+20210213"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_websecurityscanner_v1"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_websecurityscanner_v1alpha"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_websecurityscanner_v1beta"
-version = "0.1.0+20210220"
+version = "0.2.1+20210220"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_workflowexecutions_v1"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_workflowexecutions_v1beta"
-version = "0.1.0+20210209"
+version = "0.2.1+20210209"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_workflows_v1"
-version = "0.1.0+20210217"
+version = "0.2.1+20210217"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_workflows_v1beta"
-version = "0.1.0+20210217"
+version = "0.2.1+20210218"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_youtube_analytics_v2"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_youtube_v3"
-version = "0.1.0+20210220"
+version = "0.2.1+20210222"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "google_api_rust_client_youtubereporting_v1"
-version = "0.1.0+20210222"
+version = "0.2.1+20210223"
 dependencies = [
+ "derive_builder",
  "serde",
  "serde_json",
 ]
@@ -3365,18 +3691,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "proc-macro-hack"
-version = "0.5.19"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dbf0c48bc1d91375ae5c3cd81e3722dff1abcf81a30960240640d223f59fe0e5"
-
-[[package]]
-name = "proc-macro-nested"
-version = "0.1.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc881b2c22681370c6a780e47af9840ef841837bc98118431d4e1868bd0c1086"
-
-[[package]]
 name = "proc-macro2"
 version = "1.0.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3609,7 +3923,7 @@ version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e48b35457e9d855d3dc05ef32a73e0df1e2c0fd72c38796a4ee909160c8eeec2"
 dependencies = [
- "darling",
+ "darling 0.12.1",
  "proc-macro2",
  "quote",
  "syn",
@@ -3646,6 +3960,12 @@ name = "strsim"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
+
+[[package]]
+name = "strsim"
+version = "0.9.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6446ced80d6c486436db5c078dde11a9f73d42b57fb273121e160b84f63d894c"
 
 [[package]]
 name = "strsim"

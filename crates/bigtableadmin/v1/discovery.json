@@ -6,29 +6,27 @@
   "description": "Administer your Cloud Bigtable tables and instances.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/bigtable/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "bigtableadmin:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://bigtableadmin.mtls.googleapis.com/",
   "name": "bigtableadmin",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -39,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -106,8 +104,8 @@
         "endTime": {
           "description": "Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "expireTime": {
           "description": "Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.",
@@ -121,8 +119,8 @@
         "sizeBytes": {
           "description": "Output only. Size of the backup in bytes.",
           "format": "int64",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "sourceTable": {
           "description": "Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.",
@@ -131,23 +129,23 @@
         "startTime": {
           "description": "Output only. `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "state": {
           "description": "Output only. The current state of the backup.",
-          "enumDescriptions": [
-            "Not specified.",
-            "The pending backup is still being created. Operations on the backup may fail with `FAILED_PRECONDITION` in this state.",
-            "The backup is complete and ready for use."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
             "READY"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Not specified.",
+            "The pending backup is still being created. Operations on the backup may fail with `FAILED_PRECONDITION` in this state.",
+            "The backup is complete and ready for use."
+          ],
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -158,25 +156,25 @@
       "properties": {
         "backup": {
           "description": "Output only. Name of the backup.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "endTime": {
           "description": "Output only. This time that the backup was finished. Row data in the backup will be no newer than this timestamp.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "sourceTable": {
           "description": "Output only. Name of the table the backup was created from.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "startTime": {
           "description": "Output only. The time that the backup was started. Row data in the backup will be no older than this timestamp.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -187,15 +185,15 @@
       "properties": {
         "defaultStorageType": {
           "description": "Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.",
-          "enumDescriptions": [
-            "The user did not specify a storage type.",
-            "Flash (SSD) storage should be used.",
-            "Magnetic drive (HDD) storage should be used."
-          ],
           "enum": [
             "STORAGE_TYPE_UNSPECIFIED",
             "SSD",
             "HDD"
+          ],
+          "enumDescriptions": [
+            "The user did not specify a storage type.",
+            "Flash (SSD) storage should be used.",
+            "Magnetic drive (HDD) storage should be used."
           ],
           "type": "string"
         },
@@ -214,13 +212,6 @@
         },
         "state": {
           "description": "Output only. The current state of the cluster.",
-          "enumDescriptions": [
-            "The state of the cluster could not be determined.",
-            "The cluster has been successfully created and is ready to serve requests.",
-            "The cluster is currently being created, and may be destroyed if the creation process encounters an error. A cluster may not be able to serve requests while being created.",
-            "The cluster is currently being resized, and may revert to its previous node count if the process encounters an error. A cluster is still capable of serving requests while being resized, but may exhibit performance as if its number of allocated nodes is between the starting and requested states.",
-            "The cluster has no backing nodes. The data (tables) still exist, but no operations can be performed on the cluster."
-          ],
           "enum": [
             "STATE_NOT_KNOWN",
             "READY",
@@ -228,8 +219,15 @@
             "RESIZING",
             "DISABLED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "The state of the cluster could not be determined.",
+            "The cluster has been successfully created and is ready to serve requests.",
+            "The cluster is currently being created, and may be destroyed if the creation process encounters an error. A cluster may not be able to serve requests while being created.",
+            "The cluster is currently being resized, and may revert to its previous node count if the process encounters an error. A cluster is still capable of serving requests while being resized, but may exhibit performance as if its number of allocated nodes is between the starting and requested states.",
+            "The cluster has no backing nodes. The data (tables) still exist, but no operations can be performed on the cluster."
+          ],
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -269,8 +267,8 @@
           "type": "string"
         },
         "originalRequest": {
-          "description": "The request that prompted the initiation of this CreateCluster operation.",
-          "$ref": "CreateClusterRequest"
+          "$ref": "CreateClusterRequest",
+          "description": "The request that prompted the initiation of this CreateCluster operation."
         },
         "requestTime": {
           "description": "The time at which the original request was received.",
@@ -292,8 +290,8 @@
       "id": "CreateClusterRequest",
       "properties": {
         "cluster": {
-          "description": "Required. The cluster to be created. Fields marked `OutputOnly` must be left blank.",
-          "$ref": "Cluster"
+          "$ref": "Cluster",
+          "description": "Required. The cluster to be created. Fields marked `OutputOnly` must be left blank."
         },
         "clusterId": {
           "description": "Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.",
@@ -316,8 +314,8 @@
           "type": "string"
         },
         "originalRequest": {
-          "description": "The request that prompted the initiation of this CreateInstance operation.",
-          "$ref": "CreateInstanceRequest"
+          "$ref": "CreateInstanceRequest",
+          "description": "The request that prompted the initiation of this CreateInstance operation."
         },
         "requestTime": {
           "description": "The time at which the original request was received.",
@@ -339,8 +337,8 @@
           "type": "object"
         },
         "instance": {
-          "description": "Required. The instance to create. Fields marked `OutputOnly` must be left blank.",
-          "$ref": "Instance"
+          "$ref": "Instance",
+          "description": "Required. The instance to create. Fields marked `OutputOnly` must be left blank."
         },
         "instanceId": {
           "description": "Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.",
@@ -402,30 +400,30 @@
         },
         "state": {
           "description": "Output only. The current state of the instance.",
-          "enumDescriptions": [
-            "The state of the instance could not be determined.",
-            "The instance has been successfully created and can serve requests to its tables.",
-            "The instance is currently being created, and may be destroyed if the creation process encounters an error."
-          ],
           "enum": [
             "STATE_NOT_KNOWN",
             "READY",
             "CREATING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "The state of the instance could not be determined.",
+            "The instance has been successfully created and can serve requests to its tables.",
+            "The instance is currently being created, and may be destroyed if the creation process encounters an error."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "type": {
           "description": "Required. The type of the instance. Defaults to `PRODUCTION`.",
-          "enumDescriptions": [
-            "The type of the instance is unspecified. If set when creating an instance, a `PRODUCTION` instance will be created. If set when updating an instance, the type will be left unchanged.",
-            "An instance meant for production use. `serve_nodes` must be set on the cluster.",
-            "DEPRECATED: Prefer PRODUCTION for all use cases, as it no longer enforces a higher minimum node count than DEVELOPMENT."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "PRODUCTION",
             "DEVELOPMENT"
+          ],
+          "enumDescriptions": [
+            "The type of the instance is unspecified. If set when creating an instance, a `PRODUCTION` instance will be created. If set when updating an instance, the type will be left unchanged.",
+            "An instance meant for production use. `serve_nodes` must be set on the cluster.",
+            "DEPRECATED: Prefer PRODUCTION for all use cases, as it no longer enforces a higher minimum node count than DEVELOPMENT."
           ],
           "type": "string"
         }
@@ -463,8 +461,8 @@
           "type": "string"
         },
         "progress": {
-          "description": "The progress of the post-restore optimizations.",
-          "$ref": "OperationProgress"
+          "$ref": "OperationProgress",
+          "description": "The progress of the post-restore optimizations."
         }
       },
       "type": "object"
@@ -474,8 +472,8 @@
       "id": "PartialUpdateInstanceRequest",
       "properties": {
         "instance": {
-          "description": "Required. The Instance which will (partially) replace the current value.",
-          "$ref": "Instance"
+          "$ref": "Instance",
+          "description": "Required. The Instance which will (partially) replace the current value."
         },
         "updateMask": {
           "description": "Required. The subset of Instance fields which should be replaced. Must be explicitly set.",
@@ -501,18 +499,18 @@
           "type": "string"
         },
         "progress": {
-          "description": "The progress of the RestoreTable operation.",
-          "$ref": "OperationProgress"
+          "$ref": "OperationProgress",
+          "description": "The progress of the RestoreTable operation."
         },
         "sourceType": {
           "description": "The type of the restore source.",
-          "enumDescriptions": [
-            "No restore associated.",
-            "A backup was used as the source of the restore."
-          ],
           "enum": [
             "RESTORE_SOURCE_TYPE_UNSPECIFIED",
             "BACKUP"
+          ],
+          "enumDescriptions": [
+            "No restore associated.",
+            "A backup was used as the source of the restore."
           ],
           "type": "string"
         }
@@ -534,19 +532,19 @@
           "type": "string"
         },
         "state": {
-          "enumDescriptions": [
-            "",
-            "The table has not yet begun copying to the new cluster.",
-            "The table is actively being copied to the new cluster.",
-            "The table has been fully copied to the new cluster.",
-            "The table was deleted before it finished copying to the new cluster. Note that tables deleted after completion will stay marked as COMPLETED, not CANCELLED."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "PENDING",
             "COPYING",
             "COMPLETED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "",
+            "The table has not yet begun copying to the new cluster.",
+            "The table is actively being copied to the new cluster.",
+            "The table has been fully copied to the new cluster.",
+            "The table was deleted before it finished copying to the new cluster. Note that tables deleted after completion will stay marked as COMPLETED, not CANCELLED."
           ],
           "type": "string"
         }
@@ -569,8 +567,8 @@
           "type": "string"
         },
         "originalRequest": {
-          "description": "The request that prompted the initiation of this UpdateCluster operation.",
-          "$ref": "Cluster"
+          "$ref": "Cluster",
+          "description": "The request that prompted the initiation of this UpdateCluster operation."
         },
         "requestTime": {
           "description": "The time at which the original request was received.",
@@ -590,8 +588,8 @@
           "type": "string"
         },
         "originalRequest": {
-          "description": "The request that prompted the initiation of this UpdateInstance operation.",
-          "$ref": "PartialUpdateInstanceRequest"
+          "$ref": "PartialUpdateInstanceRequest",
+          "description": "The request that prompted the initiation of this UpdateInstance operation."
         },
         "requestTime": {
           "description": "The time at which the original request was received.",
@@ -604,6 +602,6 @@
   },
   "servicePath": "",
   "title": "Cloud Bigtable Admin API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

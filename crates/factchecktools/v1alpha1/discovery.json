@@ -15,29 +15,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/fact-check/tools/api/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "factchecktools:v1alpha1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://factchecktools.mtls.googleapis.com/",
   "name": "factchecktools",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "search": {
           "description": "Search through fact-checked claims.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/claims:search",
           "id": "factchecktools.claims.search",
           "parameterOrder": [],
           "parameters": {
@@ -165,7 +162,6 @@
         "create": {
           "description": "Create `ClaimReview` markup on a page.",
           "httpMethod": "POST",
-          "flatPath": "v1alpha1/pages",
           "id": "factchecktools.pages.create",
           "parameterOrder": [],
           "parameters": {},
@@ -183,7 +179,6 @@
         "delete": {
           "description": "Delete all `ClaimReview` markup on a page.",
           "httpMethod": "DELETE",
-          "flatPath": "v1alpha1/pages/{pagesId}",
           "id": "factchecktools.pages.delete",
           "parameterOrder": [
             "name"
@@ -193,8 +188,8 @@
               "description": "The name of the resource to delete, in the form of `pages/{page_id}`.",
               "location": "path",
               "pattern": "^pages/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha1/{+name}",
@@ -208,7 +203,6 @@
         "get": {
           "description": "Get all `ClaimReview` markup on a page.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/pages/{pagesId}",
           "id": "factchecktools.pages.get",
           "parameterOrder": [
             "name"
@@ -218,8 +212,8 @@
               "description": "The name of the resource to get, in the form of `pages/{page_id}`.",
               "location": "path",
               "pattern": "^pages/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha1/{+name}",
@@ -233,7 +227,6 @@
         "list": {
           "description": "List the `ClaimReview` markup pages for a specific URL or for an organization.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/pages",
           "id": "factchecktools.pages.list",
           "parameterOrder": [],
           "parameters": {
@@ -276,7 +269,6 @@
         "update": {
           "description": "Update for all `ClaimReview` markup on a page Note that this is a full update. To retain the existing `ClaimReview` markup on a page, first perform a Get operation, then modify the returned markup, and finally call Update with the entire `ClaimReview` markup as the body.",
           "httpMethod": "PUT",
-          "flatPath": "v1alpha1/pages/{pagesId}",
           "id": "factchecktools.pages.update",
           "parameterOrder": [
             "name"
@@ -286,8 +278,8 @@
               "description": "The name of this `ClaimReview` markup page resource, in the form of `pages/{page_id}`. Except for update requests, this field is output-only and should not be set by the user.",
               "location": "path",
               "pattern": "^pages/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha1/{+name}",
@@ -400,8 +392,8 @@
           "type": "string"
         },
         "publisher": {
-          "description": "The publisher of this claim review.",
-          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1Publisher"
+          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1Publisher",
+          "description": "The publisher of this claim review."
         },
         "reviewDate": {
           "description": "The date the claim was reviewed.",
@@ -450,8 +442,8 @@
           "type": "array"
         },
         "claimAuthor": {
-          "description": "Info about the author of this claim.",
-          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor"
+          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor",
+          "description": "Info about the author of this claim."
         },
         "claimDate": {
           "description": "The date when the claim was made or entered public discourse. Corresponds to `ClaimReview.itemReviewed.datePublished`.",
@@ -470,8 +462,8 @@
           "type": "string"
         },
         "rating": {
-          "description": "Info about the rating of this claim review.",
-          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating"
+          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating",
+          "description": "Info about the rating of this claim review."
         },
         "url": {
           "description": "This field is optional, and will default to the page URL. We provide this field to allow you the override the default value, but the only permitted override is the page URL plus an optional anchor link (\"page jump\"). Corresponds to `ClaimReview.url`",
@@ -485,8 +477,8 @@
       "id": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage",
       "properties": {
         "claimReviewAuthor": {
-          "description": "Info about the author of this claim review. Similar to the above, semantically these are page-level fields, and each `ClaimReview` on this page will contain the same values.",
-          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor"
+          "$ref": "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor",
+          "description": "Info about the author of this claim review. Similar to the above, semantically these are page-level fields, and each `ClaimReview` on this page will contain the same values."
         },
         "claimReviewMarkups": {
           "description": "A list of individual claim reviews for this page. Each item in the list corresponds to one `ClaimReview` element.",
@@ -574,6 +566,6 @@
   },
   "servicePath": "",
   "title": "Fact Check Tools API",
-  "version_module": true,
-  "version": "v1alpha1"
+  "version": "v1alpha1",
+  "version_module": true
 }

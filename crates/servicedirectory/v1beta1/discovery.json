@@ -15,29 +15,27 @@
   "description": "Service Directory is a platform for discovering, publishing, and connecting services. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/service-directory",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "servicedirectory:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://servicedirectory.mtls.googleapis.com/",
   "name": "servicedirectory",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}",
               "id": "servicedirectory.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations",
               "id": "servicedirectory.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -152,8 +148,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -182,7 +178,6 @@
                 "create": {
                   "description": "Creates a namespace, and returns the new namespace.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces",
                   "id": "servicedirectory.projects.locations.namespaces.create",
                   "parameterOrder": [
                     "parent"
@@ -197,8 +192,8 @@
                       "description": "Required. The resource name of the project and location the namespace will be created in.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/namespaces",
@@ -215,7 +210,6 @@
                 "delete": {
                   "description": "Deletes a namespace. This also deletes all services and endpoints in the namespace.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}",
                   "id": "servicedirectory.projects.locations.namespaces.delete",
                   "parameterOrder": [
                     "name"
@@ -225,8 +219,8 @@
                       "description": "Required. The name of the namespace to delete.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -240,7 +234,6 @@
                 "get": {
                   "description": "Gets a namespace.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}",
                   "id": "servicedirectory.projects.locations.namespaces.get",
                   "parameterOrder": [
                     "name"
@@ -250,8 +243,8 @@
                       "description": "Required. The name of the namespace to retrieve.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -265,7 +258,6 @@
                 "getIamPolicy": {
                   "description": "Gets the IAM Policy for a resource (namespace or service only).",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}:getIamPolicy",
                   "id": "servicedirectory.projects.locations.namespaces.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -275,8 +267,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:getIamPolicy",
@@ -293,7 +285,6 @@
                 "list": {
                   "description": "Lists all namespaces.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces",
                   "id": "servicedirectory.projects.locations.namespaces.list",
                   "parameterOrder": [
                     "parent"
@@ -324,8 +315,8 @@
                       "description": "Required. The resource name of the project and location whose namespaces you'd like to list.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/namespaces",
@@ -339,7 +330,6 @@
                 "patch": {
                   "description": "Updates a namespace.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}",
                   "id": "servicedirectory.projects.locations.namespaces.patch",
                   "parameterOrder": [
                     "name"
@@ -349,8 +339,8 @@
                       "description": "Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "Required. List of fields to be updated in this request.",
@@ -373,7 +363,6 @@
                 "setIamPolicy": {
                   "description": "Sets the IAM Policy for a resource (namespace or service only).",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}:setIamPolicy",
                   "id": "servicedirectory.projects.locations.namespaces.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -383,8 +372,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:setIamPolicy",
@@ -401,7 +390,6 @@
                 "testIamPermissions": {
                   "description": "Tests IAM permissions for a resource (namespace or service only).",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}:testIamPermissions",
                   "id": "servicedirectory.projects.locations.namespaces.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -411,8 +399,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:testIamPermissions",
@@ -433,7 +421,6 @@
                     "create": {
                       "description": "Creates a service, and returns the new service.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services",
                       "id": "servicedirectory.projects.locations.namespaces.services.create",
                       "parameterOrder": [
                         "parent"
@@ -443,8 +430,8 @@
                           "description": "Required. The resource name of the namespace this service will belong to.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "serviceId": {
                           "description": "Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
@@ -466,7 +453,6 @@
                     "delete": {
                       "description": "Deletes a service. This also deletes all endpoints associated with the service.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}",
                       "id": "servicedirectory.projects.locations.namespaces.services.delete",
                       "parameterOrder": [
                         "name"
@@ -476,8 +462,8 @@
                           "description": "Required. The name of the service to delete.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -491,7 +477,6 @@
                     "get": {
                       "description": "Gets a service.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}",
                       "id": "servicedirectory.projects.locations.namespaces.services.get",
                       "parameterOrder": [
                         "name"
@@ -501,8 +486,8 @@
                           "description": "Required. The name of the service to get.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -516,7 +501,6 @@
                     "getIamPolicy": {
                       "description": "Gets the IAM Policy for a resource (namespace or service only).",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}:getIamPolicy",
                       "id": "servicedirectory.projects.locations.namespaces.services.getIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -526,8 +510,8 @@
                           "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+resource}:getIamPolicy",
@@ -544,7 +528,6 @@
                     "list": {
                       "description": "Lists all services belonging to a namespace.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services",
                       "id": "servicedirectory.projects.locations.namespaces.services.list",
                       "parameterOrder": [
                         "parent"
@@ -575,8 +558,8 @@
                           "description": "Required. The resource name of the namespace whose services you'd like to list.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+parent}/services",
@@ -590,7 +573,6 @@
                     "patch": {
                       "description": "Updates a service.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}",
                       "id": "servicedirectory.projects.locations.namespaces.services.patch",
                       "parameterOrder": [
                         "name"
@@ -600,8 +582,8 @@
                           "description": "Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "updateMask": {
                           "description": "Required. List of fields to be updated in this request.",
@@ -624,7 +606,6 @@
                     "resolve": {
                       "description": "Returns a service and its associated endpoints. Resolving a service is not considered an active developer method.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}:resolve",
                       "id": "servicedirectory.projects.locations.namespaces.services.resolve",
                       "parameterOrder": [
                         "name"
@@ -634,8 +615,8 @@
                           "description": "Required. The name of the service to resolve.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}:resolve",
@@ -652,7 +633,6 @@
                     "setIamPolicy": {
                       "description": "Sets the IAM Policy for a resource (namespace or service only).",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}:setIamPolicy",
                       "id": "servicedirectory.projects.locations.namespaces.services.setIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -662,8 +642,8 @@
                           "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+resource}:setIamPolicy",
@@ -680,7 +660,6 @@
                     "testIamPermissions": {
                       "description": "Tests IAM permissions for a resource (namespace or service only).",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}:testIamPermissions",
                       "id": "servicedirectory.projects.locations.namespaces.services.testIamPermissions",
                       "parameterOrder": [
                         "resource"
@@ -690,8 +669,8 @@
                           "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+resource}:testIamPermissions",
@@ -712,7 +691,6 @@
                         "create": {
                           "description": "Creates an endpoint, and returns the new endpoint.",
                           "httpMethod": "POST",
-                          "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints",
                           "id": "servicedirectory.projects.locations.namespaces.services.endpoints.create",
                           "parameterOrder": [
                             "parent"
@@ -727,8 +705,8 @@
                               "description": "Required. The resource name of the service that this endpoint provides.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             }
                           },
                           "path": "v1beta1/{+parent}/endpoints",
@@ -745,7 +723,6 @@
                         "delete": {
                           "description": "Deletes an endpoint.",
                           "httpMethod": "DELETE",
-                          "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints/{endpointsId}",
                           "id": "servicedirectory.projects.locations.namespaces.services.endpoints.delete",
                           "parameterOrder": [
                             "name"
@@ -755,8 +732,8 @@
                               "description": "Required. The name of the endpoint to delete.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+/endpoints/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             }
                           },
                           "path": "v1beta1/{+name}",
@@ -770,7 +747,6 @@
                         "get": {
                           "description": "Gets an endpoint.",
                           "httpMethod": "GET",
-                          "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints/{endpointsId}",
                           "id": "servicedirectory.projects.locations.namespaces.services.endpoints.get",
                           "parameterOrder": [
                             "name"
@@ -780,8 +756,8 @@
                               "description": "Required. The name of the endpoint to get.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+/endpoints/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             }
                           },
                           "path": "v1beta1/{+name}",
@@ -795,7 +771,6 @@
                         "list": {
                           "description": "Lists all endpoints.",
                           "httpMethod": "GET",
-                          "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints",
                           "id": "servicedirectory.projects.locations.namespaces.services.endpoints.list",
                           "parameterOrder": [
                             "parent"
@@ -826,8 +801,8 @@
                               "description": "Required. The resource name of the service whose endpoints you'd like to list.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             }
                           },
                           "path": "v1beta1/{+parent}/endpoints",
@@ -841,7 +816,6 @@
                         "patch": {
                           "description": "Updates an endpoint.",
                           "httpMethod": "PATCH",
-                          "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/services/{servicesId}/endpoints/{endpointsId}",
                           "id": "servicedirectory.projects.locations.namespaces.services.endpoints.patch",
                           "parameterOrder": [
                             "name"
@@ -851,8 +825,8 @@
                               "description": "Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+/endpoints/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             },
                             "updateMask": {
                               "description": "Required. List of fields to be updated in this request.",
@@ -891,8 +865,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -969,8 +943,8 @@
       "id": "GetIamPolicyRequest",
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.",
-          "$ref": "GetPolicyOptions"
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`."
         }
       },
       "type": "object"
@@ -1170,8 +1144,8 @@
           "items": {
             "$ref": "Endpoint"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "metadata": {
           "additionalProperties": {
@@ -1192,8 +1166,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         }
       },
       "type": "object"
@@ -1229,6 +1203,6 @@
   },
   "servicePath": "",
   "title": "Service Directory API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

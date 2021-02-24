@@ -15,29 +15,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/pubsub/lite/docs",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "pubsublite:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://pubsublite.mtls.googleapis.com/",
   "name": "pubsublite",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -116,7 +114,6 @@
                     "create": {
                       "description": "Creates a new subscription.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
                       "id": "pubsublite.admin.projects.locations.subscriptions.create",
                       "parameterOrder": [
                         "parent"
@@ -126,8 +123,8 @@
                           "description": "Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "subscriptionId": {
                           "description": "Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.",
@@ -149,7 +146,6 @@
                     "delete": {
                       "description": "Deletes the specified subscription.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
                       "id": "pubsublite.admin.projects.locations.subscriptions.delete",
                       "parameterOrder": [
                         "name"
@@ -159,8 +155,8 @@
                           "description": "Required. The name of the subscription to delete.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/admin/{+name}",
@@ -174,7 +170,6 @@
                     "get": {
                       "description": "Returns the subscription configuration.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
                       "id": "pubsublite.admin.projects.locations.subscriptions.get",
                       "parameterOrder": [
                         "name"
@@ -184,8 +179,8 @@
                           "description": "Required. The name of the subscription whose configuration to return.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/admin/{+name}",
@@ -199,7 +194,6 @@
                     "list": {
                       "description": "Returns the list of subscriptions for the given project.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
                       "id": "pubsublite.admin.projects.locations.subscriptions.list",
                       "parameterOrder": [
                         "parent"
@@ -220,8 +214,8 @@
                           "description": "Required. The parent whose subscriptions are to be listed. Structured like `projects/{project_number}/locations/{location}`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/admin/{+parent}/subscriptions",
@@ -235,7 +229,6 @@
                     "patch": {
                       "description": "Updates properties of the specified subscription.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
                       "id": "pubsublite.admin.projects.locations.subscriptions.patch",
                       "parameterOrder": [
                         "name"
@@ -245,8 +238,8 @@
                           "description": "The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "updateMask": {
                           "description": "Required. A mask specifying the subscription fields to change.",
@@ -273,7 +266,6 @@
                     "create": {
                       "description": "Creates a new topic.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
                       "id": "pubsublite.admin.projects.locations.topics.create",
                       "parameterOrder": [
                         "parent"
@@ -283,8 +275,8 @@
                           "description": "Required. The parent location in which to create the topic. Structured like `projects/{project_number}/locations/{location}`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "topicId": {
                           "description": "Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.",
@@ -306,7 +298,6 @@
                     "delete": {
                       "description": "Deletes the specified topic.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
                       "id": "pubsublite.admin.projects.locations.topics.delete",
                       "parameterOrder": [
                         "name"
@@ -316,8 +307,8 @@
                           "description": "Required. The name of the topic to delete.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/admin/{+name}",
@@ -331,7 +322,6 @@
                     "get": {
                       "description": "Returns the topic configuration.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
                       "id": "pubsublite.admin.projects.locations.topics.get",
                       "parameterOrder": [
                         "name"
@@ -341,8 +331,8 @@
                           "description": "Required. The name of the topic whose configuration to return.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/admin/{+name}",
@@ -356,7 +346,6 @@
                     "getPartitions": {
                       "description": "Returns the partition information for the requested topic.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/partitions",
                       "id": "pubsublite.admin.projects.locations.topics.getPartitions",
                       "parameterOrder": [
                         "name"
@@ -366,8 +355,8 @@
                           "description": "Required. The topic whose partition information to return.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/admin/{+name}/partitions",
@@ -381,7 +370,6 @@
                     "list": {
                       "description": "Returns the list of topics for the given project.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
                       "id": "pubsublite.admin.projects.locations.topics.list",
                       "parameterOrder": [
                         "parent"
@@ -402,8 +390,8 @@
                           "description": "Required. The parent whose topics are to be listed. Structured like `projects/{project_number}/locations/{location}`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/admin/{+parent}/topics",
@@ -417,7 +405,6 @@
                     "patch": {
                       "description": "Updates properties of the specified topic.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
                       "id": "pubsublite.admin.projects.locations.topics.patch",
                       "parameterOrder": [
                         "name"
@@ -427,8 +414,8 @@
                           "description": "The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "updateMask": {
                           "description": "Required. A mask specifying the topic fields to change.",
@@ -455,7 +442,6 @@
                         "list": {
                           "description": "Lists the subscriptions attached to the specified topic.",
                           "httpMethod": "GET",
-                          "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/subscriptions",
                           "id": "pubsublite.admin.projects.locations.topics.subscriptions.list",
                           "parameterOrder": [
                             "name"
@@ -465,8 +451,8 @@
                               "description": "Required. The name of the topic whose subscriptions to list.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             },
                             "pageSize": {
                               "description": "The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned.",
@@ -511,7 +497,6 @@
                         "list": {
                           "description": "Returns all committed cursor information for a subscription.",
                           "httpMethod": "GET",
-                          "flatPath": "v1/cursor/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}/cursors",
                           "id": "pubsublite.cursor.projects.locations.subscriptions.cursors.list",
                           "parameterOrder": [
                             "parent"
@@ -532,8 +517,8 @@
                               "description": "Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             }
                           },
                           "path": "v1/cursor/{+parent}/cursors",
@@ -565,7 +550,6 @@
                     "computeHeadCursor": {
                       "description": "Compute the head cursor for the partition. The head cursor’s offset is guaranteed to be before or equal to all messages which have not yet been acknowledged to be published, and greater than the offset of any message whose publish has already been acknowledged. It is 0 if there have never been messages on the partition.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeHeadCursor",
                       "id": "pubsublite.topicStats.projects.locations.topics.computeHeadCursor",
                       "parameterOrder": [
                         "topic"
@@ -575,8 +559,8 @@
                           "description": "Required. The topic for which we should compute the head cursor.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/topicStats/{+topic}:computeHeadCursor",
@@ -593,7 +577,6 @@
                     "computeMessageStats": {
                       "description": "Compute statistics about a range of messages in a given topic and partition.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeMessageStats",
                       "id": "pubsublite.topicStats.projects.locations.topics.computeMessageStats",
                       "parameterOrder": [
                         "topic"
@@ -603,8 +586,8 @@
                           "description": "Required. The topic for which we should compute message stats.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/topicStats/{+topic}:computeMessageStats",
@@ -664,8 +647,8 @@
       "id": "ComputeHeadCursorResponse",
       "properties": {
         "headCursor": {
-          "description": "The head cursor.",
-          "$ref": "Cursor"
+          "$ref": "Cursor",
+          "description": "The head cursor."
         }
       },
       "type": "object"
@@ -675,8 +658,8 @@
       "id": "ComputeMessageStatsRequest",
       "properties": {
         "endCursor": {
-          "description": "The exclusive end of the range. The range is empty if end_cursor <= start_cursor. Specifying a start_cursor before the first message and an end_cursor after the last message will retrieve all messages.",
-          "$ref": "Cursor"
+          "$ref": "Cursor",
+          "description": "The exclusive end of the range. The range is empty if end_cursor <= start_cursor. Specifying a start_cursor before the first message and an end_cursor after the last message will retrieve all messages."
         },
         "partition": {
           "description": "Required. The partition for which we should compute message stats.",
@@ -684,8 +667,8 @@
           "type": "string"
         },
         "startCursor": {
-          "description": "The inclusive start of the range.",
-          "$ref": "Cursor"
+          "$ref": "Cursor",
+          "description": "The inclusive start of the range."
         }
       },
       "type": "object"
@@ -735,15 +718,15 @@
       "properties": {
         "deliveryRequirement": {
           "description": "The DeliveryRequirement for this subscription.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The server does not wait for a published message to be successfully written to storage before delivering it to subscribers.",
-            "The server will not deliver a published message to subscribers until the message has been successfully written to storage. This will result in higher end-to-end latency, but consistent delivery."
-          ],
           "enum": [
             "DELIVERY_REQUIREMENT_UNSPECIFIED",
             "DELIVER_IMMEDIATELY",
             "DELIVER_AFTER_STORED"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The server does not wait for a published message to be successfully written to storage before delivering it to subscribers.",
+            "The server will not deliver a published message to subscribers until the message has been successfully written to storage. This will result in higher end-to-end latency, but consistent delivery."
           ],
           "type": "string"
         }
@@ -833,8 +816,8 @@
       "id": "PartitionConfig",
       "properties": {
         "capacity": {
-          "description": "The capacity configuration.",
-          "$ref": "Capacity"
+          "$ref": "Capacity",
+          "description": "The capacity configuration."
         },
         "count": {
           "description": "The number of partitions in the topic. Must be at least 1.",
@@ -854,8 +837,8 @@
       "id": "PartitionCursor",
       "properties": {
         "cursor": {
-          "description": "The value of the cursor.",
-          "$ref": "Cursor"
+          "$ref": "Cursor",
+          "description": "The value of the cursor."
         },
         "partition": {
           "description": "The partition this is for.",
@@ -887,8 +870,8 @@
       "id": "Subscription",
       "properties": {
         "deliveryConfig": {
-          "description": "The settings for this subscription's message delivery.",
-          "$ref": "DeliveryConfig"
+          "$ref": "DeliveryConfig",
+          "description": "The settings for this subscription's message delivery."
         },
         "name": {
           "description": "The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}",
@@ -910,12 +893,12 @@
           "type": "string"
         },
         "partitionConfig": {
-          "description": "The settings for this topic's partitions.",
-          "$ref": "PartitionConfig"
+          "$ref": "PartitionConfig",
+          "description": "The settings for this topic's partitions."
         },
         "retentionConfig": {
-          "description": "The settings for this topic's message retention.",
-          "$ref": "RetentionConfig"
+          "$ref": "RetentionConfig",
+          "description": "The settings for this topic's message retention."
         }
       },
       "type": "object"
@@ -935,6 +918,6 @@
   },
   "servicePath": "",
   "title": "Pub/Sub Lite API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

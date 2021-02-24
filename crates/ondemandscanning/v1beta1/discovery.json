@@ -15,29 +15,27 @@
   "description": "A service to scan container images for vulnerabilities.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/container-analysis/docs/on-demand-scanning/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "ondemandscanning:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://ondemandscanning.mtls.googleapis.com/",
   "name": "ondemandscanning",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -114,7 +112,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "ondemandscanning.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -124,8 +121,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:cancel",
@@ -139,7 +136,6 @@
                 "delete": {
                   "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "ondemandscanning.projects.locations.operations.delete",
                   "parameterOrder": [
                     "name"
@@ -149,8 +145,8 @@
                       "description": "The name of the operation resource to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -164,7 +160,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "ondemandscanning.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -174,8 +169,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -189,7 +184,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
                   "id": "ondemandscanning.projects.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -204,8 +198,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -230,7 +224,6 @@
                 "wait": {
                   "description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait",
                   "id": "ondemandscanning.projects.locations.operations.wait",
                   "parameterOrder": [
                     "name"
@@ -240,8 +233,8 @@
                       "description": "The name of the operation resource to wait on.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "timeout": {
                       "description": "The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.",
@@ -265,7 +258,6 @@
                 "analyzePackages": {
                   "description": "Initiates an analysis of the provided packages.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/scans:analyzePackages",
                   "id": "ondemandscanning.projects.locations.scans.analyzePackages",
                   "parameterOrder": [
                     "parent"
@@ -275,8 +267,8 @@
                       "description": "Required. The parent of the resource for which analysis is requested. Format: projects/[project_name]/locations/[location]",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/scans:analyzePackages",
@@ -297,7 +289,6 @@
                     "list": {
                       "description": "Lists vulnerabilities resulting from a successfully completed scan.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/scans/{scansId}/vulnerabilities",
                       "id": "ondemandscanning.projects.locations.scans.vulnerabilities.list",
                       "parameterOrder": [
                         "parent"
@@ -318,8 +309,8 @@
                           "description": "Required. The parent of the collection of Vulnerabilities being requested. Format: projects/[project_name]/locations/[location]/scans/[scan_id]",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/scans/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+parent}/vulnerabilities",
@@ -348,17 +339,17 @@
       "properties": {
         "kind": {
           "description": "The alias kind.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Git tag.",
-            "Git branch.",
-            "Used to specify non-standard aliases. For example, if a Git repo has a ref named \"refs/foo/bar\"."
-          ],
           "enum": [
             "KIND_UNSPECIFIED",
             "FIXED",
             "MOVABLE",
             "OTHER"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Git tag.",
+            "Git branch.",
+            "Used to specify non-standard aliases. For example, if a Git repo has a ref named \"refs/foo/bar\"."
           ],
           "type": "string"
         },
@@ -467,8 +458,8 @@
       "id": "BuildOccurrence",
       "properties": {
         "provenance": {
-          "description": "Required. The actual provenance for the build.",
-          "$ref": "BuildProvenance"
+          "$ref": "BuildProvenance",
+          "description": "Required. The actual provenance for the build."
         },
         "provenanceBytes": {
           "description": "Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.",
@@ -533,8 +524,8 @@
           "type": "string"
         },
         "sourceProvenance": {
-          "description": "Details of the Source input to the build.",
-          "$ref": "Source"
+          "$ref": "Source",
+          "description": "Details of the Source input to the build."
         },
         "startTime": {
           "description": "Time at which execution of the build was started.",
@@ -568,12 +559,12 @@
       "id": "CloudRepoSourceContext",
       "properties": {
         "aliasContext": {
-          "description": "An alias, which may be a branch or tag.",
-          "$ref": "AliasContext"
+          "$ref": "AliasContext",
+          "description": "An alias, which may be a branch or tag."
         },
         "repoId": {
-          "description": "The ID of the repo.",
-          "$ref": "RepoId"
+          "$ref": "RepoId",
+          "description": "The ID of the repo."
         },
         "revisionId": {
           "description": "A revision ID.",
@@ -641,17 +632,17 @@
         },
         "platform": {
           "description": "Platform hosting this deployment.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Google Container Engine.",
-            "Google App Engine: Flexible Environment.",
-            "Custom user-defined platform."
-          ],
           "enum": [
             "PLATFORM_UNSPECIFIED",
             "GKE",
             "FLEX",
             "CUSTOM"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Google Container Engine.",
+            "Google App Engine: Flexible Environment.",
+            "Custom user-defined platform."
           ],
           "type": "string"
         },
@@ -680,14 +671,6 @@
       "properties": {
         "analysisStatus": {
           "description": "The status of discovery for the resource.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Resource is known but no action has been taken yet.",
-            "Resource is being analyzed.",
-            "Analysis has finished successfully.",
-            "Analysis has finished unsuccessfully, the analysis itself is in a bad state.",
-            "The resource is known not to be supported"
-          ],
           "enum": [
             "ANALYSIS_STATUS_UNSPECIFIED",
             "PENDING",
@@ -696,23 +679,31 @@
             "FINISHED_FAILED",
             "FINISHED_UNSUPPORTED"
           ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Resource is known but no action has been taken yet.",
+            "Resource is being analyzed.",
+            "Analysis has finished successfully.",
+            "Analysis has finished unsuccessfully, the analysis itself is in a bad state.",
+            "The resource is known not to be supported"
+          ],
           "type": "string"
         },
         "analysisStatusError": {
-          "description": "When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API."
         },
         "continuousAnalysis": {
           "description": "Whether the resource is continuously analyzed.",
-          "enumDescriptions": [
-            "Unknown.",
-            "The resource is continuously analyzed.",
-            "The resource is ignored for continuous analysis."
-          ],
           "enum": [
             "CONTINUOUS_ANALYSIS_UNSPECIFIED",
             "ACTIVE",
             "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "The resource is continuously analyzed.",
+            "The resource is ignored for continuous analysis."
           ],
           "type": "string"
         },
@@ -775,8 +766,8 @@
       "id": "GerritSourceContext",
       "properties": {
         "aliasContext": {
-          "description": "An alias, which may be a branch or tag.",
-          "$ref": "AliasContext"
+          "$ref": "AliasContext",
+          "description": "An alias, which may be a branch or tag."
         },
         "gerritProject": {
           "description": "The full project name within the host. Projects may be nested, so \"project/subproject\" is a valid project name. The \"repo name\" is the hostURI/project.",
@@ -854,8 +845,8 @@
           "type": "integer"
         },
         "fingerprint": {
-          "description": "Required. The fingerprint of the derived image.",
-          "$ref": "Fingerprint"
+          "$ref": "Fingerprint",
+          "description": "Required. The fingerprint of the derived image."
         },
         "layerInfo": {
           "description": "This contains layer-specific metadata, if populated it has length \"distance\" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.",
@@ -941,8 +932,8 @@
           "type": "string"
         },
         "version": {
-          "description": "The version installed at this location.",
-          "$ref": "Version"
+          "$ref": "Version",
+          "description": "The version installed at this location."
         }
       },
       "type": "object"
@@ -952,12 +943,12 @@
       "id": "Occurrence",
       "properties": {
         "attestation": {
-          "description": "Describes an attestation of an artifact.",
-          "$ref": "AttestationOccurrence"
+          "$ref": "AttestationOccurrence",
+          "description": "Describes an attestation of an artifact."
         },
         "build": {
-          "description": "Describes a verifiable build.",
-          "$ref": "BuildOccurrence"
+          "$ref": "BuildOccurrence",
+          "description": "Describes a verifiable build."
         },
         "createTime": {
           "description": "Output only. The time this occurrence was created.",
@@ -965,30 +956,19 @@
           "type": "string"
         },
         "deployment": {
-          "description": "Describes the deployment of an artifact on a runtime.",
-          "$ref": "DeploymentOccurrence"
+          "$ref": "DeploymentOccurrence",
+          "description": "Describes the deployment of an artifact on a runtime."
         },
         "discovery": {
-          "description": "Describes when a resource was discovered.",
-          "$ref": "DiscoveryOccurrence"
+          "$ref": "DiscoveryOccurrence",
+          "description": "Describes when a resource was discovered."
         },
         "image": {
-          "description": "Describes how this resource derives from the basis in the associated note.",
-          "$ref": "ImageOccurrence"
+          "$ref": "ImageOccurrence",
+          "description": "Describes how this resource derives from the basis in the associated note."
         },
         "kind": {
           "description": "Output only. This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The note and occurrence represent a package vulnerability.",
-            "The note and occurrence assert build provenance.",
-            "This represents an image basis relationship.",
-            "This represents a package installed via a package manager.",
-            "The note and occurrence track deployment events.",
-            "The note and occurrence track the initial discovery status of a resource.",
-            "This represents a logical \"role\" that can attest to artifacts.",
-            "This represents an available package upgrade."
-          ],
           "enum": [
             "NOTE_KIND_UNSPECIFIED",
             "VULNERABILITY",
@@ -999,6 +979,17 @@
             "DISCOVERY",
             "ATTESTATION",
             "UPGRADE"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The note and occurrence represent a package vulnerability.",
+            "The note and occurrence assert build provenance.",
+            "This represents an image basis relationship.",
+            "This represents a package installed via a package manager.",
+            "The note and occurrence track deployment events.",
+            "The note and occurrence track the initial discovery status of a resource.",
+            "This represents a logical \"role\" that can attest to artifacts.",
+            "This represents an available package upgrade."
           ],
           "type": "string"
         },
@@ -1011,8 +1002,8 @@
           "type": "string"
         },
         "package": {
-          "description": "Describes the installation of a package on the linked resource.",
-          "$ref": "PackageOccurrence"
+          "$ref": "PackageOccurrence",
+          "description": "Describes the installation of a package on the linked resource."
         },
         "remediation": {
           "description": "A description of actions that can be taken to remedy the note.",
@@ -1028,12 +1019,12 @@
           "type": "string"
         },
         "upgrade": {
-          "description": "Describes an available package upgrade on the linked resource.",
-          "$ref": "UpgradeOccurrence"
+          "$ref": "UpgradeOccurrence",
+          "description": "Describes an available package upgrade on the linked resource."
         },
         "vulnerability": {
-          "description": "Describes a security vulnerability.",
-          "$ref": "VulnerabilityOccurrence"
+          "$ref": "VulnerabilityOccurrence",
+          "description": "Describes a security vulnerability."
         }
       },
       "type": "object"
@@ -1047,8 +1038,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1112,8 +1103,8 @@
           "type": "string"
         },
         "affectedVersion": {
-          "description": "Required. The version of the package that is installed on the resource affected by this vulnerability.",
-          "$ref": "Version"
+          "$ref": "Version",
+          "description": "Required. The version of the package that is installed on the resource affected by this vulnerability."
         },
         "fixAvailable": {
           "description": "Output only. Whether a fix is available for this package.",
@@ -1128,8 +1119,8 @@
           "type": "string"
         },
         "fixedVersion": {
-          "description": "Required. The version of the package this vulnerability was fixed in. Setting this to VersionKind.MAXIMUM means no fix is yet available.",
-          "$ref": "Version"
+          "$ref": "Version",
+          "description": "Required. The version of the package this vulnerability was fixed in. Setting this to VersionKind.MAXIMUM means no fix is yet available."
         }
       },
       "type": "object"
@@ -1187,8 +1178,8 @@
       "id": "RepoId",
       "properties": {
         "projectRepoId": {
-          "description": "A combination of a project ID and a repo name.",
-          "$ref": "ProjectRepoId"
+          "$ref": "ProjectRepoId",
+          "description": "A combination of a project ID and a repo name."
         },
         "uid": {
           "description": "A server-assigned, globally unique identifier.",
@@ -1229,8 +1220,8 @@
           "type": "string"
         },
         "context": {
-          "description": "If provided, the source code used for the build came from this location.",
-          "$ref": "SourceContext"
+          "$ref": "SourceContext",
+          "description": "If provided, the source code used for the build came from this location."
         },
         "fileHashes": {
           "additionalProperties": {
@@ -1247,16 +1238,16 @@
       "id": "SourceContext",
       "properties": {
         "cloudRepo": {
-          "description": "A SourceContext referring to a revision in a Google Cloud Source Repo.",
-          "$ref": "CloudRepoSourceContext"
+          "$ref": "CloudRepoSourceContext",
+          "description": "A SourceContext referring to a revision in a Google Cloud Source Repo."
         },
         "gerrit": {
-          "description": "A SourceContext referring to a Gerrit project.",
-          "$ref": "GerritSourceContext"
+          "$ref": "GerritSourceContext",
+          "description": "A SourceContext referring to a Gerrit project."
         },
         "git": {
-          "description": "A SourceContext referring to any third party Git repo (e.g., GitHub).",
-          "$ref": "GitSourceContext"
+          "$ref": "GitSourceContext",
+          "description": "A SourceContext referring to any third party Git repo (e.g., GitHub)."
         },
         "labels": {
           "additionalProperties": {
@@ -1326,20 +1317,20 @@
       "id": "UpgradeOccurrence",
       "properties": {
         "distribution": {
-          "description": "Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.",
-          "$ref": "UpgradeDistribution"
+          "$ref": "UpgradeDistribution",
+          "description": "Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence."
         },
         "package": {
           "description": "Required for non-Windows OS. The package this Upgrade is for.",
           "type": "string"
         },
         "parsedVersion": {
-          "description": "Required for non-Windows OS. The version of the package in a machine + human readable form.",
-          "$ref": "Version"
+          "$ref": "Version",
+          "description": "Required for non-Windows OS. The version of the package in a machine + human readable form."
         },
         "windowsUpdate": {
-          "description": "Required for Windows OS. Represents the metadata about the Windows update.",
-          "$ref": "WindowsUpdate"
+          "$ref": "WindowsUpdate",
+          "description": "Required for Windows OS. Represents the metadata about the Windows update."
         }
       },
       "type": "object"
@@ -1363,17 +1354,17 @@
         },
         "kind": {
           "description": "Required. Distinguishes between sentinel MIN/MAX versions and normal versions.",
-          "enumDescriptions": [
-            "Unknown.",
-            "A standard package version.",
-            "A special version representing negative infinity.",
-            "A special version representing positive infinity."
-          ],
           "enum": [
             "VERSION_KIND_UNSPECIFIED",
             "NORMAL",
             "MINIMUM",
             "MAXIMUM"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "A standard package version.",
+            "A special version representing negative infinity.",
+            "A special version representing positive infinity."
           ],
           "type": "string"
         },
@@ -1399,14 +1390,6 @@
         },
         "effectiveSeverity": {
           "description": "The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Minimal severity.",
-            "Low severity.",
-            "Medium severity.",
-            "High severity.",
-            "Critical severity."
-          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "MINIMAL",
@@ -1414,6 +1397,14 @@
             "MEDIUM",
             "HIGH",
             "CRITICAL"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Minimal severity.",
+            "Low severity.",
+            "Medium severity.",
+            "High severity.",
+            "Critical severity."
           ],
           "type": "string"
         },
@@ -1441,14 +1432,6 @@
         },
         "severity": {
           "description": "Output only. The note provider assigned severity of this vulnerability.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Minimal severity.",
-            "Low severity.",
-            "Medium severity.",
-            "High severity.",
-            "Critical severity."
-          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "MINIMAL",
@@ -1456,6 +1439,14 @@
             "MEDIUM",
             "HIGH",
             "CRITICAL"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Minimal severity.",
+            "Low severity.",
+            "Medium severity.",
+            "High severity.",
+            "Critical severity."
           ],
           "type": "string"
         },
@@ -1486,8 +1477,8 @@
           "type": "string"
         },
         "identity": {
-          "description": "Required - The unique identifier for the update.",
-          "$ref": "Identity"
+          "$ref": "Identity",
+          "description": "Required - The unique identifier for the update."
         },
         "kbArticleIds": {
           "description": "The Microsoft Knowledge Base article IDs that are associated with the update.",
@@ -1515,6 +1506,6 @@
   },
   "servicePath": "",
   "title": "On-Demand Scanning API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

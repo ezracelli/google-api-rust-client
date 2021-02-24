@@ -15,7 +15,7 @@
   "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-  "etag": "\"uWj2hSb4GVjzdDlAnRd2gbM1ZQ8/AB657q0FXzKJb43B0UB-l2pqknA\"",
+  "etag": "\"uWj2hSb4GVjzdDlAnRd2gbM1ZQ8/N3zN1xCJKIiIdxxNkfKAgdRl9XQ\"",
   "icons": {
     "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
     "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -29,13 +29,13 @@
     "alt": {
       "default": "json",
       "description": "Data format for the response.",
+      "enum": [
+        "json"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json"
       ],
       "location": "query",
-      "enum": [
-        "json"
-      ],
       "type": "string"
     },
     "fields": {
@@ -86,8 +86,8 @@
               "description": "The account id",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "accounts/{id}",
@@ -127,8 +127,8 @@
               "description": "The account id",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "accounts/{id}",
@@ -159,8 +159,8 @@
               "description": "The account id",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "accounts/{id}",
@@ -190,8 +190,8 @@
               "description": "The account id.",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "billinginfo/{accountId}",
@@ -231,15 +231,15 @@
               "description": "The account id to get the budget information for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "billingId": {
               "description": "The billing id to get the budget information for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "billinginfo/{accountId}/{billingId}",
@@ -263,15 +263,15 @@
               "description": "The account id associated with the budget being updated.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "billingId": {
               "description": "The billing id associated with the budget being updated.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "billinginfo/{accountId}/{billingId}",
@@ -298,15 +298,15 @@
               "description": "The account id associated with the budget being updated.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "billingId": {
               "description": "The billing id associated with the budget being updated.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "billinginfo/{accountId}/{billingId}",
@@ -338,21 +338,21 @@
               "description": "The id for the account that will serve this creative.",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             },
             "buyerCreativeId": {
               "description": "The buyer-specific id for this creative.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "dealId": {
               "description": "The id of the deal id to associate with this creative.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "creatives/{accountId}/{buyerCreativeId}/addDeal/{dealId}",
@@ -373,14 +373,14 @@
               "description": "The id for the account that will serve this creative.",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             },
             "buyerCreativeId": {
               "description": "The buyer-specific id for this creative.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "creatives/{accountId}/{buyerCreativeId}",
@@ -415,17 +415,23 @@
               "description": "When specified, only creatives for the given account ids are returned.",
               "format": "int32",
               "location": "query",
-              "type": "integer",
-              "repeated": true
+              "repeated": true,
+              "type": "integer"
             },
             "buyerCreativeId": {
               "description": "When specified, only creatives for the given buyer creative ids are returned.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "dealsStatusFilter": {
               "description": "When specified, only creatives having the given deals status are returned.",
+              "enum": [
+                "approved",
+                "conditionally_approved",
+                "disapproved",
+                "not_checked"
+              ],
               "enumDescriptions": [
                 "Creatives which have been approved for serving on deals.",
                 "Creatives which have been conditionally approved for serving on deals.",
@@ -433,12 +439,6 @@
                 "Creatives whose deals status is not yet checked."
               ],
               "location": "query",
-              "enum": [
-                "approved",
-                "conditionally_approved",
-                "disapproved",
-                "not_checked"
-              ],
               "type": "string"
             },
             "maxResults": {
@@ -451,6 +451,12 @@
             },
             "openAuctionStatusFilter": {
               "description": "When specified, only creatives having the given open auction status are returned.",
+              "enum": [
+                "approved",
+                "conditionally_approved",
+                "disapproved",
+                "not_checked"
+              ],
               "enumDescriptions": [
                 "Creatives which have been approved for serving on the open auction.",
                 "Creatives which have been conditionally approved for serving on the open auction.",
@@ -458,12 +464,6 @@
                 "Creatives whose open auction status is not yet checked."
               ],
               "location": "query",
-              "enum": [
-                "approved",
-                "conditionally_approved",
-                "disapproved",
-                "not_checked"
-              ],
               "type": "string"
             },
             "pageToken": {
@@ -493,14 +493,14 @@
               "description": "The id for the account that will serve this creative.",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             },
             "buyerCreativeId": {
               "description": "The buyer-specific id for this creative.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "creatives/{accountId}/{buyerCreativeId}/listDeals",
@@ -525,21 +525,21 @@
               "description": "The id for the account that will serve this creative.",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             },
             "buyerCreativeId": {
               "description": "The buyer-specific id for this creative.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "dealId": {
               "description": "The id of the deal id to disassociate with this creative.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "creatives/{accountId}/{buyerCreativeId}/removeDeal/{dealId}",
@@ -562,8 +562,8 @@
             "proposalId": {
               "description": "The proposalId to delete deals from.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}/deals/delete",
@@ -588,8 +588,8 @@
             "proposalId": {
               "description": "proposalId for which deals need to be added.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}/deals/insert",
@@ -619,8 +619,8 @@
             "proposalId": {
               "description": "The proposalId to get deals for. To search across all proposals specify order_id = '-' as part of the URL.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}/deals",
@@ -642,8 +642,8 @@
             "proposalId": {
               "description": "The proposalId to edit deals on.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}/deals/update",
@@ -672,8 +672,8 @@
             "proposalId": {
               "description": "The proposalId to add notes for.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}/notes/insert",
@@ -703,8 +703,8 @@
             "proposalId": {
               "description": "The proposalId to get notes for. To search across all proposals specify order_id = '-' as part of the URL.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}/notes",
@@ -730,8 +730,8 @@
             "privateAuctionId": {
               "description": "The private auction id to be updated.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "privateauction/{privateAuctionId}/updateproposal",
@@ -760,14 +760,14 @@
               "description": "The account id to get the reports.",
               "format": "int64",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "endDateTime": {
               "description": "The end time of the report in ISO 8601 timestamp format using UTC.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "Maximum number of entries returned on one result page. If not set, the default is 100. Optional.",
@@ -785,8 +785,8 @@
             "startDateTime": {
               "description": "The start time of the report in ISO 8601 timestamp format using UTC.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "performancereport",
@@ -814,15 +814,15 @@
               "description": "The account id to delete the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "configId": {
               "description": "The specific id of the configuration to delete.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}/{configId}",
@@ -843,15 +843,15 @@
               "description": "The account id to get the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "configId": {
               "description": "The specific id of the configuration to retrieve.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}/{configId}",
@@ -874,8 +874,8 @@
               "description": "The account id to insert the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}",
@@ -901,8 +901,8 @@
               "description": "The account id to get the pretargeting configs for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}",
@@ -926,15 +926,15 @@
               "description": "The account id to update the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "configId": {
               "description": "The specific id of the configuration to update.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}/{configId}",
@@ -961,15 +961,15 @@
               "description": "The account id to update the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "configId": {
               "description": "The specific id of the configuration to update.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}/{configId}",
@@ -998,8 +998,8 @@
             "productId": {
               "description": "The id for the product to get the head revision for.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "products/{productId}",
@@ -1044,8 +1044,8 @@
             "proposalId": {
               "description": "Id of the proposal to retrieve.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}",
@@ -1084,18 +1084,26 @@
             "proposalId": {
               "description": "The proposal id to update.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "revisionNumber": {
               "description": "The last known revision number to update. If the head revision in the marketplace database has since changed, an error will be thrown. The caller should then fetch the latest proposal at head revision and retry the update at that revision.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateAction": {
               "description": "The proposed action to take on the proposal. This field is required and it must be set when updating a proposal.",
+              "enum": [
+                "accept",
+                "cancel",
+                "propose",
+                "proposeAndAccept",
+                "unknownAction",
+                "updateNonTerms"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -1105,16 +1113,8 @@
                 ""
               ],
               "location": "path",
-              "enum": [
-                "accept",
-                "cancel",
-                "propose",
-                "proposeAndAccept",
-                "unknownAction",
-                "updateNonTerms"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}/{revisionNumber}/{updateAction}",
@@ -1158,8 +1158,8 @@
             "proposalId": {
               "description": "The proposal id for which the setup is complete",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}/setupcomplete",
@@ -1180,18 +1180,26 @@
             "proposalId": {
               "description": "The proposal id to update.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "revisionNumber": {
               "description": "The last known revision number to update. If the head revision in the marketplace database has since changed, an error will be thrown. The caller should then fetch the latest proposal at head revision and retry the update at that revision.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateAction": {
               "description": "The proposed action to take on the proposal. This field is required and it must be set when updating a proposal.",
+              "enum": [
+                "accept",
+                "cancel",
+                "propose",
+                "proposeAndAccept",
+                "unknownAction",
+                "updateNonTerms"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -1201,16 +1209,8 @@
                 ""
               ],
               "location": "path",
-              "enum": [
-                "accept",
-                "cancel",
-                "propose",
-                "proposeAndAccept",
-                "unknownAction",
-                "updateNonTerms"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "proposals/{proposalId}/{revisionNumber}/{updateAction}",
@@ -1240,8 +1240,8 @@
               "description": "The accountId of the publisher to get profiles for.",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "publisher/{accountId}/profiles",
@@ -1255,7 +1255,7 @@
       }
     }
   },
-  "revision": "20210222",
+  "revision": "20210223",
   "rootUrl": "https://www.googleapis.com/",
   "schemas": {
     "Account": {
@@ -2067,8 +2067,8 @@
           "type": "boolean"
         },
         "dealPauseStatus": {
-          "description": "Tracks which parties (if any) have paused a deal. (readonly, except via PauseResumeOrderDeals action)",
-          "$ref": "DealServingMetadataDealPauseStatus"
+          "$ref": "DealServingMetadataDealPauseStatus",
+          "description": "Tracks which parties (if any) have paused a deal. (readonly, except via PauseResumeOrderDeals action)"
         }
       },
       "type": "object"
@@ -2112,8 +2112,8 @@
           "type": "string"
         },
         "estimatedGrossSpend": {
-          "description": "Non-binding estimate of the estimated gross spend for this deal Can be set by buyer or seller.",
-          "$ref": "Price"
+          "$ref": "Price",
+          "description": "Non-binding estimate of the estimated gross spend for this deal Can be set by buyer or seller."
         },
         "estimatedImpressionsPerDay": {
           "description": "Non-binding estimate of the impressions served per day Can be set by buyer or seller.",
@@ -2121,20 +2121,20 @@
           "type": "string"
         },
         "guaranteedFixedPriceTerms": {
-          "description": "The terms for guaranteed fixed price deals.",
-          "$ref": "DealTermsGuaranteedFixedPriceTerms"
+          "$ref": "DealTermsGuaranteedFixedPriceTerms",
+          "description": "The terms for guaranteed fixed price deals."
         },
         "nonGuaranteedAuctionTerms": {
-          "description": "The terms for non-guaranteed auction deals.",
-          "$ref": "DealTermsNonGuaranteedAuctionTerms"
+          "$ref": "DealTermsNonGuaranteedAuctionTerms",
+          "description": "The terms for non-guaranteed auction deals."
         },
         "nonGuaranteedFixedPriceTerms": {
-          "description": "The terms for non-guaranteed fixed price deals.",
-          "$ref": "DealTermsNonGuaranteedFixedPriceTerms"
+          "$ref": "DealTermsNonGuaranteedFixedPriceTerms",
+          "description": "The terms for non-guaranteed fixed price deals."
         },
         "rubiconNonGuaranteedTerms": {
-          "description": "The terms for rubicon non-guaranteed deals.",
-          "$ref": "DealTermsRubiconNonGuaranteedTerms"
+          "$ref": "DealTermsRubiconNonGuaranteedTerms",
+          "description": "The terms for rubicon non-guaranteed deals."
         },
         "sellerTimeZone": {
           "description": "For deals with Cost Per Day billing, defines the timezone used to mark the boundaries of a day (buyer-readonly)",
@@ -2147,8 +2147,8 @@
       "id": "DealTermsGuaranteedFixedPriceTerms",
       "properties": {
         "billingInfo": {
-          "description": "External billing info for this Deal. This field is relevant when external billing info such as price has a different currency code than DFP/AdX.",
-          "$ref": "DealTermsGuaranteedFixedPriceTermsBillingInfo"
+          "$ref": "DealTermsGuaranteedFixedPriceTermsBillingInfo",
+          "description": "External billing info for this Deal. This field is relevant when external billing info such as price has a different currency code than DFP/AdX."
         },
         "fixedPrices": {
           "description": "Fixed price for the specified buyer.",
@@ -2194,8 +2194,8 @@
           "type": "string"
         },
         "price": {
-          "description": "The original reservation price for the deal, if the currency code is different from the one used in negotiation.",
-          "$ref": "Price"
+          "$ref": "Price",
+          "description": "The original reservation price for the deal, if the currency code is different from the one used in negotiation."
         }
       },
       "type": "object"
@@ -2234,12 +2234,12 @@
       "id": "DealTermsRubiconNonGuaranteedTerms",
       "properties": {
         "priorityPrice": {
-          "description": "Optional price for Rubicon priority access in the auction.",
-          "$ref": "Price"
+          "$ref": "Price",
+          "description": "Optional price for Rubicon priority access in the auction."
         },
         "standardPrice": {
-          "description": "Optional price for Rubicon standard access in the auction.",
-          "$ref": "Price"
+          "$ref": "Price",
+          "description": "Optional price for Rubicon standard access in the auction."
         }
       },
       "type": "object"
@@ -2367,8 +2367,8 @@
           "type": "array"
         },
         "proposal": {
-          "description": "If specified, also updates the proposal in the batch transaction. This is useful when the proposal and the deals need to be updated in one transaction.",
-          "$ref": "Proposal"
+          "$ref": "Proposal",
+          "description": "If specified, also updates the proposal in the batch transaction. This is useful when the proposal and the deals need to be updated in one transaction."
         },
         "proposalRevisionNumber": {
           "description": "The last known revision number for the proposal.",
@@ -2470,8 +2470,8 @@
       "id": "MarketplaceDeal",
       "properties": {
         "buyerPrivateData": {
-          "description": "Buyer private data (hidden from seller).",
-          "$ref": "PrivateData"
+          "$ref": "PrivateData",
+          "description": "Buyer private data (hidden from seller)."
         },
         "creationTimeMs": {
           "description": "The time (ms since epoch) of the deal creation. (readonly)",
@@ -2491,12 +2491,12 @@
           "type": "string"
         },
         "dealServingMetadata": {
-          "description": "Metadata about the serving status of this deal (readonly, writes via custom actions)",
-          "$ref": "DealServingMetadata"
+          "$ref": "DealServingMetadata",
+          "description": "Metadata about the serving status of this deal (readonly, writes via custom actions)"
         },
         "deliveryControl": {
-          "description": "The set of fields around delivery control that are interesting for a buyer to see but are non-negotiable. These are set by the publisher. This message is assigned an id of 100 since some day we would want to model this as a protobuf extension.",
-          "$ref": "DeliveryControl"
+          "$ref": "DeliveryControl",
+          "description": "The set of fields around delivery control that are interesting for a buyer to see but are non-negotiable. These are set by the publisher. This message is assigned an id of 100 since some day we would want to model this as a protobuf extension."
         },
         "externalDealId": {
           "description": "The external deal id assigned to this deal once the deal is finalized. This is the deal-id that shows up in serving/reporting etc. (readonly)",
@@ -2576,8 +2576,8 @@
           "type": "string"
         },
         "terms": {
-          "description": "The negotiable terms of the deal. (updatable)",
-          "$ref": "DealTerms"
+          "$ref": "DealTerms",
+          "description": "The negotiable terms of the deal. (updatable)"
         },
         "webPropertyCode": {
           "type": "string"
@@ -2589,12 +2589,12 @@
       "id": "MarketplaceDealParty",
       "properties": {
         "buyer": {
-          "description": "The buyer/seller associated with the deal. One of buyer/seller is specified for a deal-party.",
-          "$ref": "Buyer"
+          "$ref": "Buyer",
+          "description": "The buyer/seller associated with the deal. One of buyer/seller is specified for a deal-party."
         },
         "seller": {
-          "description": "The buyer/seller associated with the deal. One of buyer/seller is specified for a deal party.",
-          "$ref": "Seller"
+          "$ref": "Seller",
+          "description": "The buyer/seller associated with the deal. One of buyer/seller is specified for a deal party."
         }
       },
       "type": "object"
@@ -2612,8 +2612,8 @@
           "type": "string"
         },
         "deprecatedMarketplaceDealParty": {
-          "description": "Information about the party that created the label.",
-          "$ref": "MarketplaceDealParty"
+          "$ref": "MarketplaceDealParty",
+          "description": "Information about the party that created the label."
         },
         "label": {
           "description": "The label to use.",
@@ -3109,16 +3109,16 @@
           "type": "string"
         },
         "billedBuyer": {
-          "description": "Reference to the buyer that will get billed.",
-          "$ref": "Buyer"
+          "$ref": "Buyer",
+          "description": "Reference to the buyer that will get billed."
         },
         "buyer": {
-          "description": "The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers match, and there's no more specific rule matching the buyer).",
-          "$ref": "Buyer"
+          "$ref": "Buyer",
+          "description": "The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers match, and there's no more specific rule matching the buyer)."
         },
         "price": {
-          "description": "The specified price",
-          "$ref": "Price"
+          "$ref": "Price",
+          "description": "The specified price"
         }
       },
       "type": "object"
@@ -3141,12 +3141,12 @@
       "id": "Product",
       "properties": {
         "billedBuyer": {
-          "description": "The billed buyer corresponding to the buyer that created the offer. (readonly, except on create)",
-          "$ref": "Buyer"
+          "$ref": "Buyer",
+          "description": "The billed buyer corresponding to the buyer that created the offer. (readonly, except on create)"
         },
         "buyer": {
-          "description": "The buyer that created the offer if this is a buyer initiated offer (readonly, except on create)",
-          "$ref": "Buyer"
+          "$ref": "Buyer",
+          "description": "The buyer that created the offer if this is a buyer initiated offer (readonly, except on create)"
         },
         "creationTimeMs": {
           "description": "Creation time in ms. since epoch (readonly)",
@@ -3165,8 +3165,8 @@
           "type": "string"
         },
         "deliveryControl": {
-          "description": "The set of fields around delivery control that are interesting for a buyer to see but are non-negotiable. These are set by the publisher. This message is assigned an id of 100 since some day we would want to model this as a protobuf extension.",
-          "$ref": "DeliveryControl"
+          "$ref": "DeliveryControl",
+          "description": "The set of fields around delivery control that are interesting for a buyer to see but are non-negotiable. These are set by the publisher. This message is assigned an id of 100 since some day we would want to model this as a protobuf extension."
         },
         "flightEndTimeMs": {
           "description": "The proposed end time for the deal (ms since epoch) (buyer-readonly)",
@@ -3228,8 +3228,8 @@
           "type": "string"
         },
         "publisherProvidedForecast": {
-          "description": "Publisher self-provided forecast information.",
-          "$ref": "PublisherProvidedForecast"
+          "$ref": "PublisherProvidedForecast",
+          "description": "Publisher self-provided forecast information."
         },
         "revisionNumber": {
           "description": "The revision number of the product. (readonly)",
@@ -3237,8 +3237,8 @@
           "type": "string"
         },
         "seller": {
-          "description": "Information about the seller that created this product (readonly, except on create)",
-          "$ref": "Seller"
+          "$ref": "Seller",
+          "description": "Information about the seller that created this product (readonly, except on create)"
         },
         "sharedTargetings": {
           "description": "Targeting that is shared between the buyer and the seller. Each targeting criteria has a specified key and for each key there is a list of inclusion value or exclusion values. (buyer-readonly)",
@@ -3256,8 +3256,8 @@
           "type": "string"
         },
         "terms": {
-          "description": "The negotiable terms of the deal (buyer-readonly)",
-          "$ref": "DealTerms"
+          "$ref": "DealTerms",
+          "description": "The negotiable terms of the deal (buyer-readonly)"
         },
         "webPropertyCode": {
           "description": "The web property code for the seller. This field is meant to be copied over as is when creating deals.",
@@ -3271,12 +3271,12 @@
       "id": "Proposal",
       "properties": {
         "billedBuyer": {
-          "description": "Reference to the buyer that will get billed for this proposal. (readonly)",
-          "$ref": "Buyer"
+          "$ref": "Buyer",
+          "description": "Reference to the buyer that will get billed for this proposal. (readonly)"
         },
         "buyer": {
-          "description": "Reference to the buyer on the proposal. (readonly, except on create)",
-          "$ref": "Buyer"
+          "$ref": "Buyer",
+          "description": "Reference to the buyer on the proposal. (readonly, except on create)"
         },
         "buyerContacts": {
           "description": "Optional contact information of the buyer. (seller-readonly)",
@@ -3286,8 +3286,8 @@
           "type": "array"
         },
         "buyerPrivateData": {
-          "description": "Private data for buyer. (hidden from seller).",
-          "$ref": "PrivateData"
+          "$ref": "PrivateData",
+          "description": "Private data for buyer. (hidden from seller)."
         },
         "dbmAdvertiserIds": {
           "description": "IDs of DBM advertisers permission to this proposal.",
@@ -3367,8 +3367,8 @@
           "type": "string"
         },
         "seller": {
-          "description": "Reference to the seller on the proposal. (readonly, except on create)",
-          "$ref": "Seller"
+          "$ref": "Seller",
+          "description": "Reference to the seller on the proposal. (readonly, except on create)"
         },
         "sellerContacts": {
           "description": "Optional contact information of the seller (buyer-readonly).",
@@ -3467,8 +3467,8 @@
           "type": "string"
         },
         "publisherProvidedForecast": {
-          "description": "Publisher provided forecasting information.",
-          "$ref": "PublisherProvidedForecast"
+          "$ref": "PublisherProvidedForecast",
+          "description": "Publisher provided forecasting information."
         },
         "rateCardInfoLink": {
           "description": "Link to publisher rate card",
@@ -3479,8 +3479,8 @@
           "type": "string"
         },
         "seller": {
-          "description": "Seller of the publisher profile.",
-          "$ref": "Seller"
+          "$ref": "Seller",
+          "description": "Seller of the publisher profile."
         },
         "state": {
           "description": "State of the publisher profile.",
@@ -3562,12 +3562,12 @@
       "id": "TargetingValue",
       "properties": {
         "creativeSizeValue": {
-          "description": "The creative size value to exclude/include.",
-          "$ref": "TargetingValueCreativeSize"
+          "$ref": "TargetingValueCreativeSize",
+          "description": "The creative size value to exclude/include."
         },
         "dayPartTargetingValue": {
-          "description": "The daypart targeting to include / exclude. Filled in when the key is GOOG_DAYPART_TARGETING.",
-          "$ref": "TargetingValueDayPartTargeting"
+          "$ref": "TargetingValueDayPartTargeting",
+          "description": "The daypart targeting to include / exclude. Filled in when the key is GOOG_DAYPART_TARGETING."
         },
         "demogAgeCriteriaValue": {
           "$ref": "TargetingValueDemogAgeCriteria"
@@ -3617,8 +3617,8 @@
           "type": "string"
         },
         "size": {
-          "description": "For regular or video creative size type, specifies the size of the creative.",
-          "$ref": "TargetingValueSize"
+          "$ref": "TargetingValueSize",
+          "description": "For regular or video creative size type, specifies the size of the creative."
         },
         "skippableAdType": {
           "description": "The skippable ad type for video size.",
@@ -3727,8 +3727,8 @@
           "type": "string"
         },
         "note": {
-          "description": "Optional note to be added.",
-          "$ref": "MarketplaceNote"
+          "$ref": "MarketplaceNote",
+          "description": "Optional note to be added."
         },
         "proposalRevisionNumber": {
           "description": "The current revision number of the proposal to be updated.",

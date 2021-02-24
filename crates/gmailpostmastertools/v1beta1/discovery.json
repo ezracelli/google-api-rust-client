@@ -15,29 +15,27 @@
   "description": "The Postmaster Tools API is a RESTful API that provides programmatic access to email traffic metrics (like spam reports, delivery errors etc) otherwise available through the Gmail Postmaster Tools UI currently.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/gmail/postmaster",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "gmailpostmastertools:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://gmailpostmastertools.mtls.googleapis.com/",
   "name": "gmailpostmastertools",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "get": {
           "description": "Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1/domains/{domainsId}",
           "id": "gmailpostmastertools.domains.get",
           "parameterOrder": [
             "name"
@@ -120,8 +117,8 @@
               "description": "The resource name of the domain. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name.",
               "location": "path",
               "pattern": "^domains/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/{+name}",
@@ -135,7 +132,6 @@
         "list": {
           "description": "Lists the domains that have been registered by the client. The order of domains in the response is unspecified and non-deterministic. Newly created domains will not necessarily be added to the end of this list.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1/domains",
           "id": "gmailpostmastertools.domains.list",
           "parameterOrder": [],
           "parameters": {
@@ -166,7 +162,6 @@
             "get": {
               "description": "Get traffic statistics for a domain on a specific date. Returns PERMISSION_DENIED if user does not have permission to access TrafficStats for the domain.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/domains/{domainsId}/trafficStats/{trafficStatsId}",
               "id": "gmailpostmastertools.domains.trafficStats.get",
               "parameterOrder": [
                 "name"
@@ -176,8 +171,8 @@
                   "description": "The resource name of the traffic statistics to get. E.g., domains/mymail.mydomain.com/trafficStats/20160807.",
                   "location": "path",
                   "pattern": "^domains/[^/]+/trafficStats/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -191,7 +186,6 @@
             "list": {
               "description": "List traffic statistics for all available days. Returns PERMISSION_DENIED if user does not have permission to access TrafficStats for the domain.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/domains/{domainsId}/trafficStats",
               "id": "gmailpostmastertools.domains.trafficStats.list",
               "parameterOrder": [
                 "parent"
@@ -230,8 +224,8 @@
                   "description": "The resource name of the domain whose traffic statistics we'd like to list. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name.",
                   "location": "path",
                   "pattern": "^domains/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "startDate.day": {
                   "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
@@ -274,15 +268,15 @@
       "properties": {
         "errorClass": {
           "description": "The class of delivery error.",
-          "enumDescriptions": [
-            "The default value which should never be used explicitly.",
-            "Delivery of message has been rejected.",
-            "Temporary failure of message delivery to the recipient."
-          ],
           "enum": [
             "DELIVERY_ERROR_CLASS_UNSPECIFIED",
             "PERMANENT_ERROR",
             "TEMPORARY_ERROR"
+          ],
+          "enumDescriptions": [
+            "The default value which should never be used explicitly.",
+            "Delivery of message has been rejected.",
+            "Temporary failure of message delivery to the recipient."
           ],
           "type": "string"
         },
@@ -293,19 +287,6 @@
         },
         "errorType": {
           "description": "The type of delivery error.",
-          "enumDescriptions": [
-            "The default value which should never be used explicitly.",
-            "The Domain or IP is sending traffic at a suspiciously high rate, due to which temporary rate limits have been imposed. The limit will be lifted when Gmail is confident enough of the nature of the traffic.",
-            "The traffic is suspected to be spam, by Gmail, for various reasons.",
-            "The traffic is suspected to be spammy, specific to the content.",
-            "Traffic contains attachments not supported by Gmail.",
-            "The sender domain has set up a DMARC rejection policy.",
-            "The IP reputation of the sending IP is very low.",
-            "The Domain reputation of the sending domain is very low.",
-            "The IP is listed in one or more public [Real-time Blackhole Lists](http://en.wikipedia.org/wiki/DNSBL). Work with the RBL to get your IP delisted.",
-            "The Domain is listed in one or more public [Real-time Blackhole Lists](http://en.wikipedia.org/wiki/DNSBL). Work with the RBL to get your domain delisted.",
-            "The sending IP is missing a [PTR record](https://support.google.com/domains/answer/3251147#ptr)."
-          ],
           "enum": [
             "DELIVERY_ERROR_TYPE_UNSPECIFIED",
             "RATE_LIMIT_EXCEEDED",
@@ -318,6 +299,19 @@
             "IP_IN_RBL",
             "DOMAIN_IN_RBL",
             "BAD_PTR_RECORD"
+          ],
+          "enumDescriptions": [
+            "The default value which should never be used explicitly.",
+            "The Domain or IP is sending traffic at a suspiciously high rate, due to which temporary rate limits have been imposed. The limit will be lifted when Gmail is confident enough of the nature of the traffic.",
+            "The traffic is suspected to be spam, by Gmail, for various reasons.",
+            "The traffic is suspected to be spammy, specific to the content.",
+            "Traffic contains attachments not supported by Gmail.",
+            "The sender domain has set up a DMARC rejection policy.",
+            "The IP reputation of the sending IP is very low.",
+            "The Domain reputation of the sending domain is very low.",
+            "The IP is listed in one or more public [Real-time Blackhole Lists](http://en.wikipedia.org/wiki/DNSBL). Work with the RBL to get your IP delisted.",
+            "The Domain is listed in one or more public [Real-time Blackhole Lists](http://en.wikipedia.org/wiki/DNSBL). Work with the RBL to get your domain delisted.",
+            "The sending IP is missing a [PTR record](https://support.google.com/domains/answer/3251147#ptr)."
           ],
           "type": "string"
         }
@@ -339,17 +333,17 @@
         },
         "permission": {
           "description": "User’s permission for this domain. Assigned by the server.",
-          "enumDescriptions": [
-            "The default value and should never be used explicitly.",
-            "User has read access to the domain and can share access with others.",
-            "User has read access to the domain.",
-            "User doesn't have permission to access information about the domain. User did not verify ownership of domain nor was access granted by other domain owners."
-          ],
           "enum": [
             "PERMISSION_UNSPECIFIED",
             "OWNER",
             "READER",
             "NONE"
+          ],
+          "enumDescriptions": [
+            "The default value and should never be used explicitly.",
+            "User has read access to the domain and can share access with others.",
+            "User has read access to the domain.",
+            "User doesn't have permission to access information about the domain. User did not verify ownership of domain nor was access granted by other domain owners."
           ],
           "type": "string"
         }
@@ -388,19 +382,19 @@
         },
         "reputation": {
           "description": "The reputation category this IP reputation represents.",
-          "enumDescriptions": [
-            "The default value which should never be used explicitly. This represents the state where no reputation information is available.",
-            "Has a good track record of a very low spam rate, and complies with Gmail's sender guidelines. Mail will rarely be marked by the spam filter.",
-            "Known to send good mail, but is prone to sending a low volume of spam intermittently. Most of the email from this entity will have a fair deliverability rate, except when there is a notable increase in spam levels.",
-            "Known to send a considerable volume of spam regularly, and mail from this sender will likely be marked as spam.",
-            "History of sending an enormously high volume of spam. Mail coming from this entity will almost always be rejected at SMTP level or marked as spam."
-          ],
           "enum": [
             "REPUTATION_CATEGORY_UNSPECIFIED",
             "HIGH",
             "MEDIUM",
             "LOW",
             "BAD"
+          ],
+          "enumDescriptions": [
+            "The default value which should never be used explicitly. This represents the state where no reputation information is available.",
+            "Has a good track record of a very low spam rate, and complies with Gmail's sender guidelines. Mail will rarely be marked by the spam filter.",
+            "Known to send good mail, but is prone to sending a low volume of spam intermittently. Most of the email from this entity will have a fair deliverability rate, except when there is a notable increase in spam levels.",
+            "Known to send a considerable volume of spam regularly, and mail from this sender will likely be marked as spam.",
+            "History of sending an enormously high volume of spam. Mail coming from this entity will almost always be rejected at SMTP level or marked as spam."
           ],
           "type": "string"
         },
@@ -473,19 +467,19 @@
         },
         "domainReputation": {
           "description": "Reputation of the domain.",
-          "enumDescriptions": [
-            "The default value which should never be used explicitly. This represents the state where no reputation information is available.",
-            "Has a good track record of a very low spam rate, and complies with Gmail's sender guidelines. Mail will rarely be marked by the spam filter.",
-            "Known to send good mail, but is prone to sending a low volume of spam intermittently. Most of the email from this entity will have a fair deliverability rate, except when there is a notable increase in spam levels.",
-            "Known to send a considerable volume of spam regularly, and mail from this sender will likely be marked as spam.",
-            "History of sending an enormously high volume of spam. Mail coming from this entity will almost always be rejected at SMTP level or marked as spam."
-          ],
           "enum": [
             "REPUTATION_CATEGORY_UNSPECIFIED",
             "HIGH",
             "MEDIUM",
             "LOW",
             "BAD"
+          ],
+          "enumDescriptions": [
+            "The default value which should never be used explicitly. This represents the state where no reputation information is available.",
+            "Has a good track record of a very low spam rate, and complies with Gmail's sender guidelines. Mail will rarely be marked by the spam filter.",
+            "Known to send good mail, but is prone to sending a low volume of spam intermittently. Most of the email from this entity will have a fair deliverability rate, except when there is a notable increase in spam levels.",
+            "Known to send a considerable volume of spam regularly, and mail from this sender will likely be marked as spam.",
+            "History of sending an enormously high volume of spam. Mail coming from this entity will almost always be rejected at SMTP level or marked as spam."
           ],
           "type": "string"
         },
@@ -533,6 +527,6 @@
   },
   "servicePath": "",
   "title": "Gmail Postmaster Tools API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

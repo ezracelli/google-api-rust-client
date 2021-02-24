@@ -21,22 +21,21 @@
   },
   "id": "manufacturers:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://manufacturers.mtls.googleapis.com/",
   "name": "manufacturers",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -47,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -111,7 +110,6 @@
             "delete": {
               "description": "Deletes the product from a Manufacturer Center account.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/accounts/{accountsId}/products/{productsId}",
               "id": "manufacturers.accounts.products.delete",
               "parameterOrder": [
                 "parent",
@@ -122,15 +120,15 @@
                   "description": "Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id.",
                   "location": "path",
                   "pattern": "^[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "parent": {
                   "description": "Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/products/{+name}",
@@ -144,7 +142,6 @@
             "get": {
               "description": "Gets the product from a Manufacturer Center account, including product issues. A recently updated product takes around 15 minutes to process. Changes are only visible after it has been processed. While some issues may be available once the product has been processed, other issues may take days to appear.",
               "httpMethod": "GET",
-              "flatPath": "v1/accounts/{accountsId}/products/{productsId}",
               "id": "manufacturers.accounts.products.get",
               "parameterOrder": [
                 "parent",
@@ -153,6 +150,12 @@
               "parameters": {
                 "include": {
                   "description": "The information to be included in the response. Only sections listed here will be returned.",
+                  "enum": [
+                    "UNKNOWN",
+                    "ATTRIBUTES",
+                    "ISSUES",
+                    "DESTINATION_STATUSES"
+                  ],
                   "enumDescriptions": [
                     "Unknown, never used.",
                     "Include the attributes of the product.",
@@ -160,28 +163,22 @@
                     "Include the destination statuses of the product."
                   ],
                   "location": "query",
-                  "enum": [
-                    "UNKNOWN",
-                    "ATTRIBUTES",
-                    "ISSUES",
-                    "DESTINATION_STATUSES"
-                  ],
-                  "type": "string",
-                  "repeated": true
+                  "repeated": true,
+                  "type": "string"
                 },
                 "name": {
                   "description": "Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id.",
                   "location": "path",
                   "pattern": "^[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "parent": {
                   "description": "Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/products/{+name}",
@@ -195,7 +192,6 @@
             "list": {
               "description": "Lists all the products in a Manufacturer Center account.",
               "httpMethod": "GET",
-              "flatPath": "v1/accounts/{accountsId}/products",
               "id": "manufacturers.accounts.products.list",
               "parameterOrder": [
                 "parent"
@@ -203,6 +199,12 @@
               "parameters": {
                 "include": {
                   "description": "The information to be included in the response. Only sections listed here will be returned.",
+                  "enum": [
+                    "UNKNOWN",
+                    "ATTRIBUTES",
+                    "ISSUES",
+                    "DESTINATION_STATUSES"
+                  ],
                   "enumDescriptions": [
                     "Unknown, never used.",
                     "Include the attributes of the product.",
@@ -210,14 +212,8 @@
                     "Include the destination statuses of the product."
                   ],
                   "location": "query",
-                  "enum": [
-                    "UNKNOWN",
-                    "ATTRIBUTES",
-                    "ISSUES",
-                    "DESTINATION_STATUSES"
-                  ],
-                  "type": "string",
-                  "repeated": true
+                  "repeated": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "Maximum number of product statuses to return in the response, used for paging.",
@@ -234,8 +230,8 @@
                   "description": "Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/products",
@@ -249,7 +245,6 @@
             "update": {
               "description": "Inserts or updates the attributes of the product in a Manufacturer Center account. Creates a product with the provided attributes. If the product already exists, then all attributes are replaced with the new ones. The checks at upload time are minimal. All required attributes need to be present for a product to be valid. Issues may show up later after the API has accepted a new upload for a product and it is possible to overwrite an existing valid product with an invalid product. To detect this, you should retrieve the product and check it for issues once the new version is available. Uploaded attributes first need to be processed before they can be retrieved. Until then, new products will be unavailable, and retrieval of previously uploaded products will return the original state of the product.",
               "httpMethod": "PUT",
-              "flatPath": "v1/accounts/{accountsId}/products/{productsId}",
               "id": "manufacturers.accounts.products.update",
               "parameterOrder": [
                 "parent",
@@ -260,15 +255,15 @@
                   "description": "Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id.",
                   "location": "path",
                   "pattern": "^[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "parent": {
                   "description": "Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/products/{+name}",
@@ -310,16 +305,16 @@
           "type": "string"
         },
         "capacity": {
-          "description": "The capacity of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#capacity.",
-          "$ref": "Capacity"
+          "$ref": "Capacity",
+          "description": "The capacity of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#capacity."
         },
         "color": {
           "description": "The color of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#color.",
           "type": "string"
         },
         "count": {
-          "description": "The count of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#count.",
-          "$ref": "Count"
+          "$ref": "Count",
+          "description": "The count of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#count."
         },
         "description": {
           "description": "The description of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#description.",
@@ -363,8 +358,8 @@
           "type": "array"
         },
         "imageLink": {
-          "description": "The image of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#image.",
-          "$ref": "Image"
+          "$ref": "Image",
+          "description": "The image of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#image."
         },
         "includedDestination": {
           "description": "A list of included destinations.",
@@ -450,8 +445,8 @@
           "type": "string"
         },
         "suggestedRetailPrice": {
-          "description": "The suggested retail price (MSRP) of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#price.",
-          "$ref": "Price"
+          "$ref": "Price",
+          "description": "The suggested retail price (MSRP) of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#price."
         },
         "targetClientId": {
           "description": "The target client id. Should only be used in the accounts of the data partners.",
@@ -517,17 +512,17 @@
         },
         "status": {
           "description": "The status of the destination.",
-          "enumDescriptions": [
-            "Unspecified status, never used.",
-            "The product is used for this destination.",
-            "The decision is still pending.",
-            "The product is disapproved. Please look at the issues."
-          ],
           "enum": [
             "UNKNOWN",
             "ACTIVE",
             "PENDING",
             "DISAPPROVED"
+          ],
+          "enumDescriptions": [
+            "Unspecified status, never used.",
+            "The product is used for this destination.",
+            "The decision is still pending.",
+            "The product is disapproved. Please look at the issues."
           ],
           "type": "string"
         }
@@ -549,8 +544,8 @@
           "type": "string"
         },
         "image": {
-          "description": "An optional image describing the feature.",
-          "$ref": "Image"
+          "$ref": "Image",
+          "description": "An optional image describing the feature."
         },
         "text": {
           "description": "A detailed description of the feature.",
@@ -569,21 +564,6 @@
         },
         "status": {
           "description": "The status of the image. @OutputOnly",
-          "enumDescriptions": [
-            "The image status is unspecified. Should not be used.",
-            "The image was uploaded and is being processed.",
-            "The image crawl is still pending.",
-            "The image was processed and it meets the requirements.",
-            "The image URL is protected by robots.txt file and cannot be crawled.",
-            "The image URL is protected by X-Robots-Tag and cannot be crawled.",
-            "There was an error while crawling the image.",
-            "The image cannot be processed.",
-            "The image cannot be decoded.",
-            "The image is too big.",
-            "The image was manually overridden and will not be crawled.",
-            "The image crawl was postponed to avoid overloading the host.",
-            "The image URL returned a \"404 Not Found\" error."
-          ],
           "enum": [
             "STATUS_UNSPECIFIED",
             "PENDING_PROCESSING",
@@ -599,19 +579,34 @@
             "HOSTLOADED",
             "HTTP_404"
           ],
+          "enumDescriptions": [
+            "The image status is unspecified. Should not be used.",
+            "The image was uploaded and is being processed.",
+            "The image crawl is still pending.",
+            "The image was processed and it meets the requirements.",
+            "The image URL is protected by robots.txt file and cannot be crawled.",
+            "The image URL is protected by X-Robots-Tag and cannot be crawled.",
+            "There was an error while crawling the image.",
+            "The image cannot be processed.",
+            "The image cannot be decoded.",
+            "The image is too big.",
+            "The image was manually overridden and will not be crawled.",
+            "The image crawl was postponed to avoid overloading the host.",
+            "The image URL returned a \"404 Not Found\" error."
+          ],
           "type": "string"
         },
         "type": {
           "description": "The type of the image, i.e., crawled or uploaded. @OutputOnly",
-          "enumDescriptions": [
-            "Type is unspecified. Should not be used.",
-            "The image was crawled from a provided URL.",
-            "The image was uploaded."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "CRAWLED",
             "UPLOADED"
+          ],
+          "enumDescriptions": [
+            "Type is unspecified. Should not be used.",
+            "The image was crawled from a provided URL.",
+            "The image was uploaded."
           ],
           "type": "string"
         }
@@ -636,31 +631,31 @@
         },
         "resolution": {
           "description": "What needs to happen to resolve the issue.",
-          "enumDescriptions": [
-            "Unspecified resolution, never used.",
-            "The user who provided the data must act in order to resolve the issue (for example by correcting some data).",
-            "The issue will be resolved automatically (for example image crawl or Google review). No action is required now. Resolution might lead to another issue (for example if crawl fails)."
-          ],
           "enum": [
             "RESOLUTION_UNSPECIFIED",
             "USER_ACTION",
             "PENDING_PROCESSING"
           ],
+          "enumDescriptions": [
+            "Unspecified resolution, never used.",
+            "The user who provided the data must act in order to resolve the issue (for example by correcting some data).",
+            "The issue will be resolved automatically (for example image crawl or Google review). No action is required now. Resolution might lead to another issue (for example if crawl fails)."
+          ],
           "type": "string"
         },
         "severity": {
           "description": "The severity of the issue.",
-          "enumDescriptions": [
-            "Unspecified severity, never used.",
-            "Error severity. The issue prevents the usage of the whole item.",
-            "Warning severity. The issue is either one that prevents the usage of the attribute that triggered it or one that will soon prevent the usage of the whole item.",
-            "Info severity. The issue is one that doesn't require immediate attention. It is, for example, used to communicate which attributes are still pending review."
-          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "ERROR",
             "WARNING",
             "INFO"
+          ],
+          "enumDescriptions": [
+            "Unspecified severity, never used.",
+            "Error severity. The issue prevents the usage of the whole item.",
+            "Warning severity. The issue is either one that prevents the usage of the attribute that triggered it or one that will soon prevent the usage of the whole item.",
+            "Info severity. The issue is one that doesn't require immediate attention. It is, for example, used to communicate which attributes are still pending review."
           ],
           "type": "string"
         },
@@ -717,8 +712,8 @@
       "id": "Product",
       "properties": {
         "attributes": {
-          "description": "Attributes of the product uploaded to the Manufacturer Center. Manually edited attributes are taken into account.",
-          "$ref": "Attributes"
+          "$ref": "Attributes",
+          "description": "Attributes of the product uploaded to the Manufacturer Center. Manually edited attributes are taken into account."
         },
         "contentLanguage": {
           "description": "The content language of the product as a two-letter ISO 639-1 language code (for example, en).",
@@ -779,6 +774,6 @@
   },
   "servicePath": "",
   "title": "Manufacturer Center API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

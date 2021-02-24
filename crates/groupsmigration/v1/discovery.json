@@ -21,22 +21,21 @@
   },
   "id": "groupsmigration:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://groupsmigration.mtls.googleapis.com/",
   "name": "groupsmigration",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -47,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -109,7 +108,6 @@
         "insert": {
           "description": "Inserts a new mail into the archive of the Google group.",
           "httpMethod": "POST",
-          "flatPath": "groups/v1/groups/{groupId}/archive",
           "id": "groupsmigration.archive.insert",
           "mediaUpload": {
             "accept": [
@@ -118,8 +116,8 @@
             "maxSize": "26214400",
             "protocols": {
               "simple": {
-                "path": "/upload/groups/v1/groups/{groupId}/archive",
-                "multipart": true
+                "multipart": true,
+                "path": "/upload/groups/v1/groups/{groupId}/archive"
               }
             }
           },
@@ -130,8 +128,8 @@
             "groupId": {
               "description": "The group ID",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "groups/v1/groups/{groupId}/archive",

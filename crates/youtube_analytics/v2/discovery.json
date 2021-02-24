@@ -27,29 +27,27 @@
   "description": "Retrieves your YouTube Analytics data.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/youtube/analytics",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "youtubeAnalytics:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://youtubeanalytics.mtls.googleapis.com/",
   "name": "youtubeAnalytics",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -60,17 +58,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -122,7 +120,6 @@
         "delete": {
           "description": "Removes an item from a group.",
           "httpMethod": "DELETE",
-          "flatPath": "v2/groupItems",
           "id": "youtubeAnalytics.groupItems.delete",
           "parameterOrder": [],
           "parameters": {
@@ -152,7 +149,6 @@
         "insert": {
           "description": "Creates a group item.",
           "httpMethod": "POST",
-          "flatPath": "v2/groupItems",
           "id": "youtubeAnalytics.groupItems.insert",
           "parameterOrder": [],
           "parameters": {
@@ -180,7 +176,6 @@
         "list": {
           "description": "Returns a collection of group items that match the API request parameters.",
           "httpMethod": "GET",
-          "flatPath": "v2/groupItems",
           "id": "youtubeAnalytics.groupItems.list",
           "parameterOrder": [],
           "parameters": {
@@ -214,7 +209,6 @@
         "delete": {
           "description": "Deletes a group.",
           "httpMethod": "DELETE",
-          "flatPath": "v2/groups",
           "id": "youtubeAnalytics.groups.delete",
           "parameterOrder": [],
           "parameters": {
@@ -244,7 +238,6 @@
         "insert": {
           "description": "Creates a group.",
           "httpMethod": "POST",
-          "flatPath": "v2/groups",
           "id": "youtubeAnalytics.groups.insert",
           "parameterOrder": [],
           "parameters": {
@@ -272,7 +265,6 @@
         "list": {
           "description": "Returns a collection of groups that match the API request parameters. For example, you can retrieve all groups that the authenticated user owns, or you can retrieve one or more groups by their unique IDs.",
           "httpMethod": "GET",
-          "flatPath": "v2/groups",
           "id": "youtubeAnalytics.groups.list",
           "parameterOrder": [],
           "parameters": {
@@ -312,7 +304,6 @@
         "update": {
           "description": "Modifies a group. For example, you could change a group's title.",
           "httpMethod": "PUT",
-          "flatPath": "v2/groups",
           "id": "youtubeAnalytics.groups.update",
           "parameterOrder": [],
           "parameters": {
@@ -344,7 +335,6 @@
         "query": {
           "description": "Retrieve your YouTube Analytics reports.",
           "httpMethod": "GET",
-          "flatPath": "v2/reports",
           "id": "youtubeAnalytics.reports.query",
           "parameterOrder": [],
           "parameters": {
@@ -421,7 +411,7 @@
       }
     }
   },
-  "revision": "20210222",
+  "revision": "20210223",
   "rootUrl": "https://youtubeanalytics.googleapis.com/",
   "schemas": {
     "EmptyResponse": {
@@ -429,8 +419,8 @@
       "id": "EmptyResponse",
       "properties": {
         "errors": {
-          "description": "Apiary error details",
-          "$ref": "Errors"
+          "$ref": "Errors",
+          "description": "Apiary error details"
         }
       },
       "type": "object"
@@ -467,15 +457,15 @@
           "type": "string"
         },
         "locationType": {
-          "enumDescriptions": [
-            "location is an xpath-like path pointing to the request field that caused the error.",
-            "other location type which can safely be shared externally.",
-            "Location is request paramater. This maps to the {@link PARAMETERS} in {@link MessageLocation}."
-          ],
           "enum": [
             "PATH",
             "OTHER",
             "PARAMETER"
+          ],
+          "enumDescriptions": [
+            "location is an xpath-like path pointing to the request field that caused the error.",
+            "other location type which can safely be shared externally.",
+            "Location is request paramater. This maps to the {@link PARAMETERS} in {@link MessageLocation}."
           ],
           "type": "string"
         }
@@ -488,16 +478,6 @@
       "properties": {
         "code": {
           "description": "Global error code. Deprecated and ignored. Set custom error codes in ErrorProto.domain and ErrorProto.code instead.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "BAD_REQUEST",
             "FORBIDDEN",
@@ -507,6 +487,16 @@
             "PRECONDITION_FAILED",
             "INTERNAL_ERROR",
             "SERVICE_UNAVAILABLE"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -529,12 +519,12 @@
       "id": "Group",
       "properties": {
         "contentDetails": {
-          "description": "The `contentDetails` object contains additional information about the group, such as the number and type of items that it contains.",
-          "$ref": "GroupContentDetails"
+          "$ref": "GroupContentDetails",
+          "description": "The `contentDetails` object contains additional information about the group, such as the number and type of items that it contains."
         },
         "errors": {
-          "description": "Apiary error details",
-          "$ref": "Errors"
+          "$ref": "Errors",
+          "description": "Apiary error details"
         },
         "etag": {
           "description": "The Etag of this resource.",
@@ -549,8 +539,8 @@
           "type": "string"
         },
         "snippet": {
-          "description": "The `snippet` object contains basic information about the group, including its creation date and name.",
-          "$ref": "GroupSnippet"
+          "$ref": "GroupSnippet",
+          "description": "The `snippet` object contains basic information about the group, including its creation date and name."
         }
       },
       "type": "object"
@@ -576,8 +566,8 @@
       "id": "GroupItem",
       "properties": {
         "errors": {
-          "description": "Apiary error details",
-          "$ref": "Errors"
+          "$ref": "Errors",
+          "description": "Apiary error details"
         },
         "etag": {
           "description": "The Etag of this resource.",
@@ -596,8 +586,8 @@
           "type": "string"
         },
         "resource": {
-          "description": "The `resource` object contains information that identifies the item being added to the group.",
-          "$ref": "GroupItemResource"
+          "$ref": "GroupItemResource",
+          "description": "The `resource` object contains information that identifies the item being added to the group."
         }
       },
       "type": "object"
@@ -637,8 +627,8 @@
       "id": "ListGroupItemsResponse",
       "properties": {
         "errors": {
-          "description": "Apiary error details",
-          "$ref": "Errors"
+          "$ref": "Errors",
+          "description": "Apiary error details"
         },
         "etag": {
           "description": "The Etag of this resource.",
@@ -663,8 +653,8 @@
       "id": "ListGroupsResponse",
       "properties": {
         "errors": {
-          "description": "Apiary error details",
-          "$ref": "Errors"
+          "$ref": "Errors",
+          "description": "Apiary error details"
         },
         "etag": {
           "description": "The Etag of this resource.",
@@ -700,8 +690,8 @@
           "type": "array"
         },
         "errors": {
-          "description": "When set, indicates that the operation failed.",
-          "$ref": "Errors"
+          "$ref": "Errors",
+          "description": "When set, indicates that the operation failed."
         },
         "kind": {
           "description": "This value specifies the type of data included in the API response. For the query method, the kind property value will be `youtubeAnalytics#resultTable`.",
@@ -742,6 +732,6 @@
   },
   "servicePath": "",
   "title": "YouTube Analytics API",
-  "version_module": true,
-  "version": "v2"
+  "version": "v2",
+  "version_module": true
 }

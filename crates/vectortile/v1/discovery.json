@@ -6,29 +6,27 @@
   "description": "Serves vector tiles containing geospatial data. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/maps/contact-sales/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "vectortile:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://vectortile.mtls.googleapis.com/",
   "name": "vectortile",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -39,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -101,7 +99,6 @@
         "get": {
           "description": "Gets a feature tile by its tile resource name.",
           "httpMethod": "GET",
-          "flatPath": "v1/featuretiles/{featuretilesId}",
           "id": "vectortile.featuretiles.get",
           "parameterOrder": [
             "name"
@@ -139,6 +136,16 @@
             },
             "clientInfo.platform": {
               "description": "Platform where the application is running.",
+              "enum": [
+                "PLATFORM_UNSPECIFIED",
+                "EDITOR",
+                "MAC_OS",
+                "WINDOWS",
+                "LINUX",
+                "ANDROID",
+                "IOS",
+                "WEB_GL"
+              ],
               "enumDescriptions": [
                 "Unspecified or unknown OS.",
                 "Development environment.",
@@ -150,16 +157,6 @@
                 "WebGL."
               ],
               "location": "query",
-              "enum": [
-                "PLATFORM_UNSPECIFIED",
-                "EDITOR",
-                "MAC_OS",
-                "WINDOWS",
-                "LINUX",
-                "ANDROID",
-                "IOS",
-                "WEB_GL"
-              ],
               "type": "string"
             },
             "clientInfo.userId": {
@@ -211,8 +208,8 @@
               "description": "Required. Resource name of the tile. The tile resource name is prefixed by its collection ID `tiles/` followed by the resource ID, which encodes the tile's global x and y coordinates and zoom level as `@,,z`. For example, `tiles/@1,2,3z`.",
               "location": "path",
               "pattern": "^featuretiles/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "regionCode": {
               "description": "Required. The Unicode country/region code (CLDR) of the location from which the request is coming from, such as \"US\" and \"419\". For more information, see http://www.unicode.org/reports/tr35/#unicode_region_subtag.",
@@ -232,7 +229,6 @@
         "get": {
           "description": "Gets a terrain tile by its tile resource name.",
           "httpMethod": "GET",
-          "flatPath": "v1/terraintiles/{terraintilesId}",
           "id": "vectortile.terraintiles.get",
           "parameterOrder": [
             "name"
@@ -271,6 +267,16 @@
             },
             "clientInfo.platform": {
               "description": "Platform where the application is running.",
+              "enum": [
+                "PLATFORM_UNSPECIFIED",
+                "EDITOR",
+                "MAC_OS",
+                "WINDOWS",
+                "LINUX",
+                "ANDROID",
+                "IOS",
+                "WEB_GL"
+              ],
               "enumDescriptions": [
                 "Unspecified or unknown OS.",
                 "Development environment.",
@@ -282,16 +288,6 @@
                 "WebGL."
               ],
               "location": "query",
-              "enum": [
-                "PLATFORM_UNSPECIFIED",
-                "EDITOR",
-                "MAC_OS",
-                "WINDOWS",
-                "LINUX",
-                "ANDROID",
-                "IOS",
-                "WEB_GL"
-              ],
               "type": "string"
             },
             "clientInfo.userId": {
@@ -315,24 +311,24 @@
               "description": "Required. Resource name of the tile. The tile resource name is prefixed by its collection ID `terraintiles/` followed by the resource ID, which encodes the tile's global x and y coordinates and zoom level as `@,,z`. For example, `terraintiles/@1,2,3z`.",
               "location": "path",
               "pattern": "^terraintiles/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "terrainFormats": {
               "description": "Terrain formats that the client understands.",
+              "enum": [
+                "TERRAIN_FORMAT_UNKNOWN",
+                "FIRST_DERIVATIVE",
+                "SECOND_DERIVATIVE"
+              ],
               "enumDescriptions": [
                 "An unknown or unspecified terrain format.",
                 "Terrain elevation data encoded as a FirstDerivativeElevationGrid. .",
                 "Terrain elevation data encoded as a SecondDerivativeElevationGrid."
               ],
               "location": "query",
-              "enum": [
-                "TERRAIN_FORMAT_UNKNOWN",
-                "FIRST_DERIVATIVE",
-                "SECOND_DERIVATIVE"
-              ],
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -351,8 +347,8 @@
       "id": "Area",
       "properties": {
         "basemapZOrder": {
-          "description": "The z-order of this geometry when rendered on a flat basemap. Geometry with a lower z-order should be rendered beneath geometry with a higher z-order. This z-ordering does not imply anything about the altitude of the area relative to the ground, but it can be used to prevent z-fighting. Unlike Area.z_order this can be used to compare with Line.basemap_z_order, and in fact may yield more accurate rendering (where a line may be rendered beneath an area).",
-          "$ref": "BasemapZOrder"
+          "$ref": "BasemapZOrder",
+          "description": "The z-order of this geometry when rendered on a flat basemap. Geometry with a lower z-order should be rendered beneath geometry with a higher z-order. This z-ordering does not imply anything about the altitude of the area relative to the ground, but it can be used to prevent z-fighting. Unlike Area.z_order this can be used to compare with Line.basemap_z_order, and in fact may yield more accurate rendering (where a line may be rendered beneath an area)."
         },
         "hasExternalEdges": {
           "description": "True if the polygon is not entirely internal to the feature that it belongs to: that is, some of the edges are bordering another feature.",
@@ -384,21 +380,21 @@
         },
         "type": {
           "description": "The polygon encoding type used for this area.",
-          "enumDescriptions": [
-            "The first vertex in vertex_offset is the center of a triangle fan. The other vertices are arranged around this vertex in a fan shape. The following diagram showes a triangle fan polygon with the vertices labelled with their indices in the vertex_offset list. Triangle fan polygons always have a single boundary loop. Vertices may be in either a clockwise or counterclockwise order. (1) / \\ / \\ / \\ (0)-----(2) / \\ / / \\ / / \\ / (4)-----(3)",
-            "The polygon is a set of triangles with three vertex indices per triangle. The vertex indices can be found in the triangle_indices field. Indexed triangle polygons also contain information about boundary loops. These identify the loops at the boundary of the polygon and may be used in conjunction with the internal_edges field for styling. Boundary loops may represent either a hole or a disconnected component of the polygon. The following diagram shows an indexed triangle polygon with two boundary loops. (0) (4) / \\ / \\ / \\ / \\ (1)----(2) (3)----(5)",
-            "A strip of triangles, where each triangle uses the last edge of the previous triangle. Vertices may be in either a clockwise or counterclockwise order. Only polygons without the has_external_edges flag set will use triangle strips. (0) / \\ / \\ / \\ (2)-----(1) / \\ / / \\ / / \\ / (4)-----(3)"
-          ],
           "enum": [
             "TRIANGLE_FAN",
             "INDEXED_TRIANGLES",
             "TRIANGLE_STRIP"
           ],
+          "enumDescriptions": [
+            "The first vertex in vertex_offset is the center of a triangle fan. The other vertices are arranged around this vertex in a fan shape. The following diagram showes a triangle fan polygon with the vertices labelled with their indices in the vertex_offset list. Triangle fan polygons always have a single boundary loop. Vertices may be in either a clockwise or counterclockwise order. (1) / \\ / \\ / \\ (0)-----(2) / \\ / / \\ / / \\ / (4)-----(3)",
+            "The polygon is a set of triangles with three vertex indices per triangle. The vertex indices can be found in the triangle_indices field. Indexed triangle polygons also contain information about boundary loops. These identify the loops at the boundary of the polygon and may be used in conjunction with the internal_edges field for styling. Boundary loops may represent either a hole or a disconnected component of the polygon. The following diagram shows an indexed triangle polygon with two boundary loops. (0) (4) / \\ / \\ / \\ / \\ (1)----(2) (3)----(5)",
+            "A strip of triangles, where each triangle uses the last edge of the previous triangle. Vertices may be in either a clockwise or counterclockwise order. Only polygons without the has_external_edges flag set will use triangle strips. (0) / \\ / \\ / \\ (2)-----(1) / \\ / / \\ / / \\ / (4)-----(3)"
+          ],
           "type": "string"
         },
         "vertexOffsets": {
-          "description": "The vertices present in the polygon defining the area.",
-          "$ref": "Vertex2DList"
+          "$ref": "Vertex2DList",
+          "description": "The vertices present in the polygon defining the area."
         },
         "zOrder": {
           "description": "The z-ordering of this area. Areas with a lower z-order should be rendered beneath areas with a higher z-order. This z-ordering does not imply anything about the altitude of the line relative to the ground, but it can be used to prevent z-fighting during rendering on the client. This z-ordering can only be used to compare areas, and cannot be compared with the z_order field in the Line message. The z-order may be negative or zero. Prefer Area.basemap_z_order.",
@@ -435,8 +431,8 @@
       "id": "ExtrudedArea",
       "properties": {
         "area": {
-          "description": "The area representing the footprint of the extruded area.",
-          "$ref": "Area"
+          "$ref": "Area",
+          "description": "The area representing the footprint of the extruded area."
         },
         "maxZ": {
           "description": "The z-value in local tile coordinates where the extruded area ends.",
@@ -460,8 +456,8 @@
           "type": "string"
         },
         "geometry": {
-          "description": "The geometry of this feature, representing the space that it occupies in the world.",
-          "$ref": "Geometry"
+          "$ref": "Geometry",
+          "description": "The geometry of this feature, representing the space that it occupies in the world."
         },
         "placeId": {
           "description": "Place ID of this feature, suitable for use in Places API details requests.",
@@ -475,42 +471,11 @@
           "type": "array"
         },
         "segmentInfo": {
-          "description": "Metadata for features with the SEGMENT FeatureType.",
-          "$ref": "SegmentInfo"
+          "$ref": "SegmentInfo",
+          "description": "Metadata for features with the SEGMENT FeatureType."
         },
         "type": {
           "description": "The type of this feature.",
-          "enumDescriptions": [
-            "Unknown feature type.",
-            "Structures such as buildings and bridges.",
-            "A business serving alcoholic drinks to be consumed onsite.",
-            "A financial institution that offers services to the general public.",
-            "A place that provides any type of lodging for travelers.",
-            "A business that sells coffee, tea, and sometimes small meals.",
-            "A business that prepares meals on-site for service to customers.",
-            "A venue for private and public events.",
-            "Place of interest to tourists, typically for natural or cultural value.",
-            "A structure containing a business or businesses that sell goods.",
-            "Institution where young people receive general (not vocation or professional) education.",
-            "Segments such as roads and train lines.",
-            "A way leading from one place to another intended for use by vehicles.",
-            "A small city street, typically for travel in a residential neighborhood.",
-            "Major through road that's expected to carry large volumes of traffic.",
-            "A major road including freeways and state highways.",
-            "A highway with grade-separated crossings that is accessed exclusively by ramps. These are usually called \"freeways\" or \"motorways\". The enable_detailed_highway_types request flag must be set in order for this type to be returned.",
-            "A path that's primarily intended for use by pedestrians and/or cyclists.",
-            "Tracks intended for use by trains.",
-            "Services which are part of the road network but are not roads.",
-            "Non-water areas such as parks and forest.",
-            "Outdoor areas such as parks and botanical gardens.",
-            "A pebbly or sandy shore along the edge of a sea or lake.",
-            "Area of land covered by trees.",
-            "Political entities, such as provinces and districts.",
-            "Top-level divisions within a country, such as prefectures or states.",
-            "Cities, towns, and other municipalities.",
-            "Divisions within a locality like a borough or ward.",
-            "Water features such as rivers and lakes."
-          ],
           "enum": [
             "FEATURE_TYPE_UNSPECIFIED",
             "STRUCTURE",
@@ -542,6 +507,37 @@
             "SUBLOCALITY",
             "WATER"
           ],
+          "enumDescriptions": [
+            "Unknown feature type.",
+            "Structures such as buildings and bridges.",
+            "A business serving alcoholic drinks to be consumed onsite.",
+            "A financial institution that offers services to the general public.",
+            "A place that provides any type of lodging for travelers.",
+            "A business that sells coffee, tea, and sometimes small meals.",
+            "A business that prepares meals on-site for service to customers.",
+            "A venue for private and public events.",
+            "Place of interest to tourists, typically for natural or cultural value.",
+            "A structure containing a business or businesses that sell goods.",
+            "Institution where young people receive general (not vocation or professional) education.",
+            "Segments such as roads and train lines.",
+            "A way leading from one place to another intended for use by vehicles.",
+            "A small city street, typically for travel in a residential neighborhood.",
+            "Major through road that's expected to carry large volumes of traffic.",
+            "A major road including freeways and state highways.",
+            "A highway with grade-separated crossings that is accessed exclusively by ramps. These are usually called \"freeways\" or \"motorways\". The enable_detailed_highway_types request flag must be set in order for this type to be returned.",
+            "A path that's primarily intended for use by pedestrians and/or cyclists.",
+            "Tracks intended for use by trains.",
+            "Services which are part of the road network but are not roads.",
+            "Non-water areas such as parks and forest.",
+            "Outdoor areas such as parks and botanical gardens.",
+            "A pebbly or sandy shore along the edge of a sea or lake.",
+            "Area of land covered by trees.",
+            "Political entities, such as provinces and districts.",
+            "Top-level divisions within a country, such as prefectures or states.",
+            "Cities, towns, and other municipalities.",
+            "Divisions within a locality like a borough or ward.",
+            "Water features such as rivers and lakes."
+          ],
           "type": "string"
         }
       },
@@ -552,8 +548,8 @@
       "id": "FeatureTile",
       "properties": {
         "coordinates": {
-          "description": "The global tile coordinates that uniquely identify this tile.",
-          "$ref": "TileCoordinates"
+          "$ref": "TileCoordinates",
+          "description": "The global tile coordinates that uniquely identify this tile."
         },
         "features": {
           "description": "Features present on this map tile.",
@@ -575,13 +571,13 @@
         },
         "status": {
           "description": "Tile response status code to support tile caching.",
-          "enumDescriptions": [
-            "Everything worked out OK. The cache-control header determines how long this Tile response may be cached by the client. See also version_id and STATUS_OK_DATA_UNCHANGED.",
-            "Indicates that the request was processed successfully and that the tile data that would have been returned are identical to the data already in the client's cache, as specified by the value of client_tile_version_id contained in GetFeatureTileRequest. In particular, the tile's features and providers will not be populated when the tile data is identical. However, the cache-control header and version_id can still change even when the tile contents itself does not, so clients should always use the most recent values returned by the API."
-          ],
           "enum": [
             "STATUS_OK",
             "STATUS_OK_DATA_UNCHANGED"
+          ],
+          "enumDescriptions": [
+            "Everything worked out OK. The cache-control header determines how long this Tile response may be cached by the client. See also version_id and STATUS_OK_DATA_UNCHANGED.",
+            "Indicates that the request was processed successfully and that the tile data that would have been returned are identical to the data already in the client's cache, as specified by the value of client_tile_version_id contained in GetFeatureTileRequest. In particular, the tile's features and providers will not be populated when the tile data is identical. However, the cache-control header and version_id can still change even when the tile contents itself does not, so clients should always use the most recent values returned by the API."
           ],
           "type": "string"
         },
@@ -651,12 +647,12 @@
       "id": "Line",
       "properties": {
         "basemapZOrder": {
-          "description": "The z-order of this geometry when rendered on a flat basemap. Geometry with a lower z-order should be rendered beneath geometry with a higher z-order. This z-ordering does not imply anything about the altitude of the area relative to the ground, but it can be used to prevent z-fighting. Unlike Line.z_order this can be used to compare with Area.basemap_z_order, and in fact may yield more accurate rendering (where a line may be rendered beneath an area).",
-          "$ref": "BasemapZOrder"
+          "$ref": "BasemapZOrder",
+          "description": "The z-order of this geometry when rendered on a flat basemap. Geometry with a lower z-order should be rendered beneath geometry with a higher z-order. This z-ordering does not imply anything about the altitude of the area relative to the ground, but it can be used to prevent z-fighting. Unlike Line.z_order this can be used to compare with Area.basemap_z_order, and in fact may yield more accurate rendering (where a line may be rendered beneath an area)."
         },
         "vertexOffsets": {
-          "description": "The vertices present in the polyline.",
-          "$ref": "Vertex2DList"
+          "$ref": "Vertex2DList",
+          "description": "The vertices present in the polyline."
         },
         "zOrder": {
           "description": "The z-order of the line. Lines with a lower z-order should be rendered beneath lines with a higher z-order. This z-ordering does not imply anything about the altitude of the area relative to the ground, but it can be used to prevent z-fighting during rendering on the client. In general, larger and more important road features will have a higher z-order line associated with them. This z-ordering can only be used to compare lines, and cannot be compared with the z_order field in the Area message. The z-order may be negative or zero. Prefer Line.basemap_z_order.",
@@ -678,8 +674,8 @@
           "type": "array"
         },
         "vertexOffsets": {
-          "description": "The vertices present in the mesh defining the modeled volume.",
-          "$ref": "Vertex3DList"
+          "$ref": "Vertex3DList",
+          "description": "The vertices present in the mesh defining the modeled volume."
         }
       },
       "type": "object"
@@ -706,15 +702,15 @@
         },
         "relationType": {
           "description": "Relation type between the origin feature to the related feature.",
-          "enumDescriptions": [
-            "Unspecified relation type. Should never happen.",
-            "The origin feature occupies the related feature.",
-            "The origin feature is primarily occupied by the related feature."
-          ],
           "enum": [
             "RELATION_TYPE_UNSPECIFIED",
             "OCCUPIES",
             "PRIMARILY_OCCUPIED_BY"
+          ],
+          "enumDescriptions": [
+            "Unspecified relation type. Should never happen.",
+            "The origin feature occupies the related feature.",
+            "The origin feature is primarily occupied by the related feature."
           ],
           "type": "string"
         }
@@ -779,8 +775,8 @@
       "id": "SegmentInfo",
       "properties": {
         "roadInfo": {
-          "description": "Metadata for features with the ROAD FeatureType.",
-          "$ref": "RoadInfo"
+          "$ref": "RoadInfo",
+          "description": "Metadata for features with the ROAD FeatureType."
         }
       },
       "type": "object"
@@ -790,20 +786,20 @@
       "id": "TerrainTile",
       "properties": {
         "coordinates": {
-          "description": "The global tile coordinates that uniquely identify this tile.",
-          "$ref": "TileCoordinates"
+          "$ref": "TileCoordinates",
+          "description": "The global tile coordinates that uniquely identify this tile."
         },
         "firstDerivative": {
-          "description": "Terrain elevation data encoded as a FirstDerivativeElevationGrid.",
-          "$ref": "FirstDerivativeElevationGrid"
+          "$ref": "FirstDerivativeElevationGrid",
+          "description": "Terrain elevation data encoded as a FirstDerivativeElevationGrid."
         },
         "name": {
           "description": "Resource name of the tile. The tile resource name is prefixed by its collection ID `terrain/` followed by the resource ID, which encodes the tile's global x and y coordinates and zoom level as `@,,z`. For example, `terrain/@1,2,3z`.",
           "type": "string"
         },
         "secondDerivative": {
-          "description": "Terrain elevation data encoded as a SecondDerivativeElevationGrid. .",
-          "$ref": "SecondDerivativeElevationGrid"
+          "$ref": "SecondDerivativeElevationGrid",
+          "description": "Terrain elevation data encoded as a SecondDerivativeElevationGrid. ."
         }
       },
       "type": "object"
@@ -902,6 +898,6 @@
   },
   "servicePath": "",
   "title": "Semantic Tile API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

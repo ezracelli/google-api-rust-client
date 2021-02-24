@@ -14,29 +14,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/spectrum-access-system/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "sasportal:v1alpha1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://sasportal.mtls.googleapis.com/",
   "name": "sasportal",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -47,17 +45,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -109,7 +107,6 @@
         "get": {
           "description": "Returns a requested customer.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/customers/{customersId}",
           "id": "sasportal.customers.get",
           "parameterOrder": [
             "name"
@@ -119,8 +116,8 @@
               "description": "Required. The name of the customer.",
               "location": "path",
               "pattern": "^customers/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha1/{+name}",
@@ -134,7 +131,6 @@
         "list": {
           "description": "Returns a list of requested customers.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/customers",
           "id": "sasportal.customers.list",
           "parameterOrder": [],
           "parameters": {
@@ -161,7 +157,6 @@
         "patch": {
           "description": "Updates an existing customer.",
           "httpMethod": "PATCH",
-          "flatPath": "v1alpha1/customers/{customersId}",
           "id": "sasportal.customers.patch",
           "parameterOrder": [
             "name"
@@ -171,8 +166,8 @@
               "description": "Output only. Resource name of the customer.",
               "location": "path",
               "pattern": "^customers/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "Fields to be updated.",
@@ -199,7 +194,6 @@
             "create": {
               "description": "Creates a new deployment.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/customers/{customersId}/deployments",
               "id": "sasportal.customers.deployments.create",
               "parameterOrder": [
                 "parent"
@@ -209,8 +203,8 @@
                   "description": "Required. The parent resource name where the deployment is to be created.",
                   "location": "path",
                   "pattern": "^customers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/deployments",
@@ -227,7 +221,6 @@
             "delete": {
               "description": "Deletes a deployment.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}",
               "id": "sasportal.customers.deployments.delete",
               "parameterOrder": [
                 "name"
@@ -237,8 +230,8 @@
                   "description": "Required. The name of the deployment.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/deployments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -252,7 +245,6 @@
             "get": {
               "description": "Returns a requested deployment.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}",
               "id": "sasportal.customers.deployments.get",
               "parameterOrder": [
                 "name"
@@ -262,8 +254,8 @@
                   "description": "Required. The name of the deployment.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/deployments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -277,7 +269,6 @@
             "list": {
               "description": "Lists deployments.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/customers/{customersId}/deployments",
               "id": "sasportal.customers.deployments.list",
               "parameterOrder": [
                 "parent"
@@ -303,8 +294,8 @@
                   "description": "Required. The parent resource name, for example, \"nodes/1\", customer/1/nodes/2.",
                   "location": "path",
                   "pattern": "^customers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/deployments",
@@ -318,7 +309,6 @@
             "move": {
               "description": "Moves a deployment under another node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}:move",
               "id": "sasportal.customers.deployments.move",
               "parameterOrder": [
                 "name"
@@ -328,8 +318,8 @@
                   "description": "Required. The name of the deployment to move.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/deployments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:move",
@@ -346,7 +336,6 @@
             "patch": {
               "description": "Updates an existing deployment.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}",
               "id": "sasportal.customers.deployments.patch",
               "parameterOrder": [
                 "name"
@@ -356,8 +345,8 @@
                   "description": "Output only. Resource name.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/deployments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Fields to be updated.",
@@ -384,7 +373,6 @@
                 "create": {
                   "description": "Creates a device under a node or customer.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}/devices",
                   "id": "sasportal.customers.deployments.devices.create",
                   "parameterOrder": [
                     "parent"
@@ -394,8 +382,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^customers/[^/]+/deployments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices",
@@ -412,7 +400,6 @@
                 "createSigned": {
                   "description": "Creates a signed device under a node or customer.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}/devices:createSigned",
                   "id": "sasportal.customers.deployments.devices.createSigned",
                   "parameterOrder": [
                     "parent"
@@ -422,8 +409,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^customers/[^/]+/deployments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices:createSigned",
@@ -440,7 +427,6 @@
                 "list": {
                   "description": "Lists devices under a node or customer.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/customers/{customersId}/deployments/{deploymentsId}/devices",
                   "id": "sasportal.customers.deployments.devices.list",
                   "parameterOrder": [
                     "parent"
@@ -466,8 +452,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^customers/[^/]+/deployments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices",
@@ -487,7 +473,6 @@
             "create": {
               "description": "Creates a device under a node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/customers/{customersId}/devices",
               "id": "sasportal.customers.devices.create",
               "parameterOrder": [
                 "parent"
@@ -497,8 +482,8 @@
                   "description": "Required. The name of the parent resource.",
                   "location": "path",
                   "pattern": "^customers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/devices",
@@ -515,7 +500,6 @@
             "createSigned": {
               "description": "Creates a signed device under a node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/customers/{customersId}/devices:createSigned",
               "id": "sasportal.customers.devices.createSigned",
               "parameterOrder": [
                 "parent"
@@ -525,8 +509,8 @@
                   "description": "Required. The name of the parent resource.",
                   "location": "path",
                   "pattern": "^customers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/devices:createSigned",
@@ -543,7 +527,6 @@
             "delete": {
               "description": "Deletes a device.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}",
               "id": "sasportal.customers.devices.delete",
               "parameterOrder": [
                 "name"
@@ -553,8 +536,8 @@
                   "description": "Required. The name of the device.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -568,7 +551,6 @@
             "get": {
               "description": "Gets details about a device.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}",
               "id": "sasportal.customers.devices.get",
               "parameterOrder": [
                 "name"
@@ -578,8 +560,8 @@
                   "description": "Required. The name of the device.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -593,7 +575,6 @@
             "list": {
               "description": "Lists devices under a node or customer.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/customers/{customersId}/devices",
               "id": "sasportal.customers.devices.list",
               "parameterOrder": [
                 "parent"
@@ -619,8 +600,8 @@
                   "description": "Required. The name of the parent resource.",
                   "location": "path",
                   "pattern": "^customers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/devices",
@@ -634,7 +615,6 @@
             "move": {
               "description": "Moves a device under another node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}:move",
               "id": "sasportal.customers.devices.move",
               "parameterOrder": [
                 "name"
@@ -644,8 +624,8 @@
                   "description": "Required. The name of the device to move.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:move",
@@ -662,7 +642,6 @@
             "patch": {
               "description": "Updates a device.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}",
               "id": "sasportal.customers.devices.patch",
               "parameterOrder": [
                 "name"
@@ -672,8 +651,8 @@
                   "description": "Output only. The resource path name.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Fields to be updated.",
@@ -696,7 +675,6 @@
             "signDevice": {
               "description": "Signs a device.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}:signDevice",
               "id": "sasportal.customers.devices.signDevice",
               "parameterOrder": [
                 "name"
@@ -706,8 +684,8 @@
                   "description": "Output only. The resource path name.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:signDevice",
@@ -724,7 +702,6 @@
             "updateSigned": {
               "description": "Updates a signed device.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/customers/{customersId}/devices/{devicesId}:updateSigned",
               "id": "sasportal.customers.devices.updateSigned",
               "parameterOrder": [
                 "name"
@@ -734,8 +711,8 @@
                   "description": "Required. The name of the device to update.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:updateSigned",
@@ -756,7 +733,6 @@
             "create": {
               "description": "Creates a new node.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/customers/{customersId}/nodes",
               "id": "sasportal.customers.nodes.create",
               "parameterOrder": [
                 "parent"
@@ -766,8 +742,8 @@
                   "description": "Required. The parent resource name where the node is to be created.",
                   "location": "path",
                   "pattern": "^customers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/nodes",
@@ -784,7 +760,6 @@
             "delete": {
               "description": "Deletes a node.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}",
               "id": "sasportal.customers.nodes.delete",
               "parameterOrder": [
                 "name"
@@ -794,8 +769,8 @@
                   "description": "Required. The name of the node.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -809,7 +784,6 @@
             "get": {
               "description": "Returns a requested node.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}",
               "id": "sasportal.customers.nodes.get",
               "parameterOrder": [
                 "name"
@@ -819,8 +793,8 @@
                   "description": "Required. The name of the node.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -834,7 +808,6 @@
             "list": {
               "description": "Lists nodes.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/customers/{customersId}/nodes",
               "id": "sasportal.customers.nodes.list",
               "parameterOrder": [
                 "parent"
@@ -860,8 +833,8 @@
                   "description": "Required. The parent resource name, for example, \"nodes/1\".",
                   "location": "path",
                   "pattern": "^customers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/nodes",
@@ -875,7 +848,6 @@
             "move": {
               "description": "Moves a node under another node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}:move",
               "id": "sasportal.customers.nodes.move",
               "parameterOrder": [
                 "name"
@@ -885,8 +857,8 @@
                   "description": "Required. The name of the node to move.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:move",
@@ -903,7 +875,6 @@
             "patch": {
               "description": "Updates an existing node.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}",
               "id": "sasportal.customers.nodes.patch",
               "parameterOrder": [
                 "name"
@@ -913,8 +884,8 @@
                   "description": "Output only. Resource name.",
                   "location": "path",
                   "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Fields to be updated.",
@@ -941,7 +912,6 @@
                 "create": {
                   "description": "Creates a new deployment.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/deployments",
                   "id": "sasportal.customers.nodes.deployments.create",
                   "parameterOrder": [
                     "parent"
@@ -951,8 +921,8 @@
                       "description": "Required. The parent resource name where the deployment is to be created.",
                       "location": "path",
                       "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/deployments",
@@ -969,7 +939,6 @@
                 "list": {
                   "description": "Lists deployments.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/deployments",
                   "id": "sasportal.customers.nodes.deployments.list",
                   "parameterOrder": [
                     "parent"
@@ -995,8 +964,8 @@
                       "description": "Required. The parent resource name, for example, \"nodes/1\", customer/1/nodes/2.",
                       "location": "path",
                       "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/deployments",
@@ -1014,7 +983,6 @@
                 "create": {
                   "description": "Creates a device under a node or customer.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/devices",
                   "id": "sasportal.customers.nodes.devices.create",
                   "parameterOrder": [
                     "parent"
@@ -1024,8 +992,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices",
@@ -1042,7 +1010,6 @@
                 "createSigned": {
                   "description": "Creates a signed device under a node or customer.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/devices:createSigned",
                   "id": "sasportal.customers.nodes.devices.createSigned",
                   "parameterOrder": [
                     "parent"
@@ -1052,8 +1019,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices:createSigned",
@@ -1070,7 +1037,6 @@
                 "list": {
                   "description": "Lists devices under a node or customer.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/devices",
                   "id": "sasportal.customers.nodes.devices.list",
                   "parameterOrder": [
                     "parent"
@@ -1096,8 +1062,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices",
@@ -1115,7 +1081,6 @@
                 "create": {
                   "description": "Creates a new node.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/nodes",
                   "id": "sasportal.customers.nodes.nodes.create",
                   "parameterOrder": [
                     "parent"
@@ -1125,8 +1090,8 @@
                       "description": "Required. The parent resource name where the node is to be created.",
                       "location": "path",
                       "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/nodes",
@@ -1143,7 +1108,6 @@
                 "list": {
                   "description": "Lists nodes.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/customers/{customersId}/nodes/{nodesId}/nodes",
                   "id": "sasportal.customers.nodes.nodes.list",
                   "parameterOrder": [
                     "parent"
@@ -1169,8 +1133,8 @@
                       "description": "Required. The parent resource name, for example, \"nodes/1\".",
                       "location": "path",
                       "pattern": "^customers/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/nodes",
@@ -1192,7 +1156,6 @@
         "get": {
           "description": "Returns a requested deployment.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/deployments/{deploymentsId}",
           "id": "sasportal.deployments.get",
           "parameterOrder": [
             "name"
@@ -1202,8 +1165,8 @@
               "description": "Required. The name of the deployment.",
               "location": "path",
               "pattern": "^deployments/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha1/{+name}",
@@ -1221,7 +1184,6 @@
             "delete": {
               "description": "Deletes a device.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}",
               "id": "sasportal.deployments.devices.delete",
               "parameterOrder": [
                 "name"
@@ -1231,8 +1193,8 @@
                   "description": "Required. The name of the device.",
                   "location": "path",
                   "pattern": "^deployments/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -1246,7 +1208,6 @@
             "get": {
               "description": "Gets details about a device.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}",
               "id": "sasportal.deployments.devices.get",
               "parameterOrder": [
                 "name"
@@ -1256,8 +1217,8 @@
                   "description": "Required. The name of the device.",
                   "location": "path",
                   "pattern": "^deployments/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -1271,7 +1232,6 @@
             "move": {
               "description": "Moves a device under another node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}:move",
               "id": "sasportal.deployments.devices.move",
               "parameterOrder": [
                 "name"
@@ -1281,8 +1241,8 @@
                   "description": "Required. The name of the device to move.",
                   "location": "path",
                   "pattern": "^deployments/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:move",
@@ -1299,7 +1259,6 @@
             "patch": {
               "description": "Updates a device.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}",
               "id": "sasportal.deployments.devices.patch",
               "parameterOrder": [
                 "name"
@@ -1309,8 +1268,8 @@
                   "description": "Output only. The resource path name.",
                   "location": "path",
                   "pattern": "^deployments/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Fields to be updated.",
@@ -1333,7 +1292,6 @@
             "signDevice": {
               "description": "Signs a device.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}:signDevice",
               "id": "sasportal.deployments.devices.signDevice",
               "parameterOrder": [
                 "name"
@@ -1343,8 +1301,8 @@
                   "description": "Output only. The resource path name.",
                   "location": "path",
                   "pattern": "^deployments/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:signDevice",
@@ -1361,7 +1319,6 @@
             "updateSigned": {
               "description": "Updates a signed device.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}:updateSigned",
               "id": "sasportal.deployments.devices.updateSigned",
               "parameterOrder": [
                 "name"
@@ -1371,8 +1328,8 @@
                   "description": "Required. The name of the device to update.",
                   "location": "path",
                   "pattern": "^deployments/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:updateSigned",
@@ -1395,7 +1352,6 @@
         "generateSecret": {
           "description": "Generates a secret to be used with the ValidateInstaller.",
           "httpMethod": "POST",
-          "flatPath": "v1alpha1/installer:generateSecret",
           "id": "sasportal.installer.generateSecret",
           "parameterOrder": [],
           "parameters": {},
@@ -1413,7 +1369,6 @@
         "validate": {
           "description": "Validates the identity of a Certified Professional Installer (CPI).",
           "httpMethod": "POST",
-          "flatPath": "v1alpha1/installer:validate",
           "id": "sasportal.installer.validate",
           "parameterOrder": [],
           "parameters": {},
@@ -1435,7 +1390,6 @@
         "get": {
           "description": "Returns a requested node.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/nodes/{nodesId}",
           "id": "sasportal.nodes.get",
           "parameterOrder": [
             "name"
@@ -1445,8 +1399,8 @@
               "description": "Required. The name of the node.",
               "location": "path",
               "pattern": "^nodes/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha1/{+name}",
@@ -1464,7 +1418,6 @@
             "delete": {
               "description": "Deletes a deployment.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}",
               "id": "sasportal.nodes.deployments.delete",
               "parameterOrder": [
                 "name"
@@ -1474,8 +1427,8 @@
                   "description": "Required. The name of the deployment.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/deployments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -1489,7 +1442,6 @@
             "get": {
               "description": "Returns a requested deployment.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}",
               "id": "sasportal.nodes.deployments.get",
               "parameterOrder": [
                 "name"
@@ -1499,8 +1451,8 @@
                   "description": "Required. The name of the deployment.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/deployments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -1514,7 +1466,6 @@
             "list": {
               "description": "Lists deployments.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/nodes/{nodesId}/deployments",
               "id": "sasportal.nodes.deployments.list",
               "parameterOrder": [
                 "parent"
@@ -1540,8 +1491,8 @@
                   "description": "Required. The parent resource name, for example, \"nodes/1\", customer/1/nodes/2.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/deployments",
@@ -1555,7 +1506,6 @@
             "move": {
               "description": "Moves a deployment under another node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}:move",
               "id": "sasportal.nodes.deployments.move",
               "parameterOrder": [
                 "name"
@@ -1565,8 +1515,8 @@
                   "description": "Required. The name of the deployment to move.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/deployments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:move",
@@ -1583,7 +1533,6 @@
             "patch": {
               "description": "Updates an existing deployment.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}",
               "id": "sasportal.nodes.deployments.patch",
               "parameterOrder": [
                 "name"
@@ -1593,8 +1542,8 @@
                   "description": "Output only. Resource name.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/deployments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Fields to be updated.",
@@ -1621,7 +1570,6 @@
                 "create": {
                   "description": "Creates a device under a node or customer.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}/devices",
                   "id": "sasportal.nodes.deployments.devices.create",
                   "parameterOrder": [
                     "parent"
@@ -1631,8 +1579,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/deployments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices",
@@ -1649,7 +1597,6 @@
                 "createSigned": {
                   "description": "Creates a signed device under a node or customer.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}/devices:createSigned",
                   "id": "sasportal.nodes.deployments.devices.createSigned",
                   "parameterOrder": [
                     "parent"
@@ -1659,8 +1606,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/deployments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices:createSigned",
@@ -1677,7 +1624,6 @@
                 "list": {
                   "description": "Lists devices under a node or customer.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}/devices",
                   "id": "sasportal.nodes.deployments.devices.list",
                   "parameterOrder": [
                     "parent"
@@ -1703,8 +1649,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/deployments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices",
@@ -1724,7 +1670,6 @@
             "create": {
               "description": "Creates a device under a node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/nodes/{nodesId}/devices",
               "id": "sasportal.nodes.devices.create",
               "parameterOrder": [
                 "parent"
@@ -1734,8 +1679,8 @@
                   "description": "Required. The name of the parent resource.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/devices",
@@ -1752,7 +1697,6 @@
             "createSigned": {
               "description": "Creates a signed device under a node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/nodes/{nodesId}/devices:createSigned",
               "id": "sasportal.nodes.devices.createSigned",
               "parameterOrder": [
                 "parent"
@@ -1762,8 +1706,8 @@
                   "description": "Required. The name of the parent resource.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/devices:createSigned",
@@ -1780,7 +1724,6 @@
             "delete": {
               "description": "Deletes a device.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}",
               "id": "sasportal.nodes.devices.delete",
               "parameterOrder": [
                 "name"
@@ -1790,8 +1733,8 @@
                   "description": "Required. The name of the device.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -1805,7 +1748,6 @@
             "get": {
               "description": "Gets details about a device.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}",
               "id": "sasportal.nodes.devices.get",
               "parameterOrder": [
                 "name"
@@ -1815,8 +1757,8 @@
                   "description": "Required. The name of the device.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -1830,7 +1772,6 @@
             "list": {
               "description": "Lists devices under a node or customer.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/nodes/{nodesId}/devices",
               "id": "sasportal.nodes.devices.list",
               "parameterOrder": [
                 "parent"
@@ -1856,8 +1797,8 @@
                   "description": "Required. The name of the parent resource.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/devices",
@@ -1871,7 +1812,6 @@
             "move": {
               "description": "Moves a device under another node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}:move",
               "id": "sasportal.nodes.devices.move",
               "parameterOrder": [
                 "name"
@@ -1881,8 +1821,8 @@
                   "description": "Required. The name of the device to move.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:move",
@@ -1899,7 +1839,6 @@
             "patch": {
               "description": "Updates a device.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}",
               "id": "sasportal.nodes.devices.patch",
               "parameterOrder": [
                 "name"
@@ -1909,8 +1848,8 @@
                   "description": "Output only. The resource path name.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Fields to be updated.",
@@ -1933,7 +1872,6 @@
             "signDevice": {
               "description": "Signs a device.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}:signDevice",
               "id": "sasportal.nodes.devices.signDevice",
               "parameterOrder": [
                 "name"
@@ -1943,8 +1881,8 @@
                   "description": "Output only. The resource path name.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:signDevice",
@@ -1961,7 +1899,6 @@
             "updateSigned": {
               "description": "Updates a signed device.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/nodes/{nodesId}/devices/{devicesId}:updateSigned",
               "id": "sasportal.nodes.devices.updateSigned",
               "parameterOrder": [
                 "name"
@@ -1971,8 +1908,8 @@
                   "description": "Required. The name of the device to update.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:updateSigned",
@@ -1993,7 +1930,6 @@
             "create": {
               "description": "Creates a new node.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/nodes/{nodesId}/nodes",
               "id": "sasportal.nodes.nodes.create",
               "parameterOrder": [
                 "parent"
@@ -2003,8 +1939,8 @@
                   "description": "Required. The parent resource name where the node is to be created.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/nodes",
@@ -2021,7 +1957,6 @@
             "delete": {
               "description": "Deletes a node.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}",
               "id": "sasportal.nodes.nodes.delete",
               "parameterOrder": [
                 "name"
@@ -2031,8 +1966,8 @@
                   "description": "Required. The name of the node.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -2046,7 +1981,6 @@
             "get": {
               "description": "Returns a requested node.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}",
               "id": "sasportal.nodes.nodes.get",
               "parameterOrder": [
                 "name"
@@ -2056,8 +1990,8 @@
                   "description": "Required. The name of the node.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -2071,7 +2005,6 @@
             "list": {
               "description": "Lists nodes.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/nodes/{nodesId}/nodes",
               "id": "sasportal.nodes.nodes.list",
               "parameterOrder": [
                 "parent"
@@ -2097,8 +2030,8 @@
                   "description": "Required. The parent resource name, for example, \"nodes/1\".",
                   "location": "path",
                   "pattern": "^nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/nodes",
@@ -2112,7 +2045,6 @@
             "move": {
               "description": "Moves a node under another node or customer.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}:move",
               "id": "sasportal.nodes.nodes.move",
               "parameterOrder": [
                 "name"
@@ -2122,8 +2054,8 @@
                   "description": "Required. The name of the node to move.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:move",
@@ -2140,7 +2072,6 @@
             "patch": {
               "description": "Updates an existing node.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}",
               "id": "sasportal.nodes.nodes.patch",
               "parameterOrder": [
                 "name"
@@ -2150,8 +2081,8 @@
                   "description": "Output only. Resource name.",
                   "location": "path",
                   "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Fields to be updated.",
@@ -2178,7 +2109,6 @@
                 "create": {
                   "description": "Creates a new deployment.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/deployments",
                   "id": "sasportal.nodes.nodes.deployments.create",
                   "parameterOrder": [
                     "parent"
@@ -2188,8 +2118,8 @@
                       "description": "Required. The parent resource name where the deployment is to be created.",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/deployments",
@@ -2206,7 +2136,6 @@
                 "list": {
                   "description": "Lists deployments.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/deployments",
                   "id": "sasportal.nodes.nodes.deployments.list",
                   "parameterOrder": [
                     "parent"
@@ -2232,8 +2161,8 @@
                       "description": "Required. The parent resource name, for example, \"nodes/1\", customer/1/nodes/2.",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/deployments",
@@ -2251,7 +2180,6 @@
                 "create": {
                   "description": "Creates a device under a node or customer.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/devices",
                   "id": "sasportal.nodes.nodes.devices.create",
                   "parameterOrder": [
                     "parent"
@@ -2261,8 +2189,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices",
@@ -2279,7 +2207,6 @@
                 "createSigned": {
                   "description": "Creates a signed device under a node or customer.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/devices:createSigned",
                   "id": "sasportal.nodes.nodes.devices.createSigned",
                   "parameterOrder": [
                     "parent"
@@ -2289,8 +2216,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices:createSigned",
@@ -2307,7 +2234,6 @@
                 "list": {
                   "description": "Lists devices under a node or customer.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/devices",
                   "id": "sasportal.nodes.nodes.devices.list",
                   "parameterOrder": [
                     "parent"
@@ -2333,8 +2259,8 @@
                       "description": "Required. The name of the parent resource.",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/devices",
@@ -2352,7 +2278,6 @@
                 "create": {
                   "description": "Creates a new node.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/nodes",
                   "id": "sasportal.nodes.nodes.nodes.create",
                   "parameterOrder": [
                     "parent"
@@ -2362,8 +2287,8 @@
                       "description": "Required. The parent resource name where the node is to be created.",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/nodes",
@@ -2380,7 +2305,6 @@
                 "list": {
                   "description": "Lists nodes.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/nodes",
                   "id": "sasportal.nodes.nodes.nodes.list",
                   "parameterOrder": [
                     "parent"
@@ -2406,8 +2330,8 @@
                       "description": "Required. The parent resource name, for example, \"nodes/1\".",
                       "location": "path",
                       "pattern": "^nodes/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/nodes",
@@ -2429,7 +2353,6 @@
         "get": {
           "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
           "httpMethod": "POST",
-          "flatPath": "v1alpha1/policies:get",
           "id": "sasportal.policies.get",
           "parameterOrder": [],
           "parameters": {},
@@ -2447,7 +2370,6 @@
         "set": {
           "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
           "httpMethod": "POST",
-          "flatPath": "v1alpha1/policies:set",
           "id": "sasportal.policies.set",
           "parameterOrder": [],
           "parameters": {},
@@ -2465,7 +2387,6 @@
         "test": {
           "description": "Returns permissions that a caller has on the specified resource.",
           "httpMethod": "POST",
-          "flatPath": "v1alpha1/policies:test",
           "id": "sasportal.policies.test",
           "parameterOrder": [],
           "parameters": {},
@@ -2549,15 +2470,15 @@
         "allowedBillingModes": {
           "description": "The allowed billing modes under this deployment.",
           "items": {
-            "enumDescriptions": [
-              "Billing mode has not been specified.",
-              "Price is based on category of CBSD: Category A, Category B registered with SAS.",
-              "Price is based on type of CBSD: Base station or CPE."
-            ],
             "enum": [
               "BILLING_MODE_UNSPECIFIED",
               "MOBILE",
               "FIXED_WIRELESS"
+            ],
+            "enumDescriptions": [
+              "Billing mode has not been specified.",
+              "Price is based on category of CBSD: Category A, Category B registered with SAS.",
+              "Price is based on type of CBSD: Base station or CPE."
             ],
             "type": "string"
           },
@@ -2565,15 +2486,15 @@
         },
         "defaultBillingMode": {
           "description": "Default billing mode for the deployment and devices under it.",
-          "enumDescriptions": [
-            "Billing mode has not been specified.",
-            "Price is based on category of CBSD: Category A, Category B registered with SAS.",
-            "Price is based on type of CBSD: Base station or CPE."
-          ],
           "enum": [
             "BILLING_MODE_UNSPECIFIED",
             "MOBILE",
             "FIXED_WIRELESS"
+          ],
+          "enumDescriptions": [
+            "Billing mode has not been specified.",
+            "Price is based on category of CBSD: Category A, Category B registered with SAS.",
+            "Price is based on type of CBSD: Base station or CPE."
           ],
           "type": "string"
         },
@@ -2583,8 +2504,8 @@
         },
         "name": {
           "description": "Output only. Resource name.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "sasUserIds": {
           "description": "User ID used by the devices belonging to this deployment. Each deployment should be associated with one unique user ID.",
@@ -2600,12 +2521,12 @@
       "id": "SasPortalDevice",
       "properties": {
         "activeConfig": {
-          "description": "Output only. Current configuration of the device as registered to the SAS.",
-          "$ref": "SasPortalDeviceConfig"
+          "$ref": "SasPortalDeviceConfig",
+          "description": "Output only. Current configuration of the device as registered to the SAS."
         },
         "deviceMetadata": {
-          "description": "Device parameters that can be overridden by both SAS Portal and SAS registration requests.",
-          "$ref": "SasPortalDeviceMetadata"
+          "$ref": "SasPortalDeviceMetadata",
+          "description": "Device parameters that can be overridden by both SAS Portal and SAS registration requests."
         },
         "displayName": {
           "description": "Device display name.",
@@ -2634,8 +2555,8 @@
           "type": "string"
         },
         "preloadedConfig": {
-          "description": "Configuration of the device, as specified via SAS Portal API.",
-          "$ref": "SasPortalDeviceConfig"
+          "$ref": "SasPortalDeviceConfig",
+          "description": "Configuration of the device, as specified via SAS Portal API."
         },
         "serialNumber": {
           "description": "A serial number assigned to the device by the device manufacturer.",
@@ -2643,17 +2564,17 @@
         },
         "state": {
           "description": "Output only. Device state.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Device created in the SAS Portal, however, not yet registered with SAS.",
-            "Device registered with SAS.",
-            "Device de-registered with SAS."
-          ],
           "enum": [
             "DEVICE_STATE_UNSPECIFIED",
             "RESERVED",
             "REGISTERED",
             "DEREGISTERED"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Device created in the SAS Portal, however, not yet registered with SAS.",
+            "Device registered with SAS.",
+            "Device de-registered with SAS."
           ],
           "type": "string"
         }
@@ -2666,17 +2587,6 @@
       "properties": {
         "radioTechnology": {
           "description": "Conditional. This field specifies the radio access technology that is used for the CBSD.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "RADIO_TECHNOLOGY_UNSPECIFIED",
             "E_UTRA",
@@ -2687,6 +2597,17 @@
             "CW",
             "REDLINE",
             "TARANA_WIRELESS"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -2702,8 +2623,8 @@
       "id": "SasPortalDeviceConfig",
       "properties": {
         "airInterface": {
-          "description": "Information about this device's air interface.",
-          "$ref": "SasPortalDeviceAirInterface"
+          "$ref": "SasPortalDeviceAirInterface",
+          "description": "Information about this device's air interface."
         },
         "callSign": {
           "description": "The call sign of the device operator.",
@@ -2711,21 +2632,21 @@
         },
         "category": {
           "description": "FCC category of the device.",
-          "enumDescriptions": [
-            "Unspecified device category.",
-            "Category A.",
-            "Category B."
-          ],
           "enum": [
             "DEVICE_CATEGORY_UNSPECIFIED",
             "DEVICE_CATEGORY_A",
             "DEVICE_CATEGORY_B"
           ],
+          "enumDescriptions": [
+            "Unspecified device category.",
+            "Category A.",
+            "Category B."
+          ],
           "type": "string"
         },
         "installationParams": {
-          "description": "Installation parameters for the device.",
-          "$ref": "SasPortalInstallationParams"
+          "$ref": "SasPortalInstallationParams",
+          "description": "Installation parameters for the device."
         },
         "isSigned": {
           "description": "Output only. Whether the configuration has been signed by a CPI.",
@@ -2734,35 +2655,35 @@
         "measurementCapabilities": {
           "description": "Measurement reporting capabilities of the device.",
           "items": {
-            "enumDescriptions": [
-              "",
-              "",
-              ""
-            ],
             "enum": [
               "MEASUREMENT_CAPABILITY_UNSPECIFIED",
               "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT",
               "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT"
+            ],
+            "enumDescriptions": [
+              "",
+              "",
+              ""
             ],
             "type": "string"
           },
           "type": "array"
         },
         "model": {
-          "description": "Information about this device model.",
-          "$ref": "SasPortalDeviceModel"
+          "$ref": "SasPortalDeviceModel",
+          "description": "Information about this device model."
         },
         "state": {
           "description": "State of the configuration.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "DEVICE_CONFIG_STATE_UNSPECIFIED",
             "DRAFT",
             "FINAL"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -2784,15 +2705,15 @@
       "properties": {
         "channelType": {
           "description": "Type of channel used.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "CHANNEL_TYPE_UNSPECIFIED",
             "CHANNEL_TYPE_GAA",
             "CHANNEL_TYPE_PAL"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -2802,8 +2723,8 @@
           "type": "string"
         },
         "frequencyRange": {
-          "description": "The transmission frequency range.",
-          "$ref": "SasPortalFrequencyRange"
+          "$ref": "SasPortalFrequencyRange",
+          "description": "The transmission frequency range."
         },
         "grantId": {
           "description": "Grant Id.",
@@ -2823,14 +2744,6 @@
         },
         "state": {
           "description": "State of the grant.",
-          "enumDescriptions": [
-            "",
-            "The grant has been granted but the device is not heartbeating on it.",
-            "The grant has been terminated by the SAS.",
-            "The grant has been suspended by the SAS.",
-            "The device is currently transmitting.",
-            "The grant has expired."
-          ],
           "enum": [
             "GRANT_STATE_UNSPECIFIED",
             "GRANT_STATE_GRANTED",
@@ -2838,6 +2751,14 @@
             "GRANT_STATE_SUSPENDED",
             "GRANT_STATE_AUTHORIZED",
             "GRANT_STATE_EXPIRED"
+          ],
+          "enumDescriptions": [
+            "",
+            "The grant has been granted but the device is not heartbeating on it.",
+            "The grant has been terminated by the SAS.",
+            "The grant has been suspended by the SAS.",
+            "The device is currently transmitting.",
+            "The grant has expired."
           ],
           "type": "string"
         },
@@ -2893,8 +2814,8 @@
           "type": "string"
         },
         "frequencyRange": {
-          "description": "The frequency range that the move list affects.",
-          "$ref": "SasPortalFrequencyRange"
+          "$ref": "SasPortalFrequencyRange",
+          "description": "The frequency range that the move list affects."
         }
       },
       "type": "object"
@@ -2994,15 +2915,15 @@
         },
         "heightType": {
           "description": "Specifies how the height is measured.",
-          "enumDescriptions": [
-            "Unspecified height type.",
-            "AGL height is measured relative to the ground level.",
-            "AMSL height is measured relative to the mean sea level."
-          ],
           "enum": [
             "HEIGHT_TYPE_UNSPECIFIED",
             "HEIGHT_TYPE_AGL",
             "HEIGHT_TYPE_AMSL"
+          ],
+          "enumDescriptions": [
+            "Unspecified height type.",
+            "AGL height is measured relative to the ground level.",
+            "AMSL height is measured relative to the mean sea level."
           ],
           "type": "string"
         },
@@ -3169,8 +3090,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "SasPortalStatus"
+          "$ref": "SasPortalStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -3219,8 +3140,8 @@
       "id": "SasPortalSetPolicyRequest",
       "properties": {
         "policy": {
-          "description": "Required. The policy to be applied to the `resource`.",
-          "$ref": "SasPortalPolicy"
+          "$ref": "SasPortalPolicy",
+          "description": "Required. The policy to be applied to the `resource`."
         },
         "resource": {
           "description": "Required. The resource for which the policy is being specified. This policy replaces any existing policy.",
@@ -3234,8 +3155,8 @@
       "id": "SasPortalSignDeviceRequest",
       "properties": {
         "device": {
-          "description": "Required. The device to sign. The device fields name, fcc_id and serial_number must be set. The user_id field must be set.",
-          "$ref": "SasPortalDevice"
+          "$ref": "SasPortalDevice",
+          "description": "Required. The device to sign. The device fields name, fcc_id and serial_number must be set. The user_id field must be set."
         }
       },
       "type": "object"
@@ -3343,6 +3264,6 @@
   },
   "servicePath": "",
   "title": "SAS Portal API",
-  "version_module": true,
-  "version": "v1alpha1"
+  "version": "v1alpha1",
+  "version_module": true
 }

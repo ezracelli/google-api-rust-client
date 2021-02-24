@@ -15,29 +15,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/eventarc",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "eventarc:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://eventarc.mtls.googleapis.com/",
   "name": "eventarc",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
               "id": "eventarc.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations",
               "id": "eventarc.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -152,8 +148,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -182,7 +178,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "eventarc.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -192,8 +187,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}:cancel",
@@ -210,7 +205,6 @@
                 "delete": {
                   "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "eventarc.projects.locations.operations.delete",
                   "parameterOrder": [
                     "name"
@@ -220,8 +214,8 @@
                       "description": "The name of the operation resource to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -235,7 +229,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "eventarc.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -245,8 +238,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -260,7 +253,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                   "id": "eventarc.projects.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -275,8 +267,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -305,7 +297,6 @@
                 "create": {
                   "description": "Create a new trigger in a particular project and location.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers",
                   "id": "eventarc.projects.locations.triggers.create",
                   "parameterOrder": [
                     "parent"
@@ -315,8 +306,8 @@
                       "description": "Required. The parent collection in which to add this trigger.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "triggerId": {
                       "description": "Required. The user-provided ID to be assigned to the trigger.",
@@ -343,7 +334,6 @@
                 "delete": {
                   "description": "Delete a single trigger.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
                   "id": "eventarc.projects.locations.triggers.delete",
                   "parameterOrder": [
                     "name"
@@ -363,8 +353,8 @@
                       "description": "Required. The name of the trigger to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/triggers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "validateOnly": {
                       "description": "Required. If set, validate the request and preview the review, but do not actually post it.",
@@ -383,7 +373,6 @@
                 "get": {
                   "description": "Get a single trigger.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
                   "id": "eventarc.projects.locations.triggers.get",
                   "parameterOrder": [
                     "name"
@@ -393,8 +382,8 @@
                       "description": "Required. The name of the trigger to get.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/triggers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -408,7 +397,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:getIamPolicy",
                   "id": "eventarc.projects.locations.triggers.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -424,8 +412,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/triggers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+resource}:getIamPolicy",
@@ -439,7 +427,6 @@
                 "list": {
                   "description": "List triggers.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers",
                   "id": "eventarc.projects.locations.triggers.list",
                   "parameterOrder": [
                     "parent"
@@ -465,8 +452,8 @@
                       "description": "Required. The parent collection to list triggers on.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/triggers",
@@ -480,7 +467,6 @@
                 "patch": {
                   "description": "Update a single trigger.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
                   "id": "eventarc.projects.locations.triggers.patch",
                   "parameterOrder": [
                     "name"
@@ -495,8 +481,8 @@
                       "description": "Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/triggers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "The fields to be updated; only fields explicitly provided will be updated. If no field mask is provided, all provided fields in the request will be updated. To update all fields, provide a field mask of \"*\".",
@@ -524,7 +510,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:setIamPolicy",
                   "id": "eventarc.projects.locations.triggers.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -534,8 +519,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/triggers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+resource}:setIamPolicy",
@@ -552,7 +537,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:testIamPermissions",
                   "id": "eventarc.projects.locations.triggers.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -562,8 +546,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/triggers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+resource}:testIamPermissions",
@@ -618,17 +602,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -640,8 +624,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -681,8 +665,8 @@
       "id": "Destination",
       "properties": {
         "cloudRun": {
-          "description": "Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.",
-          "$ref": "CloudRun"
+          "$ref": "CloudRun",
+          "description": "Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger."
         }
       },
       "type": "object"
@@ -764,8 +748,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -900,40 +884,40 @@
       "properties": {
         "apiVersion": {
           "description": "Output only. API version used to start the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. The time the operation was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "endTime": {
           "description": "Output only. The time the operation finished running.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "requestedCancellation": {
           "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "statusMessage": {
           "description": "Output only. Human-readable status of the operation, if any.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "target": {
           "description": "Output only. Server-defined resource path for the target of the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "verb": {
           "description": "Output only. Name of the verb executed by the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -975,8 +959,8 @@
       "properties": {
         "subscription": {
           "description": "Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "topic": {
           "description": "Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.",
@@ -990,8 +974,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -1034,8 +1018,8 @@
       "id": "Transport",
       "properties": {
         "pubsub": {
-          "description": "The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.",
-          "$ref": "Pubsub"
+          "$ref": "Pubsub",
+          "description": "The Pub/Sub topic and subscription used by Eventarc as delivery intermediary."
         }
       },
       "type": "object"
@@ -1047,17 +1031,17 @@
         "createTime": {
           "description": "Output only. The creation time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "destination": {
-          "description": "Required. Destination specifies where the events should be sent to.",
-          "$ref": "Destination"
+          "$ref": "Destination",
+          "description": "Required. Destination specifies where the events should be sent to."
         },
         "etag": {
           "description": "Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "eventFilters": {
           "description": "Required. The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.",
@@ -1075,19 +1059,19 @@
           "type": "string"
         },
         "transport": {
-          "description": "Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.",
-          "$ref": "Transport"
+          "$ref": "Transport",
+          "description": "Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes."
         },
         "uid": {
           "description": "Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. The last-modified time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1095,6 +1079,6 @@
   },
   "servicePath": "",
   "title": "Eventarc API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

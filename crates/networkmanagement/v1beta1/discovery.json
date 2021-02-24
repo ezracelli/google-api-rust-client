@@ -15,29 +15,27 @@
   "description": "The Network Management API provides a collection of network performance monitoring and diagnostic capabilities.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "networkmanagement:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://networkmanagement.mtls.googleapis.com/",
   "name": "networkmanagement",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}",
               "id": "networkmanagement.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations",
               "id": "networkmanagement.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -152,8 +148,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -184,7 +180,6 @@
                     "create": {
                       "description": "Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/connectivityTests",
                       "id": "networkmanagement.projects.locations.global.connectivityTests.create",
                       "parameterOrder": [
                         "parent"
@@ -194,8 +189,8 @@
                           "description": "Required. The parent resource of the Connectivity Test to create: `projects/{project_id}/locations/global`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "testId": {
                           "description": "Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project",
@@ -217,7 +212,6 @@
                     "delete": {
                       "description": "Deletes a specific `ConnectivityTest`.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/connectivityTests/{connectivityTestsId}",
                       "id": "networkmanagement.projects.locations.global.connectivityTests.delete",
                       "parameterOrder": [
                         "name"
@@ -227,8 +221,8 @@
                           "description": "Required. Connectivity Test resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/connectivityTests/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -242,7 +236,6 @@
                     "get": {
                       "description": "Gets the details of a specific Connectivity Test.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/connectivityTests/{connectivityTestsId}",
                       "id": "networkmanagement.projects.locations.global.connectivityTests.get",
                       "parameterOrder": [
                         "name"
@@ -252,8 +245,8 @@
                           "description": "Required. `ConnectivityTest` resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/connectivityTests/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -267,7 +260,6 @@
                     "getIamPolicy": {
                       "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/connectivityTests/{connectivityTestsId}:getIamPolicy",
                       "id": "networkmanagement.projects.locations.global.connectivityTests.getIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -283,8 +275,8 @@
                           "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/connectivityTests/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+resource}:getIamPolicy",
@@ -298,7 +290,6 @@
                     "list": {
                       "description": "Lists all Connectivity Tests owned by a project.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/connectivityTests",
                       "id": "networkmanagement.projects.locations.global.connectivityTests.list",
                       "parameterOrder": [
                         "parent"
@@ -329,8 +320,8 @@
                           "description": "Required. The parent resource of the Connectivity Tests: `projects/{project_id}/locations/global`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+parent}/connectivityTests",
@@ -344,7 +335,6 @@
                     "patch": {
                       "description": "Updates the configuration of an existing `ConnectivityTest`. After you update a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. The Reachability state in the test resource is updated with the new result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they contain non-existent resources in the network, or the user does not have read permissions to the network configurations of listed projects), then the reachability result returns a value of UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for for more details.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/connectivityTests/{connectivityTestsId}",
                       "id": "networkmanagement.projects.locations.global.connectivityTests.patch",
                       "parameterOrder": [
                         "name"
@@ -354,8 +344,8 @@
                           "description": "Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/connectivityTests/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "updateMask": {
                           "description": "Required. Mask of fields to update. At least one path must be supplied in this field.",
@@ -378,7 +368,6 @@
                     "rerun": {
                       "description": "Rerun an existing `ConnectivityTest`. After the user triggers the rerun, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. Even though the test configuration remains the same, the reachability result may change due to underlying network configuration changes. If the endpoint specifications in `ConnectivityTest` become invalid (for example, specified resources are deleted in the network, or you lost read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/connectivityTests/{connectivityTestsId}:rerun",
                       "id": "networkmanagement.projects.locations.global.connectivityTests.rerun",
                       "parameterOrder": [
                         "name"
@@ -388,8 +377,8 @@
                           "description": "Required. Connectivity Test resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/connectivityTests/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}:rerun",
@@ -406,7 +395,6 @@
                     "setIamPolicy": {
                       "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/connectivityTests/{connectivityTestsId}:setIamPolicy",
                       "id": "networkmanagement.projects.locations.global.connectivityTests.setIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -416,8 +404,8 @@
                           "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/connectivityTests/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+resource}:setIamPolicy",
@@ -434,7 +422,6 @@
                     "testIamPermissions": {
                       "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/connectivityTests/{connectivityTestsId}:testIamPermissions",
                       "id": "networkmanagement.projects.locations.global.connectivityTests.testIamPermissions",
                       "parameterOrder": [
                         "resource"
@@ -444,8 +431,8 @@
                           "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/connectivityTests/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+resource}:testIamPermissions",
@@ -466,7 +453,6 @@
                     "cancel": {
                       "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/operations/{operationsId}:cancel",
                       "id": "networkmanagement.projects.locations.global.operations.cancel",
                       "parameterOrder": [
                         "name"
@@ -476,8 +462,8 @@
                           "description": "The name of the operation resource to be cancelled.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/operations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}:cancel",
@@ -494,7 +480,6 @@
                     "delete": {
                       "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/operations/{operationsId}",
                       "id": "networkmanagement.projects.locations.global.operations.delete",
                       "parameterOrder": [
                         "name"
@@ -504,8 +489,8 @@
                           "description": "The name of the operation resource to be deleted.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/operations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -519,7 +504,6 @@
                     "get": {
                       "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/operations/{operationsId}",
                       "id": "networkmanagement.projects.locations.global.operations.get",
                       "parameterOrder": [
                         "name"
@@ -529,8 +513,8 @@
                           "description": "The name of the operation resource.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/operations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -544,7 +528,6 @@
                     "list": {
                       "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/global/operations",
                       "id": "networkmanagement.projects.locations.global.operations.list",
                       "parameterOrder": [
                         "name"
@@ -559,8 +542,8 @@
                           "description": "The name of the operation's parent resource.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "pageSize": {
                           "description": "The standard list page size.",
@@ -600,19 +583,6 @@
       "properties": {
         "cause": {
           "description": "Causes that the analysis is aborted.",
-          "enumDescriptions": [
-            "Cause is unspecified.",
-            "Aborted due to unknown network. The reachability analysis cannot proceed because the user does not have access to the host project's network configurations, including firewall rules and routes. This happens when the project is a service project and the endpoints being traced are in the host project's network.",
-            "Aborted because the IP address(es) are unknown.",
-            "Aborted because no project information can be derived from the test input.",
-            "Aborted because the user lacks the permission to access all or part of the network configurations required to run the test.",
-            "Aborted because no valid source endpoint is derived from the input test request.",
-            "Aborted because the source and/or destination endpoint specified in the test are invalid. The possible reasons that an endpoint is invalid include: malformed IP address; nonexistent instance or network URI; IP address not in the range of specified network URI; and instance not owning the network interface in the specified network.",
-            "Aborted because traffic is sent from a public IP to an instance without an external IP.",
-            "Aborted because none of the traces matches destination information specified in the input test request.",
-            "Aborted because the number of steps in the trace exceeding a certain limit which may be caused by routing loop.",
-            "Aborted due to internal server error."
-          ],
           "enum": [
             "CAUSE_UNSPECIFIED",
             "UNKNOWN_NETWORK",
@@ -625,6 +595,19 @@
             "UNINTENDED_DESTINATION",
             "TRACE_TOO_LONG",
             "INTERNAL_ERROR"
+          ],
+          "enumDescriptions": [
+            "Cause is unspecified.",
+            "Aborted due to unknown network. The reachability analysis cannot proceed because the user does not have access to the host project's network configurations, including firewall rules and routes. This happens when the project is a service project and the endpoints being traced are in the host project's network.",
+            "Aborted because the IP address(es) are unknown.",
+            "Aborted because no project information can be derived from the test input.",
+            "Aborted because the user lacks the permission to access all or part of the network configurations required to run the test.",
+            "Aborted because no valid source endpoint is derived from the input test request.",
+            "Aborted because the source and/or destination endpoint specified in the test are invalid. The possible reasons that an endpoint is invalid include: malformed IP address; nonexistent instance or network URI; IP address not in the range of specified network URI; and instance not owning the network interface in the specified network.",
+            "Aborted because traffic is sent from a public IP to an instance without an external IP.",
+            "Aborted because none of the traces matches destination information specified in the input test request.",
+            "Aborted because the number of steps in the trace exceeding a certain limit which may be caused by routing loop.",
+            "Aborted due to internal server error."
           ],
           "type": "string"
         },
@@ -666,17 +649,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -691,8 +674,8 @@
           "type": "string"
         },
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -752,21 +735,21 @@
         "createTime": {
           "description": "Output only. The time the test was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "description": {
           "description": "The user-supplied description of the Connectivity Test. Maximum of 512 characters.",
           "type": "string"
         },
         "destination": {
-          "description": "Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.",
-          "$ref": "Endpoint"
+          "$ref": "Endpoint",
+          "description": "Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test."
         },
         "displayName": {
           "description": "Output only. The display name of a Connectivity Test.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "labels": {
           "additionalProperties": {
@@ -780,8 +763,8 @@
           "type": "string"
         },
         "probingDetails": {
-          "description": "Output only. The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.",
           "$ref": "ProbingDetails",
+          "description": "Output only. The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.",
           "readOnly": true
         },
         "protocol": {
@@ -789,8 +772,8 @@
           "type": "string"
         },
         "reachabilityDetails": {
-          "description": "Output only. The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.",
           "$ref": "ReachabilityDetails",
+          "description": "Output only. The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.",
           "readOnly": true
         },
         "relatedProjects": {
@@ -801,14 +784,14 @@
           "type": "array"
         },
         "source": {
-          "description": "Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.",
-          "$ref": "Endpoint"
+          "$ref": "Endpoint",
+          "description": "Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test."
         },
         "updateTime": {
           "description": "Output only. The time the test's configuration was updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -823,14 +806,6 @@
         },
         "target": {
           "description": "Target type where the packet is delivered to.",
-          "enumDescriptions": [
-            "Target not specified.",
-            "Target is a Compute Engine instance.",
-            "Target is the Internet.",
-            "Target is a Google API.",
-            "Target is a Google Kubernetes Engine cluster master.",
-            "Target is a Cloud SQL instance."
-          ],
           "enum": [
             "TARGET_UNSPECIFIED",
             "INSTANCE",
@@ -838,6 +813,14 @@
             "GOOGLE_API",
             "GKE_MASTER",
             "CLOUD_SQL_INSTANCE"
+          ],
+          "enumDescriptions": [
+            "Target not specified.",
+            "Target is a Compute Engine instance.",
+            "Target is the Internet.",
+            "Target is a Google API.",
+            "Target is a Google Kubernetes Engine cluster master.",
+            "Target is a Cloud SQL instance."
           ],
           "type": "string"
         }
@@ -850,28 +833,6 @@
       "properties": {
         "cause": {
           "description": "Cause that the packet is dropped.",
-          "enumDescriptions": [
-            "Cause is unspecified.",
-            "Destination external address cannot be resolved to a known target.",
-            "a Compute Engine instance can only send or receive a packet with a foreign IP if ip_forward is enabled.",
-            "Dropped due to a firewall rule unless allowed due to connection tracking.",
-            "Dropped due to no routes.",
-            "Dropped due to invalid route. Route's next hop is a blackhole.",
-            "Packet is sent to a wrong (unintended) network. Example: user traces a packet from VM1:Network1 to VM2:Network2, however, the route configured in Network1 sends the packet destined for VM2's IP addresss to Network3.",
-            "Packet with internal destination address sent to Internet gateway.",
-            "Instance with only an internal IP tries to access Google API and Services, and private Google access is not enabled.",
-            "Instance with only internal IP tries to access external hosts, but Cloud NAT is not enabled in the subnet, unless special configurations on a VM allows this connection. See [Special Configurations for VM instances](https://cloud.google.com/vpc/docs/special-configurations) for details.",
-            "Destination internal address cannot be resolved to a known target.",
-            "Forwarding rule's protocol and ports do not match the packet header.",
-            "Forwarding rule does not have backends configured.",
-            "Firewalls block the health check probes to the backends and cause the backends to be unavailable for traffic from the load balancer. See [Health check firewall rules](https://cloud.google.com/load-balancing/docs/health-checks#firewall_rules) for more details.",
-            "Packet is sent from or to a Compute Engine instance that is not in a running state.",
-            "The type of traffic is blocked and the user cannot configure a firewall rule to enable it. See [Always blocked traffic](https://cloud.google.com/vpc/docs/firewalls#blockedtraffic) for more details.",
-            "Access to Google Kubernetes Engine cluster master's endpoint is not authorized. See [Access to the cluster endpoints](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#access_to_the_cluster_endpoints) for more details.",
-            "Access to the Cloud SQL instance endpoint is not authorized. See [Authorizing with authorized networks](https://cloud.google.com/sql/docs/mysql/authorize-networks) for more details.",
-            "Packet was dropped inside Google Kubernetes Engine Service.",
-            "Packet was dropped inside Cloud SQL Service."
-          ],
           "enum": [
             "CAUSE_UNSPECIFIED",
             "UNKNOWN_EXTERNAL_ADDRESS",
@@ -893,6 +854,28 @@
             "CLOUD_SQL_INSTANCE_UNAUTHORIZED_ACCESS",
             "DROPPED_INSIDE_GKE_SERVICE",
             "DROPPED_INSIDE_CLOUD_SQL_SERVICE"
+          ],
+          "enumDescriptions": [
+            "Cause is unspecified.",
+            "Destination external address cannot be resolved to a known target.",
+            "a Compute Engine instance can only send or receive a packet with a foreign IP if ip_forward is enabled.",
+            "Dropped due to a firewall rule unless allowed due to connection tracking.",
+            "Dropped due to no routes.",
+            "Dropped due to invalid route. Route's next hop is a blackhole.",
+            "Packet is sent to a wrong (unintended) network. Example: user traces a packet from VM1:Network1 to VM2:Network2, however, the route configured in Network1 sends the packet destined for VM2's IP addresss to Network3.",
+            "Packet with internal destination address sent to Internet gateway.",
+            "Instance with only an internal IP tries to access Google API and Services, and private Google access is not enabled.",
+            "Instance with only internal IP tries to access external hosts, but Cloud NAT is not enabled in the subnet, unless special configurations on a VM allows this connection. See [Special Configurations for VM instances](https://cloud.google.com/vpc/docs/special-configurations) for details.",
+            "Destination internal address cannot be resolved to a known target.",
+            "Forwarding rule's protocol and ports do not match the packet header.",
+            "Forwarding rule does not have backends configured.",
+            "Firewalls block the health check probes to the backends and cause the backends to be unavailable for traffic from the load balancer. See [Health check firewall rules](https://cloud.google.com/load-balancing/docs/health-checks#firewall_rules) for more details.",
+            "Packet is sent from or to a Compute Engine instance that is not in a running state.",
+            "The type of traffic is blocked and the user cannot configure a firewall rule to enable it. See [Always blocked traffic](https://cloud.google.com/vpc/docs/firewalls#blockedtraffic) for more details.",
+            "Access to Google Kubernetes Engine cluster master's endpoint is not authorized. See [Access to the cluster endpoints](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#access_to_the_cluster_endpoints) for more details.",
+            "Access to the Cloud SQL instance endpoint is not authorized. See [Authorizing with authorized networks](https://cloud.google.com/sql/docs/mysql/authorize-networks) for more details.",
+            "Packet was dropped inside Google Kubernetes Engine Service.",
+            "Packet was dropped inside Cloud SQL Service."
           ],
           "type": "string"
         },
@@ -935,15 +918,15 @@
         },
         "networkType": {
           "description": "Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.",
-          "enumDescriptions": [
-            "Default type if unspecified.",
-            "A network hosted within Google Cloud Platform. To receive more detailed output, specify the URI for the source or destination network.",
-            "A network hosted outside of Google Cloud Platform. This can be an on-premises network, or a network hosted by another cloud provider."
-          ],
           "enum": [
             "NETWORK_TYPE_UNSPECIFIED",
             "GCP_NETWORK",
             "NON_GCP_NETWORK"
+          ],
+          "enumDescriptions": [
+            "Default type if unspecified.",
+            "A network hosted within Google Cloud Platform. To receive more detailed output, specify the URI for the source or destination network.",
+            "A network hosted outside of Google Cloud Platform. This can be an on-premises network, or a network hosted by another cloud provider."
           ],
           "type": "string"
         },
@@ -1075,15 +1058,6 @@
         },
         "target": {
           "description": "Target type where this packet is forwarded to.",
-          "enumDescriptions": [
-            "Target not specified.",
-            "Forwarded to a VPC peering network.",
-            "Forwarded to a Cloud VPN gateway.",
-            "Forwarded to an Cloud Interconnect connection.",
-            "Forwarded to a Google Kubernetes Engine Container cluster master.",
-            "Forwarded to the next hop of a custom route imported from a peering VPC.",
-            "Forwarded to a Cloud SQL Instance."
-          ],
           "enum": [
             "TARGET_UNSPECIFIED",
             "PEERING_VPC",
@@ -1092,6 +1066,15 @@
             "GKE_MASTER",
             "IMPORTED_CUSTOM_ROUTE_NEXT_HOP",
             "CLOUD_SQL_INSTANCE"
+          ],
+          "enumDescriptions": [
+            "Target not specified.",
+            "Forwarded to a VPC peering network.",
+            "Forwarded to a Cloud VPN gateway.",
+            "Forwarded to an Cloud Interconnect connection.",
+            "Forwarded to a Google Kubernetes Engine Container cluster master.",
+            "Forwarded to the next hop of a custom route imported from a peering VPC.",
+            "Forwarded to a Cloud SQL Instance."
           ],
           "type": "string"
         }
@@ -1314,15 +1297,15 @@
         },
         "healthCheckFirewallState": {
           "description": "State of the health check firewall configuration.",
-          "enumDescriptions": [
-            "State is unspecified. Default state if not populated.",
-            "There are configured firewall rules to allow health check probes to the backend.",
-            "There are firewall rules configured to allow partial health check ranges or block all health check ranges. If a health check probe is sent from denied IP ranges, the health check to the backend will fail. Then, the backend will be marked unhealthy and will not receive traffic sent to the load balancer."
-          ],
           "enum": [
             "HEALTH_CHECK_FIREWALL_STATE_UNSPECIFIED",
             "CONFIGURED",
             "MISCONFIGURED"
+          ],
+          "enumDescriptions": [
+            "State is unspecified. Default state if not populated.",
+            "There are configured firewall rules to allow health check probes to the backend.",
+            "There are firewall rules configured to allow partial health check ranges or block all health check ranges. If a health check probe is sent from denied IP ranges, the health check to the backend will fail. Then, the backend will be marked unhealthy and will not receive traffic sent to the load balancer."
           ],
           "type": "string"
         },
@@ -1339,15 +1322,15 @@
       "properties": {
         "backendType": {
           "description": "Type of load balancer's backend configuration.",
-          "enumDescriptions": [
-            "Type is unspecified.",
-            "Backend Service as the load balancer's backend.",
-            "Target Pool as the load balancer's backend."
-          ],
           "enum": [
             "BACKEND_TYPE_UNSPECIFIED",
             "BACKEND_SERVICE",
             "TARGET_POOL"
+          ],
+          "enumDescriptions": [
+            "Type is unspecified.",
+            "Backend Service as the load balancer's backend.",
+            "Target Pool as the load balancer's backend."
           ],
           "type": "string"
         },
@@ -1368,14 +1351,6 @@
         },
         "loadBalancerType": {
           "description": "Type of the load balancer.",
-          "enumDescriptions": [
-            "Type is unspecified.",
-            "Internal TCP/UDP load balancer.",
-            "Network TCP/UDP load balancer.",
-            "HTTP(S) proxy load balancer.",
-            "TCP proxy load balancer.",
-            "SSL proxy load balancer."
-          ],
           "enum": [
             "LOAD_BALANCER_TYPE_UNSPECIFIED",
             "INTERNAL_TCP_UDP",
@@ -1383,6 +1358,14 @@
             "HTTP_PROXY",
             "TCP_PROXY",
             "SSL_PROXY"
+          ],
+          "enumDescriptions": [
+            "Type is unspecified.",
+            "Internal TCP/UDP load balancer.",
+            "Network TCP/UDP load balancer.",
+            "HTTP(S) proxy load balancer.",
+            "TCP proxy load balancer.",
+            "SSL proxy load balancer."
           ],
           "type": "string"
         }
@@ -1451,8 +1434,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1551,45 +1534,45 @@
       "properties": {
         "abortCause": {
           "description": "Causes that the probing was aborted.",
-          "enumDescriptions": [
-            "Abort reason unspecified.",
-            "Aborted because the user lacks the permission to access all or part of the network configurations required to run the test.",
-            "Aborted because no valid source endpoint is derived from the input test request."
-          ],
           "enum": [
             "PROBING_ABORT_CAUSE_UNSPECIFIED",
             "PERMISSION_DENIED",
             "NO_SOURCE_LOCATION"
           ],
+          "enumDescriptions": [
+            "Abort reason unspecified.",
+            "Aborted because the user lacks the permission to access all or part of the network configurations required to run the test.",
+            "Aborted because no valid source endpoint is derived from the input test request."
+          ],
           "type": "string"
         },
         "endpointInfo": {
-          "description": "Derived from the test input. The actual source and destination endpoint where the probing was run.",
-          "$ref": "EndpointInfo"
+          "$ref": "EndpointInfo",
+          "description": "Derived from the test input. The actual source and destination endpoint where the probing was run."
         },
         "error": {
-          "description": "The details of an internal failure or a cancellation of reachability analysis.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The details of an internal failure or a cancellation of reachability analysis."
         },
         "probingLatency": {
-          "description": "One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint.",
-          "$ref": "LatencyDistribution"
+          "$ref": "LatencyDistribution",
+          "description": "One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint."
         },
         "result": {
           "description": "The overall reachability result of the test.",
-          "enumDescriptions": [
-            "Result is not specified.",
-            "95% or more packets originating from source reached destination.",
-            "No packet originating from source reached destination.",
-            "Less than 95% packets originating from source reached destination.",
-            "The reachability could not be determined. Possible reasons are: * Analysis is aborted due to permission error. User does not have read permission to the projects listed in the test. * Analysis is aborted due to internal errors."
-          ],
           "enum": [
             "PROBING_RESULT_UNSPECIFIED",
             "REACHABLE",
             "UNREACHABLE",
             "REACHABILITY_INCONSISTENT",
             "UNDETERMINED"
+          ],
+          "enumDescriptions": [
+            "Result is not specified.",
+            "95% or more packets originating from source reached destination.",
+            "No packet originating from source reached destination.",
+            "Less than 95% packets originating from source reached destination.",
+            "The reachability could not be determined. Possible reasons are: * Analysis is aborted due to permission error. User does not have read permission to the projects listed in the test. * Analysis is aborted due to internal errors."
           ],
           "type": "string"
         },
@@ -1616,24 +1599,24 @@
       "id": "ReachabilityDetails",
       "properties": {
         "error": {
-          "description": "The details of a failure or a cancellation of reachability analysis.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The details of a failure or a cancellation of reachability analysis."
         },
         "result": {
           "description": "The overall reachability result of the test.",
-          "enumDescriptions": [
-            "Result is not specified.",
-            "Packet originating from source is expected to reach destination.",
-            "Packet originating from source is expected to be dropped before reaching destination.",
-            "If the source and destination endpoint does not uniquely identify the test location in the network, and the reachability result contains multiple traces with mixed reachable and unreachable states, then this result is returned.",
-            "The reachability could not be determined. Possible reasons are: * Analysis is aborted due to permission error. User does not have read permission to the projects listed in the test. * Analysis is aborted due to internal errors. * Analysis is partially complete based on configurations where the user has permission. The Final state indicates that the packet is forwarded to another network where the user has no permission to access the configurations."
-          ],
           "enum": [
             "RESULT_UNSPECIFIED",
             "REACHABLE",
             "UNREACHABLE",
             "AMBIGUOUS",
             "UNDETERMINED"
+          ],
+          "enumDescriptions": [
+            "Result is not specified.",
+            "Packet originating from source is expected to reach destination.",
+            "Packet originating from source is expected to be dropped before reaching destination.",
+            "If the source and destination endpoint does not uniquely identify the test location in the network, and the reachability result contains multiple traces with mixed reachable and unreachable states, then this result is returned.",
+            "The reachability could not be determined. Possible reasons are: * Analysis is aborted due to permission error. User does not have read permission to the projects listed in the test. * Analysis is aborted due to internal errors. * Analysis is partially complete based on configurations where the user has permission. The Final state indicates that the packet is forwarded to another network where the user has no permission to access the configurations."
           ],
           "type": "string"
         },
@@ -1687,19 +1670,6 @@
         },
         "nextHopType": {
           "description": "Type of next hop.",
-          "enumDescriptions": [
-            "Unspecified type. Default value.",
-            "Next hop is an IP address.",
-            "Next hop is a Compute Engine instance.",
-            "Next hop is a VPC network gateway.",
-            "Next hop is a peering VPC.",
-            "Next hop is an interconnect.",
-            "Next hop is a VPN tunnel.",
-            "Next hop is a VPN Gateway. This scenario only happens when tracing connectivity from an on-premises network to GCP through a VPN. The analysis simulates a packet departing from the on-premises network through a VPN tunnel and arrives at a Cloud VPN gateway.",
-            "Next hop is an internet gateway.",
-            "Next hop is blackhole; that is, the next hop either does not exist or is not running.",
-            "Next hop is the forwarding rule of an Internal Load Balancer."
-          ],
           "enum": [
             "NEXT_HOP_TYPE_UNSPECIFIED",
             "NEXT_HOP_IP",
@@ -1713,6 +1683,19 @@
             "NEXT_HOP_BLACKHOLE",
             "NEXT_HOP_ILB"
           ],
+          "enumDescriptions": [
+            "Unspecified type. Default value.",
+            "Next hop is an IP address.",
+            "Next hop is a Compute Engine instance.",
+            "Next hop is a VPC network gateway.",
+            "Next hop is a peering VPC.",
+            "Next hop is an interconnect.",
+            "Next hop is a VPN tunnel.",
+            "Next hop is a VPN Gateway. This scenario only happens when tracing connectivity from an on-premises network to GCP through a VPN. The analysis simulates a packet departing from the on-premises network through a VPN tunnel and arrives at a Cloud VPN gateway.",
+            "Next hop is an internet gateway.",
+            "Next hop is blackhole; that is, the next hop either does not exist or is not running.",
+            "Next hop is the forwarding rule of an Internal Load Balancer."
+          ],
           "type": "string"
         },
         "priority": {
@@ -1722,15 +1705,6 @@
         },
         "routeType": {
           "description": "Type of route.",
-          "enumDescriptions": [
-            "Unspecified type. Default value.",
-            "Route is a subnet route automatically created by the system.",
-            "Static route created by the user including the default route to the Internet.",
-            "Dynamic route exchanged between BGP peers.",
-            "A subnet route received from peering network.",
-            "A static route received from peering network.",
-            "A dynamic route received from peering network."
-          ],
           "enum": [
             "ROUTE_TYPE_UNSPECIFIED",
             "SUBNET",
@@ -1739,6 +1713,15 @@
             "PEERING_SUBNET",
             "PEERING_STATIC",
             "PEERING_DYNAMIC"
+          ],
+          "enumDescriptions": [
+            "Unspecified type. Default value.",
+            "Route is a subnet route automatically created by the system.",
+            "Static route created by the user including the default route to the Internet.",
+            "Dynamic route exchanged between BGP peers.",
+            "A subnet route received from peering network.",
+            "A static route received from peering network.",
+            "A dynamic route received from peering network."
           ],
           "type": "string"
         },
@@ -1754,8 +1737,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -1797,96 +1780,71 @@
       "id": "Step",
       "properties": {
         "abort": {
-          "description": "Display info of the final state \"abort\" and reason.",
-          "$ref": "AbortInfo"
+          "$ref": "AbortInfo",
+          "description": "Display info of the final state \"abort\" and reason."
         },
         "causesDrop": {
           "description": "This is a step that leads to the final state Drop.",
           "type": "boolean"
         },
         "cloudSqlInstance": {
-          "description": "Display info of a Cloud SQL instance.",
-          "$ref": "CloudSQLInstanceInfo"
+          "$ref": "CloudSQLInstanceInfo",
+          "description": "Display info of a Cloud SQL instance."
         },
         "deliver": {
-          "description": "Display info of the final state \"deliver\" and reason.",
-          "$ref": "DeliverInfo"
+          "$ref": "DeliverInfo",
+          "description": "Display info of the final state \"deliver\" and reason."
         },
         "description": {
           "description": "A description of the step. Usually this is a summary of the state.",
           "type": "string"
         },
         "drop": {
-          "description": "Display info of the final state \"drop\" and reason.",
-          "$ref": "DropInfo"
+          "$ref": "DropInfo",
+          "description": "Display info of the final state \"drop\" and reason."
         },
         "endpoint": {
-          "description": "Display info of the source and destination under analysis. The endpiont info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.",
-          "$ref": "EndpointInfo"
+          "$ref": "EndpointInfo",
+          "description": "Display info of the source and destination under analysis. The endpiont info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy."
         },
         "firewall": {
-          "description": "Display info of a Compute Engine firewall rule.",
-          "$ref": "FirewallInfo"
+          "$ref": "FirewallInfo",
+          "description": "Display info of a Compute Engine firewall rule."
         },
         "forward": {
-          "description": "Display info of the final state \"forward\" and reason.",
-          "$ref": "ForwardInfo"
+          "$ref": "ForwardInfo",
+          "description": "Display info of the final state \"forward\" and reason."
         },
         "forwardingRule": {
-          "description": "Display info of a Compute Engine forwarding rule.",
-          "$ref": "ForwardingRuleInfo"
+          "$ref": "ForwardingRuleInfo",
+          "description": "Display info of a Compute Engine forwarding rule."
         },
         "gkeMaster": {
-          "description": "Display info of a Google Kubernetes Engine cluster master.",
-          "$ref": "GKEMasterInfo"
+          "$ref": "GKEMasterInfo",
+          "description": "Display info of a Google Kubernetes Engine cluster master."
         },
         "instance": {
-          "description": "Display info of a Compute Engine instance.",
-          "$ref": "InstanceInfo"
+          "$ref": "InstanceInfo",
+          "description": "Display info of a Compute Engine instance."
         },
         "loadBalancer": {
-          "description": "Display info of the load balancers.",
-          "$ref": "LoadBalancerInfo"
+          "$ref": "LoadBalancerInfo",
+          "description": "Display info of the load balancers."
         },
         "network": {
-          "description": "Display info of a GCP network.",
-          "$ref": "NetworkInfo"
+          "$ref": "NetworkInfo",
+          "description": "Display info of a GCP network."
         },
         "projectId": {
           "description": "Project ID that contains the configuration this step is validating.",
           "type": "string"
         },
         "route": {
-          "description": "Display info of a Compute Engine route.",
-          "$ref": "RouteInfo"
+          "$ref": "RouteInfo",
+          "description": "Display info of a Compute Engine route."
         },
         "state": {
           "description": "Each step is in one of the pre-defined states.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Initial state: packet originating from a Compute Engine instance. An InstanceInfo will be populated with starting instance info.",
-            "Initial state: packet originating from Internet. The endpoint info will be populated.",
-            "Initial state: packet originating from a VPC or on-premises network with internal source IP. If the source is a VPC network visible to the user, a NetworkInfo will be populated with details of the network.",
-            "Initial state: packet originating from a Google Kubernetes Engine cluster master. A GKEMasterInfo will be populated with starting instance info.",
-            "Initial state: packet originating from a Cloud SQL instance. A CloudSQLInstanceInfo will be populated with starting instance info.",
-            "Config checking state: verify ingress firewall rule.",
-            "Config checking state: verify egress firewall rule.",
-            "Config checking state: verify route.",
-            "Config checking state: match forwarding rule.",
-            "Config checking state: packet sent or received under foreign IP address and allowed.",
-            "Forwarding state: arriving at a Compute Engine instance.",
-            "Forwarding state: arriving at a Compute Engine internal load balancer.",
-            "Forwarding state: arriving at a Compute Engine external load balancer.",
-            "Forwarding state: arriving at a Cloud VPN gateway.",
-            "Forwarding state: arriving at a Cloud VPN tunnel.",
-            "Transition state: packet header translated.",
-            "Transition state: original connection is terminated and a new proxied connection is initiated.",
-            "Final state: packet delivered.",
-            "Final state: packet dropped.",
-            "Final state: packet forwarded to a network with an unknown configuration.",
-            "Final state: analysis is aborted.",
-            "Special state: viewer of the test result does not have permission to see the configuration in this step."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "START_FROM_INSTANCE",
@@ -1912,15 +1870,40 @@
             "ABORT",
             "VIEWER_PERMISSION_MISSING"
           ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Initial state: packet originating from a Compute Engine instance. An InstanceInfo will be populated with starting instance info.",
+            "Initial state: packet originating from Internet. The endpoint info will be populated.",
+            "Initial state: packet originating from a VPC or on-premises network with internal source IP. If the source is a VPC network visible to the user, a NetworkInfo will be populated with details of the network.",
+            "Initial state: packet originating from a Google Kubernetes Engine cluster master. A GKEMasterInfo will be populated with starting instance info.",
+            "Initial state: packet originating from a Cloud SQL instance. A CloudSQLInstanceInfo will be populated with starting instance info.",
+            "Config checking state: verify ingress firewall rule.",
+            "Config checking state: verify egress firewall rule.",
+            "Config checking state: verify route.",
+            "Config checking state: match forwarding rule.",
+            "Config checking state: packet sent or received under foreign IP address and allowed.",
+            "Forwarding state: arriving at a Compute Engine instance.",
+            "Forwarding state: arriving at a Compute Engine internal load balancer.",
+            "Forwarding state: arriving at a Compute Engine external load balancer.",
+            "Forwarding state: arriving at a Cloud VPN gateway.",
+            "Forwarding state: arriving at a Cloud VPN tunnel.",
+            "Transition state: packet header translated.",
+            "Transition state: original connection is terminated and a new proxied connection is initiated.",
+            "Final state: packet delivered.",
+            "Final state: packet dropped.",
+            "Final state: packet forwarded to a network with an unknown configuration.",
+            "Final state: analysis is aborted.",
+            "Special state: viewer of the test result does not have permission to see the configuration in this step."
+          ],
           "type": "string"
         },
         "vpnGateway": {
-          "description": "Display info of a Compute Engine VPN gateway.",
-          "$ref": "VpnGatewayInfo"
+          "$ref": "VpnGatewayInfo",
+          "description": "Display info of a Compute Engine VPN gateway."
         },
         "vpnTunnel": {
-          "description": "Display info of a Compute Engine VPN tunnel.",
-          "$ref": "VpnTunnelInfo"
+          "$ref": "VpnTunnelInfo",
+          "description": "Display info of a Compute Engine VPN tunnel."
         }
       },
       "type": "object"
@@ -1958,8 +1941,8 @@
       "id": "Trace",
       "properties": {
         "endpointInfo": {
-          "description": "Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.",
-          "$ref": "EndpointInfo"
+          "$ref": "EndpointInfo",
+          "description": "Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces."
         },
         "steps": {
           "description": "A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.",
@@ -2028,17 +2011,17 @@
         },
         "routingType": {
           "description": "Type of the routing policy.",
-          "enumDescriptions": [
-            "Unspecified type. Default value.",
-            "Route based VPN.",
-            "Policy based routing.",
-            "Dynamic (BGP) routing."
-          ],
           "enum": [
             "ROUTING_TYPE_UNSPECIFIED",
             "ROUTE_BASED",
             "POLICY_BASED",
             "DYNAMIC"
+          ],
+          "enumDescriptions": [
+            "Unspecified type. Default value.",
+            "Route based VPN.",
+            "Policy based routing.",
+            "Dynamic (BGP) routing."
           ],
           "type": "string"
         },
@@ -2060,6 +2043,6 @@
   },
   "servicePath": "",
   "title": "Network Management API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

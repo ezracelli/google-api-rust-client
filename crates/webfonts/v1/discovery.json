@@ -12,22 +12,21 @@
   },
   "id": "webfonts:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://webfonts.mtls.googleapis.com/",
   "name": "webfonts",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -38,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -100,12 +99,19 @@
         "list": {
           "description": "Retrieves the list of fonts currently served by the Google Fonts Developer API.",
           "httpMethod": "GET",
-          "flatPath": "v1/webfonts",
           "id": "webfonts.webfonts.list",
           "parameterOrder": [],
           "parameters": {
             "sort": {
               "description": "Enables sorting of the list.",
+              "enum": [
+                "SORT_UNDEFINED",
+                "ALPHA",
+                "DATE",
+                "POPULARITY",
+                "STYLE",
+                "TRENDING"
+              ],
               "enumDescriptions": [
                 "No sorting specified, use the default sorting method.",
                 "Sort alphabetically",
@@ -115,14 +121,6 @@
                 "Sort by trending"
               ],
               "location": "query",
-              "enum": [
-                "SORT_UNDEFINED",
-                "ALPHA",
-                "DATE",
-                "POPULARITY",
-                "STYLE",
-                "TRENDING"
-              ],
               "type": "string"
             }
           },

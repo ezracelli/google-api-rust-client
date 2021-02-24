@@ -60,22 +60,21 @@
   },
   "id": "gmail:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://gmail.mtls.googleapis.com/",
   "name": "gmail",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -86,17 +85,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -148,7 +147,6 @@
         "getProfile": {
           "description": "Gets the current user's Gmail profile.",
           "httpMethod": "GET",
-          "flatPath": "gmail/v1/users/{userId}/profile",
           "id": "gmail.users.getProfile",
           "parameterOrder": [
             "userId"
@@ -158,8 +156,8 @@
               "default": "me",
               "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "gmail/v1/users/{userId}/profile",
@@ -177,7 +175,6 @@
         "stop": {
           "description": "Stop receiving push notifications for the given user mailbox.",
           "httpMethod": "POST",
-          "flatPath": "gmail/v1/users/{userId}/stop",
           "id": "gmail.users.stop",
           "parameterOrder": [
             "userId"
@@ -187,8 +184,8 @@
               "default": "me",
               "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "gmail/v1/users/{userId}/stop",
@@ -202,7 +199,6 @@
         "watch": {
           "description": "Set up or update a push notification watch on the given user mailbox.",
           "httpMethod": "POST",
-          "flatPath": "gmail/v1/users/{userId}/watch",
           "id": "gmail.users.watch",
           "parameterOrder": [
             "userId"
@@ -212,8 +208,8 @@
               "default": "me",
               "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "gmail/v1/users/{userId}/watch",
@@ -237,7 +233,6 @@
             "create": {
               "description": "Creates a new draft with the `DRAFT` label.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/drafts",
               "id": "gmail.users.drafts.create",
               "mediaUpload": {
                 "accept": [
@@ -246,12 +241,12 @@
                 "maxSize": "36700160",
                 "protocols": {
                   "resumable": {
-                    "path": "/resumable/upload/gmail/v1/users/{userId}/drafts",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/resumable/upload/gmail/v1/users/{userId}/drafts"
                   },
                   "simple": {
-                    "path": "/upload/gmail/v1/users/{userId}/drafts",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/upload/gmail/v1/users/{userId}/drafts"
                   }
                 }
               },
@@ -263,8 +258,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/drafts",
@@ -285,7 +280,6 @@
             "delete": {
               "description": "Immediately and permanently deletes the specified draft. Does not simply trash it.",
               "httpMethod": "DELETE",
-              "flatPath": "gmail/v1/users/{userId}/drafts/{id}",
               "id": "gmail.users.drafts.delete",
               "parameterOrder": [
                 "userId",
@@ -295,15 +289,15 @@
                 "id": {
                   "description": "The ID of the draft to delete.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/drafts/{id}",
@@ -317,7 +311,6 @@
             "get": {
               "description": "Gets the specified draft.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/drafts/{id}",
               "id": "gmail.users.drafts.get",
               "parameterOrder": [
                 "userId",
@@ -327,6 +320,12 @@
                 "format": {
                   "default": "full",
                   "description": "The format to return the draft in.",
+                  "enum": [
+                    "minimal",
+                    "full",
+                    "raw",
+                    "metadata"
+                  ],
                   "enumDescriptions": [
                     "Returns only email message ID and labels; does not return the email headers, body, or payload.",
                     "Returns the full email message data with body content parsed in the `payload` field; the `raw` field is not used. Format cannot be used when accessing the api using the gmail.metadata scope.",
@@ -334,26 +333,20 @@
                     "Returns only email message ID, labels, and email headers."
                   ],
                   "location": "query",
-                  "enum": [
-                    "minimal",
-                    "full",
-                    "raw",
-                    "metadata"
-                  ],
                   "type": "string"
                 },
                 "id": {
                   "description": "The ID of the draft to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/drafts/{id}",
@@ -370,7 +363,6 @@
             "list": {
               "description": "Lists the drafts in the user's mailbox.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/drafts",
               "id": "gmail.users.drafts.list",
               "parameterOrder": [
                 "userId"
@@ -403,8 +395,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/drafts",
@@ -421,7 +413,6 @@
             "send": {
               "description": "Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/drafts/send",
               "id": "gmail.users.drafts.send",
               "mediaUpload": {
                 "accept": [
@@ -430,12 +421,12 @@
                 "maxSize": "36700160",
                 "protocols": {
                   "resumable": {
-                    "path": "/resumable/upload/gmail/v1/users/{userId}/drafts/send",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/resumable/upload/gmail/v1/users/{userId}/drafts/send"
                   },
                   "simple": {
-                    "path": "/upload/gmail/v1/users/{userId}/drafts/send",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/upload/gmail/v1/users/{userId}/drafts/send"
                   }
                 }
               },
@@ -447,8 +438,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/drafts/send",
@@ -469,7 +460,6 @@
             "update": {
               "description": "Replaces a draft's content.",
               "httpMethod": "PUT",
-              "flatPath": "gmail/v1/users/{userId}/drafts/{id}",
               "id": "gmail.users.drafts.update",
               "mediaUpload": {
                 "accept": [
@@ -478,12 +468,12 @@
                 "maxSize": "36700160",
                 "protocols": {
                   "resumable": {
-                    "path": "/resumable/upload/gmail/v1/users/{userId}/drafts/{id}",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/resumable/upload/gmail/v1/users/{userId}/drafts/{id}"
                   },
                   "simple": {
-                    "path": "/upload/gmail/v1/users/{userId}/drafts/{id}",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/upload/gmail/v1/users/{userId}/drafts/{id}"
                   }
                 }
               },
@@ -495,15 +485,15 @@
                 "id": {
                   "description": "The ID of the draft to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/drafts/{id}",
@@ -528,7 +518,6 @@
             "list": {
               "description": "Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing `historyId`).",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/history",
               "id": "gmail.users.history.list",
               "parameterOrder": [
                 "userId"
@@ -536,6 +525,12 @@
               "parameters": {
                 "historyTypes": {
                   "description": "History types to be returned by the function",
+                  "enum": [
+                    "messageAdded",
+                    "messageDeleted",
+                    "labelAdded",
+                    "labelRemoved"
+                  ],
                   "enumDescriptions": [
                     "",
                     "",
@@ -543,14 +538,8 @@
                     ""
                   ],
                   "location": "query",
-                  "enum": [
-                    "messageAdded",
-                    "messageDeleted",
-                    "labelAdded",
-                    "labelRemoved"
-                  ],
-                  "type": "string",
-                  "repeated": true
+                  "repeated": true,
+                  "type": "string"
                 },
                 "labelId": {
                   "description": "Only return messages with a label matching the ID.",
@@ -579,8 +568,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/history",
@@ -601,7 +590,6 @@
             "create": {
               "description": "Creates a new label.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/labels",
               "id": "gmail.users.labels.create",
               "parameterOrder": [
                 "userId"
@@ -611,8 +599,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/labels",
@@ -631,7 +619,6 @@
             "delete": {
               "description": "Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.",
               "httpMethod": "DELETE",
-              "flatPath": "gmail/v1/users/{userId}/labels/{id}",
               "id": "gmail.users.labels.delete",
               "parameterOrder": [
                 "userId",
@@ -641,15 +628,15 @@
                 "id": {
                   "description": "The ID of the label to delete.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/labels/{id}",
@@ -662,7 +649,6 @@
             "get": {
               "description": "Gets the specified label.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/labels/{id}",
               "id": "gmail.users.labels.get",
               "parameterOrder": [
                 "userId",
@@ -672,15 +658,15 @@
                 "id": {
                   "description": "The ID of the label to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/labels/{id}",
@@ -698,7 +684,6 @@
             "list": {
               "description": "Lists all labels in the user's mailbox.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/labels",
               "id": "gmail.users.labels.list",
               "parameterOrder": [
                 "userId"
@@ -708,8 +693,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/labels",
@@ -727,7 +712,6 @@
             "patch": {
               "description": "Patch the specified label.",
               "httpMethod": "PATCH",
-              "flatPath": "gmail/v1/users/{userId}/labels/{id}",
               "id": "gmail.users.labels.patch",
               "parameterOrder": [
                 "userId",
@@ -737,15 +721,15 @@
                 "id": {
                   "description": "The ID of the label to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/labels/{id}",
@@ -764,7 +748,6 @@
             "update": {
               "description": "Updates the specified label.",
               "httpMethod": "PUT",
-              "flatPath": "gmail/v1/users/{userId}/labels/{id}",
               "id": "gmail.users.labels.update",
               "parameterOrder": [
                 "userId",
@@ -774,15 +757,15 @@
                 "id": {
                   "description": "The ID of the label to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/labels/{id}",
@@ -805,7 +788,6 @@
             "batchDelete": {
               "description": "Deletes many messages by message ID. Provides no guarantees that messages were not already deleted or even existed at all.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/messages/batchDelete",
               "id": "gmail.users.messages.batchDelete",
               "parameterOrder": [
                 "userId"
@@ -815,8 +797,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages/batchDelete",
@@ -830,7 +812,6 @@
             "batchModify": {
               "description": "Modifies the labels on the specified messages.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/messages/batchModify",
               "id": "gmail.users.messages.batchModify",
               "parameterOrder": [
                 "userId"
@@ -840,8 +821,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages/batchModify",
@@ -856,7 +837,6 @@
             "delete": {
               "description": "Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer `messages.trash` instead.",
               "httpMethod": "DELETE",
-              "flatPath": "gmail/v1/users/{userId}/messages/{id}",
               "id": "gmail.users.messages.delete",
               "parameterOrder": [
                 "userId",
@@ -866,15 +846,15 @@
                 "id": {
                   "description": "The ID of the message to delete.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages/{id}",
@@ -885,7 +865,6 @@
             "get": {
               "description": "Gets the specified message.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/messages/{id}",
               "id": "gmail.users.messages.get",
               "parameterOrder": [
                 "userId",
@@ -895,6 +874,12 @@
                 "format": {
                   "default": "full",
                   "description": "The format to return the message in.",
+                  "enum": [
+                    "minimal",
+                    "full",
+                    "raw",
+                    "metadata"
+                  ],
                   "enumDescriptions": [
                     "Returns only email message ID and labels; does not return the email headers, body, or payload.",
                     "Returns the full email message data with body content parsed in the `payload` field; the `raw` field is not used. Format cannot be used when accessing the api using the gmail.metadata scope.",
@@ -902,32 +887,26 @@
                     "Returns only email message ID, labels, and email headers."
                   ],
                   "location": "query",
-                  "enum": [
-                    "minimal",
-                    "full",
-                    "raw",
-                    "metadata"
-                  ],
                   "type": "string"
                 },
                 "id": {
                   "description": "The ID of the message to retrieve. This ID is usually retrieved using `messages.list`. The ID is also contained in the result when a message is inserted (`messages.insert`) or imported (`messages.import`).",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "metadataHeaders": {
                   "description": "When given and format is `METADATA`, only include headers specified.",
                   "location": "query",
-                  "type": "string",
-                  "repeated": true
+                  "repeated": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages/{id}",
@@ -947,7 +926,6 @@
             "import": {
               "description": "Imports a message into only this user's mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. Does not send a message. Note: This function doesn't trigger forwarding rules or filters set up by the user.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/messages/import",
               "id": "gmail.users.messages.import",
               "mediaUpload": {
                 "accept": [
@@ -956,12 +934,12 @@
                 "maxSize": "52428800",
                 "protocols": {
                   "resumable": {
-                    "path": "/resumable/upload/gmail/v1/users/{userId}/messages/import",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/resumable/upload/gmail/v1/users/{userId}/messages/import"
                   },
                   "simple": {
-                    "path": "/upload/gmail/v1/users/{userId}/messages/import",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/upload/gmail/v1/users/{userId}/messages/import"
                   }
                 }
               },
@@ -978,15 +956,15 @@
                 "internalDateSource": {
                   "default": "dateHeader",
                   "description": "Source for Gmail's internal date of the message.",
+                  "enum": [
+                    "receivedTime",
+                    "dateHeader"
+                  ],
                   "enumDescriptions": [
                     "Internal message date set to current time when received by Gmail.",
                     "Internal message time based on 'Date' header in email, when valid."
                   ],
                   "location": "query",
-                  "enum": [
-                    "receivedTime",
-                    "dateHeader"
-                  ],
                   "type": "string"
                 },
                 "neverMarkSpam": {
@@ -1005,8 +983,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages/import",
@@ -1026,7 +1004,6 @@
             "insert": {
               "description": "Directly inserts a message into only this user's mailbox similar to `IMAP APPEND`, bypassing most scanning and classification. Does not send a message.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/messages",
               "id": "gmail.users.messages.insert",
               "mediaUpload": {
                 "accept": [
@@ -1035,12 +1012,12 @@
                 "maxSize": "52428800",
                 "protocols": {
                   "resumable": {
-                    "path": "/resumable/upload/gmail/v1/users/{userId}/messages",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/resumable/upload/gmail/v1/users/{userId}/messages"
                   },
                   "simple": {
-                    "path": "/upload/gmail/v1/users/{userId}/messages",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/upload/gmail/v1/users/{userId}/messages"
                   }
                 }
               },
@@ -1057,23 +1034,23 @@
                 "internalDateSource": {
                   "default": "receivedTime",
                   "description": "Source for Gmail's internal date of the message.",
+                  "enum": [
+                    "receivedTime",
+                    "dateHeader"
+                  ],
                   "enumDescriptions": [
                     "Internal message date set to current time when received by Gmail.",
                     "Internal message time based on 'Date' header in email, when valid."
                   ],
                   "location": "query",
-                  "enum": [
-                    "receivedTime",
-                    "dateHeader"
-                  ],
                   "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages",
@@ -1093,7 +1070,6 @@
             "list": {
               "description": "Lists the messages in the user's mailbox.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/messages",
               "id": "gmail.users.messages.list",
               "parameterOrder": [
                 "userId"
@@ -1108,8 +1084,8 @@
                 "labelIds": {
                   "description": "Only return messages with labels that match all of the specified label IDs.",
                   "location": "query",
-                  "type": "string",
-                  "repeated": true
+                  "repeated": true,
+                  "type": "string"
                 },
                 "maxResults": {
                   "default": "100",
@@ -1132,8 +1108,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages",
@@ -1150,7 +1126,6 @@
             "modify": {
               "description": "Modifies the labels on the specified message.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/messages/{id}/modify",
               "id": "gmail.users.messages.modify",
               "parameterOrder": [
                 "userId",
@@ -1160,15 +1135,15 @@
                 "id": {
                   "description": "The ID of the message to modify.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages/{id}/modify",
@@ -1186,7 +1161,6 @@
             "send": {
               "description": "Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/messages/send",
               "id": "gmail.users.messages.send",
               "mediaUpload": {
                 "accept": [
@@ -1195,12 +1169,12 @@
                 "maxSize": "36700160",
                 "protocols": {
                   "resumable": {
-                    "path": "/resumable/upload/gmail/v1/users/{userId}/messages/send",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/resumable/upload/gmail/v1/users/{userId}/messages/send"
                   },
                   "simple": {
-                    "path": "/upload/gmail/v1/users/{userId}/messages/send",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/upload/gmail/v1/users/{userId}/messages/send"
                   }
                 }
               },
@@ -1212,8 +1186,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages/send",
@@ -1235,7 +1209,6 @@
             "trash": {
               "description": "Moves the specified message to the trash.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/messages/{id}/trash",
               "id": "gmail.users.messages.trash",
               "parameterOrder": [
                 "userId",
@@ -1245,15 +1218,15 @@
                 "id": {
                   "description": "The ID of the message to Trash.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages/{id}/trash",
@@ -1268,7 +1241,6 @@
             "untrash": {
               "description": "Removes the specified message from the trash.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/messages/{id}/untrash",
               "id": "gmail.users.messages.untrash",
               "parameterOrder": [
                 "userId",
@@ -1278,15 +1250,15 @@
                 "id": {
                   "description": "The ID of the message to remove from Trash.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/messages/{id}/untrash",
@@ -1305,7 +1277,6 @@
                 "get": {
                   "description": "Gets the specified message attachment.",
                   "httpMethod": "GET",
-                  "flatPath": "gmail/v1/users/{userId}/messages/{messageId}/attachments/{id}",
                   "id": "gmail.users.messages.attachments.get",
                   "parameterOrder": [
                     "userId",
@@ -1316,21 +1287,21 @@
                     "id": {
                       "description": "The ID of the attachment.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "messageId": {
                       "description": "The ID of the message containing the attachment.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/messages/{messageId}/attachments/{id}",
@@ -1354,7 +1325,6 @@
             "getAutoForwarding": {
               "description": "Gets the auto-forwarding setting for the specified account.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/settings/autoForwarding",
               "id": "gmail.users.settings.getAutoForwarding",
               "parameterOrder": [
                 "userId"
@@ -1364,8 +1334,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/autoForwarding",
@@ -1382,7 +1352,6 @@
             "getImap": {
               "description": "Gets IMAP settings.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/settings/imap",
               "id": "gmail.users.settings.getImap",
               "parameterOrder": [
                 "userId"
@@ -1392,8 +1361,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/imap",
@@ -1410,7 +1379,6 @@
             "getLanguage": {
               "description": "Gets language settings.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/settings/language",
               "id": "gmail.users.settings.getLanguage",
               "parameterOrder": [
                 "userId"
@@ -1420,8 +1388,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/language",
@@ -1438,7 +1406,6 @@
             "getPop": {
               "description": "Gets POP settings.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/settings/pop",
               "id": "gmail.users.settings.getPop",
               "parameterOrder": [
                 "userId"
@@ -1448,8 +1415,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/pop",
@@ -1466,7 +1433,6 @@
             "getVacation": {
               "description": "Gets vacation responder settings.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/settings/vacation",
               "id": "gmail.users.settings.getVacation",
               "parameterOrder": [
                 "userId"
@@ -1476,8 +1442,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/vacation",
@@ -1494,7 +1460,6 @@
             "updateAutoForwarding": {
               "description": "Updates the auto-forwarding setting for the specified account. A verified forwarding address must be specified when auto-forwarding is enabled. This method is only available to service account clients that have been delegated domain-wide authority.",
               "httpMethod": "PUT",
-              "flatPath": "gmail/v1/users/{userId}/settings/autoForwarding",
               "id": "gmail.users.settings.updateAutoForwarding",
               "parameterOrder": [
                 "userId"
@@ -1504,8 +1469,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/autoForwarding",
@@ -1522,7 +1487,6 @@
             "updateImap": {
               "description": "Updates IMAP settings.",
               "httpMethod": "PUT",
-              "flatPath": "gmail/v1/users/{userId}/settings/imap",
               "id": "gmail.users.settings.updateImap",
               "parameterOrder": [
                 "userId"
@@ -1532,8 +1496,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/imap",
@@ -1550,7 +1514,6 @@
             "updateLanguage": {
               "description": "Updates language settings. If successful, the return object contains the `displayLanguage` that was saved for the user, which may differ from the value passed into the request. This is because the requested `displayLanguage` may not be directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead.",
               "httpMethod": "PUT",
-              "flatPath": "gmail/v1/users/{userId}/settings/language",
               "id": "gmail.users.settings.updateLanguage",
               "parameterOrder": [
                 "userId"
@@ -1560,8 +1523,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/language",
@@ -1578,7 +1541,6 @@
             "updatePop": {
               "description": "Updates POP settings.",
               "httpMethod": "PUT",
-              "flatPath": "gmail/v1/users/{userId}/settings/pop",
               "id": "gmail.users.settings.updatePop",
               "parameterOrder": [
                 "userId"
@@ -1588,8 +1550,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/pop",
@@ -1606,7 +1568,6 @@
             "updateVacation": {
               "description": "Updates vacation responder settings.",
               "httpMethod": "PUT",
-              "flatPath": "gmail/v1/users/{userId}/settings/vacation",
               "id": "gmail.users.settings.updateVacation",
               "parameterOrder": [
                 "userId"
@@ -1616,8 +1577,8 @@
                   "default": "me",
                   "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/settings/vacation",
@@ -1638,7 +1599,6 @@
                 "create": {
                   "description": "Adds a delegate with its verification status set directly to `accepted`, without sending any verification email. The delegate user must be a member of the same G Suite organization as the delegator user. Gmail imposes limitations on the number of delegates and delegators each user in a G Suite organization can have. These limits depend on your organization, but in general each user can have up to 25 delegates and up to 10 delegators. Note that a delegate user must be referred to by their primary email address, and not an email alias. Also note that when a new delegate is created, there may be up to a one minute delay before the new delegate is available for use. This method is only available to service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "POST",
-                  "flatPath": "gmail/v1/users/{userId}/settings/delegates",
                   "id": "gmail.users.settings.delegates.create",
                   "parameterOrder": [
                     "userId"
@@ -1648,8 +1608,8 @@
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/delegates",
@@ -1666,7 +1626,6 @@
                 "delete": {
                   "description": "Removes the specified delegate (which can be of any verification status), and revokes any verification that may have been required for using it. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "DELETE",
-                  "flatPath": "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}",
                   "id": "gmail.users.settings.delegates.delete",
                   "parameterOrder": [
                     "userId",
@@ -1676,15 +1635,15 @@
                     "delegateEmail": {
                       "description": "The email address of the user to be removed as a delegate.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}",
@@ -1695,7 +1654,6 @@
                 "get": {
                   "description": "Gets the specified delegate. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "GET",
-                  "flatPath": "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}",
                   "id": "gmail.users.settings.delegates.get",
                   "parameterOrder": [
                     "userId",
@@ -1705,15 +1663,15 @@
                     "delegateEmail": {
                       "description": "The email address of the user whose delegate relationship is to be retrieved.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/delegates/{delegateEmail}",
@@ -1730,7 +1688,6 @@
                 "list": {
                   "description": "Lists the delegates for the specified account. This method is only available to service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "GET",
-                  "flatPath": "gmail/v1/users/{userId}/settings/delegates",
                   "id": "gmail.users.settings.delegates.list",
                   "parameterOrder": [
                     "userId"
@@ -1740,8 +1697,8 @@
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/delegates",
@@ -1762,7 +1719,6 @@
                 "create": {
                   "description": "Creates a filter. Note: you can only create a maximum of 1,000 filters.",
                   "httpMethod": "POST",
-                  "flatPath": "gmail/v1/users/{userId}/settings/filters",
                   "id": "gmail.users.settings.filters.create",
                   "parameterOrder": [
                     "userId"
@@ -1772,8 +1728,8 @@
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/filters",
@@ -1790,7 +1746,6 @@
                 "delete": {
                   "description": "Deletes a filter.",
                   "httpMethod": "DELETE",
-                  "flatPath": "gmail/v1/users/{userId}/settings/filters/{id}",
                   "id": "gmail.users.settings.filters.delete",
                   "parameterOrder": [
                     "userId",
@@ -1800,15 +1755,15 @@
                     "id": {
                       "description": "The ID of the filter to be deleted.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/filters/{id}",
@@ -1819,7 +1774,6 @@
                 "get": {
                   "description": "Gets a filter.",
                   "httpMethod": "GET",
-                  "flatPath": "gmail/v1/users/{userId}/settings/filters/{id}",
                   "id": "gmail.users.settings.filters.get",
                   "parameterOrder": [
                     "userId",
@@ -1829,15 +1783,15 @@
                     "id": {
                       "description": "The ID of the filter to be fetched.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/filters/{id}",
@@ -1854,7 +1808,6 @@
                 "list": {
                   "description": "Lists the message filters of a Gmail user.",
                   "httpMethod": "GET",
-                  "flatPath": "gmail/v1/users/{userId}/settings/filters",
                   "id": "gmail.users.settings.filters.list",
                   "parameterOrder": [
                     "userId"
@@ -1864,8 +1817,8 @@
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/filters",
@@ -1886,7 +1839,6 @@
                 "create": {
                   "description": "Creates a forwarding address. If ownership verification is required, a message will be sent to the recipient and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. This method is only available to service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "POST",
-                  "flatPath": "gmail/v1/users/{userId}/settings/forwardingAddresses",
                   "id": "gmail.users.settings.forwardingAddresses.create",
                   "parameterOrder": [
                     "userId"
@@ -1896,8 +1848,8 @@
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/forwardingAddresses",
@@ -1914,7 +1866,6 @@
                 "delete": {
                   "description": "Deletes the specified forwarding address and revokes any verification that may have been required. This method is only available to service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "DELETE",
-                  "flatPath": "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}",
                   "id": "gmail.users.settings.forwardingAddresses.delete",
                   "parameterOrder": [
                     "userId",
@@ -1924,15 +1875,15 @@
                     "forwardingEmail": {
                       "description": "The forwarding address to be deleted.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}",
@@ -1943,7 +1894,6 @@
                 "get": {
                   "description": "Gets the specified forwarding address.",
                   "httpMethod": "GET",
-                  "flatPath": "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}",
                   "id": "gmail.users.settings.forwardingAddresses.get",
                   "parameterOrder": [
                     "userId",
@@ -1953,15 +1903,15 @@
                     "forwardingEmail": {
                       "description": "The forwarding address to be retrieved.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}",
@@ -1978,7 +1928,6 @@
                 "list": {
                   "description": "Lists the forwarding addresses for the specified account.",
                   "httpMethod": "GET",
-                  "flatPath": "gmail/v1/users/{userId}/settings/forwardingAddresses",
                   "id": "gmail.users.settings.forwardingAddresses.list",
                   "parameterOrder": [
                     "userId"
@@ -1988,8 +1937,8 @@
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/forwardingAddresses",
@@ -2010,7 +1959,6 @@
                 "create": {
                   "description": "Creates a custom \"from\" send-as alias. If an SMTP MSA is specified, Gmail will attempt to connect to the SMTP service to validate the configuration before creating the alias. If ownership verification is required for the alias, a message will be sent to the email address and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. This method is only available to service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "POST",
-                  "flatPath": "gmail/v1/users/{userId}/settings/sendAs",
                   "id": "gmail.users.settings.sendAs.create",
                   "parameterOrder": [
                     "userId"
@@ -2020,8 +1968,8 @@
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/sendAs",
@@ -2038,7 +1986,6 @@
                 "delete": {
                   "description": "Deletes the specified send-as alias. Revokes any verification that may have been required for using it. This method is only available to service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "DELETE",
-                  "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
                   "id": "gmail.users.settings.sendAs.delete",
                   "parameterOrder": [
                     "userId",
@@ -2048,15 +1995,15 @@
                     "sendAsEmail": {
                       "description": "The send-as alias to be deleted.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
@@ -2067,7 +2014,6 @@
                 "get": {
                   "description": "Gets the specified send-as alias. Fails with an HTTP 404 error if the specified address is not a member of the collection.",
                   "httpMethod": "GET",
-                  "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
                   "id": "gmail.users.settings.sendAs.get",
                   "parameterOrder": [
                     "userId",
@@ -2077,15 +2023,15 @@
                     "sendAsEmail": {
                       "description": "The send-as alias to be retrieved.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
@@ -2102,7 +2048,6 @@
                 "list": {
                   "description": "Lists the send-as aliases for the specified account. The result includes the primary send-as address associated with the account as well as any custom \"from\" aliases.",
                   "httpMethod": "GET",
-                  "flatPath": "gmail/v1/users/{userId}/settings/sendAs",
                   "id": "gmail.users.settings.sendAs.list",
                   "parameterOrder": [
                     "userId"
@@ -2112,8 +2057,8 @@
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/sendAs",
@@ -2130,7 +2075,6 @@
                 "patch": {
                   "description": "Patch the specified send-as alias.",
                   "httpMethod": "PATCH",
-                  "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
                   "id": "gmail.users.settings.sendAs.patch",
                   "parameterOrder": [
                     "userId",
@@ -2140,15 +2084,15 @@
                     "sendAsEmail": {
                       "description": "The send-as alias to be updated.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
@@ -2166,7 +2110,6 @@
                 "update": {
                   "description": "Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. Addresses other than the primary address for the account can only be updated by service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "PUT",
-                  "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
                   "id": "gmail.users.settings.sendAs.update",
                   "parameterOrder": [
                     "userId",
@@ -2176,15 +2119,15 @@
                     "sendAsEmail": {
                       "description": "The send-as alias to be updated.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}",
@@ -2202,7 +2145,6 @@
                 "verify": {
                   "description": "Sends a verification email to the specified send-as alias address. The verification status must be `pending`. This method is only available to service account clients that have been delegated domain-wide authority.",
                   "httpMethod": "POST",
-                  "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/verify",
                   "id": "gmail.users.settings.sendAs.verify",
                   "parameterOrder": [
                     "userId",
@@ -2212,15 +2154,15 @@
                     "sendAsEmail": {
                       "description": "The send-as alias to be verified.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "userId": {
                       "default": "me",
                       "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/verify",
@@ -2235,7 +2177,6 @@
                     "delete": {
                       "description": "Deletes the specified S/MIME config for the specified send-as alias.",
                       "httpMethod": "DELETE",
-                      "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}",
                       "id": "gmail.users.settings.sendAs.smimeInfo.delete",
                       "parameterOrder": [
                         "userId",
@@ -2246,21 +2187,21 @@
                         "id": {
                           "description": "The immutable ID for the SmimeInfo.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "sendAsEmail": {
                           "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "userId": {
                           "default": "me",
                           "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}",
@@ -2272,7 +2213,6 @@
                     "get": {
                       "description": "Gets the specified S/MIME config for the specified send-as alias.",
                       "httpMethod": "GET",
-                      "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}",
                       "id": "gmail.users.settings.sendAs.smimeInfo.get",
                       "parameterOrder": [
                         "userId",
@@ -2283,21 +2223,21 @@
                         "id": {
                           "description": "The immutable ID for the SmimeInfo.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "sendAsEmail": {
                           "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "userId": {
                           "default": "me",
                           "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}",
@@ -2315,7 +2255,6 @@
                     "insert": {
                       "description": "Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format is required for the key.",
                       "httpMethod": "POST",
-                      "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo",
                       "id": "gmail.users.settings.sendAs.smimeInfo.insert",
                       "parameterOrder": [
                         "userId",
@@ -2325,15 +2264,15 @@
                         "sendAsEmail": {
                           "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "userId": {
                           "default": "me",
                           "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo",
@@ -2351,7 +2290,6 @@
                     "list": {
                       "description": "Lists S/MIME configs for the specified send-as alias.",
                       "httpMethod": "GET",
-                      "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo",
                       "id": "gmail.users.settings.sendAs.smimeInfo.list",
                       "parameterOrder": [
                         "userId",
@@ -2361,15 +2299,15 @@
                         "sendAsEmail": {
                           "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "userId": {
                           "default": "me",
                           "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo",
@@ -2387,7 +2325,6 @@
                     "setDefault": {
                       "description": "Sets the default S/MIME config for the specified send-as alias.",
                       "httpMethod": "POST",
-                      "flatPath": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault",
                       "id": "gmail.users.settings.sendAs.smimeInfo.setDefault",
                       "parameterOrder": [
                         "userId",
@@ -2398,21 +2335,21 @@
                         "id": {
                           "description": "The immutable ID for the SmimeInfo.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "sendAsEmail": {
                           "description": "The email address that appears in the \"From:\" header for mail sent using this alias.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "userId": {
                           "default": "me",
                           "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault",
@@ -2432,7 +2369,6 @@
             "delete": {
               "description": "Immediately and permanently deletes the specified thread. This operation cannot be undone. Prefer `threads.trash` instead.",
               "httpMethod": "DELETE",
-              "flatPath": "gmail/v1/users/{userId}/threads/{id}",
               "id": "gmail.users.threads.delete",
               "parameterOrder": [
                 "userId",
@@ -2442,15 +2378,15 @@
                 "id": {
                   "description": "ID of the Thread to delete.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/threads/{id}",
@@ -2461,7 +2397,6 @@
             "get": {
               "description": "Gets the specified thread.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/threads/{id}",
               "id": "gmail.users.threads.get",
               "parameterOrder": [
                 "userId",
@@ -2471,37 +2406,37 @@
                 "format": {
                   "default": "full",
                   "description": "The format to return the messages in.",
+                  "enum": [
+                    "full",
+                    "metadata",
+                    "minimal"
+                  ],
                   "enumDescriptions": [
                     "Returns the full email message data with body content parsed in the `payload` field; the `raw` field is not used. Format cannot be used when accessing the api using the gmail.metadata scope.",
                     "Returns only email message IDs, labels, and email headers.",
                     "Returns only email message IDs and labels; does not return the email headers, body, or payload."
                   ],
                   "location": "query",
-                  "enum": [
-                    "full",
-                    "metadata",
-                    "minimal"
-                  ],
                   "type": "string"
                 },
                 "id": {
                   "description": "The ID of the thread to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "metadataHeaders": {
                   "description": "When given and format is METADATA, only include headers specified.",
                   "location": "query",
-                  "type": "string",
-                  "repeated": true
+                  "repeated": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/threads/{id}",
@@ -2521,7 +2456,6 @@
             "list": {
               "description": "Lists the threads in the user's mailbox.",
               "httpMethod": "GET",
-              "flatPath": "gmail/v1/users/{userId}/threads",
               "id": "gmail.users.threads.list",
               "parameterOrder": [
                 "userId"
@@ -2536,8 +2470,8 @@
                 "labelIds": {
                   "description": "Only return threads with labels that match all of the specified label IDs.",
                   "location": "query",
-                  "type": "string",
-                  "repeated": true
+                  "repeated": true,
+                  "type": "string"
                 },
                 "maxResults": {
                   "default": "100",
@@ -2560,8 +2494,8 @@
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/threads",
@@ -2578,7 +2512,6 @@
             "modify": {
               "description": "Modifies the labels applied to the thread. This applies to all messages in the thread.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/threads/{id}/modify",
               "id": "gmail.users.threads.modify",
               "parameterOrder": [
                 "userId",
@@ -2588,15 +2521,15 @@
                 "id": {
                   "description": "The ID of the thread to modify.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/threads/{id}/modify",
@@ -2614,7 +2547,6 @@
             "trash": {
               "description": "Moves the specified thread to the trash.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/threads/{id}/trash",
               "id": "gmail.users.threads.trash",
               "parameterOrder": [
                 "userId",
@@ -2624,15 +2556,15 @@
                 "id": {
                   "description": "The ID of the thread to Trash.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/threads/{id}/trash",
@@ -2647,7 +2579,6 @@
             "untrash": {
               "description": "Removes the specified thread from the trash.",
               "httpMethod": "POST",
-              "flatPath": "gmail/v1/users/{userId}/threads/{id}/untrash",
               "id": "gmail.users.threads.untrash",
               "parameterOrder": [
                 "userId",
@@ -2657,15 +2588,15 @@
                 "id": {
                   "description": "The ID of the thread to remove from Trash.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userId": {
                   "default": "me",
                   "description": "The user's email address. The special value `me` can be used to indicate the authenticated user.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "gmail/v1/users/{userId}/threads/{id}/untrash",
@@ -2691,19 +2622,19 @@
       "properties": {
         "disposition": {
           "description": "The state that a message should be left in after it has been forwarded.",
-          "enumDescriptions": [
-            "Unspecified disposition.",
-            "Leave the message in the `INBOX`.",
-            "Archive the message.",
-            "Move the message to the `TRASH`.",
-            "Leave the message in the `INBOX` and mark it as read."
-          ],
           "enum": [
             "dispositionUnspecified",
             "leaveInInbox",
             "archive",
             "trash",
             "markRead"
+          ],
+          "enumDescriptions": [
+            "Unspecified disposition.",
+            "Leave the message in the `INBOX`.",
+            "Archive the message.",
+            "Move the message to the `TRASH`.",
+            "Leave the message in the `INBOX` and mark it as read."
           ],
           "type": "string"
         },
@@ -2768,19 +2699,19 @@
         },
         "verificationStatus": {
           "description": "Indicates whether this address has been verified and can act as a delegate for the account. Read-only.",
-          "enumDescriptions": [
-            "Unspecified verification status.",
-            "The address can act a delegate for the account.",
-            "A verification request was mailed to the address, and the owner has not yet accepted it.",
-            "A verification request was mailed to the address, and the owner rejected it.",
-            "A verification request was mailed to the address, and it expired without verification."
-          ],
           "enum": [
             "verificationStatusUnspecified",
             "accepted",
             "pending",
             "rejected",
             "expired"
+          ],
+          "enumDescriptions": [
+            "Unspecified verification status.",
+            "The address can act a delegate for the account.",
+            "A verification request was mailed to the address, and the owner has not yet accepted it.",
+            "A verification request was mailed to the address, and the owner rejected it.",
+            "A verification request was mailed to the address, and it expired without verification."
           ],
           "type": "string"
         }
@@ -2801,8 +2732,8 @@
           "type": "string"
         },
         "message": {
-          "description": "The message content of the draft.",
-          "$ref": "Message"
+          "$ref": "Message",
+          "description": "The message content of the draft."
         }
       },
       "type": "object"
@@ -2812,12 +2743,12 @@
       "id": "Filter",
       "properties": {
         "action": {
-          "description": "Action that the filter performs.",
-          "$ref": "FilterAction"
+          "$ref": "FilterAction",
+          "description": "Action that the filter performs."
         },
         "criteria": {
-          "description": "Matching criteria for the filter.",
-          "$ref": "FilterCriteria"
+          "$ref": "FilterCriteria",
+          "description": "Matching criteria for the filter."
         },
         "id": {
           "description": "The server assigned ID of the filter.",
@@ -2882,15 +2813,15 @@
         },
         "sizeComparison": {
           "description": "How the message size in bytes should be in relation to the size field.",
-          "enumDescriptions": [
-            "",
-            "Find messages smaller than the given size.",
-            "Find messages larger than the given size."
-          ],
           "enum": [
             "unspecified",
             "smaller",
             "larger"
+          ],
+          "enumDescriptions": [
+            "",
+            "Find messages smaller than the given size.",
+            "Find messages larger than the given size."
           ],
           "type": "string"
         },
@@ -2915,15 +2846,15 @@
         },
         "verificationStatus": {
           "description": "Indicates whether this address has been verified and is usable for forwarding. Read-only.",
-          "enumDescriptions": [
-            "Unspecified verification status.",
-            "The address is ready to use for forwarding.",
-            "The address is awaiting verification by the owner."
-          ],
           "enum": [
             "verificationStatusUnspecified",
             "accepted",
             "pending"
+          ],
+          "enumDescriptions": [
+            "Unspecified verification status.",
+            "The address is ready to use for forwarding.",
+            "The address is awaiting verification by the owner."
           ],
           "type": "string"
         }
@@ -3041,17 +2972,17 @@
         },
         "expungeBehavior": {
           "description": "The action that will be executed on a message when it is marked as deleted and expunged from the last visible IMAP folder.",
-          "enumDescriptions": [
-            "Unspecified behavior.",
-            "Archive messages marked as deleted.",
-            "Move messages marked as deleted to the trash.",
-            "Immediately and permanently delete messages marked as deleted. The expunged messages cannot be recovered."
-          ],
           "enum": [
             "expungeBehaviorUnspecified",
             "archive",
             "trash",
             "deleteForever"
+          ],
+          "enumDescriptions": [
+            "Unspecified behavior.",
+            "Archive messages marked as deleted.",
+            "Move messages marked as deleted to the trash.",
+            "Immediately and permanently delete messages marked as deleted. The expunged messages cannot be recovered."
           ],
           "type": "string"
         },
@@ -3068,8 +2999,8 @@
       "id": "Label",
       "properties": {
         "color": {
-          "description": "The color to assign to the label. Color is only available for labels that have their `type` set to `user`.",
-          "$ref": "LabelColor"
+          "$ref": "LabelColor",
+          "description": "The color to assign to the label. Color is only available for labels that have their `type` set to `user`."
         },
         "id": {
           "annotations": {
@@ -3088,15 +3019,15 @@
             ]
           },
           "description": "The visibility of the label in the label list in the Gmail web interface.",
-          "enumDescriptions": [
-            "Show the label in the label list.",
-            "Show the label if there are any unread messages with that label.",
-            "Do not show the label in the label list."
-          ],
           "enum": [
             "labelShow",
             "labelShowIfUnread",
             "labelHide"
+          ],
+          "enumDescriptions": [
+            "Show the label in the label list.",
+            "Show the label if there are any unread messages with that label.",
+            "Do not show the label in the label list."
           ],
           "type": "string"
         },
@@ -3108,13 +3039,13 @@
             ]
           },
           "description": "The visibility of messages with this label in the message list in the Gmail web interface.",
-          "enumDescriptions": [
-            "Show the label in the message list.",
-            "Do not show the label in the message list."
-          ],
           "enum": [
             "show",
             "hide"
+          ],
+          "enumDescriptions": [
+            "Show the label in the message list.",
+            "Do not show the label in the message list."
           ],
           "type": "string"
         },
@@ -3150,13 +3081,13 @@
         },
         "type": {
           "description": "The owner type for the label. User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread. System labels are internally created and cannot be added, modified, or deleted. System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed. For example, users can apply and remove the `INBOX` and `UNREAD` labels from messages and threads, but cannot apply or remove the `DRAFTS` or `SENT` labels from messages or threads.",
-          "enumDescriptions": [
-            "Labels created by Gmail.",
-            "Custom labels created by the user or application."
-          ],
           "enum": [
             "system",
             "user"
+          ],
+          "enumDescriptions": [
+            "Labels created by Gmail.",
+            "Custom labels created by the user or application."
           ],
           "type": "string"
         }
@@ -3384,8 +3315,8 @@
           "type": "array"
         },
         "payload": {
-          "description": "The parsed email structure in the message parts.",
-          "$ref": "MessagePart"
+          "$ref": "MessagePart",
+          "description": "The parsed email structure in the message parts."
         },
         "raw": {
           "annotations": {
@@ -3421,8 +3352,8 @@
       "id": "MessagePart",
       "properties": {
         "body": {
-          "description": "The message part body for this part, which may be empty for container MIME message parts.",
-          "$ref": "MessagePartBody"
+          "$ref": "MessagePartBody",
+          "description": "The message part body for this part, which may be empty for container MIME message parts."
         },
         "filename": {
           "description": "The filename of the attachment. Only present if this message part represents an attachment.",
@@ -3534,35 +3465,35 @@
       "properties": {
         "accessWindow": {
           "description": "The range of messages which are accessible via POP.",
-          "enumDescriptions": [
-            "Unspecified range.",
-            "Indicates that no messages are accessible via POP.",
-            "Indicates that unfetched messages received after some past point in time are accessible via POP.",
-            "Indicates that all unfetched messages are accessible via POP."
-          ],
           "enum": [
             "accessWindowUnspecified",
             "disabled",
             "fromNowOn",
             "allMail"
           ],
+          "enumDescriptions": [
+            "Unspecified range.",
+            "Indicates that no messages are accessible via POP.",
+            "Indicates that unfetched messages received after some past point in time are accessible via POP.",
+            "Indicates that all unfetched messages are accessible via POP."
+          ],
           "type": "string"
         },
         "disposition": {
           "description": "The action that will be executed on a message after it has been fetched via POP.",
-          "enumDescriptions": [
-            "Unspecified disposition.",
-            "Leave the message in the `INBOX`.",
-            "Archive the message.",
-            "Move the message to the `TRASH`.",
-            "Leave the message in the `INBOX` and mark it as read."
-          ],
           "enum": [
             "dispositionUnspecified",
             "leaveInInbox",
             "archive",
             "trash",
             "markRead"
+          ],
+          "enumDescriptions": [
+            "Unspecified disposition.",
+            "Leave the message in the `INBOX`.",
+            "Archive the message.",
+            "Move the message to the `TRASH`.",
+            "Leave the message in the `INBOX` and mark it as read."
           ],
           "type": "string"
         }
@@ -3624,8 +3555,8 @@
           "type": "string"
         },
         "smtpMsa": {
-          "description": "An optional SMTP service that will be used as an outbound relay for mail sent using this alias. If this is empty, outbound mail will be sent directly from Gmail's servers to the destination SMTP service. This setting only applies to custom \"from\" aliases.",
-          "$ref": "SmtpMsa"
+          "$ref": "SmtpMsa",
+          "description": "An optional SMTP service that will be used as an outbound relay for mail sent using this alias. If this is empty, outbound mail will be sent directly from Gmail's servers to the destination SMTP service. This setting only applies to custom \"from\" aliases."
         },
         "treatAsAlias": {
           "description": "Whether Gmail should treat this address as an alias for the user's primary email address. This setting only applies to custom \"from\" aliases.",
@@ -3633,15 +3564,15 @@
         },
         "verificationStatus": {
           "description": "Indicates whether this address has been verified for use as a send-as alias. Read-only. This setting only applies to custom \"from\" aliases.",
-          "enumDescriptions": [
-            "Unspecified verification status.",
-            "The address is ready to use as a send-as alias.",
-            "The address is awaiting verification by the owner."
-          ],
           "enum": [
             "verificationStatusUnspecified",
             "accepted",
             "pending"
+          ],
+          "enumDescriptions": [
+            "Unspecified verification status.",
+            "The address is ready to use as a send-as alias.",
+            "The address is awaiting verification by the owner."
           ],
           "type": "string"
         }
@@ -3704,17 +3635,17 @@
         },
         "securityMode": {
           "description": "The protocol that will be used to secure communication with the SMTP service. Required.",
-          "enumDescriptions": [
-            "Unspecified security mode.",
-            "Communication with the remote SMTP service is unsecured. Requires port 25.",
-            "Communication with the remote SMTP service is secured using SSL.",
-            "Communication with the remote SMTP service is secured using STARTTLS."
-          ],
           "enum": [
             "securityModeUnspecified",
             "none",
             "ssl",
             "starttls"
+          ],
+          "enumDescriptions": [
+            "Unspecified security mode.",
+            "Communication with the remote SMTP service is unsecured. Requires port 25.",
+            "Communication with the remote SMTP service is secured using SSL.",
+            "Communication with the remote SMTP service is secured using STARTTLS."
           ],
           "type": "string"
         },
@@ -3799,13 +3730,13 @@
       "properties": {
         "labelFilterAction": {
           "description": "Filtering behavior of labelIds list specified.",
-          "enumDescriptions": [
-            "Only get push notifications for message changes relating to labelIds specified.",
-            "Get push notifications for all message changes except those relating to labelIds specified."
-          ],
           "enum": [
             "include",
             "exclude"
+          ],
+          "enumDescriptions": [
+            "Only get push notifications for message changes relating to labelIds specified.",
+            "Get push notifications for all message changes except those relating to labelIds specified."
           ],
           "type": "string"
         },

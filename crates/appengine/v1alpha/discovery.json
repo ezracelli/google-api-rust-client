@@ -26,22 +26,21 @@
   },
   "id": "appengine:v1alpha",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://appengine.mtls.googleapis.com/",
   "name": "appengine",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -52,17 +51,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -116,7 +115,6 @@
             "create": {
               "description": "Uploads the specified SSL certificate.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/apps/{appsId}/authorizedCertificates",
               "id": "appengine.apps.authorizedCertificates.create",
               "parameterOrder": [
                 "appsId"
@@ -125,8 +123,8 @@
                 "appsId": {
                   "description": "Part of `parent`. Name of the parent Application resource. Example: apps/myapp.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/apps/{appsId}/authorizedCertificates",
@@ -143,7 +141,6 @@
             "delete": {
               "description": "Deletes the specified SSL certificate.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
               "id": "appengine.apps.authorizedCertificates.delete",
               "parameterOrder": [
                 "appsId",
@@ -153,14 +150,14 @@
                 "appsId": {
                   "description": "Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "authorizedCertificatesId": {
                   "description": "Part of `name`. See documentation of `appsId`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
@@ -174,7 +171,6 @@
             "get": {
               "description": "Gets the specified SSL certificate.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
               "id": "appengine.apps.authorizedCertificates.get",
               "parameterOrder": [
                 "appsId",
@@ -184,26 +180,26 @@
                 "appsId": {
                   "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "authorizedCertificatesId": {
                   "description": "Part of `name`. See documentation of `appsId`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "Controls the set of fields returned in the GET response.",
+                  "enum": [
+                    "BASIC_CERTIFICATE",
+                    "FULL_CERTIFICATE"
+                  ],
                   "enumDescriptions": [
                     "Basic certificate information, including applicable domains and expiration date.",
                     "The information from BASIC_CERTIFICATE, plus detailed information on the domain mappings that have this certificate mapped."
                   ],
                   "location": "query",
-                  "enum": [
-                    "BASIC_CERTIFICATE",
-                    "FULL_CERTIFICATE"
-                  ],
                   "type": "string"
                 }
               },
@@ -220,7 +216,6 @@
             "list": {
               "description": "Lists all SSL certificates the user is authorized to administer.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/apps/{appsId}/authorizedCertificates",
               "id": "appengine.apps.authorizedCertificates.list",
               "parameterOrder": [
                 "appsId"
@@ -229,8 +224,8 @@
                 "appsId": {
                   "description": "Part of `parent`. Name of the parent Application resource. Example: apps/myapp.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "Maximum results to return per page.",
@@ -245,15 +240,15 @@
                 },
                 "view": {
                   "description": "Controls the set of fields returned in the LIST response.",
+                  "enum": [
+                    "BASIC_CERTIFICATE",
+                    "FULL_CERTIFICATE"
+                  ],
                   "enumDescriptions": [
                     "Basic certificate information, including applicable domains and expiration date.",
                     "The information from BASIC_CERTIFICATE, plus detailed information on the domain mappings that have this certificate mapped."
                   ],
                   "location": "query",
-                  "enum": [
-                    "BASIC_CERTIFICATE",
-                    "FULL_CERTIFICATE"
-                  ],
                   "type": "string"
                 }
               },
@@ -270,7 +265,6 @@
             "patch": {
               "description": "Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
               "id": "appengine.apps.authorizedCertificates.patch",
               "parameterOrder": [
                 "appsId",
@@ -280,14 +274,14 @@
                 "appsId": {
                   "description": "Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "authorizedCertificatesId": {
                   "description": "Part of `name`. See documentation of `appsId`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields.",
@@ -314,7 +308,6 @@
             "list": {
               "description": "Lists all domains the user is authorized to administer.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/apps/{appsId}/authorizedDomains",
               "id": "appengine.apps.authorizedDomains.list",
               "parameterOrder": [
                 "appsId"
@@ -323,8 +316,8 @@
                 "appsId": {
                   "description": "Part of `parent`. Name of the parent Application resource. Example: apps/myapp.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "Maximum results to return per page.",
@@ -355,7 +348,6 @@
             "create": {
               "description": "Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/apps/{appsId}/domainMappings",
               "id": "appengine.apps.domainMappings.create",
               "parameterOrder": [
                 "appsId"
@@ -364,8 +356,8 @@
                 "appsId": {
                   "description": "Part of `parent`. Name of the parent Application resource. Example: apps/myapp.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "noManagedCertificate": {
                   "description": "Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.",
@@ -374,17 +366,17 @@
                 },
                 "overrideStrategy": {
                   "description": "Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.",
+                  "enum": [
+                    "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY",
+                    "STRICT",
+                    "OVERRIDE"
+                  ],
                   "enumDescriptions": [
                     "Strategy unspecified. Defaults to STRICT.",
                     "Overrides not allowed. If a mapping already exists for the specified domain, the request will return an ALREADY_EXISTS (409).",
                     "Overrides allowed. If a mapping already exists for the specified domain, the request will overwrite it. Note that this might stop another Google product from serving. For example, if the domain is mapped to another App Engine application, that app will no longer serve from that domain."
                   ],
                   "location": "query",
-                  "enum": [
-                    "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY",
-                    "STRICT",
-                    "OVERRIDE"
-                  ],
                   "type": "string"
                 }
               },
@@ -402,7 +394,6 @@
             "delete": {
               "description": "Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
               "id": "appengine.apps.domainMappings.delete",
               "parameterOrder": [
                 "appsId",
@@ -412,14 +403,14 @@
                 "appsId": {
                   "description": "Part of `name`. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "domainMappingsId": {
                   "description": "Part of `name`. See documentation of `appsId`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
@@ -433,7 +424,6 @@
             "get": {
               "description": "Gets the specified domain mapping.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
               "id": "appengine.apps.domainMappings.get",
               "parameterOrder": [
                 "appsId",
@@ -443,14 +433,14 @@
                 "appsId": {
                   "description": "Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "domainMappingsId": {
                   "description": "Part of `name`. See documentation of `appsId`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
@@ -466,7 +456,6 @@
             "list": {
               "description": "Lists the domain mappings on an application.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/apps/{appsId}/domainMappings",
               "id": "appengine.apps.domainMappings.list",
               "parameterOrder": [
                 "appsId"
@@ -475,8 +464,8 @@
                 "appsId": {
                   "description": "Part of `parent`. Name of the parent Application resource. Example: apps/myapp.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "Maximum results to return per page.",
@@ -503,7 +492,6 @@
             "patch": {
               "description": "Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
               "id": "appengine.apps.domainMappings.patch",
               "parameterOrder": [
                 "appsId",
@@ -513,14 +501,14 @@
                 "appsId": {
                   "description": "Part of `name`. Name of the resource to update. Example: apps/myapp/domainMappings/example.com.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "domainMappingsId": {
                   "description": "Part of `name`. See documentation of `appsId`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "noManagedCertificate": {
                   "description": "Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask.",
@@ -552,7 +540,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/apps/{appsId}/locations/{locationsId}",
               "id": "appengine.apps.locations.get",
               "parameterOrder": [
                 "appsId",
@@ -562,14 +549,14 @@
                 "appsId": {
                   "description": "Part of `name`. Resource name for the location.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "locationsId": {
                   "description": "Part of `name`. See documentation of `appsId`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/apps/{appsId}/locations/{locationsId}",
@@ -585,7 +572,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/apps/{appsId}/locations",
               "id": "appengine.apps.locations.list",
               "parameterOrder": [
                 "appsId"
@@ -594,8 +580,8 @@
                 "appsId": {
                   "description": "Part of `name`. The resource that owns the locations collection, if applicable.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "filter": {
                   "description": "The standard list filter.",
@@ -631,7 +617,6 @@
             "get": {
               "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/apps/{appsId}/operations/{operationsId}",
               "id": "appengine.apps.operations.get",
               "parameterOrder": [
                 "appsId",
@@ -641,14 +626,14 @@
                 "appsId": {
                   "description": "Part of `name`. The name of the operation resource.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "operationsId": {
                   "description": "Part of `name`. See documentation of `appsId`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/apps/{appsId}/operations/{operationsId}",
@@ -664,7 +649,6 @@
             "list": {
               "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/apps/{appsId}/operations",
               "id": "appengine.apps.operations.list",
               "parameterOrder": [
                 "appsId"
@@ -673,8 +657,8 @@
                 "appsId": {
                   "description": "Part of `name`. The name of the operation's parent resource.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "filter": {
                   "description": "The standard list filter.",
@@ -708,7 +692,7 @@
       }
     }
   },
-  "revision": "20210129",
+  "revision": "20210219",
   "rootUrl": "https://appengine.googleapis.com/",
   "schemas": {
     "AuthorizedCertificate": {
@@ -716,8 +700,8 @@
       "id": "AuthorizedCertificate",
       "properties": {
         "certificateRawData": {
-          "description": "The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.",
-          "$ref": "CertificateRawData"
+          "$ref": "CertificateRawData",
+          "description": "The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority."
         },
         "displayName": {
           "description": "The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.",
@@ -745,8 +729,8 @@
           "type": "string"
         },
         "managedCertificate": {
-          "description": "Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly",
-          "$ref": "ManagedCertificate"
+          "$ref": "ManagedCertificate",
+          "description": "Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly"
         },
         "name": {
           "description": "Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly",
@@ -845,8 +829,8 @@
           "type": "array"
         },
         "sslSettings": {
-          "description": "SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.",
-          "$ref": "SslSettings"
+          "$ref": "SslSettings",
+          "description": "SSL configuration for this domain. If unconfigured, this domain will not serve with SSL."
         }
       },
       "type": "object"
@@ -989,6 +973,11 @@
           "description": "App Engine flexible environment is available in the given location.@OutputOnly",
           "type": "boolean"
         },
+        "searchApiAvailable": {
+          "description": "Output only. Search API (https://cloud.google.com/appengine/docs/standard/python/search) is available in the given location.",
+          "readOnly": true,
+          "type": "boolean"
+        },
         "standardEnvironmentAvailable": {
           "description": "App Engine standard environment is available in the given location.@OutputOnly",
           "type": "boolean"
@@ -1007,16 +996,6 @@
         },
         "status": {
           "description": "Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly",
-          "enumDescriptions": [
-            "",
-            "Certificate was successfully obtained and inserted into the serving system.",
-            "Certificate is under active attempts to acquire or renew.",
-            "Most recent renewal failed due to a system failure and will be retried. System failure is likely transient, and subsequent renewal attempts may succeed. The last successfully provisioned certificate may still be serving.",
-            "Most recent renewal failed due to an invalid DNS setup and will be retried. Renewal attempts will continue to fail until the certificate domain's DNS configuration is fixed. The last successfully provisioned certificate may still be serving.",
-            "All renewal attempts have been exhausted. Most recent renewal failed due to an invalid DNS setup and will not be retried. The last successfully provisioned certificate may still be serving.",
-            "Most recent renewal failed due to an explicit CAA record that does not include one of the in-use CAs (Google CA and Let's Encrypt). Renewals will continue to fail until the CAA is reconfigured. The last successfully provisioned certificate may still be serving.",
-            "Most recent renewal failed due to a CAA retrieval failure. This means that the domain's DNS provider does not properly handle CAA records, failing requests for CAA records when no CAA records are defined. Renewals will continue to fail until the DNS provider is changed or a CAA record is added for the given domain. The last successfully provisioned certificate may still be serving."
-          ],
           "enum": [
             "UNSPECIFIED_STATUS",
             "OK",
@@ -1026,6 +1005,16 @@
             "FAILED_PERMANENTLY_NOT_VISIBLE",
             "FAILED_RETRYING_CAA_FORBIDDEN",
             "FAILED_RETRYING_CAA_CHECKING"
+          ],
+          "enumDescriptions": [
+            "",
+            "Certificate was successfully obtained and inserted into the serving system.",
+            "Certificate is under active attempts to acquire or renew.",
+            "Most recent renewal failed due to a system failure and will be retried. System failure is likely transient, and subsequent renewal attempts may succeed. The last successfully provisioned certificate may still be serving.",
+            "Most recent renewal failed due to an invalid DNS setup and will be retried. Renewal attempts will continue to fail until the certificate domain's DNS configuration is fixed. The last successfully provisioned certificate may still be serving.",
+            "All renewal attempts have been exhausted. Most recent renewal failed due to an invalid DNS setup and will not be retried. The last successfully provisioned certificate may still be serving.",
+            "Most recent renewal failed due to an explicit CAA record that does not include one of the in-use CAs (Google CA and Let's Encrypt). Renewals will continue to fail until the CAA is reconfigured. The last successfully provisioned certificate may still be serving.",
+            "Most recent renewal failed due to a CAA retrieval failure. This means that the domain's DNS provider does not properly handle CAA records, failing requests for CAA records when no CAA records are defined. Renewals will continue to fail until the DNS provider is changed or a CAA record is added for the given domain. The last successfully provisioned certificate may still be serving."
           ],
           "type": "string"
         }
@@ -1041,8 +1030,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1210,15 +1199,15 @@
         },
         "type": {
           "description": "Resource record type. Example: AAAA.",
-          "enumDescriptions": [
-            "An A resource record. Data is an IPv4 address.",
-            "An AAAA resource record. Data is an IPv6 address.",
-            "A CNAME resource record. Data is a domain name to be aliased."
-          ],
           "enum": [
             "A",
             "AAAA",
             "CNAME"
+          ],
+          "enumDescriptions": [
+            "An A resource record. Data is an IPv4 address.",
+            "An AAAA resource record. Data is an IPv6 address.",
+            "A CNAME resource record. Data is a domain name to be aliased."
           ],
           "type": "string"
         }

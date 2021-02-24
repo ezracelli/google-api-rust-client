@@ -6,29 +6,27 @@
   "description": "The Security Token Service exchanges Google or third-party credentials for a short-lived access token to Google Cloud resources.",
   "discoveryVersion": "v1",
   "documentationLink": "http://cloud.google.com/iam/docs/workload-identity-federation",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "sts:v1beta",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://sts.mtls.googleapis.com/",
   "name": "sts",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -39,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -101,7 +99,6 @@
         "token": {
           "description": "Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within a workload identity pool, or it applies a Credential Access Boundary to a Google access token. When you call this method, do not send the `Authorization` HTTP header in the request. This method does not require the `Authorization` header, and using the header can cause the request to fail.",
           "httpMethod": "POST",
-          "flatPath": "v1beta/token",
           "id": "sts.token",
           "parameterOrder": [],
           "parameters": {},
@@ -181,6 +178,6 @@
   },
   "servicePath": "",
   "title": "Security Token Service API",
-  "version_module": true,
-  "version": "v1beta"
+  "version": "v1beta",
+  "version_module": true
 }

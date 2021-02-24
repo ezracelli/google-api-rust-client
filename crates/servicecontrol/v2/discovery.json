@@ -18,29 +18,27 @@
   "description": "Provides admission control and telemetry reporting for services integrated with Service Infrastructure. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/service-control/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "servicecontrol:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://servicecontrol.mtls.googleapis.com/",
   "name": "servicecontrol",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -113,7 +111,6 @@
         "check": {
           "description": "Private Preview. This feature is only available for approved services. This method provides admission control for services that are integrated with [Service Infrastructure](/service-infrastructure). It checks whether an operation should be allowed based on the service configuration and relevant policies. It must be called before the operation is executed. For more information, see [Admission Control](/service-infrastructure/docs/admission-control). NOTE: The admission control has an expected policy propagation delay of 60s. The caller **must** not depend on the most recent policy changes. NOTE: The admission control has a hard limit of 1 referenced resources per call. If an operation refers to more than 1 resources, the caller must call the Check method multiple times. This method requires the `servicemanagement.services.check` permission on the specified service. For more information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control).",
           "httpMethod": "POST",
-          "flatPath": "v2/services/{serviceName}:check",
           "id": "servicecontrol.services.check",
           "parameterOrder": [
             "serviceName"
@@ -122,8 +119,8 @@
             "serviceName": {
               "description": "The service name as specified in its service configuration. For example, `\"pubsub.googleapis.com\"`. See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service) for the definition of a service name.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/services/{serviceName}:check",
@@ -141,7 +138,6 @@
         "report": {
           "description": "Private Preview. This feature is only available for approved services. This method provides telemetry reporting for services that are integrated with [Service Infrastructure](/service-infrastructure). It reports a list of operations that have occurred on a service. It must be called after the operations have been executed. For more information, see [Telemetry Reporting](/service-infrastructure/docs/telemetry-reporting). NOTE: The telemetry reporting has a hard limit of 1000 operations and 1MB per Report call. It is recommended to have no more than 100 operations per call. This method requires the `servicemanagement.services.report` permission on the specified service. For more information, see [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control).",
           "httpMethod": "POST",
-          "flatPath": "v2/services/{serviceName}:report",
           "id": "servicecontrol.services.report",
           "parameterOrder": [
             "serviceName"
@@ -150,8 +146,8 @@
             "serviceName": {
               "description": "The service name as specified in its service configuration. For example, `\"pubsub.googleapis.com\"`. See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service) for the definition of a service name.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/services/{serviceName}:report",
@@ -200,12 +196,12 @@
       "id": "AttributeContext",
       "properties": {
         "api": {
-          "description": "Represents an API operation that is involved to a network activity.",
-          "$ref": "Api"
+          "$ref": "Api",
+          "description": "Represents an API operation that is involved to a network activity."
         },
         "destination": {
-          "description": "The destination of a network activity, such as accepting a TCP connection. In a multi hop network activity, the destination represents the receiver of the last hop.",
-          "$ref": "Peer"
+          "$ref": "Peer",
+          "description": "The destination of a network activity, such as accepting a TCP connection. In a multi hop network activity, the destination represents the receiver of the last hop."
         },
         "extensions": {
           "description": "Supports extensions for advanced use cases, such as logs and metrics.",
@@ -219,24 +215,24 @@
           "type": "array"
         },
         "origin": {
-          "description": "The origin of a network activity. In a multi hop network activity, the origin represents the sender of the first hop. For the first hop, the `source` and the `origin` must have the same content.",
-          "$ref": "Peer"
+          "$ref": "Peer",
+          "description": "The origin of a network activity. In a multi hop network activity, the origin represents the sender of the first hop. For the first hop, the `source` and the `origin` must have the same content."
         },
         "request": {
-          "description": "Represents a network request, such as an HTTP request.",
-          "$ref": "Request"
+          "$ref": "Request",
+          "description": "Represents a network request, such as an HTTP request."
         },
         "resource": {
-          "description": "Represents a target resource that is involved with a network activity. If multiple resources are involved with an activity, this must be the primary one.",
-          "$ref": "Resource"
+          "$ref": "Resource",
+          "description": "Represents a target resource that is involved with a network activity. If multiple resources are involved with an activity, this must be the primary one."
         },
         "response": {
-          "description": "Represents a network response, such as an HTTP response.",
-          "$ref": "Response"
+          "$ref": "Response",
+          "description": "Represents a network response, such as an HTTP response."
         },
         "source": {
-          "description": "The source of a network activity, such as starting a TCP connection. In a multi hop network activity, the source represents the sender of the last hop.",
-          "$ref": "Peer"
+          "$ref": "Peer",
+          "description": "The source of a network activity, such as starting a TCP connection. In a multi hop network activity, the source represents the sender of the last hop."
         }
       },
       "type": "object"
@@ -246,8 +242,8 @@
       "id": "AuditLog",
       "properties": {
         "authenticationInfo": {
-          "description": "Authentication information.",
-          "$ref": "AuthenticationInfo"
+          "$ref": "AuthenticationInfo",
+          "description": "Authentication information."
         },
         "authorizationInfo": {
           "description": "Authorization information. If there are multiple resources or permissions involved, then there is one AuthorizationInfo element for each {resource, permission} tuple.",
@@ -282,12 +278,12 @@
           "type": "object"
         },
         "requestMetadata": {
-          "description": "Metadata about the operation.",
-          "$ref": "RequestMetadata"
+          "$ref": "RequestMetadata",
+          "description": "Metadata about the operation."
         },
         "resourceLocation": {
-          "description": "The resource location information.",
-          "$ref": "ResourceLocation"
+          "$ref": "ResourceLocation",
+          "description": "The resource location information."
         },
         "resourceName": {
           "description": "The resource or collection that is the target of the operation. The name is a scheme-less URI, not including the API service name. For example: \"projects/PROJECT_ID/zones/us-central1-a/instances\" \"projects/PROJECT_ID/datasets/DATASET_ID\"",
@@ -322,8 +318,8 @@
           "type": "string"
         },
         "status": {
-          "description": "The status of the overall operation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The status of the overall operation."
         }
       },
       "type": "object"
@@ -420,8 +416,8 @@
           "type": "string"
         },
         "resourceAttributes": {
-          "description": "Resource attributes used in IAM condition evaluation. This field contains resource attributes like resource type and resource name. To get the whole view of the attributes used in IAM condition evaluation, the user must also look into `AuditLog.request_metadata.request_attributes`.",
-          "$ref": "Resource"
+          "$ref": "Resource",
+          "description": "Resource attributes used in IAM condition evaluation. This field contains resource attributes like resource type and resource name. To get the whole view of the attributes used in IAM condition evaluation, the user must also look into `AuditLog.request_metadata.request_attributes`."
         }
       },
       "type": "object"
@@ -431,8 +427,8 @@
       "id": "CheckRequest",
       "properties": {
         "attributes": {
-          "description": "Describes attributes about the operation being executed by the service.",
-          "$ref": "AttributeContext"
+          "$ref": "AttributeContext",
+          "description": "Describes attributes about the operation being executed by the service."
         },
         "flags": {
           "description": "Optional. Contains a comma-separated list of flags.",
@@ -464,8 +460,8 @@
           "type": "object"
         },
         "status": {
-          "description": "An 'OK' status allows the operation. Any other status indicates a denial; [google.rpc.Status.details]() would contain additional details about the denial.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "An 'OK' status allows the operation. Any other status indicates a denial; [google.rpc.Status.details]() would contain additional details about the denial."
         }
       },
       "type": "object"
@@ -549,8 +545,8 @@
       "id": "Request",
       "properties": {
         "auth": {
-          "description": "The request authentication. May be absent for unauthenticated requests. Derived from the HTTP request `Authorization` header or equivalent.",
-          "$ref": "Auth"
+          "$ref": "Auth",
+          "description": "The request authentication. May be absent for unauthenticated requests. Derived from the HTTP request `Authorization` header or equivalent."
         },
         "headers": {
           "additionalProperties": {
@@ -621,12 +617,12 @@
           "type": "string"
         },
         "destinationAttributes": {
-          "description": "The destination of a network activity, such as accepting a TCP connection. In a multi hop network activity, the destination represents the receiver of the last hop. Only two fields are used in this message, Peer.port and Peer.ip. These fields are optionally populated by those services utilizing the IAM condition feature.",
-          "$ref": "Peer"
+          "$ref": "Peer",
+          "description": "The destination of a network activity, such as accepting a TCP connection. In a multi hop network activity, the destination represents the receiver of the last hop. Only two fields are used in this message, Peer.port and Peer.ip. These fields are optionally populated by those services utilizing the IAM condition feature."
         },
         "requestAttributes": {
-          "description": "Request attributes used in IAM condition evaluation. This field contains request attributes like request time and access levels associated with the request. To get the whole view of the attributes used in IAM condition evaluation, the user must also look into `AuditLog.authentication_info.resource_attributes`.",
-          "$ref": "Request"
+          "$ref": "Request",
+          "description": "Request attributes used in IAM condition evaluation. This field contains request attributes like request time and access levels associated with the request. To get the whole view of the attributes used in IAM condition evaluation, the user must also look into `AuditLog.authentication_info.resource_attributes`."
         }
       },
       "type": "object"
@@ -774,16 +770,16 @@
       "id": "ServiceAccountDelegationInfo",
       "properties": {
         "firstPartyPrincipal": {
-          "description": "First party (Google) identity as the real authority.",
-          "$ref": "FirstPartyPrincipal"
+          "$ref": "FirstPartyPrincipal",
+          "description": "First party (Google) identity as the real authority."
         },
         "principalSubject": {
           "description": "A string representing the principal_subject associated with the identity. See go/3pical for more info on how principal_subject is formatted.",
           "type": "string"
         },
         "thirdPartyPrincipal": {
-          "description": "Third party identity as the real authority.",
-          "$ref": "ThirdPartyPrincipal"
+          "$ref": "ThirdPartyPrincipal",
+          "description": "Third party identity as the real authority."
         }
       },
       "type": "object"
@@ -844,6 +840,6 @@
   },
   "servicePath": "",
   "title": "Service Control API",
-  "version_module": true,
-  "version": "v2"
+  "version": "v2",
+  "version_module": true
 }

@@ -15,29 +15,27 @@
   "description": "An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/container-analysis/api/reference/rest/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "containeranalysis:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://containeranalysis.mtls.googleapis.com/",
   "name": "containeranalysis",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "batchCreate": {
               "description": "Creates new notes in batch.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/notes:batchCreate",
               "id": "containeranalysis.projects.notes.batchCreate",
               "parameterOrder": [
                 "parent"
@@ -122,8 +119,8 @@
                   "description": "Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/notes:batchCreate",
@@ -140,7 +137,6 @@
             "create": {
               "description": "Creates a new note.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/notes",
               "id": "containeranalysis.projects.notes.create",
               "parameterOrder": [
                 "parent"
@@ -155,8 +151,8 @@
                   "description": "Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be created.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/notes",
@@ -173,7 +169,6 @@
             "delete": {
               "description": "Deletes the specified note.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}",
               "id": "containeranalysis.projects.notes.delete",
               "parameterOrder": [
                 "name"
@@ -183,8 +178,8 @@
                   "description": "Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/notes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -198,7 +193,6 @@
             "get": {
               "description": "Gets the specified note.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}",
               "id": "containeranalysis.projects.notes.get",
               "parameterOrder": [
                 "name"
@@ -208,8 +202,8 @@
                   "description": "Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/notes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -223,7 +217,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}:getIamPolicy",
               "id": "containeranalysis.projects.notes.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -233,8 +226,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/notes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+resource}:getIamPolicy",
@@ -251,7 +244,6 @@
             "list": {
               "description": "Lists notes for the specified project.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/notes",
               "id": "containeranalysis.projects.notes.list",
               "parameterOrder": [
                 "parent"
@@ -277,8 +269,8 @@
                   "description": "Required. The name of the project to list notes for in the form of `projects/[PROJECT_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/notes",
@@ -292,7 +284,6 @@
             "patch": {
               "description": "Updates the specified note.",
               "httpMethod": "PATCH",
-              "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}",
               "id": "containeranalysis.projects.notes.patch",
               "parameterOrder": [
                 "name"
@@ -302,8 +293,8 @@
                   "description": "Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/notes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "The fields to update.",
@@ -326,7 +317,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}:setIamPolicy",
               "id": "containeranalysis.projects.notes.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -336,8 +326,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/notes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+resource}:setIamPolicy",
@@ -354,7 +344,6 @@
             "testIamPermissions": {
               "description": "Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}:testIamPermissions",
               "id": "containeranalysis.projects.notes.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -364,8 +353,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/notes/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+resource}:testIamPermissions",
@@ -386,7 +375,6 @@
                 "list": {
                   "description": "Lists occurrences referencing the specified note. Provider projects can use this method to get all occurrences across consumer projects referencing the specified note.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/notes/{notesId}/occurrences",
                   "id": "containeranalysis.projects.notes.occurrences.list",
                   "parameterOrder": [
                     "name"
@@ -401,8 +389,8 @@
                       "description": "Required. The name of the note to list occurrences for in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/notes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "Number of occurrences to return in the list.",
@@ -433,7 +421,6 @@
             "batchCreate": {
               "description": "Creates new occurrences in batch.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences:batchCreate",
               "id": "containeranalysis.projects.occurrences.batchCreate",
               "parameterOrder": [
                 "parent"
@@ -443,8 +430,8 @@
                   "description": "Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences are to be created.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/occurrences:batchCreate",
@@ -461,7 +448,6 @@
             "create": {
               "description": "Creates a new occurrence.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences",
               "id": "containeranalysis.projects.occurrences.create",
               "parameterOrder": [
                 "parent"
@@ -471,8 +457,8 @@
                   "description": "Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/occurrences",
@@ -489,7 +475,6 @@
             "delete": {
               "description": "Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}",
               "id": "containeranalysis.projects.occurrences.delete",
               "parameterOrder": [
                 "name"
@@ -499,8 +484,8 @@
                   "description": "Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/occurrences/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -514,7 +499,6 @@
             "get": {
               "description": "Gets the specified occurrence.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}",
               "id": "containeranalysis.projects.occurrences.get",
               "parameterOrder": [
                 "name"
@@ -524,8 +508,8 @@
                   "description": "Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/occurrences/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -539,7 +523,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}:getIamPolicy",
               "id": "containeranalysis.projects.occurrences.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -549,8 +532,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/occurrences/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+resource}:getIamPolicy",
@@ -567,7 +550,6 @@
             "getNotes": {
               "description": "Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}/notes",
               "id": "containeranalysis.projects.occurrences.getNotes",
               "parameterOrder": [
                 "name"
@@ -577,8 +559,8 @@
                   "description": "Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/occurrences/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}/notes",
@@ -592,7 +574,6 @@
             "getVulnerabilitySummary": {
               "description": "Gets a summary of the number and severity of occurrences.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences:vulnerabilitySummary",
               "id": "containeranalysis.projects.occurrences.getVulnerabilitySummary",
               "parameterOrder": [
                 "parent"
@@ -607,8 +588,8 @@
                   "description": "Required. The name of the project to get a vulnerability summary for in the form of `projects/[PROJECT_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/occurrences:vulnerabilitySummary",
@@ -622,7 +603,6 @@
             "list": {
               "description": "Lists occurrences for the specified project.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences",
               "id": "containeranalysis.projects.occurrences.list",
               "parameterOrder": [
                 "parent"
@@ -648,8 +628,8 @@
                   "description": "Required. The name of the project to list occurrences for in the form of `projects/[PROJECT_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/occurrences",
@@ -663,7 +643,6 @@
             "patch": {
               "description": "Updates the specified occurrence.",
               "httpMethod": "PATCH",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}",
               "id": "containeranalysis.projects.occurrences.patch",
               "parameterOrder": [
                 "name"
@@ -673,8 +652,8 @@
                   "description": "Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/occurrences/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "The fields to update.",
@@ -697,7 +676,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}:setIamPolicy",
               "id": "containeranalysis.projects.occurrences.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -707,8 +685,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/occurrences/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+resource}:setIamPolicy",
@@ -725,7 +703,6 @@
             "testIamPermissions": {
               "description": "Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/occurrences/{occurrencesId}:testIamPermissions",
               "id": "containeranalysis.projects.occurrences.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -735,8 +712,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/occurrences/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+resource}:testIamPermissions",
@@ -757,7 +734,6 @@
             "get": {
               "description": "Gets the specified scan configuration.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
               "id": "containeranalysis.projects.scanConfigs.get",
               "parameterOrder": [
                 "name"
@@ -767,8 +743,8 @@
                   "description": "Required. The name of the scan configuration in the form of `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/scanConfigs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -782,7 +758,6 @@
             "list": {
               "description": "Lists scan configurations for the specified project.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/scanConfigs",
               "id": "containeranalysis.projects.scanConfigs.list",
               "parameterOrder": [
                 "parent"
@@ -808,8 +783,8 @@
                   "description": "Required. The name of the project to list scan configurations for in the form of `projects/[PROJECT_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/scanConfigs",
@@ -823,7 +798,6 @@
             "update": {
               "description": "Updates the specified scan configuration.",
               "httpMethod": "PUT",
-              "flatPath": "v1beta1/projects/{projectsId}/scanConfigs/{scanConfigsId}",
               "id": "containeranalysis.projects.scanConfigs.update",
               "parameterOrder": [
                 "name"
@@ -833,8 +807,8 @@
                   "description": "Required. The name of the scan configuration in the form of `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/scanConfigs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -862,17 +836,17 @@
       "properties": {
         "kind": {
           "description": "The alias kind.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Git tag.",
-            "Git branch.",
-            "Used to specify non-standard aliases. For example, if a Git repo has a ref named \"refs/foo/bar\"."
-          ],
           "enum": [
             "KIND_UNSPECIFIED",
             "FIXED",
             "MOVABLE",
             "OTHER"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Git tag.",
+            "Git branch.",
+            "Used to specify non-standard aliases. For example, if a Git repo has a ref named \"refs/foo/bar\"."
           ],
           "type": "string"
         },
@@ -936,8 +910,8 @@
           "$ref": "GenericSignedAttestation"
         },
         "pgpSignedAttestation": {
-          "description": "A PGP signed attestation.",
-          "$ref": "PgpSignedAttestation"
+          "$ref": "PgpSignedAttestation",
+          "description": "A PGP signed attestation."
         }
       },
       "type": "object"
@@ -947,8 +921,8 @@
       "id": "Authority",
       "properties": {
         "hint": {
-          "description": "Hint hints at the purpose of the attestation authority.",
-          "$ref": "Hint"
+          "$ref": "Hint",
+          "description": "Hint hints at the purpose of the attestation authority."
         }
       },
       "type": "object"
@@ -958,8 +932,8 @@
       "id": "Basis",
       "properties": {
         "fingerprint": {
-          "description": "Required. Immutable. The fingerprint of the base image.",
-          "$ref": "Fingerprint"
+          "$ref": "Fingerprint",
+          "description": "Required. Immutable. The fingerprint of the base image."
         },
         "resourceUrl": {
           "description": "Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.",
@@ -1029,8 +1003,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1055,8 +1029,8 @@
           "type": "string"
         },
         "signature": {
-          "description": "Signature of the build in occurrences pointing to this build note containing build details.",
-          "$ref": "BuildSignature"
+          "$ref": "BuildSignature",
+          "description": "Signature of the build in occurrences pointing to this build note containing build details."
         }
       },
       "type": "object"
@@ -1117,8 +1091,8 @@
           "type": "string"
         },
         "sourceProvenance": {
-          "description": "Details of the Source input to the build.",
-          "$ref": "Source"
+          "$ref": "Source",
+          "description": "Details of the Source input to the build."
         },
         "startTime": {
           "description": "Time at which execution of the build was started.",
@@ -1142,15 +1116,15 @@
         },
         "keyType": {
           "description": "The type of the key, either stored in `public_key` or referenced in `key_id`.",
-          "enumDescriptions": [
-            "`KeyType` is not set.",
-            "`PGP ASCII Armored` public key.",
-            "`PKIX PEM` public key."
-          ],
           "enum": [
             "KEY_TYPE_UNSPECIFIED",
             "PGP_ASCII_ARMORED",
             "PKIX_PEM"
+          ],
+          "enumDescriptions": [
+            "`KeyType` is not set.",
+            "`PGP ASCII Armored` public key.",
+            "`PKIX PEM` public key."
           ],
           "type": "string"
         },
@@ -1184,27 +1158,20 @@
       "id": "CVSSv3",
       "properties": {
         "attackComplexity": {
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "ATTACK_COMPLEXITY_UNSPECIFIED",
             "ATTACK_COMPLEXITY_LOW",
             "ATTACK_COMPLEXITY_HIGH"
           ],
-          "type": "string"
-        },
-        "attackVector": {
-          "description": "Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.",
           "enumDescriptions": [
-            "",
-            "",
             "",
             "",
             ""
           ],
+          "type": "string"
+        },
+        "attackVector": {
+          "description": "Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.",
           "enum": [
             "ATTACK_VECTOR_UNSPECIFIED",
             "ATTACK_VECTOR_NETWORK",
@@ -1212,20 +1179,27 @@
             "ATTACK_VECTOR_LOCAL",
             "ATTACK_VECTOR_PHYSICAL"
           ],
-          "type": "string"
-        },
-        "availabilityImpact": {
           "enumDescriptions": [
+            "",
             "",
             "",
             "",
             ""
           ],
+          "type": "string"
+        },
+        "availabilityImpact": {
           "enum": [
             "IMPACT_UNSPECIFIED",
             "IMPACT_HIGH",
             "IMPACT_LOW",
             "IMPACT_NONE"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -1235,17 +1209,17 @@
           "type": "number"
         },
         "confidentialityImpact": {
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "IMPACT_UNSPECIFIED",
             "IMPACT_HIGH",
             "IMPACT_LOW",
             "IMPACT_NONE"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -1258,58 +1232,58 @@
           "type": "number"
         },
         "integrityImpact": {
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "IMPACT_UNSPECIFIED",
             "IMPACT_HIGH",
             "IMPACT_LOW",
             "IMPACT_NONE"
           ],
-          "type": "string"
-        },
-        "privilegesRequired": {
           "enumDescriptions": [
             "",
             "",
             "",
             ""
           ],
+          "type": "string"
+        },
+        "privilegesRequired": {
           "enum": [
             "PRIVILEGES_REQUIRED_UNSPECIFIED",
             "PRIVILEGES_REQUIRED_NONE",
             "PRIVILEGES_REQUIRED_LOW",
             "PRIVILEGES_REQUIRED_HIGH"
           ],
-          "type": "string"
-        },
-        "scope": {
           "enumDescriptions": [
+            "",
             "",
             "",
             ""
           ],
+          "type": "string"
+        },
+        "scope": {
           "enum": [
             "SCOPE_UNSPECIFIED",
             "SCOPE_UNCHANGED",
             "SCOPE_CHANGED"
           ],
-          "type": "string"
-        },
-        "userInteraction": {
           "enumDescriptions": [
             "",
             "",
             ""
           ],
+          "type": "string"
+        },
+        "userInteraction": {
           "enum": [
             "USER_INTERACTION_UNSPECIFIED",
             "USER_INTERACTION_NONE",
             "USER_INTERACTION_REQUIRED"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         }
@@ -1321,12 +1295,12 @@
       "id": "CloudRepoSourceContext",
       "properties": {
         "aliasContext": {
-          "description": "An alias, which may be a branch or tag.",
-          "$ref": "AliasContext"
+          "$ref": "AliasContext",
+          "description": "An alias, which may be a branch or tag."
         },
         "repoId": {
-          "description": "The ID of the repo.",
-          "$ref": "RepoId"
+          "$ref": "RepoId",
+          "description": "The ID of the repo."
         },
         "revisionId": {
           "description": "A revision ID.",
@@ -1408,17 +1382,17 @@
         },
         "platform": {
           "description": "Platform hosting this deployment.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Google Container Engine.",
-            "Google App Engine: Flexible Environment.",
-            "Custom user-defined platform."
-          ],
           "enum": [
             "PLATFORM_UNSPECIFIED",
             "GKE",
             "FLEX",
             "CUSTOM"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Google Container Engine.",
+            "Google App Engine: Flexible Environment.",
+            "Custom user-defined platform."
           ],
           "type": "string"
         },
@@ -1455,8 +1429,8 @@
           "type": "integer"
         },
         "fingerprint": {
-          "description": "Required. The fingerprint of the derived image.",
-          "$ref": "Fingerprint"
+          "$ref": "Fingerprint",
+          "description": "Required. The fingerprint of the derived image."
         },
         "layerInfo": {
           "description": "This contains layer-specific metadata, if populated it has length \"distance\" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.",
@@ -1481,20 +1455,20 @@
           "type": "string"
         },
         "fixedLocation": {
-          "description": "The fix for this specific package version.",
-          "$ref": "VulnerabilityLocation"
+          "$ref": "VulnerabilityLocation",
+          "description": "The fix for this specific package version."
         },
         "isObsolete": {
           "description": "Whether this detail is obsolete. Occurrences are expected not to point to obsolete details.",
           "type": "boolean"
         },
         "maxAffectedVersion": {
-          "description": "The max version of the package in which the vulnerability exists.",
-          "$ref": "Version"
+          "$ref": "Version",
+          "description": "The max version of the package in which the vulnerability exists."
         },
         "minAffectedVersion": {
-          "description": "The min version of the package in which the vulnerability exists.",
-          "$ref": "Version"
+          "$ref": "Version",
+          "description": "The min version of the package in which the vulnerability exists."
         },
         "package": {
           "description": "Required. The name of the package where the vulnerability was found.",
@@ -1525,8 +1499,8 @@
       "id": "Details",
       "properties": {
         "attestation": {
-          "description": "Required. Attestation for the resource.",
-          "$ref": "Attestation"
+          "$ref": "Attestation",
+          "description": "Required. Attestation for the resource."
         }
       },
       "type": "object"
@@ -1537,14 +1511,6 @@
       "properties": {
         "analysisStatus": {
           "description": "The status of discovery for the resource.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Resource is known but no action has been taken yet.",
-            "Resource is being analyzed.",
-            "Analysis has finished successfully.",
-            "Analysis has finished unsuccessfully, the analysis itself is in a bad state.",
-            "The resource is known not to be supported"
-          ],
           "enum": [
             "ANALYSIS_STATUS_UNSPECIFIED",
             "PENDING",
@@ -1553,23 +1519,31 @@
             "FINISHED_FAILED",
             "FINISHED_UNSUPPORTED"
           ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Resource is known but no action has been taken yet.",
+            "Resource is being analyzed.",
+            "Analysis has finished successfully.",
+            "Analysis has finished unsuccessfully, the analysis itself is in a bad state.",
+            "The resource is known not to be supported"
+          ],
           "type": "string"
         },
         "analysisStatusError": {
-          "description": "When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API."
         },
         "continuousAnalysis": {
           "description": "Whether the resource is continuously analyzed.",
-          "enumDescriptions": [
-            "Unknown.",
-            "The resource is continuously analyzed.",
-            "The resource is ignored for continuous analysis."
-          ],
           "enum": [
             "CONTINUOUS_ANALYSIS_UNSPECIFIED",
             "ACTIVE",
             "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "The resource is continuously analyzed.",
+            "The resource is ignored for continuous analysis."
           ],
           "type": "string"
         },
@@ -1587,17 +1561,6 @@
       "properties": {
         "analysisKind": {
           "description": "Required. Immutable. The kind of analysis that is handled by this discovery.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The note and occurrence represent a package vulnerability.",
-            "The note and occurrence assert build provenance.",
-            "This represents an image basis relationship.",
-            "This represents a package installed via a package manager.",
-            "The note and occurrence track deployment events.",
-            "The note and occurrence track the initial discovery status of a resource.",
-            "This represents a logical \"role\" that can attest to artifacts.",
-            "This represents an in-toto link."
-          ],
           "enum": [
             "NOTE_KIND_UNSPECIFIED",
             "VULNERABILITY",
@@ -1608,6 +1571,17 @@
             "DISCOVERY",
             "ATTESTATION",
             "INTOTO"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The note and occurrence represent a package vulnerability.",
+            "The note and occurrence assert build provenance.",
+            "This represents an image basis relationship.",
+            "This represents a package installed via a package manager.",
+            "The note and occurrence track deployment events.",
+            "The note and occurrence track the initial discovery status of a resource.",
+            "This represents a logical \"role\" that can attest to artifacts.",
+            "This represents an in-toto link."
           ],
           "type": "string"
         }
@@ -1620,15 +1594,15 @@
       "properties": {
         "architecture": {
           "description": "The CPU architecture for which packages in this distribution channel were built.",
-          "enumDescriptions": [
-            "Unknown architecture.",
-            "X86 architecture.",
-            "X64 architecture."
-          ],
           "enum": [
             "ARCHITECTURE_UNSPECIFIED",
             "X86",
             "X64"
+          ],
+          "enumDescriptions": [
+            "Unknown architecture.",
+            "X86 architecture.",
+            "X64 architecture."
           ],
           "type": "string"
         },
@@ -1641,8 +1615,8 @@
           "type": "string"
         },
         "latestVersion": {
-          "description": "The latest available version of this package in this distribution channel.",
-          "$ref": "Version"
+          "$ref": "Version",
+          "description": "The latest available version of this package in this distribution channel."
         },
         "maintainer": {
           "description": "A freeform string denoting the maintainer of this package.",
@@ -1743,19 +1717,11 @@
           "type": "string"
         },
         "resource": {
-          "description": "The affected resource.",
-          "$ref": "Resource"
+          "$ref": "Resource",
+          "description": "The affected resource."
         },
         "severity": {
           "description": "The severity for this count. SEVERITY_UNSPECIFIED indicates total across all severities.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Minimal severity.",
-            "Low severity.",
-            "Medium severity.",
-            "High severity.",
-            "Critical severity."
-          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "MINIMAL",
@@ -1763,6 +1729,14 @@
             "MEDIUM",
             "HIGH",
             "CRITICAL"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Minimal severity.",
+            "Low severity.",
+            "Medium severity.",
+            "High severity.",
+            "Critical severity."
           ],
           "type": "string"
         },
@@ -1780,13 +1754,13 @@
       "properties": {
         "contentType": {
           "description": "Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).",
-          "enumDescriptions": [
-            "`ContentType` is not set.",
-            "Atomic format attestation signature. See https://github.com/containers/image/blob/8a5d2f82a6e3263290c8e0276c3e0f64e77723e7/docs/atomic-signature.md The payload extracted in `plaintext` is a JSON blob conforming to the linked schema."
-          ],
           "enum": [
             "CONTENT_TYPE_UNSPECIFIED",
             "SIMPLE_SIGNING_JSON"
+          ],
+          "enumDescriptions": [
+            "`ContentType` is not set.",
+            "Atomic format attestation signature. See https://github.com/containers/image/blob/8a5d2f82a6e3263290c8e0276c3e0f64e77723e7/docs/atomic-signature.md The payload extracted in `plaintext` is a JSON blob conforming to the linked schema."
           ],
           "type": "string"
         },
@@ -1810,8 +1784,8 @@
       "id": "GerritSourceContext",
       "properties": {
         "aliasContext": {
-          "description": "An alias, which may be a branch or tag.",
-          "$ref": "AliasContext"
+          "$ref": "AliasContext",
+          "description": "An alias, which may be a branch or tag."
         },
         "gerritProject": {
           "description": "The full project name within the host. Projects may be nested, so \"project/subproject\" is a valid project name. The \"repo name\" is the hostURI/project.",
@@ -1833,8 +1807,8 @@
       "id": "GetIamPolicyRequest",
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.",
-          "$ref": "GetPolicyOptions"
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`."
         }
       },
       "type": "object"
@@ -1888,8 +1862,8 @@
       "id": "GrafeasV1beta1BuildDetails",
       "properties": {
         "provenance": {
-          "description": "Required. The actual provenance for the build.",
-          "$ref": "BuildProvenance"
+          "$ref": "BuildProvenance",
+          "description": "Required. The actual provenance for the build."
         },
         "provenanceBytes": {
           "description": "Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.",
@@ -1903,8 +1877,8 @@
       "id": "GrafeasV1beta1DeploymentDetails",
       "properties": {
         "deployment": {
-          "description": "Required. Deployment history for the resource.",
-          "$ref": "Deployment"
+          "$ref": "Deployment",
+          "description": "Required. Deployment history for the resource."
         }
       },
       "type": "object"
@@ -1914,8 +1888,8 @@
       "id": "GrafeasV1beta1DiscoveryDetails",
       "properties": {
         "discovered": {
-          "description": "Required. Analysis status for the discovered resource.",
-          "$ref": "Discovered"
+          "$ref": "Discovered",
+          "description": "Required. Analysis status for the discovered resource."
         }
       },
       "type": "object"
@@ -1925,8 +1899,8 @@
       "id": "GrafeasV1beta1ImageDetails",
       "properties": {
         "derivedImage": {
-          "description": "Required. Immutable. The child image derived from the base image.",
-          "$ref": "Derived"
+          "$ref": "Derived",
+          "description": "Required. Immutable. The child image derived from the base image."
         }
       },
       "type": "object"
@@ -1977,8 +1951,8 @@
       "id": "GrafeasV1beta1PackageDetails",
       "properties": {
         "installation": {
-          "description": "Required. Where the package was installed.",
-          "$ref": "Installation"
+          "$ref": "Installation",
+          "description": "Required. Where the package was installed."
         }
       },
       "type": "object"
@@ -1994,14 +1968,6 @@
         },
         "effectiveSeverity": {
           "description": "The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Minimal severity.",
-            "Low severity.",
-            "Medium severity.",
-            "High severity.",
-            "Critical severity."
-          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "MINIMAL",
@@ -2009,6 +1975,14 @@
             "MEDIUM",
             "HIGH",
             "CRITICAL"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Minimal severity.",
+            "Low severity.",
+            "Medium severity.",
+            "High severity.",
+            "Critical severity."
           ],
           "type": "string"
         },
@@ -2032,14 +2006,6 @@
         },
         "severity": {
           "description": "Output only. The note provider assigned Severity of the vulnerability.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Minimal severity.",
-            "Low severity.",
-            "Medium severity.",
-            "High severity.",
-            "Critical severity."
-          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "MINIMAL",
@@ -2047,6 +2013,14 @@
             "MEDIUM",
             "HIGH",
             "CRITICAL"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Minimal severity.",
+            "Low severity.",
+            "Medium severity.",
+            "High severity.",
+            "Critical severity."
           ],
           "type": "string"
         },
@@ -2067,13 +2041,13 @@
       "properties": {
         "type": {
           "description": "Required. The type of hash that was performed.",
-          "enumDescriptions": [
-            "Unknown.",
-            "A SHA-256 hash."
-          ],
           "enum": [
             "HASH_TYPE_UNSPECIFIED",
             "SHA256"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "A SHA-256 hash."
           ],
           "type": "string"
         },
@@ -2181,26 +2155,6 @@
         },
         "directive": {
           "description": "Required. The recovered Dockerfile directive used to construct this layer.",
-          "enumDescriptions": [
-            "Default value for unsupported/missing directive.",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/",
-            "https://docs.docker.com/engine/reference/builder/"
-          ],
           "enum": [
             "DIRECTIVE_UNSPECIFIED",
             "MAINTAINER",
@@ -2221,6 +2175,26 @@
             "HEALTHCHECK",
             "SHELL"
           ],
+          "enumDescriptions": [
+            "Default value for unsupported/missing directive.",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/",
+            "https://docs.docker.com/engine/reference/builder/"
+          ],
           "type": "string"
         }
       },
@@ -2231,8 +2205,8 @@
       "id": "Link",
       "properties": {
         "byproducts": {
-          "description": "ByProducts are data generated as part of a software supply chain step, but are not the actual result of the step.",
-          "$ref": "ByProducts"
+          "$ref": "ByProducts",
+          "description": "ByProducts are data generated as part of a software supply chain step, but are not the actual result of the step."
         },
         "command": {
           "description": "This field contains the full command executed for the step. This can also be empty if links are generated for operations that aren't directly mapped to a specific command. Each term in the command is an independent string in the list. An example of a command in the in-toto metadata field is: \"command\": [\"git\", \"clone\", \"https://github.com/in-toto/demo-project.git\"]",
@@ -2242,8 +2216,8 @@
           "type": "array"
         },
         "environment": {
-          "description": "This is a field that can be used to capture information about the environment. It is suggested for this field to contain information that details environment variables, filesystem information, and the present working directory. The recommended structure of this field is: \"environment\": { \"custom_values\": { \"variables\": \"\", \"filesystem\": \"\", \"workdir\": \"\", \"\": \"...\" } }",
-          "$ref": "Environment"
+          "$ref": "Environment",
+          "description": "This is a field that can be used to capture information about the environment. It is suggested for this field to contain information that details environment variables, filesystem information, and the present working directory. The recommended structure of this field is: \"environment\": { \"custom_values\": { \"variables\": \"\", \"filesystem\": \"\", \"workdir\": \"\", \"\": \"...\" } }"
         },
         "materials": {
           "description": "Materials are the supply chain artifacts that go into the step and are used for the operation performed. The key of the map is the path of the artifact and the structure contains the recorded hash information. An example is: \"materials\": [ { \"resource_uri\": \"foo/bar\", \"hashes\": { \"sha256\": \"ebebf...\", : } } ]",
@@ -2347,8 +2321,8 @@
           "type": "string"
         },
         "version": {
-          "description": "The version installed at this location.",
-          "$ref": "Version"
+          "$ref": "Version",
+          "description": "The version installed at this location."
         }
       },
       "type": "object"
@@ -2358,16 +2332,16 @@
       "id": "Note",
       "properties": {
         "attestationAuthority": {
-          "description": "A note describing an attestation role.",
-          "$ref": "Authority"
+          "$ref": "Authority",
+          "description": "A note describing an attestation role."
         },
         "baseImage": {
-          "description": "A note describing a base image.",
-          "$ref": "Basis"
+          "$ref": "Basis",
+          "description": "A note describing a base image."
         },
         "build": {
-          "description": "A note describing build provenance for a verifiable build.",
-          "$ref": "Build"
+          "$ref": "Build",
+          "description": "A note describing build provenance for a verifiable build."
         },
         "createTime": {
           "description": "Output only. The time this note was created. This field can be used as a filter in list requests.",
@@ -2375,12 +2349,12 @@
           "type": "string"
         },
         "deployable": {
-          "description": "A note describing something that can be deployed.",
-          "$ref": "Deployable"
+          "$ref": "Deployable",
+          "description": "A note describing something that can be deployed."
         },
         "discovery": {
-          "description": "A note describing the initial analysis of a resource.",
-          "$ref": "Discovery"
+          "$ref": "Discovery",
+          "description": "A note describing the initial analysis of a resource."
         },
         "expirationTime": {
           "description": "Time of expiration for this note. Empty if note does not expire.",
@@ -2388,22 +2362,11 @@
           "type": "string"
         },
         "intoto": {
-          "description": "A note describing an in-toto link.",
-          "$ref": "InToto"
+          "$ref": "InToto",
+          "description": "A note describing an in-toto link."
         },
         "kind": {
           "description": "Output only. The type of analysis. This field can be used as a filter in list requests.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The note and occurrence represent a package vulnerability.",
-            "The note and occurrence assert build provenance.",
-            "This represents an image basis relationship.",
-            "This represents a package installed via a package manager.",
-            "The note and occurrence track deployment events.",
-            "The note and occurrence track the initial discovery status of a resource.",
-            "This represents a logical \"role\" that can attest to artifacts.",
-            "This represents an in-toto link."
-          ],
           "enum": [
             "NOTE_KIND_UNSPECIFIED",
             "VULNERABILITY",
@@ -2414,6 +2377,17 @@
             "DISCOVERY",
             "ATTESTATION",
             "INTOTO"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The note and occurrence represent a package vulnerability.",
+            "The note and occurrence assert build provenance.",
+            "This represents an image basis relationship.",
+            "This represents a package installed via a package manager.",
+            "The note and occurrence track deployment events.",
+            "The note and occurrence track the initial discovery status of a resource.",
+            "This represents a logical \"role\" that can attest to artifacts.",
+            "This represents an in-toto link."
           ],
           "type": "string"
         },
@@ -2426,8 +2400,8 @@
           "type": "string"
         },
         "package": {
-          "description": "A note describing a package hosted by various package managers.",
-          "$ref": "Package"
+          "$ref": "Package",
+          "description": "A note describing a package hosted by various package managers."
         },
         "relatedNoteNames": {
           "description": "Other notes related to this note.",
@@ -2453,8 +2427,8 @@
           "type": "string"
         },
         "vulnerability": {
-          "description": "A note describing a package vulnerability.",
-          "$ref": "Vulnerability"
+          "$ref": "Vulnerability",
+          "description": "A note describing a package vulnerability."
         }
       },
       "type": "object"
@@ -2464,12 +2438,12 @@
       "id": "Occurrence",
       "properties": {
         "attestation": {
-          "description": "Describes an attestation of an artifact.",
-          "$ref": "Details"
+          "$ref": "Details",
+          "description": "Describes an attestation of an artifact."
         },
         "build": {
-          "description": "Describes a verifiable build.",
-          "$ref": "GrafeasV1beta1BuildDetails"
+          "$ref": "GrafeasV1beta1BuildDetails",
+          "description": "Describes a verifiable build."
         },
         "createTime": {
           "description": "Output only. The time this occurrence was created.",
@@ -2477,38 +2451,27 @@
           "type": "string"
         },
         "deployment": {
-          "description": "Describes the deployment of an artifact on a runtime.",
-          "$ref": "GrafeasV1beta1DeploymentDetails"
+          "$ref": "GrafeasV1beta1DeploymentDetails",
+          "description": "Describes the deployment of an artifact on a runtime."
         },
         "derivedImage": {
-          "description": "Describes how this resource derives from the basis in the associated note.",
-          "$ref": "GrafeasV1beta1ImageDetails"
+          "$ref": "GrafeasV1beta1ImageDetails",
+          "description": "Describes how this resource derives from the basis in the associated note."
         },
         "discovered": {
-          "description": "Describes when a resource was discovered.",
-          "$ref": "GrafeasV1beta1DiscoveryDetails"
+          "$ref": "GrafeasV1beta1DiscoveryDetails",
+          "description": "Describes when a resource was discovered."
         },
         "installation": {
-          "description": "Describes the installation of a package on the linked resource.",
-          "$ref": "GrafeasV1beta1PackageDetails"
+          "$ref": "GrafeasV1beta1PackageDetails",
+          "description": "Describes the installation of a package on the linked resource."
         },
         "intoto": {
-          "description": "Describes a specific in-toto link.",
-          "$ref": "GrafeasV1beta1IntotoDetails"
+          "$ref": "GrafeasV1beta1IntotoDetails",
+          "description": "Describes a specific in-toto link."
         },
         "kind": {
           "description": "Output only. This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The note and occurrence represent a package vulnerability.",
-            "The note and occurrence assert build provenance.",
-            "This represents an image basis relationship.",
-            "This represents a package installed via a package manager.",
-            "The note and occurrence track deployment events.",
-            "The note and occurrence track the initial discovery status of a resource.",
-            "This represents a logical \"role\" that can attest to artifacts.",
-            "This represents an in-toto link."
-          ],
           "enum": [
             "NOTE_KIND_UNSPECIFIED",
             "VULNERABILITY",
@@ -2519,6 +2482,17 @@
             "DISCOVERY",
             "ATTESTATION",
             "INTOTO"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The note and occurrence represent a package vulnerability.",
+            "The note and occurrence assert build provenance.",
+            "This represents an image basis relationship.",
+            "This represents a package installed via a package manager.",
+            "The note and occurrence track deployment events.",
+            "The note and occurrence track the initial discovery status of a resource.",
+            "This represents a logical \"role\" that can attest to artifacts.",
+            "This represents an in-toto link."
           ],
           "type": "string"
         },
@@ -2535,8 +2509,8 @@
           "type": "string"
         },
         "resource": {
-          "description": "Required. Immutable. The resource for which the occurrence applies.",
-          "$ref": "Resource"
+          "$ref": "Resource",
+          "description": "Required. Immutable. The resource for which the occurrence applies."
         },
         "updateTime": {
           "description": "Output only. The time this occurrence was last updated.",
@@ -2544,8 +2518,8 @@
           "type": "string"
         },
         "vulnerability": {
-          "description": "Describes a security vulnerability.",
-          "$ref": "GrafeasV1beta1VulnerabilityDetails"
+          "$ref": "GrafeasV1beta1VulnerabilityDetails",
+          "description": "Describes a security vulnerability."
         }
       },
       "type": "object"
@@ -2573,12 +2547,12 @@
       "id": "PackageIssue",
       "properties": {
         "affectedLocation": {
-          "description": "Required. The location of the vulnerability.",
-          "$ref": "VulnerabilityLocation"
+          "$ref": "VulnerabilityLocation",
+          "description": "Required. The location of the vulnerability."
         },
         "fixedLocation": {
-          "description": "The location of the available fix for vulnerability.",
-          "$ref": "VulnerabilityLocation"
+          "$ref": "VulnerabilityLocation",
+          "description": "The location of the available fix for vulnerability."
         },
         "severityName": {
           "description": "Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.",
@@ -2593,13 +2567,13 @@
       "properties": {
         "contentType": {
           "description": "Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).",
-          "enumDescriptions": [
-            "`ContentType` is not set.",
-            "Atomic format attestation signature. See https://github.com/containers/image/blob/8a5d2f82a6e3263290c8e0276c3e0f64e77723e7/docs/atomic-signature.md The payload extracted from `signature` is a JSON blob conforming to the linked schema."
-          ],
           "enum": [
             "CONTENT_TYPE_UNSPECIFIED",
             "SIMPLE_SIGNING_JSON"
+          ],
+          "enumDescriptions": [
+            "`ContentType` is not set.",
+            "Atomic format attestation signature. See https://github.com/containers/image/blob/8a5d2f82a6e3263290c8e0276c3e0f64e77723e7/docs/atomic-signature.md The payload extracted from `signature` is a JSON blob conforming to the linked schema."
           ],
           "type": "string"
         },
@@ -2673,8 +2647,8 @@
       "id": "RepoId",
       "properties": {
         "projectRepoId": {
-          "description": "A combination of a project ID and a repo name.",
-          "$ref": "ProjectRepoId"
+          "$ref": "ProjectRepoId",
+          "description": "A combination of a project ID and a repo name."
         },
         "uid": {
           "description": "A server-assigned, globally unique identifier.",
@@ -2688,8 +2662,8 @@
       "id": "Resource",
       "properties": {
         "contentHash": {
-          "description": "Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.",
-          "$ref": "Hash"
+          "$ref": "Hash",
+          "description": "Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest."
         },
         "name": {
           "description": "Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - \"Debian\".",
@@ -2736,8 +2710,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         }
       },
       "type": "object"
@@ -2797,8 +2771,8 @@
           "type": "string"
         },
         "context": {
-          "description": "If provided, the source code used for the build came from this location.",
-          "$ref": "SourceContext"
+          "$ref": "SourceContext",
+          "description": "If provided, the source code used for the build came from this location."
         },
         "fileHashes": {
           "additionalProperties": {
@@ -2815,16 +2789,16 @@
       "id": "SourceContext",
       "properties": {
         "cloudRepo": {
-          "description": "A SourceContext referring to a revision in a Google Cloud Source Repo.",
-          "$ref": "CloudRepoSourceContext"
+          "$ref": "CloudRepoSourceContext",
+          "description": "A SourceContext referring to a revision in a Google Cloud Source Repo."
         },
         "gerrit": {
-          "description": "A SourceContext referring to a Gerrit project.",
-          "$ref": "GerritSourceContext"
+          "$ref": "GerritSourceContext",
+          "description": "A SourceContext referring to a Gerrit project."
         },
         "git": {
-          "description": "A SourceContext referring to any third party Git repo (e.g., GitHub).",
-          "$ref": "GitSourceContext"
+          "$ref": "GitSourceContext",
+          "description": "A SourceContext referring to any third party Git repo (e.g., GitHub)."
         },
         "labels": {
           "additionalProperties": {
@@ -2906,17 +2880,17 @@
         },
         "kind": {
           "description": "Required. Distinguishes between sentinel MIN/MAX versions and normal versions.",
-          "enumDescriptions": [
-            "Unknown.",
-            "A standard package version.",
-            "A special version representing negative infinity.",
-            "A special version representing positive infinity."
-          ],
           "enum": [
             "VERSION_KIND_UNSPECIFIED",
             "NORMAL",
             "MINIMUM",
             "MAXIMUM"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "A standard package version.",
+            "A special version representing negative infinity.",
+            "A special version representing positive infinity."
           ],
           "type": "string"
         },
@@ -2941,8 +2915,8 @@
           "type": "number"
         },
         "cvssV3": {
-          "description": "The full description of the CVSSv3.",
-          "$ref": "CVSSv3"
+          "$ref": "CVSSv3",
+          "description": "The full description of the CVSSv3."
         },
         "details": {
           "description": "All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.",
@@ -2953,14 +2927,6 @@
         },
         "severity": {
           "description": "Note provider assigned impact of the vulnerability.",
-          "enumDescriptions": [
-            "Unknown.",
-            "Minimal severity.",
-            "Low severity.",
-            "Medium severity.",
-            "High severity.",
-            "Critical severity."
-          ],
           "enum": [
             "SEVERITY_UNSPECIFIED",
             "MINIMAL",
@@ -2968,6 +2934,14 @@
             "MEDIUM",
             "HIGH",
             "CRITICAL"
+          ],
+          "enumDescriptions": [
+            "Unknown.",
+            "Minimal severity.",
+            "Low severity.",
+            "Medium severity.",
+            "High severity.",
+            "Critical severity."
           ],
           "type": "string"
         },
@@ -2999,8 +2973,8 @@
           "type": "string"
         },
         "version": {
-          "description": "Required. The version of the package being described.",
-          "$ref": "Version"
+          "$ref": "Version",
+          "description": "Required. The version of the package being described."
         }
       },
       "type": "object"
@@ -3047,6 +3021,6 @@
   },
   "servicePath": "",
   "title": "Container Analysis API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

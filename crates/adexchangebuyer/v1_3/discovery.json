@@ -15,7 +15,7 @@
   "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/ad-exchange/buyer-rest",
-  "etag": "\"uWj2hSb4GVjzdDlAnRd2gbM1ZQ8/9i_ZL6tnXEvNCrK17GtvzUwiexA\"",
+  "etag": "\"uWj2hSb4GVjzdDlAnRd2gbM1ZQ8/WtO2Cq1HZMTa4wMHfY3VgPRVSJw\"",
   "icons": {
     "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
     "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
@@ -29,13 +29,13 @@
     "alt": {
       "default": "json",
       "description": "Data format for the response.",
+      "enum": [
+        "json"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json"
       ],
       "location": "query",
-      "enum": [
-        "json"
-      ],
       "type": "string"
     },
     "fields": {
@@ -86,8 +86,8 @@
               "description": "The account id",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "accounts/{id}",
@@ -122,8 +122,8 @@
               "description": "The account id",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "accounts/{id}",
@@ -149,8 +149,8 @@
               "description": "The account id",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "accounts/{id}",
@@ -180,8 +180,8 @@
               "description": "The account id.",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "billinginfo/{accountId}",
@@ -221,15 +221,15 @@
               "description": "The account id to get the budget information for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "billingId": {
               "description": "The billing id to get the budget information for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "billinginfo/{accountId}/{billingId}",
@@ -253,15 +253,15 @@
               "description": "The account id associated with the budget being updated.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "billingId": {
               "description": "The billing id associated with the budget being updated.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "billinginfo/{accountId}/{billingId}",
@@ -288,15 +288,15 @@
               "description": "The account id associated with the budget being updated.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "billingId": {
               "description": "The billing id associated with the budget being updated.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "billinginfo/{accountId}/{billingId}",
@@ -327,14 +327,14 @@
               "description": "The id for the account that will serve this creative.",
               "format": "int32",
               "location": "path",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             },
             "buyerCreativeId": {
               "description": "The buyer-specific id for this creative.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "creatives/{accountId}/{buyerCreativeId}",
@@ -369,14 +369,14 @@
               "description": "When specified, only creatives for the given account ids are returned.",
               "format": "int32",
               "location": "query",
-              "type": "integer",
-              "repeated": true
+              "repeated": true,
+              "type": "integer"
             },
             "buyerCreativeId": {
               "description": "When specified, only creatives for the given buyer creative ids are returned.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "Maximum number of entries returned on one result page. If not set, the default is 100. Optional.",
@@ -393,17 +393,17 @@
             },
             "statusFilter": {
               "description": "When specified, only creatives having the given status are returned.",
+              "enum": [
+                "approved",
+                "disapproved",
+                "not_checked"
+              ],
               "enumDescriptions": [
                 "Creatives which have been approved.",
                 "Creatives which have been disapproved.",
                 "Creatives whose status is not yet checked."
               ],
               "location": "query",
-              "enum": [
-                "approved",
-                "disapproved",
-                "not_checked"
-              ],
               "type": "string"
             }
           },
@@ -431,8 +431,8 @@
               "description": "The direct deal id",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "directdeals/{id}",
@@ -473,14 +473,14 @@
               "description": "The account id to get the reports.",
               "format": "int64",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "endDateTime": {
               "description": "The end time of the report in ISO 8601 timestamp format using UTC.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "Maximum number of entries returned on one result page. If not set, the default is 100. Optional.",
@@ -498,8 +498,8 @@
             "startDateTime": {
               "description": "The start time of the report in ISO 8601 timestamp format using UTC.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "performancereport",
@@ -527,15 +527,15 @@
               "description": "The account id to delete the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "configId": {
               "description": "The specific id of the configuration to delete.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}/{configId}",
@@ -556,15 +556,15 @@
               "description": "The account id to get the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "configId": {
               "description": "The specific id of the configuration to retrieve.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}/{configId}",
@@ -587,8 +587,8 @@
               "description": "The account id to insert the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}",
@@ -614,8 +614,8 @@
               "description": "The account id to get the pretargeting configs for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}",
@@ -639,15 +639,15 @@
               "description": "The account id to update the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "configId": {
               "description": "The specific id of the configuration to update.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}/{configId}",
@@ -674,15 +674,15 @@
               "description": "The account id to update the pretargeting config for.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "configId": {
               "description": "The specific id of the configuration to update.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "pretargetingconfigs/{accountId}/{configId}",
@@ -699,7 +699,7 @@
       }
     }
   },
-  "revision": "20210222",
+  "revision": "20210223",
   "rootUrl": "https://www.googleapis.com/",
   "schemas": {
     "Account": {

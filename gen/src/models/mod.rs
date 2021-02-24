@@ -1,5 +1,6 @@
+#![allow(dead_code)]
+
 pub mod cargo_toml;
-pub mod directory_item;
 pub mod directory_list;
 pub mod json_schema;
 pub mod rest_description;

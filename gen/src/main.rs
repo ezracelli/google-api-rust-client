@@ -210,7 +210,10 @@ async fn main() -> anyhow::Result<()> {
                     })?;
 
                 log::debug!("decoding `DirectoryList`");
-                serde_json::from_slice(&buf)?
+                serde_json::from_slice(&buf).with_context(|| {
+                    log::error!("error decoding `DirectoryList`");
+                    format!("error decoding `DirectoryList`")
+                })?
             };
 
             let all_directory_items = directory_list.items.ok_or_else(|| {
@@ -222,8 +225,11 @@ async fn main() -> anyhow::Result<()> {
                 let mut buf = Vec::new();
 
                 for id in ids {
-                    if let Some(item) = all_directory_items.iter().find(|item| item.id == id) {
-                        buf.push(item);
+                    if let Some(item) = all_directory_items
+                        .iter()
+                        .find(|item| item.id.as_ref().unwrap() == &id)
+                    {
+                        buf.push(item.clone());
                     } else {
                         log::warn!("cannot include {}, not found in `DirectoryList.items`", id);
                     }
@@ -231,28 +237,30 @@ async fn main() -> anyhow::Result<()> {
 
                 buf
             } else {
-                all_directory_items.iter().collect()
+                all_directory_items
             };
 
             if directory_items.len() == 0 {
                 log::warn!("no `DirectoryItem`s in filtered list");
             }
 
-            let results = futures::future::join_all(directory_items.into_iter().map(|item| {
+            let mut handles = Vec::new();
+
+            for item in directory_items {
                 let client = client.clone();
 
                 let rest_description_path = output_dir
-                    .join(change_case::snake_case(&*item.name))
-                    .join(change_case::snake_case(&*item.version))
+                    .join(change_case::snake_case(item.name.as_ref().unwrap()))
+                    .join(change_case::snake_case(item.version.as_ref().unwrap()))
                     .join(&*rest_description_path);
 
                 let crate_name = format!(
                     "{}_{}",
-                    change_case::snake_case(&*item.name),
-                    change_case::snake_case(&*item.version)
+                    change_case::snake_case(item.name.as_ref().unwrap()),
+                    change_case::snake_case(item.version.as_ref().unwrap())
                 );
 
-                async move {
+                handles.push(tokio::spawn(async move {
                     let rest_description_url =
                         item.discovery_rest_url.as_ref().ok_or_else(|| {
                             log::error!("`DirectoryItem.discovery_rest_url` was `None`");
@@ -348,11 +356,21 @@ async fn main() -> anyhow::Result<()> {
                         &*rest_description_path
                     );
                     Ok::<_, anyhow::Error>(())
-                }
-            }))
-            .await;
+                }));
+            }
 
-            results.into_iter().collect::<Result<_, _>>()
+            let mut ret = Ok(());
+            for handle in handles {
+                match handle.await {
+                    Ok(Ok(_)) => (),
+                    Ok(Err(e)) => ret = Err(e),
+                    Err(e) => {
+                        log::error!("{:?}", e);
+                    }
+                }
+            }
+
+            ret
         }
         Cli::Generate {
             directory_list_path,
@@ -380,7 +398,10 @@ async fn main() -> anyhow::Result<()> {
                     })?;
 
                 log::debug!("decoding `DirectoryList`");
-                serde_json::from_slice(&buf)?
+                serde_json::from_slice(&buf).with_context(|| {
+                    log::error!("error decoding `DirectoryList`");
+                    format!("error decoding `DirectoryList`")
+                })?
             };
 
             let all_directory_items = directory_list.items.ok_or_else(|| {
@@ -392,8 +413,11 @@ async fn main() -> anyhow::Result<()> {
                 let mut buf = Vec::new();
 
                 for id in ids {
-                    if let Some(item) = all_directory_items.iter().find(|item| item.id == id) {
-                        buf.push(item);
+                    if let Some(item) = all_directory_items
+                        .iter()
+                        .find(|item| item.id.as_ref().unwrap() == &id)
+                    {
+                        buf.push(item.clone());
                     } else {
                         log::warn!("cannot include {}, not found in `DirectoryList.items`", id);
                     }
@@ -401,17 +425,19 @@ async fn main() -> anyhow::Result<()> {
 
                 buf
             } else {
-                all_directory_items.iter().collect()
+                all_directory_items
             };
 
             if directory_items.len() == 0 {
                 log::warn!("no `DirectoryItem`s in filtered list");
             }
 
-            let results = futures::future::join_all(directory_items.into_iter().map(|item| {
+            let mut handles = Vec::new();
+
+            for item in directory_items {
                 let crate_path_relative =
-                    std::path::PathBuf::from(change_case::snake_case(&*item.name))
-                        .join(change_case::snake_case(&*item.version));
+                    std::path::PathBuf::from(change_case::snake_case(item.name.as_ref().unwrap()))
+                        .join(change_case::snake_case(item.version.as_ref().unwrap()));
                 let crate_path = output_dir.join(&*crate_path_relative);
 
                 let rest_description_path = crate_path.join(&*rest_description_path);
@@ -420,11 +446,11 @@ async fn main() -> anyhow::Result<()> {
 
                 let crate_name = format!(
                     "{}_{}",
-                    change_case::snake_case(&*item.name),
-                    change_case::snake_case(&*item.version)
+                    change_case::snake_case(item.name.as_ref().unwrap()),
+                    change_case::snake_case(item.version.as_ref().unwrap())
                 );
 
-                async move {
+                handles.push(tokio::spawn(async move {
                     let rest_description: RestDescription = {
                         let mut buf = Vec::new();
 
@@ -463,7 +489,10 @@ async fn main() -> anyhow::Result<()> {
                             })?;
 
                         log::debug!("{}: decoding `RestDescription`", &*crate_name);
-                        serde_json::from_slice(&buf)?
+                        serde_json::from_slice(&buf).with_context(|| {
+                            log::error!("{}: error decoding `RestDescription`", &*crate_name);
+                            format!("{}: error decoding `RestDescription`", &*crate_name)
+                        })?
                     };
 
                     let schemas = rest_description.schemas.ok_or_else(|| {
@@ -473,36 +502,100 @@ async fn main() -> anyhow::Result<()> {
 
                     log::debug!("{}: constructing ast", &*crate_name);
 
-                    let mut seen = std::collections::HashSet::with_capacity(schemas.len());
-                    let mut code = Vec::with_capacity(schemas.len());
+                    let code = {
+                        let mut seen = std::collections::HashSet::with_capacity(schemas.len());
+                        let mut models = Vec::with_capacity(schemas.len());
 
-                    for (schema_name, schema) in schemas.iter() {
-                        if seen.insert(change_case::snake_case(&*schema_name)) {
-                            let (_, ty, tokens) =
-                                util::generate_tokens_for_schema(None, schema_name, schema)?;
+                        for (schema_name, schema) in schemas.iter() {
+                            if seen.insert(change_case::snake_case(&*schema_name)) {
+                                let (_, ty, tokens) = crate::util::generate_tokens_for_schema(
+                                    None,
+                                    schema_name,
+                                    schema,
+                                )
+                                .with_context(|| {
+                                    log::error!(
+                                        "{}: error constructing ast for schemas",
+                                        &*crate_name
+                                    );
+                                    anyhow::anyhow!(
+                                        "{}: error constructing ast for schemas",
+                                        &*crate_name
+                                    )
+                                })?;
 
-                            code.push(tokens.unwrap_or_else(|| {
-                                let doc = schema
-                                    .description
-                                    .as_ref()
-                                    .map(|doc| quote::quote!(#[doc = #doc]));
-                                let ident = quote::format_ident!("{}", schema_name);
+                                models.push(tokens.unwrap_or_else(|| {
+                                    let doc = schema
+                                        .description
+                                        .as_ref()
+                                        .map(|doc| quote::quote!(#[doc = #doc]));
+                                    let ident = quote::format_ident!("{}", schema_name);
 
-                                quote::quote! {
-                                    #doc
-                                    pub type #ident = #ty;
-                                }
-                            }));
-                        } else {
-                            log::warn!(
-                                "{}: skipping duplicate schema {}",
-                                &*crate_name,
-                                &*schema_name
-                            );
+                                    quote::quote! {
+                                        #doc
+                                        pub type #ident = #ty;
+                                    }
+                                }));
+                            } else {
+                                log::warn!(
+                                    "{}: skipping duplicate schema {}",
+                                    &*crate_name,
+                                    &*schema_name
+                                );
+                            }
                         }
-                    }
 
-                    let code = quote::quote!(#(#code)*);
+                        let method = {
+                            let method = crate::models::rest_method::RestMethod::builder()
+                                .parameters(rest_description.parameters)
+                                .build()
+                                .unwrap();
+
+                            crate::util::generate_tokens_for_rest_method(&method).with_context(
+                                || {
+                                    log::error!(
+                                        "{}: error constructing ast for parameters",
+                                        &*crate_name
+                                    );
+                                    anyhow::anyhow!(
+                                        "{}: error constructing ast for parameters",
+                                        &*crate_name
+                                    )
+                                },
+                            )?
+                        };
+
+                        let resource = {
+                            let resource = crate::models::rest_resource::RestResource::builder()
+                                .methods(rest_description.methods)
+                                .resources(rest_description.resources)
+                                .build()
+                                .unwrap();
+
+                            crate::util::generate_tokens_for_rest_resource(&resource).with_context(
+                                || {
+                                    log::error!(
+                                        "{}: error constructing ast for resources",
+                                        &*crate_name
+                                    );
+                                    anyhow::anyhow!(
+                                        "{}: error constructing ast for resources",
+                                        &*crate_name
+                                    )
+                                },
+                            )?
+                        };
+
+                        quote::quote!(
+                            #method
+                            #resource
+
+                            pub mod schemas {
+                                #(#models)*
+                            }
+                        )
+                        .to_string()
+                    };
 
                     {
                         let output_dir = lib_rs_path.parent().unwrap();
@@ -535,7 +628,7 @@ async fn main() -> anyhow::Result<()> {
                             log::error!("{}: error opening {:?}", &*crate_name, &*lib_rs_path);
                             format!("{}: error opening {:?}", &*crate_name, &*lib_rs_path)
                         })?
-                        .write_all(code.to_string().as_bytes())
+                        .write_all(code.as_bytes())
                         .await
                         .with_context(|| {
                             log::error!("{}: error writing {:?}", &*crate_name, &*lib_rs_path);
@@ -584,7 +677,7 @@ async fn main() -> anyhow::Result<()> {
                         let crate_version = format!(
                             "{}+{}",
                             env!("CARGO_PKG_VERSION"),
-                            &*rest_description.revision
+                            rest_description.revision.as_ref().unwrap()
                         );
 
                         log::debug!(
@@ -615,6 +708,7 @@ async fn main() -> anyhow::Result<()> {
                                 edition = "2018"
 
                                 [dependencies]
+                                derive_builder = "0.9"
                                 serde = { version = "1", features = ["derive"] }
                                 serde_json = "1"
                             })?)
@@ -636,9 +730,8 @@ async fn main() -> anyhow::Result<()> {
                     }
 
                     Ok::<_, anyhow::Error>(crate_path_relative)
-                }
-            }))
-            .await;
+                }))
+            }
 
             let cargo_toml_path = std::path::PathBuf::from(".").join("Cargo.toml");
             let mut cargo_toml: cargo_toml::Manifest = {
@@ -661,35 +754,34 @@ async fn main() -> anyhow::Result<()> {
                     })?;
 
                 log::debug!("decoding `Cargo.toml`");
-                toml::from_slice(&buf)?
+                toml::from_slice(&buf).with_context(|| {
+                    log::error!("error decoding `Cargo.toml`");
+                    format!("error decoding `Cargo.toml`")
+                })?
             };
 
-            {
-                let workspace = cargo_toml
-                    .workspace
-                    .get_or_insert(cargo_toml::Workspace::default());
-                let members = workspace.members.get_or_insert(Vec::default());
+            let workspace = cargo_toml
+                .workspace
+                .get_or_insert(cargo_toml::Workspace::default());
+            let members = workspace.members.get_or_insert(Vec::default());
 
-                *members = vec![String::from("gen")];
-
-                let output_dir = std::fs::canonicalize(output_dir)?;
-                let output_dir = output_dir.strip_prefix(std::env::current_dir()?)?;
-
-                members.extend(
-                    results
-                        .iter()
-                        .filter(|result| result.is_ok())
-                        .map(|crate_path| {
-                            output_dir
-                                .join(crate_path.as_ref().unwrap())
-                                .to_str()
-                                .unwrap()
-                                .to_owned()
-                        }),
-                );
-
-                members.sort();
+            let mut ret = Ok(());
+            for handle in handles {
+                match handle.await {
+                    Ok(Ok(crate_path)) => {
+                        members.push(output_dir.join(crate_path).to_str().unwrap().to_owned())
+                    }
+                    Ok(Err(e)) => ret = Err(e),
+                    Err(e) => {
+                        log::error!("{:?}", e);
+                    }
+                }
             }
+
+            members.sort();
+
+            drop(members);
+            drop(workspace);
 
             log::debug!("writing `Cargo.toml` to {:?}", &*cargo_toml_path);
             tokio::fs::OpenOptions::new()
@@ -711,9 +803,7 @@ async fn main() -> anyhow::Result<()> {
 
             log::info!("wrote `Cargo.toml` to {:?}", &*cargo_toml_path);
 
-            results.into_iter().collect::<Result<Vec<_>, _>>()?;
-
-            Ok(())
+            ret
         }
     }
 }

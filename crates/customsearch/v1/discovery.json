@@ -12,22 +12,21 @@
   },
   "id": "customsearch:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://customsearch.mtls.googleapis.com/",
   "name": "customsearch",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -38,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -100,7 +99,6 @@
         "list": {
           "description": "Returns metadata about the search performed, metadata about the engine used for the search, and the search results.",
           "httpMethod": "GET",
-          "flatPath": "customsearch/v1",
           "id": "search.cse.list",
           "parameterOrder": [],
           "parameters": {
@@ -171,6 +169,13 @@
             },
             "imgColorType": {
               "description": "Returns black and white, grayscale, transparent, or color images. Acceptable values are: * `\"color\"` * `\"gray\"` * `\"mono\"`: black and white * `\"trans\"`: transparent background",
+              "enum": [
+                "imgColorTypeUndefined",
+                "mono",
+                "gray",
+                "color",
+                "trans"
+              ],
               "enumDescriptions": [
                 "No image color type specified.",
                 "Black and white images only.",
@@ -179,17 +184,25 @@
                 "Images with transparent background"
               ],
               "location": "query",
-              "enum": [
-                "imgColorTypeUndefined",
-                "mono",
-                "gray",
-                "color",
-                "trans"
-              ],
               "type": "string"
             },
             "imgDominantColor": {
               "description": "Returns images of a specific dominant color. Acceptable values are: * `\"black\"` * `\"blue\"` * `\"brown\"` * `\"gray\"` * `\"green\"` * `\"orange\"` * `\"pink\"` * `\"purple\"` * `\"red\"` * `\"teal\"` * `\"white\"` * `\"yellow\"`",
+              "enum": [
+                "imgDominantColorUndefined",
+                "black",
+                "blue",
+                "brown",
+                "gray",
+                "green",
+                "orange",
+                "pink",
+                "purple",
+                "red",
+                "teal",
+                "white",
+                "yellow"
+              ],
               "enumDescriptions": [
                 "No dominant color specified.",
                 "Predominantly black images only.",
@@ -206,25 +219,20 @@
                 "Predominantly yellow images only."
               ],
               "location": "query",
-              "enum": [
-                "imgDominantColorUndefined",
-                "black",
-                "blue",
-                "brown",
-                "gray",
-                "green",
-                "orange",
-                "pink",
-                "purple",
-                "red",
-                "teal",
-                "white",
-                "yellow"
-              ],
               "type": "string"
             },
             "imgSize": {
               "description": "Returns images of a specified size. Acceptable values are: * `\"huge\"` * `\"icon\"` * `\"large\"` * `\"medium\"` * `\"small\"` * `\"xlarge\"` * `\"xxlarge\"`",
+              "enum": [
+                "imgSizeUndefined",
+                "HUGE",
+                "ICON",
+                "LARGE",
+                "MEDIUM",
+                "SMALL",
+                "XLARGE",
+                "XXLARGE"
+              ],
               "enumDescriptions": [
                 "No image size specified.",
                 "Only the largest possible images.",
@@ -236,20 +244,19 @@
                 "Only extremely large images."
               ],
               "location": "query",
-              "enum": [
-                "imgSizeUndefined",
-                "HUGE",
-                "ICON",
-                "LARGE",
-                "MEDIUM",
-                "SMALL",
-                "XLARGE",
-                "XXLARGE"
-              ],
               "type": "string"
             },
             "imgType": {
               "description": "Returns images of a type. Acceptable values are: * `\"clipart\"` * `\"face\"` * `\"lineart\"` * `\"stock\"` * `\"photo\"` * `\"animated\"`",
+              "enum": [
+                "imgTypeUndefined",
+                "clipart",
+                "face",
+                "lineart",
+                "stock",
+                "photo",
+                "animated"
+              ],
               "enumDescriptions": [
                 "No image type specified.",
                 "Clipart-style images only.",
@@ -260,15 +267,6 @@
                 "Animated images only."
               ],
               "location": "query",
-              "enum": [
-                "imgTypeUndefined",
-                "clipart",
-                "face",
-                "lineart",
-                "stock",
-                "photo",
-                "animated"
-              ],
               "type": "string"
             },
             "linkSite": {
@@ -314,6 +312,13 @@
             },
             "safe": {
               "description": "Search safety level. Acceptable values are: * `\"active\"`: Enables SafeSearch filtering. * `\"off\"`: Disables SafeSearch filtering. (default)",
+              "enum": [
+                "safeUndefined",
+                "active",
+                "high",
+                "medium",
+                "off"
+              ],
               "enumDescriptions": [
                 "SafeSearch mode unspecified. (Falls back to engine's configuration.)",
                 "Turn SafeSearch on.",
@@ -322,26 +327,19 @@
                 "Turn SafeSearch off."
               ],
               "location": "query",
-              "enum": [
-                "safeUndefined",
-                "active",
-                "high",
-                "medium",
-                "off"
-              ],
               "type": "string"
             },
             "searchType": {
               "description": "Specifies the search type: `image`. If unspecified, results are limited to webpages. Acceptable values are: * `\"image\"`: custom image search.",
+              "enum": [
+                "searchTypeUndefined",
+                "image"
+              ],
               "enumDescriptions": [
                 "Search type unspecified (defaults to web search).",
                 "Image search."
               ],
               "location": "query",
-              "enum": [
-                "searchTypeUndefined",
-                "image"
-              ],
               "type": "string"
             },
             "siteSearch": {
@@ -351,17 +349,17 @@
             },
             "siteSearchFilter": {
               "description": "Controls whether to include or exclude results from the site named in the `siteSearch` parameter. Acceptable values are: * `\"e\"`: exclude * `\"i\"`: include",
+              "enum": [
+                "siteSearchFilterUndefined",
+                "e",
+                "i"
+              ],
               "enumDescriptions": [
                 "Filter mode unspecified.",
                 "Exclude results from the listed sites.",
                 "Include only results from the listed sites."
               ],
               "location": "query",
-              "enum": [
-                "siteSearchFilterUndefined",
-                "e",
-                "i"
-              ],
               "type": "string"
             },
             "sort": {
@@ -388,7 +386,6 @@
             "list": {
               "description": "Returns metadata about the search performed, metadata about the engine used for the search, and the search results. Uses a small set of url patterns.",
               "httpMethod": "GET",
-              "flatPath": "customsearch/v1/siterestrict",
               "id": "search.cse.siterestrict.list",
               "parameterOrder": [],
               "parameters": {
@@ -459,6 +456,13 @@
                 },
                 "imgColorType": {
                   "description": "Returns black and white, grayscale, transparent, or color images. Acceptable values are: * `\"color\"` * `\"gray\"` * `\"mono\"`: black and white * `\"trans\"`: transparent background",
+                  "enum": [
+                    "imgColorTypeUndefined",
+                    "mono",
+                    "gray",
+                    "color",
+                    "trans"
+                  ],
                   "enumDescriptions": [
                     "No image color type specified.",
                     "Black and white images only.",
@@ -467,17 +471,25 @@
                     "Images with transparent background"
                   ],
                   "location": "query",
-                  "enum": [
-                    "imgColorTypeUndefined",
-                    "mono",
-                    "gray",
-                    "color",
-                    "trans"
-                  ],
                   "type": "string"
                 },
                 "imgDominantColor": {
                   "description": "Returns images of a specific dominant color. Acceptable values are: * `\"black\"` * `\"blue\"` * `\"brown\"` * `\"gray\"` * `\"green\"` * `\"orange\"` * `\"pink\"` * `\"purple\"` * `\"red\"` * `\"teal\"` * `\"white\"` * `\"yellow\"`",
+                  "enum": [
+                    "imgDominantColorUndefined",
+                    "black",
+                    "blue",
+                    "brown",
+                    "gray",
+                    "green",
+                    "orange",
+                    "pink",
+                    "purple",
+                    "red",
+                    "teal",
+                    "white",
+                    "yellow"
+                  ],
                   "enumDescriptions": [
                     "No dominant color specified.",
                     "Predominantly black images only.",
@@ -494,25 +506,20 @@
                     "Predominantly yellow images only."
                   ],
                   "location": "query",
-                  "enum": [
-                    "imgDominantColorUndefined",
-                    "black",
-                    "blue",
-                    "brown",
-                    "gray",
-                    "green",
-                    "orange",
-                    "pink",
-                    "purple",
-                    "red",
-                    "teal",
-                    "white",
-                    "yellow"
-                  ],
                   "type": "string"
                 },
                 "imgSize": {
                   "description": "Returns images of a specified size. Acceptable values are: * `\"huge\"` * `\"icon\"` * `\"large\"` * `\"medium\"` * `\"small\"` * `\"xlarge\"` * `\"xxlarge\"`",
+                  "enum": [
+                    "imgSizeUndefined",
+                    "HUGE",
+                    "ICON",
+                    "LARGE",
+                    "MEDIUM",
+                    "SMALL",
+                    "XLARGE",
+                    "XXLARGE"
+                  ],
                   "enumDescriptions": [
                     "No image size specified.",
                     "Only the largest possible images.",
@@ -524,20 +531,19 @@
                     "Only extremely large images."
                   ],
                   "location": "query",
-                  "enum": [
-                    "imgSizeUndefined",
-                    "HUGE",
-                    "ICON",
-                    "LARGE",
-                    "MEDIUM",
-                    "SMALL",
-                    "XLARGE",
-                    "XXLARGE"
-                  ],
                   "type": "string"
                 },
                 "imgType": {
                   "description": "Returns images of a type. Acceptable values are: * `\"clipart\"` * `\"face\"` * `\"lineart\"` * `\"stock\"` * `\"photo\"` * `\"animated\"`",
+                  "enum": [
+                    "imgTypeUndefined",
+                    "clipart",
+                    "face",
+                    "lineart",
+                    "stock",
+                    "photo",
+                    "animated"
+                  ],
                   "enumDescriptions": [
                     "No image type specified.",
                     "Clipart-style images only.",
@@ -548,15 +554,6 @@
                     "Animated images only."
                   ],
                   "location": "query",
-                  "enum": [
-                    "imgTypeUndefined",
-                    "clipart",
-                    "face",
-                    "lineart",
-                    "stock",
-                    "photo",
-                    "animated"
-                  ],
                   "type": "string"
                 },
                 "linkSite": {
@@ -602,6 +599,13 @@
                 },
                 "safe": {
                   "description": "Search safety level. Acceptable values are: * `\"active\"`: Enables SafeSearch filtering. * `\"off\"`: Disables SafeSearch filtering. (default)",
+                  "enum": [
+                    "safeUndefined",
+                    "active",
+                    "high",
+                    "medium",
+                    "off"
+                  ],
                   "enumDescriptions": [
                     "SafeSearch mode unspecified. (Falls back to engine's configuration.)",
                     "Turn SafeSearch on.",
@@ -610,26 +614,19 @@
                     "Turn SafeSearch off."
                   ],
                   "location": "query",
-                  "enum": [
-                    "safeUndefined",
-                    "active",
-                    "high",
-                    "medium",
-                    "off"
-                  ],
                   "type": "string"
                 },
                 "searchType": {
                   "description": "Specifies the search type: `image`. If unspecified, results are limited to webpages. Acceptable values are: * `\"image\"`: custom image search.",
+                  "enum": [
+                    "searchTypeUndefined",
+                    "image"
+                  ],
                   "enumDescriptions": [
                     "Search type unspecified (defaults to web search).",
                     "Image search."
                   ],
                   "location": "query",
-                  "enum": [
-                    "searchTypeUndefined",
-                    "image"
-                  ],
                   "type": "string"
                 },
                 "siteSearch": {
@@ -639,17 +636,17 @@
                 },
                 "siteSearchFilter": {
                   "description": "Controls whether to include or exclude results from the site named in the `siteSearch` parameter. Acceptable values are: * `\"e\"`: exclude * `\"i\"`: include",
+                  "enum": [
+                    "siteSearchFilterUndefined",
+                    "e",
+                    "i"
+                  ],
                   "enumDescriptions": [
                     "Filter mode unspecified.",
                     "Exclude results from the listed sites.",
                     "Include only results from the listed sites."
                   ],
                   "location": "query",
-                  "enum": [
-                    "siteSearchFilterUndefined",
-                    "e",
-                    "i"
-                  ],
                   "type": "string"
                 },
                 "sort": {
@@ -1437,6 +1434,6 @@
   },
   "servicePath": "",
   "title": "Custom Search API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

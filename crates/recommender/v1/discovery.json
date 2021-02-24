@@ -15,29 +15,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/recommender/docs/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "recommender:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://recommender.mtls.googleapis.com/",
   "name": "recommender",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -116,7 +114,6 @@
                     "get": {
                       "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/billingAccounts/{billingAccountsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}",
                       "id": "recommender.billingAccounts.locations.insightTypes.insights.get",
                       "parameterOrder": [
                         "name"
@@ -126,8 +123,8 @@
                           "description": "Required. Name of the insight.",
                           "location": "path",
                           "pattern": "^billingAccounts/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -141,7 +138,6 @@
                     "list": {
                       "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the specified insight type.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/billingAccounts/{billingAccountsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights",
                       "id": "recommender.billingAccounts.locations.insightTypes.insights.list",
                       "parameterOrder": [
                         "parent"
@@ -167,8 +163,8 @@
                           "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)",
                           "location": "path",
                           "pattern": "^billingAccounts/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/insights",
@@ -182,7 +178,6 @@
                     "markAccepted": {
                       "description": "Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/billingAccounts/{billingAccountsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}:markAccepted",
                       "id": "recommender.billingAccounts.locations.insightTypes.insights.markAccepted",
                       "parameterOrder": [
                         "name"
@@ -192,8 +187,8 @@
                           "description": "Required. Name of the insight.",
                           "location": "path",
                           "pattern": "^billingAccounts/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markAccepted",
@@ -218,7 +213,6 @@
                     "get": {
                       "description": "Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/billingAccounts/{billingAccountsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}",
                       "id": "recommender.billingAccounts.locations.recommenders.recommendations.get",
                       "parameterOrder": [
                         "name"
@@ -228,8 +222,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -243,7 +237,6 @@
                     "list": {
                       "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/billingAccounts/{billingAccountsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations",
                       "id": "recommender.billingAccounts.locations.recommenders.recommendations.list",
                       "parameterOrder": [
                         "parent"
@@ -269,8 +262,8 @@
                           "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
                           "location": "path",
                           "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/recommendations",
@@ -284,7 +277,6 @@
                     "markClaimed": {
                       "description": "Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/billingAccounts/{billingAccountsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markClaimed",
                       "id": "recommender.billingAccounts.locations.recommenders.recommendations.markClaimed",
                       "parameterOrder": [
                         "name"
@@ -294,8 +286,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markClaimed",
@@ -312,7 +304,6 @@
                     "markFailed": {
                       "description": "Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/billingAccounts/{billingAccountsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markFailed",
                       "id": "recommender.billingAccounts.locations.recommenders.recommendations.markFailed",
                       "parameterOrder": [
                         "name"
@@ -322,8 +313,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markFailed",
@@ -340,7 +331,6 @@
                     "markSucceeded": {
                       "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/billingAccounts/{billingAccountsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markSucceeded",
                       "id": "recommender.billingAccounts.locations.recommenders.recommendations.markSucceeded",
                       "parameterOrder": [
                         "name"
@@ -350,8 +340,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markSucceeded",
@@ -384,7 +374,6 @@
                     "get": {
                       "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}",
                       "id": "recommender.folders.locations.insightTypes.insights.get",
                       "parameterOrder": [
                         "name"
@@ -394,8 +383,8 @@
                           "description": "Required. Name of the insight.",
                           "location": "path",
                           "pattern": "^folders/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -409,7 +398,6 @@
                     "list": {
                       "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the specified insight type.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights",
                       "id": "recommender.folders.locations.insightTypes.insights.list",
                       "parameterOrder": [
                         "parent"
@@ -435,8 +423,8 @@
                           "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)",
                           "location": "path",
                           "pattern": "^folders/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/insights",
@@ -450,7 +438,6 @@
                     "markAccepted": {
                       "description": "Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}:markAccepted",
                       "id": "recommender.folders.locations.insightTypes.insights.markAccepted",
                       "parameterOrder": [
                         "name"
@@ -460,8 +447,8 @@
                           "description": "Required. Name of the insight.",
                           "location": "path",
                           "pattern": "^folders/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markAccepted",
@@ -486,7 +473,6 @@
                     "get": {
                       "description": "Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}",
                       "id": "recommender.folders.locations.recommenders.recommendations.get",
                       "parameterOrder": [
                         "name"
@@ -496,8 +482,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -511,7 +497,6 @@
                     "list": {
                       "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations",
                       "id": "recommender.folders.locations.recommenders.recommendations.list",
                       "parameterOrder": [
                         "parent"
@@ -537,8 +522,8 @@
                           "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
                           "location": "path",
                           "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/recommendations",
@@ -552,7 +537,6 @@
                     "markClaimed": {
                       "description": "Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markClaimed",
                       "id": "recommender.folders.locations.recommenders.recommendations.markClaimed",
                       "parameterOrder": [
                         "name"
@@ -562,8 +546,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markClaimed",
@@ -580,7 +564,6 @@
                     "markFailed": {
                       "description": "Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markFailed",
                       "id": "recommender.folders.locations.recommenders.recommendations.markFailed",
                       "parameterOrder": [
                         "name"
@@ -590,8 +573,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markFailed",
@@ -608,7 +591,6 @@
                     "markSucceeded": {
                       "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markSucceeded",
                       "id": "recommender.folders.locations.recommenders.recommendations.markSucceeded",
                       "parameterOrder": [
                         "name"
@@ -618,8 +600,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markSucceeded",
@@ -652,7 +634,6 @@
                     "get": {
                       "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}",
                       "id": "recommender.organizations.locations.insightTypes.insights.get",
                       "parameterOrder": [
                         "name"
@@ -662,8 +643,8 @@
                           "description": "Required. Name of the insight.",
                           "location": "path",
                           "pattern": "^organizations/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -677,7 +658,6 @@
                     "list": {
                       "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the specified insight type.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights",
                       "id": "recommender.organizations.locations.insightTypes.insights.list",
                       "parameterOrder": [
                         "parent"
@@ -703,8 +683,8 @@
                           "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)",
                           "location": "path",
                           "pattern": "^organizations/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/insights",
@@ -718,7 +698,6 @@
                     "markAccepted": {
                       "description": "Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}:markAccepted",
                       "id": "recommender.organizations.locations.insightTypes.insights.markAccepted",
                       "parameterOrder": [
                         "name"
@@ -728,8 +707,8 @@
                           "description": "Required. Name of the insight.",
                           "location": "path",
                           "pattern": "^organizations/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markAccepted",
@@ -754,7 +733,6 @@
                     "get": {
                       "description": "Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}",
                       "id": "recommender.organizations.locations.recommenders.recommendations.get",
                       "parameterOrder": [
                         "name"
@@ -764,8 +742,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -779,7 +757,6 @@
                     "list": {
                       "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations",
                       "id": "recommender.organizations.locations.recommenders.recommendations.list",
                       "parameterOrder": [
                         "parent"
@@ -805,8 +782,8 @@
                           "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
                           "location": "path",
                           "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/recommendations",
@@ -820,7 +797,6 @@
                     "markClaimed": {
                       "description": "Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markClaimed",
                       "id": "recommender.organizations.locations.recommenders.recommendations.markClaimed",
                       "parameterOrder": [
                         "name"
@@ -830,8 +806,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markClaimed",
@@ -848,7 +824,6 @@
                     "markFailed": {
                       "description": "Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markFailed",
                       "id": "recommender.organizations.locations.recommenders.recommendations.markFailed",
                       "parameterOrder": [
                         "name"
@@ -858,8 +833,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markFailed",
@@ -876,7 +851,6 @@
                     "markSucceeded": {
                       "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markSucceeded",
                       "id": "recommender.organizations.locations.recommenders.recommendations.markSucceeded",
                       "parameterOrder": [
                         "name"
@@ -886,8 +860,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markSucceeded",
@@ -920,7 +894,6 @@
                     "get": {
                       "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}",
                       "id": "recommender.projects.locations.insightTypes.insights.get",
                       "parameterOrder": [
                         "name"
@@ -930,8 +903,8 @@
                           "description": "Required. Name of the insight.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -945,7 +918,6 @@
                     "list": {
                       "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the specified insight type.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights",
                       "id": "recommender.projects.locations.insightTypes.insights.list",
                       "parameterOrder": [
                         "parent"
@@ -971,8 +943,8 @@
                           "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/insights",
@@ -986,7 +958,6 @@
                     "markAccepted": {
                       "description": "Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}:markAccepted",
                       "id": "recommender.projects.locations.insightTypes.insights.markAccepted",
                       "parameterOrder": [
                         "name"
@@ -996,8 +967,8 @@
                           "description": "Required. Name of the insight.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markAccepted",
@@ -1022,7 +993,6 @@
                     "get": {
                       "description": "Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}",
                       "id": "recommender.projects.locations.recommenders.recommendations.get",
                       "parameterOrder": [
                         "name"
@@ -1032,8 +1002,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -1047,7 +1017,6 @@
                     "list": {
                       "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations",
                       "id": "recommender.projects.locations.recommenders.recommendations.list",
                       "parameterOrder": [
                         "parent"
@@ -1073,8 +1042,8 @@
                           "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/recommendations",
@@ -1088,7 +1057,6 @@
                     "markClaimed": {
                       "description": "Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markClaimed",
                       "id": "recommender.projects.locations.recommenders.recommendations.markClaimed",
                       "parameterOrder": [
                         "name"
@@ -1098,8 +1066,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markClaimed",
@@ -1116,7 +1084,6 @@
                     "markFailed": {
                       "description": "Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markFailed",
                       "id": "recommender.projects.locations.recommenders.recommendations.markFailed",
                       "parameterOrder": [
                         "name"
@@ -1126,8 +1093,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markFailed",
@@ -1144,7 +1111,6 @@
                     "markSucceeded": {
                       "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/recommenders/{recommendersId}/recommendations/{recommendationsId}:markSucceeded",
                       "id": "recommender.projects.locations.recommenders.recommendations.markSucceeded",
                       "parameterOrder": [
                         "name"
@@ -1154,8 +1120,8 @@
                           "description": "Required. Name of the recommendation.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}:markSucceeded",
@@ -1186,8 +1152,8 @@
       "id": "GoogleCloudRecommenderV1CostProjection",
       "properties": {
         "cost": {
-          "description": "An approximate projection on amount saved or amount incurred. Negative cost units indicate cost savings and positive cost units indicate increase. See google.type.Money documentation for positive/negative units.",
-          "$ref": "GoogleTypeMoney"
+          "$ref": "GoogleTypeMoney",
+          "description": "An approximate projection on amount saved or amount incurred. Negative cost units indicate cost savings and positive cost units indicate increase. See google.type.Money documentation for positive/negative units."
         },
         "duration": {
           "description": "Duration for which this cost applies.",
@@ -1203,13 +1169,6 @@
       "properties": {
         "category": {
           "description": "Category that is being targeted.",
-          "enumDescriptions": [
-            "Default unspecified category. Don't use directly.",
-            "Indicates a potential increase or decrease in cost.",
-            "Indicates a potential increase or decrease in security.",
-            "Indicates a potential increase or decrease in performance.",
-            "Indicates a potential increase or decrease in manageability."
-          ],
           "enum": [
             "CATEGORY_UNSPECIFIED",
             "COST",
@@ -1217,11 +1176,18 @@
             "PERFORMANCE",
             "MANAGEABILITY"
           ],
+          "enumDescriptions": [
+            "Default unspecified category. Don't use directly.",
+            "Indicates a potential increase or decrease in cost.",
+            "Indicates a potential increase or decrease in security.",
+            "Indicates a potential increase or decrease in performance.",
+            "Indicates a potential increase or decrease in manageability."
+          ],
           "type": "string"
         },
         "costProjection": {
-          "description": "Use with CategoryType.COST",
-          "$ref": "GoogleCloudRecommenderV1CostProjection"
+          "$ref": "GoogleCloudRecommenderV1CostProjection",
+          "description": "Use with CategoryType.COST"
         }
       },
       "type": "object"
@@ -1239,19 +1205,19 @@
         },
         "category": {
           "description": "Category being targeted by the insight.",
-          "enumDescriptions": [
-            "Unspecified category.",
-            "The insight is related to cost.",
-            "The insight is related to security.",
-            "The insight is related to performance.",
-            "This insight is related to manageability."
-          ],
           "enum": [
             "CATEGORY_UNSPECIFIED",
             "COST",
             "SECURITY",
             "PERFORMANCE",
             "MANAGEABILITY"
+          ],
+          "enumDescriptions": [
+            "Unspecified category.",
+            "The insight is related to cost.",
+            "The insight is related to security.",
+            "The insight is related to performance.",
+            "This insight is related to manageability."
           ],
           "type": "string"
         },
@@ -1290,8 +1256,8 @@
           "type": "string"
         },
         "stateInfo": {
-          "description": "Information state and metadata.",
-          "$ref": "GoogleCloudRecommenderV1InsightStateInfo"
+          "$ref": "GoogleCloudRecommenderV1InsightStateInfo",
+          "description": "Information state and metadata."
         },
         "targetResources": {
           "description": "Fully qualified resource names that this insight is targeting.",
@@ -1320,17 +1286,17 @@
       "properties": {
         "state": {
           "description": "Insight state.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Insight is active. Content for ACTIVE insights can be updated by Google. ACTIVE insights can be marked DISMISSED OR ACCEPTED.",
-            "Some action has been taken based on this insight. Insights become accepted when a recommendation derived from the insight has been marked CLAIMED, SUCCEEDED, or FAILED. ACTIVE insights can also be marked ACCEPTED explicitly. Content for ACCEPTED insights is immutable. ACCEPTED insights can only be marked ACCEPTED (which may update state metadata).",
-            "Insight is dismissed. Content for DISMISSED insights can be updated by Google. DISMISSED insights can be marked as ACTIVE."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ACTIVE",
             "ACCEPTED",
             "DISMISSED"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Insight is active. Content for ACTIVE insights can be updated by Google. ACTIVE insights can be marked DISMISSED OR ACCEPTED.",
+            "Some action has been taken based on this insight. Insights become accepted when a recommendation derived from the insight has been marked CLAIMED, SUCCEEDED, or FAILED. ACTIVE insights can also be marked ACCEPTED explicitly. Content for ACCEPTED insights is immutable. ACCEPTED insights can only be marked ACCEPTED (which may update state metadata).",
+            "Insight is dismissed. Content for DISMISSED insights can be updated by Google. DISMISSED insights can be marked as ACTIVE."
           ],
           "type": "string"
         },
@@ -1499,8 +1465,8 @@
           "type": "any"
         },
         "valueMatcher": {
-          "description": "Can be set for action 'test' for advanced matching for the value of 'path' field. Either this or `value` will be set for 'test' operation.",
-          "$ref": "GoogleCloudRecommenderV1ValueMatcher"
+          "$ref": "GoogleCloudRecommenderV1ValueMatcher",
+          "description": "Can be set for action 'test' for advanced matching for the value of 'path' field. Either this or `value` will be set for 'test' operation."
         }
       },
       "type": "object"
@@ -1538,8 +1504,8 @@
           "type": "array"
         },
         "content": {
-          "description": "Content of the recommendation describing recommended changes to resources.",
-          "$ref": "GoogleCloudRecommenderV1RecommendationContent"
+          "$ref": "GoogleCloudRecommenderV1RecommendationContent",
+          "description": "Content of the recommendation describing recommended changes to resources."
         },
         "description": {
           "description": "Free-form human readable summary in English. The maximum length is 500 characters.",
@@ -1559,16 +1525,16 @@
           "type": "string"
         },
         "primaryImpact": {
-          "description": "The primary impact that this recommendation can have while trying to optimize for one category.",
-          "$ref": "GoogleCloudRecommenderV1Impact"
+          "$ref": "GoogleCloudRecommenderV1Impact",
+          "description": "The primary impact that this recommendation can have while trying to optimize for one category."
         },
         "recommenderSubtype": {
           "description": "Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype is a function of content and impact, meaning a new subtype might be added when significant changes to `content` or `primary_impact.category` are introduced. See the Recommenders section to see a list of subtypes for a given Recommender. Examples: For recommender = \"google.iam.policy.Recommender\", recommender_subtype can be one of \"REMOVE_ROLE\"/\"REPLACE_ROLE\"",
           "type": "string"
         },
         "stateInfo": {
-          "description": "Information for state. Contains state and metadata.",
-          "$ref": "GoogleCloudRecommenderV1RecommendationStateInfo"
+          "$ref": "GoogleCloudRecommenderV1RecommendationStateInfo",
+          "description": "Information for state. Contains state and metadata."
         }
       },
       "type": "object"
@@ -1604,14 +1570,6 @@
       "properties": {
         "state": {
           "description": "The state of the recommendation, Eg ACTIVE, SUCCEEDED, FAILED.",
-          "enumDescriptions": [
-            "Default state. Don't use directly.",
-            "Recommendation is active and can be applied. Recommendations content can be updated by Google. ACTIVE recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
-            "Recommendation is in claimed state. Recommendations content is immutable and cannot be updated by Google. CLAIMED recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
-            "Recommendation is in succeeded state. Recommendations content is immutable and cannot be updated by Google. SUCCEEDED recommendations can be marked as SUCCEEDED, or FAILED.",
-            "Recommendation is in failed state. Recommendations content is immutable and cannot be updated by Google. FAILED recommendations can be marked as SUCCEEDED, or FAILED.",
-            "Recommendation is in dismissed state. Recommendation content can be updated by Google. DISMISSED recommendations can be marked as ACTIVE."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ACTIVE",
@@ -1619,6 +1577,14 @@
             "SUCCEEDED",
             "FAILED",
             "DISMISSED"
+          ],
+          "enumDescriptions": [
+            "Default state. Don't use directly.",
+            "Recommendation is active and can be applied. Recommendations content can be updated by Google. ACTIVE recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
+            "Recommendation is in claimed state. Recommendations content is immutable and cannot be updated by Google. CLAIMED recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
+            "Recommendation is in succeeded state. Recommendations content is immutable and cannot be updated by Google. SUCCEEDED recommendations can be marked as SUCCEEDED, or FAILED.",
+            "Recommendation is in failed state. Recommendations content is immutable and cannot be updated by Google. FAILED recommendations can be marked as SUCCEEDED, or FAILED.",
+            "Recommendation is in dismissed state. Recommendation content can be updated by Google. DISMISSED recommendations can be marked as ACTIVE."
           ],
           "type": "string"
         },
@@ -1667,6 +1633,6 @@
   },
   "servicePath": "",
   "title": "Recommender API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

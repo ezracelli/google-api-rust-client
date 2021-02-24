@@ -15,29 +15,27 @@
   "description": "The Network Connectivity API will be home to various services which provide information pertaining to network connectivity.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/network-connectivity/docs",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "networkconnectivity:v1alpha1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://networkconnectivity.mtls.googleapis.com/",
   "name": "networkconnectivity",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}",
               "id": "networkconnectivity.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/projects/{projectsId}/locations",
               "id": "networkconnectivity.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -152,8 +148,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -184,7 +180,6 @@
                     "create": {
                       "description": "Creates a new Hub in a given project and location.",
                       "httpMethod": "POST",
-                      "flatPath": "v1alpha1/projects/{projectsId}/locations/global/hubs",
                       "id": "networkconnectivity.projects.locations.global.hubs.create",
                       "parameterOrder": [
                         "parent"
@@ -199,8 +194,8 @@
                           "description": "Required. The parent resource's name of the Hub.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "requestId": {
                           "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -222,7 +217,6 @@
                     "delete": {
                       "description": "Deletes a single Hub.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1alpha1/projects/{projectsId}/locations/global/hubs/{hubsId}",
                       "id": "networkconnectivity.projects.locations.global.hubs.delete",
                       "parameterOrder": [
                         "name"
@@ -232,8 +226,8 @@
                           "description": "Required. The name of the Hub to delete.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/hubs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "requestId": {
                           "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -252,7 +246,6 @@
                     "get": {
                       "description": "Gets details of a single Hub.",
                       "httpMethod": "GET",
-                      "flatPath": "v1alpha1/projects/{projectsId}/locations/global/hubs/{hubsId}",
                       "id": "networkconnectivity.projects.locations.global.hubs.get",
                       "parameterOrder": [
                         "name"
@@ -262,8 +255,8 @@
                           "description": "Required. Name of the Hub resource to get.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/hubs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1alpha1/{+name}",
@@ -277,7 +270,6 @@
                     "getIamPolicy": {
                       "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                       "httpMethod": "GET",
-                      "flatPath": "v1alpha1/projects/{projectsId}/locations/global/hubs/{hubsId}:getIamPolicy",
                       "id": "networkconnectivity.projects.locations.global.hubs.getIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -293,8 +285,8 @@
                           "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/hubs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1alpha1/{+resource}:getIamPolicy",
@@ -308,7 +300,6 @@
                     "list": {
                       "description": "Lists Hubs in a given project and location.",
                       "httpMethod": "GET",
-                      "flatPath": "v1alpha1/projects/{projectsId}/locations/global/hubs",
                       "id": "networkconnectivity.projects.locations.global.hubs.list",
                       "parameterOrder": [
                         "parent"
@@ -339,8 +330,8 @@
                           "description": "Required. The parent resource's name.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1alpha1/{+parent}/hubs",
@@ -354,7 +345,6 @@
                     "patch": {
                       "description": "Updates the parameters of a single Hub.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1alpha1/projects/{projectsId}/locations/global/hubs/{hubsId}",
                       "id": "networkconnectivity.projects.locations.global.hubs.patch",
                       "parameterOrder": [
                         "name"
@@ -364,8 +354,8 @@
                           "description": "Immutable. The name of a Hub resource.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/hubs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "requestId": {
                           "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -393,7 +383,6 @@
                     "setIamPolicy": {
                       "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                       "httpMethod": "POST",
-                      "flatPath": "v1alpha1/projects/{projectsId}/locations/global/hubs/{hubsId}:setIamPolicy",
                       "id": "networkconnectivity.projects.locations.global.hubs.setIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -403,8 +392,8 @@
                           "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/hubs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1alpha1/{+resource}:setIamPolicy",
@@ -421,7 +410,6 @@
                     "testIamPermissions": {
                       "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                       "httpMethod": "POST",
-                      "flatPath": "v1alpha1/projects/{projectsId}/locations/global/hubs/{hubsId}:testIamPermissions",
                       "id": "networkconnectivity.projects.locations.global.hubs.testIamPermissions",
                       "parameterOrder": [
                         "resource"
@@ -431,8 +419,8 @@
                           "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/global/hubs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1alpha1/{+resource}:testIamPermissions",
@@ -455,7 +443,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "networkconnectivity.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -465,8 +452,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+name}:cancel",
@@ -483,7 +470,6 @@
                 "delete": {
                   "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "networkconnectivity.projects.locations.operations.delete",
                   "parameterOrder": [
                     "name"
@@ -493,8 +479,8 @@
                       "description": "The name of the operation resource to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+name}",
@@ -508,7 +494,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "networkconnectivity.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -518,8 +503,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+name}",
@@ -533,7 +518,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations",
                   "id": "networkconnectivity.projects.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -548,8 +532,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -578,7 +562,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/policyBasedRoutes/{policyBasedRoutesId}:getIamPolicy",
                   "id": "networkconnectivity.projects.locations.policyBasedRoutes.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -594,8 +577,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/policyBasedRoutes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+resource}:getIamPolicy",
@@ -609,7 +592,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/policyBasedRoutes/{policyBasedRoutesId}:setIamPolicy",
                   "id": "networkconnectivity.projects.locations.policyBasedRoutes.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -619,8 +601,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/policyBasedRoutes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+resource}:setIamPolicy",
@@ -637,7 +619,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/policyBasedRoutes/{policyBasedRoutesId}:testIamPermissions",
                   "id": "networkconnectivity.projects.locations.policyBasedRoutes.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -647,8 +628,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/policyBasedRoutes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+resource}:testIamPermissions",
@@ -669,7 +650,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/privateRanges/{privateRangesId}:getIamPolicy",
                   "id": "networkconnectivity.projects.locations.privateRanges.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -685,8 +665,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/privateRanges/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+resource}:getIamPolicy",
@@ -700,7 +680,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/privateRanges/{privateRangesId}:setIamPolicy",
                   "id": "networkconnectivity.projects.locations.privateRanges.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -710,8 +689,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/privateRanges/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+resource}:setIamPolicy",
@@ -728,7 +707,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/privateRanges/{privateRangesId}:testIamPermissions",
                   "id": "networkconnectivity.projects.locations.privateRanges.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -738,8 +716,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/privateRanges/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+resource}:testIamPermissions",
@@ -760,7 +738,6 @@
                 "create": {
                   "description": "Creates a new Spoke in a given project and location.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/spokes",
                   "id": "networkconnectivity.projects.locations.spokes.create",
                   "parameterOrder": [
                     "parent"
@@ -770,8 +747,8 @@
                       "description": "Required. The parent's resource name of the Spoke.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -798,7 +775,6 @@
                 "delete": {
                   "description": "Deletes a single Spoke.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}",
                   "id": "networkconnectivity.projects.locations.spokes.delete",
                   "parameterOrder": [
                     "name"
@@ -808,8 +784,8 @@
                       "description": "Required. The name of the Spoke to delete.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -828,7 +804,6 @@
                 "get": {
                   "description": "Gets details of a single Spoke.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}",
                   "id": "networkconnectivity.projects.locations.spokes.get",
                   "parameterOrder": [
                     "name"
@@ -838,8 +813,8 @@
                       "description": "Required. The name of Spoke resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+name}",
@@ -853,7 +828,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}:getIamPolicy",
                   "id": "networkconnectivity.projects.locations.spokes.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -869,8 +843,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+resource}:getIamPolicy",
@@ -884,7 +858,6 @@
                 "list": {
                   "description": "Lists Spokes in a given project and location.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/spokes",
                   "id": "networkconnectivity.projects.locations.spokes.list",
                   "parameterOrder": [
                     "parent"
@@ -915,8 +888,8 @@
                       "description": "Required. The parent's resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/spokes",
@@ -930,7 +903,6 @@
                 "patch": {
                   "description": "Updates the parameters of a single Spoke.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}",
                   "id": "networkconnectivity.projects.locations.spokes.patch",
                   "parameterOrder": [
                     "name"
@@ -940,8 +912,8 @@
                       "description": "Immutable. The name of a Spoke resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -969,7 +941,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}:setIamPolicy",
                   "id": "networkconnectivity.projects.locations.spokes.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -979,8 +950,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+resource}:setIamPolicy",
@@ -997,7 +968,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}:testIamPermissions",
                   "id": "networkconnectivity.projects.locations.spokes.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -1007,8 +977,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+resource}:testIamPermissions",
@@ -1046,8 +1016,8 @@
           "type": "string"
         },
         "stringValue": {
-          "description": "A string up to 256 bytes long.",
-          "$ref": "TruncatableString"
+          "$ref": "TruncatableString",
+          "description": "A string up to 256 bytes long."
         }
       },
       "type": "object"
@@ -1102,17 +1072,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -1138,8 +1108,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1180,16 +1150,16 @@
           "type": "array"
         },
         "explicitBuckets": {
-          "description": "Buckets with arbitrary user-provided width.",
-          "$ref": "ExplicitBuckets"
+          "$ref": "ExplicitBuckets",
+          "description": "Buckets with arbitrary user-provided width."
         },
         "exponentialBuckets": {
-          "description": "Buckets with exponentially growing width.",
-          "$ref": "ExponentialBuckets"
+          "$ref": "ExponentialBuckets",
+          "description": "Buckets with exponentially growing width."
         },
         "linearBuckets": {
-          "description": "Buckets with constant width.",
-          "$ref": "LinearBuckets"
+          "$ref": "LinearBuckets",
+          "description": "Buckets with constant width."
         },
         "maximum": {
           "description": "The maximum of the population of values. Ignored if `count` is zero.",
@@ -1341,8 +1311,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1495,30 +1465,30 @@
           "items": {
             "type": "string"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "state": {
           "description": "Output only. The current lifecycle state of this Hub.",
-          "enumDescriptions": [
-            "No state information available",
-            "The resource's create operation is in progress",
-            "The resource is active",
-            "The resource's Delete operation is in progress"
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
             "ACTIVE",
             "DELETING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "No state information available",
+            "The resource's create operation is in progress",
+            "The resource is active",
+            "The resource's Delete operation is in progress"
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "uniqueId": {
           "description": "Output only. Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Time when the Hub was updated.",
@@ -1657,8 +1627,8 @@
       "id": "LogEntry",
       "properties": {
         "httpRequest": {
-          "description": "Optional. Information about the HTTP request associated with this log entry, if applicable.",
-          "$ref": "HttpRequest"
+          "$ref": "HttpRequest",
+          "description": "Optional. Information about the HTTP request associated with this log entry, if applicable."
         },
         "insertId": {
           "description": "A unique ID for the log entry used for deduplication. If omitted, the implementation will generate one based on operation_id.",
@@ -1676,8 +1646,8 @@
           "type": "string"
         },
         "operation": {
-          "description": "Optional. Information about an operation associated with the log entry, if applicable.",
-          "$ref": "LogEntryOperation"
+          "$ref": "LogEntryOperation",
+          "description": "Optional. Information about an operation associated with the log entry, if applicable."
         },
         "protoPayload": {
           "additionalProperties": {
@@ -1689,17 +1659,6 @@
         },
         "severity": {
           "description": "The severity of the log entry. The default value is `LogSeverity.DEFAULT`.",
-          "enumDescriptions": [
-            "(0) The log entry has no assigned severity level.",
-            "(100) Debug or trace information.",
-            "(200) Routine information, such as ongoing status or performance.",
-            "(300) Normal but significant events, such as start up, shut down, or a configuration change.",
-            "(400) Warning events might cause problems.",
-            "(500) Error events are likely to cause problems.",
-            "(600) Critical events cause more severe problems or outages.",
-            "(700) A person must take an action immediately.",
-            "(800) One or more systems are unusable."
-          ],
           "enum": [
             "DEFAULT",
             "DEBUG",
@@ -1711,11 +1670,22 @@
             "ALERT",
             "EMERGENCY"
           ],
+          "enumDescriptions": [
+            "(0) The log entry has no assigned severity level.",
+            "(100) Debug or trace information.",
+            "(200) Routine information, such as ongoing status or performance.",
+            "(300) Normal but significant events, such as start up, shut down, or a configuration change.",
+            "(400) Warning events might cause problems.",
+            "(500) Error events are likely to cause problems.",
+            "(600) Critical events cause more severe problems or outages.",
+            "(700) A person must take an action immediately.",
+            "(800) One or more systems are unusable."
+          ],
           "type": "string"
         },
         "sourceLocation": {
-          "description": "Optional. Source code location information associated with the log entry, if any.",
-          "$ref": "LogEntrySourceLocation"
+          "$ref": "LogEntrySourceLocation",
+          "description": "Optional. Source code location information associated with the log entry, if any."
         },
         "structPayload": {
           "additionalProperties": {
@@ -1793,8 +1763,8 @@
           "type": "boolean"
         },
         "distributionValue": {
-          "description": "A distribution value.",
-          "$ref": "Distribution"
+          "$ref": "Distribution",
+          "description": "A distribution value."
         },
         "doubleValue": {
           "description": "A double precision floating point value.",
@@ -1819,8 +1789,8 @@
           "type": "object"
         },
         "moneyValue": {
-          "description": "A money value.",
-          "$ref": "Money"
+          "$ref": "Money",
+          "description": "A money value."
         },
         "startTime": {
           "description": "The start of the time period over which this metric value's measurement applies. The time period has different semantics for different metric types (cumulative, delta, and gauge). See the metric definition documentation in the service configuration for details. If not specified, google.api.servicecontrol.v1.Operation.start_time will be used.",
@@ -1899,15 +1869,15 @@
         },
         "importance": {
           "description": "DO NOT USE. This is an experimental field.",
-          "enumDescriptions": [
-            "Allows data caching, batching, and aggregation. It provides higher performance with higher data loss risk.",
-            "Disables data aggregation to minimize data loss. It is for operations that contains significant monetary value or audit trail. This feature only applies to the client libraries.",
-            "Deprecated. Do not use. Disables data aggregation and enables additional validation logic. It should only be used during the onboarding process. It is only available to Google internal services, and the service must be approved by chemist-dev@google.com in order to use this level."
-          ],
           "enum": [
             "LOW",
             "HIGH",
             "DEBUG"
+          ],
+          "enumDescriptions": [
+            "Allows data caching, batching, and aggregation. It provides higher performance with higher data loss risk.",
+            "Disables data aggregation to minimize data loss. It is for operations that contains significant monetary value or audit trail. This feature only applies to the client libraries.",
+            "Deprecated. Do not use. Disables data aggregation and enables additional validation logic. It should only be used during the onboarding process. It is only available to Google internal services, and the service must be approved by chemist-dev@google.com in order to use this level."
           ],
           "type": "string"
         },
@@ -1941,8 +1911,8 @@
           "type": "string"
         },
         "quotaProperties": {
-          "description": "Represents the properties needed for quota check. Applicable only if this operation is for a quota check request. If this is not specified, no quota check will be performed.",
-          "$ref": "QuotaProperties"
+          "$ref": "QuotaProperties",
+          "description": "Represents the properties needed for quota check. Applicable only if this operation is for a quota check request. If this is not specified, no quota check will be performed."
         },
         "resources": {
           "description": "The resources that are involved in the operation. The maximum supported number of entries in this field is 100.",
@@ -1979,40 +1949,40 @@
       "properties": {
         "apiVersion": {
           "description": "Output only. API version used to start the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. The time the operation was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "endTime": {
           "description": "Output only. The time the operation finished running.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "requestedCancellation": {
           "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "statusMessage": {
           "description": "Output only. Human-readable status of the operation, if any.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "target": {
           "description": "Output only. Server-defined resource path for the target of the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "verb": {
           "description": "Output only. Name of the verb executed by the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2054,17 +2024,17 @@
       "properties": {
         "quotaMode": {
           "description": "Quota mode for this operation.",
-          "enumDescriptions": [
-            "Decreases available quota by the cost specified for the operation. If cost is higher than available quota, operation fails and returns error.",
-            "Decreases available quota by the cost specified for the operation. If cost is higher than available quota, operation does not fail and available quota goes down to zero but it returns error.",
-            "Does not change any available quota. Only checks if there is enough quota. No lock is placed on the checked tokens neither.",
-            "Increases available quota by the operation cost specified for the operation."
-          ],
           "enum": [
             "ACQUIRE",
             "ACQUIRE_BEST_EFFORT",
             "CHECK",
             "RELEASE"
+          ],
+          "enumDescriptions": [
+            "Decreases available quota by the cost specified for the operation. If cost is higher than available quota, operation fails and returns error.",
+            "Decreases available quota by the cost specified for the operation. If cost is higher than available quota, operation does not fail and available quota goes down to zero but it returns error.",
+            "Does not change any available quota. Only checks if there is enough quota. No lock is placed on the checked tokens neither.",
+            "Increases available quota by the operation cost specified for the operation."
           ],
           "type": "string"
         }
@@ -2135,8 +2105,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -2197,25 +2167,25 @@
         },
         "state": {
           "description": "Output only. The current lifecycle state of this Hub.",
-          "enumDescriptions": [
-            "No state information available",
-            "The resource's create operation is in progress",
-            "The resource is active",
-            "The resource's Delete operation is in progress"
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
             "ACTIVE",
             "DELETING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "No state information available",
+            "The resource's create operation is in progress",
+            "The resource is active",
+            "The resource's Delete operation is in progress"
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "uniqueId": {
           "description": "Output only. Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "The time when the Spoke was updated.",
@@ -2258,8 +2228,8 @@
       "id": "TraceSpan",
       "properties": {
         "attributes": {
-          "description": "A set of attributes on the span. You can have up to 32 attributes per span.",
-          "$ref": "Attributes"
+          "$ref": "Attributes",
+          "description": "A set of attributes on the span. You can have up to 32 attributes per span."
         },
         "childSpanCount": {
           "description": "An optional number of child spans that were generated while this span was active. If set, allows implementation to detect missing child spans.",
@@ -2267,8 +2237,8 @@
           "type": "integer"
         },
         "displayName": {
-          "description": "A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the description in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file name and a line number where the operation is called. A best practice is to use the same display name within an application and at the same call point. This makes it easier to correlate spans in different traces.",
-          "$ref": "TruncatableString"
+          "$ref": "TruncatableString",
+          "description": "A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the description in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file name and a line number where the operation is called. A best practice is to use the same display name within an application and at the same call point. This makes it easier to correlate spans in different traces."
         },
         "endTime": {
           "description": "The end time of the span. On the client side, this is the time kept by the local machine where the span execution ends. On the server side, this is the time when the server application handler stops running.",
@@ -2293,14 +2263,6 @@
         },
         "spanKind": {
           "description": "Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call.",
-          "enumDescriptions": [
-            "Unspecified. Do NOT use as default. Implementations MAY assume SpanKind.INTERNAL to be default.",
-            "Indicates that the span is used internally. Default value.",
-            "Indicates that the span covers server-side handling of an RPC or other remote network request.",
-            "Indicates that the span covers the client-side wrapper around an RPC or other remote request.",
-            "Indicates that the span describes producer sending a message to a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. publishing a message to a pubsub service).",
-            "Indicates that the span describes consumer receiving a message from a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. receiving a message from a pubsub service subscription)."
-          ],
           "enum": [
             "SPAN_KIND_UNSPECIFIED",
             "INTERNAL",
@@ -2308,6 +2270,14 @@
             "CLIENT",
             "PRODUCER",
             "CONSUMER"
+          ],
+          "enumDescriptions": [
+            "Unspecified. Do NOT use as default. Implementations MAY assume SpanKind.INTERNAL to be default.",
+            "Indicates that the span is used internally. Default value.",
+            "Indicates that the span covers server-side handling of an RPC or other remote network request.",
+            "Indicates that the span covers the client-side wrapper around an RPC or other remote request.",
+            "Indicates that the span describes producer sending a message to a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. publishing a message to a pubsub service).",
+            "Indicates that the span describes consumer receiving a message from a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. receiving a message from a pubsub service subscription)."
           ],
           "type": "string"
         },
@@ -2317,8 +2287,8 @@
           "type": "string"
         },
         "status": {
-          "description": "An optional final status for this span.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "An optional final status for this span."
         }
       },
       "type": "object"
@@ -2342,6 +2312,6 @@
   },
   "servicePath": "",
   "title": "Network Connectivity API",
-  "version_module": true,
-  "version": "v1alpha1"
+  "version": "v1alpha1",
+  "version_module": true
 }

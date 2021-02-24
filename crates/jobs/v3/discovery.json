@@ -18,29 +18,27 @@
   "description": "Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/talent-solution/job-search/docs/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "jobs:v3",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://jobs.mtls.googleapis.com/",
   "name": "jobs",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -113,7 +111,6 @@
         "complete": {
           "description": "Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box.",
           "httpMethod": "GET",
-          "flatPath": "v3/projects/{projectsId}:complete",
           "id": "jobs.projects.complete",
           "parameterOrder": [
             "name"
@@ -132,15 +129,15 @@
             "languageCodes": {
               "description": "Optional. The list of languages of the query. This is the BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). For CompletionType.JOB_TITLE type, only open jobs with the same language_codes are returned. For CompletionType.COMPANY_NAME type, only companies having open jobs with the same language_codes are returned. For CompletionType.COMBINED type, only open jobs with the same language_codes or companies having open jobs with the same language_codes are returned. The maximum number of allowed characters is 255.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "name": {
               "description": "Required. Resource name of project the completion is performed within. The format is \"projects/{project_id}\", for example, \"projects/api-test-project\".",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageSize": {
               "description": "Required. Completion result count. The maximum allowed page size is 10.",
@@ -155,21 +152,27 @@
             },
             "scope": {
               "description": "Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.",
+              "enum": [
+                "COMPLETION_SCOPE_UNSPECIFIED",
+                "TENANT",
+                "PUBLIC"
+              ],
               "enumDescriptions": [
                 "Default value.",
                 "Suggestions are based only on the data provided by the client.",
                 "Suggestions are based on all jobs data in the system that's visible to the client"
               ],
               "location": "query",
-              "enum": [
-                "COMPLETION_SCOPE_UNSPECIFIED",
-                "TENANT",
-                "PUBLIC"
-              ],
               "type": "string"
             },
             "type": {
               "description": "Optional. The completion topic. The default is CompletionType.COMBINED.",
+              "enum": [
+                "COMPLETION_TYPE_UNSPECIFIED",
+                "JOB_TITLE",
+                "COMPANY_NAME",
+                "COMBINED"
+              ],
               "enumDescriptions": [
                 "Default value.",
                 "Only suggest job titles.",
@@ -177,12 +180,6 @@
                 "Suggest both job titles and company names."
               ],
               "location": "query",
-              "enum": [
-                "COMPLETION_TYPE_UNSPECIFIED",
-                "JOB_TITLE",
-                "COMPANY_NAME",
-                "COMBINED"
-              ],
               "type": "string"
             }
           },
@@ -202,7 +199,6 @@
             "create": {
               "description": "Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.",
               "httpMethod": "POST",
-              "flatPath": "v3/projects/{projectsId}/clientEvents",
               "id": "jobs.projects.clientEvents.create",
               "parameterOrder": [
                 "parent"
@@ -212,8 +208,8 @@
                   "description": "Parent project name.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+parent}/clientEvents",
@@ -235,7 +231,6 @@
             "create": {
               "description": "Creates a new company entity.",
               "httpMethod": "POST",
-              "flatPath": "v3/projects/{projectsId}/companies",
               "id": "jobs.projects.companies.create",
               "parameterOrder": [
                 "parent"
@@ -245,8 +240,8 @@
                   "description": "Required. Resource name of the project under which the company is created. The format is \"projects/{project_id}\", for example, \"projects/api-test-project\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+parent}/companies",
@@ -264,7 +259,6 @@
             "delete": {
               "description": "Deletes specified company. Prerequisite: The company has no jobs associated with it.",
               "httpMethod": "DELETE",
-              "flatPath": "v3/projects/{projectsId}/companies/{companiesId}",
               "id": "jobs.projects.companies.delete",
               "parameterOrder": [
                 "name"
@@ -274,8 +268,8 @@
                   "description": "Required. The resource name of the company to be deleted. The format is \"projects/{project_id}/companies/{company_id}\", for example, \"projects/api-test-project/companies/foo\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+/companies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+name}",
@@ -290,7 +284,6 @@
             "get": {
               "description": "Retrieves specified company.",
               "httpMethod": "GET",
-              "flatPath": "v3/projects/{projectsId}/companies/{companiesId}",
               "id": "jobs.projects.companies.get",
               "parameterOrder": [
                 "name"
@@ -300,8 +293,8 @@
                   "description": "Required. The resource name of the company to be retrieved. The format is \"projects/{project_id}/companies/{company_id}\", for example, \"projects/api-test-project/companies/foo\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+/companies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+name}",
@@ -316,7 +309,6 @@
             "list": {
               "description": "Lists all companies associated with the service account.",
               "httpMethod": "GET",
-              "flatPath": "v3/projects/{projectsId}/companies",
               "id": "jobs.projects.companies.list",
               "parameterOrder": [
                 "parent"
@@ -337,8 +329,8 @@
                   "description": "Required. Resource name of the project under which the company is created. The format is \"projects/{project_id}\", for example, \"projects/api-test-project\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "requireOpenJobs": {
                   "description": "Optional. Set to true if the companies requested must have open jobs. Defaults to false. If true, at most page_size of companies are fetched, among which only those with open jobs are returned.",
@@ -358,7 +350,6 @@
             "patch": {
               "description": "Updates specified company. Company names can't be updated. To update a company name, delete the company and all jobs associated with it, and only then re-create them.",
               "httpMethod": "PATCH",
-              "flatPath": "v3/projects/{projectsId}/companies/{companiesId}",
               "id": "jobs.projects.companies.patch",
               "parameterOrder": [
                 "name"
@@ -368,8 +359,8 @@
                   "description": "Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is \"projects/{project_id}/companies/{company_id}\", for example, \"projects/api-test-project/companies/foo\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+/companies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+name}",
@@ -391,7 +382,6 @@
             "batchDelete": {
               "description": "Deletes a list of Jobs by filter.",
               "httpMethod": "POST",
-              "flatPath": "v3/projects/{projectsId}/jobs:batchDelete",
               "id": "jobs.projects.jobs.batchDelete",
               "parameterOrder": [
                 "parent"
@@ -401,8 +391,8 @@
                   "description": "Required. The resource name of the project under which the job is created. The format is \"projects/{project_id}\", for example, \"projects/api-test-project\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+parent}/jobs:batchDelete",
@@ -420,7 +410,6 @@
             "create": {
               "description": "Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.",
               "httpMethod": "POST",
-              "flatPath": "v3/projects/{projectsId}/jobs",
               "id": "jobs.projects.jobs.create",
               "parameterOrder": [
                 "parent"
@@ -430,8 +419,8 @@
                   "description": "Required. The resource name of the project under which the job is created. The format is \"projects/{project_id}\", for example, \"projects/api-test-project\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+parent}/jobs",
@@ -449,7 +438,6 @@
             "delete": {
               "description": "Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.",
               "httpMethod": "DELETE",
-              "flatPath": "v3/projects/{projectsId}/jobs/{jobsId}",
               "id": "jobs.projects.jobs.delete",
               "parameterOrder": [
                 "name"
@@ -459,8 +447,8 @@
                   "description": "Required. The resource name of the job to be deleted. The format is \"projects/{project_id}/jobs/{job_id}\", for example, \"projects/api-test-project/jobs/1234\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+/jobs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+name}",
@@ -475,7 +463,6 @@
             "get": {
               "description": "Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.",
               "httpMethod": "GET",
-              "flatPath": "v3/projects/{projectsId}/jobs/{jobsId}",
               "id": "jobs.projects.jobs.get",
               "parameterOrder": [
                 "name"
@@ -485,8 +472,8 @@
                   "description": "Required. The resource name of the job to retrieve. The format is \"projects/{project_id}/jobs/{job_id}\", for example, \"projects/api-test-project/jobs/1234\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+/jobs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+name}",
@@ -501,7 +488,6 @@
             "list": {
               "description": "Lists jobs by filter.",
               "httpMethod": "GET",
-              "flatPath": "v3/projects/{projectsId}/jobs",
               "id": "jobs.projects.jobs.list",
               "parameterOrder": [
                 "parent"
@@ -514,6 +500,13 @@
                 },
                 "jobView": {
                   "description": "Optional. The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_FULL if no value is specified.",
+                  "enum": [
+                    "JOB_VIEW_UNSPECIFIED",
+                    "JOB_VIEW_ID_ONLY",
+                    "JOB_VIEW_MINIMAL",
+                    "JOB_VIEW_SMALL",
+                    "JOB_VIEW_FULL"
+                  ],
                   "enumDescriptions": [
                     "Default value.",
                     "A ID only view of job, with following attributes: Job.name, Job.requisition_id, Job.language_code.",
@@ -522,13 +515,6 @@
                     "All available attributes are included in the search results."
                   ],
                   "location": "query",
-                  "enum": [
-                    "JOB_VIEW_UNSPECIFIED",
-                    "JOB_VIEW_ID_ONLY",
-                    "JOB_VIEW_MINIMAL",
-                    "JOB_VIEW_SMALL",
-                    "JOB_VIEW_FULL"
-                  ],
                   "type": "string"
                 },
                 "pageSize": {
@@ -546,8 +532,8 @@
                   "description": "Required. The resource name of the project under which the job is created. The format is \"projects/{project_id}\", for example, \"projects/api-test-project\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+parent}/jobs",
@@ -562,7 +548,6 @@
             "patch": {
               "description": "Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes.",
               "httpMethod": "PATCH",
-              "flatPath": "v3/projects/{projectsId}/jobs/{jobsId}",
               "id": "jobs.projects.jobs.patch",
               "parameterOrder": [
                 "name"
@@ -572,8 +557,8 @@
                   "description": "Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is \"projects/{project_id}/jobs/{job_id}\", for example, \"projects/api-test-project/jobs/1234\". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/jobs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+name}",
@@ -591,7 +576,6 @@
             "search": {
               "description": "Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.",
               "httpMethod": "POST",
-              "flatPath": "v3/projects/{projectsId}/jobs:search",
               "id": "jobs.projects.jobs.search",
               "parameterOrder": [
                 "parent"
@@ -601,8 +585,8 @@
                   "description": "Required. The resource name of the project to search within. The format is \"projects/{project_id}\", for example, \"projects/api-test-project\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+parent}/jobs:search",
@@ -620,7 +604,6 @@
             "searchForAlert": {
               "description": "Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), and has different algorithmic adjustments that are targeted to passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against.",
               "httpMethod": "POST",
-              "flatPath": "v3/projects/{projectsId}/jobs:searchForAlert",
               "id": "jobs.projects.jobs.searchForAlert",
               "parameterOrder": [
                 "parent"
@@ -630,8 +613,8 @@
                   "description": "Required. The resource name of the project to search within. The format is \"projects/{project_id}\", for example, \"projects/api-test-project\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v3/{+parent}/jobs:searchForAlert",
@@ -717,8 +700,8 @@
           "type": "integer"
         },
         "range": {
-          "description": "Bucket range on which histogram was performed for the numeric field, that is, the count represents number of jobs in this range.",
-          "$ref": "BucketRange"
+          "$ref": "BucketRange",
+          "description": "Bucket range on which histogram was performed for the numeric field, that is, the count represents number of jobs in this range."
         }
       },
       "type": "object"
@@ -744,8 +727,8 @@
           "type": "object"
         },
         "jobEvent": {
-          "description": "A event issued when a job seeker interacts with the application that implements Cloud Talent Solution.",
-          "$ref": "JobEvent"
+          "$ref": "JobEvent",
+          "description": "A event issued when a job seeker interacts with the application that implements Cloud Talent Solution."
         },
         "parentEventId": {
           "description": "Optional. The event_id of an event that resulted in the current event. For example, a Job view event usually follows a parent impression event: A job seeker first does a search where a list of jobs appears (impression). The job seeker then selects a result and views the description of a particular job (Job view).",
@@ -768,39 +751,39 @@
         },
         "commuteMethod": {
           "description": "Required. The method of transportation for which to calculate the commute time.",
-          "enumDescriptions": [
-            "Commute method is not specified.",
-            "Commute time is calculated based on driving time.",
-            "Commute time is calculated based on public transit including bus, metro, subway, etc."
-          ],
           "enum": [
             "COMMUTE_METHOD_UNSPECIFIED",
             "DRIVING",
             "TRANSIT"
           ],
+          "enumDescriptions": [
+            "Commute method is not specified.",
+            "Commute time is calculated based on driving time.",
+            "Commute time is calculated based on public transit including bus, metro, subway, etc."
+          ],
           "type": "string"
         },
         "departureTime": {
-          "description": "Optional. The departure time used to calculate traffic impact, represented as google.type.TimeOfDay in local time zone. Currently traffic model is restricted to hour level resolution.",
-          "$ref": "TimeOfDay"
+          "$ref": "TimeOfDay",
+          "description": "Optional. The departure time used to calculate traffic impact, represented as google.type.TimeOfDay in local time zone. Currently traffic model is restricted to hour level resolution."
         },
         "roadTraffic": {
           "description": "Optional. Specifies the traffic density to use when calculating commute time.",
-          "enumDescriptions": [
-            "Road traffic situation is not specified.",
-            "Optimal commute time without considering any traffic impact.",
-            "Commute time calculation takes in account the peak traffic impact."
-          ],
           "enum": [
             "ROAD_TRAFFIC_UNSPECIFIED",
             "TRAFFIC_FREE",
             "BUSY_HOUR"
           ],
+          "enumDescriptions": [
+            "Road traffic situation is not specified.",
+            "Optimal commute time without considering any traffic impact.",
+            "Commute time calculation takes in account the peak traffic impact."
+          ],
           "type": "string"
         },
         "startCoordinates": {
-          "description": "Required. The latitude and longitude of the location from which to calculate the commute time.",
-          "$ref": "LatLng"
+          "$ref": "LatLng",
+          "description": "Required. The latitude and longitude of the location from which to calculate the commute time."
         },
         "travelDuration": {
           "description": "Required. The maximum travel time in seconds. The maximum allowed value is `3600s` (one hour). Format is `123s`.",
@@ -815,8 +798,8 @@
       "id": "CommuteInfo",
       "properties": {
         "jobLocation": {
-          "description": "Location used as the destination in the commute calculation.",
-          "$ref": "Location"
+          "$ref": "Location",
+          "description": "Location used as the destination in the commute calculation."
         },
         "travelDuration": {
           "description": "The number of seconds required to travel to the job location from the query location. A duration of 0 seconds indicates that the job is not reachable within the requested duration, but was returned as part of an expanded query.",
@@ -835,8 +818,8 @@
           "type": "string"
         },
         "derivedInfo": {
-          "description": "Output only. Derived details about the company.",
-          "$ref": "CompanyDerivedInfo"
+          "$ref": "CompanyDerivedInfo",
+          "description": "Output only. Derived details about the company."
         },
         "displayName": {
           "description": "Required. The display name of the company, for example, \"Google LLC\".",
@@ -875,16 +858,6 @@
         },
         "size": {
           "description": "Optional. The employer's company size.",
-          "enumDescriptions": [
-            "Default value if the size is not specified.",
-            "The company has less than 50 employees.",
-            "The company has between 50 and 99 employees.",
-            "The company has between 100 and 499 employees.",
-            "The company has between 500 and 999 employees.",
-            "The company has between 1,000 and 4,999 employees.",
-            "The company has between 5,000 and 9,999 employees.",
-            "The company has 10,000 or more employees."
-          ],
           "enum": [
             "COMPANY_SIZE_UNSPECIFIED",
             "MINI",
@@ -894,6 +867,16 @@
             "BIG",
             "BIGGER",
             "GIANT"
+          ],
+          "enumDescriptions": [
+            "Default value if the size is not specified.",
+            "The company has less than 50 employees.",
+            "The company has between 50 and 99 employees.",
+            "The company has between 100 and 499 employees.",
+            "The company has between 500 and 999 employees.",
+            "The company has between 1,000 and 4,999 employees.",
+            "The company has between 5,000 and 9,999 employees.",
+            "The company has 10,000 or more employees."
           ],
           "type": "string"
         },
@@ -913,8 +896,8 @@
       "id": "CompanyDerivedInfo",
       "properties": {
         "headquartersLocation": {
-          "description": "A structured headquarters location of the company, resolved from Company.hq_location if provided.",
-          "$ref": "Location"
+          "$ref": "Location",
+          "description": "A structured headquarters location of the company, resolved from Company.hq_location if provided."
         }
       },
       "type": "object"
@@ -924,8 +907,8 @@
       "id": "CompensationEntry",
       "properties": {
         "amount": {
-          "description": "Optional. Compensation amount.",
-          "$ref": "Money"
+          "$ref": "Money",
+          "description": "Optional. Compensation amount."
         },
         "description": {
           "description": "Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.",
@@ -937,22 +920,11 @@
           "type": "number"
         },
         "range": {
-          "description": "Optional. Compensation range.",
-          "$ref": "CompensationRange"
+          "$ref": "CompensationRange",
+          "description": "Optional. Compensation range."
         },
         "type": {
           "description": "Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.",
-          "enumDescriptions": [
-            "Default value.",
-            "Base compensation: Refers to the fixed amount of money paid to an employee by an employer in return for work performed. Base compensation does not include benefits, bonuses or any other potential compensation from an employer.",
-            "Bonus.",
-            "Signing bonus.",
-            "Equity.",
-            "Profit sharing.",
-            "Commission.",
-            "Tips.",
-            "Other compensation type."
-          ],
           "enum": [
             "COMPENSATION_TYPE_UNSPECIFIED",
             "BASE",
@@ -964,20 +936,21 @@
             "TIPS",
             "OTHER_COMPENSATION_TYPE"
           ],
+          "enumDescriptions": [
+            "Default value.",
+            "Base compensation: Refers to the fixed amount of money paid to an employee by an employer in return for work performed. Base compensation does not include benefits, bonuses or any other potential compensation from an employer.",
+            "Bonus.",
+            "Signing bonus.",
+            "Equity.",
+            "Profit sharing.",
+            "Commission.",
+            "Tips.",
+            "Other compensation type."
+          ],
           "type": "string"
         },
         "unit": {
           "description": "Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.",
-          "enumDescriptions": [
-            "Default value.",
-            "Hourly.",
-            "Daily.",
-            "Weekly",
-            "Monthly.",
-            "Yearly.",
-            "One time.",
-            "Other compensation units."
-          ],
           "enum": [
             "COMPENSATION_UNIT_UNSPECIFIED",
             "HOURLY",
@@ -987,6 +960,16 @@
             "YEARLY",
             "ONE_TIME",
             "OTHER_COMPENSATION_UNIT"
+          ],
+          "enumDescriptions": [
+            "Default value.",
+            "Hourly.",
+            "Daily.",
+            "Weekly",
+            "Monthly.",
+            "Yearly.",
+            "One time.",
+            "Other compensation units."
           ],
           "type": "string"
         }
@@ -1002,18 +985,11 @@
           "type": "boolean"
         },
         "range": {
-          "description": "Optional. Compensation range.",
-          "$ref": "CompensationRange"
+          "$ref": "CompensationRange",
+          "description": "Optional. Compensation range."
         },
         "type": {
           "description": "Required. Type of filter.",
-          "enumDescriptions": [
-            "Filter type unspecified. Position holder, INVALID, should never be used.",
-            "Filter by `base compensation entry's` unit. A job is a match if and only if the job contains a base CompensationEntry and the base CompensationEntry's unit matches provided units. Populate one or more units. See CompensationInfo.CompensationEntry for definition of base compensation entry.",
-            "Filter by `base compensation entry's` unit and amount / range. A job is a match if and only if the job contains a base CompensationEntry, and the base entry's unit matches provided compensation_units and amount or range overlaps with provided compensation_range. See CompensationInfo.CompensationEntry for definition of base compensation entry. Set exactly one units and populate range.",
-            "Filter by annualized base compensation amount and `base compensation entry's` unit. Populate range and zero or more units.",
-            "Filter by annualized total compensation amount and `base compensation entry's` unit . Populate range and zero or more units."
-          ],
           "enum": [
             "FILTER_TYPE_UNSPECIFIED",
             "UNIT_ONLY",
@@ -1021,21 +997,18 @@
             "ANNUALIZED_BASE_AMOUNT",
             "ANNUALIZED_TOTAL_AMOUNT"
           ],
+          "enumDescriptions": [
+            "Filter type unspecified. Position holder, INVALID, should never be used.",
+            "Filter by `base compensation entry's` unit. A job is a match if and only if the job contains a base CompensationEntry and the base CompensationEntry's unit matches provided units. Populate one or more units. See CompensationInfo.CompensationEntry for definition of base compensation entry.",
+            "Filter by `base compensation entry's` unit and amount / range. A job is a match if and only if the job contains a base CompensationEntry, and the base entry's unit matches provided compensation_units and amount or range overlaps with provided compensation_range. See CompensationInfo.CompensationEntry for definition of base compensation entry. Set exactly one units and populate range.",
+            "Filter by annualized base compensation amount and `base compensation entry's` unit. Populate range and zero or more units.",
+            "Filter by annualized total compensation amount and `base compensation entry's` unit . Populate range and zero or more units."
+          ],
           "type": "string"
         },
         "units": {
           "description": "Required. Specify desired `base compensation entry's` CompensationInfo.CompensationUnit.",
           "items": {
-            "enumDescriptions": [
-              "Default value.",
-              "Hourly.",
-              "Daily.",
-              "Weekly",
-              "Monthly.",
-              "Yearly.",
-              "One time.",
-              "Other compensation units."
-            ],
             "enum": [
               "COMPENSATION_UNIT_UNSPECIFIED",
               "HOURLY",
@@ -1045,6 +1018,16 @@
               "YEARLY",
               "ONE_TIME",
               "OTHER_COMPENSATION_UNIT"
+            ],
+            "enumDescriptions": [
+              "Default value.",
+              "Hourly.",
+              "Daily.",
+              "Weekly",
+              "Monthly.",
+              "Yearly.",
+              "One time.",
+              "Other compensation units."
             ],
             "type": "string"
           },
@@ -1058,22 +1041,22 @@
       "id": "CompensationHistogramRequest",
       "properties": {
         "bucketingOption": {
-          "description": "Required. Numeric histogram options, like buckets, whether include min or max value.",
-          "$ref": "NumericBucketingOption"
+          "$ref": "NumericBucketingOption",
+          "description": "Required. Numeric histogram options, like buckets, whether include min or max value."
         },
         "type": {
           "description": "Required. Type of the request, representing which field the histogramming should be performed over. A single request can only specify one histogram of each `CompensationHistogramRequestType`.",
-          "enumDescriptions": [
-            "Default value. Invalid.",
-            "Histogram by job's base compensation. See CompensationEntry for definition of base compensation.",
-            "Histogram by job's annualized base compensation. See CompensationEntry for definition of annualized base compensation.",
-            "Histogram by job's annualized total compensation. See CompensationEntry for definition of annualized total compensation."
-          ],
           "enum": [
             "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED",
             "BASE",
             "ANNUALIZED_BASE",
             "ANNUALIZED_TOTAL"
+          ],
+          "enumDescriptions": [
+            "Default value. Invalid.",
+            "Histogram by job's base compensation. See CompensationEntry for definition of base compensation.",
+            "Histogram by job's annualized base compensation. See CompensationEntry for definition of annualized base compensation.",
+            "Histogram by job's annualized total compensation. See CompensationEntry for definition of annualized total compensation."
           ],
           "type": "string"
         }
@@ -1085,22 +1068,22 @@
       "id": "CompensationHistogramResult",
       "properties": {
         "result": {
-          "description": "Histogram result.",
-          "$ref": "NumericBucketingResult"
+          "$ref": "NumericBucketingResult",
+          "description": "Histogram result."
         },
         "type": {
           "description": "Type of the request, corresponding to CompensationHistogramRequest.type.",
-          "enumDescriptions": [
-            "Default value. Invalid.",
-            "Histogram by job's base compensation. See CompensationEntry for definition of base compensation.",
-            "Histogram by job's annualized base compensation. See CompensationEntry for definition of annualized base compensation.",
-            "Histogram by job's annualized total compensation. See CompensationEntry for definition of annualized total compensation."
-          ],
           "enum": [
             "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED",
             "BASE",
             "ANNUALIZED_BASE",
             "ANNUALIZED_TOTAL"
+          ],
+          "enumDescriptions": [
+            "Default value. Invalid.",
+            "Histogram by job's base compensation. See CompensationEntry for definition of base compensation.",
+            "Histogram by job's annualized base compensation. See CompensationEntry for definition of annualized base compensation.",
+            "Histogram by job's annualized total compensation. See CompensationEntry for definition of annualized total compensation."
           ],
           "type": "string"
         }
@@ -1112,12 +1095,12 @@
       "id": "CompensationInfo",
       "properties": {
         "annualizedBaseCompensationRange": {
-          "description": "Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.",
-          "$ref": "CompensationRange"
+          "$ref": "CompensationRange",
+          "description": "Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization."
         },
         "annualizedTotalCompensationRange": {
-          "description": "Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.",
-          "$ref": "CompensationRange"
+          "$ref": "CompensationRange",
+          "description": "Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization."
         },
         "entries": {
           "description": "Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.",
@@ -1134,12 +1117,12 @@
       "id": "CompensationRange",
       "properties": {
         "maxCompensation": {
-          "description": "Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.",
-          "$ref": "Money"
+          "$ref": "Money",
+          "description": "Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation."
         },
         "minCompensation": {
-          "description": "Optional. The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.",
-          "$ref": "Money"
+          "$ref": "Money",
+          "description": "Optional. The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation."
         }
       },
       "type": "object"
@@ -1156,8 +1139,8 @@
           "type": "array"
         },
         "metadata": {
-          "description": "Additional information for the API invocation, such as the request tracking id.",
-          "$ref": "ResponseMetadata"
+          "$ref": "ResponseMetadata",
+          "description": "Additional information for the API invocation, such as the request tracking id."
         }
       },
       "type": "object"
@@ -1176,17 +1159,17 @@
         },
         "type": {
           "description": "The completion topic.",
-          "enumDescriptions": [
-            "Default value.",
-            "Only suggest job titles.",
-            "Only suggest company names.",
-            "Suggest both job titles and company names."
-          ],
           "enum": [
             "COMPLETION_TYPE_UNSPECIFIED",
             "JOB_TITLE",
             "COMPANY_NAME",
             "COMBINED"
+          ],
+          "enumDescriptions": [
+            "Default value.",
+            "Only suggest job titles.",
+            "Only suggest company names.",
+            "Suggest both job titles and company names."
           ],
           "type": "string"
         }
@@ -1198,8 +1181,8 @@
       "id": "CreateClientEventRequest",
       "properties": {
         "clientEvent": {
-          "description": "Required. Events issued when end user interacts with customer's application that uses Cloud Talent Solution.",
-          "$ref": "ClientEvent"
+          "$ref": "ClientEvent",
+          "description": "Required. Events issued when end user interacts with customer's application that uses Cloud Talent Solution."
         }
       },
       "type": "object"
@@ -1209,8 +1192,8 @@
       "id": "CreateCompanyRequest",
       "properties": {
         "company": {
-          "description": "Required. The company to be created.",
-          "$ref": "Company"
+          "$ref": "Company",
+          "description": "Required. The company to be created."
         }
       },
       "type": "object"
@@ -1220,8 +1203,8 @@
       "id": "CreateJobRequest",
       "properties": {
         "job": {
-          "description": "Required. The Job to be created.",
-          "$ref": "Job"
+          "$ref": "Job",
+          "description": "Required. The Job to be created."
         }
       },
       "type": "object"
@@ -1261,8 +1244,8 @@
           "type": "string"
         },
         "longValueHistogramBucketingOption": {
-          "description": "Optional. Specifies buckets used to perform a range histogram on Job's filterable long custom field values, or min/max value requirements.",
-          "$ref": "NumericBucketingOption"
+          "$ref": "NumericBucketingOption",
+          "description": "Optional. Specifies buckets used to perform a range histogram on Job's filterable long custom field values, or min/max value requirements."
         },
         "stringValueHistogram": {
           "description": "Optional. If set to true, the response includes the histogram value for each key as a string.",
@@ -1280,8 +1263,8 @@
           "type": "string"
         },
         "longValueHistogramResult": {
-          "description": "Stores bucketed histogram counting result or min/max values for custom attribute long values associated with `key`.",
-          "$ref": "NumericBucketingResult"
+          "$ref": "NumericBucketingResult",
+          "description": "Stores bucketed histogram counting result or min/max values for custom attribute long values associated with `key`."
         },
         "stringValueHistogramResult": {
           "additionalProperties": {
@@ -1300,15 +1283,6 @@
       "properties": {
         "deviceType": {
           "description": "Optional. Type of the device.",
-          "enumDescriptions": [
-            "The device type isn't specified.",
-            "A desktop web browser, such as, Chrome, Firefox, Safari, or Internet Explorer)",
-            "A mobile device web browser, such as a phone or tablet with a Chrome browser.",
-            "An Android device native application.",
-            "An iOS device native application.",
-            "A bot, as opposed to a device operated by human beings, such as a web crawler.",
-            "Other devices types."
-          ],
           "enum": [
             "DEVICE_TYPE_UNSPECIFIED",
             "WEB",
@@ -1317,6 +1291,15 @@
             "IOS",
             "BOT",
             "OTHER"
+          ],
+          "enumDescriptions": [
+            "The device type isn't specified.",
+            "A desktop web browser, such as, Chrome, Firefox, Safari, or Internet Explorer)",
+            "A mobile device web browser, such as a phone or tablet with a Chrome browser.",
+            "An Android device native application.",
+            "An iOS device native application.",
+            "A bot, as opposed to a device operated by human beings, such as a web crawler.",
+            "Other devices types."
           ],
           "type": "string"
         },
@@ -1354,25 +1337,6 @@
         "simpleHistogramFacets": {
           "description": "Optional. Specifies the simple type of histogram facets, for example, `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc.",
           "items": {
-            "enumDescriptions": [
-              "The default value if search type is not specified.",
-              "Filter by the company id field.",
-              "Filter by the employment type field, such as `FULL_TIME` or `PART_TIME`.",
-              "Filter by the company size type field, such as `BIG`, `SMALL` or `BIGGER`.",
-              "Filter by the date published field. Possible return values are: * PAST_24_HOURS (The past 24 hours) * PAST_3_DAYS (The past 3 days) * PAST_WEEK (The past 7 days) * PAST_MONTH (The past 30 days) * PAST_YEAR (The past 365 days)",
-              "Filter by the required education level of the job.",
-              "Filter by the required experience level of the job.",
-              "Filter by Admin1, which is a global placeholder for referring to state, province, or the particular term a country uses to define the geographic structure below the country level. Examples include states codes such as \"CA\", \"IL\", \"NY\", and provinces, such as \"BC\".",
-              "Filter by the country code of job, such as US, JP, FR.",
-              "Filter by the \"city name\", \"Admin1 code\", for example, \"Mountain View, CA\" or \"New York, NY\".",
-              "Filter by the locale field of a job, such as \"en-US\", \"fr-FR\". This is the BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).",
-              "Filter by the language code portion of the locale field, such as \"en\" or \"fr\".",
-              "Filter by the Category.",
-              "Filter by the city center GPS coordinate (latitude and longitude), for example, 37.4038522,-122.0987765. Since the coordinates of a city center can change, clients may need to refresh them periodically.",
-              "A combination of state or province code with a country code. This field differs from `JOB_ADMIN1`, which can be used in multiple countries.",
-              "Company display name.",
-              "Base compensation unit."
-            ],
             "enum": [
               "SEARCH_TYPE_UNSPECIFIED",
               "COMPANY_ID",
@@ -1392,6 +1356,25 @@
               "COMPANY_DISPLAY_NAME",
               "BASE_COMPENSATION_UNIT"
             ],
+            "enumDescriptions": [
+              "The default value if search type is not specified.",
+              "Filter by the company id field.",
+              "Filter by the employment type field, such as `FULL_TIME` or `PART_TIME`.",
+              "Filter by the company size type field, such as `BIG`, `SMALL` or `BIGGER`.",
+              "Filter by the date published field. Possible return values are: * PAST_24_HOURS (The past 24 hours) * PAST_3_DAYS (The past 3 days) * PAST_WEEK (The past 7 days) * PAST_MONTH (The past 30 days) * PAST_YEAR (The past 365 days)",
+              "Filter by the required education level of the job.",
+              "Filter by the required experience level of the job.",
+              "Filter by Admin1, which is a global placeholder for referring to state, province, or the particular term a country uses to define the geographic structure below the country level. Examples include states codes such as \"CA\", \"IL\", \"NY\", and provinces, such as \"BC\".",
+              "Filter by the country code of job, such as US, JP, FR.",
+              "Filter by the \"city name\", \"Admin1 code\", for example, \"Mountain View, CA\" or \"New York, NY\".",
+              "Filter by the locale field of a job, such as \"en-US\", \"fr-FR\". This is the BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).",
+              "Filter by the language code portion of the locale field, such as \"en\" or \"fr\".",
+              "Filter by the Category.",
+              "Filter by the city center GPS coordinate (latitude and longitude), for example, 37.4038522,-122.0987765. Since the coordinates of a city center can change, clients may need to refresh them periodically.",
+              "A combination of state or province code with a country code. This field differs from `JOB_ADMIN1`, which can be used in multiple countries.",
+              "Company display name.",
+              "Base compensation unit."
+            ],
             "type": "string"
           },
           "type": "array"
@@ -1405,25 +1388,6 @@
       "properties": {
         "searchType": {
           "description": "The Histogram search filters.",
-          "enumDescriptions": [
-            "The default value if search type is not specified.",
-            "Filter by the company id field.",
-            "Filter by the employment type field, such as `FULL_TIME` or `PART_TIME`.",
-            "Filter by the company size type field, such as `BIG`, `SMALL` or `BIGGER`.",
-            "Filter by the date published field. Possible return values are: * PAST_24_HOURS (The past 24 hours) * PAST_3_DAYS (The past 3 days) * PAST_WEEK (The past 7 days) * PAST_MONTH (The past 30 days) * PAST_YEAR (The past 365 days)",
-            "Filter by the required education level of the job.",
-            "Filter by the required experience level of the job.",
-            "Filter by Admin1, which is a global placeholder for referring to state, province, or the particular term a country uses to define the geographic structure below the country level. Examples include states codes such as \"CA\", \"IL\", \"NY\", and provinces, such as \"BC\".",
-            "Filter by the country code of job, such as US, JP, FR.",
-            "Filter by the \"city name\", \"Admin1 code\", for example, \"Mountain View, CA\" or \"New York, NY\".",
-            "Filter by the locale field of a job, such as \"en-US\", \"fr-FR\". This is the BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).",
-            "Filter by the language code portion of the locale field, such as \"en\" or \"fr\".",
-            "Filter by the Category.",
-            "Filter by the city center GPS coordinate (latitude and longitude), for example, 37.4038522,-122.0987765. Since the coordinates of a city center can change, clients may need to refresh them periodically.",
-            "A combination of state or province code with a country code. This field differs from `JOB_ADMIN1`, which can be used in multiple countries.",
-            "Company display name.",
-            "Base compensation unit."
-          ],
           "enum": [
             "SEARCH_TYPE_UNSPECIFIED",
             "COMPANY_ID",
@@ -1442,6 +1406,25 @@
             "ADMIN_1_COUNTRY",
             "COMPANY_DISPLAY_NAME",
             "BASE_COMPENSATION_UNIT"
+          ],
+          "enumDescriptions": [
+            "The default value if search type is not specified.",
+            "Filter by the company id field.",
+            "Filter by the employment type field, such as `FULL_TIME` or `PART_TIME`.",
+            "Filter by the company size type field, such as `BIG`, `SMALL` or `BIGGER`.",
+            "Filter by the date published field. Possible return values are: * PAST_24_HOURS (The past 24 hours) * PAST_3_DAYS (The past 3 days) * PAST_WEEK (The past 7 days) * PAST_MONTH (The past 30 days) * PAST_YEAR (The past 365 days)",
+            "Filter by the required education level of the job.",
+            "Filter by the required experience level of the job.",
+            "Filter by Admin1, which is a global placeholder for referring to state, province, or the particular term a country uses to define the geographic structure below the country level. Examples include states codes such as \"CA\", \"IL\", \"NY\", and provinces, such as \"BC\".",
+            "Filter by the country code of job, such as US, JP, FR.",
+            "Filter by the \"city name\", \"Admin1 code\", for example, \"Mountain View, CA\" or \"New York, NY\".",
+            "Filter by the locale field of a job, such as \"en-US\", \"fr-FR\". This is the BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).",
+            "Filter by the language code portion of the locale field, such as \"en\" or \"fr\".",
+            "Filter by the Category.",
+            "Filter by the city center GPS coordinate (latitude and longitude), for example, 37.4038522,-122.0987765. Since the coordinates of a city center can change, clients may need to refresh them periodically.",
+            "A combination of state or province code with a country code. This field differs from `JOB_ADMIN1`, which can be used in multiple countries.",
+            "Company display name.",
+            "Base compensation unit."
           ],
           "type": "string"
         },
@@ -1496,8 +1479,8 @@
           "type": "array"
         },
         "applicationInfo": {
-          "description": "Required. At least one field within ApplicationInfo must be specified. Job application information.",
-          "$ref": "ApplicationInfo"
+          "$ref": "ApplicationInfo",
+          "description": "Required. At least one field within ApplicationInfo must be specified. Job application information."
         },
         "companyDisplayName": {
           "description": "Output only. Display name of the company listing the job.",
@@ -1508,8 +1491,8 @@
           "type": "string"
         },
         "compensationInfo": {
-          "description": "Optional. Job compensation information.",
-          "$ref": "CompensationInfo"
+          "$ref": "CompensationInfo",
+          "description": "Optional. Job compensation information."
         },
         "customAttributes": {
           "additionalProperties": {
@@ -1521,17 +1504,6 @@
         "degreeTypes": {
           "description": "Optional. The desired education degrees for the job, such as Bachelors, Masters.",
           "items": {
-            "enumDescriptions": [
-              "Default value. Represents no degree, or early childhood education. Maps to ISCED code 0. Ex) Kindergarten",
-              "Primary education which is typically the first stage of compulsory education. ISCED code 1. Ex) Elementary school",
-              "Lower secondary education; First stage of secondary education building on primary education, typically with a more subject-oriented curriculum. ISCED code 2. Ex) Middle school",
-              "Middle education; Second/final stage of secondary education preparing for tertiary education and/or providing skills relevant to employment. Usually with an increased range of subject options and streams. ISCED code 3. Ex) High school",
-              "Adult Remedial Education; Programmes providing learning experiences that build on secondary education and prepare for labour market entry and/or tertiary education. The content is broader than secondary but not as complex as tertiary education. ISCED code 4.",
-              "Associate's or equivalent; Short first tertiary programmes that are typically practically-based, occupationally-specific and prepare for labour market entry. These programmes may also provide a pathway to other tertiary programmes. ISCED code 5.",
-              "Bachelor's or equivalent; Programmes designed to provide intermediate academic and/or professional knowledge, skills and competencies leading to a first tertiary degree or equivalent qualification. ISCED code 6.",
-              "Master's or equivalent; Programmes designed to provide advanced academic and/or professional knowledge, skills and competencies leading to a second tertiary degree or equivalent qualification. ISCED code 7.",
-              "Doctoral or equivalent; Programmes designed primarily to lead to an advanced research qualification, usually concluding with the submission and defense of a substantive dissertation of publishable quality based on original research. ISCED code 8."
-            ],
             "enum": [
               "DEGREE_TYPE_UNSPECIFIED",
               "PRIMARY_EDUCATION",
@@ -1543,6 +1515,17 @@
               "MASTERS_OR_EQUIVALENT",
               "DOCTORAL_OR_EQUIVALENT"
             ],
+            "enumDescriptions": [
+              "Default value. Represents no degree, or early childhood education. Maps to ISCED code 0. Ex) Kindergarten",
+              "Primary education which is typically the first stage of compulsory education. ISCED code 1. Ex) Elementary school",
+              "Lower secondary education; First stage of secondary education building on primary education, typically with a more subject-oriented curriculum. ISCED code 2. Ex) Middle school",
+              "Middle education; Second/final stage of secondary education preparing for tertiary education and/or providing skills relevant to employment. Usually with an increased range of subject options and streams. ISCED code 3. Ex) High school",
+              "Adult Remedial Education; Programmes providing learning experiences that build on secondary education and prepare for labour market entry and/or tertiary education. The content is broader than secondary but not as complex as tertiary education. ISCED code 4.",
+              "Associate's or equivalent; Short first tertiary programmes that are typically practically-based, occupationally-specific and prepare for labour market entry. These programmes may also provide a pathway to other tertiary programmes. ISCED code 5.",
+              "Bachelor's or equivalent; Programmes designed to provide intermediate academic and/or professional knowledge, skills and competencies leading to a first tertiary degree or equivalent qualification. ISCED code 6.",
+              "Master's or equivalent; Programmes designed to provide advanced academic and/or professional knowledge, skills and competencies leading to a second tertiary degree or equivalent qualification. ISCED code 7.",
+              "Doctoral or equivalent; Programmes designed primarily to lead to an advanced research qualification, usually concluding with the submission and defense of a substantive dissertation of publishable quality based on original research. ISCED code 8."
+            ],
             "type": "string"
           },
           "type": "array"
@@ -1552,8 +1535,8 @@
           "type": "string"
         },
         "derivedInfo": {
-          "description": "Output only. Derived details about the job posting.",
-          "$ref": "JobDerivedInfo"
+          "$ref": "JobDerivedInfo",
+          "description": "Output only. Derived details about the job posting."
         },
         "description": {
           "description": "Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.",
@@ -1562,19 +1545,6 @@
         "employmentTypes": {
           "description": "Optional. The employment type(s) of a job, for example, full time or part time.",
           "items": {
-            "enumDescriptions": [
-              "The default value if the employment type is not specified.",
-              "The job requires working a number of hours that constitute full time employment, typically 40 or more hours per week.",
-              "The job entails working fewer hours than a full time job, typically less than 40 hours a week.",
-              "The job is offered as a contracted, as opposed to a salaried employee, position.",
-              "The job is offered as a contracted position with the understanding that it's converted into a full-time position at the end of the contract. Jobs of this type are also returned by a search for EmploymentType.CONTRACTOR jobs.",
-              "The job is offered as a temporary employment opportunity, usually a short-term engagement.",
-              "The job is a fixed-term opportunity for students or entry-level job seekers to obtain on-the-job training, typically offered as a summer position.",
-              "The is an opportunity for an individual to volunteer, where there's no expectation of compensation for the provided services.",
-              "The job requires an employee to work on an as-needed basis with a flexible schedule.",
-              "The job involves employing people in remote areas and flying them temporarily to the work site instead of relocating employees and their families permanently.",
-              "The job does not fit any of the other listed types."
-            ],
             "enum": [
               "EMPLOYMENT_TYPE_UNSPECIFIED",
               "FULL_TIME",
@@ -1588,6 +1558,19 @@
               "FLY_IN_FLY_OUT",
               "OTHER_EMPLOYMENT_TYPE"
             ],
+            "enumDescriptions": [
+              "The default value if the employment type is not specified.",
+              "The job requires working a number of hours that constitute full time employment, typically 40 or more hours per week.",
+              "The job entails working fewer hours than a full time job, typically less than 40 hours a week.",
+              "The job is offered as a contracted, as opposed to a salaried employee, position.",
+              "The job is offered as a contracted position with the understanding that it's converted into a full-time position at the end of the contract. Jobs of this type are also returned by a search for EmploymentType.CONTRACTOR jobs.",
+              "The job is offered as a temporary employment opportunity, usually a short-term engagement.",
+              "The job is a fixed-term opportunity for students or entry-level job seekers to obtain on-the-job training, typically offered as a summer position.",
+              "The is an opportunity for an individual to volunteer, where there's no expectation of compensation for the provided services.",
+              "The job requires an employee to work on an as-needed basis with a flexible schedule.",
+              "The job involves employing people in remote areas and flying them temporarily to the work site instead of relocating employees and their families permanently.",
+              "The job does not fit any of the other listed types."
+            ],
             "type": "string"
           },
           "type": "array"
@@ -1599,20 +1582,6 @@
         "jobBenefits": {
           "description": "Optional. The benefits included with the job.",
           "items": {
-            "enumDescriptions": [
-              "Default value if the type is not specified.",
-              "The job includes access to programs that support child care, such as daycare.",
-              "The job includes dental services covered by a dental insurance plan.",
-              "The job offers specific benefits to domestic partners.",
-              "The job allows for a flexible work schedule.",
-              "The job includes health services covered by a medical insurance plan.",
-              "The job includes a life insurance plan provided by the employer or available for purchase by the employee.",
-              "The job allows for a leave of absence to a parent to care for a newborn child.",
-              "The job includes a workplace retirement plan provided by the employer or available for purchase by the employee.",
-              "The job allows for paid time off due to illness.",
-              "The job includes paid time off for vacation.",
-              "The job includes vision services covered by a vision insurance plan."
-            ],
             "enum": [
               "JOB_BENEFIT_UNSPECIFIED",
               "CHILD_CARE",
@@ -1627,6 +1596,20 @@
               "VACATION",
               "VISION"
             ],
+            "enumDescriptions": [
+              "Default value if the type is not specified.",
+              "The job includes access to programs that support child care, such as daycare.",
+              "The job includes dental services covered by a dental insurance plan.",
+              "The job offers specific benefits to domestic partners.",
+              "The job allows for a flexible work schedule.",
+              "The job includes health services covered by a medical insurance plan.",
+              "The job includes a life insurance plan provided by the employer or available for purchase by the employee.",
+              "The job allows for a leave of absence to a parent to care for a newborn child.",
+              "The job includes a workplace retirement plan provided by the employer or available for purchase by the employee.",
+              "The job allows for paid time off due to illness.",
+              "The job includes paid time off for vacation.",
+              "The job includes vision services covered by a vision insurance plan."
+            ],
             "type": "string"
           },
           "type": "array"
@@ -1638,14 +1621,6 @@
         },
         "jobLevel": {
           "description": "Optional. The experience level associated with the job, such as \"Entry Level\".",
-          "enumDescriptions": [
-            "The default value if the level is not specified.",
-            "Entry-level individual contributors, typically with less than 2 years of experience in a similar role. Includes interns.",
-            "Experienced individual contributors, typically with 2+ years of experience in a similar role.",
-            "Entry- to mid-level managers responsible for managing a team of people.",
-            "Senior-level managers responsible for managing teams of managers.",
-            "Executive-level managers and above, including C-level positions."
-          ],
           "enum": [
             "JOB_LEVEL_UNSPECIFIED",
             "ENTRY_LEVEL",
@@ -1653,6 +1628,14 @@
             "MANAGER",
             "DIRECTOR",
             "EXECUTIVE"
+          ],
+          "enumDescriptions": [
+            "The default value if the level is not specified.",
+            "Entry-level individual contributors, typically with less than 2 years of experience in a similar role. Includes interns.",
+            "Experienced individual contributors, typically with 2+ years of experience in a similar role.",
+            "Entry- to mid-level managers responsible for managing a team of people.",
+            "Senior-level managers responsible for managing teams of managers.",
+            "Executive-level managers and above, including C-level positions."
           ],
           "type": "string"
         },
@@ -1686,17 +1669,17 @@
         },
         "postingRegion": {
           "description": "Optional. The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.",
-          "enumDescriptions": [
-            "If the region is unspecified, the job is only returned if it matches the LocationFilter.",
-            "In addition to exact location matching, job posting is returned when the LocationFilter in the search query is in the same administrative area as the returned job posting. For example, if a `ADMINISTRATIVE_AREA` job is posted in \"CA, USA\", it's returned if LocationFilter has \"Mountain View\". Administrative area refers to top-level administrative subdivision of this country. For example, US state, IT region, UK constituent nation and JP prefecture.",
-            "In addition to exact location matching, job is returned when LocationFilter in search query is in the same country as this job. For example, if a `NATION_WIDE` job is posted in \"USA\", it's returned if LocationFilter has 'Mountain View'.",
-            "Job allows employees to work remotely (telecommute). If locations are provided with this value, the job is considered as having a location, but telecommuting is allowed."
-          ],
           "enum": [
             "POSTING_REGION_UNSPECIFIED",
             "ADMINISTRATIVE_AREA",
             "NATION",
             "TELECOMMUTE"
+          ],
+          "enumDescriptions": [
+            "If the region is unspecified, the job is only returned if it matches the LocationFilter.",
+            "In addition to exact location matching, job posting is returned when the LocationFilter in the search query is in the same administrative area as the returned job posting. For example, if a `ADMINISTRATIVE_AREA` job is posted in \"CA, USA\", it's returned if LocationFilter has \"Mountain View\". Administrative area refers to top-level administrative subdivision of this country. For example, US state, IT region, UK constituent nation and JP prefecture.",
+            "In addition to exact location matching, job is returned when LocationFilter in search query is in the same country as this job. For example, if a `NATION_WIDE` job is posted in \"USA\", it's returned if LocationFilter has 'Mountain View'.",
+            "Job allows employees to work remotely (telecommute). If locations are provided with this value, the job is considered as having a location, but telecommuting is allowed."
           ],
           "type": "string"
         },
@@ -1706,8 +1689,8 @@
           "type": "string"
         },
         "processingOptions": {
-          "description": "Optional. Options for job processing.",
-          "$ref": "ProcessingOptions"
+          "$ref": "ProcessingOptions",
+          "description": "Optional. Options for job processing."
         },
         "promotionValue": {
           "description": "Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.",
@@ -1732,17 +1715,17 @@
         },
         "visibility": {
           "description": "Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.",
-          "enumDescriptions": [
-            "Default value.",
-            "The resource is only visible to the GCP account who owns it.",
-            "The resource is visible to the owner and may be visible to other applications and processes at Google.",
-            "The resource is visible to the owner and may be visible to all other API clients."
-          ],
           "enum": [
             "VISIBILITY_UNSPECIFIED",
             "ACCOUNT_ONLY",
             "SHARED_WITH_GOOGLE",
             "SHARED_WITH_PUBLIC"
+          ],
+          "enumDescriptions": [
+            "Default value.",
+            "The resource is only visible to the GCP account who owns it.",
+            "The resource is visible to the owner and may be visible to other applications and processes at Google.",
+            "The resource is visible to the owner and may be visible to all other API clients."
           ],
           "type": "string"
         }
@@ -1756,39 +1739,6 @@
         "jobCategories": {
           "description": "Job categories derived from Job.title and Job.description.",
           "items": {
-            "enumDescriptions": [
-              "The default value if the category isn't specified.",
-              "An accounting and finance job, such as an Accountant.",
-              "An administrative and office job, such as an Administrative Assistant.",
-              "An advertising and marketing job, such as Marketing Manager.",
-              "An animal care job, such as Veterinarian.",
-              "An art, fashion, or design job, such as Designer.",
-              "A business operations job, such as Business Operations Manager.",
-              "A cleaning and facilities job, such as Custodial Staff.",
-              "A computer and IT job, such as Systems Administrator.",
-              "A construction job, such as General Laborer.",
-              "A customer service job, such s Cashier.",
-              "An education job, such as School Teacher.",
-              "An entertainment and travel job, such as Flight Attendant.",
-              "A farming or outdoor job, such as Park Ranger.",
-              "A healthcare job, such as Registered Nurse.",
-              "A human resources job, such as Human Resources Director.",
-              "An installation, maintenance, or repair job, such as Electrician.",
-              "A legal job, such as Law Clerk.",
-              "A management job, often used in conjunction with another category, such as Store Manager.",
-              "A manufacturing or warehouse job, such as Assembly Technician.",
-              "A media, communications, or writing job, such as Media Relations.",
-              "An oil, gas or mining job, such as Offshore Driller.",
-              "A personal care and services job, such as Hair Stylist.",
-              "A protective services job, such as Security Guard.",
-              "A real estate job, such as Buyer's Agent.",
-              "A restaurant and hospitality job, such as Restaurant Server.",
-              "A sales and/or retail job, such Sales Associate.",
-              "A science and engineering job, such as Lab Technician.",
-              "A social services or non-profit job, such as Case Worker.",
-              "A sports, fitness, or recreation job, such as Personal Trainer.",
-              "A transportation or logistics job, such as Truck Driver."
-            ],
             "enum": [
               "JOB_CATEGORY_UNSPECIFIED",
               "ACCOUNTING_AND_FINANCE",
@@ -1821,6 +1771,39 @@
               "SOCIAL_SERVICES_AND_NON_PROFIT",
               "SPORTS_FITNESS_AND_RECREATION",
               "TRANSPORTATION_AND_LOGISTICS"
+            ],
+            "enumDescriptions": [
+              "The default value if the category isn't specified.",
+              "An accounting and finance job, such as an Accountant.",
+              "An administrative and office job, such as an Administrative Assistant.",
+              "An advertising and marketing job, such as Marketing Manager.",
+              "An animal care job, such as Veterinarian.",
+              "An art, fashion, or design job, such as Designer.",
+              "A business operations job, such as Business Operations Manager.",
+              "A cleaning and facilities job, such as Custodial Staff.",
+              "A computer and IT job, such as Systems Administrator.",
+              "A construction job, such as General Laborer.",
+              "A customer service job, such s Cashier.",
+              "An education job, such as School Teacher.",
+              "An entertainment and travel job, such as Flight Attendant.",
+              "A farming or outdoor job, such as Park Ranger.",
+              "A healthcare job, such as Registered Nurse.",
+              "A human resources job, such as Human Resources Director.",
+              "An installation, maintenance, or repair job, such as Electrician.",
+              "A legal job, such as Law Clerk.",
+              "A management job, often used in conjunction with another category, such as Store Manager.",
+              "A manufacturing or warehouse job, such as Assembly Technician.",
+              "A media, communications, or writing job, such as Media Relations.",
+              "An oil, gas or mining job, such as Offshore Driller.",
+              "A personal care and services job, such as Hair Stylist.",
+              "A protective services job, such as Security Guard.",
+              "A real estate job, such as Buyer's Agent.",
+              "A restaurant and hospitality job, such as Restaurant Server.",
+              "A sales and/or retail job, such Sales Associate.",
+              "A science and engineering job, such as Lab Technician.",
+              "A social services or non-profit job, such as Case Worker.",
+              "A sports, fitness, or recreation job, such as Personal Trainer.",
+              "A transportation or logistics job, such as Truck Driver."
             ],
             "type": "string"
           },
@@ -1849,25 +1832,6 @@
         },
         "type": {
           "description": "Required. The type of the event (see JobEventType).",
-          "enumDescriptions": [
-            "The event is unspecified by other provided values.",
-            "The job seeker or other entity interacting with the service has had a job rendered in their view, such as in a list of search results in a compressed or clipped format. This event is typically associated with the viewing of a jobs list on a single page by a job seeker.",
-            "The job seeker, or other entity interacting with the service, has viewed the details of a job, including the full description. This event doesn't apply to the viewing a snippet of a job appearing as a part of the job search results. Viewing a snippet is associated with an impression).",
-            "The job seeker or other entity interacting with the service performed an action to view a job and was redirected to a different website for job.",
-            "The job seeker or other entity interacting with the service began the process or demonstrated the intention of applying for a job.",
-            "The job seeker or other entity interacting with the service submitted an application for a job.",
-            "The job seeker or other entity interacting with the service submitted an application for a job with a single click without entering information. If a job seeker performs this action, send only this event to the service. Do not also send JobEventType.APPLICATION_START or JobEventType.APPLICATION_FINISH events.",
-            "The job seeker or other entity interacting with the service performed an action to apply to a job and was redirected to a different website to complete the application.",
-            "The job seeker or other entity interacting with the service began the process or demonstrated the intention of applying for a job from the search results page without viewing the details of the job posting. If sending this event, JobEventType.VIEW event shouldn't be sent.",
-            "The job seeker, or other entity interacting with the service, performs an action with a single click from the search results page to apply to a job (without viewing the details of the job posting), and is redirected to a different website to complete the application. If a candidate performs this action, send only this event to the service. Do not also send JobEventType.APPLICATION_START, JobEventType.APPLICATION_FINISH or JobEventType.VIEW events.",
-            "This event should be used when a company submits an application on behalf of a job seeker. This event is intended for use by staffing agencies attempting to place candidates.",
-            "The job seeker or other entity interacting with the service demonstrated an interest in a job by bookmarking or saving it.",
-            "The job seeker or other entity interacting with the service was sent a notification, such as an email alert or device notification, containing one or more jobs listings generated by the service.",
-            "The job seeker or other entity interacting with the service was employed by the hiring entity (employer). Send this event only if the job seeker was hired through an application that was initiated by a search conducted through the Cloud Talent Solution service.",
-            "A recruiter or staffing agency submitted an application on behalf of the candidate after interacting with the service to identify a suitable job posting.",
-            "The entity interacting with the service (for example, the job seeker), was granted an initial interview by the hiring entity (employer). This event should only be sent if the job seeker was granted an interview as part of an application that was initiated by a search conducted through / recommendation provided by the Cloud Talent Solution service.",
-            "The job seeker or other entity interacting with the service showed no interest in the job."
-          ],
           "enum": [
             "JOB_EVENT_TYPE_UNSPECIFIED",
             "IMPRESSION",
@@ -1887,6 +1851,25 @@
             "INTERVIEW_GRANTED",
             "NOT_INTERESTED"
           ],
+          "enumDescriptions": [
+            "The event is unspecified by other provided values.",
+            "The job seeker or other entity interacting with the service has had a job rendered in their view, such as in a list of search results in a compressed or clipped format. This event is typically associated with the viewing of a jobs list on a single page by a job seeker.",
+            "The job seeker, or other entity interacting with the service, has viewed the details of a job, including the full description. This event doesn't apply to the viewing a snippet of a job appearing as a part of the job search results. Viewing a snippet is associated with an impression).",
+            "The job seeker or other entity interacting with the service performed an action to view a job and was redirected to a different website for job.",
+            "The job seeker or other entity interacting with the service began the process or demonstrated the intention of applying for a job.",
+            "The job seeker or other entity interacting with the service submitted an application for a job.",
+            "The job seeker or other entity interacting with the service submitted an application for a job with a single click without entering information. If a job seeker performs this action, send only this event to the service. Do not also send JobEventType.APPLICATION_START or JobEventType.APPLICATION_FINISH events.",
+            "The job seeker or other entity interacting with the service performed an action to apply to a job and was redirected to a different website to complete the application.",
+            "The job seeker or other entity interacting with the service began the process or demonstrated the intention of applying for a job from the search results page without viewing the details of the job posting. If sending this event, JobEventType.VIEW event shouldn't be sent.",
+            "The job seeker, or other entity interacting with the service, performs an action with a single click from the search results page to apply to a job (without viewing the details of the job posting), and is redirected to a different website to complete the application. If a candidate performs this action, send only this event to the service. Do not also send JobEventType.APPLICATION_START, JobEventType.APPLICATION_FINISH or JobEventType.VIEW events.",
+            "This event should be used when a company submits an application on behalf of a job seeker. This event is intended for use by staffing agencies attempting to place candidates.",
+            "The job seeker or other entity interacting with the service demonstrated an interest in a job by bookmarking or saving it.",
+            "The job seeker or other entity interacting with the service was sent a notification, such as an email alert or device notification, containing one or more jobs listings generated by the service.",
+            "The job seeker or other entity interacting with the service was employed by the hiring entity (employer). Send this event only if the job seeker was hired through an application that was initiated by a search conducted through the Cloud Talent Solution service.",
+            "A recruiter or staffing agency submitted an application on behalf of the candidate after interacting with the service to identify a suitable job posting.",
+            "The entity interacting with the service (for example, the job seeker), was granted an initial interview by the hiring entity (employer). This event should only be sent if the job seeker was granted an interview as part of an application that was initiated by a search conducted through / recommendation provided by the Cloud Talent Solution service.",
+            "The job seeker or other entity interacting with the service showed no interest in the job."
+          ],
           "type": "string"
         }
       },
@@ -1897,8 +1880,8 @@
       "id": "JobQuery",
       "properties": {
         "commuteFilter": {
-          "description": "Optional. Allows filtering jobs by commute time with different travel methods (for example, driving or public transit). Note: This only works with COMMUTE MODE. When specified, [JobQuery.location_filters] is ignored. Currently we don't support sorting by commute time.",
-          "$ref": "CommuteFilter"
+          "$ref": "CommuteFilter",
+          "description": "Optional. Allows filtering jobs by commute time with different travel methods (for example, driving or public transit). Note: This only works with COMMUTE MODE. When specified, [JobQuery.location_filters] is ignored. Currently we don't support sorting by commute time."
         },
         "companyDisplayNames": {
           "description": "Optional. This filter specifies the exact company display name of the jobs to search against. If a value isn't specified, jobs within the search results are associated with any company. If multiple values are specified, jobs within the search results may be associated with any of the specified companies. At most 20 company display name filters are allowed.",
@@ -1915,8 +1898,8 @@
           "type": "array"
         },
         "compensationFilter": {
-          "description": "Optional. This search filter is applied only to Job.compensation_info. For example, if the filter is specified as \"Hourly job with per-hour compensation > $15\", only jobs meeting these criteria are searched. If a filter isn't defined, all open jobs are searched.",
-          "$ref": "CompensationFilter"
+          "$ref": "CompensationFilter",
+          "description": "Optional. This search filter is applied only to Job.compensation_info. For example, if the filter is specified as \"Hourly job with per-hour compensation > $15\", only jobs meeting these criteria are searched. If a filter isn't defined, all open jobs are searched."
         },
         "customAttributeFilter": {
           "description": "Optional. This filter specifies a structured syntax to match against the Job.custom_attributes marked as `filterable`. The syntax for this expression is a subset of SQL syntax. Supported operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where the left of the operator is a custom field key and the right of the operator is a number or a quoted string. You must escape backslash (\\\\) and quote (\\\") characters. Supported functions are `LOWER([field_name])` to perform a case insensitive match and `EMPTY([field_name])` to filter on the existence of a key. Boolean expressions (AND/OR/NOT) are supported up to 3 levels of nesting (for example, \"((A AND B AND C) OR NOT D) AND E\"), a maximum of 100 comparisons or functions are allowed in the expression. The expression must be < 6000 bytes in length. Sample Query: `(LOWER(driving_license)=\"class \\\"a\\\"\" OR EMPTY(driving_license)) AND driving_years > 10`",
@@ -1929,19 +1912,6 @@
         "employmentTypes": {
           "description": "Optional. The employment type filter specifies the employment type of jobs to search against, such as EmploymentType.FULL_TIME. If a value is not specified, jobs in the search results includes any employment type. If multiple values are specified, jobs in the search results include any of the specified employment types.",
           "items": {
-            "enumDescriptions": [
-              "The default value if the employment type is not specified.",
-              "The job requires working a number of hours that constitute full time employment, typically 40 or more hours per week.",
-              "The job entails working fewer hours than a full time job, typically less than 40 hours a week.",
-              "The job is offered as a contracted, as opposed to a salaried employee, position.",
-              "The job is offered as a contracted position with the understanding that it's converted into a full-time position at the end of the contract. Jobs of this type are also returned by a search for EmploymentType.CONTRACTOR jobs.",
-              "The job is offered as a temporary employment opportunity, usually a short-term engagement.",
-              "The job is a fixed-term opportunity for students or entry-level job seekers to obtain on-the-job training, typically offered as a summer position.",
-              "The is an opportunity for an individual to volunteer, where there's no expectation of compensation for the provided services.",
-              "The job requires an employee to work on an as-needed basis with a flexible schedule.",
-              "The job involves employing people in remote areas and flying them temporarily to the work site instead of relocating employees and their families permanently.",
-              "The job does not fit any of the other listed types."
-            ],
             "enum": [
               "EMPLOYMENT_TYPE_UNSPECIFIED",
               "FULL_TIME",
@@ -1955,6 +1925,19 @@
               "FLY_IN_FLY_OUT",
               "OTHER_EMPLOYMENT_TYPE"
             ],
+            "enumDescriptions": [
+              "The default value if the employment type is not specified.",
+              "The job requires working a number of hours that constitute full time employment, typically 40 or more hours per week.",
+              "The job entails working fewer hours than a full time job, typically less than 40 hours a week.",
+              "The job is offered as a contracted, as opposed to a salaried employee, position.",
+              "The job is offered as a contracted position with the understanding that it's converted into a full-time position at the end of the contract. Jobs of this type are also returned by a search for EmploymentType.CONTRACTOR jobs.",
+              "The job is offered as a temporary employment opportunity, usually a short-term engagement.",
+              "The job is a fixed-term opportunity for students or entry-level job seekers to obtain on-the-job training, typically offered as a summer position.",
+              "The is an opportunity for an individual to volunteer, where there's no expectation of compensation for the provided services.",
+              "The job requires an employee to work on an as-needed basis with a flexible schedule.",
+              "The job involves employing people in remote areas and flying them temporarily to the work site instead of relocating employees and their families permanently.",
+              "The job does not fit any of the other listed types."
+            ],
             "type": "string"
           },
           "type": "array"
@@ -1962,39 +1945,6 @@
         "jobCategories": {
           "description": "Optional. The category filter specifies the categories of jobs to search against. See Category for more information. If a value is not specified, jobs from any category are searched against. If multiple values are specified, jobs from any of the specified categories are searched against.",
           "items": {
-            "enumDescriptions": [
-              "The default value if the category isn't specified.",
-              "An accounting and finance job, such as an Accountant.",
-              "An administrative and office job, such as an Administrative Assistant.",
-              "An advertising and marketing job, such as Marketing Manager.",
-              "An animal care job, such as Veterinarian.",
-              "An art, fashion, or design job, such as Designer.",
-              "A business operations job, such as Business Operations Manager.",
-              "A cleaning and facilities job, such as Custodial Staff.",
-              "A computer and IT job, such as Systems Administrator.",
-              "A construction job, such as General Laborer.",
-              "A customer service job, such s Cashier.",
-              "An education job, such as School Teacher.",
-              "An entertainment and travel job, such as Flight Attendant.",
-              "A farming or outdoor job, such as Park Ranger.",
-              "A healthcare job, such as Registered Nurse.",
-              "A human resources job, such as Human Resources Director.",
-              "An installation, maintenance, or repair job, such as Electrician.",
-              "A legal job, such as Law Clerk.",
-              "A management job, often used in conjunction with another category, such as Store Manager.",
-              "A manufacturing or warehouse job, such as Assembly Technician.",
-              "A media, communications, or writing job, such as Media Relations.",
-              "An oil, gas or mining job, such as Offshore Driller.",
-              "A personal care and services job, such as Hair Stylist.",
-              "A protective services job, such as Security Guard.",
-              "A real estate job, such as Buyer's Agent.",
-              "A restaurant and hospitality job, such as Restaurant Server.",
-              "A sales and/or retail job, such Sales Associate.",
-              "A science and engineering job, such as Lab Technician.",
-              "A social services or non-profit job, such as Case Worker.",
-              "A sports, fitness, or recreation job, such as Personal Trainer.",
-              "A transportation or logistics job, such as Truck Driver."
-            ],
             "enum": [
               "JOB_CATEGORY_UNSPECIFIED",
               "ACCOUNTING_AND_FINANCE",
@@ -2028,6 +1978,39 @@
               "SPORTS_FITNESS_AND_RECREATION",
               "TRANSPORTATION_AND_LOGISTICS"
             ],
+            "enumDescriptions": [
+              "The default value if the category isn't specified.",
+              "An accounting and finance job, such as an Accountant.",
+              "An administrative and office job, such as an Administrative Assistant.",
+              "An advertising and marketing job, such as Marketing Manager.",
+              "An animal care job, such as Veterinarian.",
+              "An art, fashion, or design job, such as Designer.",
+              "A business operations job, such as Business Operations Manager.",
+              "A cleaning and facilities job, such as Custodial Staff.",
+              "A computer and IT job, such as Systems Administrator.",
+              "A construction job, such as General Laborer.",
+              "A customer service job, such s Cashier.",
+              "An education job, such as School Teacher.",
+              "An entertainment and travel job, such as Flight Attendant.",
+              "A farming or outdoor job, such as Park Ranger.",
+              "A healthcare job, such as Registered Nurse.",
+              "A human resources job, such as Human Resources Director.",
+              "An installation, maintenance, or repair job, such as Electrician.",
+              "A legal job, such as Law Clerk.",
+              "A management job, often used in conjunction with another category, such as Store Manager.",
+              "A manufacturing or warehouse job, such as Assembly Technician.",
+              "A media, communications, or writing job, such as Media Relations.",
+              "An oil, gas or mining job, such as Offshore Driller.",
+              "A personal care and services job, such as Hair Stylist.",
+              "A protective services job, such as Security Guard.",
+              "A real estate job, such as Buyer's Agent.",
+              "A restaurant and hospitality job, such as Restaurant Server.",
+              "A sales and/or retail job, such Sales Associate.",
+              "A science and engineering job, such as Lab Technician.",
+              "A social services or non-profit job, such as Case Worker.",
+              "A sports, fitness, or recreation job, such as Personal Trainer.",
+              "A transportation or logistics job, such as Truck Driver."
+            ],
             "type": "string"
           },
           "type": "array"
@@ -2047,8 +2030,8 @@
           "type": "array"
         },
         "publishTimeRange": {
-          "description": "Optional. Jobs published within a range specified by this filter are searched against.",
-          "$ref": "TimestampRange"
+          "$ref": "TimestampRange",
+          "description": "Optional. Jobs published within a range specified by this filter are searched against."
         },
         "query": {
           "description": "Optional. The query string that matches against the job title, description, and location fields. The maximum number of allowed characters is 255.",
@@ -2090,8 +2073,8 @@
           "type": "array"
         },
         "metadata": {
-          "description": "Additional information for the API invocation, such as the request tracking id.",
-          "$ref": "ResponseMetadata"
+          "$ref": "ResponseMetadata",
+          "description": "Additional information for the API invocation, such as the request tracking id."
         },
         "nextPageToken": {
           "description": "A token to retrieve the next page of results.",
@@ -2112,8 +2095,8 @@
           "type": "array"
         },
         "metadata": {
-          "description": "Additional information for the API invocation, such as the request tracking id.",
-          "$ref": "ResponseMetadata"
+          "$ref": "ResponseMetadata",
+          "description": "Additional information for the API invocation, such as the request tracking id."
         },
         "nextPageToken": {
           "description": "A token to retrieve the next page of results.",
@@ -2127,24 +2110,11 @@
       "id": "Location",
       "properties": {
         "latLng": {
-          "description": "An object representing a latitude/longitude pair.",
-          "$ref": "LatLng"
+          "$ref": "LatLng",
+          "description": "An object representing a latitude/longitude pair."
         },
         "locationType": {
           "description": "The type of a location, which corresponds to the address lines field of PostalAddress. For example, \"Downtown, Atlanta, GA, USA\" has a type of LocationType#NEIGHBORHOOD, and \"Kansas City, KS, USA\" has a type of LocationType#LOCALITY.",
-          "enumDescriptions": [
-            "Default value if the type is not specified.",
-            "A country level location.",
-            "A state or equivalent level location.",
-            "A county or equivalent level location.",
-            "A city or equivalent level location.",
-            "A postal code level location.",
-            "A sublocality is a subdivision of a locality, for example a city borough, ward, or arrondissement. Sublocalities are usually recognized by a local political authority. For example, Manhattan and Brooklyn are recognized as boroughs by the City of New York, and are therefore modeled as sublocalities.",
-            "A district or equivalent level location.",
-            "A smaller district or equivalent level display.",
-            "A neighborhood level location.",
-            "A street address level location."
-          ],
           "enum": [
             "LOCATION_TYPE_UNSPECIFIED",
             "COUNTRY",
@@ -2158,11 +2128,24 @@
             "NEIGHBORHOOD",
             "STREET_ADDRESS"
           ],
+          "enumDescriptions": [
+            "Default value if the type is not specified.",
+            "A country level location.",
+            "A state or equivalent level location.",
+            "A county or equivalent level location.",
+            "A city or equivalent level location.",
+            "A postal code level location.",
+            "A sublocality is a subdivision of a locality, for example a city borough, ward, or arrondissement. Sublocalities are usually recognized by a local political authority. For example, Manhattan and Brooklyn are recognized as boroughs by the City of New York, and are therefore modeled as sublocalities.",
+            "A district or equivalent level location.",
+            "A smaller district or equivalent level display.",
+            "A neighborhood level location.",
+            "A street address level location."
+          ],
           "type": "string"
         },
         "postalAddress": {
-          "description": "Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.",
-          "$ref": "PostalAddress"
+          "$ref": "PostalAddress",
+          "description": "Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location."
         },
         "radiusInMiles": {
           "description": "Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from LatLng covers the area associated with the job location. For example, currently, \"Mountain View, CA, USA\" has a radius of 6.17 miles.",
@@ -2186,8 +2169,8 @@
           "type": "number"
         },
         "latLng": {
-          "description": "Optional. The latitude and longitude of the geographic center from which to search. This field's ignored if `address` is provided.",
-          "$ref": "LatLng"
+          "$ref": "LatLng",
+          "description": "Optional. The latitude and longitude of the geographic center from which to search. This field's ignored if `address` is provided."
         },
         "regionCode": {
           "description": "Optional. CLDR region code of the country/region of the address. This is used to address ambiguity of the user-input location, for example, \"Liverpool\" against \"Liverpool, NY, US\" or \"Liverpool, UK\". Set this field if all the jobs to search against are from a same region, or jobs are world-wide, but the job seeker is from a specific region. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: \"CH\" for Switzerland.",
@@ -2195,15 +2178,15 @@
         },
         "telecommutePreference": {
           "description": "Optional. Allows the client to return jobs without a set location, specifically, telecommuting jobs (telecommuting is considered by the service as a special location. Job.posting_region indicates if a job permits telecommuting. If this field is set to TelecommutePreference.TELECOMMUTE_ALLOWED, telecommuting jobs are searched, and address and lat_lng are ignored. If not set or set to TelecommutePreference.TELECOMMUTE_EXCLUDED, telecommute job are not searched. This filter can be used by itself to search exclusively for telecommuting jobs, or it can be combined with another location filter to search for a combination of job locations, such as \"Mountain View\" or \"telecommuting\" jobs. However, when used in combination with other location filters, telecommuting jobs can be treated as less relevant than other jobs in the search response.",
-          "enumDescriptions": [
-            "Default value if the telecommute preference is not specified.",
-            "Exclude telecommute jobs.",
-            "Allow telecommute jobs."
-          ],
           "enum": [
             "TELECOMMUTE_PREFERENCE_UNSPECIFIED",
             "TELECOMMUTE_EXCLUDED",
             "TELECOMMUTE_ALLOWED"
+          ],
+          "enumDescriptions": [
+            "Default value if the telecommute preference is not specified.",
+            "Exclude telecommute jobs.",
+            "Allow telecommute jobs."
           ],
           "type": "string"
         }
@@ -2215,12 +2198,12 @@
       "id": "MatchingJob",
       "properties": {
         "commuteInfo": {
-          "description": "Commute information which is generated based on specified CommuteFilter.",
-          "$ref": "CommuteInfo"
+          "$ref": "CommuteInfo",
+          "description": "Commute information which is generated based on specified CommuteFilter."
         },
         "job": {
-          "description": "Job resource that matches the specified SearchJobsRequest.",
-          "$ref": "Job"
+          "$ref": "Job",
+          "description": "Job resource that matches the specified SearchJobsRequest."
         },
         "jobSummary": {
           "description": "A summary of the job with core information that's displayed on the search results listing page.",
@@ -2482,15 +2465,15 @@
         },
         "htmlSanitization": {
           "description": "Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.",
-          "enumDescriptions": [
-            "Default value.",
-            "Disables sanitization on HTML input.",
-            "Sanitizes HTML input, only accepts bold, italic, ordered list, and unordered list markup tags."
-          ],
           "enum": [
             "HTML_SANITIZATION_UNSPECIFIED",
             "HTML_SANITIZATION_DISABLED",
             "SIMPLE_FORMATTING_ONLY"
+          ],
+          "enumDescriptions": [
+            "Default value.",
+            "Disables sanitization on HTML input.",
+            "Sanitizes HTML input, only accepts bold, italic, ordered list, and unordered list markup tags."
           ],
           "type": "string"
         }
@@ -2502,8 +2485,8 @@
       "id": "RequestMetadata",
       "properties": {
         "deviceInfo": {
-          "description": "Optional. The type of device used by the job seeker at the time of the call to the service.",
-          "$ref": "DeviceInfo"
+          "$ref": "DeviceInfo",
+          "description": "Optional. The type of device used by the job seeker at the time of the call to the service."
         },
         "domain": {
           "description": "Required. The client-defined scope or source of the service call, which typically is the domain on which the service has been implemented and is currently being run. For example, if the service is being run by client *Foo, Inc.*, on job board www.foo.com and career site www.bar.com, then this field is set to \"foo.com\" for use on the job board, and \"bar.com\" for use on the career site. If this field isn't available for some reason, send \"UNKNOWN\". Any improvements to the model for a particular tenant site rely on this field being set correctly to a domain. The maximum number of allowed characters is 255.",
@@ -2541,15 +2524,15 @@
         },
         "diversificationLevel": {
           "description": "Optional. Controls whether highly similar jobs are returned next to each other in the search results. Jobs are identified as highly similar based on their titles, job categories, and locations. Highly similar results are clustered so that only one representative job of the cluster is displayed to the job seeker higher up in the results, with the other jobs being displayed lower down in the results. Defaults to DiversificationLevel.SIMPLE if no value is specified.",
-          "enumDescriptions": [
-            "The diversification level isn't specified. By default, jobs with this enum are ordered according to SIMPLE diversifying behavior.",
-            "Disables diversification. Jobs that would normally be pushed to the last page would not have their positions altered. This may result in highly similar jobs appearing in sequence in the search results.",
-            "Default diversifying behavior. The result list is ordered so that highly similar results are pushed to the end of the last page of search results."
-          ],
           "enum": [
             "DIVERSIFICATION_LEVEL_UNSPECIFIED",
             "DISABLED",
             "SIMPLE"
+          ],
+          "enumDescriptions": [
+            "The diversification level isn't specified. By default, jobs with this enum are ordered according to SIMPLE diversifying behavior.",
+            "Disables diversification. Jobs that would normally be pushed to the last page would not have their positions altered. This may result in highly similar jobs appearing in sequence in the search results.",
+            "Default diversifying behavior. The result list is ordered so that highly similar results are pushed to the end of the last page of search results."
           ],
           "type": "string"
         },
@@ -2558,28 +2541,28 @@
           "type": "boolean"
         },
         "histogramFacets": {
-          "description": "Optional. Histogram requests for jobs matching JobQuery.",
-          "$ref": "HistogramFacets"
+          "$ref": "HistogramFacets",
+          "description": "Optional. Histogram requests for jobs matching JobQuery."
         },
         "jobQuery": {
-          "description": "Optional. Query used to search against jobs, such as keyword, location filters, etc.",
-          "$ref": "JobQuery"
+          "$ref": "JobQuery",
+          "description": "Optional. Query used to search against jobs, such as keyword, location filters, etc."
         },
         "jobView": {
           "description": "Optional. The desired job attributes returned for jobs in the search response. Defaults to JobView.SMALL if no value is specified.",
-          "enumDescriptions": [
-            "Default value.",
-            "A ID only view of job, with following attributes: Job.name, Job.requisition_id, Job.language_code.",
-            "A minimal view of the job, with the following attributes: Job.name, Job.requisition_id, Job.title, Job.company_name, Job.DerivedInfo.locations, Job.language_code.",
-            "A small view of the job, with the following attributes in the search results: Job.name, Job.requisition_id, Job.title, Job.company_name, Job.DerivedInfo.locations, Job.visibility, Job.language_code, Job.description.",
-            "All available attributes are included in the search results."
-          ],
           "enum": [
             "JOB_VIEW_UNSPECIFIED",
             "JOB_VIEW_ID_ONLY",
             "JOB_VIEW_MINIMAL",
             "JOB_VIEW_SMALL",
             "JOB_VIEW_FULL"
+          ],
+          "enumDescriptions": [
+            "Default value.",
+            "A ID only view of job, with following attributes: Job.name, Job.requisition_id, Job.language_code.",
+            "A minimal view of the job, with the following attributes: Job.name, Job.requisition_id, Job.title, Job.company_name, Job.DerivedInfo.locations, Job.language_code.",
+            "A small view of the job, with the following attributes in the search results: Job.name, Job.requisition_id, Job.title, Job.company_name, Job.DerivedInfo.locations, Job.visibility, Job.language_code, Job.description.",
+            "All available attributes are included in the search results."
           ],
           "type": "string"
         },
@@ -2602,8 +2585,8 @@
           "type": "string"
         },
         "requestMetadata": {
-          "description": "Required. The meta information collected about the job searcher, used to improve the search quality of the service. The identifiers (such as `user_id`) are provided by users, and must be unique and consistent.",
-          "$ref": "RequestMetadata"
+          "$ref": "RequestMetadata",
+          "description": "Required. The meta information collected about the job searcher, used to improve the search quality of the service. The identifiers (such as `user_id`) are provided by users, and must be unique and consistent."
         },
         "requirePreciseResultSize": {
           "description": "This field is deprecated.",
@@ -2611,15 +2594,15 @@
         },
         "searchMode": {
           "description": "Optional. Mode of a search. Defaults to SearchMode.JOB_SEARCH.",
-          "enumDescriptions": [
-            "The mode of the search method isn't specified. The default search behavior is identical to JOB_SEARCH search behavior.",
-            "The job search matches against all jobs, and featured jobs (jobs with promotionValue > 0) are not specially handled.",
-            "The job search matches only against featured jobs (jobs with a promotionValue > 0). This method doesn't return any jobs having a promotionValue <= 0. The search results order is determined by the promotionValue (jobs with a higher promotionValue are returned higher up in the search results), with relevance being used as a tiebreaker."
-          ],
           "enum": [
             "SEARCH_MODE_UNSPECIFIED",
             "JOB_SEARCH",
             "FEATURED_JOB_SEARCH"
+          ],
+          "enumDescriptions": [
+            "The mode of the search method isn't specified. The default search behavior is identical to JOB_SEARCH search behavior.",
+            "The job search matches against all jobs, and featured jobs (jobs with promotionValue > 0) are not specially handled.",
+            "The job search matches only against featured jobs (jobs with a promotionValue > 0). This method doesn't return any jobs having a promotionValue <= 0. The search results order is determined by the promotionValue (jobs with a higher promotionValue are returned higher up in the search results), with relevance being used as a tiebreaker."
           ],
           "type": "string"
         }
@@ -2641,8 +2624,8 @@
           "type": "integer"
         },
         "histogramResults": {
-          "description": "The histogram results that match specified SearchJobsRequest.histogram_facets.",
-          "$ref": "HistogramResults"
+          "$ref": "HistogramResults",
+          "description": "The histogram results that match specified SearchJobsRequest.histogram_facets."
         },
         "locationFilters": {
           "description": "The location filters that the service applied to the specified query. If any filters are lat-lng based, the JobLocation.location_type is JobLocation.LocationType#LOCATION_TYPE_UNSPECIFIED.",
@@ -2659,16 +2642,16 @@
           "type": "array"
         },
         "metadata": {
-          "description": "Additional information for the API invocation, such as the request tracking id.",
-          "$ref": "ResponseMetadata"
+          "$ref": "ResponseMetadata",
+          "description": "Additional information for the API invocation, such as the request tracking id."
         },
         "nextPageToken": {
           "description": "The token that specifies the starting position of the next page of results. This field is empty if there are no more results.",
           "type": "string"
         },
         "spellCorrection": {
-          "description": "The spell checking result, and correction.",
-          "$ref": "SpellingCorrection"
+          "$ref": "SpellingCorrection",
+          "description": "The spell checking result, and correction."
         },
         "totalSize": {
           "description": "The precise result count with limit 100,000.",
@@ -2742,8 +2725,8 @@
       "id": "UpdateCompanyRequest",
       "properties": {
         "company": {
-          "description": "Required. The company resource to replace the current resource in the system.",
-          "$ref": "Company"
+          "$ref": "Company",
+          "description": "Required. The company resource to replace the current resource in the system."
         },
         "updateMask": {
           "description": "Optional but strongly recommended for the best service experience. If update_mask is provided, only the specified fields in company are updated. Otherwise all the fields are updated. A field mask to specify the company fields to be updated. Only top level fields of Company are supported.",
@@ -2758,8 +2741,8 @@
       "id": "UpdateJobRequest",
       "properties": {
         "job": {
-          "description": "Required. The Job to be updated.",
-          "$ref": "Job"
+          "$ref": "Job",
+          "description": "Required. The Job to be updated."
         },
         "updateMask": {
           "description": "Optional but strongly recommended to be provided for the best service experience. If update_mask is provided, only the specified fields in job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported.",
@@ -2772,6 +2755,6 @@
   },
   "servicePath": "",
   "title": "Cloud Talent Solution API",
-  "version_module": true,
-  "version": "v3"
+  "version": "v3",
+  "version_module": true
 }

@@ -33,15 +33,15 @@
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -52,17 +52,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "bearer_token": {
@@ -151,9 +151,9 @@
             "q": {
               "description": "The input text upon which to perform language detection. Repeat this\nparameter to perform language detection on multiple text inputs.",
               "location": "query",
-              "type": "string",
               "repeated": true,
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/detect",
@@ -210,20 +210,20 @@
             "cid": {
               "description": "The customization id for translate",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "format": {
               "description": "The format of the source text, in either HTML (default) or plain-text. A\nvalue of \"html\" indicates HTML and a value of \"text\" indicates plain-text.",
+              "enum": [
+                "html",
+                "text"
+              ],
               "enumDescriptions": [
                 "Specifies the input is in HTML",
                 "Specifies the input is in plain textual format"
               ],
               "location": "query",
-              "enum": [
-                "html",
-                "text"
-              ],
               "type": "string"
             },
             "model": {
@@ -234,9 +234,9 @@
             "q": {
               "description": "The input text to translate. Repeat this parameter to perform translation\noperations on multiple text inputs.",
               "location": "query",
-              "type": "string",
               "repeated": true,
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "source": {
               "description": "The language of the source text, set to one of the language codes listed in\nLanguage Support. If the source language is not specified, the API will\nattempt to identify the source language automatically and return it within\nthe response.",
@@ -246,8 +246,8 @@
             "target": {
               "description": "The language to use for translation of the input text, set to one of the\nlanguage codes listed in Language Support.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2",

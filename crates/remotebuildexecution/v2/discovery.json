@@ -15,29 +15,27 @@
   "description": "Supplies a Remote Execution API service for tools such as bazel.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/remote-build-execution/docs/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "remotebuildexecution:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://remotebuildexecution.mtls.googleapis.com/",
   "name": "remotebuildexecution",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "get": {
           "description": "Retrieve a cached execution result. Implementations SHOULD ensure that any blobs referenced from the ContentAddressableStorage are available at the time of returning the ActionResult and will be for some period of time afterwards. The TTLs of the referenced blobs SHOULD be increased if necessary and applicable. Errors: * `NOT_FOUND`: The requested `ActionResult` is not in the cache.",
           "httpMethod": "GET",
-          "flatPath": "v2/{v2Id}/actionResults/{hash}/{sizeBytes}",
           "id": "remotebuildexecution.actionResults.get",
           "parameterOrder": [
             "instanceName",
@@ -121,14 +118,14 @@
             "hash": {
               "description": "The hash. In the case of SHA-256, it will always be a lowercase hex string exactly 64 characters long.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "inlineOutputFiles": {
               "description": "A hint to the server to inline the contents of the listed output files. Each path needs to exactly match one path in `output_files` in the Command message.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "inlineStderr": {
               "description": "A hint to the server to request inlining stderr in the ActionResult message.",
@@ -144,15 +141,15 @@
               "description": "The instance of the execution system to operate against. A server may support multiple instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of this field to select between them in an implementation-defined fashion, otherwise it can be omitted.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sizeBytes": {
               "description": "The size of the blob, in bytes.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+instanceName}/actionResults/{hash}/{sizeBytes}",
@@ -166,7 +163,6 @@
         "update": {
           "description": "Upload a new execution result. In order to allow the server to perform access control based on the type of action, and to assist with client debugging, the client MUST first upload the Action that produced the result, along with its Command, into the `ContentAddressableStorage`. Errors: * `INVALID_ARGUMENT`: One or more arguments are invalid. * `FAILED_PRECONDITION`: One or more errors occurred in updating the action result, such as a missing command or action. * `RESOURCE_EXHAUSTED`: There is insufficient storage space to add the entry to the cache.",
           "httpMethod": "PUT",
-          "flatPath": "v2/{v2Id}/actionResults/{hash}/{sizeBytes}",
           "id": "remotebuildexecution.actionResults.update",
           "parameterOrder": [
             "instanceName",
@@ -177,15 +173,15 @@
             "hash": {
               "description": "The hash. In the case of SHA-256, it will always be a lowercase hex string exactly 64 characters long.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "instanceName": {
               "description": "The instance of the execution system to operate against. A server may support multiple instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of this field to select between them in an implementation-defined fashion, otherwise it can be omitted.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "resultsCachePolicy.priority": {
               "description": "The priority (relative importance) of this content in the overall cache. Generally, a lower value means a longer retention time or other advantage, but the interpretation of a given value is server-dependent. A priority of 0 means a *default* value, decided by the server. The particular semantics of this field is up to the server. In particular, every server will have their own supported range of priorities, and will decide how these map into retention/eviction policy.",
@@ -197,8 +193,8 @@
               "description": "The size of the blob, in bytes.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+instanceName}/actionResults/{hash}/{sizeBytes}",
@@ -219,7 +215,6 @@
         "execute": {
           "description": "Execute an action remotely. In order to execute an action, the client must first upload all of the inputs, the Command to run, and the Action into the ContentAddressableStorage. It then calls `Execute` with an `action_digest` referring to them. The server will run the action and eventually return the result. The input `Action`'s fields MUST meet the various canonicalization requirements specified in the documentation for their types so that it has the same digest as other logically equivalent `Action`s. The server MAY enforce the requirements and return errors if a non-canonical input is received. It MAY also proceed without verifying some or all of the requirements, such as for performance reasons. If the server does not verify the requirement, then it will treat the `Action` as distinct from another logically equivalent action if they hash differently. Returns a stream of google.longrunning.Operation messages describing the resulting execution, with eventual `response` ExecuteResponse. The `metadata` on the operation is of type ExecuteOperationMetadata. If the client remains connected after the first response is returned after the server, then updates are streamed as if the client had called WaitExecution until the execution completes or the request reaches an error. The operation can also be queried using Operations API. The server NEED NOT implement other methods or functionality of the Operations API. Errors discovered during creation of the `Operation` will be reported as gRPC Status errors, while errors that occurred while running the action will be reported in the `status` field of the `ExecuteResponse`. The server MUST NOT set the `error` field of the `Operation` proto. The possible errors include: * `INVALID_ARGUMENT`: One or more arguments are invalid. * `FAILED_PRECONDITION`: One or more errors occurred in setting up the action requested, such as a missing input or command or no worker being available. The client may be able to fix the errors and retry. * `RESOURCE_EXHAUSTED`: There is insufficient quota of some resource to run the action. * `UNAVAILABLE`: Due to a transient condition, such as all workers being occupied (and the server does not support a queue), the action could not be started. The client should retry. * `INTERNAL`: An internal error occurred in the execution engine or the worker. * `DEADLINE_EXCEEDED`: The execution timed out. * `CANCELLED`: The operation was cancelled by the client. This status is only possible if the server implements the Operations API CancelOperation method, and it was called for the current execution. In the case of a missing input or command, the server SHOULD additionally send a PreconditionFailure error detail where, for each requested blob not present in the CAS, there is a `Violation` with a `type` of `MISSING` and a `subject` of `\"blobs/{hash}/{size}\"` indicating the digest of the missing blob.",
           "httpMethod": "POST",
-          "flatPath": "v2/{v2Id}/actions:execute",
           "id": "remotebuildexecution.actions.execute",
           "parameterOrder": [
             "instanceName"
@@ -229,8 +224,8 @@
               "description": "The instance of the execution system to operate against. A server may support multiple instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of this field to select between them in an implementation-defined fashion, otherwise it can be omitted.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+instanceName}/actions:execute",
@@ -251,7 +246,6 @@
         "batchRead": {
           "description": "Download many blobs at once. The server may enforce a limit of the combined total size of blobs to be downloaded using this API. This limit may be obtained using the Capabilities API. Requests exceeding the limit should either be split into smaller chunks or downloaded using the ByteStream API, as appropriate. This request is equivalent to calling a Bytestream `Read` request on each individual blob, in parallel. The requests may succeed or fail independently. Errors: * `INVALID_ARGUMENT`: The client attempted to read more than the server supported limit. Every error on individual read will be returned in the corresponding digest status.",
           "httpMethod": "POST",
-          "flatPath": "v2/{v2Id}/blobs:batchRead",
           "id": "remotebuildexecution.blobs.batchRead",
           "parameterOrder": [
             "instanceName"
@@ -261,8 +255,8 @@
               "description": "The instance of the execution system to operate against. A server may support multiple instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of this field to select between them in an implementation-defined fashion, otherwise it can be omitted.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+instanceName}/blobs:batchRead",
@@ -279,7 +273,6 @@
         "batchUpdate": {
           "description": "Upload many blobs at once. The server may enforce a limit of the combined total size of blobs to be uploaded using this API. This limit may be obtained using the Capabilities API. Requests exceeding the limit should either be split into smaller chunks or uploaded using the ByteStream API, as appropriate. This request is equivalent to calling a Bytestream `Write` request on each individual blob, in parallel. The requests may succeed or fail independently. Errors: * `INVALID_ARGUMENT`: The client attempted to upload more than the server supported limit. Individual requests may return the following errors, additionally: * `RESOURCE_EXHAUSTED`: There is insufficient disk quota to store the blob. * `INVALID_ARGUMENT`: The Digest does not match the provided data.",
           "httpMethod": "POST",
-          "flatPath": "v2/{v2Id}/blobs:batchUpdate",
           "id": "remotebuildexecution.blobs.batchUpdate",
           "parameterOrder": [
             "instanceName"
@@ -289,8 +282,8 @@
               "description": "The instance of the execution system to operate against. A server may support multiple instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of this field to select between them in an implementation-defined fashion, otherwise it can be omitted.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+instanceName}/blobs:batchUpdate",
@@ -307,7 +300,6 @@
         "findMissing": {
           "description": "Determine if blobs are present in the CAS. Clients can use this API before uploading blobs to determine which ones are already present in the CAS and do not need to be uploaded again. Servers SHOULD increase the TTLs of the referenced blobs if necessary and applicable. There are no method-specific errors.",
           "httpMethod": "POST",
-          "flatPath": "v2/{v2Id}/blobs:findMissing",
           "id": "remotebuildexecution.blobs.findMissing",
           "parameterOrder": [
             "instanceName"
@@ -317,8 +309,8 @@
               "description": "The instance of the execution system to operate against. A server may support multiple instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of this field to select between them in an implementation-defined fashion, otherwise it can be omitted.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+instanceName}/blobs:findMissing",
@@ -335,7 +327,6 @@
         "getTree": {
           "description": "Fetch the entire directory tree rooted at a node. This request must be targeted at a Directory stored in the ContentAddressableStorage (CAS). The server will enumerate the `Directory` tree recursively and return every node descended from the root. The GetTreeRequest.page_token parameter can be used to skip ahead in the stream (e.g. when retrying a partially completed and aborted request), by setting it to a value taken from GetTreeResponse.next_page_token of the last successfully processed GetTreeResponse). The exact traversal order is unspecified and, unless retrieving subsequent pages from an earlier request, is not guaranteed to be stable across multiple invocations of `GetTree`. If part of the tree is missing from the CAS, the server will return the portion present and omit the rest. Errors: * `NOT_FOUND`: The requested tree root is not present in the CAS.",
           "httpMethod": "GET",
-          "flatPath": "v2/{v2Id}/blobs/{hash}/{sizeBytes}:getTree",
           "id": "remotebuildexecution.blobs.getTree",
           "parameterOrder": [
             "instanceName",
@@ -346,15 +337,15 @@
             "hash": {
               "description": "The hash. In the case of SHA-256, it will always be a lowercase hex string exactly 64 characters long.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "instanceName": {
               "description": "The instance of the execution system to operate against. A server may support multiple instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of this field to select between them in an implementation-defined fashion, otherwise it can be omitted.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageSize": {
               "description": "A maximum page size to request. If present, the server will request no more than this many items. Regardless of whether a page size is specified, the server may place its own limit on the number of items to be returned and require the client to retrieve more items using a subsequent request.",
@@ -371,8 +362,8 @@
               "description": "The size of the blob, in bytes.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+instanceName}/blobs/{hash}/{sizeBytes}:getTree",
@@ -390,7 +381,6 @@
         "waitExecution": {
           "description": "Wait for an execution operation to complete. When the client initially makes the request, the server immediately responds with the current status of the execution. The server will leave the request stream open until the operation completes, and then respond with the completed operation. The server MAY choose to stream additional updates as execution progresses, such as to provide an update as to the state of the execution.",
           "httpMethod": "POST",
-          "flatPath": "v2/operations/{operationsId}:waitExecution",
           "id": "remotebuildexecution.operations.waitExecution",
           "parameterOrder": [
             "name"
@@ -400,8 +390,8 @@
               "description": "The name of the Operation returned by Execute.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+name}:waitExecution",
@@ -422,7 +412,6 @@
         "getCapabilities": {
           "description": "GetCapabilities returns the server capabilities configuration of the remote endpoint. Only the capabilities of the services supported by the endpoint will be returned: * Execution + CAS + Action Cache endpoints should return both CacheCapabilities and ExecutionCapabilities. * Execution only endpoints should return ExecutionCapabilities. * CAS + Action Cache only endpoints should return CacheCapabilities.",
           "httpMethod": "GET",
-          "flatPath": "v2/{v2Id}/capabilities",
           "id": "remotebuildexecution.getCapabilities",
           "parameterOrder": [
             "instanceName"
@@ -432,8 +421,8 @@
               "description": "The instance of the execution system to operate against. A server may support multiple instances of the execution system (with their own workers, storage, caches, etc.). The server MAY require use of this field to select between them in an implementation-defined fashion, otherwise it can be omitted.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+instanceName}/capabilities",
@@ -455,16 +444,16 @@
       "id": "BuildBazelRemoteExecutionV2Action",
       "properties": {
         "commandDigest": {
-          "description": "The digest of the Command to run, which MUST be present in the ContentAddressableStorage.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the Command to run, which MUST be present in the ContentAddressableStorage."
         },
         "doNotCache": {
           "description": "If true, then the `Action`'s result cannot be cached, and in-flight requests for the same `Action` may not be merged.",
           "type": "boolean"
         },
         "inputRootDigest": {
-          "description": "The digest of the root Directory for the input files. The files in the directory tree are available in the correct location on the build machine before the command is executed. The root directory, as well as every subdirectory and content blob referred to, MUST be in the ContentAddressableStorage.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the root Directory for the input files. The files in the directory tree are available in the correct location on the build machine before the command is executed. The root directory, as well as every subdirectory and content blob referred to, MUST be in the ContentAddressableStorage."
         },
         "outputNodeProperties": {
           "description": "List of required supported NodeProperty keys. In order to ensure that equivalent `Action`s always hash to the same value, the supported node properties MUST be lexicographically sorted by name. Sorting of strings is done by code point, equivalently, by the UTF-8 bytes. The interpretation of these properties is server-dependent. If a property is not recognized by the server, the server will return an `INVALID_ARGUMENT` error.",
@@ -496,8 +485,8 @@
       "id": "BuildBazelRemoteExecutionV2ActionResult",
       "properties": {
         "executionMetadata": {
-          "description": "The details of the execution that originally produced this result.",
-          "$ref": "BuildBazelRemoteExecutionV2ExecutedActionMetadata"
+          "$ref": "BuildBazelRemoteExecutionV2ExecutedActionMetadata",
+          "description": "The details of the execution that originally produced this result."
         },
         "exitCode": {
           "description": "The exit code of the command.",
@@ -540,8 +529,8 @@
           "type": "array"
         },
         "stderrDigest": {
-          "description": "The digest for a blob containing the standard error of the action, which can be retrieved from the ContentAddressableStorage.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest for a blob containing the standard error of the action, which can be retrieved from the ContentAddressableStorage."
         },
         "stderrRaw": {
           "description": "The standard error buffer of the action. The server SHOULD NOT inline stderr unless requested by the client in the GetActionResultRequest message. The server MAY omit inlining, even if requested, and MUST do so if inlining would cause the response to exceed message size limits.",
@@ -549,8 +538,8 @@
           "type": "string"
         },
         "stdoutDigest": {
-          "description": "The digest for a blob containing the standard output of the action, which can be retrieved from the ContentAddressableStorage.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest for a blob containing the standard output of the action, which can be retrieved from the ContentAddressableStorage."
         },
         "stdoutRaw": {
           "description": "The standard output buffer of the action. The server SHOULD NOT inline stdout unless requested by the client in the GetActionResultRequest message. The server MAY omit inlining, even if requested, and MUST do so if inlining would cause the response to exceed message size limits.",
@@ -598,12 +587,12 @@
           "type": "string"
         },
         "digest": {
-          "description": "The digest to which this response corresponds.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest to which this response corresponds."
         },
         "status": {
-          "description": "The result of attempting to download that blob.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The result of attempting to download that blob."
         }
       },
       "type": "object"
@@ -632,8 +621,8 @@
           "type": "string"
         },
         "digest": {
-          "description": "The digest of the blob. This MUST be the digest of `data`.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the blob. This MUST be the digest of `data`."
         }
       },
       "type": "object"
@@ -657,12 +646,12 @@
       "id": "BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse",
       "properties": {
         "digest": {
-          "description": "The blob digest to which this response corresponds.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The blob digest to which this response corresponds."
         },
         "status": {
-          "description": "The result of attempting to upload that blob.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The result of attempting to upload that blob."
         }
       },
       "type": "object"
@@ -672,25 +661,16 @@
       "id": "BuildBazelRemoteExecutionV2CacheCapabilities",
       "properties": {
         "actionCacheUpdateCapabilities": {
-          "description": "Capabilities for updating the action cache.",
-          "$ref": "BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities"
+          "$ref": "BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities",
+          "description": "Capabilities for updating the action cache."
         },
         "cachePriorityCapabilities": {
-          "description": "Supported cache priority range for both CAS and ActionCache.",
-          "$ref": "BuildBazelRemoteExecutionV2PriorityCapabilities"
+          "$ref": "BuildBazelRemoteExecutionV2PriorityCapabilities",
+          "description": "Supported cache priority range for both CAS and ActionCache."
         },
         "digestFunction": {
           "description": "All the digest functions supported by the remote cache. Remote cache may support multiple digest functions simultaneously.",
           "items": {
-            "enumDescriptions": [
-              "It is an error for the server to return this value.",
-              "The SHA-256 digest function.",
-              "The SHA-1 digest function.",
-              "The MD5 digest function.",
-              "The Microsoft \"VSO-Hash\" paged SHA256 digest function. See https://github.com/microsoft/BuildXL/blob/master/Documentation/Specs/PagedHash.md .",
-              "The SHA-384 digest function.",
-              "The SHA-512 digest function."
-            ],
             "enum": [
               "UNKNOWN",
               "SHA256",
@@ -699,6 +679,15 @@
               "VSO",
               "SHA384",
               "SHA512"
+            ],
+            "enumDescriptions": [
+              "It is an error for the server to return this value.",
+              "The SHA-256 digest function.",
+              "The SHA-1 digest function.",
+              "The MD5 digest function.",
+              "The Microsoft \"VSO-Hash\" paged SHA256 digest function. See https://github.com/microsoft/BuildXL/blob/master/Documentation/Specs/PagedHash.md .",
+              "The SHA-384 digest function.",
+              "The SHA-512 digest function."
             ],
             "type": "string"
           },
@@ -711,15 +700,15 @@
         },
         "symlinkAbsolutePathStrategy": {
           "description": "Whether absolute symlink targets are supported.",
-          "enumDescriptions": [
-            "Invalid value.",
-            "Server will return an `INVALID_ARGUMENT` on input symlinks with absolute targets. If an action tries to create an output symlink with an absolute target, a `FAILED_PRECONDITION` will be returned.",
-            "Server will allow symlink targets to escape the input root tree, possibly resulting in non-hermetic builds."
-          ],
           "enum": [
             "UNKNOWN",
             "DISALLOWED",
             "ALLOWED"
+          ],
+          "enumDescriptions": [
+            "Invalid value.",
+            "Server will return an `INVALID_ARGUMENT` on input symlinks with absolute targets. If an action tries to create an output symlink with an absolute target, a `FAILED_PRECONDITION` will be returned.",
+            "Server will allow symlink targets to escape the input root tree, possibly resulting in non-hermetic builds."
           ],
           "type": "string"
         }
@@ -766,8 +755,8 @@
           "type": "array"
         },
         "platform": {
-          "description": "The platform requirements for the execution environment. The server MAY choose to execute the action on any worker satisfying the requirements, so the client SHOULD ensure that running the action on any such worker will have the same result. A detailed lexicon for this can be found in the accompanying platform.md.",
-          "$ref": "BuildBazelRemoteExecutionV2Platform"
+          "$ref": "BuildBazelRemoteExecutionV2Platform",
+          "description": "The platform requirements for the execution environment. The server MAY choose to execute the action on any worker satisfying the requirements, so the client SHOULD ensure that running the action on any such worker will have the same result. A detailed lexicon for this can be found in the accompanying platform.md."
         },
         "workingDirectory": {
           "description": "The working directory, relative to the input root, for the command to run in. It must be a directory which exists in the input tree. If it is left empty, then the action is run in the input root.",
@@ -847,8 +836,8 @@
       "id": "BuildBazelRemoteExecutionV2DirectoryNode",
       "properties": {
         "digest": {
-          "description": "The digest of the Directory object represented. See Digest for information about how to take the digest of a proto message.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the Directory object represented. See Digest for information about how to take the digest of a proto message."
         },
         "name": {
           "description": "The name of the directory.",
@@ -862,24 +851,24 @@
       "id": "BuildBazelRemoteExecutionV2ExecuteOperationMetadata",
       "properties": {
         "actionDigest": {
-          "description": "The digest of the Action being executed.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the Action being executed."
         },
         "stage": {
           "description": "The current stage of execution.",
-          "enumDescriptions": [
-            "Invalid value.",
-            "Checking the result against the cache.",
-            "Currently idle, awaiting a free machine to execute.",
-            "Currently being executed by a worker.",
-            "Finished execution."
-          ],
           "enum": [
             "UNKNOWN",
             "CACHE_CHECK",
             "QUEUED",
             "EXECUTING",
             "COMPLETED"
+          ],
+          "enumDescriptions": [
+            "Invalid value.",
+            "Checking the result against the cache.",
+            "Currently idle, awaiting a free machine to execute.",
+            "Currently being executed by a worker.",
+            "Finished execution."
           ],
           "type": "string"
         },
@@ -899,16 +888,16 @@
       "id": "BuildBazelRemoteExecutionV2ExecuteRequest",
       "properties": {
         "actionDigest": {
-          "description": "The digest of the Action to execute.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the Action to execute."
         },
         "executionPolicy": {
-          "description": "An optional policy for execution of the action. The server will have a default policy if this is not provided.",
-          "$ref": "BuildBazelRemoteExecutionV2ExecutionPolicy"
+          "$ref": "BuildBazelRemoteExecutionV2ExecutionPolicy",
+          "description": "An optional policy for execution of the action. The server will have a default policy if this is not provided."
         },
         "resultsCachePolicy": {
-          "description": "An optional policy for the results of this execution in the remote cache. The server will have a default policy if this is not provided. This may be applied to both the ActionResult and the associated blobs.",
-          "$ref": "BuildBazelRemoteExecutionV2ResultsCachePolicy"
+          "$ref": "BuildBazelRemoteExecutionV2ResultsCachePolicy",
+          "description": "An optional policy for the results of this execution in the remote cache. The server will have a default policy if this is not provided. This may be applied to both the ActionResult and the associated blobs."
         },
         "skipCacheLookup": {
           "description": "If true, the action will be executed even if its result is already present in the ActionCache. The execution is still allowed to be merged with other in-flight executions of the same action, however - semantically, the service MUST only guarantee that the results of an execution with this field set were not visible before the corresponding execution request was sent. Note that actions from execution requests setting this field set are still eligible to be entered into the action cache upon completion, and services SHOULD overwrite any existing entries that may exist. This allows skip_cache_lookup requests to be used as a mechanism for replacing action cache entries that reference outputs no longer available or that are poisoned in any way. If false, the result may be served from the action cache.",
@@ -930,8 +919,8 @@
           "type": "string"
         },
         "result": {
-          "description": "The result of the action.",
-          "$ref": "BuildBazelRemoteExecutionV2ActionResult"
+          "$ref": "BuildBazelRemoteExecutionV2ActionResult",
+          "description": "The result of the action."
         },
         "serverLogs": {
           "additionalProperties": {
@@ -941,8 +930,8 @@
           "type": "object"
         },
         "status": {
-          "description": "If the status has a code other than `OK`, it indicates that the action did not finish execution. For example, if the operation times out during execution, the status will have a `DEADLINE_EXCEEDED` code. Servers MUST use this field for errors in execution, rather than the error field on the `Operation` object. If the status code is other than `OK`, then the result MUST NOT be cached. For an error status, the `result` field is optional; the server may populate the output-, stdout-, and stderr-related fields if it has any information available, such as the stdout and stderr of a timed-out action.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "If the status has a code other than `OK`, it indicates that the action did not finish execution. For example, if the operation times out during execution, the status will have a `DEADLINE_EXCEEDED` code. Servers MUST use this field for errors in execution, rather than the error field on the `Operation` object. If the status code is other than `OK`, then the result MUST NOT be cached. For an error status, the `result` field is optional; the server may populate the output-, stdout-, and stderr-related fields if it has any information available, such as the stdout and stderr of a timed-out action."
         }
       },
       "type": "object"
@@ -1009,15 +998,6 @@
       "properties": {
         "digestFunction": {
           "description": "Remote execution may only support a single digest function.",
-          "enumDescriptions": [
-            "It is an error for the server to return this value.",
-            "The SHA-256 digest function.",
-            "The SHA-1 digest function.",
-            "The MD5 digest function.",
-            "The Microsoft \"VSO-Hash\" paged SHA256 digest function. See https://github.com/microsoft/BuildXL/blob/master/Documentation/Specs/PagedHash.md .",
-            "The SHA-384 digest function.",
-            "The SHA-512 digest function."
-          ],
           "enum": [
             "UNKNOWN",
             "SHA256",
@@ -1027,6 +1007,15 @@
             "SHA384",
             "SHA512"
           ],
+          "enumDescriptions": [
+            "It is an error for the server to return this value.",
+            "The SHA-256 digest function.",
+            "The SHA-1 digest function.",
+            "The MD5 digest function.",
+            "The Microsoft \"VSO-Hash\" paged SHA256 digest function. See https://github.com/microsoft/BuildXL/blob/master/Documentation/Specs/PagedHash.md .",
+            "The SHA-384 digest function.",
+            "The SHA-512 digest function."
+          ],
           "type": "string"
         },
         "execEnabled": {
@@ -1034,8 +1023,8 @@
           "type": "boolean"
         },
         "executionPriorityCapabilities": {
-          "description": "Supported execution priority range.",
-          "$ref": "BuildBazelRemoteExecutionV2PriorityCapabilities"
+          "$ref": "BuildBazelRemoteExecutionV2PriorityCapabilities",
+          "description": "Supported execution priority range."
         },
         "supportedNodeProperties": {
           "description": "Supported node properties.",
@@ -1064,8 +1053,8 @@
       "id": "BuildBazelRemoteExecutionV2FileNode",
       "properties": {
         "digest": {
-          "description": "The digest of the file's content.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the file's content."
         },
         "isExecutable": {
           "description": "True if file is executable, false otherwise.",
@@ -1136,8 +1125,8 @@
       "id": "BuildBazelRemoteExecutionV2LogFile",
       "properties": {
         "digest": {
-          "description": "The digest of the log contents.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the log contents."
         },
         "humanReadable": {
           "description": "This is a hint as to the purpose of the log, and is set to true if the log is human-readable text that can be usefully displayed to a user, and false otherwise. For instance, if a command-line client wishes to print the server logs to the terminal for a failed action, this allows it to avoid displaying a binary file.",
@@ -1170,8 +1159,8 @@
           "type": "string"
         },
         "treeDigest": {
-          "description": "The digest of the encoded Tree proto containing the directory's contents.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the encoded Tree proto containing the directory's contents."
         }
       },
       "type": "object"
@@ -1186,8 +1175,8 @@
           "type": "string"
         },
         "digest": {
-          "description": "The digest of the file's content.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the file's content."
         },
         "isExecutable": {
           "description": "True if file is executable, false otherwise.",
@@ -1299,8 +1288,8 @@
           "type": "string"
         },
         "toolDetails": {
-          "description": "The details for the tool invoking the requests.",
-          "$ref": "BuildBazelRemoteExecutionV2ToolDetails"
+          "$ref": "BuildBazelRemoteExecutionV2ToolDetails",
+          "description": "The details for the tool invoking the requests."
         },
         "toolInvocationId": {
           "description": "An identifier that ties multiple actions together to a final result. For example, multiple actions are required to build and run foo_test.",
@@ -1326,24 +1315,24 @@
       "id": "BuildBazelRemoteExecutionV2ServerCapabilities",
       "properties": {
         "cacheCapabilities": {
-          "description": "Capabilities of the remote cache system.",
-          "$ref": "BuildBazelRemoteExecutionV2CacheCapabilities"
+          "$ref": "BuildBazelRemoteExecutionV2CacheCapabilities",
+          "description": "Capabilities of the remote cache system."
         },
         "deprecatedApiVersion": {
-          "description": "Earliest RE API version supported, including deprecated versions.",
-          "$ref": "BuildBazelSemverSemVer"
+          "$ref": "BuildBazelSemverSemVer",
+          "description": "Earliest RE API version supported, including deprecated versions."
         },
         "executionCapabilities": {
-          "description": "Capabilities of the remote execution system.",
-          "$ref": "BuildBazelRemoteExecutionV2ExecutionCapabilities"
+          "$ref": "BuildBazelRemoteExecutionV2ExecutionCapabilities",
+          "description": "Capabilities of the remote execution system."
         },
         "highApiVersion": {
-          "description": "Latest RE API version supported.",
-          "$ref": "BuildBazelSemverSemVer"
+          "$ref": "BuildBazelSemverSemVer",
+          "description": "Latest RE API version supported."
         },
         "lowApiVersion": {
-          "description": "Earliest non-deprecated RE API version supported.",
-          "$ref": "BuildBazelSemverSemVer"
+          "$ref": "BuildBazelSemverSemVer",
+          "description": "Earliest non-deprecated RE API version supported."
         }
       },
       "type": "object"
@@ -1397,8 +1386,8 @@
           "type": "array"
         },
         "root": {
-          "description": "The root directory in the tree.",
-          "$ref": "BuildBazelRemoteExecutionV2Directory"
+          "$ref": "BuildBazelRemoteExecutionV2Directory",
+          "description": "The root directory in the tree."
         }
       },
       "type": "object"
@@ -1508,15 +1497,15 @@
       "properties": {
         "cmUsage": {
           "description": "Indicates if and how Container Manager is being used for task execution.",
-          "enumDescriptions": [
-            "Container Manager is disabled or not running for this execution.",
-            "Container Manager is enabled and there was a matching container available for use during execution.",
-            "Container Manager is enabled, but there was no matching container available for execution."
-          ],
           "enum": [
             "NONE",
             "CONFIG_MATCH",
             "CONFIG_MISMATCH"
+          ],
+          "enumDescriptions": [
+            "Container Manager is disabled or not running for this execution.",
+            "Container Manager is enabled and there was a matching container available for use during execution.",
+            "Container Manager is enabled, but there was no matching container available for execution."
           ],
           "type": "string"
         },
@@ -1556,48 +1545,6 @@
       "properties": {
         "code": {
           "description": "The status code.",
-          "enumDescriptions": [
-            "The command succeeded.",
-            "The command input was invalid.",
-            "The command had passed its expiry time while it was still running.",
-            "The resources requested by the command were not found.",
-            "The command failed due to permission errors.",
-            "The command failed because of some invariants expected by the underlying system have been broken. This usually indicates a bug wit the system.",
-            "The command was aborted.",
-            "The command failed because the system is not in a state required for the command, e.g. the command inputs cannot be found on the server.",
-            "The bot failed to do the cleanup, e.g. unable to delete the command working directory or the command process.",
-            "The bot failed to download the inputs.",
-            "Unknown error.",
-            "The bot failed to upload the outputs.",
-            "The bot tried to upload files having a total size that is too large.",
-            "The bot failed to login to docker.",
-            "The bot failed to pull docker image.",
-            "The bot failed to check docker images.",
-            "The inputs contain duplicate files.",
-            "The bot doesn't have the permissions to pull docker images.",
-            "The docker image cannot be found.",
-            "Working directory is not found.",
-            "Working directory is not under the base directory",
-            "There are issues with docker service/runtime.",
-            "The command failed with \"no cuda-capable device is detected\" error.",
-            "The bot encountered errors from remote CAS when downloading blobs.",
-            "The bot encountered errors from remote CAS when uploading blobs.",
-            "The local casproxy is not running.",
-            "The bot couldn't start the container.",
-            "The docker ulimit is not valid.",
-            "The docker runtime is unknown.",
-            "The docker capability is unknown.",
-            "The command failed with unknown docker errors.",
-            "Docker failed to run containers with CreateComputeSystem error.",
-            "Docker failed to run containers with hcsshim::PrepareLayer error.",
-            "Docker incompatible operating system error.",
-            "Docker failed to create OCI runtime because of file not found.",
-            "Docker failed to create OCI runtime because of permission denied.",
-            "Docker failed to create process because of file not found.",
-            "Docker failed to run containers with CreateComputeSystem error that involves an incorrect parameter (more specific version of DOCKER_CREATE_COMPUTE_SYSTEM_ERROR that is user-caused).",
-            "Docker failed to create an overlay mount because of too many levels of symbolic links.",
-            "The local Container Manager is not running."
-          ],
           "enum": [
             "OK",
             "INVALID_ARGUMENT",
@@ -1639,6 +1586,48 @@
             "DOCKER_CREATE_COMPUTE_SYSTEM_INCORRECT_PARAMETER_ERROR",
             "DOCKER_TOO_MANY_SYMBOLIC_LINK_LEVELS",
             "LOCAL_CONTAINER_MANAGER_NOT_RUNNING"
+          ],
+          "enumDescriptions": [
+            "The command succeeded.",
+            "The command input was invalid.",
+            "The command had passed its expiry time while it was still running.",
+            "The resources requested by the command were not found.",
+            "The command failed due to permission errors.",
+            "The command failed because of some invariants expected by the underlying system have been broken. This usually indicates a bug wit the system.",
+            "The command was aborted.",
+            "The command failed because the system is not in a state required for the command, e.g. the command inputs cannot be found on the server.",
+            "The bot failed to do the cleanup, e.g. unable to delete the command working directory or the command process.",
+            "The bot failed to download the inputs.",
+            "Unknown error.",
+            "The bot failed to upload the outputs.",
+            "The bot tried to upload files having a total size that is too large.",
+            "The bot failed to login to docker.",
+            "The bot failed to pull docker image.",
+            "The bot failed to check docker images.",
+            "The inputs contain duplicate files.",
+            "The bot doesn't have the permissions to pull docker images.",
+            "The docker image cannot be found.",
+            "Working directory is not found.",
+            "Working directory is not under the base directory",
+            "There are issues with docker service/runtime.",
+            "The command failed with \"no cuda-capable device is detected\" error.",
+            "The bot encountered errors from remote CAS when downloading blobs.",
+            "The bot encountered errors from remote CAS when uploading blobs.",
+            "The local casproxy is not running.",
+            "The bot couldn't start the container.",
+            "The docker ulimit is not valid.",
+            "The docker runtime is unknown.",
+            "The docker capability is unknown.",
+            "The command failed with unknown docker errors.",
+            "Docker failed to run containers with CreateComputeSystem error.",
+            "Docker failed to run containers with hcsshim::PrepareLayer error.",
+            "Docker incompatible operating system error.",
+            "Docker failed to create OCI runtime because of file not found.",
+            "Docker failed to create OCI runtime because of permission denied.",
+            "Docker failed to create process because of file not found.",
+            "Docker failed to run containers with CreateComputeSystem error that involves an incorrect parameter (more specific version of DOCKER_CREATE_COMPUTE_SYSTEM_ERROR that is user-caused).",
+            "Docker failed to create an overlay mount because of too many levels of symbolic links.",
+            "The local Container Manager is not running."
           ],
           "type": "string"
         },
@@ -1718,8 +1707,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest",
       "properties": {
         "instance": {
-          "description": "Specifies the instance to create. The name in the instance, if specified in the instance, is ignored.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance",
+          "description": "Specifies the instance to create. The name in the instance, if specified in the instance, is ignored."
         },
         "instanceId": {
           "description": "ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.",
@@ -1745,8 +1734,8 @@
           "type": "string"
         },
         "workerPool": {
-          "description": "Specifies the worker pool to create. The name in the worker pool, if specified, is ignored.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool",
+          "description": "Specifies the worker pool to create. The name in the worker pool, if specified, is ignored."
         }
       },
       "type": "object"
@@ -1778,48 +1767,48 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy",
       "properties": {
         "containerImageSources": {
-          "description": "Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ \"gcr.io/project-foo\", \"gcr.io/project-bar/repo-baz\", ] } will allow any repositories under \"gcr.io/project-foo\" plus the repository \"gcr.io/project-bar/repo-baz\". Default (UNSPECIFIED) is equivalent to any source is allowed.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ \"gcr.io/project-foo\", \"gcr.io/project-bar/repo-baz\", ] } will allow any repositories under \"gcr.io/project-foo\" plus the repository \"gcr.io/project-bar/repo-baz\". Default (UNSPECIFIED) is equivalent to any source is allowed."
         },
         "dockerAddCapabilities": {
-          "description": "Whether dockerAddCapabilities can be used or what capabilities are allowed.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerAddCapabilities can be used or what capabilities are allowed."
         },
         "dockerChrootPath": {
-          "description": "Whether dockerChrootPath can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerChrootPath can be used."
         },
         "dockerNetwork": {
-          "description": "Whether dockerNetwork can be used or what network modes are allowed. E.g. one may allow `off` value only via `allowed_values`.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerNetwork can be used or what network modes are allowed. E.g. one may allow `off` value only via `allowed_values`."
         },
         "dockerPrivileged": {
-          "description": "Whether dockerPrivileged can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerPrivileged can be used."
         },
         "dockerRunAsRoot": {
-          "description": "Whether dockerRunAsRoot can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerRunAsRoot can be used."
         },
         "dockerRuntime": {
-          "description": "Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected isolation.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected isolation."
         },
         "dockerSiblingContainers": {
-          "description": "Whether dockerSiblingContainers can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerSiblingContainers can be used."
         },
         "linuxIsolation": {
           "description": "linux_isolation allows overriding the docker runtime used for containers started on Linux.",
-          "enumDescriptions": [
-            "Default value. Will be using Linux default runtime.",
-            "Use gVisor runsc runtime.",
-            "Use stardard Linux runtime. This has the same behaviour as unspecified, but it can be used to revert back from gVisor."
-          ],
           "enum": [
             "LINUX_ISOLATION_UNSPECIFIED",
             "GVISOR",
             "OFF"
+          ],
+          "enumDescriptions": [
+            "Default value. Will be using Linux default runtime.",
+            "Use gVisor runsc runtime.",
+            "Use stardard Linux runtime. This has the same behaviour as unspecified, but it can be used to revert back from gVisor."
           ],
           "type": "string"
         }
@@ -1839,17 +1828,17 @@
         },
         "policy": {
           "description": "The policy of the feature.",
-          "enumDescriptions": [
-            "Default value, if not explicitly set. Equivalent to FORBIDDEN, unless otherwise documented on a specific Feature.",
-            "Feature is explicitly allowed.",
-            "Feature is forbidden. Requests attempting to leverage it will get an FailedPrecondition error, with a message like: \"Feature forbidden by FeaturePolicy: Feature on instance \"",
-            "Only the values specified in the `allowed_values` are allowed."
-          ],
           "enum": [
             "POLICY_UNSPECIFIED",
             "ALLOWED",
             "FORBIDDEN",
             "RESTRICTED"
+          ],
+          "enumDescriptions": [
+            "Default value, if not explicitly set. Equivalent to FORBIDDEN, unless otherwise documented on a specific Feature.",
+            "Feature is explicitly allowed.",
+            "Feature is forbidden. Requests attempting to leverage it will get an FailedPrecondition error, with a message like: \"Feature forbidden by FeaturePolicy: Feature on instance \"",
+            "Only the values specified in the `allowed_values` are allowed."
           ],
           "type": "string"
         }
@@ -1883,8 +1872,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance",
       "properties": {
         "featurePolicy": {
-          "description": "The policy to define whether or not RBE features can be used or how they can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy",
+          "description": "The policy to define whether or not RBE features can be used or how they can be used."
         },
         "location": {
           "description": "The location is a GCP region. Currently only `us-central1` is supported.",
@@ -1900,17 +1889,17 @@
         },
         "state": {
           "description": "Output only. State of the instance.",
-          "enumDescriptions": [
-            "Not a valid state, but the default value of the enum.",
-            "The instance is in state `CREATING` once `CreateInstance` is called and before the instance is ready for use.",
-            "The instance is in state `RUNNING` when it is ready for use.",
-            "An `INACTIVE` instance indicates that there is a problem that needs to be fixed. Such instances cannot be used for execution and instances that remain in this state for a significant period of time will be removed permanently."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
             "RUNNING",
             "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Not a valid state, but the default value of the enum.",
+            "The instance is in state `CREATING` once `CreateInstance` is called and before the instance is ready for use.",
+            "The instance is in state `RUNNING` when it is ready for use.",
+            "An `INACTIVE` instance indicates that there is a problem that needs to be fixed. Such instances cannot be used for execution and instances that remain in this state for a significant period of time will be removed permanently."
           ],
           "type": "string"
         }
@@ -1972,8 +1961,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest",
       "properties": {
         "instance": {
-          "description": "Specifies the instance to update.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance",
+          "description": "Specifies the instance to update."
         },
         "loggingEnabled": {
           "description": "Deprecated, use instance.logging_enabled instead. Whether to enable Stackdriver logging for this instance.",
@@ -2001,8 +1990,8 @@
           "type": "string"
         },
         "workerPool": {
-          "description": "Specifies the worker pool to update.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool",
+          "description": "Specifies the worker pool to update."
         }
       },
       "type": "object"
@@ -2012,8 +2001,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig",
       "properties": {
         "accelerator": {
-          "description": "The accelerator card attached to each VM.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig",
+          "description": "The accelerator card attached to each VM."
         },
         "diskSizeGb": {
           "description": "Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/",
@@ -2068,8 +2057,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool",
       "properties": {
         "autoscale": {
-          "description": "The autoscale policy to apply on a pool.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale",
+          "description": "The autoscale policy to apply on a pool."
         },
         "channel": {
           "description": "Channel specifies the release channel of the pool.",
@@ -2081,14 +2070,6 @@
         },
         "state": {
           "description": "Output only. State of the worker pool.",
-          "enumDescriptions": [
-            "Not a valid state, but the default value of the enum.",
-            "The worker pool is in state `CREATING` once `CreateWorkerPool` is called and before all requested workers are ready.",
-            "The worker pool is in state `RUNNING` when all its workers are ready for use.",
-            "The worker pool is in state `UPDATING` once `UpdateWorkerPool` is called and before the new configuration has all the requested workers ready for use, and no older configuration has any workers. At that point the state transitions to `RUNNING`.",
-            "The worker pool is in state `DELETING` once the `Delete` method is called and before the deletion completes.",
-            "The worker pool is in state `INACTIVE` when the instance hosting the worker pool in not running."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -2097,11 +2078,19 @@
             "DELETING",
             "INACTIVE"
           ],
+          "enumDescriptions": [
+            "Not a valid state, but the default value of the enum.",
+            "The worker pool is in state `CREATING` once `CreateWorkerPool` is called and before all requested workers are ready.",
+            "The worker pool is in state `RUNNING` when all its workers are ready for use.",
+            "The worker pool is in state `UPDATING` once `UpdateWorkerPool` is called and before the new configuration has all the requested workers ready for use, and no older configuration has any workers. At that point the state transitions to `RUNNING`.",
+            "The worker pool is in state `DELETING` once the `Delete` method is called and before the deletion completes.",
+            "The worker pool is in state `INACTIVE` when the instance hosting the worker pool in not running."
+          ],
           "type": "string"
         },
         "workerConfig": {
-          "description": "Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig",
+          "description": "Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool."
         },
         "workerCount": {
           "description": "The desired number of workers in the worker pool. Must be a value between 0 and 15000.",
@@ -2121,19 +2110,19 @@
         },
         "command": {
           "description": "The admin action; see `Command` for legal values.",
-          "enumDescriptions": [
-            "Illegal value.",
-            "Download and run a new version of the bot. `arg` will be a resource accessible via `ByteStream.Read` to obtain the new bot code.",
-            "Restart the bot without downloading a new version. `arg` will be a message to log.",
-            "Shut down the bot. `arg` will be a task resource name (similar to those in tasks.proto) that the bot can use to tell the server that it is terminating.",
-            "Restart the host computer. `arg` will be a message to log."
-          ],
           "enum": [
             "UNSPECIFIED",
             "BOT_UPDATE",
             "BOT_RESTART",
             "BOT_TERMINATE",
             "HOST_RESTART"
+          ],
+          "enumDescriptions": [
+            "Illegal value.",
+            "Download and run a new version of the bot. `arg` will be a resource accessible via `ByteStream.Read` to obtain the new bot code.",
+            "Restart the bot without downloading a new version. `arg` will be a message to log.",
+            "Shut down the bot. `arg` will be a task resource name (similar to those in tasks.proto) that the bot can use to tell the server that it is terminating.",
+            "Restart the host computer. `arg` will be a message to log."
           ],
           "type": "string"
         }
@@ -2150,8 +2139,8 @@
           "type": "string"
         },
         "digest": {
-          "description": "The digest of the blob. This should be verified by the receiver.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "The digest of the blob. This should be verified by the receiver."
         }
       },
       "type": "object"
@@ -2166,8 +2155,8 @@
           "type": "integer"
         },
         "outputs": {
-          "description": "The output files. The blob referenced by the digest should contain one of the following (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style .isolated file",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "The output files. The blob referenced by the digest should contain one of the following (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style .isolated file"
         }
       },
       "type": "object"
@@ -2215,8 +2204,8 @@
           "type": "array"
         },
         "outputs": {
-          "description": "The output files. The blob referenced by the digest should contain one of the following (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style .isolated file",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "The output files. The blob referenced by the digest should contain one of the following (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style .isolated file"
         },
         "overhead": {
           "description": "The amount of time *not* spent executing the command (ie uploading/downloading files).",
@@ -2224,8 +2213,8 @@
           "type": "string"
         },
         "status": {
-          "description": "An overall status for the command. For example, if the command timed out, this might have a code of DEADLINE_EXCEEDED; if it was killed by the OS for memory exhaustion, it might have a code of RESOURCE_EXHAUSTED.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "An overall status for the command. For example, if the command timed out, this might have a code of DEADLINE_EXCEEDED; if it was killed by the OS for memory exhaustion, it might have a code of RESOURCE_EXHAUSTED."
         }
       },
       "type": "object"
@@ -2235,16 +2224,16 @@
       "id": "GoogleDevtoolsRemoteworkersV1test2CommandTask",
       "properties": {
         "expectedOutputs": {
-          "description": "The expected outputs from the task.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs",
+          "description": "The expected outputs from the task."
         },
         "inputs": {
-          "description": "The inputs to the task.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs",
+          "description": "The inputs to the task."
         },
         "timeouts": {
-          "description": "The timeouts of this task.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts",
+          "description": "The timeouts of this task."
         }
       },
       "type": "object"
@@ -2396,8 +2385,8 @@
       "id": "GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata",
       "properties": {
         "digest": {
-          "description": "A pointer to the contents of the directory, in the form of a marshalled Directory message.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "A pointer to the contents of the directory, in the form of a marshalled Directory message."
         },
         "path": {
           "description": "The path of the directory, as in FileMetadata.path.",
@@ -2416,8 +2405,8 @@
           "type": "string"
         },
         "digest": {
-          "description": "A pointer to the contents of the file. The method by which a client retrieves the contents from a CAS system is not defined here.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "A pointer to the contents of the file. The method by which a client retrieves the contents from a CAS system is not defined here."
         },
         "isExecutable": {
           "description": "Properties of the file",
@@ -2439,8 +2428,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -2495,6 +2484,6 @@
   },
   "servicePath": "",
   "title": "Remote Build Execution API",
-  "version_module": true,
-  "version": "v2"
+  "version": "v2",
+  "version_module": true
 }

@@ -24,22 +24,21 @@
   },
   "id": "pubsub:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://pubsub.mtls.googleapis.com/",
   "name": "pubsub",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -50,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -114,7 +113,6 @@
             "create": {
               "description": "Creates a schema.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/schemas",
               "id": "pubsub.projects.schemas.create",
               "parameterOrder": [
                 "parent"
@@ -124,8 +122,8 @@
                   "description": "Required. The name of the project in which to create the schema. Format is `projects/{project-id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "schemaId": {
                   "description": "The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.",
@@ -148,7 +146,6 @@
             "delete": {
               "description": "Deletes a schema.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/projects/{projectsId}/schemas/{schemasId}",
               "id": "pubsub.projects.schemas.delete",
               "parameterOrder": [
                 "name"
@@ -158,8 +155,8 @@
                   "description": "Required. Name of the schema to delete. Format is `projects/{project}/schemas/{schema}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/schemas/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -174,7 +171,6 @@
             "get": {
               "description": "Gets a schema.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/schemas/{schemasId}",
               "id": "pubsub.projects.schemas.get",
               "parameterOrder": [
                 "name"
@@ -184,22 +180,22 @@
                   "description": "Required. The name of the schema to get. Format is `projects/{project}/schemas/{schema}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/schemas/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "The set of fields to return in the response. If not set, returns a Schema with `name` and `type`, but not `definition`. Set to `FULL` to retrieve all fields.",
+                  "enum": [
+                    "SCHEMA_VIEW_UNSPECIFIED",
+                    "BASIC",
+                    "FULL"
+                  ],
                   "enumDescriptions": [
                     "The default / unset value. The API will default to the BASIC view.",
                     "Include the name and type of the schema, but not the definition.",
                     "Include all Schema object fields."
                   ],
                   "location": "query",
-                  "enum": [
-                    "SCHEMA_VIEW_UNSPECIFIED",
-                    "BASIC",
-                    "FULL"
-                  ],
                   "type": "string"
                 }
               },
@@ -215,7 +211,6 @@
             "list": {
               "description": "Lists schemas in a project.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/schemas",
               "id": "pubsub.projects.schemas.list",
               "parameterOrder": [
                 "parent"
@@ -236,22 +231,22 @@
                   "description": "Required. The name of the project in which to list schemas. Format is `projects/{project-id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "The set of Schema fields to return in the response. If not set, returns Schemas with `name` and `type`, but not `definition`. Set to `FULL` to retrieve all fields.",
+                  "enum": [
+                    "SCHEMA_VIEW_UNSPECIFIED",
+                    "BASIC",
+                    "FULL"
+                  ],
                   "enumDescriptions": [
                     "The default / unset value. The API will default to the BASIC view.",
                     "Include the name and type of the schema, but not the definition.",
                     "Include all Schema object fields."
                   ],
                   "location": "query",
-                  "enum": [
-                    "SCHEMA_VIEW_UNSPECIFIED",
-                    "BASIC",
-                    "FULL"
-                  ],
                   "type": "string"
                 }
               },
@@ -267,7 +262,6 @@
             "validate": {
               "description": "Validates a schema.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/schemas:validate",
               "id": "pubsub.projects.schemas.validate",
               "parameterOrder": [
                 "parent"
@@ -277,8 +271,8 @@
                   "description": "Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/schemas:validate",
@@ -296,7 +290,6 @@
             "validateMessage": {
               "description": "Validates a message against a schema.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/schemas:validateMessage",
               "id": "pubsub.projects.schemas.validateMessage",
               "parameterOrder": [
                 "parent"
@@ -306,8 +299,8 @@
                   "description": "Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/schemas:validateMessage",
@@ -329,7 +322,6 @@
             "create": {
               "description": "Creates a snapshot from the requested subscription. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the returned Snapshot object. Note that for REST API requests, you must specify a name in the request.",
               "httpMethod": "PUT",
-              "flatPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}",
               "id": "pubsub.projects.snapshots.create",
               "parameterOrder": [
                 "name"
@@ -339,8 +331,8 @@
                   "description": "Required. User-provided name for this snapshot. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API requests, you must specify a name. See the resource name rules. Format is `projects/{project}/snapshots/{snap}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/snapshots/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -358,7 +350,6 @@
             "delete": {
               "description": "Removes an existing snapshot. Snapshots are used in [Seek] (https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. When the snapshot is deleted, all messages retained in the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created with the same name, but the new one has no association with the old snapshot or its subscription, unless the same subscription is specified.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}",
               "id": "pubsub.projects.snapshots.delete",
               "parameterOrder": [
                 "snapshot"
@@ -368,8 +359,8 @@
                   "description": "Required. The name of the snapshot to delete. Format is `projects/{project}/snapshots/{snap}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/snapshots/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+snapshot}",
@@ -384,7 +375,6 @@
             "get": {
               "description": "Gets the configuration details of a snapshot. Snapshots are used in Seek operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}",
               "id": "pubsub.projects.snapshots.get",
               "parameterOrder": [
                 "snapshot"
@@ -394,8 +384,8 @@
                   "description": "Required. The name of the snapshot to get. Format is `projects/{project}/snapshots/{snap}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/snapshots/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+snapshot}",
@@ -410,7 +400,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}:getIamPolicy",
               "id": "pubsub.projects.snapshots.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -426,8 +415,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/snapshots/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:getIamPolicy",
@@ -442,7 +431,6 @@
             "list": {
               "description": "Lists the existing snapshots. Snapshots are used in [Seek]( https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/snapshots",
               "id": "pubsub.projects.snapshots.list",
               "parameterOrder": [
                 "project"
@@ -463,8 +451,8 @@
                   "description": "Required. The name of the project in which to list snapshots. Format is `projects/{project-id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+project}/snapshots",
@@ -479,7 +467,6 @@
             "patch": {
               "description": "Updates an existing snapshot. Snapshots are used in Seek operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot.",
               "httpMethod": "PATCH",
-              "flatPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}",
               "id": "pubsub.projects.snapshots.patch",
               "parameterOrder": [
                 "name"
@@ -489,8 +476,8 @@
                   "description": "The name of the snapshot.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/snapshots/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -508,7 +495,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}:setIamPolicy",
               "id": "pubsub.projects.snapshots.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -518,8 +504,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/snapshots/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:setIamPolicy",
@@ -537,7 +523,6 @@
             "testIamPermissions": {
               "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}:testIamPermissions",
               "id": "pubsub.projects.snapshots.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -547,8 +532,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/snapshots/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:testIamPermissions",
@@ -570,7 +555,6 @@
             "acknowledge": {
               "description": "Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:acknowledge",
               "id": "pubsub.projects.subscriptions.acknowledge",
               "parameterOrder": [
                 "subscription"
@@ -580,8 +564,8 @@
                   "description": "Required. The subscription whose message is being acknowledged. Format is `projects/{project}/subscriptions/{sub}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+subscription}:acknowledge",
@@ -599,7 +583,6 @@
             "create": {
               "description": "Creates a subscription to a given topic. See the [resource name rules] (https://cloud.google.com/pubsub/docs/admin#resource_names). If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the returned Subscription object. Note that for REST API requests, you must specify a name in the request.",
               "httpMethod": "PUT",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}",
               "id": "pubsub.projects.subscriptions.create",
               "parameterOrder": [
                 "name"
@@ -609,8 +592,8 @@
                   "description": "Required. The name of the subscription. It must have the format `\"projects/{project}/subscriptions/{subscription}\"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `\"goog\"`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -628,7 +611,6 @@
             "delete": {
               "description": "Deletes an existing subscription. All messages retained in the subscription are immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription or its topic unless the same topic is specified.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}",
               "id": "pubsub.projects.subscriptions.delete",
               "parameterOrder": [
                 "subscription"
@@ -638,8 +620,8 @@
                   "description": "Required. The subscription to delete. Format is `projects/{project}/subscriptions/{sub}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+subscription}",
@@ -654,7 +636,6 @@
             "detach": {
               "description": "Detaches a subscription from this topic. All messages retained in the subscription are dropped. Subsequent `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will stop.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:detach",
               "id": "pubsub.projects.subscriptions.detach",
               "parameterOrder": [
                 "subscription"
@@ -664,8 +645,8 @@
                   "description": "Required. The subscription to detach. Format is `projects/{project}/subscriptions/{subscription}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+subscription}:detach",
@@ -680,7 +661,6 @@
             "get": {
               "description": "Gets the configuration details of a subscription.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}",
               "id": "pubsub.projects.subscriptions.get",
               "parameterOrder": [
                 "subscription"
@@ -690,8 +670,8 @@
                   "description": "Required. The name of the subscription to get. Format is `projects/{project}/subscriptions/{sub}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+subscription}",
@@ -706,7 +686,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:getIamPolicy",
               "id": "pubsub.projects.subscriptions.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -722,8 +701,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:getIamPolicy",
@@ -738,7 +717,6 @@
             "list": {
               "description": "Lists matching subscriptions.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/subscriptions",
               "id": "pubsub.projects.subscriptions.list",
               "parameterOrder": [
                 "project"
@@ -759,8 +737,8 @@
                   "description": "Required. The name of the project in which to list subscriptions. Format is `projects/{project-id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+project}/subscriptions",
@@ -775,7 +753,6 @@
             "modifyAckDeadline": {
               "description": "Modifies the ack deadline for a specific message. This method is useful to indicate that more time is needed to process a message by the subscriber, or to make the message available for redelivery if the processing was interrupted. Note that this does not modify the subscription-level `ackDeadlineSeconds` used for subsequent messages.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:modifyAckDeadline",
               "id": "pubsub.projects.subscriptions.modifyAckDeadline",
               "parameterOrder": [
                 "subscription"
@@ -785,8 +762,8 @@
                   "description": "Required. The name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+subscription}:modifyAckDeadline",
@@ -804,7 +781,6 @@
             "modifyPushConfig": {
               "description": "Modifies the `PushConfig` for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the `PushConfig`.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:modifyPushConfig",
               "id": "pubsub.projects.subscriptions.modifyPushConfig",
               "parameterOrder": [
                 "subscription"
@@ -814,8 +790,8 @@
                   "description": "Required. The name of the subscription. Format is `projects/{project}/subscriptions/{sub}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+subscription}:modifyPushConfig",
@@ -833,7 +809,6 @@
             "patch": {
               "description": "Updates an existing subscription. Note that certain properties of a subscription, such as its topic, are not modifiable.",
               "httpMethod": "PATCH",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}",
               "id": "pubsub.projects.subscriptions.patch",
               "parameterOrder": [
                 "name"
@@ -843,8 +818,8 @@
                   "description": "Required. The name of the subscription. It must have the format `\"projects/{project}/subscriptions/{subscription}\"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `\"goog\"`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -862,7 +837,6 @@
             "pull": {
               "description": "Pulls messages from the server. The server may return `UNAVAILABLE` if there are too many concurrent pull requests pending for the given subscription.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:pull",
               "id": "pubsub.projects.subscriptions.pull",
               "parameterOrder": [
                 "subscription"
@@ -872,8 +846,8 @@
                   "description": "Required. The subscription from which messages should be pulled. Format is `projects/{project}/subscriptions/{sub}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+subscription}:pull",
@@ -891,7 +865,6 @@
             "seek": {
               "description": "Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided in the request. Snapshots are used in [Seek] (https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. Note that both the subscription and the snapshot must be on the same topic.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:seek",
               "id": "pubsub.projects.subscriptions.seek",
               "parameterOrder": [
                 "subscription"
@@ -901,8 +874,8 @@
                   "description": "Required. The subscription to affect.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+subscription}:seek",
@@ -920,7 +893,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:setIamPolicy",
               "id": "pubsub.projects.subscriptions.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -930,8 +902,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:setIamPolicy",
@@ -949,7 +921,6 @@
             "testIamPermissions": {
               "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:testIamPermissions",
               "id": "pubsub.projects.subscriptions.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -959,8 +930,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:testIamPermissions",
@@ -982,7 +953,6 @@
             "create": {
               "description": "Creates the given topic with the given name. See the [resource name rules] (https://cloud.google.com/pubsub/docs/admin#resource_names).",
               "httpMethod": "PUT",
-              "flatPath": "v1/projects/{projectsId}/topics/{topicsId}",
               "id": "pubsub.projects.topics.create",
               "parameterOrder": [
                 "name"
@@ -992,8 +962,8 @@
                   "description": "Required. The name of the topic. It must have the format `\"projects/{project}/topics/{topic}\"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `\"goog\"`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/topics/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -1011,7 +981,6 @@
             "delete": {
               "description": "Deletes the topic with the given name. Returns `NOT_FOUND` if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions. Existing subscriptions to this topic are not deleted, but their `topic` field is set to `_deleted-topic_`.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/projects/{projectsId}/topics/{topicsId}",
               "id": "pubsub.projects.topics.delete",
               "parameterOrder": [
                 "topic"
@@ -1021,8 +990,8 @@
                   "description": "Required. Name of the topic to delete. Format is `projects/{project}/topics/{topic}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/topics/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+topic}",
@@ -1037,7 +1006,6 @@
             "get": {
               "description": "Gets the configuration of a topic.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/topics/{topicsId}",
               "id": "pubsub.projects.topics.get",
               "parameterOrder": [
                 "topic"
@@ -1047,8 +1015,8 @@
                   "description": "Required. The name of the topic to get. Format is `projects/{project}/topics/{topic}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/topics/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+topic}",
@@ -1063,7 +1031,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/topics/{topicsId}:getIamPolicy",
               "id": "pubsub.projects.topics.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -1079,8 +1046,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/topics/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:getIamPolicy",
@@ -1095,7 +1062,6 @@
             "list": {
               "description": "Lists matching topics.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/topics",
               "id": "pubsub.projects.topics.list",
               "parameterOrder": [
                 "project"
@@ -1116,8 +1082,8 @@
                   "description": "Required. The name of the project in which to list topics. Format is `projects/{project-id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+project}/topics",
@@ -1132,7 +1098,6 @@
             "patch": {
               "description": "Updates an existing topic. Note that certain properties of a topic are not modifiable.",
               "httpMethod": "PATCH",
-              "flatPath": "v1/projects/{projectsId}/topics/{topicsId}",
               "id": "pubsub.projects.topics.patch",
               "parameterOrder": [
                 "name"
@@ -1142,8 +1107,8 @@
                   "description": "Required. The name of the topic. It must have the format `\"projects/{project}/topics/{topic}\"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `\"goog\"`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/topics/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -1161,7 +1126,6 @@
             "publish": {
               "description": "Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does not exist.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/topics/{topicsId}:publish",
               "id": "pubsub.projects.topics.publish",
               "parameterOrder": [
                 "topic"
@@ -1171,8 +1135,8 @@
                   "description": "Required. The messages in the request will be published on this topic. Format is `projects/{project}/topics/{topic}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/topics/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+topic}:publish",
@@ -1190,7 +1154,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/topics/{topicsId}:setIamPolicy",
               "id": "pubsub.projects.topics.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -1200,8 +1163,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/topics/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:setIamPolicy",
@@ -1219,7 +1182,6 @@
             "testIamPermissions": {
               "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/topics/{topicsId}:testIamPermissions",
               "id": "pubsub.projects.topics.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -1229,8 +1191,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/topics/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:testIamPermissions",
@@ -1252,7 +1214,6 @@
                 "list": {
                   "description": "Lists the names of the snapshots on this topic. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/topics/{topicsId}/snapshots",
                   "id": "pubsub.projects.topics.snapshots.list",
                   "parameterOrder": [
                     "topic"
@@ -1273,8 +1234,8 @@
                       "description": "Required. The name of the topic that snapshots are attached to. Format is `projects/{project}/topics/{topic}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/topics/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+topic}/snapshots",
@@ -1293,7 +1254,6 @@
                 "list": {
                   "description": "Lists the names of the attached subscriptions on this topic.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/topics/{topicsId}/subscriptions",
                   "id": "pubsub.projects.topics.subscriptions.list",
                   "parameterOrder": [
                     "topic"
@@ -1314,8 +1274,8 @@
                       "description": "Required. The name of the topic that subscriptions are attached to. Format is `projects/{project}/topics/{topic}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/topics/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+topic}/subscriptions",
@@ -1356,8 +1316,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1600,8 +1560,8 @@
       "id": "ModifyPushConfigRequest",
       "properties": {
         "pushConfig": {
-          "description": "Required. The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if `Pull` or `StreamingPull` is not called.",
-          "$ref": "PushConfig"
+          "$ref": "PushConfig",
+          "description": "Required. The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if `Pull` or `StreamingPull` is not called."
         }
       },
       "type": "object"
@@ -1747,8 +1707,8 @@
           "type": "object"
         },
         "oidcToken": {
-          "description": "If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.",
-          "$ref": "OidcToken"
+          "$ref": "OidcToken",
+          "description": "If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message."
         },
         "pushEndpoint": {
           "description": "A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use `https://example.com/push`.",
@@ -1771,8 +1731,8 @@
           "type": "integer"
         },
         "message": {
-          "description": "The message.",
-          "$ref": "PubsubMessage"
+          "$ref": "PubsubMessage",
+          "description": "The message."
         }
       },
       "type": "object"
@@ -1808,15 +1768,15 @@
         },
         "type": {
           "description": "The type of the schema definition.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "A Protocol Buffer schema definition.",
-            "An Avro schema definition."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "PROTOCOL_BUFFER",
             "AVRO"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "A Protocol Buffer schema definition.",
+            "An Avro schema definition."
           ],
           "type": "string"
         }
@@ -1829,15 +1789,15 @@
       "properties": {
         "encoding": {
           "description": "The encoding of messages validated against `schema`.",
-          "enumDescriptions": [
-            "Unspecified",
-            "JSON encoding",
-            "Binary encoding, as defined by the schema type. For some schema types, binary encoding may not be available."
-          ],
           "enum": [
             "ENCODING_UNSPECIFIED",
             "JSON",
             "BINARY"
+          ],
+          "enumDescriptions": [
+            "Unspecified",
+            "JSON encoding",
+            "Binary encoding, as defined by the schema type. For some schema types, binary encoding may not be available."
           ],
           "type": "string"
         },
@@ -1875,8 +1835,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         }
       },
       "type": "object"
@@ -1918,8 +1878,8 @@
           "type": "integer"
         },
         "deadLetterPolicy": {
-          "description": "A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.",
-          "$ref": "DeadLetterPolicy"
+          "$ref": "DeadLetterPolicy",
+          "description": "A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription."
         },
         "detached": {
           "description": "Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.",
@@ -1930,8 +1890,8 @@
           "type": "boolean"
         },
         "expirationPolicy": {
-          "description": "A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.",
-          "$ref": "ExpirationPolicy"
+          "$ref": "ExpirationPolicy",
+          "description": "A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day."
         },
         "filter": {
           "description": "An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.",
@@ -1954,16 +1914,16 @@
           "type": "string"
         },
         "pushConfig": {
-          "description": "If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.",
-          "$ref": "PushConfig"
+          "$ref": "PushConfig",
+          "description": "If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods."
         },
         "retainAckedMessages": {
           "description": "Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [Seek to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).",
           "type": "boolean"
         },
         "retryPolicy": {
-          "description": "A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.",
-          "$ref": "RetryPolicy"
+          "$ref": "RetryPolicy",
+          "description": "A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message."
         },
         "topic": {
           "description": "Required. The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.",
@@ -2016,8 +1976,8 @@
           "type": "object"
         },
         "messageStoragePolicy": {
-          "description": "Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.",
-          "$ref": "MessageStoragePolicy"
+          "$ref": "MessageStoragePolicy",
+          "description": "Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect."
         },
         "name": {
           "description": "Required. The name of the topic. It must have the format `\"projects/{project}/topics/{topic}\"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `\"goog\"`.",
@@ -2028,8 +1988,8 @@
           "type": "boolean"
         },
         "schemaSettings": {
-          "description": "Settings for validating messages published against a schema.",
-          "$ref": "SchemaSettings"
+          "$ref": "SchemaSettings",
+          "description": "Settings for validating messages published against a schema."
         }
       },
       "type": "object"
@@ -2039,8 +1999,8 @@
       "id": "UpdateSnapshotRequest",
       "properties": {
         "snapshot": {
-          "description": "Required. The updated snapshot object.",
-          "$ref": "Snapshot"
+          "$ref": "Snapshot",
+          "description": "Required. The updated snapshot object."
         },
         "updateMask": {
           "description": "Required. Indicates which fields in the provided snapshot to update. Must be specified and non-empty.",
@@ -2055,8 +2015,8 @@
       "id": "UpdateSubscriptionRequest",
       "properties": {
         "subscription": {
-          "description": "Required. The updated subscription object.",
-          "$ref": "Subscription"
+          "$ref": "Subscription",
+          "description": "Required. The updated subscription object."
         },
         "updateMask": {
           "description": "Required. Indicates which fields in the provided subscription to update. Must be specified and non-empty.",
@@ -2071,8 +2031,8 @@
       "id": "UpdateTopicRequest",
       "properties": {
         "topic": {
-          "description": "Required. The updated topic object.",
-          "$ref": "Topic"
+          "$ref": "Topic",
+          "description": "Required. The updated topic object."
         },
         "updateMask": {
           "description": "Required. Indicates which fields in the provided topic to update. Must be specified and non-empty. Note that if `update_mask` contains \"message_storage_policy\" but the `message_storage_policy` is not set in the `topic` provided above, then the updated value is determined by the policy configured at the project or organization level.",
@@ -2088,15 +2048,15 @@
       "properties": {
         "encoding": {
           "description": "The encoding expected for messages",
-          "enumDescriptions": [
-            "Unspecified",
-            "JSON encoding",
-            "Binary encoding, as defined by the schema type. For some schema types, binary encoding may not be available."
-          ],
           "enum": [
             "ENCODING_UNSPECIFIED",
             "JSON",
             "BINARY"
+          ],
+          "enumDescriptions": [
+            "Unspecified",
+            "JSON encoding",
+            "Binary encoding, as defined by the schema type. For some schema types, binary encoding may not be available."
           ],
           "type": "string"
         },
@@ -2110,8 +2070,8 @@
           "type": "string"
         },
         "schema": {
-          "description": "Ad-hoc schema against which to validate",
-          "$ref": "Schema"
+          "$ref": "Schema",
+          "description": "Ad-hoc schema against which to validate"
         }
       },
       "type": "object"
@@ -2127,8 +2087,8 @@
       "id": "ValidateSchemaRequest",
       "properties": {
         "schema": {
-          "description": "Required. The schema object to validate.",
-          "$ref": "Schema"
+          "$ref": "Schema",
+          "description": "Required. The schema object to validate."
         }
       },
       "type": "object"

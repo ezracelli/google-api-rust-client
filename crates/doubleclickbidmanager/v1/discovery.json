@@ -15,29 +15,27 @@
   "description": "DoubleClick Bid Manager API allows users to manage and create campaigns and reports.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/bid-manager/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "doubleclickbidmanager:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://doubleclickbidmanager.mtls.googleapis.com/",
   "name": "doubleclickbidmanager",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "downloadlineitems": {
           "description": "Retrieves line items in CSV format. YouTube & partners line items are not supported.",
           "httpMethod": "POST",
-          "flatPath": "lineitems/downloadlineitems",
           "id": "doubleclickbidmanager.lineitems.downloadlineitems",
           "parameterOrder": [],
           "parameters": {},
@@ -128,7 +125,6 @@
         "uploadlineitems": {
           "description": "Uploads line items in CSV format. YouTube & partners line items are not supported.",
           "httpMethod": "POST",
-          "flatPath": "lineitems/uploadlineitems",
           "id": "doubleclickbidmanager.lineitems.uploadlineitems",
           "parameterOrder": [],
           "parameters": {},
@@ -150,7 +146,6 @@
         "createquery": {
           "description": "Creates a query.",
           "httpMethod": "POST",
-          "flatPath": "query",
           "id": "doubleclickbidmanager.queries.createquery",
           "parameterOrder": [],
           "parameters": {},
@@ -168,7 +163,6 @@
         "deletequery": {
           "description": "Deletes a stored query as well as the associated stored reports.",
           "httpMethod": "DELETE",
-          "flatPath": "query/{queryId}",
           "id": "doubleclickbidmanager.queries.deletequery",
           "parameterOrder": [
             "queryId"
@@ -178,8 +172,8 @@
               "description": "Query ID to delete.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "query/{queryId}",
@@ -190,7 +184,6 @@
         "getquery": {
           "description": "Retrieves a stored query.",
           "httpMethod": "GET",
-          "flatPath": "query/{queryId}",
           "id": "doubleclickbidmanager.queries.getquery",
           "parameterOrder": [
             "queryId"
@@ -200,8 +193,8 @@
               "description": "Query ID to retrieve.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "query/{queryId}",
@@ -215,7 +208,6 @@
         "listqueries": {
           "description": "Retrieves stored queries.",
           "httpMethod": "GET",
-          "flatPath": "queries",
           "id": "doubleclickbidmanager.queries.listqueries",
           "parameterOrder": [],
           "parameters": {},
@@ -230,7 +222,6 @@
         "runquery": {
           "description": "Runs a stored query to generate a report.",
           "httpMethod": "POST",
-          "flatPath": "query/{queryId}",
           "id": "doubleclickbidmanager.queries.runquery",
           "parameterOrder": [
             "queryId"
@@ -240,8 +231,8 @@
               "description": "Query ID to run.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "query/{queryId}",
@@ -259,7 +250,6 @@
         "listreports": {
           "description": "Retrieves stored reports.",
           "httpMethod": "GET",
-          "flatPath": "queries/{queryId}/reports",
           "id": "doubleclickbidmanager.reports.listreports",
           "parameterOrder": [
             "queryId"
@@ -269,8 +259,8 @@
               "description": "Query ID with which the reports are associated.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "queries/{queryId}/reports",
@@ -288,7 +278,6 @@
         "download": {
           "description": "Retrieves entities in SDF format.",
           "httpMethod": "POST",
-          "flatPath": "sdf/download",
           "id": "doubleclickbidmanager.sdf.download",
           "parameterOrder": [],
           "parameters": {},
@@ -306,7 +295,7 @@
       }
     }
   },
-  "revision": "20210217",
+  "revision": "20210216",
   "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
   "schemas": {
     "DownloadLineItemsRequest": {
@@ -315,11 +304,11 @@
       "properties": {
         "fileSpec": {
           "description": "File specification (column names, types, order) in which the line items will be returned. Default to EWF.",
-          "enumDescriptions": [
-            ""
-          ],
           "enum": [
             "EWF"
+          ],
+          "enumDescriptions": [
+            ""
           ],
           "type": "string"
         },
@@ -333,25 +322,25 @@
         },
         "filterType": {
           "description": "Filter type used to filter line items to fetch.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "ADVERTISER_ID",
             "INSERTION_ORDER_ID",
             "LINE_ITEM_ID"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ],
           "type": "string"
         },
         "format": {
           "description": "Format in which the line items will be returned. Default to CSV.",
-          "enumDescriptions": [
-            ""
-          ],
           "enum": [
             "CSV"
+          ],
+          "enumDescriptions": [
+            ""
           ],
           "type": "string"
         }
@@ -376,14 +365,6 @@
         "fileTypes": {
           "description": "File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be requested. Acceptable values are: - \"AD\" - \"AD_GROUP\" - \"CAMPAIGN\" - \"INSERTION_ORDER\" - \"INVENTORY_SOURCE\" - \"LINE_ITEM\" ",
           "items": {
-            "enumDescriptions": [
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
             "enum": [
               "INSERTION_ORDER",
               "LINE_ITEM",
@@ -391,6 +372,14 @@
               "AD",
               "CAMPAIGN",
               "INVENTORY_SOURCE"
+            ],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
             ],
             "type": "string"
           },
@@ -406,14 +395,6 @@
         },
         "filterType": {
           "description": "Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used when downloading inventory sources.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "ADVERTISER_ID",
             "INSERTION_ORDER_ID",
@@ -421,6 +402,14 @@
             "CAMPAIGN_ID",
             "INVENTORY_SOURCE_ID",
             "PARTNER_ID"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -467,125 +456,6 @@
       "properties": {
         "type": {
           "description": "Filter type.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "FILTER_UNKNOWN",
             "FILTER_DATE",
@@ -705,6 +575,125 @@
             "FILTER_AUTHORIZED_SELLER_STATE",
             "FILTER_VIDEO_DURATION_SECONDS_RANGE"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "type": "string"
         },
         "value": {
@@ -764,125 +753,6 @@
         "groupBys": {
           "description": "Data is grouped by the filters listed in this field.",
           "items": {
-            "enumDescriptions": [
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
             "enum": [
               "FILTER_UNKNOWN",
               "FILTER_DATE",
@@ -1002,173 +872,7 @@
               "FILTER_AUTHORIZED_SELLER_STATE",
               "FILTER_VIDEO_DURATION_SECONDS_RANGE"
             ],
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "includeInviteData": {
-          "description": "Deprecated. This field is no longer in use.",
-          "type": "boolean"
-        },
-        "metrics": {
-          "description": "Metrics to include as columns in your report.",
-          "items": {
             "enumDescriptions": [
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
               "",
               "",
               "",
@@ -1287,6 +991,17 @@
               "",
               ""
             ],
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "includeInviteData": {
+          "description": "Deprecated. This field is no longer in use.",
+          "type": "boolean"
+        },
+        "metrics": {
+          "description": "Metrics to include as columns in your report.",
+          "items": {
             "enum": [
               "METRIC_UNKNOWN",
               "METRIC_IMPRESSIONS",
@@ -1561,46 +1276,286 @@
               "METRIC_FLOODLIGHT_IMPRESSIONS",
               "METRIC_BILLABLE_IMPRESSIONS"
             ],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
             "type": "string"
           },
           "type": "array"
         },
         "type": {
           "description": "Report type.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "TYPE_GENERAL",
             "TYPE_AUDIENCE_PERFORMANCE",
@@ -1635,60 +1590,20 @@
             "TYPE_REACH_AUDIENCE",
             "TYPE_LINEAR_TV_SEARCH_LIFT"
           ],
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "Query": {
-      "description": "Represents a query.",
-      "id": "Query",
-      "properties": {
-        "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"doubleclickbidmanager#query\".",
-          "type": "string"
-        },
-        "metadata": {
-          "description": "Query metadata.",
-          "$ref": "QueryMetadata"
-        },
-        "params": {
-          "description": "Query parameters.",
-          "$ref": "Parameters"
-        },
-        "queryId": {
-          "description": "Query ID.",
-          "format": "int64",
-          "type": "string"
-        },
-        "reportDataEndTimeMs": {
-          "description": "The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if metadata.dataRange is CUSTOM_DATES and ignored otherwise.",
-          "format": "int64",
-          "type": "string"
-        },
-        "reportDataStartTimeMs": {
-          "description": "The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required if metadata.dataRange is CUSTOM_DATES and ignored otherwise.",
-          "format": "int64",
-          "type": "string"
-        },
-        "schedule": {
-          "description": "Information on how often and when to run a query.",
-          "$ref": "QuerySchedule"
-        },
-        "timezoneCode": {
-          "description": "Canonical timezone code for report data time. Defaults to America/New_York.",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "QueryMetadata": {
-      "description": "Query metadata.",
-      "id": "QueryMetadata",
-      "properties": {
-        "dataRange": {
-          "description": "Range of report data.",
           "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -1709,6 +1624,59 @@
             "",
             ""
           ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Query": {
+      "description": "Represents a query.",
+      "id": "Query",
+      "properties": {
+        "kind": {
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"doubleclickbidmanager#query\".",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "QueryMetadata",
+          "description": "Query metadata."
+        },
+        "params": {
+          "$ref": "Parameters",
+          "description": "Query parameters."
+        },
+        "queryId": {
+          "description": "Query ID.",
+          "format": "int64",
+          "type": "string"
+        },
+        "reportDataEndTimeMs": {
+          "description": "The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if metadata.dataRange is CUSTOM_DATES and ignored otherwise.",
+          "format": "int64",
+          "type": "string"
+        },
+        "reportDataStartTimeMs": {
+          "description": "The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required if metadata.dataRange is CUSTOM_DATES and ignored otherwise.",
+          "format": "int64",
+          "type": "string"
+        },
+        "schedule": {
+          "$ref": "QuerySchedule",
+          "description": "Information on how often and when to run a query."
+        },
+        "timezoneCode": {
+          "description": "Canonical timezone code for report data time. Defaults to America/New_York.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "QueryMetadata": {
+      "description": "Query metadata.",
+      "id": "QueryMetadata",
+      "properties": {
+        "dataRange": {
+          "description": "Range of report data.",
           "enum": [
             "CUSTOM_DATES",
             "CURRENT_DAY",
@@ -1730,19 +1698,40 @@
             "LAST_14_DAYS",
             "TYPE_NOT_SUPPORTED"
           ],
-          "type": "string"
-        },
-        "format": {
-          "description": "Format of the generated report.",
           "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             ""
           ],
+          "type": "string"
+        },
+        "format": {
+          "description": "Format of the generated report.",
           "enum": [
             "CSV",
             "EXCEL_CSV",
             "XLSX"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -1801,14 +1790,6 @@
         },
         "frequency": {
           "description": "How often the query is run.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "ONE_TIME",
             "DAILY",
@@ -1816,6 +1797,14 @@
             "SEMI_MONTHLY",
             "MONTHLY",
             "QUARTERLY"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -1836,16 +1825,16 @@
       "id": "Report",
       "properties": {
         "key": {
-          "description": "Key used to identify a report.",
-          "$ref": "ReportKey"
+          "$ref": "ReportKey",
+          "description": "Key used to identify a report."
         },
         "metadata": {
-          "description": "Report metadata.",
-          "$ref": "ReportMetadata"
+          "$ref": "ReportMetadata",
+          "description": "Report metadata."
         },
         "params": {
-          "description": "Report parameters.",
-          "$ref": "Parameters"
+          "$ref": "Parameters",
+          "description": "Report parameters."
         }
       },
       "type": "object"
@@ -1856,26 +1845,6 @@
       "properties": {
         "errorCode": {
           "description": "Error code that shows why the report was not created.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "AUTHENTICATION_ERROR",
             "UNAUTHORIZED_API_ACCESS",
@@ -1895,6 +1864,26 @@
             "REPORTING_INVALID_QUERY_TOO_MANY_UNFILTERED_LARGE_GROUP_BYS",
             "REPORTING_INVALID_QUERY_TITLE_MISSING",
             "REPORTING_INVALID_QUERY_MISSING_PARTNER_AND_ADVERTISER_FILTERS"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         }
@@ -1937,8 +1926,8 @@
           "type": "string"
         },
         "status": {
-          "description": "Report status.",
-          "$ref": "ReportStatus"
+          "$ref": "ReportStatus",
+          "description": "Report status."
         }
       },
       "type": "object"
@@ -1948,8 +1937,8 @@
       "id": "ReportStatus",
       "properties": {
         "failure": {
-          "description": "If the report failed, this records the cause.",
-          "$ref": "ReportFailure"
+          "$ref": "ReportFailure",
+          "description": "If the report failed, this records the cause."
         },
         "finishTimeMs": {
           "description": "The time when this report either completed successfully or failed.",
@@ -1958,29 +1947,29 @@
         },
         "format": {
           "description": "The file type of the report.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "CSV",
             "EXCEL_CSV",
             "XLSX"
           ],
-          "type": "string"
-        },
-        "state": {
-          "description": "The state of the report.",
           "enumDescriptions": [
             "",
             "",
             ""
           ],
+          "type": "string"
+        },
+        "state": {
+          "description": "The state of the report.",
           "enum": [
             "RUNNING",
             "DONE",
             "FAILED"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         }
@@ -2029,27 +2018,6 @@
       "properties": {
         "dataRange": {
           "description": "Report data range used to generate the report.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "CUSTOM_DATES",
             "CURRENT_DAY",
@@ -2070,6 +2038,27 @@
             "ALL_TIME",
             "LAST_14_DAYS",
             "TYPE_NOT_SUPPORTED"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -2100,11 +2089,11 @@
         },
         "format": {
           "description": "Format the line items are in. Default to CSV.",
-          "enumDescriptions": [
-            ""
-          ],
           "enum": [
             "CSV"
+          ],
+          "enumDescriptions": [
+            ""
           ],
           "type": "string"
         },
@@ -2120,8 +2109,8 @@
       "id": "UploadLineItemsResponse",
       "properties": {
         "uploadStatus": {
-          "description": "Status of upload.",
-          "$ref": "UploadStatus"
+          "$ref": "UploadStatus",
+          "description": "Status of upload."
         }
       },
       "type": "object"

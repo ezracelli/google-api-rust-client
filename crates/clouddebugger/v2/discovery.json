@@ -18,29 +18,27 @@
   "description": "Examines the call stack and variables of a running application without stopping or slowing it down. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/debugger",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "clouddebugger:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://clouddebugger.mtls.googleapis.com/",
   "name": "clouddebugger",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -115,7 +113,6 @@
             "register": {
               "description": "Registers the debuggee with the controller service. All agents attached to the same application must call this method with exactly the same request content to get back the same stable `debuggee_id`. Agents should call this method again whenever `google.rpc.Code.NOT_FOUND` is returned from any controller method. This protocol allows the controller service to disable debuggees, recover from data loss, or change the `debuggee_id` format. Agents must handle `debuggee_id` value changing upon re-registration.",
               "httpMethod": "POST",
-              "flatPath": "v2/controller/debuggees/register",
               "id": "clouddebugger.controller.debuggees.register",
               "parameterOrder": [],
               "parameters": {},
@@ -138,7 +135,6 @@
                 "list": {
                   "description": "Returns the list of all active breakpoints for the debuggee. The breakpoint specification (`location`, `condition`, and `expressions` fields) is semantically immutable, although the field values may change. For example, an agent may update the location line number to reflect the actual line where the breakpoint was set, but this doesn't change the breakpoint semantics. This means that an agent does not need to check if a breakpoint has changed when it encounters the same breakpoint on a successive call. Moreover, an agent should remember the breakpoints that are completed until the controller removes them from the active list to avoid setting those breakpoints again.",
                   "httpMethod": "GET",
-                  "flatPath": "v2/controller/debuggees/{debuggeeId}/breakpoints",
                   "id": "clouddebugger.controller.debuggees.breakpoints.list",
                   "parameterOrder": [
                     "debuggeeId"
@@ -152,8 +148,8 @@
                     "debuggeeId": {
                       "description": "Required. Identifies the debuggee.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "successOnTimeout": {
                       "description": "If set to `true` (recommended), returns `google.rpc.Code.OK` status and sets the `wait_expired` response field to `true` when the server-selected timeout has expired. If set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status when the server-selected timeout has expired.",
@@ -178,7 +174,6 @@
                 "update": {
                   "description": "Updates the breakpoint state or mutable fields. The entire Breakpoint message must be sent back to the controller service. Updates to active breakpoint fields are only allowed if the new value does not change the breakpoint specification. Updates to the `location`, `condition` and `expressions` fields should not alter the breakpoint semantics. These may only make changes such as canonicalizing a value or snapping the location to the correct line of code.",
                   "httpMethod": "PUT",
-                  "flatPath": "v2/controller/debuggees/{debuggeeId}/breakpoints/{id}",
                   "id": "clouddebugger.controller.debuggees.breakpoints.update",
                   "parameterOrder": [
                     "debuggeeId",
@@ -188,14 +183,14 @@
                     "debuggeeId": {
                       "description": "Required. Identifies the debuggee being debugged.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "id": {
                       "description": "Breakpoint identifier, unique in the scope of the debuggee.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v2/controller/debuggees/{debuggeeId}/breakpoints/{id}",
@@ -223,7 +218,6 @@
             "list": {
               "description": "Lists all the debuggees that the user has access to.",
               "httpMethod": "GET",
-              "flatPath": "v2/debugger/debuggees",
               "id": "clouddebugger.debugger.debuggees.list",
               "parameterOrder": [],
               "parameters": {
@@ -259,7 +253,6 @@
                 "delete": {
                   "description": "Deletes the breakpoint from the debuggee.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}",
                   "id": "clouddebugger.debugger.debuggees.breakpoints.delete",
                   "parameterOrder": [
                     "debuggeeId",
@@ -269,8 +262,8 @@
                     "breakpointId": {
                       "description": "Required. ID of the breakpoint to delete.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "clientVersion": {
                       "description": "Required. The client version making the call. Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
@@ -280,8 +273,8 @@
                     "debuggeeId": {
                       "description": "Required. ID of the debuggee whose breakpoint to delete.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}",
@@ -296,7 +289,6 @@
                 "get": {
                   "description": "Gets breakpoint information.",
                   "httpMethod": "GET",
-                  "flatPath": "v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}",
                   "id": "clouddebugger.debugger.debuggees.breakpoints.get",
                   "parameterOrder": [
                     "debuggeeId",
@@ -306,8 +298,8 @@
                     "breakpointId": {
                       "description": "Required. ID of the breakpoint to get.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "clientVersion": {
                       "description": "Required. The client version making the call. Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
@@ -317,8 +309,8 @@
                     "debuggeeId": {
                       "description": "Required. ID of the debuggee whose breakpoint to get.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v2/debugger/debuggees/{debuggeeId}/breakpoints/{breakpointId}",
@@ -333,7 +325,6 @@
                 "list": {
                   "description": "Lists all breakpoints for the debuggee.",
                   "httpMethod": "GET",
-                  "flatPath": "v2/debugger/debuggees/{debuggeeId}/breakpoints",
                   "id": "clouddebugger.debugger.debuggees.breakpoints.list",
                   "parameterOrder": [
                     "debuggeeId"
@@ -341,15 +332,15 @@
                   "parameters": {
                     "action.value": {
                       "description": "Only breakpoints with the specified action will pass the filter.",
+                      "enum": [
+                        "CAPTURE",
+                        "LOG"
+                      ],
                       "enumDescriptions": [
                         "Capture stack frame and variables and update the breakpoint. The data is only captured once. After that the breakpoint is set in a final state.",
                         "Log each breakpoint hit. The breakpoint remains active until deleted or expired."
                       ],
                       "location": "query",
-                      "enum": [
-                        "CAPTURE",
-                        "LOG"
-                      ],
                       "type": "string"
                     },
                     "clientVersion": {
@@ -360,8 +351,8 @@
                     "debuggeeId": {
                       "description": "Required. ID of the debuggee whose breakpoints to list.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "includeAllUsers": {
                       "description": "When set to `true`, the response includes the list of breakpoints set by any user. Otherwise, it includes only breakpoints set by the caller.",
@@ -396,7 +387,6 @@
                 "set": {
                   "description": "Sets the breakpoint to the debuggee.",
                   "httpMethod": "POST",
-                  "flatPath": "v2/debugger/debuggees/{debuggeeId}/breakpoints/set",
                   "id": "clouddebugger.debugger.debuggees.breakpoints.set",
                   "parameterOrder": [
                     "debuggeeId"
@@ -404,17 +394,17 @@
                   "parameters": {
                     "canaryOption": {
                       "description": "The canary option set by the user upon setting breakpoint.",
+                      "enum": [
+                        "CANARY_OPTION_UNSPECIFIED",
+                        "CANARY_OPTION_TRY_ENABLE",
+                        "CANARY_OPTION_TRY_DISABLE"
+                      ],
                       "enumDescriptions": [
                         "Depends on the canary_mode of the debuggee.",
                         "Enable the canary for this breakpoint if the canary_mode of the debuggee is not CANARY_MODE_ALWAYS_ENABLED or CANARY_MODE_ALWAYS_DISABLED.",
                         "Disable the canary for this breakpoint if the canary_mode of the debuggee is not CANARY_MODE_ALWAYS_ENABLED or CANARY_MODE_ALWAYS_DISABLED."
                       ],
                       "location": "query",
-                      "enum": [
-                        "CANARY_OPTION_UNSPECIFIED",
-                        "CANARY_OPTION_TRY_ENABLE",
-                        "CANARY_OPTION_TRY_DISABLE"
-                      ],
                       "type": "string"
                     },
                     "clientVersion": {
@@ -425,8 +415,8 @@
                     "debuggeeId": {
                       "description": "Required. ID of the debuggee where the breakpoint is to be set.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v2/debugger/debuggees/{debuggeeId}/breakpoints/set",
@@ -457,17 +447,17 @@
       "properties": {
         "kind": {
           "description": "The alias kind.",
-          "enumDescriptions": [
-            "Do not use.",
-            "Git tag",
-            "Git branch",
-            "OTHER is used to specify non-standard aliases, those not of the kinds above. For example, if a Git repo has a ref named \"refs/foo/bar\", it is considered to be of kind OTHER."
-          ],
           "enum": [
             "ANY",
             "FIXED",
             "MOVABLE",
             "OTHER"
+          ],
+          "enumDescriptions": [
+            "Do not use.",
+            "Git tag",
+            "Git branch",
+            "OTHER is used to specify non-standard aliases, those not of the kinds above. For example, if a Git repo has a ref named \"refs/foo/bar\", it is considered to be of kind OTHER."
           ],
           "type": "string"
         },
@@ -484,13 +474,13 @@
       "properties": {
         "action": {
           "description": "Action that the agent should perform when the code at the breakpoint location is hit.",
-          "enumDescriptions": [
-            "Capture stack frame and variables and update the breakpoint. The data is only captured once. After that the breakpoint is set in a final state.",
-            "Log each breakpoint hit. The breakpoint remains active until deleted or expired."
-          ],
           "enum": [
             "CAPTURE",
             "LOG"
+          ],
+          "enumDescriptions": [
+            "Capture stack frame and variables and update the breakpoint. The data is only captured once. After that the breakpoint is set in a final state.",
+            "Log each breakpoint hit. The breakpoint remains active until deleted or expired."
           ],
           "type": "string"
         },
@@ -543,20 +533,20 @@
           "type": "object"
         },
         "location": {
-          "description": "Breakpoint source location.",
-          "$ref": "SourceLocation"
+          "$ref": "SourceLocation",
+          "description": "Breakpoint source location."
         },
         "logLevel": {
           "description": "Indicates the severity of the log. Only relevant when action is `LOG`.",
-          "enumDescriptions": [
-            "Information log message.",
-            "Warning log message.",
-            "Error log message."
-          ],
           "enum": [
             "INFO",
             "WARNING",
             "ERROR"
+          ],
+          "enumDescriptions": [
+            "Information log message.",
+            "Warning log message.",
+            "Error log message."
           ],
           "type": "string"
         },
@@ -573,13 +563,6 @@
         },
         "state": {
           "description": "The current state of the breakpoint.",
-          "enumDescriptions": [
-            "Breakpoint state UNSPECIFIED.",
-            "Enabling canary but no agents are available.",
-            "Enabling canary and successfully assigning canary agents.",
-            "Breakpoint rolling out to all agents.",
-            "Breakpoint is hit/complete/failed."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "STATE_CANARY_PENDING_AGENTS",
@@ -587,11 +570,18 @@
             "STATE_ROLLING_TO_ALL",
             "STATE_IS_FINAL"
           ],
+          "enumDescriptions": [
+            "Breakpoint state UNSPECIFIED.",
+            "Enabling canary but no agents are available.",
+            "Enabling canary and successfully assigning canary agents.",
+            "Breakpoint rolling out to all agents.",
+            "Breakpoint is hit/complete/failed."
+          ],
           "type": "string"
         },
         "status": {
-          "description": "Breakpoint status. The status includes an error flag and a human readable message. This field is usually unset. The message can be either informational or an error message. Regardless, clients should always display the text message back to the user. Error status indicates complete failure of the breakpoint. Example (non-final state): `Still loading symbols...` Examples (final state): * `Invalid line number` referring to location * `Field f not found in class C` referring to condition",
-          "$ref": "StatusMessage"
+          "$ref": "StatusMessage",
+          "description": "Breakpoint status. The status includes an error flag and a human readable message. This field is usually unset. The message can be either informational or an error message. Regardless, clients should always display the text message back to the user. Error status indicates complete failure of the breakpoint. Example (non-final state): `Still loading symbols...` Examples (final state): * `Invalid line number` referring to location * `Field f not found in class C` referring to condition"
         },
         "userEmail": {
           "description": "E-mail address of the user that created this breakpoint",
@@ -612,16 +602,16 @@
       "id": "CloudRepoSourceContext",
       "properties": {
         "aliasContext": {
-          "description": "An alias, which may be a branch or tag.",
-          "$ref": "AliasContext"
+          "$ref": "AliasContext",
+          "description": "An alias, which may be a branch or tag."
         },
         "aliasName": {
           "description": "The name of an alias (branch, tag, etc.).",
           "type": "string"
         },
         "repoId": {
-          "description": "The ID of the repo.",
-          "$ref": "RepoId"
+          "$ref": "RepoId",
+          "description": "The ID of the repo."
         },
         "revisionId": {
           "description": "A revision ID.",
@@ -639,8 +629,8 @@
           "type": "string"
         },
         "repoId": {
-          "description": "The ID of the repo containing the workspace.",
-          "$ref": "RepoId"
+          "$ref": "RepoId",
+          "description": "The ID of the repo containing the workspace."
         }
       },
       "type": "object"
@@ -654,8 +644,8 @@
           "type": "string"
         },
         "workspaceId": {
-          "description": "The ID of the workspace.",
-          "$ref": "CloudWorkspaceId"
+          "$ref": "CloudWorkspaceId",
+          "description": "The ID of the workspace."
         }
       },
       "type": "object"
@@ -670,19 +660,19 @@
         },
         "canaryMode": {
           "description": "Used when setting breakpoint canary for this debuggee.",
-          "enumDescriptions": [
-            "CANARY_MODE_UNSPECIFIED is equivalent to CANARY_MODE_ALWAYS_DISABLED so that if the debuggee is not configured to use the canary feature, the feature will be disabled.",
-            "Always enable breakpoint canary regardless of the value of breakpoint's canary option.",
-            "Always disable breakpoint canary regardless of the value of breakpoint's canary option.",
-            "Depends on the breakpoint's canary option. Enable canary by default if the breakpoint's canary option is not specified.",
-            "Depends on the breakpoint's canary option. Disable canary by default if the breakpoint's canary option is not specified."
-          ],
           "enum": [
             "CANARY_MODE_UNSPECIFIED",
             "CANARY_MODE_ALWAYS_ENABLED",
             "CANARY_MODE_ALWAYS_DISABLED",
             "CANARY_MODE_DEFAULT_ENABLED",
             "CANARY_MODE_DEFAULT_DISABLED"
+          ],
+          "enumDescriptions": [
+            "CANARY_MODE_UNSPECIFIED is equivalent to CANARY_MODE_ALWAYS_DISABLED so that if the debuggee is not configured to use the canary feature, the feature will be disabled.",
+            "Always enable breakpoint canary regardless of the value of breakpoint's canary option.",
+            "Always disable breakpoint canary regardless of the value of breakpoint's canary option.",
+            "Depends on the breakpoint's canary option. Enable canary by default if the breakpoint's canary option is not specified.",
+            "Depends on the breakpoint's canary option. Disable canary by default if the breakpoint's canary option is not specified."
           ],
           "type": "string"
         },
@@ -728,8 +718,8 @@
           "type": "array"
         },
         "status": {
-          "description": "Human readable message to be displayed to the user about this debuggee. Absence of this field indicates no status. The message can be either informational or an error status.",
-          "$ref": "StatusMessage"
+          "$ref": "StatusMessage",
+          "description": "Human readable message to be displayed to the user about this debuggee. Absence of this field indicates no status. The message can be either informational or an error status."
         },
         "uniquifier": {
           "description": "Uniquifier to further distinguish the application. It is possible that different applications might have identical values in the debuggee message, thus, incorrectly identified as a single application by the Controller service. This field adds salt to further distinguish the application. Agents should consider seeding this field with value that identifies the code, binary, configuration and environment.",
@@ -749,8 +739,8 @@
       "id": "ExtendedSourceContext",
       "properties": {
         "context": {
-          "description": "Any source context.",
-          "$ref": "SourceContext"
+          "$ref": "SourceContext",
+          "description": "Any source context."
         },
         "labels": {
           "additionalProperties": {
@@ -785,8 +775,8 @@
       "id": "GerritSourceContext",
       "properties": {
         "aliasContext": {
-          "description": "An alias, which may be a branch or tag.",
-          "$ref": "AliasContext"
+          "$ref": "AliasContext",
+          "description": "An alias, which may be a branch or tag."
         },
         "aliasName": {
           "description": "The name of an alias (branch, tag, etc.).",
@@ -812,8 +802,8 @@
       "id": "GetBreakpointResponse",
       "properties": {
         "breakpoint": {
-          "description": "Complete breakpoint state. The fields `id` and `location` are guaranteed to be set.",
-          "$ref": "Breakpoint"
+          "$ref": "Breakpoint",
+          "description": "Complete breakpoint state. The fields `id` and `location` are guaranteed to be set."
         }
       },
       "type": "object"
@@ -907,8 +897,8 @@
       "id": "RegisterDebuggeeRequest",
       "properties": {
         "debuggee": {
-          "description": "Required. Debuggee information to register. The fields `project`, `uniquifier`, `description` and `agent_version` of the debuggee must be set.",
-          "$ref": "Debuggee"
+          "$ref": "Debuggee",
+          "description": "Required. Debuggee information to register. The fields `project`, `uniquifier`, `description` and `agent_version` of the debuggee must be set."
         }
       },
       "type": "object"
@@ -922,8 +912,8 @@
           "type": "string"
         },
         "debuggee": {
-          "description": "Debuggee resource. The field `id` is guaranteed to be set (in addition to the echoed fields). If the field `is_disabled` is set to `true`, the agent should disable itself by removing all breakpoints and detaching from the application. It should however continue to poll `RegisterDebuggee` until reenabled.",
-          "$ref": "Debuggee"
+          "$ref": "Debuggee",
+          "description": "Debuggee resource. The field `id` is guaranteed to be set (in addition to the echoed fields). If the field `is_disabled` is set to `true`, the agent should disable itself by removing all breakpoints and detaching from the application. It should however continue to poll `RegisterDebuggee` until reenabled."
         }
       },
       "type": "object"
@@ -933,8 +923,8 @@
       "id": "RepoId",
       "properties": {
         "projectRepoId": {
-          "description": "A combination of a project ID and a repo name.",
-          "$ref": "ProjectRepoId"
+          "$ref": "ProjectRepoId",
+          "description": "A combination of a project ID and a repo name."
         },
         "uid": {
           "description": "A server-assigned, globally unique identifier.",
@@ -948,8 +938,8 @@
       "id": "SetBreakpointResponse",
       "properties": {
         "breakpoint": {
-          "description": "Breakpoint resource. The field `id` is guaranteed to be set (in addition to the echoed fields).",
-          "$ref": "Breakpoint"
+          "$ref": "Breakpoint",
+          "description": "Breakpoint resource. The field `id` is guaranteed to be set (in addition to the echoed fields)."
         }
       },
       "type": "object"
@@ -959,20 +949,20 @@
       "id": "SourceContext",
       "properties": {
         "cloudRepo": {
-          "description": "A SourceContext referring to a revision in a cloud repo.",
-          "$ref": "CloudRepoSourceContext"
+          "$ref": "CloudRepoSourceContext",
+          "description": "A SourceContext referring to a revision in a cloud repo."
         },
         "cloudWorkspace": {
-          "description": "A SourceContext referring to a snapshot in a cloud workspace.",
-          "$ref": "CloudWorkspaceSourceContext"
+          "$ref": "CloudWorkspaceSourceContext",
+          "description": "A SourceContext referring to a snapshot in a cloud workspace."
         },
         "gerrit": {
-          "description": "A SourceContext referring to a Gerrit project.",
-          "$ref": "GerritSourceContext"
+          "$ref": "GerritSourceContext",
+          "description": "A SourceContext referring to a Gerrit project."
         },
         "git": {
-          "description": "A SourceContext referring to any third party Git repo (e.g. GitHub).",
-          "$ref": "GitSourceContext"
+          "$ref": "GitSourceContext",
+          "description": "A SourceContext referring to any third party Git repo (e.g. GitHub)."
         }
       },
       "type": "object"
@@ -1021,8 +1011,8 @@
           "type": "array"
         },
         "location": {
-          "description": "Source location of the call site.",
-          "$ref": "SourceLocation"
+          "$ref": "SourceLocation",
+          "description": "Source location of the call site."
         }
       },
       "type": "object"
@@ -1032,8 +1022,8 @@
       "id": "StatusMessage",
       "properties": {
         "description": {
-          "description": "Status message text.",
-          "$ref": "FormatMessage"
+          "$ref": "FormatMessage",
+          "description": "Status message text."
         },
         "isError": {
           "description": "Distinguishes errors from informational messages.",
@@ -1041,16 +1031,6 @@
         },
         "refersTo": {
           "description": "Reference to which the message applies.",
-          "enumDescriptions": [
-            "Status doesn't refer to any particular input.",
-            "Status applies to the breakpoint and is related to its location.",
-            "Status applies to the breakpoint and is related to its condition.",
-            "Status applies to the breakpoint and is related to its expressions.",
-            "Status applies to the breakpoint and is related to its age.",
-            "Status applies to the breakpoint when the breakpoint failed to exit the canary state.",
-            "Status applies to the entire variable.",
-            "Status applies to variable value (variable name is valid)."
-          ],
           "enum": [
             "UNSPECIFIED",
             "BREAKPOINT_SOURCE_LOCATION",
@@ -1060,6 +1040,16 @@
             "BREAKPOINT_CANARY_FAILED",
             "VARIABLE_NAME",
             "VARIABLE_VALUE"
+          ],
+          "enumDescriptions": [
+            "Status doesn't refer to any particular input.",
+            "Status applies to the breakpoint and is related to its location.",
+            "Status applies to the breakpoint and is related to its condition.",
+            "Status applies to the breakpoint and is related to its expressions.",
+            "Status applies to the breakpoint and is related to its age.",
+            "Status applies to the breakpoint when the breakpoint failed to exit the canary state.",
+            "Status applies to the entire variable.",
+            "Status applies to variable value (variable name is valid)."
           ],
           "type": "string"
         }
@@ -1071,8 +1061,8 @@
       "id": "UpdateActiveBreakpointRequest",
       "properties": {
         "breakpoint": {
-          "description": "Required. Updated breakpoint information. The field `id` must be set. The agent must echo all Breakpoint specification fields in the update.",
-          "$ref": "Breakpoint"
+          "$ref": "Breakpoint",
+          "description": "Required. Updated breakpoint information. The field `id` must be set. The agent must echo all Breakpoint specification fields in the update."
         }
       },
       "type": "object"
@@ -1099,8 +1089,8 @@
           "type": "string"
         },
         "status": {
-          "description": "Status associated with the variable. This field will usually stay unset. A status of a single variable only applies to that variable or expression. The rest of breakpoint data still remains valid. Variables might be reported in error state even when breakpoint is not in final state. The message may refer to variable name with `refers_to` set to `VARIABLE_NAME`. Alternatively `refers_to` will be set to `VARIABLE_VALUE`. In either case variable value and members will be unset. Example of error message applied to name: `Invalid expression syntax`. Example of information message applied to value: `Not captured`. Examples of error message applied to value: * `Malformed string`, * `Field f not found in class C` * `Null pointer dereference`",
-          "$ref": "StatusMessage"
+          "$ref": "StatusMessage",
+          "description": "Status associated with the variable. This field will usually stay unset. A status of a single variable only applies to that variable or expression. The rest of breakpoint data still remains valid. Variables might be reported in error state even when breakpoint is not in final state. The message may refer to variable name with `refers_to` set to `VARIABLE_NAME`. Alternatively `refers_to` will be set to `VARIABLE_VALUE`. In either case variable value and members will be unset. Example of error message applied to name: `Invalid expression syntax`. Example of information message applied to value: `Not captured`. Examples of error message applied to value: * `Malformed string`, * `Field f not found in class C` * `Null pointer dereference`"
         },
         "type": {
           "description": "Variable type (e.g. `MyClass`). If the variable is split with `var_table_index`, `type` goes next to `value`. The interpretation of a type is agent specific. It is recommended to include the dynamic type rather than a static type of an object.",
@@ -1121,6 +1111,6 @@
   },
   "servicePath": "",
   "title": "Cloud Debugger API",
-  "version_module": true,
-  "version": "v2"
+  "version": "v2",
+  "version_module": true
 }

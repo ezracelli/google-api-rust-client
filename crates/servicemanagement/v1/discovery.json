@@ -24,29 +24,27 @@
   "description": "Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/service-management/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "servicemanagement:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://servicemanagement.mtls.googleapis.com/",
   "name": "servicemanagement",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -57,17 +55,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -119,7 +117,6 @@
         "get": {
           "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
           "httpMethod": "GET",
-          "flatPath": "v1/operations/{operationsId}",
           "id": "servicemanagement.operations.get",
           "parameterOrder": [
             "name"
@@ -129,8 +126,8 @@
               "description": "The name of the operation resource.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -145,7 +142,6 @@
         "list": {
           "description": "Lists service operations that match the specified filter in the request.",
           "httpMethod": "GET",
-          "flatPath": "v1/operations",
           "id": "servicemanagement.operations.list",
           "parameterOrder": [],
           "parameters": {
@@ -187,7 +183,6 @@
         "create": {
           "description": "Creates a new managed service. A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service or recreate it within 30 days after deletion. One producer project can own no more than 500 services. For security and reliability purposes, a production service should be hosted in a dedicated producer project. Operation",
           "httpMethod": "POST",
-          "flatPath": "v1/services",
           "id": "servicemanagement.services.create",
           "parameterOrder": [],
           "parameters": {},
@@ -206,7 +201,6 @@
         "delete": {
           "description": "Deletes a managed service. This method will change the service to the `Soft-Delete` state for 30 days. Within this period, service producers may call UndeleteService to restore the service. After 30 days, the service will be permanently deleted. Operation",
           "httpMethod": "DELETE",
-          "flatPath": "v1/services/{serviceName}",
           "id": "servicemanagement.services.delete",
           "parameterOrder": [
             "serviceName"
@@ -215,8 +209,8 @@
             "serviceName": {
               "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/services/{serviceName}",
@@ -231,7 +225,6 @@
         "enable": {
           "description": "Enables a service for a project, so it can be used for the project. See [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for more information. Operation",
           "httpMethod": "POST",
-          "flatPath": "v1/services/{serviceName}:enable",
           "id": "servicemanagement.services.enable",
           "parameterOrder": [
             "serviceName"
@@ -240,8 +233,8 @@
             "serviceName": {
               "description": "Required. Name of the service to enable. Specifying an unknown service name will cause the request to fail.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/services/{serviceName}:enable",
@@ -259,7 +252,6 @@
         "generateConfigReport": {
           "description": "Generates and returns a report (errors, warnings and changes from existing configurations) associated with GenerateConfigReportRequest.new_value If GenerateConfigReportRequest.old_value is specified, GenerateConfigReportRequest will contain a single ChangeReport based on the comparison between GenerateConfigReportRequest.new_value and GenerateConfigReportRequest.old_value. If GenerateConfigReportRequest.old_value is not specified, this method will compare GenerateConfigReportRequest.new_value with the last pushed service configuration.",
           "httpMethod": "POST",
-          "flatPath": "v1/services:generateConfigReport",
           "id": "servicemanagement.services.generateConfigReport",
           "parameterOrder": [],
           "parameters": {},
@@ -278,7 +270,6 @@
         "get": {
           "description": "Gets a managed service. Authentication is required unless the service is public.",
           "httpMethod": "GET",
-          "flatPath": "v1/services/{serviceName}",
           "id": "servicemanagement.services.get",
           "parameterOrder": [
             "serviceName"
@@ -287,8 +278,8 @@
             "serviceName": {
               "description": "Required. The name of the service. See the `ServiceManager` overview for naming requirements. For example: `example.googleapis.com`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/services/{serviceName}",
@@ -305,7 +296,6 @@
         "getConfig": {
           "description": "Gets a service configuration (version) for a managed service.",
           "httpMethod": "GET",
-          "flatPath": "v1/services/{serviceName}/config",
           "id": "servicemanagement.services.getConfig",
           "parameterOrder": [
             "serviceName"
@@ -319,20 +309,20 @@
             "serviceName": {
               "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "view": {
               "description": "Specifies which parts of the Service Config should be returned in the response.",
+              "enum": [
+                "BASIC",
+                "FULL"
+              ],
               "enumDescriptions": [
                 "Server response includes all fields except SourceInfo.",
                 "Server response includes all fields including SourceInfo. SourceFiles are of type 'google.api.servicemanagement.v1.ConfigFile' and are only available for configs created using the SubmitConfigSource method."
               ],
               "location": "query",
-              "enum": [
-                "BASIC",
-                "FULL"
-              ],
               "type": "string"
             }
           },
@@ -350,7 +340,6 @@
         "getIamPolicy": {
           "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
           "httpMethod": "POST",
-          "flatPath": "v1/services/{servicesId}:getIamPolicy",
           "id": "servicemanagement.services.getIamPolicy",
           "parameterOrder": [
             "resource"
@@ -360,8 +349,8 @@
               "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^services/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:getIamPolicy",
@@ -381,7 +370,6 @@
         "list": {
           "description": "Lists managed services. Returns all public services. For authenticated users, also returns all services the calling user has \"servicemanagement.services.get\" permission for. **BETA:** If the caller specifies the `consumer_id`, it returns only the services enabled on the consumer. The `consumer_id` must have the format of \"project:{PROJECT-ID}\".",
           "httpMethod": "GET",
-          "flatPath": "v1/services",
           "id": "servicemanagement.services.list",
           "parameterOrder": [],
           "parameters": {
@@ -421,7 +409,6 @@
         "setIamPolicy": {
           "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
           "httpMethod": "POST",
-          "flatPath": "v1/services/{servicesId}:setIamPolicy",
           "id": "servicemanagement.services.setIamPolicy",
           "parameterOrder": [
             "resource"
@@ -431,8 +418,8 @@
               "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^services/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:setIamPolicy",
@@ -450,7 +437,6 @@
         "testIamPermissions": {
           "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
           "httpMethod": "POST",
-          "flatPath": "v1/services/{servicesId}:testIamPermissions",
           "id": "servicemanagement.services.testIamPermissions",
           "parameterOrder": [
             "resource"
@@ -460,8 +446,8 @@
               "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^services/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:testIamPermissions",
@@ -481,7 +467,6 @@
         "undelete": {
           "description": "Revives a previously deleted managed service. The method restores the service using the configuration at the time the service was deleted. The target service must exist and must have been deleted within the last 30 days. Operation",
           "httpMethod": "POST",
-          "flatPath": "v1/services/{serviceName}:undelete",
           "id": "servicemanagement.services.undelete",
           "parameterOrder": [
             "serviceName"
@@ -490,8 +475,8 @@
             "serviceName": {
               "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/services/{serviceName}:undelete",
@@ -510,7 +495,6 @@
             "create": {
               "description": "Creates a new service configuration (version) for a managed service. This method only stores the service configuration. To roll out the service configuration to backend systems please call CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for each service. The rest will be deleted eventually.",
               "httpMethod": "POST",
-              "flatPath": "v1/services/{serviceName}/configs",
               "id": "servicemanagement.services.configs.create",
               "parameterOrder": [
                 "serviceName"
@@ -519,8 +503,8 @@
                 "serviceName": {
                   "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/services/{serviceName}/configs",
@@ -538,7 +522,6 @@
             "get": {
               "description": "Gets a service configuration (version) for a managed service.",
               "httpMethod": "GET",
-              "flatPath": "v1/services/{serviceName}/configs/{configId}",
               "id": "servicemanagement.services.configs.get",
               "parameterOrder": [
                 "serviceName",
@@ -548,26 +531,26 @@
                 "configId": {
                   "description": "Required. The id of the service configuration resource. This field must be specified for the server to return all fields, including `SourceInfo`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "serviceName": {
                   "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "Specifies which parts of the Service Config should be returned in the response.",
+                  "enum": [
+                    "BASIC",
+                    "FULL"
+                  ],
                   "enumDescriptions": [
                     "Server response includes all fields except SourceInfo.",
                     "Server response includes all fields including SourceInfo. SourceFiles are of type 'google.api.servicemanagement.v1.ConfigFile' and are only available for configs created using the SubmitConfigSource method."
                   ],
                   "location": "query",
-                  "enum": [
-                    "BASIC",
-                    "FULL"
-                  ],
                   "type": "string"
                 }
               },
@@ -585,7 +568,6 @@
             "list": {
               "description": "Lists the history of the service configuration for a managed service, from the newest to the oldest.",
               "httpMethod": "GET",
-              "flatPath": "v1/services/{serviceName}/configs",
               "id": "servicemanagement.services.configs.list",
               "parameterOrder": [
                 "serviceName"
@@ -605,8 +587,8 @@
                 "serviceName": {
                   "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/services/{serviceName}/configs",
@@ -623,7 +605,6 @@
             "submit": {
               "description": "Creates a new service configuration (version) for a managed service based on user-supplied configuration source files (for example: OpenAPI Specification). This method stores the source configurations as well as the generated service configuration. To rollout the service configuration to other services, please call CreateServiceRollout. Only the 100 most recent configuration sources and ones referenced by existing service configurtions are kept for each service. The rest will be deleted eventually. Operation",
               "httpMethod": "POST",
-              "flatPath": "v1/services/{serviceName}/configs:submit",
               "id": "servicemanagement.services.configs.submit",
               "parameterOrder": [
                 "serviceName"
@@ -632,8 +613,8 @@
                 "serviceName": {
                   "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/services/{serviceName}/configs:submit",
@@ -655,7 +636,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
               "httpMethod": "POST",
-              "flatPath": "v1/services/{servicesId}/consumers/{consumersId}:getIamPolicy",
               "id": "servicemanagement.services.consumers.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -665,8 +645,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^services/[^/]+/consumers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:getIamPolicy",
@@ -686,7 +666,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
               "httpMethod": "POST",
-              "flatPath": "v1/services/{servicesId}/consumers/{consumersId}:setIamPolicy",
               "id": "servicemanagement.services.consumers.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -696,8 +675,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^services/[^/]+/consumers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:setIamPolicy",
@@ -715,7 +694,6 @@
             "testIamPermissions": {
               "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
               "httpMethod": "POST",
-              "flatPath": "v1/services/{servicesId}/consumers/{consumersId}:testIamPermissions",
               "id": "servicemanagement.services.consumers.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -725,8 +703,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^services/[^/]+/consumers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:testIamPermissions",
@@ -750,7 +728,6 @@
             "create": {
               "description": "Creates a new service configuration rollout. Based on rollout, the Google Service Management will roll out the service configurations to different backend services. For example, the logging configuration will be pushed to Google Cloud Logging. Please note that any previous pending and running Rollouts and associated Operations will be automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts. Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of 100 most recent) rollouts are kept for each service. The rest will be deleted eventually. Operation",
               "httpMethod": "POST",
-              "flatPath": "v1/services/{serviceName}/rollouts",
               "id": "servicemanagement.services.rollouts.create",
               "parameterOrder": [
                 "serviceName"
@@ -759,8 +736,8 @@
                 "serviceName": {
                   "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/services/{serviceName}/rollouts",
@@ -778,7 +755,6 @@
             "get": {
               "description": "Gets a service configuration rollout.",
               "httpMethod": "GET",
-              "flatPath": "v1/services/{serviceName}/rollouts/{rolloutId}",
               "id": "servicemanagement.services.rollouts.get",
               "parameterOrder": [
                 "serviceName",
@@ -788,14 +764,14 @@
                 "rolloutId": {
                   "description": "Required. The id of the rollout resource.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "serviceName": {
                   "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/services/{serviceName}/rollouts/{rolloutId}",
@@ -812,7 +788,6 @@
             "list": {
               "description": "Lists the history of the service configuration rollouts for a managed service, from the newest to the oldest.",
               "httpMethod": "GET",
-              "flatPath": "v1/services/{serviceName}/rollouts",
               "id": "servicemanagement.services.rollouts.list",
               "parameterOrder": [
                 "serviceName"
@@ -837,8 +812,8 @@
                 "serviceName": {
                   "description": "Required. The name of the service. See the [overview](/service-management/overview) for naming requirements. For example: `example.googleapis.com`.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/services/{serviceName}/rollouts",
@@ -857,7 +832,7 @@
       }
     }
   },
-  "revision": "20210212",
+  "revision": "20210219",
   "rootUrl": "https://servicemanagement.googleapis.com/",
   "schemas": {
     "Advice": {
@@ -901,18 +876,18 @@
           "type": "array"
         },
         "sourceContext": {
-          "description": "Source context for the protocol buffer service represented by this message.",
-          "$ref": "SourceContext"
+          "$ref": "SourceContext",
+          "description": "Source context for the protocol buffer service represented by this message."
         },
         "syntax": {
           "description": "The source syntax of the service.",
-          "enumDescriptions": [
-            "Syntax `proto2`.",
-            "Syntax `proto3`."
-          ],
           "enum": [
             "SYNTAX_PROTO2",
             "SYNTAX_PROTO3"
+          ],
+          "enumDescriptions": [
+            "Syntax `proto2`.",
+            "Syntax `proto3`."
           ],
           "type": "string"
         },
@@ -954,17 +929,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -1050,8 +1025,8 @@
           "type": "boolean"
         },
         "oauth": {
-          "description": "The requirements for OAuth credentials.",
-          "$ref": "OAuthRequirements"
+          "$ref": "OAuthRequirements",
+          "description": "The requirements for OAuth credentials."
         },
         "requirements": {
           "description": "Requirements for additional authentication providers.",
@@ -1113,15 +1088,15 @@
           "type": "number"
         },
         "pathTranslation": {
-          "enumDescriptions": [
-            "",
-            "Use the backend address as-is, with no modification to the path. If the URL pattern contains variables, the variable names and values will be appended to the query string. If a query string parameter and a URL pattern variable have the same name, this may result in duplicate keys in the query string. # Examples Given the following operation config: Method path: /api/company/{cid}/user/{uid} Backend address: https://example.cloudfunctions.net/getUser Requests to the following request paths will call the backend at the translated path: Request path: /api/company/widgetworks/user/johndoe Translated: https://example.cloudfunctions.net/getUser?cid=widgetworks&uid=johndoe Request path: /api/company/widgetworks/user/johndoe?timezone=EST Translated: https://example.cloudfunctions.net/getUser?timezone=EST&cid=widgetworks&uid=johndoe",
-            "The request path will be appended to the backend address. # Examples Given the following operation config: Method path: /api/company/{cid}/user/{uid} Backend address: https://example.appspot.com Requests to the following request paths will call the backend at the translated path: Request path: /api/company/widgetworks/user/johndoe Translated: https://example.appspot.com/api/company/widgetworks/user/johndoe Request path: /api/company/widgetworks/user/johndoe?timezone=EST Translated: https://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST"
-          ],
           "enum": [
             "PATH_TRANSLATION_UNSPECIFIED",
             "CONSTANT_ADDRESS",
             "APPEND_PATH_TO_ADDRESS"
+          ],
+          "enumDescriptions": [
+            "",
+            "Use the backend address as-is, with no modification to the path. If the URL pattern contains variables, the variable names and values will be appended to the query string. If a query string parameter and a URL pattern variable have the same name, this may result in duplicate keys in the query string. # Examples Given the following operation config: Method path: /api/company/{cid}/user/{uid} Backend address: https://example.cloudfunctions.net/getUser Requests to the following request paths will call the backend at the translated path: Request path: /api/company/widgetworks/user/johndoe Translated: https://example.cloudfunctions.net/getUser?cid=widgetworks&uid=johndoe Request path: /api/company/widgetworks/user/johndoe?timezone=EST Translated: https://example.cloudfunctions.net/getUser?timezone=EST&cid=widgetworks&uid=johndoe",
+            "The request path will be appended to the backend address. # Examples Given the following operation config: Method path: /api/company/{cid}/user/{uid} Backend address: https://example.appspot.com Requests to the following request paths will call the backend at the translated path: Request path: /api/company/widgetworks/user/johndoe Translated: https://example.appspot.com/api/company/widgetworks/user/johndoe Request path: /api/company/widgetworks/user/johndoe?timezone=EST Translated: https://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST"
           ],
           "type": "string"
         },
@@ -1173,8 +1148,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1217,17 +1192,17 @@
         },
         "changeType": {
           "description": "The type for this change, either ADDED, REMOVED, or MODIFIED.",
-          "enumDescriptions": [
-            "No value was provided.",
-            "The changed object exists in the 'new' service configuration, but not in the 'old' service configuration.",
-            "The changed object exists in the 'old' service configuration, but not in the 'new' service configuration.",
-            "The changed object exists in both service configurations, but its value is different."
-          ],
           "enum": [
             "CHANGE_TYPE_UNSPECIFIED",
             "ADDED",
             "REMOVED",
             "MODIFIED"
+          ],
+          "enumDescriptions": [
+            "No value was provided.",
+            "The changed object exists in the 'new' service configuration, but not in the 'old' service configuration.",
+            "The changed object exists in the 'old' service configuration, but not in the 'new' service configuration.",
+            "The changed object exists in both service configurations, but its value is different."
           ],
           "type": "string"
         },
@@ -1261,14 +1236,6 @@
         },
         "fileType": {
           "description": "The type of configuration file this represents.",
-          "enumDescriptions": [
-            "Unknown file type.",
-            "YAML-specification of service.",
-            "OpenAPI specification, serialized in JSON.",
-            "OpenAPI specification, serialized in YAML.",
-            "FileDescriptorSet, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $protoc --include_imports --include_source_info test.proto -o out.pb",
-            "Uncompiled Proto file. Used for storage and display purposes only, currently server-side compilation is not supported. Should match the inputs to 'protoc' command used to generated FILE_DESCRIPTOR_SET_PROTO. A file of this type can only be included if at least one file of type FILE_DESCRIPTOR_SET_PROTO is included."
-          ],
           "enum": [
             "FILE_TYPE_UNSPECIFIED",
             "SERVICE_CONFIG_YAML",
@@ -1276,6 +1243,14 @@
             "OPEN_API_YAML",
             "FILE_DESCRIPTOR_SET_PROTO",
             "PROTO_FILE"
+          ],
+          "enumDescriptions": [
+            "Unknown file type.",
+            "YAML-specification of service.",
+            "OpenAPI specification, serialized in JSON.",
+            "OpenAPI specification, serialized in YAML.",
+            "FileDescriptorSet, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $protoc --include_imports --include_source_info test.proto -o out.pb",
+            "Uncompiled Proto file. Used for storage and display purposes only, currently server-side compilation is not supported. Should match the inputs to 'protoc' command used to generated FILE_DESCRIPTOR_SET_PROTO. A file of this type can only be included if at least one file of type FILE_DESCRIPTOR_SET_PROTO is included."
           ],
           "type": "string"
         }
@@ -1438,13 +1413,13 @@
       "properties": {
         "kind": {
           "description": "The kind of diagnostic information provided.",
-          "enumDescriptions": [
-            "Warnings and errors",
-            "Only errors"
-          ],
           "enum": [
             "WARNING",
             "ERROR"
+          ],
+          "enumDescriptions": [
+            "Warnings and errors",
+            "Only errors"
           ],
           "type": "string"
         },
@@ -1587,18 +1562,18 @@
           "type": "array"
         },
         "sourceContext": {
-          "description": "The source context.",
-          "$ref": "SourceContext"
+          "$ref": "SourceContext",
+          "description": "The source context."
         },
         "syntax": {
           "description": "The source syntax.",
-          "enumDescriptions": [
-            "Syntax `proto2`.",
-            "Syntax `proto3`."
-          ],
           "enum": [
             "SYNTAX_PROTO2",
             "SYNTAX_PROTO3"
+          ],
+          "enumDescriptions": [
+            "Syntax `proto2`.",
+            "Syntax `proto3`."
           ],
           "type": "string"
         }
@@ -1657,17 +1632,17 @@
       "properties": {
         "cardinality": {
           "description": "The field cardinality.",
-          "enumDescriptions": [
-            "For fields with unknown cardinality.",
-            "For optional fields.",
-            "For required fields. Proto2 syntax only.",
-            "For repeated fields."
-          ],
           "enum": [
             "CARDINALITY_UNKNOWN",
             "CARDINALITY_OPTIONAL",
             "CARDINALITY_REQUIRED",
             "CARDINALITY_REPEATED"
+          ],
+          "enumDescriptions": [
+            "For fields with unknown cardinality.",
+            "For optional fields.",
+            "For required fields. Proto2 syntax only.",
+            "For repeated fields."
           ],
           "type": "string"
         },
@@ -1681,27 +1656,6 @@
         },
         "kind": {
           "description": "The field type.",
-          "enumDescriptions": [
-            "Field type unknown.",
-            "Field type double.",
-            "Field type float.",
-            "Field type int64.",
-            "Field type uint64.",
-            "Field type int32.",
-            "Field type fixed64.",
-            "Field type fixed32.",
-            "Field type bool.",
-            "Field type string.",
-            "Field type group. Proto2 syntax only, and deprecated.",
-            "Field type message.",
-            "Field type bytes.",
-            "Field type uint32.",
-            "Field type enum.",
-            "Field type sfixed32.",
-            "Field type sfixed64.",
-            "Field type sint32.",
-            "Field type sint64."
-          ],
           "enum": [
             "TYPE_UNKNOWN",
             "TYPE_DOUBLE",
@@ -1722,6 +1676,27 @@
             "TYPE_SFIXED64",
             "TYPE_SINT32",
             "TYPE_SINT64"
+          ],
+          "enumDescriptions": [
+            "Field type unknown.",
+            "Field type double.",
+            "Field type float.",
+            "Field type int64.",
+            "Field type uint64.",
+            "Field type int32.",
+            "Field type fixed64.",
+            "Field type fixed32.",
+            "Field type bool.",
+            "Field type string.",
+            "Field type group. Proto2 syntax only, and deprecated.",
+            "Field type message.",
+            "Field type bytes.",
+            "Field type uint32.",
+            "Field type enum.",
+            "Field type sfixed32.",
+            "Field type sfixed64.",
+            "Field type sint32.",
+            "Field type sint64."
           ],
           "type": "string"
         },
@@ -1829,8 +1804,8 @@
       "id": "GetIamPolicyRequest",
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.",
-          "$ref": "GetPolicyOptions"
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`."
         }
       },
       "type": "object"
@@ -1881,8 +1856,8 @@
           "type": "string"
         },
         "custom": {
-          "description": "The custom pattern is used for specifying an HTTP method that is not included in the `pattern` field, such as HEAD, or \"*\" to leave the HTTP method unspecified for this rule. The wild-card rule is useful for services that provide content to Web (HTML) clients.",
-          "$ref": "CustomHttpPattern"
+          "$ref": "CustomHttpPattern",
+          "description": "The custom pattern is used for specifying an HTTP method that is not included in the `pattern` field, such as HEAD, or \"*\" to leave the HTTP method unspecified for this rule. The wild-card rule is useful for services that provide content to Web (HTML) clients."
         },
         "delete": {
           "description": "Maps to HTTP DELETE. Used for deleting a resource.",
@@ -1948,15 +1923,15 @@
         },
         "valueType": {
           "description": "The type of data that can be assigned to the label.",
-          "enumDescriptions": [
-            "A variable-length string. This is the default.",
-            "Boolean; true or false.",
-            "A 64-bit signed integer."
-          ],
           "enum": [
             "STRING",
             "BOOL",
             "INT64"
+          ],
+          "enumDescriptions": [
+            "A variable-length string. This is the default.",
+            "Boolean; true or false.",
+            "A 64-bit signed integer."
           ],
           "type": "string"
         }
@@ -2148,13 +2123,13 @@
         },
         "syntax": {
           "description": "The source syntax of this method.",
-          "enumDescriptions": [
-            "Syntax `proto2`.",
-            "Syntax `proto3`."
-          ],
           "enum": [
             "SYNTAX_PROTO2",
             "SYNTAX_PROTO3"
+          ],
+          "enumDescriptions": [
+            "Syntax `proto2`.",
+            "Syntax `proto3`."
           ],
           "type": "string"
         }
@@ -2182,16 +2157,6 @@
         },
         "launchStage": {
           "description": "Optional. The launch stage of the metric definition.",
-          "enumDescriptions": [
-            "Do not use this default value.",
-            "The feature is not yet implemented. Users can not use it.",
-            "Prelaunch features are hidden from users and are only visible internally.",
-            "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
-            "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don’t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
-            "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
-            "GA features are open to all developers and are considered stable and fully qualified for production use.",
-            "Deprecated features are scheduled to be shut down and removed. For more information, see the “Deprecation Policy” section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation."
-          ],
           "enum": [
             "LAUNCH_STAGE_UNSPECIFIED",
             "UNIMPLEMENTED",
@@ -2202,25 +2167,35 @@
             "GA",
             "DEPRECATED"
           ],
+          "enumDescriptions": [
+            "Do not use this default value.",
+            "The feature is not yet implemented. Users can not use it.",
+            "Prelaunch features are hidden from users and are only visible internally.",
+            "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
+            "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don’t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
+            "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
+            "GA features are open to all developers and are considered stable and fully qualified for production use.",
+            "Deprecated features are scheduled to be shut down and removed. For more information, see the “Deprecation Policy” section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation."
+          ],
           "type": "string"
         },
         "metadata": {
-          "description": "Optional. Metadata which can be used to guide usage of the metric.",
-          "$ref": "MetricDescriptorMetadata"
+          "$ref": "MetricDescriptorMetadata",
+          "description": "Optional. Metadata which can be used to guide usage of the metric."
         },
         "metricKind": {
           "description": "Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.",
-          "enumDescriptions": [
-            "Do not use this default value.",
-            "An instantaneous measurement of a value.",
-            "The change in a value during a time interval.",
-            "A value accumulated over a time interval. Cumulative measurements in a time series should have the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points."
-          ],
           "enum": [
             "METRIC_KIND_UNSPECIFIED",
             "GAUGE",
             "DELTA",
             "CUMULATIVE"
+          ],
+          "enumDescriptions": [
+            "Do not use this default value.",
+            "An instantaneous measurement of a value.",
+            "The change in a value during a time interval.",
+            "A value accumulated over a time interval. Cumulative measurements in a time series should have the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points."
           ],
           "type": "string"
         },
@@ -2245,15 +2220,6 @@
         },
         "valueType": {
           "description": "Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.",
-          "enumDescriptions": [
-            "Do not use this default value.",
-            "The value is a boolean. This value type can be used only if the metric kind is `GAUGE`.",
-            "The value is a signed 64-bit integer.",
-            "The value is a double precision floating point number.",
-            "The value is a text string. This value type can be used only if the metric kind is `GAUGE`.",
-            "The value is a `Distribution`.",
-            "The value is money."
-          ],
           "enum": [
             "VALUE_TYPE_UNSPECIFIED",
             "BOOL",
@@ -2262,6 +2228,15 @@
             "STRING",
             "DISTRIBUTION",
             "MONEY"
+          ],
+          "enumDescriptions": [
+            "Do not use this default value.",
+            "The value is a boolean. This value type can be used only if the metric kind is `GAUGE`.",
+            "The value is a signed 64-bit integer.",
+            "The value is a double precision floating point number.",
+            "The value is a text string. This value type can be used only if the metric kind is `GAUGE`.",
+            "The value is a `Distribution`.",
+            "The value is money."
           ],
           "type": "string"
         }
@@ -2279,16 +2254,6 @@
         },
         "launchStage": {
           "description": "Deprecated. Must use the MetricDescriptor.launch_stage instead.",
-          "enumDescriptions": [
-            "Do not use this default value.",
-            "The feature is not yet implemented. Users can not use it.",
-            "Prelaunch features are hidden from users and are only visible internally.",
-            "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
-            "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don’t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
-            "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
-            "GA features are open to all developers and are considered stable and fully qualified for production use.",
-            "Deprecated features are scheduled to be shut down and removed. For more information, see the “Deprecation Policy” section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation."
-          ],
           "enum": [
             "LAUNCH_STAGE_UNSPECIFIED",
             "UNIMPLEMENTED",
@@ -2298,6 +2263,16 @@
             "BETA",
             "GA",
             "DEPRECATED"
+          ],
+          "enumDescriptions": [
+            "Do not use this default value.",
+            "The feature is not yet implemented. Users can not use it.",
+            "Prelaunch features are hidden from users and are only visible internally.",
+            "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
+            "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don’t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
+            "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
+            "GA features are open to all developers and are considered stable and fully qualified for production use.",
+            "Deprecated features are scheduled to be shut down and removed. For more information, see the “Deprecation Policy” section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation."
           ],
           "type": "string"
         },
@@ -2364,16 +2339,6 @@
         },
         "launchStage": {
           "description": "Optional. The launch stage of the monitored resource definition.",
-          "enumDescriptions": [
-            "Do not use this default value.",
-            "The feature is not yet implemented. Users can not use it.",
-            "Prelaunch features are hidden from users and are only visible internally.",
-            "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
-            "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don’t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
-            "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
-            "GA features are open to all developers and are considered stable and fully qualified for production use.",
-            "Deprecated features are scheduled to be shut down and removed. For more information, see the “Deprecation Policy” section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation."
-          ],
           "enum": [
             "LAUNCH_STAGE_UNSPECIFIED",
             "UNIMPLEMENTED",
@@ -2383,6 +2348,16 @@
             "BETA",
             "GA",
             "DEPRECATED"
+          ],
+          "enumDescriptions": [
+            "Do not use this default value.",
+            "The feature is not yet implemented. Users can not use it.",
+            "Prelaunch features are hidden from users and are only visible internally.",
+            "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
+            "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don’t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
+            "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
+            "GA features are open to all developers and are considered stable and fully qualified for production use.",
+            "Deprecated features are scheduled to be shut down and removed. For more information, see the “Deprecation Policy” section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation."
           ],
           "type": "string"
         },
@@ -2456,8 +2431,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -2689,8 +2664,8 @@
           "type": "string"
         },
         "deleteServiceStrategy": {
-          "description": "The strategy associated with a rollout to delete a `ManagedService`. Readonly.",
-          "$ref": "DeleteServiceStrategy"
+          "$ref": "DeleteServiceStrategy",
+          "description": "The strategy associated with a rollout to delete a `ManagedService`. Readonly."
         },
         "rolloutId": {
           "description": "Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where \"date\" is the create date in ISO 8601 format. \"revision number\" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'",
@@ -2702,15 +2677,6 @@
         },
         "status": {
           "description": "The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.",
-          "enumDescriptions": [
-            "No status specified.",
-            "The Rollout is in progress.",
-            "The Rollout has completed successfully.",
-            "The Rollout has been cancelled. This can happen if you have overlapping Rollout pushes, and the previous ones will be cancelled.",
-            "The Rollout has failed and the rollback attempt has failed too.",
-            "The Rollout has not started yet and is pending for execution.",
-            "The Rollout has failed and rolled back to the previous successful Rollout."
-          ],
           "enum": [
             "ROLLOUT_STATUS_UNSPECIFIED",
             "IN_PROGRESS",
@@ -2720,17 +2686,26 @@
             "PENDING",
             "FAILED_ROLLED_BACK"
           ],
+          "enumDescriptions": [
+            "No status specified.",
+            "The Rollout is in progress.",
+            "The Rollout has completed successfully.",
+            "The Rollout has been cancelled. This can happen if you have overlapping Rollout pushes, and the previous ones will be cancelled.",
+            "The Rollout has failed and the rollback attempt has failed too.",
+            "The Rollout has not started yet and is pending for execution.",
+            "The Rollout has failed and rolled back to the previous successful Rollout."
+          ],
           "type": "string"
         },
         "trafficPercentStrategy": {
-          "description": "Google Service Control selects service configurations based on traffic percentage.",
-          "$ref": "TrafficPercentStrategy"
+          "$ref": "TrafficPercentStrategy",
+          "description": "Google Service Control selects service configurations based on traffic percentage."
         }
       },
       "type": "object"
     },
     "Service": {
-      "description": "`Service` is the root object of Google service configuration schema. It describes basic information about a service, such as the name and the title, and delegates other aspects to sub-sections. Each sub-section is either a proto message or a repeated proto message that configures a specific aspect, such as auth. See each proto message definition for details. Example: type: google.api.Service config_version: 3 name: calendar.googleapis.com title: Google Calendar API apis: - name: google.calendar.v3.Calendar authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: \"*\" requirements: provider_id: google_calendar_auth",
+      "description": "`Service` is the root object of Google service configuration schema. It describes basic information about a service, such as the name and the title, and delegates other aspects to sub-sections. Each sub-section is either a proto message or a repeated proto message that configures a specific aspect, such as auth. See each proto message definition for details. Example: type: google.api.Service name: calendar.googleapis.com title: Google Calendar API apis: - name: google.calendar.v3.Calendar authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: \"*\" requirements: provider_id: google_calendar_auth",
       "id": "Service",
       "properties": {
         "apis": {
@@ -2741,16 +2716,16 @@
           "type": "array"
         },
         "authentication": {
-          "description": "Auth configuration.",
-          "$ref": "Authentication"
+          "$ref": "Authentication",
+          "description": "Auth configuration."
         },
         "backend": {
-          "description": "API backend configuration.",
-          "$ref": "Backend"
+          "$ref": "Backend",
+          "description": "API backend configuration."
         },
         "billing": {
-          "description": "Billing configuration.",
-          "$ref": "Billing"
+          "$ref": "Billing",
+          "description": "Billing configuration."
         },
         "configVersion": {
           "description": "Deprecated. The service config compiler always sets this field to `3`.",
@@ -2758,20 +2733,20 @@
           "type": "integer"
         },
         "context": {
-          "description": "Context configuration.",
-          "$ref": "Context"
+          "$ref": "Context",
+          "description": "Context configuration."
         },
         "control": {
-          "description": "Configuration for the service control plane.",
-          "$ref": "Control"
+          "$ref": "Control",
+          "description": "Configuration for the service control plane."
         },
         "customError": {
-          "description": "Custom error configuration.",
-          "$ref": "CustomError"
+          "$ref": "CustomError",
+          "description": "Custom error configuration."
         },
         "documentation": {
-          "description": "Additional API documentation.",
-          "$ref": "Documentation"
+          "$ref": "Documentation",
+          "description": "Additional API documentation."
         },
         "endpoints": {
           "description": "Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.",
@@ -2788,16 +2763,16 @@
           "type": "array"
         },
         "http": {
-          "description": "HTTP configuration.",
-          "$ref": "Http"
+          "$ref": "Http",
+          "description": "HTTP configuration."
         },
         "id": {
           "description": "A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.",
           "type": "string"
         },
         "logging": {
-          "description": "Logging configuration.",
-          "$ref": "Logging"
+          "$ref": "Logging",
+          "description": "Logging configuration."
         },
         "logs": {
           "description": "Defines the logs used by this service.",
@@ -2821,8 +2796,8 @@
           "type": "array"
         },
         "monitoring": {
-          "description": "Monitoring configuration.",
-          "$ref": "Monitoring"
+          "$ref": "Monitoring",
+          "description": "Monitoring configuration."
         },
         "name": {
           "description": "The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.",
@@ -2833,16 +2808,16 @@
           "type": "string"
         },
         "quota": {
-          "description": "Quota configuration.",
-          "$ref": "Quota"
+          "$ref": "Quota",
+          "description": "Quota configuration."
         },
         "sourceInfo": {
-          "description": "Output only. The source information for this configuration if available.",
-          "$ref": "SourceInfo"
+          "$ref": "SourceInfo",
+          "description": "Output only. The source information for this configuration if available."
         },
         "systemParameters": {
-          "description": "System parameter configuration.",
-          "$ref": "SystemParameters"
+          "$ref": "SystemParameters",
+          "description": "System parameter configuration."
         },
         "systemTypes": {
           "description": "A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.",
@@ -2863,8 +2838,8 @@
           "type": "array"
         },
         "usage": {
-          "description": "Configuration controlling usage of this service.",
-          "$ref": "Usage"
+          "$ref": "Usage",
+          "description": "Configuration controlling usage of this service."
         }
       },
       "type": "object"
@@ -2874,8 +2849,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -2951,14 +2926,6 @@
         },
         "status": {
           "description": "The status code.",
-          "enumDescriptions": [
-            "Unspecifed code.",
-            "The operation or step has completed without errors.",
-            "The operation or step has not started yet.",
-            "The operation or step is in progress.",
-            "The operation or step has completed with errors. If the operation is rollbackable, the rollback completed with errors too.",
-            "The operation or step has completed with cancellation."
-          ],
           "enum": [
             "STATUS_UNSPECIFIED",
             "DONE",
@@ -2966,6 +2933,14 @@
             "IN_PROGRESS",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecifed code.",
+            "The operation or step has completed without errors.",
+            "The operation or step has not started yet.",
+            "The operation or step is in progress.",
+            "The operation or step has completed with errors. If the operation is rollbackable, the rollback completed with errors too.",
+            "The operation or step has completed with cancellation."
           ],
           "type": "string"
         }
@@ -2977,8 +2952,8 @@
       "id": "SubmitConfigSourceRequest",
       "properties": {
         "configSource": {
-          "description": "Required. The source configuration for the service.",
-          "$ref": "ConfigSource"
+          "$ref": "ConfigSource",
+          "description": "Required. The source configuration for the service."
         },
         "validateOnly": {
           "description": "Optional. If set, this will result in the generation of a `google.api.Service` configuration based on the `ConfigSource` provided, but the generated config and the sources will NOT be persisted.",
@@ -2992,8 +2967,8 @@
       "id": "SubmitConfigSourceResponse",
       "properties": {
         "serviceConfig": {
-          "description": "The generated service configuration.",
-          "$ref": "Service"
+          "$ref": "Service",
+          "description": "The generated service configuration."
         }
       },
       "type": "object"
@@ -3122,18 +3097,18 @@
           "type": "array"
         },
         "sourceContext": {
-          "description": "The source context.",
-          "$ref": "SourceContext"
+          "$ref": "SourceContext",
+          "description": "The source context."
         },
         "syntax": {
           "description": "The source syntax.",
-          "enumDescriptions": [
-            "Syntax `proto2`.",
-            "Syntax `proto3`."
-          ],
           "enum": [
             "SYNTAX_PROTO2",
             "SYNTAX_PROTO3"
+          ],
+          "enumDescriptions": [
+            "Syntax `proto2`.",
+            "Syntax `proto3`."
           ],
           "type": "string"
         }
@@ -3145,8 +3120,8 @@
       "id": "UndeleteServiceResponse",
       "properties": {
         "service": {
-          "description": "Revived service resource.",
-          "$ref": "ManagedService"
+          "$ref": "ManagedService",
+          "description": "Revived service resource."
         }
       },
       "type": "object"

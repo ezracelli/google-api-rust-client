@@ -15,29 +15,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "assuredworkloads:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://assuredworkloads.mtls.googleapis.com/",
   "name": "assuredworkloads",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -114,7 +112,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "assuredworkloads.organizations.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -124,8 +121,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -139,7 +136,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations",
                   "id": "assuredworkloads.organizations.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -154,8 +150,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -184,7 +180,6 @@
                 "create": {
                   "description": "Creates Assured Workload.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads",
                   "id": "assuredworkloads.organizations.locations.workloads.create",
                   "parameterOrder": [
                     "parent"
@@ -199,8 +194,8 @@
                       "description": "Required. The resource name of the new Workload's parent. Must be of the form `organizations/{org_id}/locations/{location_id}`.",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/workloads",
@@ -217,7 +212,6 @@
                 "delete": {
                   "description": "Deletes the workload. Make sure that workload's direct children are already in a deleted state, otherwise the request will fail with a FAILED_PRECONDITION error.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}",
                   "id": "assuredworkloads.organizations.locations.workloads.delete",
                   "parameterOrder": [
                     "name"
@@ -232,8 +226,8 @@
                       "description": "Required. The `name` field is used to identify the workload. Format: organizations/{org_id}/locations/{location_id}/workloads/{workload_id}",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -247,7 +241,6 @@
                 "get": {
                   "description": "Gets Assured Workload associated with a CRM Node",
                   "httpMethod": "GET",
-                  "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}",
                   "id": "assuredworkloads.organizations.locations.workloads.get",
                   "parameterOrder": [
                     "name"
@@ -257,8 +250,8 @@
                       "description": "Required. The resource name of the Workload to fetch. This is the workloads's relative path in the API, formatted as \"organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}\". For example, \"organizations/123/locations/us-east1/workloads/assured-workload-1\".",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -272,7 +265,6 @@
                 "list": {
                   "description": "Lists Assured Workloads under a CRM Node.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads",
                   "id": "assuredworkloads.organizations.locations.workloads.list",
                   "parameterOrder": [
                     "parent"
@@ -298,8 +290,8 @@
                       "description": "Required. Parent Resource to list workloads from. Must be of the form `organizations/{org_id}/locations/{location}`.",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/workloads",
@@ -313,7 +305,6 @@
                 "patch": {
                   "description": "Updates an existing workload. Currently allows updating of workload display_name and labels. For force updates don't set etag field in the Workload. Only one update operation per workload can be in progress.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}",
                   "id": "assuredworkloads.organizations.locations.workloads.patch",
                   "parameterOrder": [
                     "name"
@@ -323,8 +314,8 @@
                       "description": "Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "Required. The list of fields to be updated.",
@@ -360,14 +351,6 @@
       "properties": {
         "complianceRegime": {
           "description": "Optional. Compliance controls that should be applied to the resources managed by the workload.",
-          "enumDescriptions": [
-            "Unknown compliance regime.",
-            "Information protection as per DoD IL4 requirements.",
-            "Criminal Justice Information Services (CJIS) Security policies.",
-            "FedRAMP High data protection controls",
-            "FedRAMP Moderate data protection controls",
-            "Assured Workloads For US Regions data protection controls"
-          ],
           "enum": [
             "COMPLIANCE_REGIME_UNSPECIFIED",
             "IL4",
@@ -375,6 +358,14 @@
             "FEDRAMP_HIGH",
             "FEDRAMP_MODERATE",
             "US_REGIONAL_ACCESS"
+          ],
+          "enumDescriptions": [
+            "Unknown compliance regime.",
+            "Information protection as per DoD IL4 requirements.",
+            "Criminal Justice Information Services (CJIS) Security policies.",
+            "FedRAMP High data protection controls",
+            "FedRAMP Moderate data protection controls",
+            "Assured Workloads For US Regions data protection controls"
           ],
           "type": "string"
         },
@@ -422,14 +413,6 @@
         },
         "complianceRegime": {
           "description": "Required. Immutable. Compliance Regime associated with this workload.",
-          "enumDescriptions": [
-            "Unknown compliance regime.",
-            "Information protection as per DoD IL4 requirements.",
-            "Criminal Justice Information Services (CJIS) Security policies.",
-            "FedRAMP High data protection controls",
-            "FedRAMP Moderate data protection controls",
-            "Assured Workloads For US Regions data protection controls"
-          ],
           "enum": [
             "COMPLIANCE_REGIME_UNSPECIFIED",
             "IL4",
@@ -438,13 +421,21 @@
             "FEDRAMP_MODERATE",
             "US_REGIONAL_ACCESS"
           ],
+          "enumDescriptions": [
+            "Unknown compliance regime.",
+            "Information protection as per DoD IL4 requirements.",
+            "Criminal Justice Information Services (CJIS) Security policies.",
+            "FedRAMP High data protection controls",
+            "FedRAMP Moderate data protection controls",
+            "Assured Workloads For US Regions data protection controls"
+          ],
           "type": "string"
         },
         "createTime": {
           "description": "Output only. Immutable. The Workload creation timestamp.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "displayName": {
           "description": "Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload",
@@ -455,8 +446,8 @@
           "type": "string"
         },
         "kmsSettings": {
-          "description": "Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.",
-          "$ref": "GoogleCloudAssuredworkloadsV1WorkloadKMSSettings"
+          "$ref": "GoogleCloudAssuredworkloadsV1WorkloadKMSSettings",
+          "description": "Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes."
         },
         "labels": {
           "additionalProperties": {
@@ -478,8 +469,8 @@
           "items": {
             "$ref": "GoogleCloudAssuredworkloadsV1WorkloadResourceInfo"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         }
       },
       "type": "object"
@@ -512,15 +503,15 @@
         },
         "resourceType": {
           "description": "Indicates the type of resource.",
-          "enumDescriptions": [
-            "Unknown resource type.",
-            "Consumer project.",
-            "Consumer project containing encryption keys."
-          ],
           "enum": [
             "RESOURCE_TYPE_UNSPECIFIED",
             "CONSUMER_PROJECT",
             "ENCRYPTION_KEYS_PROJECT"
+          ],
+          "enumDescriptions": [
+            "Unknown resource type.",
+            "Consumer project.",
+            "Consumer project containing encryption keys."
           ],
           "type": "string"
         }
@@ -533,14 +524,6 @@
       "properties": {
         "complianceRegime": {
           "description": "Optional. Compliance controls that should be applied to the resources managed by the workload.",
-          "enumDescriptions": [
-            "Unknown compliance regime.",
-            "Information protection as per DoD IL4 requirements.",
-            "Criminal Justice Information Services (CJIS) Security policies.",
-            "FedRAMP High data protection controls",
-            "FedRAMP Moderate data protection controls",
-            "Assured Workloads For US Regions data protection controls"
-          ],
           "enum": [
             "COMPLIANCE_REGIME_UNSPECIFIED",
             "IL4",
@@ -548,6 +531,14 @@
             "FEDRAMP_HIGH",
             "FEDRAMP_MODERATE",
             "US_REGIONAL_ACCESS"
+          ],
+          "enumDescriptions": [
+            "Unknown compliance regime.",
+            "Information protection as per DoD IL4 requirements.",
+            "Criminal Justice Information Services (CJIS) Security policies.",
+            "FedRAMP High data protection controls",
+            "FedRAMP Moderate data protection controls",
+            "Assured Workloads For US Regions data protection controls"
           ],
           "type": "string"
         },
@@ -576,19 +567,11 @@
           "type": "string"
         },
         "cjisSettings": {
-          "description": "Required. Input only. Immutable. Settings specific to resources needed for CJIS.",
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings"
+          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings",
+          "description": "Required. Input only. Immutable. Settings specific to resources needed for CJIS."
         },
         "complianceRegime": {
           "description": "Required. Immutable. Compliance Regime associated with this workload.",
-          "enumDescriptions": [
-            "Unknown compliance regime.",
-            "Information protection as per DoD IL4 requirements.",
-            "Criminal Justice Information Services (CJIS) Security policies.",
-            "FedRAMP High data protection controls",
-            "FedRAMP Moderate data protection controls",
-            "Assured Workloads For US Regions data protection controls"
-          ],
           "enum": [
             "COMPLIANCE_REGIME_UNSPECIFIED",
             "IL4",
@@ -597,13 +580,21 @@
             "FEDRAMP_MODERATE",
             "US_REGIONAL_ACCESS"
           ],
+          "enumDescriptions": [
+            "Unknown compliance regime.",
+            "Information protection as per DoD IL4 requirements.",
+            "Criminal Justice Information Services (CJIS) Security policies.",
+            "FedRAMP High data protection controls",
+            "FedRAMP Moderate data protection controls",
+            "Assured Workloads For US Regions data protection controls"
+          ],
           "type": "string"
         },
         "createTime": {
           "description": "Output only. Immutable. The Workload creation timestamp.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "displayName": {
           "description": "Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload",
@@ -614,20 +605,20 @@
           "type": "string"
         },
         "fedrampHighSettings": {
-          "description": "Required. Input only. Immutable. Settings specific to resources needed for FedRAMP High.",
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings"
+          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings",
+          "description": "Required. Input only. Immutable. Settings specific to resources needed for FedRAMP High."
         },
         "fedrampModerateSettings": {
-          "description": "Required. Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate.",
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings"
+          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings",
+          "description": "Required. Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate."
         },
         "il4Settings": {
-          "description": "Required. Input only. Immutable. Settings specific to resources needed for IL4.",
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings"
+          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings",
+          "description": "Required. Input only. Immutable. Settings specific to resources needed for IL4."
         },
         "kmsSettings": {
-          "description": "Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.",
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings"
+          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings",
+          "description": "Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes."
         },
         "labels": {
           "additionalProperties": {
@@ -649,8 +640,8 @@
           "items": {
             "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         }
       },
       "type": "object"
@@ -660,8 +651,8 @@
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings",
       "properties": {
         "kmsSettings": {
-          "description": "Required. Input only. Immutable. Settings used to create a CMEK crypto key.",
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings"
+          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings",
+          "description": "Required. Input only. Immutable. Settings used to create a CMEK crypto key."
         }
       },
       "type": "object"
@@ -671,8 +662,8 @@
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings",
       "properties": {
         "kmsSettings": {
-          "description": "Required. Input only. Immutable. Settings used to create a CMEK crypto key.",
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings"
+          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings",
+          "description": "Required. Input only. Immutable. Settings used to create a CMEK crypto key."
         }
       },
       "type": "object"
@@ -682,8 +673,8 @@
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings",
       "properties": {
         "kmsSettings": {
-          "description": "Required. Input only. Immutable. Settings used to create a CMEK crypto key.",
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings"
+          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings",
+          "description": "Required. Input only. Immutable. Settings used to create a CMEK crypto key."
         }
       },
       "type": "object"
@@ -693,8 +684,8 @@
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings",
       "properties": {
         "kmsSettings": {
-          "description": "Required. Input only. Immutable. Settings used to create a CMEK crypto key.",
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings"
+          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings",
+          "description": "Required. Input only. Immutable. Settings used to create a CMEK crypto key."
         }
       },
       "type": "object"
@@ -727,15 +718,15 @@
         },
         "resourceType": {
           "description": "Indicates the type of resource.",
-          "enumDescriptions": [
-            "Unknown resource type.",
-            "Consumer project.",
-            "Consumer project containing encryption keys."
-          ],
           "enum": [
             "RESOURCE_TYPE_UNSPECIFIED",
             "CONSUMER_PROJECT",
             "ENCRYPTION_KEYS_PROJECT"
+          ],
+          "enumDescriptions": [
+            "Unknown resource type.",
+            "Consumer project.",
+            "Consumer project containing encryption keys."
           ],
           "type": "string"
         }
@@ -769,8 +760,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -831,6 +822,6 @@
   },
   "servicePath": "",
   "title": "Assured Workloads API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

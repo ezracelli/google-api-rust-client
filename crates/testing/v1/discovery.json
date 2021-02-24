@@ -23,22 +23,21 @@
   },
   "id": "testing:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://testing.mtls.googleapis.com/",
   "name": "testing",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -49,17 +48,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -111,7 +110,6 @@
         "getApkDetails": {
           "description": "Gets the details of an Android application APK.",
           "httpMethod": "POST",
-          "flatPath": "v1/applicationDetailService/getApkDetails",
           "id": "testing.applicationDetailService.getApkDetails",
           "parameterOrder": [],
           "parameters": {},
@@ -135,7 +133,6 @@
             "cancel": {
               "description": "Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
               "id": "testing.projects.testMatrices.cancel",
               "parameterOrder": [
                 "projectId",
@@ -145,14 +142,14 @@
                 "projectId": {
                   "description": "Cloud project that owns the test.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "testMatrixId": {
                   "description": "Test matrix that will be canceled.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
@@ -166,7 +163,6 @@
             "create": {
               "description": "Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectId}/testMatrices",
               "id": "testing.projects.testMatrices.create",
               "parameterOrder": [
                 "projectId"
@@ -175,8 +171,8 @@
                 "projectId": {
                   "description": "The GCE project under which this job will run.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "requestId": {
                   "description": "A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.",
@@ -198,7 +194,6 @@
             "get": {
               "description": "Checks the status of a test matrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectId}/testMatrices/{testMatrixId}",
               "id": "testing.projects.testMatrices.get",
               "parameterOrder": [
                 "projectId",
@@ -208,14 +203,14 @@
                 "projectId": {
                   "description": "Cloud project that owns the test matrix.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "testMatrixId": {
                   "description": "Unique test matrix id which was assigned by the service.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/projects/{projectId}/testMatrices/{testMatrixId}",
@@ -236,7 +231,6 @@
         "get": {
           "description": "Gets the catalog of supported test environments. May return any of the following canonical error codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist - INTERNAL - if an internal error occurred",
           "httpMethod": "GET",
-          "flatPath": "v1/testEnvironmentCatalog/{environmentType}",
           "id": "testing.testEnvironmentCatalog.get",
           "parameterOrder": [
             "environmentType"
@@ -244,6 +238,14 @@
           "parameters": {
             "environmentType": {
               "description": "Required. The type of environment that should be listed.",
+              "enum": [
+                "ENVIRONMENT_TYPE_UNSPECIFIED",
+                "ANDROID",
+                "IOS",
+                "NETWORK_CONFIGURATION",
+                "PROVIDED_SOFTWARE",
+                "DEVICE_IP_BLOCKS"
+              ],
               "enumDescriptions": [
                 "Do not use. For proto versioning only.",
                 "A device running a version of the Android OS.",
@@ -253,16 +255,8 @@
                 "The IP blocks used by devices in the test environment."
               ],
               "location": "path",
-              "enum": [
-                "ENVIRONMENT_TYPE_UNSPECIFIED",
-                "ANDROID",
-                "IOS",
-                "NETWORK_CONFIGURATION",
-                "PROVIDED_SOFTWARE",
-                "DEVICE_IP_BLOCKS"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "projectId": {
               "description": "For authorization, the cloud project requesting the TestEnvironmentCatalog.",
@@ -290,8 +284,8 @@
       "id": "Account",
       "properties": {
         "googleAuto": {
-          "description": "An automatic google login account.",
-          "$ref": "GoogleAuto"
+          "$ref": "GoogleAuto",
+          "description": "An automatic google login account."
         }
       },
       "type": "object"
@@ -331,8 +325,8 @@
           "type": "array"
         },
         "runtimeConfiguration": {
-          "description": "The set of supported runtime configurations.",
-          "$ref": "AndroidRuntimeConfiguration"
+          "$ref": "AndroidRuntimeConfiguration",
+          "description": "The set of supported runtime configurations."
         },
         "versions": {
           "description": "The set of supported Android OS versions.",
@@ -363,12 +357,12 @@
       "id": "AndroidInstrumentationTest",
       "properties": {
         "appApk": {
-          "description": "The APK for the application under test.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "The APK for the application under test."
         },
         "appBundle": {
-          "description": "A multi-apk app bundle for the application under test.",
-          "$ref": "AppBundle"
+          "$ref": "AppBundle",
+          "description": "A multi-apk app bundle for the application under test."
         },
         "appPackageId": {
           "description": "The java package for the application under test. The default value is determined by examining the application's manifest.",
@@ -376,25 +370,25 @@
         },
         "orchestratorOption": {
           "description": "The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.",
-          "enumDescriptions": [
-            "Default value: the server will choose the mode. Currently implies that the test will run without the orchestrator. In the future, all instrumentation tests will be run with the orchestrator. Using the orchestrator is highly encouraged because of all the benefits it offers.",
-            "Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.0 or higher! ** Recommended.",
-            "Run test without using orchestrator."
-          ],
           "enum": [
             "ORCHESTRATOR_OPTION_UNSPECIFIED",
             "USE_ORCHESTRATOR",
             "DO_NOT_USE_ORCHESTRATOR"
           ],
+          "enumDescriptions": [
+            "Default value: the server will choose the mode. Currently implies that the test will run without the orchestrator. In the future, all instrumentation tests will be run with the orchestrator. Using the orchestrator is highly encouraged because of all the benefits it offers.",
+            "Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.0 or higher! ** Recommended.",
+            "Run test without using orchestrator."
+          ],
           "type": "string"
         },
         "shardingOption": {
-          "description": "The option to run tests in multiple shards in parallel.",
-          "$ref": "ShardingOption"
+          "$ref": "ShardingOption",
+          "description": "The option to run tests in multiple shards in parallel."
         },
         "testApk": {
-          "description": "Required. The APK containing the test code to be executed.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "Required. The APK containing the test code to be executed."
         },
         "testPackageId": {
           "description": "The java package for the test to be executed. The default value is determined by examining the application's manifest.",
@@ -463,33 +457,33 @@
         },
         "form": {
           "description": "Whether this device is virtual or physical.",
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "Android virtual device using Compute Engine native virtualization. Firebase Test Lab only.",
-            "Actual hardware.",
-            "Android virtual device using emulator in nested virtualization. Equivalent to Android Studio."
-          ],
           "enum": [
             "DEVICE_FORM_UNSPECIFIED",
             "VIRTUAL",
             "PHYSICAL",
             "EMULATOR"
           ],
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "Android virtual device using Compute Engine native virtualization. Firebase Test Lab only.",
+            "Actual hardware.",
+            "Android virtual device using emulator in nested virtualization. Equivalent to Android Studio."
+          ],
           "type": "string"
         },
         "formFactor": {
           "description": "Whether this device is a phone, tablet, wearable, etc.",
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "This device has the shape of a phone.",
-            "This device has the shape of a tablet.",
-            "This device has the shape of a watch or other wearable."
-          ],
           "enum": [
             "DEVICE_FORM_FACTOR_UNSPECIFIED",
             "PHONE",
             "TABLET",
             "WEARABLE"
+          ],
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "This device has the shape of a phone.",
+            "This device has the shape of a tablet.",
+            "This device has the shape of a watch or other wearable."
           ],
           "type": "string"
         },
@@ -557,12 +551,12 @@
       "id": "AndroidRoboTest",
       "properties": {
         "appApk": {
-          "description": "The APK for the application under test.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "The APK for the application under test."
         },
         "appBundle": {
-          "description": "A multi-apk app bundle for the application under test.",
-          "$ref": "AppBundle"
+          "$ref": "AppBundle",
+          "description": "A multi-apk app bundle for the application under test."
         },
         "appInitialActivity": {
           "description": "The initial activity that should be used to start the app.",
@@ -590,8 +584,8 @@
           "type": "array"
         },
         "roboScript": {
-          "description": "A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "A JSON file with a sequence of actions Robo should perform as a prologue for the crawl."
         },
         "startingIntents": {
           "description": "The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).",
@@ -629,12 +623,12 @@
       "id": "AndroidTestLoop",
       "properties": {
         "appApk": {
-          "description": "The APK for the application under test.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "The APK for the application under test."
         },
         "appBundle": {
-          "description": "A multi-apk app bundle for the application under test.",
-          "$ref": "AppBundle"
+          "$ref": "AppBundle",
+          "description": "A multi-apk app bundle for the application under test."
         },
         "appPackageId": {
           "description": "The java package for the application under test. The default is determined by examining the application's manifest.",
@@ -672,16 +666,16 @@
           "type": "string"
         },
         "distribution": {
-          "description": "Market share for this version.",
-          "$ref": "Distribution"
+          "$ref": "Distribution",
+          "description": "Market share for this version."
         },
         "id": {
           "description": "An opaque id for this Android version. Use this id to invoke the TestExecutionService.",
           "type": "string"
         },
         "releaseDate": {
-          "description": "The date this Android version became available in the market.",
-          "$ref": "Date"
+          "$ref": "Date",
+          "description": "The date this Android version became available in the market."
         },
         "tags": {
           "description": "Tags for this dimension. Examples: \"default\", \"preview\", \"deprecated\".",
@@ -702,8 +696,8 @@
       "id": "Apk",
       "properties": {
         "location": {
-          "description": "The path to an APK to be installed on the device before the test begins.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "The path to an APK to be installed on the device before the test begins."
         },
         "packageName": {
           "description": "The java package for the APK to be installed. Value is determined by examining the application's manifest.",
@@ -770,8 +764,8 @@
       "id": "AppBundle",
       "properties": {
         "bundleLocation": {
-          "description": ".aab file representing the app bundle under test.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": ".aab file representing the app bundle under test."
         }
       },
       "type": "object"
@@ -782,19 +776,6 @@
       "properties": {
         "testState": {
           "description": "The current rolled-up state of the test matrix. If this state is already final, then the cancelation request will have no effect.",
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "The execution or matrix is being validated.",
-            "The execution or matrix is waiting for resources to become available.",
-            "The execution is currently being processed. Can only be set on an execution.",
-            "The execution or matrix has terminated normally. On a matrix this means that the matrix level processing completed normally, but individual executions may be in an ERROR state.",
-            "The execution or matrix has stopped because it encountered an infrastructure failure.",
-            "The execution was not run because it corresponds to a unsupported environment. Can only be set on an execution.",
-            "The execution was not run because the provided inputs are incompatible with the requested environment. Example: requested AndroidVersion is lower than APK's minSdkVersion Can only be set on an execution.",
-            "The execution was not run because the provided inputs are incompatible with the requested architecture. Example: requested device does not support running the native code in the supplied APK Can only be set on an execution.",
-            "The user cancelled the execution. Can only be set on an execution.",
-            "The execution or matrix was not run because the provided inputs are not valid. Examples: input file is not of the expected type, is malformed/corrupt, or was flagged as malware"
-          ],
           "enum": [
             "TEST_STATE_UNSPECIFIED",
             "VALIDATING",
@@ -807,6 +788,19 @@
             "INCOMPATIBLE_ARCHITECTURE",
             "CANCELLED",
             "INVALID"
+          ],
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "The execution or matrix is being validated.",
+            "The execution or matrix is waiting for resources to become available.",
+            "The execution is currently being processed. Can only be set on an execution.",
+            "The execution or matrix has terminated normally. On a matrix this means that the matrix level processing completed normally, but individual executions may be in an ERROR state.",
+            "The execution or matrix has stopped because it encountered an infrastructure failure.",
+            "The execution was not run because it corresponds to a unsupported environment. Can only be set on an execution.",
+            "The execution was not run because the provided inputs are incompatible with the requested environment. Example: requested AndroidVersion is lower than APK's minSdkVersion Can only be set on an execution.",
+            "The execution was not run because the provided inputs are incompatible with the requested architecture. Example: requested device does not support running the native code in the supplied APK Can only be set on an execution.",
+            "The user cancelled the execution. Can only be set on an execution.",
+            "The execution or matrix was not run because the provided inputs are not valid. Examples: input file is not of the expected type, is malformed/corrupt, or was flagged as malware"
           ],
           "type": "string"
         }
@@ -873,12 +867,12 @@
       "id": "DeviceFile",
       "properties": {
         "obbFile": {
-          "description": "A reference to an opaque binary blob file.",
-          "$ref": "ObbFile"
+          "$ref": "ObbFile",
+          "description": "A reference to an opaque binary blob file."
         },
         "regularFile": {
-          "description": "A reference to a regular file.",
-          "$ref": "RegularFile"
+          "$ref": "RegularFile",
+          "description": "A reference to a regular file."
         }
       },
       "type": "object"
@@ -888,8 +882,8 @@
       "id": "DeviceIpBlock",
       "properties": {
         "addedDate": {
-          "description": "The date this block was added to Firebase Test Lab",
-          "$ref": "Date"
+          "$ref": "Date",
+          "description": "The date this block was added to Firebase Test Lab"
         },
         "block": {
           "description": "An IP address block in CIDR notation eg: 34.68.194.64/29",
@@ -897,17 +891,17 @@
         },
         "form": {
           "description": "Whether this block is used by physical or virtual devices",
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "Android virtual device using Compute Engine native virtualization. Firebase Test Lab only.",
-            "Actual hardware.",
-            "Android virtual device using emulator in nested virtualization. Equivalent to Android Studio."
-          ],
           "enum": [
             "DEVICE_FORM_UNSPECIFIED",
             "VIRTUAL",
             "PHYSICAL",
             "EMULATOR"
+          ],
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "Android virtual device using Compute Engine native virtualization. Firebase Test Lab only.",
+            "Actual hardware.",
+            "Android virtual device using emulator in nested virtualization. Equivalent to Android Studio."
           ],
           "type": "string"
         }
@@ -950,12 +944,12 @@
       "id": "Environment",
       "properties": {
         "androidDevice": {
-          "description": "An Android device which must be used with an Android test.",
-          "$ref": "AndroidDevice"
+          "$ref": "AndroidDevice",
+          "description": "An Android device which must be used with an Android test."
         },
         "iosDevice": {
-          "description": "An iOS device which must be used with an iOS test.",
-          "$ref": "IosDevice"
+          "$ref": "IosDevice",
+          "description": "An iOS device which must be used with an iOS test."
         }
       },
       "type": "object"
@@ -965,16 +959,16 @@
       "id": "EnvironmentMatrix",
       "properties": {
         "androidDeviceList": {
-          "description": "A list of Android devices; the test will be run only on the specified devices.",
-          "$ref": "AndroidDeviceList"
+          "$ref": "AndroidDeviceList",
+          "description": "A list of Android devices; the test will be run only on the specified devices."
         },
         "androidMatrix": {
-          "description": "A matrix of Android devices.",
-          "$ref": "AndroidMatrix"
+          "$ref": "AndroidMatrix",
+          "description": "A matrix of Android devices."
         },
         "iosDeviceList": {
-          "description": "A list of iOS devices.",
-          "$ref": "IosDeviceList"
+          "$ref": "IosDeviceList",
+          "description": "A list of iOS devices."
         }
       },
       "type": "object"
@@ -1010,8 +1004,8 @@
       "id": "GetApkDetailsResponse",
       "properties": {
         "apkDetail": {
-          "description": "Details of the Android APK.",
-          "$ref": "ApkDetail"
+          "$ref": "ApkDetail",
+          "description": "Details of the Android APK."
         }
       },
       "type": "object"
@@ -1093,8 +1087,8 @@
           "type": "array"
         },
         "runtimeConfiguration": {
-          "description": "The set of supported runtime configurations.",
-          "$ref": "IosRuntimeConfiguration"
+          "$ref": "IosRuntimeConfiguration",
+          "description": "The set of supported runtime configurations."
         },
         "versions": {
           "description": "The set of supported iOS software versions.",
@@ -1122,8 +1116,8 @@
           "type": "string"
         },
         "content": {
-          "description": "The source file",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "The source file"
         },
         "devicePath": {
           "description": "Location of the file on the device, inside the app's sandboxed filesystem",
@@ -1159,17 +1153,17 @@
         },
         "formFactor": {
           "description": "Whether this device is a phone, tablet, wearable, etc.",
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "This device has the shape of a phone.",
-            "This device has the shape of a tablet.",
-            "This device has the shape of a watch or other wearable."
-          ],
           "enum": [
             "DEVICE_FORM_FACTOR_UNSPECIFIED",
             "PHONE",
             "TABLET",
             "WEARABLE"
+          ],
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "This device has the shape of a phone.",
+            "This device has the shape of a tablet.",
+            "This device has the shape of a watch or other wearable."
           ],
           "type": "string"
         },
@@ -1243,8 +1237,8 @@
           "type": "string"
         },
         "appIpa": {
-          "description": "Required. The .ipa of the application to test.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "Required. The .ipa of the application to test."
         },
         "scenarios": {
           "description": "The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.",
@@ -1337,16 +1331,16 @@
           "type": "boolean"
         },
         "testsZip": {
-          "description": "Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified."
         },
         "xcodeVersion": {
           "description": "The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.",
           "type": "string"
         },
         "xctestrun": {
-          "description": "An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip."
         }
       },
       "type": "object"
@@ -1401,16 +1395,16 @@
       "id": "NetworkConfiguration",
       "properties": {
         "downRule": {
-          "description": "The emulation rule applying to the download traffic.",
-          "$ref": "TrafficRule"
+          "$ref": "TrafficRule",
+          "description": "The emulation rule applying to the download traffic."
         },
         "id": {
           "description": "The unique opaque id for this network traffic configuration.",
           "type": "string"
         },
         "upRule": {
-          "description": "The emulation rule applying to the upload traffic.",
-          "$ref": "TrafficRule"
+          "$ref": "TrafficRule",
+          "description": "The emulation rule applying to the upload traffic."
         }
       },
       "type": "object"
@@ -1432,8 +1426,8 @@
       "id": "ObbFile",
       "properties": {
         "obb": {
-          "description": "Required. Opaque Binary Blob (OBB) file(s) to install on the device.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "Required. Opaque Binary Blob (OBB) file(s) to install on the device."
         },
         "obbFileName": {
           "description": "Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \\/Android/obb/\\/ on the device.",
@@ -1484,8 +1478,8 @@
       "id": "RegularFile",
       "properties": {
         "content": {
-          "description": "Required. The source file.",
-          "$ref": "FileReference"
+          "$ref": "FileReference",
+          "description": "Required. The source file."
         },
         "devicePath": {
           "description": "Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.",
@@ -1499,20 +1493,20 @@
       "id": "ResultStorage",
       "properties": {
         "googleCloudStorage": {
-          "description": "Required.",
-          "$ref": "GoogleCloudStorage"
+          "$ref": "GoogleCloudStorage",
+          "description": "Required."
         },
         "resultsUrl": {
           "description": "Output only. URL to the results in the Firebase Web Console.",
           "type": "string"
         },
         "toolResultsExecution": {
-          "description": "Output only. The tool results execution that results are written to.",
-          "$ref": "ToolResultsExecution"
+          "$ref": "ToolResultsExecution",
+          "description": "Output only. The tool results execution that results are written to."
         },
         "toolResultsHistory": {
-          "description": "The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.",
-          "$ref": "ToolResultsHistory"
+          "$ref": "ToolResultsHistory",
+          "description": "The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value."
         }
       },
       "type": "object"
@@ -1523,17 +1517,17 @@
       "properties": {
         "actionType": {
           "description": "Required. The type of action that Robo should perform on the specified element.",
-          "enumDescriptions": [
-            "DO NOT USE. For proto versioning only.",
-            "Direct Robo to click on the specified element. No-op if specified element is not clickable.",
-            "Direct Robo to enter text on the specified element. No-op if specified element is not enabled or does not allow text entry.",
-            "Direct Robo to ignore interactions with a specific element."
-          ],
           "enum": [
             "ACTION_TYPE_UNSPECIFIED",
             "SINGLE_CLICK",
             "ENTER_TEXT",
             "IGNORE"
+          ],
+          "enumDescriptions": [
+            "DO NOT USE. For proto versioning only.",
+            "Direct Robo to click on the specified element. No-op if specified element is not clickable.",
+            "Direct Robo to enter text on the specified element. No-op if specified element is not enabled or does not allow text entry.",
+            "Direct Robo to ignore interactions with a specific element."
           ],
           "type": "string"
         },
@@ -1553,12 +1547,12 @@
       "id": "RoboStartingIntent",
       "properties": {
         "launcherActivity": {
-          "description": "An intent that starts the main launcher activity.",
-          "$ref": "LauncherActivityIntent"
+          "$ref": "LauncherActivityIntent",
+          "description": "An intent that starts the main launcher activity."
         },
         "startActivity": {
-          "description": "An intent that starts an activity with specific details.",
-          "$ref": "StartActivityIntent"
+          "$ref": "StartActivityIntent",
+          "description": "An intent that starts an activity with specific details."
         },
         "timeout": {
           "description": "Timeout in seconds for each intent.",
@@ -1583,8 +1577,8 @@
           "type": "integer"
         },
         "testTargetsForShard": {
-          "description": "Output only. Test targets for each shard.",
-          "$ref": "TestTargetsForShard"
+          "$ref": "TestTargetsForShard",
+          "description": "Output only. Test targets for each shard."
         }
       },
       "type": "object"
@@ -1594,12 +1588,12 @@
       "id": "ShardingOption",
       "properties": {
         "manualSharding": {
-          "description": "Shards test cases into the specified groups of packages, classes, and/or methods.",
-          "$ref": "ManualSharding"
+          "$ref": "ManualSharding",
+          "description": "Shards test cases into the specified groups of packages, classes, and/or methods."
         },
         "uniformSharding": {
-          "description": "Uniformly shards test cases given a total number of shards.",
-          "$ref": "UniformSharding"
+          "$ref": "UniformSharding",
+          "description": "Uniformly shards test cases given a total number of shards."
         }
       },
       "type": "object"
@@ -1660,24 +1654,24 @@
       "id": "TestEnvironmentCatalog",
       "properties": {
         "androidDeviceCatalog": {
-          "description": "Supported Android devices.",
-          "$ref": "AndroidDeviceCatalog"
+          "$ref": "AndroidDeviceCatalog",
+          "description": "Supported Android devices."
         },
         "deviceIpBlockCatalog": {
-          "description": "The IP blocks used by devices in the test environment.",
-          "$ref": "DeviceIpBlockCatalog"
+          "$ref": "DeviceIpBlockCatalog",
+          "description": "The IP blocks used by devices in the test environment."
         },
         "iosDeviceCatalog": {
-          "description": "Supported iOS devices.",
-          "$ref": "IosDeviceCatalog"
+          "$ref": "IosDeviceCatalog",
+          "description": "Supported iOS devices."
         },
         "networkConfigurationCatalog": {
-          "description": "Supported network configurations.",
-          "$ref": "NetworkConfigurationCatalog"
+          "$ref": "NetworkConfigurationCatalog",
+          "description": "Supported network configurations."
         },
         "softwareCatalog": {
-          "description": "The software test environment provided by TestExecutionService.",
-          "$ref": "ProvidedSoftwareCatalog"
+          "$ref": "ProvidedSoftwareCatalog",
+          "description": "The software test environment provided by TestExecutionService."
         }
       },
       "type": "object"
@@ -1687,8 +1681,8 @@
       "id": "TestExecution",
       "properties": {
         "environment": {
-          "description": "Output only. How the host machine(s) are configured.",
-          "$ref": "Environment"
+          "$ref": "Environment",
+          "description": "Output only. How the host machine(s) are configured."
         },
         "id": {
           "description": "Output only. Unique id set by the service.",
@@ -1703,24 +1697,11 @@
           "type": "string"
         },
         "shard": {
-          "description": "Output only. Details about the shard.",
-          "$ref": "Shard"
+          "$ref": "Shard",
+          "description": "Output only. Details about the shard."
         },
         "state": {
           "description": "Output only. Indicates the current progress of the test execution (e.g., FINISHED).",
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "The execution or matrix is being validated.",
-            "The execution or matrix is waiting for resources to become available.",
-            "The execution is currently being processed. Can only be set on an execution.",
-            "The execution or matrix has terminated normally. On a matrix this means that the matrix level processing completed normally, but individual executions may be in an ERROR state.",
-            "The execution or matrix has stopped because it encountered an infrastructure failure.",
-            "The execution was not run because it corresponds to a unsupported environment. Can only be set on an execution.",
-            "The execution was not run because the provided inputs are incompatible with the requested environment. Example: requested AndroidVersion is lower than APK's minSdkVersion Can only be set on an execution.",
-            "The execution was not run because the provided inputs are incompatible with the requested architecture. Example: requested device does not support running the native code in the supplied APK Can only be set on an execution.",
-            "The user cancelled the execution. Can only be set on an execution.",
-            "The execution or matrix was not run because the provided inputs are not valid. Examples: input file is not of the expected type, is malformed/corrupt, or was flagged as malware"
-          ],
           "enum": [
             "TEST_STATE_UNSPECIFIED",
             "VALIDATING",
@@ -1734,15 +1715,28 @@
             "CANCELLED",
             "INVALID"
           ],
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "The execution or matrix is being validated.",
+            "The execution or matrix is waiting for resources to become available.",
+            "The execution is currently being processed. Can only be set on an execution.",
+            "The execution or matrix has terminated normally. On a matrix this means that the matrix level processing completed normally, but individual executions may be in an ERROR state.",
+            "The execution or matrix has stopped because it encountered an infrastructure failure.",
+            "The execution was not run because it corresponds to a unsupported environment. Can only be set on an execution.",
+            "The execution was not run because the provided inputs are incompatible with the requested environment. Example: requested AndroidVersion is lower than APK's minSdkVersion Can only be set on an execution.",
+            "The execution was not run because the provided inputs are incompatible with the requested architecture. Example: requested device does not support running the native code in the supplied APK Can only be set on an execution.",
+            "The user cancelled the execution. Can only be set on an execution.",
+            "The execution or matrix was not run because the provided inputs are not valid. Examples: input file is not of the expected type, is malformed/corrupt, or was flagged as malware"
+          ],
           "type": "string"
         },
         "testDetails": {
-          "description": "Output only. Additional details about the running test.",
-          "$ref": "TestDetails"
+          "$ref": "TestDetails",
+          "description": "Output only. Additional details about the running test."
         },
         "testSpecification": {
-          "description": "Output only. How to run the test.",
-          "$ref": "TestSpecification"
+          "$ref": "TestSpecification",
+          "description": "Output only. How to run the test."
         },
         "timestamp": {
           "description": "Output only. The time this test execution was initially created.",
@@ -1750,8 +1744,8 @@
           "type": "string"
         },
         "toolResultsStep": {
-          "description": "Output only. Where the results for this execution are written.",
-          "$ref": "ToolResultsStep"
+          "$ref": "ToolResultsStep",
+          "description": "Output only. Where the results for this execution are written."
         }
       },
       "type": "object"
@@ -1761,12 +1755,12 @@
       "id": "TestMatrix",
       "properties": {
         "clientInfo": {
-          "description": "Information about the client which invoked the test.",
-          "$ref": "ClientInfo"
+          "$ref": "ClientInfo",
+          "description": "Information about the client which invoked the test."
         },
         "environmentMatrix": {
-          "description": "Required. The devices the tests are being executed on.",
-          "$ref": "EnvironmentMatrix"
+          "$ref": "EnvironmentMatrix",
+          "description": "Required. The devices the tests are being executed on."
         },
         "failFast": {
           "description": "If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.",
@@ -1779,43 +1773,6 @@
         },
         "invalidMatrixDetails": {
           "description": "Output only. Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.",
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "The matrix is INVALID, but there are no further details available.",
-            "The input app APK could not be parsed.",
-            "The input test APK could not be parsed.",
-            "The AndroidManifest.xml could not be found.",
-            "The APK manifest does not declare a package name.",
-            "The APK application ID (aka package name) is invalid. See also https://developer.android.com/studio/build/application-id",
-            "The test package and app package are the same.",
-            "The test apk does not declare an instrumentation.",
-            "The input app apk does not have a signature.",
-            "The test runner class specified by user or in the test APK's manifest file is not compatible with Android Test Orchestrator. Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher. Orchestrator can be disabled by using DO_NOT_USE_ORCHESTRATOR OrchestratorOption.",
-            "The test APK does not contain the test runner class specified by user or in the manifest file. This can be caused by either of the following reasons: - the user provided a runner class name that's incorrect, or - the test runner isn't built into the test APK (might be in the app APK instead).",
-            "A main launcher activity could not be found.",
-            "The app declares one or more permissions that are not allowed.",
-            "There is a conflict in the provided robo_directives.",
-            "There is at least one invalid resource name in the provided robo directives",
-            "Invalid definition of action in the robo directives (e.g. a click or ignore action includes an input text field)",
-            "There is no test loop intent filter, or the one that is given is not formatted correctly.",
-            "The request contains a scenario label that was not declared in the manifest.",
-            "There was an error when parsing a label's value.",
-            "The request contains a scenario number that was not declared in the manifest.",
-            "Device administrator applications are not allowed.",
-            "The zipped XCTest was malformed. The zip did not contain a single .xctestrun file and the contents of the DerivedData/Build/Products directory.",
-            "The zipped XCTest was built for the iOS simulator rather than for a physical device.",
-            "The .xctestrun file did not specify any test targets.",
-            "One or more of the test targets defined in the .xctestrun file specifies \"UseDestinationArtifacts\", which is disallowed.",
-            "XC tests which run on physical devices must have \"IsAppHostedTestBundle\" == \"true\" in the xctestrun file.",
-            "An Info.plist file in the XCTest zip could not be parsed.",
-            "The APK is marked as \"testOnly\". Deprecated and not currently used.",
-            "The input IPA could not be parsed.",
-            "The application doesn't register the game loop URL scheme.",
-            "The iOS application bundle (.app) couldn't be processed.",
-            "APK contains no code. See also https://developer.android.com/guide/topics/manifest/application-element.html#code",
-            "Either the provided input APK path was malformed, the APK file does not exist, or the user does not have permission to access the APK file.",
-            "APK is built for a preview SDK which is unsupported"
-          ],
           "enum": [
             "INVALID_MATRIX_DETAILS_UNSPECIFIED",
             "DETAILS_UNAVAILABLE",
@@ -1853,23 +1810,60 @@
             "INVALID_INPUT_APK",
             "INVALID_APK_PREVIEW_SDK"
           ],
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "The matrix is INVALID, but there are no further details available.",
+            "The input app APK could not be parsed.",
+            "The input test APK could not be parsed.",
+            "The AndroidManifest.xml could not be found.",
+            "The APK manifest does not declare a package name.",
+            "The APK application ID (aka package name) is invalid. See also https://developer.android.com/studio/build/application-id",
+            "The test package and app package are the same.",
+            "The test apk does not declare an instrumentation.",
+            "The input app apk does not have a signature.",
+            "The test runner class specified by user or in the test APK's manifest file is not compatible with Android Test Orchestrator. Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher. Orchestrator can be disabled by using DO_NOT_USE_ORCHESTRATOR OrchestratorOption.",
+            "The test APK does not contain the test runner class specified by user or in the manifest file. This can be caused by either of the following reasons: - the user provided a runner class name that's incorrect, or - the test runner isn't built into the test APK (might be in the app APK instead).",
+            "A main launcher activity could not be found.",
+            "The app declares one or more permissions that are not allowed.",
+            "There is a conflict in the provided robo_directives.",
+            "There is at least one invalid resource name in the provided robo directives",
+            "Invalid definition of action in the robo directives (e.g. a click or ignore action includes an input text field)",
+            "There is no test loop intent filter, or the one that is given is not formatted correctly.",
+            "The request contains a scenario label that was not declared in the manifest.",
+            "There was an error when parsing a label's value.",
+            "The request contains a scenario number that was not declared in the manifest.",
+            "Device administrator applications are not allowed.",
+            "The zipped XCTest was malformed. The zip did not contain a single .xctestrun file and the contents of the DerivedData/Build/Products directory.",
+            "The zipped XCTest was built for the iOS simulator rather than for a physical device.",
+            "The .xctestrun file did not specify any test targets.",
+            "One or more of the test targets defined in the .xctestrun file specifies \"UseDestinationArtifacts\", which is disallowed.",
+            "XC tests which run on physical devices must have \"IsAppHostedTestBundle\" == \"true\" in the xctestrun file.",
+            "An Info.plist file in the XCTest zip could not be parsed.",
+            "The APK is marked as \"testOnly\". Deprecated and not currently used.",
+            "The input IPA could not be parsed.",
+            "The application doesn't register the game loop URL scheme.",
+            "The iOS application bundle (.app) couldn't be processed.",
+            "APK contains no code. See also https://developer.android.com/guide/topics/manifest/application-element.html#code",
+            "Either the provided input APK path was malformed, the APK file does not exist, or the user does not have permission to access the APK file.",
+            "APK is built for a preview SDK which is unsupported"
+          ],
           "type": "string"
         },
         "outcomeSummary": {
           "description": "Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.",
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "The test matrix run was successful, for instance: - All the test cases passed. - Robo did not detect a crash of the application under test.",
-            "A run failed, for instance: - One or more test case failed. - A test timed out. - The application under test crashed.",
-            "Something unexpected happened. The run should still be considered unsuccessful but this is likely a transient problem and re-running the test might be successful.",
-            "All tests were skipped, for instance: - All device configurations were incompatible."
-          ],
           "enum": [
             "OUTCOME_SUMMARY_UNSPECIFIED",
             "SUCCESS",
             "FAILURE",
             "INCONCLUSIVE",
             "SKIPPED"
+          ],
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "The test matrix run was successful, for instance: - All the test cases passed. - Robo did not detect a crash of the application under test.",
+            "A run failed, for instance: - One or more test case failed. - A test timed out. - The application under test crashed.",
+            "Something unexpected happened. The run should still be considered unsuccessful but this is likely a transient problem and re-running the test might be successful.",
+            "All tests were skipped, for instance: - All device configurations were incompatible."
           ],
           "type": "string"
         },
@@ -1878,24 +1872,11 @@
           "type": "string"
         },
         "resultStorage": {
-          "description": "Required. Where the results for the matrix are written.",
-          "$ref": "ResultStorage"
+          "$ref": "ResultStorage",
+          "description": "Required. Where the results for the matrix are written."
         },
         "state": {
           "description": "Output only. Indicates the current progress of the test matrix.",
-          "enumDescriptions": [
-            "Do not use. For proto versioning only.",
-            "The execution or matrix is being validated.",
-            "The execution or matrix is waiting for resources to become available.",
-            "The execution is currently being processed. Can only be set on an execution.",
-            "The execution or matrix has terminated normally. On a matrix this means that the matrix level processing completed normally, but individual executions may be in an ERROR state.",
-            "The execution or matrix has stopped because it encountered an infrastructure failure.",
-            "The execution was not run because it corresponds to a unsupported environment. Can only be set on an execution.",
-            "The execution was not run because the provided inputs are incompatible with the requested environment. Example: requested AndroidVersion is lower than APK's minSdkVersion Can only be set on an execution.",
-            "The execution was not run because the provided inputs are incompatible with the requested architecture. Example: requested device does not support running the native code in the supplied APK Can only be set on an execution.",
-            "The user cancelled the execution. Can only be set on an execution.",
-            "The execution or matrix was not run because the provided inputs are not valid. Examples: input file is not of the expected type, is malformed/corrupt, or was flagged as malware"
-          ],
           "enum": [
             "TEST_STATE_UNSPECIFIED",
             "VALIDATING",
@@ -1908,6 +1889,19 @@
             "INCOMPATIBLE_ARCHITECTURE",
             "CANCELLED",
             "INVALID"
+          ],
+          "enumDescriptions": [
+            "Do not use. For proto versioning only.",
+            "The execution or matrix is being validated.",
+            "The execution or matrix is waiting for resources to become available.",
+            "The execution is currently being processed. Can only be set on an execution.",
+            "The execution or matrix has terminated normally. On a matrix this means that the matrix level processing completed normally, but individual executions may be in an ERROR state.",
+            "The execution or matrix has stopped because it encountered an infrastructure failure.",
+            "The execution was not run because it corresponds to a unsupported environment. Can only be set on an execution.",
+            "The execution was not run because the provided inputs are incompatible with the requested environment. Example: requested AndroidVersion is lower than APK's minSdkVersion Can only be set on an execution.",
+            "The execution was not run because the provided inputs are incompatible with the requested architecture. Example: requested device does not support running the native code in the supplied APK Can only be set on an execution.",
+            "The user cancelled the execution. Can only be set on an execution.",
+            "The execution or matrix was not run because the provided inputs are not valid. Examples: input file is not of the expected type, is malformed/corrupt, or was flagged as malware"
           ],
           "type": "string"
         },
@@ -1923,8 +1917,8 @@
           "type": "string"
         },
         "testSpecification": {
-          "description": "Required. How to run the test.",
-          "$ref": "TestSpecification"
+          "$ref": "TestSpecification",
+          "description": "Required. How to run the test."
         },
         "timestamp": {
           "description": "Output only. The time this test matrix was initially created.",
@@ -1939,8 +1933,8 @@
       "id": "TestSetup",
       "properties": {
         "account": {
-          "description": "The device will be logged in on this account for the duration of the test.",
-          "$ref": "Account"
+          "$ref": "Account",
+          "description": "The device will be logged in on this account for the duration of the test."
         },
         "additionalApks": {
           "description": "APKs to install in addition to those being directly tested. Currently capped at 100.",
@@ -1979,8 +1973,8 @@
           "type": "string"
         },
         "systrace": {
-          "description": "Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.",
-          "$ref": "SystraceSetup"
+          "$ref": "SystraceSetup",
+          "description": "Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run."
         }
       },
       "type": "object"
@@ -1990,16 +1984,16 @@
       "id": "TestSpecification",
       "properties": {
         "androidInstrumentationTest": {
-          "description": "An Android instrumentation test.",
-          "$ref": "AndroidInstrumentationTest"
+          "$ref": "AndroidInstrumentationTest",
+          "description": "An Android instrumentation test."
         },
         "androidRoboTest": {
-          "description": "An Android robo test.",
-          "$ref": "AndroidRoboTest"
+          "$ref": "AndroidRoboTest",
+          "description": "An Android robo test."
         },
         "androidTestLoop": {
-          "description": "An Android Application with a Test Loop.",
-          "$ref": "AndroidTestLoop"
+          "$ref": "AndroidTestLoop",
+          "description": "An Android Application with a Test Loop."
         },
         "disablePerformanceMetrics": {
           "description": "Disables performance metrics recording. May reduce test latency.",
@@ -2010,20 +2004,20 @@
           "type": "boolean"
         },
         "iosTestLoop": {
-          "description": "An iOS application with a test loop.",
-          "$ref": "IosTestLoop"
+          "$ref": "IosTestLoop",
+          "description": "An iOS application with a test loop."
         },
         "iosTestSetup": {
-          "description": "Test setup requirements for iOS.",
-          "$ref": "IosTestSetup"
+          "$ref": "IosTestSetup",
+          "description": "Test setup requirements for iOS."
         },
         "iosXcTest": {
-          "description": "An iOS XCTest, via an .xctestrun file.",
-          "$ref": "IosXcTest"
+          "$ref": "IosXcTest",
+          "description": "An iOS XCTest, via an .xctestrun file."
         },
         "testSetup": {
-          "description": "Test setup requirements for Android e.g. files to install, bootstrap scripts.",
-          "$ref": "TestSetup"
+          "$ref": "TestSetup",
+          "description": "Test setup requirements for Android e.g. files to install, bootstrap scripts."
         },
         "testTimeout": {
           "description": "Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.",

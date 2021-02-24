@@ -21,29 +21,27 @@
   "description": "Manages continuous profiling information.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/profiler/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudprofiler:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudprofiler.mtls.googleapis.com/",
   "name": "cloudprofiler",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -54,17 +52,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -118,7 +116,6 @@
             "create": {
               "description": "CreateProfile creates a new profile resource in the online mode. The server ensures that the new profiles are created at a constant rate per deployment, so the creation request may hang for some time until the next profile session is available. The request may fail with ABORTED error if the creation is not available within ~1m, the response will indicate the duration of the backoff the client should take before attempting creating a profile again. The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as a binary-serialized proto in the trailing metadata item named \"google.rpc.retryinfo-bin\".",
               "httpMethod": "POST",
-              "flatPath": "v2/projects/{projectsId}/profiles",
               "id": "cloudprofiler.projects.profiles.create",
               "parameterOrder": [
                 "parent"
@@ -128,8 +125,8 @@
                   "description": "Parent project to create the profile in.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v2/{+parent}/profiles",
@@ -148,7 +145,6 @@
             "createOffline": {
               "description": "CreateOfflineProfile creates a new profile resource in the offline mode. The client provides the profile to create along with the profile bytes, the server records it.",
               "httpMethod": "POST",
-              "flatPath": "v2/projects/{projectsId}/profiles:createOffline",
               "id": "cloudprofiler.projects.profiles.createOffline",
               "parameterOrder": [
                 "parent"
@@ -158,8 +154,8 @@
                   "description": "Parent project to create the profile in.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v2/{+parent}/profiles:createOffline",
@@ -178,7 +174,6 @@
             "patch": {
               "description": "UpdateProfile updates the profile bytes and labels on the profile resource created in the online mode. Updating the bytes for profiles created in the offline mode is currently not supported: the profile content must be provided at the time of the profile creation.",
               "httpMethod": "PATCH",
-              "flatPath": "v2/projects/{projectsId}/profiles/{profilesId}",
               "id": "cloudprofiler.projects.profiles.patch",
               "parameterOrder": [
                 "name"
@@ -188,8 +183,8 @@
                   "description": "Output only. Opaque, server-assigned, unique ID for this profile.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/profiles/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Field mask used to specify the fields to be overwritten. Currently only profile_bytes and labels fields are supported by UpdateProfile, so only those fields can be specified in the mask. When no mask is provided, all fields are overwritten.",
@@ -224,22 +219,12 @@
       "id": "CreateProfileRequest",
       "properties": {
         "deployment": {
-          "description": "Deployment details.",
-          "$ref": "Deployment"
+          "$ref": "Deployment",
+          "description": "Deployment details."
         },
         "profileType": {
           "description": "One or more profile types that the agent is capable of providing.",
           "items": {
-            "enumDescriptions": [
-              "Unspecified profile type.",
-              "Thread CPU time sampling.",
-              "Wallclock time sampling. More expensive as stops all threads.",
-              "In-use heap profile. Represents a snapshot of the allocations that are live at the time of the profiling.",
-              "Single-shot collection of all thread stacks.",
-              "Synchronization contention profile.",
-              "Peak heap profile.",
-              "Heap allocation profile. It represents the aggregation of all allocations made over the duration of the profile. All allocations are included, including those that might have been freed by the end of the profiling interval. The profile is in particular useful for garbage collecting languages to understand which parts of the code create most of the garbage collection pressure to see if those can be optimized."
-            ],
             "enum": [
               "PROFILE_TYPE_UNSPECIFIED",
               "CPU",
@@ -249,6 +234,16 @@
               "CONTENTION",
               "PEAK_HEAP",
               "HEAP_ALLOC"
+            ],
+            "enumDescriptions": [
+              "Unspecified profile type.",
+              "Thread CPU time sampling.",
+              "Wallclock time sampling. More expensive as stops all threads.",
+              "In-use heap profile. Represents a snapshot of the allocations that are live at the time of the profiling.",
+              "Single-shot collection of all thread stacks.",
+              "Synchronization contention profile.",
+              "Peak heap profile.",
+              "Heap allocation profile. It represents the aggregation of all allocations made over the duration of the profile. All allocations are included, including those that might have been freed by the end of the profiling interval. The profile is in particular useful for garbage collecting languages to understand which parts of the code create most of the garbage collection pressure to see if those can be optimized."
             ],
             "type": "string"
           },
@@ -284,8 +279,8 @@
       "id": "Profile",
       "properties": {
         "deployment": {
-          "description": "Deployment this profile corresponds to.",
-          "$ref": "Deployment"
+          "$ref": "Deployment",
+          "description": "Deployment this profile corresponds to."
         },
         "duration": {
           "description": "Duration of the profiling session. Input (for the offline mode) or output (for the online mode). The field represents requested profiling duration. It may slightly differ from the effective profiling duration, which is recorded in the profile data, in case the profiling can't be stopped immediately (e.g. in case stopping the profiling is handled asynchronously).",
@@ -310,16 +305,6 @@
         },
         "profileType": {
           "description": "Type of profile. For offline mode, this must be specified when creating the profile. For online mode it is assigned and returned by the server.",
-          "enumDescriptions": [
-            "Unspecified profile type.",
-            "Thread CPU time sampling.",
-            "Wallclock time sampling. More expensive as stops all threads.",
-            "In-use heap profile. Represents a snapshot of the allocations that are live at the time of the profiling.",
-            "Single-shot collection of all thread stacks.",
-            "Synchronization contention profile.",
-            "Peak heap profile.",
-            "Heap allocation profile. It represents the aggregation of all allocations made over the duration of the profile. All allocations are included, including those that might have been freed by the end of the profiling interval. The profile is in particular useful for garbage collecting languages to understand which parts of the code create most of the garbage collection pressure to see if those can be optimized."
-          ],
           "enum": [
             "PROFILE_TYPE_UNSPECIFIED",
             "CPU",
@@ -330,6 +315,16 @@
             "PEAK_HEAP",
             "HEAP_ALLOC"
           ],
+          "enumDescriptions": [
+            "Unspecified profile type.",
+            "Thread CPU time sampling.",
+            "Wallclock time sampling. More expensive as stops all threads.",
+            "In-use heap profile. Represents a snapshot of the allocations that are live at the time of the profiling.",
+            "Single-shot collection of all thread stacks.",
+            "Synchronization contention profile.",
+            "Peak heap profile.",
+            "Heap allocation profile. It represents the aggregation of all allocations made over the duration of the profile. All allocations are included, including those that might have been freed by the end of the profiling interval. The profile is in particular useful for garbage collecting languages to understand which parts of the code create most of the garbage collection pressure to see if those can be optimized."
+          ],
           "type": "string"
         }
       },
@@ -338,6 +333,6 @@
   },
   "servicePath": "",
   "title": "Stackdriver Profiler API",
-  "version_module": true,
-  "version": "v2"
+  "version": "v2",
+  "version_module": true
 }

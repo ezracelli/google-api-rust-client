@@ -11,22 +11,21 @@
   },
   "id": "digitalassetlinks:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://digitalassetlinks.mtls.googleapis.com/",
   "name": "digitalassetlinks",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -37,17 +36,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -99,7 +98,6 @@
         "check": {
           "description": "Determines whether the specified (directional) relationship exists between the specified source and target assets. The relation describes the intent of the link between the two assets as claimed by the source asset. An example for such relationships is the delegation of privileges or permissions. This command is most often used by infrastructure systems to check preconditions for an action. For example, a client may want to know if it is OK to send a web URL to a particular mobile app instead. The client can check for the relevant asset link from the website to the mobile app to decide if the operation should be allowed. A note about security: if you specify a secure asset as the source, such as an HTTPS website or an Android app, the API will ensure that any statements used to generate the response have been made in a secure way by the owner of that asset. Conversely, if the source asset is an insecure HTTP website (that is, the URL starts with `http://` instead of `https://`), the API cannot verify its statements securely, and it is not possible to ensure that the website's statements have not been altered by a third party. For more information, see the [Digital Asset Links technical design specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).",
           "httpMethod": "GET",
-          "flatPath": "v1/assetlinks:check",
           "id": "digitalassetlinks.assetlinks.check",
           "parameterOrder": [],
           "parameters": {
@@ -151,7 +149,6 @@
         "list": {
           "description": "Retrieves a list of all statements from a given source that match the specified target and statement string. The API guarantees that all statements with secure source assets, such as HTTPS websites or Android apps, have been made in a secure way by the owner of those assets, as described in the [Digital Asset Links technical design specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md). Specifically, you should consider that for insecure websites (that is, where the URL starts with `http://` instead of `https://`), this guarantee cannot be made. The `List` command is most useful in cases where the API client wants to know all the ways in which two assets are related, or enumerate all the relationships from a particular source asset. Example: a feature that helps users navigate to related items. When a mobile app is running on a device, the feature would make it easy to navigate to the corresponding web site or Google+ profile.",
           "httpMethod": "GET",
-          "flatPath": "v1/statements:list",
           "id": "digitalassetlinks.statements.list",
           "parameterOrder": [],
           "parameters": {
@@ -192,8 +189,8 @@
       "id": "AndroidAppAsset",
       "properties": {
         "certificate": {
-          "description": "Because there is no global enforcement of package name uniqueness, we also require a signing certificate, which in combination with the package name uniquely identifies an app. Some apps' signing keys are rotated, so they may be signed by different keys over time. We treat these as distinct assets, since we use (package name, cert) as the unique ID. This should not normally pose any problems as both versions of the app will make the same or similar statements. Other assets making statements about the app will have to be updated when a key is rotated, however. (Note that the syntaxes for publishing and querying for statements contain syntactic sugar to easily let you specify apps that are known by multiple certificates.) REQUIRED",
-          "$ref": "CertificateInfo"
+          "$ref": "CertificateInfo",
+          "description": "Because there is no global enforcement of package name uniqueness, we also require a signing certificate, which in combination with the package name uniquely identifies an app. Some apps' signing keys are rotated, so they may be signed by different keys over time. We treat these as distinct assets, since we use (package name, cert) as the unique ID. This should not normally pose any problems as both versions of the app will make the same or similar statements. Other assets making statements about the app will have to be updated when a key is rotated, however. (Note that the syntaxes for publishing and querying for statements contain syntactic sugar to easily let you specify apps that are known by multiple certificates.) REQUIRED"
         },
         "packageName": {
           "description": "Android App assets are naturally identified by their Java package name. For example, the Google Maps app uses the package name `com.google.android.apps.maps`. REQUIRED",
@@ -207,12 +204,12 @@
       "id": "Asset",
       "properties": {
         "androidApp": {
-          "description": "Set if this is an Android App asset.",
-          "$ref": "AndroidAppAsset"
+          "$ref": "AndroidAppAsset",
+          "description": "Set if this is an Android App asset."
         },
         "web": {
-          "description": "Set if this is a web asset.",
-          "$ref": "WebAsset"
+          "$ref": "WebAsset",
+          "description": "Set if this is a web asset."
         }
       },
       "type": "object"
@@ -239,19 +236,6 @@
         "errorCode": {
           "description": "Error codes that describe the result of the Check operation.",
           "items": {
-            "enumDescriptions": [
-              "",
-              "Unable to parse query.",
-              "Unable to fetch the asset links data.",
-              "Invalid HTTPS certificate .",
-              "HTTP redirects (e.g, 301) are not allowed.",
-              "Asset links data exceeds maximum size.",
-              "Can't parse HTTP response.",
-              "HTTP Content-type should be application/json.",
-              "JSON content is malformed.",
-              "A secure asset includes an insecure asset (security downgrade).",
-              "Too many includes (maybe a loop)."
-            ],
             "enum": [
               "ERROR_CODE_UNSPECIFIED",
               "ERROR_CODE_INVALID_QUERY",
@@ -264,6 +248,19 @@
               "ERROR_CODE_MALFORMED_CONTENT",
               "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE",
               "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+            ],
+            "enumDescriptions": [
+              "",
+              "Unable to parse query.",
+              "Unable to fetch the asset links data.",
+              "Invalid HTTPS certificate .",
+              "HTTP redirects (e.g, 301) are not allowed.",
+              "Asset links data exceeds maximum size.",
+              "Can't parse HTTP response.",
+              "HTTP Content-type should be application/json.",
+              "JSON content is malformed.",
+              "A secure asset includes an insecure asset (security downgrade).",
+              "Too many includes (maybe a loop)."
             ],
             "type": "string"
           },
@@ -292,19 +289,6 @@
         "errorCode": {
           "description": "Error codes that describe the result of the List operation.",
           "items": {
-            "enumDescriptions": [
-              "",
-              "Unable to parse query.",
-              "Unable to fetch the asset links data.",
-              "Invalid HTTPS certificate .",
-              "HTTP redirects (e.g, 301) are not allowed.",
-              "Asset links data exceeds maximum size.",
-              "Can't parse HTTP response.",
-              "HTTP Content-type should be application/json.",
-              "JSON content is malformed.",
-              "A secure asset includes an insecure asset (security downgrade).",
-              "Too many includes (maybe a loop)."
-            ],
             "enum": [
               "ERROR_CODE_UNSPECIFIED",
               "ERROR_CODE_INVALID_QUERY",
@@ -317,6 +301,19 @@
               "ERROR_CODE_MALFORMED_CONTENT",
               "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE",
               "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+            ],
+            "enumDescriptions": [
+              "",
+              "Unable to parse query.",
+              "Unable to fetch the asset links data.",
+              "Invalid HTTPS certificate .",
+              "HTTP redirects (e.g, 301) are not allowed.",
+              "Asset links data exceeds maximum size.",
+              "Can't parse HTTP response.",
+              "HTTP Content-type should be application/json.",
+              "JSON content is malformed.",
+              "A secure asset includes an insecure asset (security downgrade).",
+              "Too many includes (maybe a loop)."
             ],
             "type": "string"
           },
@@ -346,12 +343,12 @@
           "type": "string"
         },
         "source": {
-          "description": "Every statement has a source asset. REQUIRED",
-          "$ref": "Asset"
+          "$ref": "Asset",
+          "description": "Every statement has a source asset. REQUIRED"
         },
         "target": {
-          "description": "Every statement has a target asset. REQUIRED",
-          "$ref": "Asset"
+          "$ref": "Asset",
+          "description": "Every statement has a target asset. REQUIRED"
         }
       },
       "type": "object"
@@ -370,6 +367,6 @@
   },
   "servicePath": "",
   "title": "Digital Asset Links API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

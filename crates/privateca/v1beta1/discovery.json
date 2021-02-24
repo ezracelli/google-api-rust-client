@@ -15,29 +15,27 @@
   "description": "The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys.\" ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "privateca:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://privateca.mtls.googleapis.com/",
   "name": "privateca",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}",
               "id": "privateca.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations",
               "id": "privateca.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -152,8 +148,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -182,7 +178,6 @@
                 "activate": {
                   "description": "Activate a CertificateAuthority that is in state PENDING_ACTIVATION and is of type SUBORDINATE. After the parent Certificate Authority signs a certificate signing request from FetchCertificateAuthorityCsr, this method can complete the activation process.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}:activate",
                   "id": "privateca.projects.locations.certificateAuthorities.activate",
                   "parameterOrder": [
                     "name"
@@ -192,8 +187,8 @@
                       "description": "Required. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:activate",
@@ -210,7 +205,6 @@
                 "create": {
                   "description": "Create a new CertificateAuthority in a given Project and Location.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities",
                   "id": "privateca.projects.locations.certificateAuthorities.create",
                   "parameterOrder": [
                     "parent"
@@ -225,8 +219,8 @@
                       "description": "Required. The resource name of the location associated with the CertificateAuthorities, in the format `projects/*/locations/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -248,7 +242,6 @@
                 "disable": {
                   "description": "Disable a CertificateAuthority.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}:disable",
                   "id": "privateca.projects.locations.certificateAuthorities.disable",
                   "parameterOrder": [
                     "name"
@@ -258,8 +251,8 @@
                       "description": "Required. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:disable",
@@ -276,7 +269,6 @@
                 "enable": {
                   "description": "Enable a CertificateAuthority.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}:enable",
                   "id": "privateca.projects.locations.certificateAuthorities.enable",
                   "parameterOrder": [
                     "name"
@@ -286,8 +278,8 @@
                       "description": "Required. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:enable",
@@ -304,7 +296,6 @@
                 "fetch": {
                   "description": "Fetch a certificate signing request (CSR) from a CertificateAuthority that is in state PENDING_ACTIVATION and is of type SUBORDINATE. The CSR must then be signed by the desired parent Certificate Authority, which could be another CertificateAuthority resource, or could be an on-prem certificate authority. See also ActivateCertificateAuthority.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}:fetch",
                   "id": "privateca.projects.locations.certificateAuthorities.fetch",
                   "parameterOrder": [
                     "name"
@@ -314,8 +305,8 @@
                       "description": "Required. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:fetch",
@@ -329,7 +320,6 @@
                 "get": {
                   "description": "Returns a CertificateAuthority.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}",
                   "id": "privateca.projects.locations.certificateAuthorities.get",
                   "parameterOrder": [
                     "name"
@@ -339,8 +329,8 @@
                       "description": "Required. The name of the CertificateAuthority to get.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -354,7 +344,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}:getIamPolicy",
                   "id": "privateca.projects.locations.certificateAuthorities.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -370,8 +359,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:getIamPolicy",
@@ -385,7 +374,6 @@
                 "list": {
                   "description": "Lists CertificateAuthorities.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities",
                   "id": "privateca.projects.locations.certificateAuthorities.list",
                   "parameterOrder": [
                     "parent"
@@ -416,8 +404,8 @@
                       "description": "Required. The resource name of the location associated with the CertificateAuthorities, in the format `projects/*/locations/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/certificateAuthorities",
@@ -431,7 +419,6 @@
                 "patch": {
                   "description": "Update a CertificateAuthority.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}",
                   "id": "privateca.projects.locations.certificateAuthorities.patch",
                   "parameterOrder": [
                     "name"
@@ -441,8 +428,8 @@
                       "description": "Output only. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "requestId": {
                       "description": "Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -470,7 +457,6 @@
                 "restore": {
                   "description": "Restore a CertificateAuthority that is scheduled for deletion.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}:restore",
                   "id": "privateca.projects.locations.certificateAuthorities.restore",
                   "parameterOrder": [
                     "name"
@@ -480,8 +466,8 @@
                       "description": "Required. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:restore",
@@ -498,7 +484,6 @@
                 "scheduleDelete": {
                   "description": "Schedule a CertificateAuthority for deletion.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}:scheduleDelete",
                   "id": "privateca.projects.locations.certificateAuthorities.scheduleDelete",
                   "parameterOrder": [
                     "name"
@@ -508,8 +493,8 @@
                       "description": "Required. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:scheduleDelete",
@@ -526,7 +511,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}:setIamPolicy",
                   "id": "privateca.projects.locations.certificateAuthorities.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -536,8 +520,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:setIamPolicy",
@@ -554,7 +538,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}:testIamPermissions",
                   "id": "privateca.projects.locations.certificateAuthorities.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -564,8 +547,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:testIamPermissions",
@@ -586,7 +569,6 @@
                     "get": {
                       "description": "Returns a CertificateRevocationList.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}",
                       "id": "privateca.projects.locations.certificateAuthorities.certificateRevocationLists.get",
                       "parameterOrder": [
                         "name"
@@ -596,8 +578,8 @@
                           "description": "Required. The name of the CertificateRevocationList to get.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+/certificateRevocationLists/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -611,7 +593,6 @@
                     "getIamPolicy": {
                       "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}:getIamPolicy",
                       "id": "privateca.projects.locations.certificateAuthorities.certificateRevocationLists.getIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -627,8 +608,8 @@
                           "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+/certificateRevocationLists/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+resource}:getIamPolicy",
@@ -642,7 +623,6 @@
                     "list": {
                       "description": "Lists CertificateRevocationLists.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists",
                       "id": "privateca.projects.locations.certificateAuthorities.certificateRevocationLists.list",
                       "parameterOrder": [
                         "parent"
@@ -673,8 +653,8 @@
                           "description": "Required. The resource name of the location associated with the CertificateRevocationLists, in the format `projects/*/locations/*/certificateauthorities/*`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+parent}/certificateRevocationLists",
@@ -688,7 +668,6 @@
                     "patch": {
                       "description": "Update a CertificateRevocationList.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}",
                       "id": "privateca.projects.locations.certificateAuthorities.certificateRevocationLists.patch",
                       "parameterOrder": [
                         "name"
@@ -698,8 +677,8 @@
                           "description": "Output only. The resource path for this CertificateRevocationList in the format `projects/*/locations/*/certificateAuthorities/*/ certificateRevocationLists/*`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+/certificateRevocationLists/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "requestId": {
                           "description": "Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -727,7 +706,6 @@
                     "setIamPolicy": {
                       "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}:setIamPolicy",
                       "id": "privateca.projects.locations.certificateAuthorities.certificateRevocationLists.setIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -737,8 +715,8 @@
                           "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+/certificateRevocationLists/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+resource}:setIamPolicy",
@@ -755,7 +733,6 @@
                     "testIamPermissions": {
                       "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}:testIamPermissions",
                       "id": "privateca.projects.locations.certificateAuthorities.certificateRevocationLists.testIamPermissions",
                       "parameterOrder": [
                         "resource"
@@ -765,8 +742,8 @@
                           "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+/certificateRevocationLists/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+resource}:testIamPermissions",
@@ -787,7 +764,6 @@
                     "create": {
                       "description": "Create a new Certificate in a given Project, Location from a particular CertificateAuthority.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificates",
                       "id": "privateca.projects.locations.certificateAuthorities.certificates.create",
                       "parameterOrder": [
                         "parent"
@@ -802,8 +778,8 @@
                           "description": "Required. The resource name of the location and CertificateAuthority associated with the Certificate, in the format `projects/*/locations/*/certificateAuthorities/*`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "requestId": {
                           "description": "Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -825,7 +801,6 @@
                     "get": {
                       "description": "Returns a Certificate.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificates/{certificatesId}",
                       "id": "privateca.projects.locations.certificateAuthorities.certificates.get",
                       "parameterOrder": [
                         "name"
@@ -835,8 +810,8 @@
                           "description": "Required. The name of the Certificate to get.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+/certificates/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -850,7 +825,6 @@
                     "list": {
                       "description": "Lists Certificates.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificates",
                       "id": "privateca.projects.locations.certificateAuthorities.certificates.list",
                       "parameterOrder": [
                         "parent"
@@ -881,8 +855,8 @@
                           "description": "Required. The resource name of the location associated with the Certificates, in the format `projects/*/locations/*/certificateauthorities/*`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+parent}/certificates",
@@ -896,7 +870,6 @@
                     "patch": {
                       "description": "Update a Certificate. Currently, the only field you can update is the labels field.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificates/{certificatesId}",
                       "id": "privateca.projects.locations.certificateAuthorities.certificates.patch",
                       "parameterOrder": [
                         "name"
@@ -906,8 +879,8 @@
                           "description": "Output only. The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+/certificates/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "requestId": {
                           "description": "Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
@@ -935,7 +908,6 @@
                     "revoke": {
                       "description": "Revoke a Certificate.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/certificateAuthorities/{certificateAuthoritiesId}/certificates/{certificatesId}:revoke",
                       "id": "privateca.projects.locations.certificateAuthorities.certificates.revoke",
                       "parameterOrder": [
                         "name"
@@ -945,8 +917,8 @@
                           "description": "Required. The resource name for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+/certificates/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}:revoke",
@@ -969,7 +941,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "privateca.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -979,8 +950,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:cancel",
@@ -997,7 +968,6 @@
                 "delete": {
                   "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "privateca.projects.locations.operations.delete",
                   "parameterOrder": [
                     "name"
@@ -1007,8 +977,8 @@
                       "description": "The name of the operation resource to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -1022,7 +992,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "privateca.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -1032,8 +1001,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -1047,7 +1016,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
                   "id": "privateca.projects.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -1062,8 +1030,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -1092,7 +1060,6 @@
                 "get": {
                   "description": "Returns a ReusableConfig.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/reusableConfigs/{reusableConfigsId}",
                   "id": "privateca.projects.locations.reusableConfigs.get",
                   "parameterOrder": [
                     "name"
@@ -1102,8 +1069,8 @@
                       "description": "Required. The name of the ReusableConfigs to get.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/reusableConfigs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -1117,7 +1084,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/reusableConfigs/{reusableConfigsId}:getIamPolicy",
                   "id": "privateca.projects.locations.reusableConfigs.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -1133,8 +1099,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/reusableConfigs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:getIamPolicy",
@@ -1148,7 +1114,6 @@
                 "list": {
                   "description": "Lists ReusableConfigs.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/reusableConfigs",
                   "id": "privateca.projects.locations.reusableConfigs.list",
                   "parameterOrder": [
                     "parent"
@@ -1179,8 +1144,8 @@
                       "description": "Required. The resource name of the location associated with the ReusableConfigs, in the format `projects/*/locations/*`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/reusableConfigs",
@@ -1194,7 +1159,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/reusableConfigs/{reusableConfigsId}:setIamPolicy",
                   "id": "privateca.projects.locations.reusableConfigs.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -1204,8 +1168,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/reusableConfigs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:setIamPolicy",
@@ -1222,7 +1186,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/reusableConfigs/{reusableConfigsId}:testIamPermissions",
                   "id": "privateca.projects.locations.reusableConfigs.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -1232,8 +1195,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/reusableConfigs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+resource}:testIamPermissions",
@@ -1254,7 +1217,7 @@
       }
     }
   },
-  "revision": "20210208",
+  "revision": "20210218",
   "rootUrl": "https://privateca.googleapis.com/",
   "schemas": {
     "AccessUrls": {
@@ -1285,8 +1248,8 @@
           "type": "string"
         },
         "subordinateConfig": {
-          "description": "Required. Must include information about the issuer of 'pem_ca_certificate', and any further issuers until the self-signed CA.",
-          "$ref": "SubordinateConfig"
+          "$ref": "SubordinateConfig",
+          "description": "Required. Must include information about the issuer of 'pem_ca_certificate', and any further issuers until the self-signed CA."
         }
       },
       "type": "object"
@@ -1378,17 +1341,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -1414,8 +1377,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1458,19 +1421,19 @@
       "id": "Certificate",
       "properties": {
         "certificateDescription": {
-          "description": "Output only. A structured description of the issued X.509 certificate.",
           "$ref": "CertificateDescription",
+          "description": "Output only. A structured description of the issued X.509 certificate.",
           "readOnly": true
         },
         "config": {
-          "description": "Immutable. A description of the certificate and key that does not require X.509 or ASN.1.",
-          "$ref": "CertificateConfig"
+          "$ref": "CertificateConfig",
+          "description": "Immutable. A description of the certificate and key that does not require X.509 or ASN.1."
         },
         "createTime": {
           "description": "Output only. The time at which this Certificate was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "labels": {
           "additionalProperties": {
@@ -1486,36 +1449,36 @@
         },
         "name": {
           "description": "Output only. The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "pemCertificate": {
           "description": "Output only. The pem-encoded, signed X.509 certificate.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "pemCertificateChain": {
           "description": "Output only. The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.",
           "items": {
             "type": "string"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "pemCsr": {
           "description": "Immutable. A pem-encoded X.509 certificate signing request (CSR).",
           "type": "string"
         },
         "revocationDetails": {
-          "description": "Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.",
           "$ref": "RevocationDetails",
+          "description": "Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.",
           "readOnly": true
         },
         "updateTime": {
           "description": "Output only. The time at which this Certificate was updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1525,8 +1488,8 @@
       "id": "CertificateAuthority",
       "properties": {
         "accessUrls": {
-          "description": "Output only. URLs for accessing content published by this CA, such as the CA certificate and CRLs.",
           "$ref": "AccessUrls",
+          "description": "Output only. URLs for accessing content published by this CA, such as the CA certificate and CRLs.",
           "readOnly": true
         },
         "caCertificateDescriptions": {
@@ -1534,40 +1497,40 @@
           "items": {
             "$ref": "CertificateDescription"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "certificatePolicy": {
-          "description": "Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.",
-          "$ref": "CertificateAuthorityPolicy"
+          "$ref": "CertificateAuthorityPolicy",
+          "description": "Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority."
         },
         "config": {
-          "description": "Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.",
-          "$ref": "CertificateConfig"
+          "$ref": "CertificateConfig",
+          "description": "Required. Immutable. The config used to create a self-signed X.509 certificate or CSR."
         },
         "createTime": {
           "description": "Output only. The time at which this CertificateAuthority was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "deleteTime": {
           "description": "Output only. The time at which this CertificateAuthority will be deleted, if scheduled for deletion.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "gcsBucket": {
           "description": "Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.",
           "type": "string"
         },
         "issuingOptions": {
-          "description": "Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.",
-          "$ref": "IssuingOptions"
+          "$ref": "IssuingOptions",
+          "description": "Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority."
         },
         "keySpec": {
-          "description": "Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.",
-          "$ref": "KeyVersionSpec"
+          "$ref": "KeyVersionSpec",
+          "description": "Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR."
         },
         "labels": {
           "additionalProperties": {
@@ -1583,26 +1546,19 @@
         },
         "name": {
           "description": "Output only. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "pemCaCertificates": {
           "description": "Output only. This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.",
           "items": {
             "type": "string"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "state": {
           "description": "Output only. The State for this CertificateAuthority.",
-          "enumDescriptions": [
-            "Not specified.",
-            "Certificates can be issued from this CA. CRLs will be generated for this CA.",
-            "Certificates cannot be issued from this CA. CRLs will still be generated.",
-            "Certificates cannot be issued from this CA. CRLs will not be generated.",
-            "Certificates cannot be issued from this CA. CRLs will not be generated."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ENABLED",
@@ -1610,46 +1566,53 @@
             "PENDING_ACTIVATION",
             "PENDING_DELETION"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Not specified.",
+            "Certificates can be issued from this CA. CRLs will be generated for this CA.",
+            "Certificates cannot be issued from this CA. CRLs will still be generated.",
+            "Certificates cannot be issued from this CA. CRLs will not be generated.",
+            "Certificates cannot be issued from this CA. CRLs will not be generated."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "subordinateConfig": {
-          "description": "Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.",
-          "$ref": "SubordinateConfig"
+          "$ref": "SubordinateConfig",
+          "description": "Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate."
         },
         "tier": {
           "description": "Required. Immutable. The Tier of this CertificateAuthority.",
-          "enumDescriptions": [
-            "Not specified.",
-            "Enterprise tier.",
-            "DevOps tier."
-          ],
           "enum": [
             "TIER_UNSPECIFIED",
             "ENTERPRISE",
             "DEVOPS"
           ],
+          "enumDescriptions": [
+            "Not specified.",
+            "Enterprise tier.",
+            "DevOps tier."
+          ],
           "type": "string"
         },
         "type": {
           "description": "Required. Immutable. The Type of this CertificateAuthority.",
-          "enumDescriptions": [
-            "Not specified.",
-            "Self-signed CA.",
-            "Subordinate CA. Could be issued by a Private CA CertificateAuthority or an unmanaged CA."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "SELF_SIGNED",
             "SUBORDINATE"
+          ],
+          "enumDescriptions": [
+            "Not specified.",
+            "Self-signed CA.",
+            "Subordinate CA. Could be issued by a Private CA CertificateAuthority or an unmanaged CA."
           ],
           "type": "string"
         },
         "updateTime": {
           "description": "Output only. The time at which this CertificateAuthority was updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1666,12 +1629,12 @@
           "type": "array"
         },
         "allowedConfigList": {
-          "description": "Optional. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper in the list.",
-          "$ref": "AllowedConfigList"
+          "$ref": "AllowedConfigList",
+          "description": "Optional. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper in the list."
         },
         "allowedIssuanceModes": {
-          "description": "Optional. If specified, then only methods allowed in the IssuanceModes may be used to issue Certificates.",
-          "$ref": "IssuanceModes"
+          "$ref": "IssuanceModes",
+          "description": "Optional. If specified, then only methods allowed in the IssuanceModes may be used to issue Certificates."
         },
         "allowedLocationsAndOrganizations": {
           "description": "Optional. If any Subject is specified here, then all Certificates issued by the CertificateAuthority must match at least one listed Subject. If a Subject has an empty field, any value will be allowed for that field.",
@@ -1681,8 +1644,8 @@
           "type": "array"
         },
         "allowedSans": {
-          "description": "Optional. If a AllowedSubjectAltNames is specified here, then all Certificates issued by the CertificateAuthority must match AllowedSubjectAltNames. If no value or an empty value is specified, any value will be allowed for the SubjectAltNames field.",
-          "$ref": "AllowedSubjectAltNames"
+          "$ref": "AllowedSubjectAltNames",
+          "description": "Optional. If a AllowedSubjectAltNames is specified here, then all Certificates issued by the CertificateAuthority must match AllowedSubjectAltNames. If no value or an empty value is specified, any value will be allowed for the SubjectAltNames field."
         },
         "maximumLifetime": {
           "description": "Optional. The maximum lifetime allowed by the CertificateAuthority. Note that if the any part if the issuing chain expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated.",
@@ -1690,8 +1653,8 @@
           "type": "string"
         },
         "overwriteConfigValues": {
-          "description": "Optional. All Certificates issued by the CertificateAuthority will use the provided configuration values, overwriting any requested configuration values.",
-          "$ref": "ReusableConfigWrapper"
+          "$ref": "ReusableConfigWrapper",
+          "description": "Optional. All Certificates issued by the CertificateAuthority will use the provided configuration values, overwriting any requested configuration values."
         }
       },
       "type": "object"
@@ -1701,16 +1664,16 @@
       "id": "CertificateConfig",
       "properties": {
         "publicKey": {
-          "description": "Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.",
-          "$ref": "PublicKey"
+          "$ref": "PublicKey",
+          "description": "Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR."
         },
         "reusableConfig": {
-          "description": "Required. Describes how some of the technical fields in a certificate should be populated.",
-          "$ref": "ReusableConfigWrapper"
+          "$ref": "ReusableConfigWrapper",
+          "description": "Required. Describes how some of the technical fields in a certificate should be populated."
         },
         "subjectConfig": {
-          "description": "Required. Specifies some of the values in a certificate that are related to the subject.",
-          "$ref": "SubjectConfig"
+          "$ref": "SubjectConfig",
+          "description": "Required. Specifies some of the values in a certificate that are related to the subject."
         }
       },
       "type": "object"
@@ -1727,16 +1690,16 @@
           "type": "array"
         },
         "authorityKeyId": {
-          "description": "Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1",
-          "$ref": "KeyId"
+          "$ref": "KeyId",
+          "description": "Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1"
         },
         "certFingerprint": {
-          "description": "The hash of the x.509 certificate.",
-          "$ref": "CertificateFingerprint"
+          "$ref": "CertificateFingerprint",
+          "description": "The hash of the x.509 certificate."
         },
         "configValues": {
-          "description": "Describes some of the technical fields in a certificate.",
-          "$ref": "ReusableConfigValues"
+          "$ref": "ReusableConfigValues",
+          "description": "Describes some of the technical fields in a certificate."
         },
         "crlDistributionPoints": {
           "description": "Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13",
@@ -1746,16 +1709,16 @@
           "type": "array"
         },
         "publicKey": {
-          "description": "The public key that corresponds to an issued certificate.",
-          "$ref": "PublicKey"
+          "$ref": "PublicKey",
+          "description": "The public key that corresponds to an issued certificate."
         },
         "subjectDescription": {
-          "description": "Describes some of the values in a certificate that are related to the subject and lifetime.",
-          "$ref": "SubjectDescription"
+          "$ref": "SubjectDescription",
+          "description": "Describes some of the values in a certificate that are related to the subject and lifetime."
         },
         "subjectKeyId": {
-          "description": "Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.",
-          "$ref": "KeyId"
+          "$ref": "KeyId",
+          "description": "Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2."
         }
       },
       "type": "object"
@@ -1777,14 +1740,14 @@
       "properties": {
         "accessUrl": {
           "description": "Output only. The location where 'pem_crl' can be accessed.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. The time at which this CertificateRevocationList was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "labels": {
           "additionalProperties": {
@@ -1795,48 +1758,48 @@
         },
         "name": {
           "description": "Output only. The resource path for this CertificateRevocationList in the format `projects/*/locations/*/certificateAuthorities/*/ certificateRevocationLists/*`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "pemCrl": {
           "description": "Output only. The PEM-encoded X.509 CRL.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "revokedCertificates": {
           "description": "Output only. The revoked serial numbers that appear in pem_crl.",
           "items": {
             "$ref": "RevokedCertificate"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "sequenceNumber": {
           "description": "Output only. The CRL sequence number that appears in pem_crl.",
           "format": "int64",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "state": {
           "description": "Output only. The State for this CertificateRevocationList.",
-          "enumDescriptions": [
-            "Not specified.",
-            "The CertificateRevocationList is up to date.",
-            "The CertificateRevocationList is no longer current."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ACTIVE",
             "SUPERSEDED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Not specified.",
+            "The CertificateRevocationList is up to date.",
+            "The CertificateRevocationList is no longer current."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. The time at which this CertificateRevocationList was updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1957,8 +1920,8 @@
       "properties": {
         "pemCsr": {
           "description": "Output only. The PEM-encoded signed certificate signing request (CSR).",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1977,8 +1940,8 @@
           "type": "string"
         },
         "stringValue": {
-          "description": "A string up to 256 bytes long.",
-          "$ref": "GoogleApiServicecontrolV1TruncatableString"
+          "$ref": "GoogleApiServicecontrolV1TruncatableString",
+          "description": "A string up to 256 bytes long."
         }
       },
       "type": "object"
@@ -2027,16 +1990,16 @@
           "type": "array"
         },
         "explicitBuckets": {
-          "description": "Buckets with arbitrary user-provided width.",
-          "$ref": "GoogleApiServicecontrolV1ExplicitBuckets"
+          "$ref": "GoogleApiServicecontrolV1ExplicitBuckets",
+          "description": "Buckets with arbitrary user-provided width."
         },
         "exponentialBuckets": {
-          "description": "Buckets with exponentially growing width.",
-          "$ref": "GoogleApiServicecontrolV1ExponentialBuckets"
+          "$ref": "GoogleApiServicecontrolV1ExponentialBuckets",
+          "description": "Buckets with exponentially growing width."
         },
         "linearBuckets": {
-          "description": "Buckets with constant width.",
-          "$ref": "GoogleApiServicecontrolV1LinearBuckets"
+          "$ref": "GoogleApiServicecontrolV1LinearBuckets",
+          "description": "Buckets with constant width."
         },
         "maximum": {
           "description": "The maximum of the population of values. Ignored if `count` is zero.",
@@ -2197,8 +2160,8 @@
       "id": "GoogleApiServicecontrolV1LogEntry",
       "properties": {
         "httpRequest": {
-          "description": "Optional. Information about the HTTP request associated with this log entry, if applicable.",
-          "$ref": "GoogleApiServicecontrolV1HttpRequest"
+          "$ref": "GoogleApiServicecontrolV1HttpRequest",
+          "description": "Optional. Information about the HTTP request associated with this log entry, if applicable."
         },
         "insertId": {
           "description": "A unique ID for the log entry used for deduplication. If omitted, the implementation will generate one based on operation_id.",
@@ -2216,8 +2179,8 @@
           "type": "string"
         },
         "operation": {
-          "description": "Optional. Information about an operation associated with the log entry, if applicable.",
-          "$ref": "GoogleApiServicecontrolV1LogEntryOperation"
+          "$ref": "GoogleApiServicecontrolV1LogEntryOperation",
+          "description": "Optional. Information about an operation associated with the log entry, if applicable."
         },
         "protoPayload": {
           "additionalProperties": {
@@ -2229,17 +2192,6 @@
         },
         "severity": {
           "description": "The severity of the log entry. The default value is `LogSeverity.DEFAULT`.",
-          "enumDescriptions": [
-            "(0) The log entry has no assigned severity level.",
-            "(100) Debug or trace information.",
-            "(200) Routine information, such as ongoing status or performance.",
-            "(300) Normal but significant events, such as start up, shut down, or a configuration change.",
-            "(400) Warning events might cause problems.",
-            "(500) Error events are likely to cause problems.",
-            "(600) Critical events cause more severe problems or outages.",
-            "(700) A person must take an action immediately.",
-            "(800) One or more systems are unusable."
-          ],
           "enum": [
             "DEFAULT",
             "DEBUG",
@@ -2251,11 +2203,22 @@
             "ALERT",
             "EMERGENCY"
           ],
+          "enumDescriptions": [
+            "(0) The log entry has no assigned severity level.",
+            "(100) Debug or trace information.",
+            "(200) Routine information, such as ongoing status or performance.",
+            "(300) Normal but significant events, such as start up, shut down, or a configuration change.",
+            "(400) Warning events might cause problems.",
+            "(500) Error events are likely to cause problems.",
+            "(600) Critical events cause more severe problems or outages.",
+            "(700) A person must take an action immediately.",
+            "(800) One or more systems are unusable."
+          ],
           "type": "string"
         },
         "sourceLocation": {
-          "description": "Optional. Source code location information associated with the log entry, if any.",
-          "$ref": "GoogleApiServicecontrolV1LogEntrySourceLocation"
+          "$ref": "GoogleApiServicecontrolV1LogEntrySourceLocation",
+          "description": "Optional. Source code location information associated with the log entry, if any."
         },
         "structPayload": {
           "additionalProperties": {
@@ -2333,8 +2296,8 @@
           "type": "boolean"
         },
         "distributionValue": {
-          "description": "A distribution value.",
-          "$ref": "GoogleApiServicecontrolV1Distribution"
+          "$ref": "GoogleApiServicecontrolV1Distribution",
+          "description": "A distribution value."
         },
         "doubleValue": {
           "description": "A double precision floating point value.",
@@ -2359,8 +2322,8 @@
           "type": "object"
         },
         "moneyValue": {
-          "description": "A money value.",
-          "$ref": "Money"
+          "$ref": "Money",
+          "description": "A money value."
         },
         "startTime": {
           "description": "The start of the time period over which this metric value's measurement applies. The time period has different semantics for different metric types (cumulative, delta, and gauge). See the metric definition documentation in the service configuration for details. If not specified, google.api.servicecontrol.v1.Operation.start_time will be used.",
@@ -2418,15 +2381,15 @@
         },
         "importance": {
           "description": "DO NOT USE. This is an experimental field.",
-          "enumDescriptions": [
-            "Allows data caching, batching, and aggregation. It provides higher performance with higher data loss risk.",
-            "Disables data aggregation to minimize data loss. It is for operations that contains significant monetary value or audit trail. This feature only applies to the client libraries.",
-            "Deprecated. Do not use. Disables data aggregation and enables additional validation logic. It should only be used during the onboarding process. It is only available to Google internal services, and the service must be approved by chemist-dev@google.com in order to use this level."
-          ],
           "enum": [
             "LOW",
             "HIGH",
             "DEBUG"
+          ],
+          "enumDescriptions": [
+            "Allows data caching, batching, and aggregation. It provides higher performance with higher data loss risk.",
+            "Disables data aggregation to minimize data loss. It is for operations that contains significant monetary value or audit trail. This feature only applies to the client libraries.",
+            "Deprecated. Do not use. Disables data aggregation and enables additional validation logic. It should only be used during the onboarding process. It is only available to Google internal services, and the service must be approved by chemist-dev@google.com in order to use this level."
           ],
           "type": "string"
         },
@@ -2460,8 +2423,8 @@
           "type": "string"
         },
         "quotaProperties": {
-          "description": "Represents the properties needed for quota check. Applicable only if this operation is for a quota check request. If this is not specified, no quota check will be performed.",
-          "$ref": "GoogleApiServicecontrolV1QuotaProperties"
+          "$ref": "GoogleApiServicecontrolV1QuotaProperties",
+          "description": "Represents the properties needed for quota check. Applicable only if this operation is for a quota check request. If this is not specified, no quota check will be performed."
         },
         "resources": {
           "description": "The resources that are involved in the operation. The maximum supported number of entries in this field is 100.",
@@ -2486,7 +2449,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Private Preview. This feature is only available for approved services. User defined labels for the resource that this operation is associated with. Only a combination of 1000 user labels per consumer project are allowed.",
+          "description": "Private Preview. This feature is only available for approved services. User defined labels for the resource that this operation is associated with.",
           "type": "object"
         }
       },
@@ -2498,17 +2461,17 @@
       "properties": {
         "quotaMode": {
           "description": "Quota mode for this operation.",
-          "enumDescriptions": [
-            "Decreases available quota by the cost specified for the operation. If cost is higher than available quota, operation fails and returns error.",
-            "Decreases available quota by the cost specified for the operation. If cost is higher than available quota, operation does not fail and available quota goes down to zero but it returns error.",
-            "Does not change any available quota. Only checks if there is enough quota. No lock is placed on the checked tokens neither.",
-            "Increases available quota by the operation cost specified for the operation."
-          ],
           "enum": [
             "ACQUIRE",
             "ACQUIRE_BEST_EFFORT",
             "CHECK",
             "RELEASE"
+          ],
+          "enumDescriptions": [
+            "Decreases available quota by the cost specified for the operation. If cost is higher than available quota, operation fails and returns error.",
+            "Decreases available quota by the cost specified for the operation. If cost is higher than available quota, operation does not fail and available quota goes down to zero but it returns error.",
+            "Does not change any available quota. Only checks if there is enough quota. No lock is placed on the checked tokens neither.",
+            "Increases available quota by the operation cost specified for the operation."
           ],
           "type": "string"
         }
@@ -2561,8 +2524,8 @@
       "id": "GoogleApiServicecontrolV1TraceSpan",
       "properties": {
         "attributes": {
-          "description": "A set of attributes on the span. You can have up to 32 attributes per span.",
-          "$ref": "GoogleApiServicecontrolV1Attributes"
+          "$ref": "GoogleApiServicecontrolV1Attributes",
+          "description": "A set of attributes on the span. You can have up to 32 attributes per span."
         },
         "childSpanCount": {
           "description": "An optional number of child spans that were generated while this span was active. If set, allows implementation to detect missing child spans.",
@@ -2570,8 +2533,8 @@
           "type": "integer"
         },
         "displayName": {
-          "description": "A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the description in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file name and a line number where the operation is called. A best practice is to use the same display name within an application and at the same call point. This makes it easier to correlate spans in different traces.",
-          "$ref": "GoogleApiServicecontrolV1TruncatableString"
+          "$ref": "GoogleApiServicecontrolV1TruncatableString",
+          "description": "A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the description in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file name and a line number where the operation is called. A best practice is to use the same display name within an application and at the same call point. This makes it easier to correlate spans in different traces."
         },
         "endTime": {
           "description": "The end time of the span. On the client side, this is the time kept by the local machine where the span execution ends. On the server side, this is the time when the server application handler stops running.",
@@ -2596,14 +2559,6 @@
         },
         "spanKind": {
           "description": "Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call.",
-          "enumDescriptions": [
-            "Unspecified. Do NOT use as default. Implementations MAY assume SpanKind.INTERNAL to be default.",
-            "Indicates that the span is used internally. Default value.",
-            "Indicates that the span covers server-side handling of an RPC or other remote network request.",
-            "Indicates that the span covers the client-side wrapper around an RPC or other remote request.",
-            "Indicates that the span describes producer sending a message to a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. publishing a message to a pubsub service).",
-            "Indicates that the span describes consumer receiving a message from a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. receiving a message from a pubsub service subscription)."
-          ],
           "enum": [
             "SPAN_KIND_UNSPECIFIED",
             "INTERNAL",
@@ -2611,6 +2566,14 @@
             "CLIENT",
             "PRODUCER",
             "CONSUMER"
+          ],
+          "enumDescriptions": [
+            "Unspecified. Do NOT use as default. Implementations MAY assume SpanKind.INTERNAL to be default.",
+            "Indicates that the span is used internally. Default value.",
+            "Indicates that the span covers server-side handling of an RPC or other remote network request.",
+            "Indicates that the span covers the client-side wrapper around an RPC or other remote request.",
+            "Indicates that the span describes producer sending a message to a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. publishing a message to a pubsub service).",
+            "Indicates that the span describes consumer receiving a message from a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. receiving a message from a pubsub service subscription)."
           ],
           "type": "string"
         },
@@ -2620,8 +2583,8 @@
           "type": "string"
         },
         "status": {
-          "description": "An optional final status for this span.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "An optional final status for this span."
         }
       },
       "type": "object"
@@ -2688,12 +2651,12 @@
       "id": "KeyUsage",
       "properties": {
         "baseKeyUsage": {
-          "description": "Describes high-level ways in which a key may be used.",
-          "$ref": "KeyUsageOptions"
+          "$ref": "KeyUsageOptions",
+          "description": "Describes high-level ways in which a key may be used."
         },
         "extendedKeyUsage": {
-          "description": "Detailed scenarios in which a key may be used.",
-          "$ref": "ExtendedKeyUsageOptions"
+          "$ref": "ExtendedKeyUsageOptions",
+          "description": "Detailed scenarios in which a key may be used."
         },
         "unknownExtendedKeyUsages": {
           "description": "Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.",
@@ -2754,17 +2717,6 @@
       "properties": {
         "algorithm": {
           "description": "Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.",
-          "enumDescriptions": [
-            "Not specified.",
-            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PSS_2048_SHA256",
-            "maps to CryptoKeyVersionAlgorithm. RSA_SIGN_PSS_3072_SHA256",
-            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PSS_4096_SHA256",
-            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PKCS1_2048_SHA256",
-            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PKCS1_3072_SHA256",
-            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PKCS1_4096_SHA256",
-            "maps to CryptoKeyVersionAlgorithm.EC_SIGN_P256_SHA256",
-            "maps to CryptoKeyVersionAlgorithm.EC_SIGN_P384_SHA384"
-          ],
           "enum": [
             "SIGN_HASH_ALGORITHM_UNSPECIFIED",
             "RSA_PSS_2048_SHA256",
@@ -2775,6 +2727,17 @@
             "RSA_PKCS1_4096_SHA256",
             "EC_P256_SHA256",
             "EC_P384_SHA384"
+          ],
+          "enumDescriptions": [
+            "Not specified.",
+            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PSS_2048_SHA256",
+            "maps to CryptoKeyVersionAlgorithm. RSA_SIGN_PSS_3072_SHA256",
+            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PSS_4096_SHA256",
+            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PKCS1_2048_SHA256",
+            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PKCS1_3072_SHA256",
+            "maps to CryptoKeyVersionAlgorithm.RSA_SIGN_PKCS1_4096_SHA256",
+            "maps to CryptoKeyVersionAlgorithm.EC_SIGN_P256_SHA256",
+            "maps to CryptoKeyVersionAlgorithm.EC_SIGN_P384_SHA384"
           ],
           "type": "string"
         },
@@ -3000,8 +2963,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -3032,40 +2995,40 @@
       "properties": {
         "apiVersion": {
           "description": "Output only. API version used to start the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. The time the operation was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "endTime": {
           "description": "Output only. The time the operation finished running.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "requestedCancellation": {
           "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "statusMessage": {
           "description": "Output only. Human-readable status of the operation, if any.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "target": {
           "description": "Output only. Server-defined resource path for the target of the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "verb": {
           "description": "Output only. Name of the verb executed by the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -3112,15 +3075,15 @@
         },
         "type": {
           "description": "Optional. The type of public key. If specified, it must match the public key used for the`key` field.",
-          "enumDescriptions": [
-            "Default unspecified value.",
-            "A PEM-encoded PKCS#1/RFC 3447 RSAPublicKey structure, or an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing the former.",
-            "An RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing a PEM-encoded compressed NIST P-256/secp256r1/prime256v1 or P-384 key."
-          ],
           "enum": [
             "KEY_TYPE_UNSPECIFIED",
             "PEM_RSA_KEY",
             "PEM_EC_KEY"
+          ],
+          "enumDescriptions": [
+            "Default unspecified value.",
+            "A PEM-encoded PKCS#1/RFC 3447 RSAPublicKey structure, or an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing the former.",
+            "An RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing a PEM-encoded compressed NIST P-256/secp256r1/prime256v1 or P-384 key."
           ],
           "type": "string"
         }
@@ -3145,8 +3108,8 @@
         "createTime": {
           "description": "Output only. The time at which this ReusableConfig was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "description": {
           "description": "Optional. A human-readable description of scenarios these ReusableConfigValues may be compatible with.",
@@ -3161,18 +3124,18 @@
         },
         "name": {
           "description": "Output only. The resource path for this ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. The time at which this ReusableConfig was updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "values": {
-          "description": "Required. The config values.",
-          "$ref": "ReusableConfigValues"
+          "$ref": "ReusableConfigValues",
+          "description": "Required. The config values."
         }
       },
       "type": "object"
@@ -3196,12 +3159,12 @@
           "type": "array"
         },
         "caOptions": {
-          "description": "Optional. Describes options in this ReusableConfigValues that are relevant in a CA certificate.",
-          "$ref": "CaOptions"
+          "$ref": "CaOptions",
+          "description": "Optional. Describes options in this ReusableConfigValues that are relevant in a CA certificate."
         },
         "keyUsage": {
-          "description": "Optional. Indicates the intended use for keys that correspond to a certificate.",
-          "$ref": "KeyUsage"
+          "$ref": "KeyUsage",
+          "description": "Optional. Indicates the intended use for keys that correspond to a certificate."
         },
         "policyIds": {
           "description": "Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.",
@@ -3222,8 +3185,8 @@
           "type": "string"
         },
         "reusableConfigValues": {
-          "description": "Required. A user-specified inline ReusableConfigValues.",
-          "$ref": "ReusableConfigValues"
+          "$ref": "ReusableConfigValues",
+          "description": "Required. A user-specified inline ReusableConfigValues."
         }
       },
       "type": "object"
@@ -3234,17 +3197,6 @@
       "properties": {
         "revocationState": {
           "description": "Indicates why a Certificate was revoked.",
-          "enumDescriptions": [
-            "Default unspecified value. This value does indicate that a Certificate has been revoked, but that a reason has not been recorded.",
-            "Key material for this Certificate may have leaked.",
-            "The key material for a certificate authority in the issuing path may have leaked.",
-            "The subject or other attributes in this Certificate have changed.",
-            "This Certificate has been superseded.",
-            "This Certificate or entities in the issuing path have ceased to operate.",
-            "This Certificate should not be considered valid, it is expected that it may become valid in the future.",
-            "This Certificate no longer has permission to assert the listed attributes.",
-            "The authority which determines appropriate attributes for a Certificate may have been compromised."
-          ],
           "enum": [
             "REVOCATION_REASON_UNSPECIFIED",
             "KEY_COMPROMISE",
@@ -3255,6 +3207,17 @@
             "CERTIFICATE_HOLD",
             "PRIVILEGE_WITHDRAWN",
             "ATTRIBUTE_AUTHORITY_COMPROMISE"
+          ],
+          "enumDescriptions": [
+            "Default unspecified value. This value does indicate that a Certificate has been revoked, but that a reason has not been recorded.",
+            "Key material for this Certificate may have leaked.",
+            "The key material for a certificate authority in the issuing path may have leaked.",
+            "The subject or other attributes in this Certificate have changed.",
+            "This Certificate has been superseded.",
+            "This Certificate or entities in the issuing path have ceased to operate.",
+            "This Certificate should not be considered valid, it is expected that it may become valid in the future.",
+            "This Certificate no longer has permission to assert the listed attributes.",
+            "The authority which determines appropriate attributes for a Certificate may have been compromised."
           ],
           "type": "string"
         },
@@ -3272,17 +3235,6 @@
       "properties": {
         "reason": {
           "description": "Required. The RevocationReason for revoking this certificate.",
-          "enumDescriptions": [
-            "Default unspecified value. This value does indicate that a Certificate has been revoked, but that a reason has not been recorded.",
-            "Key material for this Certificate may have leaked.",
-            "The key material for a certificate authority in the issuing path may have leaked.",
-            "The subject or other attributes in this Certificate have changed.",
-            "This Certificate has been superseded.",
-            "This Certificate or entities in the issuing path have ceased to operate.",
-            "This Certificate should not be considered valid, it is expected that it may become valid in the future.",
-            "This Certificate no longer has permission to assert the listed attributes.",
-            "The authority which determines appropriate attributes for a Certificate may have been compromised."
-          ],
           "enum": [
             "REVOCATION_REASON_UNSPECIFIED",
             "KEY_COMPROMISE",
@@ -3293,6 +3245,17 @@
             "CERTIFICATE_HOLD",
             "PRIVILEGE_WITHDRAWN",
             "ATTRIBUTE_AUTHORITY_COMPROMISE"
+          ],
+          "enumDescriptions": [
+            "Default unspecified value. This value does indicate that a Certificate has been revoked, but that a reason has not been recorded.",
+            "Key material for this Certificate may have leaked.",
+            "The key material for a certificate authority in the issuing path may have leaked.",
+            "The subject or other attributes in this Certificate have changed.",
+            "This Certificate has been superseded.",
+            "This Certificate or entities in the issuing path have ceased to operate.",
+            "This Certificate should not be considered valid, it is expected that it may become valid in the future.",
+            "This Certificate no longer has permission to assert the listed attributes.",
+            "The authority which determines appropriate attributes for a Certificate may have been compromised."
           ],
           "type": "string"
         },
@@ -3317,17 +3280,6 @@
         },
         "revocationReason": {
           "description": "The reason the Certificate was revoked.",
-          "enumDescriptions": [
-            "Default unspecified value. This value does indicate that a Certificate has been revoked, but that a reason has not been recorded.",
-            "Key material for this Certificate may have leaked.",
-            "The key material for a certificate authority in the issuing path may have leaked.",
-            "The subject or other attributes in this Certificate have changed.",
-            "This Certificate has been superseded.",
-            "This Certificate or entities in the issuing path have ceased to operate.",
-            "This Certificate should not be considered valid, it is expected that it may become valid in the future.",
-            "This Certificate no longer has permission to assert the listed attributes.",
-            "The authority which determines appropriate attributes for a Certificate may have been compromised."
-          ],
           "enum": [
             "REVOCATION_REASON_UNSPECIFIED",
             "KEY_COMPROMISE",
@@ -3338,6 +3290,17 @@
             "CERTIFICATE_HOLD",
             "PRIVILEGE_WITHDRAWN",
             "ATTRIBUTE_AUTHORITY_COMPROMISE"
+          ],
+          "enumDescriptions": [
+            "Default unspecified value. This value does indicate that a Certificate has been revoked, but that a reason has not been recorded.",
+            "Key material for this Certificate may have leaked.",
+            "The key material for a certificate authority in the issuing path may have leaked.",
+            "The subject or other attributes in this Certificate have changed.",
+            "This Certificate has been superseded.",
+            "This Certificate or entities in the issuing path have ceased to operate.",
+            "This Certificate should not be considered valid, it is expected that it may become valid in the future.",
+            "This Certificate no longer has permission to assert the listed attributes.",
+            "The authority which determines appropriate attributes for a Certificate may have been compromised."
           ],
           "type": "string"
         }
@@ -3364,8 +3327,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -3488,12 +3451,12 @@
           "type": "string"
         },
         "subject": {
-          "description": "Required. Contains distinguished name fields such as the location and organization.",
-          "$ref": "Subject"
+          "$ref": "Subject",
+          "description": "Required. Contains distinguished name fields such as the location and organization."
         },
         "subjectAltName": {
-          "description": "Optional. The subject alternative name fields.",
-          "$ref": "SubjectAltNames"
+          "$ref": "SubjectAltNames",
+          "description": "Optional. The subject alternative name fields."
         }
       },
       "type": "object"
@@ -3526,12 +3489,12 @@
           "type": "string"
         },
         "subject": {
-          "description": "Contains distinguished name fields such as the location and organization.",
-          "$ref": "Subject"
+          "$ref": "Subject",
+          "description": "Contains distinguished name fields such as the location and organization."
         },
         "subjectAltName": {
-          "description": "The subject alternative name fields.",
-          "$ref": "SubjectAltNames"
+          "$ref": "SubjectAltNames",
+          "description": "The subject alternative name fields."
         }
       },
       "type": "object"
@@ -3545,8 +3508,8 @@
           "type": "string"
         },
         "pemIssuerChain": {
-          "description": "Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.",
-          "$ref": "SubordinateConfigChain"
+          "$ref": "SubordinateConfigChain",
+          "description": "Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself."
         }
       },
       "type": "object"
@@ -3602,8 +3565,8 @@
           "type": "boolean"
         },
         "objectId": {
-          "description": "Required. The OID for this X.509 extension.",
-          "$ref": "ObjectId"
+          "$ref": "ObjectId",
+          "description": "Required. The OID for this X.509 extension."
         },
         "value": {
           "description": "Required. The value of this X.509 extension.",
@@ -3616,6 +3579,6 @@
   },
   "servicePath": "",
   "title": "Certificate Authority API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

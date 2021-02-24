@@ -24,22 +24,21 @@
   },
   "id": "games:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://games.mtls.googleapis.com/",
   "name": "games",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -50,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +111,6 @@
         "list": {
           "description": "Lists all the achievement definitions for your application.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/achievements",
           "id": "games.achievementDefinitions.list",
           "parameterOrder": [],
           "parameters": {
@@ -148,7 +146,6 @@
         "increment": {
           "description": "Increments the steps of the achievement with the given ID for the currently authenticated player.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/achievements/{achievementId}/increment",
           "id": "games.achievements.increment",
           "parameterOrder": [
             "achievementId",
@@ -158,8 +155,8 @@
             "achievementId": {
               "description": "The ID of the achievement used by this method.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "requestId": {
               "description": "A randomly generated numeric ID for each request specified by the caller. This number is used at the server to ensure that the request is handled correctly across retries.",
@@ -171,8 +168,8 @@
               "description": "The number of steps to increment.",
               "format": "int32",
               "location": "query",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "games/v1/achievements/{achievementId}/increment",
@@ -186,7 +183,6 @@
         "list": {
           "description": "Lists the progress for all your application's achievements for the currently authenticated player.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/players/{playerId}/achievements",
           "id": "games.achievements.list",
           "parameterOrder": [
             "playerId"
@@ -211,11 +207,17 @@
             "playerId": {
               "description": "A player ID. A value of `me` may be used in place of the authenticated player's ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "state": {
               "description": "Tells the server to return only achievements with the specified state. If this parameter isn't specified, all achievements are returned.",
+              "enum": [
+                "ALL",
+                "HIDDEN",
+                "REVEALED",
+                "UNLOCKED"
+              ],
               "enumDescriptions": [
                 "List all achievements. This is the default.",
                 "List only hidden achievements.",
@@ -223,12 +225,6 @@
                 "List only unlocked achievements."
               ],
               "location": "query",
-              "enum": [
-                "ALL",
-                "HIDDEN",
-                "REVEALED",
-                "UNLOCKED"
-              ],
               "type": "string"
             }
           },
@@ -243,7 +239,6 @@
         "reveal": {
           "description": "Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated player.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/achievements/{achievementId}/reveal",
           "id": "games.achievements.reveal",
           "parameterOrder": [
             "achievementId"
@@ -252,8 +247,8 @@
             "achievementId": {
               "description": "The ID of the achievement used by this method.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/achievements/{achievementId}/reveal",
@@ -267,7 +262,6 @@
         "setStepsAtLeast": {
           "description": "Sets the steps for the currently authenticated player towards unlocking an achievement. If the steps parameter is less than the current number of steps that the player already gained for the achievement, the achievement is not modified.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/achievements/{achievementId}/setStepsAtLeast",
           "id": "games.achievements.setStepsAtLeast",
           "parameterOrder": [
             "achievementId",
@@ -277,15 +271,15 @@
             "achievementId": {
               "description": "The ID of the achievement used by this method.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "steps": {
               "description": "The minimum value to set the steps to.",
               "format": "int32",
               "location": "query",
-              "type": "integer",
-              "required": true
+              "required": true,
+              "type": "integer"
             }
           },
           "path": "games/v1/achievements/{achievementId}/setStepsAtLeast",
@@ -299,7 +293,6 @@
         "unlock": {
           "description": "Unlocks this achievement for the currently authenticated player.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/achievements/{achievementId}/unlock",
           "id": "games.achievements.unlock",
           "parameterOrder": [
             "achievementId"
@@ -308,8 +301,8 @@
             "achievementId": {
               "description": "The ID of the achievement used by this method.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/achievements/{achievementId}/unlock",
@@ -323,7 +316,6 @@
         "updateMultiple": {
           "description": "Updates multiple achievements for the currently authenticated player.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/achievements/updateMultiple",
           "id": "games.achievements.updateMultiple",
           "parameterOrder": [],
           "parameters": {},
@@ -345,7 +337,6 @@
         "get": {
           "description": "Retrieves the metadata of the application with the given ID. If the requested application is not available for the specified `platformType`, the returned response will not include any instance data.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/applications/{applicationId}",
           "id": "games.applications.get",
           "parameterOrder": [
             "applicationId"
@@ -354,8 +345,8 @@
             "applicationId": {
               "description": "The application ID from the Google Play developer console.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "language": {
               "description": "The preferred language to use for strings returned by this method.",
@@ -364,6 +355,12 @@
             },
             "platformType": {
               "description": "Restrict application details returned to the specific platform.",
+              "enum": [
+                "PLATFORM_TYPE_UNSPECIFIED",
+                "ANDROID",
+                "IOS",
+                "WEB_APP"
+              ],
               "enumDescriptions": [
                 "Default value, don't use.",
                 "Retrieve applications that can be played on Android.",
@@ -371,12 +368,6 @@
                 "Retrieve applications that can be played on desktop web."
               ],
               "location": "query",
-              "enum": [
-                "PLATFORM_TYPE_UNSPECIFIED",
-                "ANDROID",
-                "IOS",
-                "WEB_APP"
-              ],
               "type": "string"
             }
           },
@@ -391,7 +382,6 @@
         "getEndPoint": {
           "description": "Returns a URL for the requested end point type.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/applications/getEndPoint",
           "id": "games.applications.getEndPoint",
           "parameterOrder": [],
           "parameters": {
@@ -402,17 +392,17 @@
             },
             "endPointType": {
               "description": "Type of endpoint being requested.",
+              "enum": [
+                "END_POINT_TYPE_UNSPECIFIED",
+                "PROFILE_CREATION",
+                "PROFILE_SETTINGS"
+              ],
               "enumDescriptions": [
                 "Default value. This value is unused.",
                 "Request a URL to create a new profile.",
                 "Request a URL for the Settings view."
               ],
               "location": "query",
-              "enum": [
-                "END_POINT_TYPE_UNSPECIFIED",
-                "PROFILE_CREATION",
-                "PROFILE_SETTINGS"
-              ],
               "type": "string"
             }
           },
@@ -427,7 +417,6 @@
         "played": {
           "description": "Indicate that the currently authenticated user is playing your application.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/applications/played",
           "id": "games.applications.played",
           "parameterOrder": [],
           "parameters": {},
@@ -439,7 +428,6 @@
         "verify": {
           "description": "Verifies the auth token provided with this request is for the application with the specified ID, and returns the ID of the player it was granted for.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/applications/{applicationId}/verify",
           "id": "games.applications.verify",
           "parameterOrder": [
             "applicationId"
@@ -448,8 +436,8 @@
             "applicationId": {
               "description": "The application ID from the Google Play developer console.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/applications/{applicationId}/verify",
@@ -467,7 +455,6 @@
         "listByPlayer": {
           "description": "Returns a list showing the current progress on events in this application for the currently authenticated user.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/events",
           "id": "games.events.listByPlayer",
           "parameterOrder": [],
           "parameters": {
@@ -499,7 +486,6 @@
         "listDefinitions": {
           "description": "Returns a list of the event definitions in this application.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/eventDefinitions",
           "id": "games.events.listDefinitions",
           "parameterOrder": [],
           "parameters": {
@@ -531,7 +517,6 @@
         "record": {
           "description": "Records a batch of changes to the number of times events have occurred for the currently authenticated user of this application.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/events",
           "id": "games.events.record",
           "parameterOrder": [],
           "parameters": {
@@ -559,7 +544,6 @@
         "get": {
           "description": "Retrieves the metadata of the leaderboard with the given ID.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/leaderboards/{leaderboardId}",
           "id": "games.leaderboards.get",
           "parameterOrder": [
             "leaderboardId"
@@ -573,8 +557,8 @@
             "leaderboardId": {
               "description": "The ID of the leaderboard.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/leaderboards/{leaderboardId}",
@@ -588,7 +572,6 @@
         "list": {
           "description": "Lists all the leaderboard metadata for your application.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/leaderboards",
           "id": "games.leaderboards.list",
           "parameterOrder": [],
           "parameters": {
@@ -624,7 +607,6 @@
         "getMetagameConfig": {
           "description": "Return the metagame configuration data for the calling application.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/metagameConfig",
           "id": "games.metagame.getMetagameConfig",
           "parameterOrder": [],
           "parameters": {},
@@ -639,7 +621,6 @@
         "listCategoriesByPlayer": {
           "description": "List play data aggregated per category for the player corresponding to `playerId`.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/players/{playerId}/categories/{collection}",
           "id": "games.metagame.listCategoriesByPlayer",
           "parameterOrder": [
             "playerId",
@@ -648,17 +629,17 @@
           "parameters": {
             "collection": {
               "description": "The collection of categories for which data will be returned.",
+              "enum": [
+                "COLLECTION_UNSPECIFIED",
+                "ALL"
+              ],
               "enumDescriptions": [
                 "Default value. This value is unused.",
                 "Retrieve data for all categories. This is the default."
               ],
               "location": "path",
-              "enum": [
-                "COLLECTION_UNSPECIFIED",
-                "ALL"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "language": {
               "description": "The preferred language to use for strings returned by this method.",
@@ -679,8 +660,8 @@
             "playerId": {
               "description": "A player ID. A value of `me` may be used in place of the authenticated player's ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/players/{playerId}/categories/{collection}",
@@ -698,7 +679,6 @@
         "get": {
           "description": "Retrieves the Player resource with the given ID. To retrieve the player for the currently authenticated user, set `playerId` to `me`.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/players/{playerId}",
           "id": "games.players.get",
           "parameterOrder": [
             "playerId"
@@ -712,8 +692,8 @@
             "playerId": {
               "description": "A player ID. A value of `me` may be used in place of the authenticated player's ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/players/{playerId}",
@@ -727,7 +707,6 @@
         "list": {
           "description": "Get the collection of players for the currently authenticated user.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/players/me/players/{collection}",
           "id": "games.players.list",
           "parameterOrder": [
             "collection"
@@ -735,19 +714,19 @@
           "parameters": {
             "collection": {
               "description": "Collection of players being retrieved",
+              "enum": [
+                "CONNECTED",
+                "VISIBLE",
+                "FRIENDS_ALL"
+              ],
               "enumDescriptions": [
                 "Retrieve a list of players that are also playing this game in reverse chronological order.",
                 "Retrieve a list of players in the user's social graph that are visible to this game.",
                 "Retrieve a list of players who are friends of the user in alphabetical order."
               ],
               "location": "path",
-              "enum": [
-                "CONNECTED",
-                "VISIBLE",
-                "FRIENDS_ALL"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "language": {
               "description": "The preferred language to use for strings returned by this method.",
@@ -781,7 +760,6 @@
         "check": {
           "description": "Checks whether the games client is out of date.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/revisions/check",
           "id": "games.revisions.check",
           "parameterOrder": [
             "clientRevision"
@@ -790,8 +768,8 @@
             "clientRevision": {
               "description": "The revision of the client SDK used by your application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. * `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as a Web App.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/revisions/check",
@@ -809,7 +787,6 @@
         "get": {
           "description": "Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For a specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given time span. `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one parameter may be set to 'ALL'.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
           "id": "games.scores.get",
           "parameterOrder": [
             "playerId",
@@ -819,6 +796,13 @@
           "parameters": {
             "includeRankType": {
               "description": "The types of ranks to return. If the parameter is omitted, no ranks will be returned.",
+              "enum": [
+                "INCLUDE_RANK_TYPE_UNSPECIFIED",
+                "ALL",
+                "PUBLIC",
+                "SOCIAL",
+                "FRIENDS"
+              ],
               "enumDescriptions": [
                 "Default value. Should be unused.",
                 "Retrieve all supported ranks. In HTTP, this parameter value can also be specified as `ALL`.",
@@ -827,13 +811,6 @@
                 "Retrieve the rank on the friends collection."
               ],
               "location": "query",
-              "enum": [
-                "INCLUDE_RANK_TYPE_UNSPECIFIED",
-                "ALL",
-                "PUBLIC",
-                "SOCIAL",
-                "FRIENDS"
-              ],
               "type": "string"
             },
             "language": {
@@ -844,8 +821,8 @@
             "leaderboardId": {
               "description": "The ID of the leaderboard. Can be set to 'ALL' to retrieve data for all leaderboards for this application.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`.",
@@ -861,11 +838,18 @@
             "playerId": {
               "description": "A player ID. A value of `me` may be used in place of the authenticated player's ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "timeSpan": {
               "description": "The time span for the scores and ranks you're requesting.",
+              "enum": [
+                "SCORE_TIME_SPAN_UNSPECIFIED",
+                "ALL",
+                "ALL_TIME",
+                "WEEKLY",
+                "DAILY"
+              ],
               "enumDescriptions": [
                 "Default value. This value is unused.",
                 "Get the high scores for all time spans. If this is used, maxResults values will be ignored.",
@@ -874,15 +858,8 @@
                 "List the top scores for the current week."
               ],
               "location": "path",
-              "enum": [
-                "SCORE_TIME_SPAN_UNSPECIFIED",
-                "ALL",
-                "ALL_TIME",
-                "WEEKLY",
-                "DAILY"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
@@ -896,7 +873,6 @@
         "list": {
           "description": "Lists the scores in a leaderboard, starting from the top.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/leaderboards/{leaderboardId}/scores/{collection}",
           "id": "games.scores.list",
           "parameterOrder": [
             "leaderboardId",
@@ -906,6 +882,12 @@
           "parameters": {
             "collection": {
               "description": "The collection of scores you're requesting.",
+              "enum": [
+                "SCORE_COLLECTION_UNSPECIFIED",
+                "PUBLIC",
+                "SOCIAL",
+                "FRIENDS"
+              ],
               "enumDescriptions": [
                 "Default value. This value is unused.",
                 "List all scores in the public leaderboard.",
@@ -913,14 +895,8 @@
                 "List only scores of friends."
               ],
               "location": "path",
-              "enum": [
-                "SCORE_COLLECTION_UNSPECIFIED",
-                "PUBLIC",
-                "SOCIAL",
-                "FRIENDS"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "language": {
               "description": "The preferred language to use for strings returned by this method.",
@@ -930,8 +906,8 @@
             "leaderboardId": {
               "description": "The ID of the leaderboard.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`.",
@@ -946,6 +922,12 @@
             },
             "timeSpan": {
               "description": "The time span for the scores and ranks you're requesting.",
+              "enum": [
+                "SCORE_TIME_SPAN_UNSPECIFIED",
+                "ALL_TIME",
+                "WEEKLY",
+                "DAILY"
+              ],
               "enumDescriptions": [
                 "Default value. This value is unused.",
                 "The score is an all-time score.",
@@ -953,14 +935,8 @@
                 "The score is a daily score."
               ],
               "location": "query",
-              "enum": [
-                "SCORE_TIME_SPAN_UNSPECIFIED",
-                "ALL_TIME",
-                "WEEKLY",
-                "DAILY"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/leaderboards/{leaderboardId}/scores/{collection}",
@@ -974,7 +950,6 @@
         "listWindow": {
           "description": "Lists the scores in a leaderboard around (and including) a player's score.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/leaderboards/{leaderboardId}/window/{collection}",
           "id": "games.scores.listWindow",
           "parameterOrder": [
             "leaderboardId",
@@ -984,6 +959,12 @@
           "parameters": {
             "collection": {
               "description": "The collection of scores you're requesting.",
+              "enum": [
+                "SCORE_COLLECTION_UNSPECIFIED",
+                "PUBLIC",
+                "SOCIAL",
+                "FRIENDS"
+              ],
               "enumDescriptions": [
                 "Default value. This value is unused.",
                 "List all scores in the public leaderboard.",
@@ -991,14 +972,8 @@
                 "List only scores of friends."
               ],
               "location": "path",
-              "enum": [
-                "SCORE_COLLECTION_UNSPECIFIED",
-                "PUBLIC",
-                "SOCIAL",
-                "FRIENDS"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "language": {
               "description": "The preferred language to use for strings returned by this method.",
@@ -1008,8 +983,8 @@
             "leaderboardId": {
               "description": "The ID of the leaderboard.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`.",
@@ -1035,6 +1010,12 @@
             },
             "timeSpan": {
               "description": "The time span for the scores and ranks you're requesting.",
+              "enum": [
+                "SCORE_TIME_SPAN_UNSPECIFIED",
+                "ALL_TIME",
+                "WEEKLY",
+                "DAILY"
+              ],
               "enumDescriptions": [
                 "Default value. This value is unused.",
                 "The score is an all-time score.",
@@ -1042,14 +1023,8 @@
                 "The score is a daily score."
               ],
               "location": "query",
-              "enum": [
-                "SCORE_TIME_SPAN_UNSPECIFIED",
-                "ALL_TIME",
-                "WEEKLY",
-                "DAILY"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/leaderboards/{leaderboardId}/window/{collection}",
@@ -1063,7 +1038,6 @@
         "submit": {
           "description": "Submits a score to the specified leaderboard.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/leaderboards/{leaderboardId}/scores",
           "id": "games.scores.submit",
           "parameterOrder": [
             "leaderboardId",
@@ -1078,15 +1052,15 @@
             "leaderboardId": {
               "description": "The ID of the leaderboard.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "score": {
               "description": "The score you're submitting. The submitted score is ignored if it is worse than a previously submitted score, where worse depends on the leaderboard sort order. The meaning of the score value depends on the leaderboard format type. For fixed-point, the score represents the raw value. For time, the score represents elapsed time in milliseconds. For currency, the score represents a value in micro units.",
               "format": "int64",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "scoreTag": {
               "description": "Additional information about the score you're submitting. Values must contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986.",
@@ -1106,7 +1080,6 @@
         "submitMultiple": {
           "description": "Submits multiple scores to leaderboards.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/leaderboards/scores",
           "id": "games.scores.submitMultiple",
           "parameterOrder": [],
           "parameters": {
@@ -1134,7 +1107,6 @@
         "get": {
           "description": "Retrieves the metadata for a given snapshot ID.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/snapshots/{snapshotId}",
           "id": "games.snapshots.get",
           "parameterOrder": [
             "snapshotId"
@@ -1148,8 +1120,8 @@
             "snapshotId": {
               "description": "The ID of the snapshot.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/snapshots/{snapshotId}",
@@ -1164,7 +1136,6 @@
         "list": {
           "description": "Retrieves a list of snapshots created by your application for the player corresponding to the player ID.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/players/{playerId}/snapshots",
           "id": "games.snapshots.list",
           "parameterOrder": [
             "playerId"
@@ -1189,8 +1160,8 @@
             "playerId": {
               "description": "A player ID. A value of `me` may be used in place of the authenticated player's ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/players/{playerId}/snapshots",
@@ -1209,7 +1180,6 @@
         "resolveSnapshotHead": {
           "description": "Resolves any potential conflicts according to the resolution policy specified in the request and returns the snapshot head after the resolution.",
           "httpMethod": "POST",
-          "flatPath": "games/v1/snapshotsExtended/{snapshotName}:resolveHead",
           "id": "games.snapshotsExtended.resolveSnapshotHead",
           "parameterOrder": [
             "snapshotName"
@@ -1218,8 +1188,8 @@
             "snapshotName": {
               "description": "Required. Name of the snapshot.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1/snapshotsExtended/{snapshotName}:resolveHead",
@@ -1241,7 +1211,6 @@
         "get": {
           "description": "Returns engagement and spend statistics in this application for the currently authenticated user.",
           "httpMethod": "GET",
-          "flatPath": "games/v1/stats",
           "id": "games.stats.get",
           "parameterOrder": [],
           "parameters": {},
@@ -1265,15 +1234,15 @@
       "properties": {
         "achievementType": {
           "description": "The type of the achievement.",
-          "enumDescriptions": [
-            "Safe default, don't use.",
-            "Achievement is either locked or unlocked.",
-            "Achievement is incremental."
-          ],
           "enum": [
             "ACHIEVEMENT_TYPE_UNSPECIFIED",
             "STANDARD",
             "INCREMENTAL"
+          ],
+          "enumDescriptions": [
+            "Safe default, don't use.",
+            "Achievement is either locked or unlocked.",
+            "Achievement is incremental."
           ],
           "type": "string"
         },
@@ -1296,17 +1265,17 @@
         },
         "initialState": {
           "description": "The initial state of the achievement.",
-          "enumDescriptions": [
-            "Safe default, don't use.",
-            "Achievement is hidden.",
-            "Achievement is revealed.",
-            "Achievement is unlocked."
-          ],
           "enum": [
             "INITIAL_ACHIEVEMENT_STATE_UNSPECIFIED",
             "HIDDEN",
             "REVEALED",
             "UNLOCKED"
+          ],
+          "enumDescriptions": [
+            "Safe default, don't use.",
+            "Achievement is hidden.",
+            "Achievement is revealed.",
+            "Achievement is unlocked."
           ],
           "type": "string"
         },
@@ -1390,15 +1359,15 @@
       "properties": {
         "currentState": {
           "description": "The current state of the achievement for which a reveal was attempted. This might be `UNLOCKED` if the achievement was already unlocked.",
-          "enumDescriptions": [
-            "Safe default, don't use.",
-            "Achievement is revealed.",
-            "Achievement is unlocked."
-          ],
           "enum": [
             "REVEAL_ACHIEVEMENT_STATE_UNSPECIFIED",
             "REVEALED",
             "UNLOCKED"
+          ],
+          "enumDescriptions": [
+            "Safe default, don't use.",
+            "Achievement is revealed.",
+            "Achievement is unlocked."
           ],
           "type": "string"
         },
@@ -1489,32 +1458,32 @@
           "type": "string"
         },
         "incrementPayload": {
-          "description": "The payload if an update of type `INCREMENT` was requested for the achievement.",
-          "$ref": "GamesAchievementIncrement"
+          "$ref": "GamesAchievementIncrement",
+          "description": "The payload if an update of type `INCREMENT` was requested for the achievement."
         },
         "kind": {
           "description": "Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUpdateRequest`.",
           "type": "string"
         },
         "setStepsAtLeastPayload": {
-          "description": "The payload if an update of type `SET_STEPS_AT_LEAST` was requested for the achievement.",
-          "$ref": "GamesAchievementSetStepsAtLeast"
+          "$ref": "GamesAchievementSetStepsAtLeast",
+          "description": "The payload if an update of type `SET_STEPS_AT_LEAST` was requested for the achievement."
         },
         "updateType": {
           "description": "The type of update being applied.",
-          "enumDescriptions": [
-            "Safe default, don't use.",
-            "Achievement is revealed.",
-            "Achievement is unlocked.",
-            "Achievement is incremented.",
-            "Achievement progress is set to at least the passed value."
-          ],
           "enum": [
             "ACHIEVEMENT_UPDATE_TYPE_UNSPECIFIED",
             "REVEAL",
             "UNLOCK",
             "INCREMENT",
             "SET_STEPS_AT_LEAST"
+          ],
+          "enumDescriptions": [
+            "Safe default, don't use.",
+            "Achievement is revealed.",
+            "Achievement is unlocked.",
+            "Achievement is incremented.",
+            "Achievement progress is set to at least the passed value."
           ],
           "type": "string"
         }
@@ -1531,17 +1500,17 @@
         },
         "currentState": {
           "description": "The current state of the achievement.",
-          "enumDescriptions": [
-            "Safe default, don't use.",
-            "Achievement is hidden.",
-            "Achievement is revealed.",
-            "Achievement is unlocked."
-          ],
           "enum": [
             "UPDATED_ACHIEVEMENT_STATE_UNSPECIFIED",
             "HIDDEN",
             "REVEALED",
             "UNLOCKED"
+          ],
+          "enumDescriptions": [
+            "Safe default, don't use.",
+            "Achievement is hidden.",
+            "Achievement is revealed.",
+            "Achievement is unlocked."
           ],
           "type": "string"
         },
@@ -1586,8 +1555,8 @@
           "type": "string"
         },
         "category": {
-          "description": "The category of the application.",
-          "$ref": "ApplicationCategory"
+          "$ref": "ApplicationCategory",
+          "description": "The category of the application."
         },
         "description": {
           "description": "The description of the application.",
@@ -1596,13 +1565,13 @@
         "enabledFeatures": {
           "description": "A list of features that have been enabled for the application.",
           "items": {
-            "enumDescriptions": [
-              "Safe default, don't use.",
-              "Saved Games (snapshots)."
-            ],
             "enum": [
               "APPLICATION_FEATURE_UNSPECIFIED",
               "SNAPSHOTS"
+            ],
+            "enumDescriptions": [
+              "Safe default, don't use.",
+              "Saved Games (snapshots)."
             ],
             "type": "string"
           },
@@ -1741,15 +1710,6 @@
       "properties": {
         "failureCause": {
           "description": "The cause for the update failure.",
-          "enumDescriptions": [
-            "Default value. Should not be used.",
-            "A batch request was issued with more events than are allowed in a single batch.",
-            "A batch was sent with data too far in the past to record.",
-            "A batch was sent with a time range that was too short.",
-            "A batch was sent with a time range that was too long.",
-            "An attempt was made to record a batch of data which was already seen.",
-            "An attempt was made to record data faster than the server will apply updates."
-          ],
           "enum": [
             "EVENT_FAILURE_CAUSE_UNSPECIFIED",
             "TOO_LARGE",
@@ -1759,6 +1719,15 @@
             "ALREADY_UPDATED",
             "RECORD_RATE_HIGH"
           ],
+          "enumDescriptions": [
+            "Default value. Should not be used.",
+            "A batch request was issued with more events than are allowed in a single batch.",
+            "A batch was sent with data too far in the past to record.",
+            "A batch was sent with a time range that was too short.",
+            "A batch was sent with a time range that was too long.",
+            "An attempt was made to record a batch of data which was already seen.",
+            "An attempt was made to record data faster than the server will apply updates."
+          ],
           "type": "string"
         },
         "kind": {
@@ -1766,8 +1735,8 @@
           "type": "string"
         },
         "range": {
-          "description": "The time range which was rejected; empty for a request-wide failure.",
-          "$ref": "EventPeriodRange"
+          "$ref": "EventPeriodRange",
+          "description": "The time range which was rejected; empty for a request-wide failure."
         }
       },
       "type": "object"
@@ -1824,15 +1793,15 @@
         },
         "visibility": {
           "description": "The visibility of event being tracked in this definition.",
-          "enumDescriptions": [
-            "Default value. Should not be used.",
-            "This event should be visible to all users.",
-            "This event should only be shown to users that have recorded this event at least once."
-          ],
           "enum": [
             "EVENT_VISIBILITY_UNSPECIFIED",
             "REVEALED",
             "HIDDEN"
+          ],
+          "enumDescriptions": [
+            "Default value. Should not be used.",
+            "This event should be visible to all users.",
+            "This event should only be shown to users that have recorded this event at least once."
           ],
           "type": "string"
         }
@@ -1891,8 +1860,8 @@
           "type": "string"
         },
         "timePeriod": {
-          "description": "The time period being covered by this update.",
-          "$ref": "EventPeriodRange"
+          "$ref": "EventPeriodRange",
+          "description": "The time period being covered by this update."
         },
         "updates": {
           "description": "The updates being made for this time period.",
@@ -1914,15 +1883,15 @@
         },
         "failureCause": {
           "description": "The cause for the update failure.",
-          "enumDescriptions": [
-            "Default value. Should not use.",
-            "An attempt was made to set an event that was not defined.",
-            "An attempt was made to increment an event by a non-positive value."
-          ],
           "enum": [
             "EVENT_UPDATE_FAILURE_CAUSE_UNSPECIFIED",
             "NOT_FOUND",
             "INVALID_UPDATE_VALUE"
+          ],
+          "enumDescriptions": [
+            "Default value. Should not use.",
+            "An attempt was made to set an event that was not defined.",
+            "An attempt was made to increment an event by a non-positive value."
           ],
           "type": "string"
         },
@@ -2088,12 +2057,12 @@
           "type": "string"
         },
         "androidInstance": {
-          "description": "Platform dependent details for Android.",
-          "$ref": "InstanceAndroidDetails"
+          "$ref": "InstanceAndroidDetails",
+          "description": "Platform dependent details for Android."
         },
         "iosInstance": {
-          "description": "Platform dependent details for iOS.",
-          "$ref": "InstanceIosDetails"
+          "$ref": "InstanceIosDetails",
+          "description": "Platform dependent details for iOS."
         },
         "kind": {
           "description": "Uniquely identifies the type of this resource. Value is always the fixed string `games#instance`.",
@@ -2105,17 +2074,17 @@
         },
         "platformType": {
           "description": "The platform type.",
-          "enumDescriptions": [
-            "Default value. Should be unused.",
-            "Instance is for Android.",
-            "Instance is for iOS.",
-            "Instance is for Web App."
-          ],
           "enum": [
             "PLATFORM_TYPE_UNSPECIFIED",
             "ANDROID",
             "IOS",
             "WEB_APP"
+          ],
+          "enumDescriptions": [
+            "Default value. Should be unused.",
+            "Instance is for Android.",
+            "Instance is for iOS.",
+            "Instance is for Web App."
           ],
           "type": "string"
         },
@@ -2128,8 +2097,8 @@
           "type": "boolean"
         },
         "webInstance": {
-          "description": "Platform dependent details for Web.",
-          "$ref": "InstanceWebDetails"
+          "$ref": "InstanceWebDetails",
+          "description": "Platform dependent details for Web."
         }
       },
       "type": "object"
@@ -2237,15 +2206,15 @@
         },
         "order": {
           "description": "How scores are ordered.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "Larger values are better; scores are sorted in descending order",
-            "Smaller values are better; scores are sorted in ascending order"
-          ],
           "enum": [
             "SCORE_ORDER_UNSPECIFIED",
             "LARGER_IS_BETTER",
             "SMALLER_IS_BETTER"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "Larger values are better; scores are sorted in descending order",
+            "Smaller values are better; scores are sorted in ascending order"
           ],
           "type": "string"
         }
@@ -2269,8 +2238,8 @@
           "type": "string"
         },
         "player": {
-          "description": "The player who holds this score.",
-          "$ref": "Player"
+          "$ref": "Player",
+          "description": "The player who holds this score."
         },
         "scoreRank": {
           "description": "The rank of this score for this leaderboard.",
@@ -2288,17 +2257,17 @@
         },
         "timeSpan": {
           "description": "The time span of this high score.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The score is an all-time score.",
-            "The score is a weekly score.",
-            "The score is a daily score."
-          ],
           "enum": [
             "SCORE_TIME_SPAN_UNSPECIFIED",
             "ALL_TIME",
             "WEEKLY",
             "DAILY"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The score is an all-time score.",
+            "The score is a weekly score.",
+            "The score is a daily score."
           ],
           "type": "string"
         },
@@ -2386,8 +2355,8 @@
           "type": "string"
         },
         "playerScore": {
-          "description": "The score of the requesting player on the leaderboard. The player's score may appear both here and in the list of scores above. If you are viewing a public leaderboard and the player is not sharing their gameplay information publicly, the `scoreRank`and `formattedScoreRank` values will not be present.",
-          "$ref": "LeaderboardEntry"
+          "$ref": "LeaderboardEntry",
+          "description": "The score of the requesting player on the leaderboard. The player's score may appear both here and in the list of scores above. If you are viewing a public leaderboard and the player is not sharing their gameplay information publicly, the `scoreRank`and `formattedScoreRank` values will not be present."
         },
         "prevPageToken": {
           "description": "The pagination token for the previous page of results.",
@@ -2440,20 +2409,20 @@
           "type": "string"
         },
         "experienceInfo": {
-          "description": "An object to represent Play Game experience information for the player.",
-          "$ref": "PlayerExperienceInfo"
+          "$ref": "PlayerExperienceInfo",
+          "description": "An object to represent Play Game experience information for the player."
         },
         "friendStatus": {
           "description": "The friend status of the given player, relative to the requester. This is unset if the player is not sharing their friends list with the game.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "There is no relationship between the players.",
-            "The player and requester are friends."
-          ],
           "enum": [
             "FRIEND_STATUS_UNSPECIFIED",
             "NO_RELATIONSHIP",
             "FRIEND"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "There is no relationship between the players.",
+            "The player and requester are friends."
           ],
           "type": "string"
         },
@@ -2484,8 +2453,8 @@
           "type": "string"
         },
         "profileSettings": {
-          "description": "The player's profile settings. Controls whether or not the player's profile is visible to other players.",
-          "$ref": "ProfileSettings"
+          "$ref": "ProfileSettings",
+          "description": "The player's profile settings. Controls whether or not the player's profile is visible to other players."
         },
         "title": {
           "description": "The player's title rewarded for their game activities.",
@@ -2500,17 +2469,17 @@
       "properties": {
         "achievementState": {
           "description": "The state of the achievement.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "Achievement is hidden.",
-            "Achievement is revealed.",
-            "Achievement is unlocked."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "HIDDEN",
             "REVEALED",
             "UNLOCKED"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "Achievement is hidden.",
+            "Achievement is revealed.",
+            "Achievement is unlocked."
           ],
           "type": "string"
         },
@@ -2626,8 +2595,8 @@
           "type": "string"
         },
         "currentLevel": {
-          "description": "The current level of the player.",
-          "$ref": "PlayerLevel"
+          "$ref": "PlayerLevel",
+          "description": "The current level of the player."
         },
         "kind": {
           "description": "Uniquely identifies the type of this resource. Value is always the fixed string `games#playerExperienceInfo`.",
@@ -2639,8 +2608,8 @@
           "type": "string"
         },
         "nextLevel": {
-          "description": "The next level of the player. If the current level is the maximum level, this should be same as the current level.",
-          "$ref": "PlayerLevel"
+          "$ref": "PlayerLevel",
+          "description": "The next level of the player. If the current level is the maximum level, this should be same as the current level."
         }
       },
       "type": "object"
@@ -2650,8 +2619,8 @@
       "id": "PlayerLeaderboardScore",
       "properties": {
         "friendsRank": {
-          "description": "The rank of the score in the friends collection for this leaderboard.",
-          "$ref": "LeaderboardScoreRank"
+          "$ref": "LeaderboardScoreRank",
+          "description": "The rank of the score in the friends collection for this leaderboard."
         },
         "kind": {
           "description": "Uniquely identifies the type of this resource. Value is always the fixed string `games#playerLeaderboardScore`.",
@@ -2662,8 +2631,8 @@
           "type": "string"
         },
         "publicRank": {
-          "description": "The public rank of the score in this leaderboard. This object will not be present if the user is not sharing their scores publicly.",
-          "$ref": "LeaderboardScoreRank"
+          "$ref": "LeaderboardScoreRank",
+          "description": "The public rank of the score in this leaderboard. This object will not be present if the user is not sharing their scores publicly."
         },
         "scoreString": {
           "description": "The formatted value of this score.",
@@ -2679,22 +2648,22 @@
           "type": "string"
         },
         "socialRank": {
-          "description": "The social rank of the score in this leaderboard.",
-          "$ref": "LeaderboardScoreRank"
+          "$ref": "LeaderboardScoreRank",
+          "description": "The social rank of the score in this leaderboard."
         },
         "timeSpan": {
           "description": "The time span of this score.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The score is an all-time score.",
-            "The score is a weekly score.",
-            "The score is a daily score."
-          ],
           "enum": [
             "SCORE_TIME_SPAN_UNSPECIFIED",
             "ALL_TIME",
             "WEEKLY",
             "DAILY"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The score is an all-time score.",
+            "The score is a weekly score.",
+            "The score is a daily score."
           ],
           "type": "string"
         },
@@ -2726,8 +2695,8 @@
           "type": "string"
         },
         "player": {
-          "description": "The Player resources for the owner of this score.",
-          "$ref": "Player"
+          "$ref": "Player",
+          "description": "The Player resources for the owner of this score."
         }
       },
       "type": "object"
@@ -2803,17 +2772,17 @@
         },
         "timeSpan": {
           "description": "The time span for this player score.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The score is an all-time score.",
-            "The score is a weekly score.",
-            "The score is a daily score."
-          ],
           "enum": [
             "SCORE_TIME_SPAN_UNSPECIFIED",
             "ALL_TIME",
             "WEEKLY",
             "DAILY"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The score is an all-time score.",
+            "The score is a weekly score.",
+            "The score is a daily score."
           ],
           "type": "string"
         }
@@ -2845,17 +2814,17 @@
         "beatenScoreTimeSpans": {
           "description": "The time spans where the submitted score is better than the existing score for that time span.",
           "items": {
-            "enumDescriptions": [
-              "Default value. This value is unused.",
-              "The score is an all-time score.",
-              "The score is a weekly score.",
-              "The score is a daily score."
-            ],
             "enum": [
               "SCORE_TIME_SPAN_UNSPECIFIED",
               "ALL_TIME",
               "WEEKLY",
               "DAILY"
+            ],
+            "enumDescriptions": [
+              "Default value. This value is unused.",
+              "The score is an all-time score.",
+              "The score is a weekly score.",
+              "The score is a daily score."
             ],
             "type": "string"
           },
@@ -2910,17 +2879,17 @@
       "id": "ProfileSettings",
       "properties": {
         "friendsListVisibility": {
-          "enumDescriptions": [
-            "Unused.",
-            "The friends list is currently visible to the game.",
-            "The developer does not have access to the friends list, but can call the Android API to show a consent dialog.",
-            "The friends list is currently unavailable for this user, and it is not possible to request access at this time, either because the user has permanently declined or the friends feature is not available to them. In this state, any attempts to request access to the friends list will be unsuccessful."
-          ],
           "enum": [
             "FRIENDS_LIST_VISIBILITY_UNSPECIFIED",
             "VISIBLE",
             "REQUEST_REQUIRED",
             "UNAVAILABLE"
+          ],
+          "enumDescriptions": [
+            "Unused.",
+            "The friends list is currently visible to the game.",
+            "The developer does not have access to the friends list, but can call the Android API to show a consent dialog.",
+            "The friends list is currently unavailable for this user, and it is not possible to request access at this time, either because the user has permanently declined or the friends feature is not available to them. In this state, any attempts to request access to the friends list will be unsuccessful."
           ],
           "type": "string"
         },
@@ -2946,14 +2915,6 @@
         },
         "resolutionPolicy": {
           "description": "Required. The automatic resolution policy. All conflicts are resolved in chronological order, starting from the/ least recent. If the comparison metric is equal for the tentative head and the conflict, the head wins.",
-          "enumDescriptions": [
-            "Safe default, don't use explicitly.",
-            "Drops all conflicts and keeps the current head only.",
-            "Use the snapshot with the longest played time.",
-            "Use the snapshot that was most recently modified.",
-            "Use the snapshot with the highest progress value.",
-            "Don't resolve conflicts at all. Effectively only returns the current head revision of the snapshot. Corresponds to a game opening the snapshot with manual resolution policy."
-          ],
           "enum": [
             "RESOLUTION_POLICY_UNSPECIFIED",
             "USE_HEAD",
@@ -2961,6 +2922,14 @@
             "MOST_RECENTLY_MODIFIED",
             "HIGHEST_PROGRESS",
             "NO_AUTOMATIC_RESOLUTION"
+          ],
+          "enumDescriptions": [
+            "Safe default, don't use explicitly.",
+            "Drops all conflicts and keeps the current head only.",
+            "Use the snapshot with the longest played time.",
+            "Use the snapshot that was most recently modified.",
+            "Use the snapshot with the highest progress value.",
+            "Don't resolve conflicts at all. Effectively only returns the current head revision of the snapshot. Corresponds to a game opening the snapshot with manual resolution policy."
           ],
           "type": "string"
         }
@@ -2972,8 +2941,8 @@
       "id": "ResolveSnapshotHeadResponse",
       "properties": {
         "snapshot": {
-          "description": "The state of the snapshot.",
-          "$ref": "SnapshotExtended"
+          "$ref": "SnapshotExtended",
+          "description": "The state of the snapshot."
         }
       },
       "type": "object"
@@ -2992,17 +2961,17 @@
         },
         "revisionStatus": {
           "description": "The result of the revision check.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The revision being used is current.",
-            "There is currently a newer version available, but the revision being used still works.",
-            "The revision being used is not supported in any released version."
-          ],
           "enum": [
             "REVISION_STATUS_UNSPECIFIED",
             "OK",
             "DEPRECATED",
             "INVALID"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The revision being used is current.",
+            "There is currently a newer version available, but the revision being used still works.",
+            "The revision being used is not supported in any released version."
           ],
           "type": "string"
         }
@@ -3042,8 +3011,8 @@
       "id": "Snapshot",
       "properties": {
         "coverImage": {
-          "description": "The cover image of this snapshot. May be absent if there is no image.",
-          "$ref": "SnapshotImage"
+          "$ref": "SnapshotImage",
+          "description": "The cover image of this snapshot. May be absent if there is no image."
         },
         "description": {
           "description": "The description of this snapshot.",
@@ -3082,13 +3051,13 @@
         },
         "type": {
           "description": "The type of this snapshot.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "A snapshot representing a save game."
-          ],
           "enum": [
             "SNAPSHOT_TYPE_UNSPECIFIED",
             "SAVE_GAME"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "A snapshot representing a save game."
           ],
           "type": "string"
         },
@@ -3105,13 +3074,13 @@
       "properties": {
         "contentHash": {
           "description": "Output only. Hash-like weak identifier of the uploaded image bytes, consistent per player per application. The content hash for a given resource will not change if the binary data hasn't changed. Except in very rare circumstances, the content_hash for matching binary data will be the same within a given player and application.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "downloadUrl": {
           "description": "Output only. A URL the client can use to download the image. May vary across requests, and only guaranteed to be valid for a short time after it is returned.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "height": {
           "description": "The height of the image in pixels.",
@@ -3120,8 +3089,8 @@
         },
         "mimeType": {
           "description": "Output only. The MIME type of the image.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "resourceId": {
           "description": "The ID of the image resource. It's guaranteed that if two IDs are equal then the contents are equal as well. It's not guaranteed that two identical blobs coming from separate uploads have the same ID. The resource ID can only be used within the application, user and resource type it was originally returned for. For example, it's not possible to use SnapshotDataResource's resource ID as the resource_id of a SnapshotCoverImageResource, even if the blob is a valid image file.",
@@ -3141,13 +3110,13 @@
       "properties": {
         "contentHash": {
           "description": "Output only. Hash-like weak identifier of the uploaded blob bytes, consistent per player per application. The content hash for a given resource will not change if the binary data hasn't changed. Except in very rare circumstances, the content_hash for matching binary data will be the same within a given player and application.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "downloadUrl": {
           "description": "Output only. A URL that the client can use to download the blob. May vary across requests, and only guaranteed to be valid for a short time after it is returned.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "resourceId": {
           "description": "The ID of the blob resource. It's guaranteed that if two IDs are equal then the contents are equal as well. It's not guaranteed that two identical blobs coming from separate uploads have the same resource ID. The resource ID can only be used within the application, user and resource type it was originally returned for. For example, it's not possible to use SnapshotDataResource's resource ID as the resource_id of a SnapshotCoverImageResource, even if the blob is a valid image file.",
@@ -3156,8 +3125,8 @@
         "size": {
           "description": "Output only. Size of the saved game blob in bytes.",
           "format": "int64",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -3178,8 +3147,8 @@
           "type": "boolean"
         },
         "headRevision": {
-          "description": "The current head revision (the canonical revision as understood by the server).",
-          "$ref": "SnapshotRevision"
+          "$ref": "SnapshotRevision",
+          "description": "The current head revision (the canonical revision as understood by the server)."
         },
         "snapshotName": {
           "description": "An identifier of the snapshot, developer-specified. It must match the pattern [0-9a-zA-Z-._~]{1,100}.",
@@ -3274,21 +3243,21 @@
       "id": "SnapshotRevision",
       "properties": {
         "blob": {
-          "description": "Reference to the game provided blob for this revision.",
-          "$ref": "SnapshotDataResource"
+          "$ref": "SnapshotDataResource",
+          "description": "Reference to the game provided blob for this revision."
         },
         "coverImage": {
-          "description": "Reference to the cover image for this revision.",
-          "$ref": "SnapshotCoverImageResource"
+          "$ref": "SnapshotCoverImageResource",
+          "description": "Reference to the cover image for this revision."
         },
         "id": {
           "description": "Output only. A server generated identifier of the snapshot revision.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "metadata": {
-          "description": "Metadata for this snapshot revision.",
-          "$ref": "SnapshotMetadata"
+          "$ref": "SnapshotMetadata",
+          "description": "Metadata for this snapshot revision."
         }
       },
       "type": "object"

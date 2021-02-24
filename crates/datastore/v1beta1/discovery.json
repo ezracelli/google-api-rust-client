@@ -23,22 +23,21 @@
   },
   "id": "datastore:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://datastore.mtls.googleapis.com/",
   "name": "datastore",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -49,17 +48,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -111,7 +110,6 @@
         "export": {
           "description": "Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1/projects/{projectId}:export",
           "id": "datastore.projects.export",
           "parameterOrder": [
             "projectId"
@@ -120,8 +118,8 @@
             "projectId": {
               "description": "Project ID against which to make the request.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/projects/{projectId}:export",
@@ -139,7 +137,6 @@
         "import": {
           "description": "Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportEntities operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Datastore.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1/projects/{projectId}:import",
           "id": "datastore.projects.import",
           "parameterOrder": [
             "projectId"
@@ -148,8 +145,8 @@
             "projectId": {
               "description": "Project ID against which to make the request.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/projects/{projectId}:import",
@@ -188,19 +185,19 @@
         },
         "operationType": {
           "description": "The type of the operation. Can be used as a filter in ListOperationsRequest.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "ExportEntities.",
-            "ImportEntities.",
-            "CreateIndex.",
-            "DeleteIndex."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "EXPORT_ENTITIES",
             "IMPORT_ENTITIES",
             "CREATE_INDEX",
             "DELETE_INDEX"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "ExportEntities.",
+            "ImportEntities.",
+            "CreateIndex.",
+            "DeleteIndex."
           ],
           "type": "string"
         },
@@ -211,16 +208,6 @@
         },
         "state": {
           "description": "The current state of the Operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -230,6 +217,16 @@
             "SUCCESSFUL",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
           ],
           "type": "string"
         }
@@ -262,24 +259,24 @@
       "id": "GoogleDatastoreAdminV1ExportEntitiesMetadata",
       "properties": {
         "common": {
-          "description": "Metadata common to all Datastore Admin operations.",
-          "$ref": "GoogleDatastoreAdminV1CommonMetadata"
+          "$ref": "GoogleDatastoreAdminV1CommonMetadata",
+          "description": "Metadata common to all Datastore Admin operations."
         },
         "entityFilter": {
-          "description": "Description of which entities are being exported.",
-          "$ref": "GoogleDatastoreAdminV1EntityFilter"
+          "$ref": "GoogleDatastoreAdminV1EntityFilter",
+          "description": "Description of which entities are being exported."
         },
         "outputUrlPrefix": {
           "description": "Location for the export metadata and data files. This will be the same value as the google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field. The final output location is provided in google.datastore.admin.v1.ExportEntitiesResponse.output_url.",
           "type": "string"
         },
         "progressBytes": {
-          "description": "An estimate of the number of bytes processed.",
-          "$ref": "GoogleDatastoreAdminV1Progress"
+          "$ref": "GoogleDatastoreAdminV1Progress",
+          "description": "An estimate of the number of bytes processed."
         },
         "progressEntities": {
-          "description": "An estimate of the number of entities processed.",
-          "$ref": "GoogleDatastoreAdminV1Progress"
+          "$ref": "GoogleDatastoreAdminV1Progress",
+          "description": "An estimate of the number of entities processed."
         }
       },
       "type": "object"
@@ -300,24 +297,24 @@
       "id": "GoogleDatastoreAdminV1ImportEntitiesMetadata",
       "properties": {
         "common": {
-          "description": "Metadata common to all Datastore Admin operations.",
-          "$ref": "GoogleDatastoreAdminV1CommonMetadata"
+          "$ref": "GoogleDatastoreAdminV1CommonMetadata",
+          "description": "Metadata common to all Datastore Admin operations."
         },
         "entityFilter": {
-          "description": "Description of which entities are being imported.",
-          "$ref": "GoogleDatastoreAdminV1EntityFilter"
+          "$ref": "GoogleDatastoreAdminV1EntityFilter",
+          "description": "Description of which entities are being imported."
         },
         "inputUrl": {
           "description": "The location of the import metadata file. This will be the same value as the google.datastore.admin.v1.ExportEntitiesResponse.output_url field.",
           "type": "string"
         },
         "progressBytes": {
-          "description": "An estimate of the number of bytes processed.",
-          "$ref": "GoogleDatastoreAdminV1Progress"
+          "$ref": "GoogleDatastoreAdminV1Progress",
+          "description": "An estimate of the number of bytes processed."
         },
         "progressEntities": {
-          "description": "An estimate of the number of entities processed.",
-          "$ref": "GoogleDatastoreAdminV1Progress"
+          "$ref": "GoogleDatastoreAdminV1Progress",
+          "description": "An estimate of the number of entities processed."
         }
       },
       "type": "object"
@@ -327,16 +324,16 @@
       "id": "GoogleDatastoreAdminV1IndexOperationMetadata",
       "properties": {
         "common": {
-          "description": "Metadata common to all Datastore Admin operations.",
-          "$ref": "GoogleDatastoreAdminV1CommonMetadata"
+          "$ref": "GoogleDatastoreAdminV1CommonMetadata",
+          "description": "Metadata common to all Datastore Admin operations."
         },
         "indexId": {
           "description": "The index resource ID that this operation is acting on.",
           "type": "string"
         },
         "progressEntities": {
-          "description": "An estimate of the number of entities processed.",
-          "$ref": "GoogleDatastoreAdminV1Progress"
+          "$ref": "GoogleDatastoreAdminV1Progress",
+          "description": "An estimate of the number of entities processed."
         }
       },
       "type": "object"
@@ -376,15 +373,15 @@
         },
         "operationType": {
           "description": "The type of the operation. Can be used as a filter in ListOperationsRequest.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "ExportEntities.",
-            "ImportEntities."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "EXPORT_ENTITIES",
             "IMPORT_ENTITIES"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "ExportEntities.",
+            "ImportEntities."
           ],
           "type": "string"
         },
@@ -395,16 +392,6 @@
         },
         "state": {
           "description": "The current state of the Operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -414,6 +401,16 @@
             "SUCCESSFUL",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
           ],
           "type": "string"
         }
@@ -446,24 +443,24 @@
       "id": "GoogleDatastoreAdminV1beta1ExportEntitiesMetadata",
       "properties": {
         "common": {
-          "description": "Metadata common to all Datastore Admin operations.",
-          "$ref": "GoogleDatastoreAdminV1beta1CommonMetadata"
+          "$ref": "GoogleDatastoreAdminV1beta1CommonMetadata",
+          "description": "Metadata common to all Datastore Admin operations."
         },
         "entityFilter": {
-          "description": "Description of which entities are being exported.",
-          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter"
+          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter",
+          "description": "Description of which entities are being exported."
         },
         "outputUrlPrefix": {
           "description": "Location for the export metadata and data files. This will be the same value as the google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix field. The final output location is provided in google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.",
           "type": "string"
         },
         "progressBytes": {
-          "description": "An estimate of the number of bytes processed.",
-          "$ref": "GoogleDatastoreAdminV1beta1Progress"
+          "$ref": "GoogleDatastoreAdminV1beta1Progress",
+          "description": "An estimate of the number of bytes processed."
         },
         "progressEntities": {
-          "description": "An estimate of the number of entities processed.",
-          "$ref": "GoogleDatastoreAdminV1beta1Progress"
+          "$ref": "GoogleDatastoreAdminV1beta1Progress",
+          "description": "An estimate of the number of entities processed."
         }
       },
       "type": "object"
@@ -473,8 +470,8 @@
       "id": "GoogleDatastoreAdminV1beta1ExportEntitiesRequest",
       "properties": {
         "entityFilter": {
-          "description": "Description of what data from the project is included in the export.",
-          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter"
+          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter",
+          "description": "Description of what data from the project is included in the export."
         },
         "labels": {
           "additionalProperties": {
@@ -506,24 +503,24 @@
       "id": "GoogleDatastoreAdminV1beta1ImportEntitiesMetadata",
       "properties": {
         "common": {
-          "description": "Metadata common to all Datastore Admin operations.",
-          "$ref": "GoogleDatastoreAdminV1beta1CommonMetadata"
+          "$ref": "GoogleDatastoreAdminV1beta1CommonMetadata",
+          "description": "Metadata common to all Datastore Admin operations."
         },
         "entityFilter": {
-          "description": "Description of which entities are being imported.",
-          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter"
+          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter",
+          "description": "Description of which entities are being imported."
         },
         "inputUrl": {
           "description": "The location of the import metadata file. This will be the same value as the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field.",
           "type": "string"
         },
         "progressBytes": {
-          "description": "An estimate of the number of bytes processed.",
-          "$ref": "GoogleDatastoreAdminV1beta1Progress"
+          "$ref": "GoogleDatastoreAdminV1beta1Progress",
+          "description": "An estimate of the number of bytes processed."
         },
         "progressEntities": {
-          "description": "An estimate of the number of entities processed.",
-          "$ref": "GoogleDatastoreAdminV1beta1Progress"
+          "$ref": "GoogleDatastoreAdminV1beta1Progress",
+          "description": "An estimate of the number of entities processed."
         }
       },
       "type": "object"
@@ -533,8 +530,8 @@
       "id": "GoogleDatastoreAdminV1beta1ImportEntitiesRequest",
       "properties": {
         "entityFilter": {
-          "description": "Optionally specify which kinds/namespaces are to be imported. If provided, the list must be a subset of the EntityFilter used in creating the export, otherwise a FAILED_PRECONDITION error will be returned. If no filter is specified then all entities from the export are imported.",
-          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter"
+          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter",
+          "description": "Optionally specify which kinds/namespaces are to be imported. If provided, the list must be a subset of the EntityFilter used in creating the export, otherwise a FAILED_PRECONDITION error will be returned. If no filter is specified then all entities from the export are imported."
         },
         "inputUrl": {
           "description": "The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So input_url should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the ExportEntities operation. For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations). For more information, see google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.",
@@ -576,8 +573,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -632,6 +629,6 @@
   },
   "servicePath": "",
   "title": "Cloud Datastore API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

@@ -15,29 +15,27 @@
   "description": "TPU API provides customers with access to Google TPU technology.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/tpu/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "tpu:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://tpu.mtls.googleapis.com/",
   "name": "tpu",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
               "id": "tpu.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations",
               "id": "tpu.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -152,8 +148,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -182,7 +178,6 @@
                 "get": {
                   "description": "Gets AcceleratorType.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/acceleratorTypes/{acceleratorTypesId}",
                   "id": "tpu.projects.locations.acceleratorTypes.get",
                   "parameterOrder": [
                     "name"
@@ -192,8 +187,8 @@
                       "description": "Required. The resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/acceleratorTypes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -207,7 +202,6 @@
                 "list": {
                   "description": "Lists accelerator types supported by this API.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/acceleratorTypes",
                   "id": "tpu.projects.locations.acceleratorTypes.list",
                   "parameterOrder": [
                     "parent"
@@ -238,8 +232,8 @@
                       "description": "Required. The parent resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/acceleratorTypes",
@@ -257,7 +251,6 @@
                 "create": {
                   "description": "Creates a node.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/nodes",
                   "id": "tpu.projects.locations.nodes.create",
                   "parameterOrder": [
                     "parent"
@@ -272,8 +265,8 @@
                       "description": "Required. The parent resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/nodes",
@@ -290,7 +283,6 @@
                 "delete": {
                   "description": "Deletes a node.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
                   "id": "tpu.projects.locations.nodes.delete",
                   "parameterOrder": [
                     "name"
@@ -300,8 +292,8 @@
                       "description": "Required. The resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -315,7 +307,6 @@
                 "get": {
                   "description": "Gets the details of a node.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
                   "id": "tpu.projects.locations.nodes.get",
                   "parameterOrder": [
                     "name"
@@ -325,8 +316,8 @@
                       "description": "Required. The resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -340,7 +331,6 @@
                 "list": {
                   "description": "Lists nodes.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/nodes",
                   "id": "tpu.projects.locations.nodes.list",
                   "parameterOrder": [
                     "parent"
@@ -361,8 +351,8 @@
                       "description": "Required. The parent resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/nodes",
@@ -376,7 +366,6 @@
                 "reimage": {
                   "description": "Reimages a node's OS.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:reimage",
                   "id": "tpu.projects.locations.nodes.reimage",
                   "parameterOrder": [
                     "name"
@@ -386,8 +375,8 @@
                       "description": "The resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}:reimage",
@@ -404,7 +393,6 @@
                 "start": {
                   "description": "Starts a node.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:start",
                   "id": "tpu.projects.locations.nodes.start",
                   "parameterOrder": [
                     "name"
@@ -414,8 +402,8 @@
                       "description": "The resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}:start",
@@ -432,7 +420,6 @@
                 "stop": {
                   "description": "Stops a node.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:stop",
                   "id": "tpu.projects.locations.nodes.stop",
                   "parameterOrder": [
                     "name"
@@ -442,8 +429,8 @@
                       "description": "The resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}:stop",
@@ -464,7 +451,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "tpu.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -474,8 +460,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}:cancel",
@@ -489,7 +475,6 @@
                 "delete": {
                   "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "tpu.projects.locations.operations.delete",
                   "parameterOrder": [
                     "name"
@@ -499,8 +484,8 @@
                       "description": "The name of the operation resource to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -514,7 +499,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "tpu.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -524,8 +508,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -539,7 +523,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                   "id": "tpu.projects.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -554,8 +537,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -584,7 +567,6 @@
                 "get": {
                   "description": "Gets TensorFlow Version.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/tensorflowVersions/{tensorflowVersionsId}",
                   "id": "tpu.projects.locations.tensorflowVersions.get",
                   "parameterOrder": [
                     "name"
@@ -594,8 +576,8 @@
                       "description": "Required. The resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/tensorflowVersions/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -609,7 +591,6 @@
                 "list": {
                   "description": "List TensorFlow versions supported by this API.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/tensorflowVersions",
                   "id": "tpu.projects.locations.tensorflowVersions.list",
                   "parameterOrder": [
                     "parent"
@@ -640,8 +621,8 @@
                       "description": "Required. The parent resource name.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/tensorflowVersions",
@@ -859,8 +840,8 @@
         "createTime": {
           "description": "Output only. The time when the node was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "description": {
           "description": "The user-supplied description of the TPU. Maximum of 512 characters.",
@@ -868,14 +849,6 @@
         },
         "health": {
           "description": "The health status of the TPU node.",
-          "enumDescriptions": [
-            "Health status is unknown: not initialized or failed to retrieve.",
-            "The resource is healthy.",
-            "The resource is unhealthy.",
-            "The resource is unresponsive.",
-            "The in-guest ML stack is unhealthy.",
-            "The node is under maintenance/priority boost caused rescheduling and will resume running once rescheduled."
-          ],
           "enum": [
             "HEALTH_UNSPECIFIED",
             "HEALTHY",
@@ -884,12 +857,20 @@
             "UNHEALTHY_TENSORFLOW",
             "UNHEALTHY_MAINTENANCE"
           ],
+          "enumDescriptions": [
+            "Health status is unknown: not initialized or failed to retrieve.",
+            "The resource is healthy.",
+            "The resource is unhealthy.",
+            "The resource is unresponsive.",
+            "The in-guest ML stack is unhealthy.",
+            "The node is under maintenance/priority boost caused rescheduling and will resume running once rescheduled."
+          ],
           "type": "string"
         },
         "healthDescription": {
           "description": "Output only. If this field is populated, it contains a description of why the TPU Node is unhealthy.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "ipAddress": {
           "description": "Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.",
@@ -904,8 +885,8 @@
         },
         "name": {
           "description": "Output only. Immutable. The name of the TPU",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "network": {
           "description": "The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, \"default\" will be used.",
@@ -916,41 +897,24 @@
           "items": {
             "$ref": "NetworkEndpoint"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "port": {
           "description": "Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.",
           "type": "string"
         },
         "schedulingConfig": {
-          "description": "The scheduling options for this node.",
-          "$ref": "SchedulingConfig"
+          "$ref": "SchedulingConfig",
+          "description": "The scheduling options for this node."
         },
         "serviceAccount": {
           "description": "Output only. The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "state": {
           "description": "Output only. The current state for the TPU Node.",
-          "enumDescriptions": [
-            "TPU node state is not known/set.",
-            "TPU node is being created.",
-            "TPU node has been created and is fully usable.",
-            "TPU node is restarting.",
-            "TPU node is undergoing reimaging.",
-            "TPU node is being deleted.",
-            "TPU node is being repaired and may be unusable. Details can be found in the `help_description` field.",
-            "TPU node is stopped.",
-            "TPU node is currently stopping.",
-            "TPU node is currently starting.",
-            "TPU node has been preempted. Only applies to Preemptible TPU Nodes.",
-            "TPU node has been terminated due to maintenance or has reached the end of its life cycle (for preemptible nodes).",
-            "TPU node is currently hiding.",
-            "TPU node has been hidden.",
-            "TPU node is currently unhiding."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -968,16 +932,33 @@
             "HIDDEN",
             "UNHIDING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "TPU node state is not known/set.",
+            "TPU node is being created.",
+            "TPU node has been created and is fully usable.",
+            "TPU node is restarting.",
+            "TPU node is undergoing reimaging.",
+            "TPU node is being deleted.",
+            "TPU node is being repaired and may be unusable. Details can be found in the `help_description` field.",
+            "TPU node is stopped.",
+            "TPU node is currently stopping.",
+            "TPU node is currently starting.",
+            "TPU node has been preempted. Only applies to Preemptible TPU Nodes.",
+            "TPU node has been terminated due to maintenance or has reached the end of its life cycle (for preemptible nodes).",
+            "TPU node is currently hiding.",
+            "TPU node has been hidden.",
+            "TPU node is currently unhiding."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "symptoms": {
           "description": "Output only. The Symptoms that have occurred to the TPU Node.",
           "items": {
             "$ref": "Symptom"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "tensorflowVersion": {
           "description": "Required. The version of Tensorflow running in the Node.",
@@ -999,8 +980,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1142,14 +1123,6 @@
         },
         "symptomType": {
           "description": "Type of the Symptom.",
-          "enumDescriptions": [
-            "Unspecified symptom.",
-            "TPU VM memory is low.",
-            "TPU runtime is out of memory.",
-            "TPU runtime execution has timed out.",
-            "TPU runtime fails to construct a mesh that recognizes each TPU device's neighbors.",
-            "TPU HBM is out of memory."
-          ],
           "enum": [
             "SYMPTOM_TYPE_UNSPECIFIED",
             "LOW_MEMORY",
@@ -1157,6 +1130,14 @@
             "EXECUTE_TIMED_OUT",
             "MESH_BUILD_FAIL",
             "HBM_OUT_OF_MEMORY"
+          ],
+          "enumDescriptions": [
+            "Unspecified symptom.",
+            "TPU VM memory is low.",
+            "TPU runtime is out of memory.",
+            "TPU runtime execution has timed out.",
+            "TPU runtime fails to construct a mesh that recognizes each TPU device's neighbors.",
+            "TPU HBM is out of memory."
           ],
           "type": "string"
         },
@@ -1185,6 +1166,6 @@
   },
   "servicePath": "",
   "title": "Cloud TPU API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

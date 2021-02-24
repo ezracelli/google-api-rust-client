@@ -6,29 +6,27 @@
   "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/abusive-experience-report/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "abusiveexperiencereport:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://abusiveexperiencereport.mtls.googleapis.com/",
   "name": "abusiveexperiencereport",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -39,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -101,7 +99,6 @@
         "get": {
           "description": "Gets a site's Abusive Experience Report summary.",
           "httpMethod": "GET",
-          "flatPath": "v1/sites/{sitesId}",
           "id": "abusiveexperiencereport.sites.get",
           "parameterOrder": [
             "name"
@@ -111,8 +108,8 @@
               "description": "Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}`",
               "location": "path",
               "pattern": "^sites/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -127,7 +124,6 @@
         "list": {
           "description": "Lists sites that are failing in the Abusive Experience Report.",
           "httpMethod": "GET",
-          "flatPath": "v1/violatingSites",
           "id": "abusiveexperiencereport.violatingSites.list",
           "parameterOrder": [],
           "parameters": {},
@@ -148,15 +144,15 @@
       "properties": {
         "abusiveStatus": {
           "description": "The site's Abusive Experience Report status.",
-          "enumDescriptions": [
-            "Not reviewed.",
-            "Passing.",
-            "Failing."
-          ],
           "enum": [
             "UNKNOWN",
             "PASSING",
             "FAILING"
+          ],
+          "enumDescriptions": [
+            "Not reviewed.",
+            "Passing.",
+            "Failing."
           ],
           "type": "string"
         },
@@ -167,19 +163,19 @@
         },
         "filterStatus": {
           "description": "The site's [enforcement status](https://support.google.com/webtools/answer/7538608).",
-          "enumDescriptions": [
-            "N/A.",
-            "Enforcement is on.",
-            "Enforcement is off.",
-            "Enforcement is paused.",
-            "Enforcement is pending."
-          ],
           "enum": [
             "UNKNOWN",
             "ON",
             "OFF",
             "PAUSED",
             "PENDING"
+          ],
+          "enumDescriptions": [
+            "N/A.",
+            "Enforcement is on.",
+            "Enforcement is off.",
+            "Enforcement is paused.",
+            "Enforcement is pending."
           ],
           "type": "string"
         },
@@ -220,6 +216,6 @@
   },
   "servicePath": "",
   "title": "Abusive Experience Report API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

@@ -15,29 +15,27 @@
   "description": "Cloud Life Sciences is a suite of services and tools for managing, processing, and transforming life sciences data.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/life-sciences",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "lifesciences:v2beta",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://lifesciences.mtls.googleapis.com/",
   "name": "lifesciences",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v2beta/projects/{projectsId}/locations/{locationsId}",
               "id": "lifesciences.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v2beta/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v2beta/projects/{projectsId}/locations",
               "id": "lifesciences.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -152,8 +148,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -182,7 +178,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. Clients may use Operations.GetOperation or Operations.ListOperations to check whether the cancellation succeeded or the operation completed despite cancellation. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission: * `lifesciences.operations.cancel`",
                   "httpMethod": "POST",
-                  "flatPath": "v2beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "lifesciences.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -192,8 +187,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v2beta/{+name}:cancel",
@@ -210,7 +205,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission: * `lifesciences.operations.get`",
                   "httpMethod": "GET",
-                  "flatPath": "v2beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "lifesciences.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -220,8 +214,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v2beta/{+name}",
@@ -235,7 +229,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission: * `lifesciences.operations.list`",
                   "httpMethod": "GET",
-                  "flatPath": "v2beta/projects/{projectsId}/locations/{locationsId}/operations",
                   "id": "lifesciences.projects.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -250,8 +243,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The maximum number of results to return. The maximum value is 256.",
@@ -280,7 +273,6 @@
                 "run": {
                   "description": "Runs a pipeline. The returned Operation's metadata field will contain a google.cloud.lifesciences.v2beta.Metadata object describing the status of the pipeline execution. The response field will contain a google.cloud.lifesciences.v2beta.RunPipelineResponse object if the pipeline completes successfully. **Note:** Before you can use this method, the *Life Sciences Service Agent* must have access to your project. This is done automatically when the Cloud Life Sciences API is first enabled, but if you delete this permission you must disable and re-enable the API to grant the Life Sciences Service Agent the required permissions. Authorization requires the following [Google IAM](https://cloud.google.com/iam/) permission: * `lifesciences.workflows.run`",
                   "httpMethod": "POST",
-                  "flatPath": "v2beta/projects/{projectsId}/locations/{locationsId}/pipelines:run",
                   "id": "lifesciences.projects.locations.pipelines.run",
                   "parameterOrder": [
                     "parent"
@@ -290,8 +282,8 @@
                       "description": "The project and location that this request should be executed against.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v2beta/{+parent}/pipelines:run",
@@ -355,8 +347,8 @@
           "type": "string"
         },
         "credentials": {
-          "description": "If the specified image is hosted on a private registry other than Google Container Registry, the credentials required to pull the image must be specified here as an encrypted secret. The secret must decrypt to a JSON-encoded dictionary containing both `username` and `password` keys.",
-          "$ref": "Secret"
+          "$ref": "Secret",
+          "description": "If the specified image is hosted on a private registry other than Google Container Registry, the credentials required to pull the image must be specified here as an encrypted secret. The secret must decrypt to a JSON-encoded dictionary containing both `username` and `password` keys."
         },
         "disableImagePrefetch": {
           "description": "All container images are typically downloaded before any actions are executed. This helps prevent typos in URIs or issues like lack of disk space from wasting large amounts of compute resources. If set, this flag prevents the worker from downloading the image until just before the action is executed.",
@@ -547,36 +539,36 @@
       "id": "Event",
       "properties": {
         "containerKilled": {
-          "description": "See google.cloud.lifesciences.v2beta.ContainerKilledEvent.",
-          "$ref": "ContainerKilledEvent"
+          "$ref": "ContainerKilledEvent",
+          "description": "See google.cloud.lifesciences.v2beta.ContainerKilledEvent."
         },
         "containerStarted": {
-          "description": "See google.cloud.lifesciences.v2beta.ContainerStartedEvent.",
-          "$ref": "ContainerStartedEvent"
+          "$ref": "ContainerStartedEvent",
+          "description": "See google.cloud.lifesciences.v2beta.ContainerStartedEvent."
         },
         "containerStopped": {
-          "description": "See google.cloud.lifesciences.v2beta.ContainerStoppedEvent.",
-          "$ref": "ContainerStoppedEvent"
+          "$ref": "ContainerStoppedEvent",
+          "description": "See google.cloud.lifesciences.v2beta.ContainerStoppedEvent."
         },
         "delayed": {
-          "description": "See google.cloud.lifesciences.v2beta.DelayedEvent.",
-          "$ref": "DelayedEvent"
+          "$ref": "DelayedEvent",
+          "description": "See google.cloud.lifesciences.v2beta.DelayedEvent."
         },
         "description": {
           "description": "A human-readable description of the event. Note that these strings can change at any time without notice. Any application logic must use the information in the `details` field.",
           "type": "string"
         },
         "failed": {
-          "description": "See google.cloud.lifesciences.v2beta.FailedEvent.",
-          "$ref": "FailedEvent"
+          "$ref": "FailedEvent",
+          "description": "See google.cloud.lifesciences.v2beta.FailedEvent."
         },
         "pullStarted": {
-          "description": "See google.cloud.lifesciences.v2beta.PullStartedEvent.",
-          "$ref": "PullStartedEvent"
+          "$ref": "PullStartedEvent",
+          "description": "See google.cloud.lifesciences.v2beta.PullStartedEvent."
         },
         "pullStopped": {
-          "description": "See google.cloud.lifesciences.v2beta.PullStoppedEvent.",
-          "$ref": "PullStoppedEvent"
+          "$ref": "PullStoppedEvent",
+          "description": "See google.cloud.lifesciences.v2beta.PullStoppedEvent."
         },
         "timestamp": {
           "description": "The time at which the event occurred.",
@@ -584,16 +576,16 @@
           "type": "string"
         },
         "unexpectedExitStatus": {
-          "description": "See google.cloud.lifesciences.v2beta.UnexpectedExitStatusEvent.",
-          "$ref": "UnexpectedExitStatusEvent"
+          "$ref": "UnexpectedExitStatusEvent",
+          "description": "See google.cloud.lifesciences.v2beta.UnexpectedExitStatusEvent."
         },
         "workerAssigned": {
-          "description": "See google.cloud.lifesciences.v2beta.WorkerAssignedEvent.",
-          "$ref": "WorkerAssignedEvent"
+          "$ref": "WorkerAssignedEvent",
+          "description": "See google.cloud.lifesciences.v2beta.WorkerAssignedEvent."
         },
         "workerReleased": {
-          "description": "See google.cloud.lifesciences.v2beta.WorkerReleasedEvent.",
-          "$ref": "WorkerReleasedEvent"
+          "$ref": "WorkerReleasedEvent",
+          "description": "See google.cloud.lifesciences.v2beta.WorkerReleasedEvent."
         }
       },
       "type": "object"
@@ -619,25 +611,6 @@
         },
         "code": {
           "description": "The Google standard error code that best describes this failure.",
-          "enumDescriptions": [
-            "Not an error; returned on success HTTP Mapping: 200 OK",
-            "The operation was cancelled, typically by the caller. HTTP Mapping: 499 Client Closed Request",
-            "Unknown error. For example, this error may be returned when a `Status` value received from another address space belongs to an error space that is not known in this address space. Also errors raised by APIs that do not return enough error information may be converted to this error. HTTP Mapping: 500 Internal Server Error",
-            "The client specified an invalid argument. Note that this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates arguments that are problematic regardless of the state of the system (e.g., a malformed file name). HTTP Mapping: 400 Bad Request",
-            "The deadline expired before the operation could complete. For operations that change the state of the system, this error may be returned even if the operation has completed successfully. For example, a successful response from a server could have been delayed long enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout",
-            "Some requested entity (e.g., file or directory) was not found. Note to server developers: if a request is denied for an entire class of users, such as gradual feature rollout or undocumented allowlist, `NOT_FOUND` may be used. If a request is denied for some users within a class of users, such as user-based access control, `PERMISSION_DENIED` must be used. HTTP Mapping: 404 Not Found",
-            "The entity that a client attempted to create (e.g., file or directory) already exists. HTTP Mapping: 409 Conflict",
-            "The caller does not have permission to execute the specified operation. `PERMISSION_DENIED` must not be used for rejections caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for those errors). `PERMISSION_DENIED` must not be used if the caller can not be identified (use `UNAUTHENTICATED` instead for those errors). This error code does not imply the request is valid or the requested entity exists or satisfies other pre-conditions. HTTP Mapping: 403 Forbidden",
-            "The request does not have valid authentication credentials for the operation. HTTP Mapping: 401 Unauthorized",
-            "Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space. HTTP Mapping: 429 Too Many Requests",
-            "The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an \"rmdir\" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request",
-            "The operation was aborted, typically due to a concurrency issue such as a sequencer check failure or transaction abort. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 409 Conflict",
-            "The operation was attempted past the valid range. E.g., seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error indicates a problem that may be fixed if the system state changes. For example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to read at an offset that is not in the range [0,2^32-1], but it will generate `OUT_OF_RANGE` if asked to read from an offset past the current file size. There is a fair bit of overlap between `FAILED_PRECONDITION` and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific error) when it applies so that callers who are iterating through a space can easily look for an `OUT_OF_RANGE` error to detect when they are done. HTTP Mapping: 400 Bad Request",
-            "The operation is not implemented or is not supported/enabled in this service. HTTP Mapping: 501 Not Implemented",
-            "Internal errors. This means that some invariants expected by the underlying system have been broken. This error code is reserved for serious errors. HTTP Mapping: 500 Internal Server Error",
-            "The service is currently unavailable. This is most likely a transient condition, which can be corrected by retrying with a backoff. Note that it is not always safe to retry non-idempotent operations. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503 Service Unavailable",
-            "Unrecoverable data loss or corruption. HTTP Mapping: 500 Internal Server Error"
-          ],
           "enum": [
             "OK",
             "CANCELLED",
@@ -656,6 +629,25 @@
             "INTERNAL",
             "UNAVAILABLE",
             "DATA_LOSS"
+          ],
+          "enumDescriptions": [
+            "Not an error; returned on success HTTP Mapping: 200 OK",
+            "The operation was cancelled, typically by the caller. HTTP Mapping: 499 Client Closed Request",
+            "Unknown error. For example, this error may be returned when a `Status` value received from another address space belongs to an error space that is not known in this address space. Also errors raised by APIs that do not return enough error information may be converted to this error. HTTP Mapping: 500 Internal Server Error",
+            "The client specified an invalid argument. Note that this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates arguments that are problematic regardless of the state of the system (e.g., a malformed file name). HTTP Mapping: 400 Bad Request",
+            "The deadline expired before the operation could complete. For operations that change the state of the system, this error may be returned even if the operation has completed successfully. For example, a successful response from a server could have been delayed long enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout",
+            "Some requested entity (e.g., file or directory) was not found. Note to server developers: if a request is denied for an entire class of users, such as gradual feature rollout or undocumented allowlist, `NOT_FOUND` may be used. If a request is denied for some users within a class of users, such as user-based access control, `PERMISSION_DENIED` must be used. HTTP Mapping: 404 Not Found",
+            "The entity that a client attempted to create (e.g., file or directory) already exists. HTTP Mapping: 409 Conflict",
+            "The caller does not have permission to execute the specified operation. `PERMISSION_DENIED` must not be used for rejections caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for those errors). `PERMISSION_DENIED` must not be used if the caller can not be identified (use `UNAUTHENTICATED` instead for those errors). This error code does not imply the request is valid or the requested entity exists or satisfies other pre-conditions. HTTP Mapping: 403 Forbidden",
+            "The request does not have valid authentication credentials for the operation. HTTP Mapping: 401 Unauthorized",
+            "Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space. HTTP Mapping: 429 Too Many Requests",
+            "The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an \"rmdir\" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request",
+            "The operation was aborted, typically due to a concurrency issue such as a sequencer check failure or transaction abort. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 409 Conflict",
+            "The operation was attempted past the valid range. E.g., seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error indicates a problem that may be fixed if the system state changes. For example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to read at an offset that is not in the range [0,2^32-1], but it will generate `OUT_OF_RANGE` if asked to read from an offset past the current file size. There is a fair bit of overlap between `FAILED_PRECONDITION` and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific error) when it applies so that callers who are iterating through a space can easily look for an `OUT_OF_RANGE` error to detect when they are done. HTTP Mapping: 400 Bad Request",
+            "The operation is not implemented or is not supported/enabled in this service. HTTP Mapping: 501 Not Implemented",
+            "Internal errors. This means that some invariants expected by the underlying system have been broken. This error code is reserved for serious errors. HTTP Mapping: 500 Internal Server Error",
+            "The service is currently unavailable. This is most likely a transient condition, which can be corrected by retrying with a backoff. Note that it is not always safe to retry non-idempotent operations. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503 Service Unavailable",
+            "Unrecoverable data loss or corruption. HTTP Mapping: 500 Internal Server Error"
           ],
           "type": "string"
         }
@@ -761,8 +753,8 @@
           "type": "object"
         },
         "pipeline": {
-          "description": "The pipeline this operation represents.",
-          "$ref": "Pipeline"
+          "$ref": "Pipeline",
+          "description": "The pipeline this operation represents."
         },
         "pubSubTopic": {
           "description": "The name of the Cloud Pub/Sub topic where notifications of operation status changes are sent.",
@@ -834,8 +826,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -899,8 +891,8 @@
           "type": "object"
         },
         "resources": {
-          "description": "The resources required for execution.",
-          "$ref": "Resources"
+          "$ref": "Resources",
+          "description": "The resources required for execution."
         },
         "timeout": {
           "description": "The maximum amount of time to give the pipeline to complete. This includes the time spent waiting for a worker to be allocated. If the pipeline fails to complete before the timeout, it will be cancelled and the error code will be set to DEADLINE_EXCEEDED. If unspecified, it will default to 7 days.",
@@ -944,8 +936,8 @@
           "type": "array"
         },
         "virtualMachine": {
-          "description": "The virtual machine specification.",
-          "$ref": "VirtualMachine"
+          "$ref": "VirtualMachine",
+          "description": "The virtual machine specification."
         },
         "zones": {
           "description": "The list of zones allowed for VM allocation. If set, the `regions` field must not be set.",
@@ -969,8 +961,8 @@
           "type": "object"
         },
         "pipeline": {
-          "description": "Required. The description of the pipeline to run.",
-          "$ref": "Pipeline"
+          "$ref": "Pipeline",
+          "description": "Required. The description of the pipeline to run."
         },
         "pubSubTopic": {
           "description": "The name of an existing Pub/Sub topic. The server will publish messages to this topic whenever the status of the operation changes. The Life Sciences Service Agent account must have publisher permissions to the specified topic or notifications will not be sent.",
@@ -1116,8 +1108,8 @@
           "type": "string"
         },
         "network": {
-          "description": "The VM network configuration.",
-          "$ref": "Network"
+          "$ref": "Network",
+          "description": "The VM network configuration."
         },
         "nvidiaDriverVersion": {
           "description": "The NVIDIA driver version to use when attaching an NVIDIA GPU accelerator. The version specified here must be compatible with the GPU libraries contained in the container being executed, and must be one of the drivers hosted in the `nvidia-drivers-us-public` bucket on Google Cloud Storage.",
@@ -1128,8 +1120,8 @@
           "type": "boolean"
         },
         "serviceAccount": {
-          "description": "The service account to install on the VM. This account does not need any permissions other than those required by the pipeline.",
-          "$ref": "ServiceAccount"
+          "$ref": "ServiceAccount",
+          "description": "The service account to install on the VM. This account does not need any permissions other than those required by the pipeline."
         },
         "volumes": {
           "description": "The list of disks and other storage to create or attach to the VM. Specify either the `volumes[]` field or the `disks[]` field, but not both.",
@@ -1146,16 +1138,16 @@
       "id": "Volume",
       "properties": {
         "existingDisk": {
-          "description": "Configuration for a existing disk.",
-          "$ref": "ExistingDisk"
+          "$ref": "ExistingDisk",
+          "description": "Configuration for a existing disk."
         },
         "nfsMount": {
-          "description": "Configuration for an NFS mount.",
-          "$ref": "NFSMount"
+          "$ref": "NFSMount",
+          "description": "Configuration for an NFS mount."
         },
         "persistentDisk": {
-          "description": "Configuration for a persistent disk.",
-          "$ref": "PersistentDisk"
+          "$ref": "PersistentDisk",
+          "description": "Configuration for a persistent disk."
         },
         "volume": {
           "description": "A user-supplied name for the volume. Used when mounting the volume into `Actions`. The name must contain only upper and lowercase alphanumeric characters and hyphens and cannot start with a hyphen.",
@@ -1201,6 +1193,6 @@
   },
   "servicePath": "",
   "title": "Cloud Life Sciences API",
-  "version_module": true,
-  "version": "v2beta"
+  "version": "v2beta",
+  "version_module": true
 }

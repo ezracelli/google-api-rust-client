@@ -21,29 +21,27 @@
   "description": "Sends application trace data to Cloud Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Cloud Trace API directly. If you are looking to instrument your application for Cloud Trace, we recommend using OpenCensus. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/trace",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudtrace:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudtrace.mtls.googleapis.com/",
   "name": "cloudtrace",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -54,17 +52,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -116,7 +114,6 @@
         "patchTraces": {
           "description": "Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send matches that of an existing trace, any fields in the existing trace and its spans are overwritten by the provided values, and any new fields provided are merged with the existing trace data. If the ID does not match, a new trace is created.",
           "httpMethod": "PATCH",
-          "flatPath": "v1/projects/{projectId}/traces",
           "id": "cloudtrace.projects.patchTraces",
           "parameterOrder": [
             "projectId"
@@ -125,8 +122,8 @@
             "projectId": {
               "description": "Required. ID of the Cloud project where the trace data is stored.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/projects/{projectId}/traces",
@@ -148,7 +145,6 @@
             "get": {
               "description": "Gets a single trace by its ID.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectId}/traces/{traceId}",
               "id": "cloudtrace.projects.traces.get",
               "parameterOrder": [
                 "projectId",
@@ -158,14 +154,14 @@
                 "projectId": {
                   "description": "Required. ID of the Cloud project where the trace data is stored.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "traceId": {
                   "description": "Required. ID of the trace to return.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/projects/{projectId}/traces/{traceId}",
@@ -180,7 +176,6 @@
             "list": {
               "description": "Returns of a list of traces that match the specified filter conditions.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectId}/traces",
               "id": "cloudtrace.projects.traces.list",
               "parameterOrder": [
                 "projectId"
@@ -216,8 +211,8 @@
                 "projectId": {
                   "description": "Required. ID of the Cloud project where the trace data is stored.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "startTime": {
                   "description": "Start of the time interval (inclusive) during which the trace data was collected from the application.",
@@ -227,6 +222,12 @@
                 },
                 "view": {
                   "description": "Optional. Type of data returned for traces in the list. Default is `MINIMAL`.",
+                  "enum": [
+                    "VIEW_TYPE_UNSPECIFIED",
+                    "MINIMAL",
+                    "ROOTSPAN",
+                    "COMPLETE"
+                  ],
                   "enumDescriptions": [
                     "Default is `MINIMAL` if unspecified.",
                     "Minimal view of the trace record that contains only the project and trace IDs.",
@@ -234,12 +235,6 @@
                     "Complete view of the trace record that contains the actual trace data. This is equivalent to calling the REST `get` or RPC `GetTrace` method using the ID of each listed trace."
                   ],
                   "location": "query",
-                  "enum": [
-                    "VIEW_TYPE_UNSPECIFIED",
-                    "MINIMAL",
-                    "ROOTSPAN",
-                    "COMPLETE"
-                  ],
                   "type": "string"
                 }
               },
@@ -317,15 +312,15 @@
         },
         "kind": {
           "description": "Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `RPC_CLIENT` and `RPC_SERVER` to identify queueing latency associated with the span.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Indicates that the span covers server-side handling of an RPC or other remote network request.",
-            "Indicates that the span covers the client-side wrapper around an RPC or other remote request."
-          ],
           "enum": [
             "SPAN_KIND_UNSPECIFIED",
             "RPC_SERVER",
             "RPC_CLIENT"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Indicates that the span covers server-side handling of an RPC or other remote network request.",
+            "Indicates that the span covers the client-side wrapper around an RPC or other remote request."
           ],
           "type": "string"
         },
@@ -375,6 +370,6 @@
   },
   "servicePath": "",
   "title": "Cloud Trace API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

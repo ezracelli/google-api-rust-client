@@ -6,29 +6,27 @@
   "description": "The Poly API provides read access to assets hosted on poly.google.com to all, and upload access to poly.google.com for whitelisted accounts. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/poly/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "poly:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://poly.mtls.googleapis.com/",
   "name": "poly",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -39,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -101,7 +99,6 @@
         "get": {
           "description": "Returns detailed information about an asset given its name. PRIVATE assets are returned only if the currently authenticated user (via OAuth token) is the author of the asset.",
           "httpMethod": "GET",
-          "flatPath": "v1/assets/{assetsId}",
           "id": "poly.assets.get",
           "parameterOrder": [
             "name"
@@ -111,8 +108,8 @@
               "description": "Required. An asset's name in the form `assets/{ASSET_ID}`.",
               "location": "path",
               "pattern": "^assets/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -123,7 +120,6 @@
         "list": {
           "description": "Lists all public, remixable assets. These are assets with an access level of PUBLIC and published under the CC-By license.",
           "httpMethod": "GET",
-          "flatPath": "v1/assets",
           "id": "poly.assets.list",
           "parameterOrder": [],
           "parameters": {
@@ -149,6 +145,12 @@
             },
             "maxComplexity": {
               "description": "Returns assets that are of the specified complexity or less. Defaults to COMPLEX. For example, a request for MEDIUM assets also includes SIMPLE assets.",
+              "enum": [
+                "COMPLEXITY_UNSPECIFIED",
+                "COMPLEX",
+                "MEDIUM",
+                "SIMPLE"
+              ],
               "enumDescriptions": [
                 "No complexity specified. This is equivalent to omitting the filter.",
                 "Highly-complex.",
@@ -156,12 +158,6 @@
                 "Simple."
               ],
               "location": "query",
-              "enum": [
-                "COMPLEXITY_UNSPECIFIED",
-                "COMPLEX",
-                "MEDIUM",
-                "SIMPLE"
-              ],
               "type": "string"
             },
             "orderBy": {
@@ -195,7 +191,6 @@
             "list": {
               "description": "Lists assets authored by the given user. Only the value 'me', representing the currently-authenticated user, is supported. May include assets with an access level of PRIVATE or UNLISTED and assets which are All Rights Reserved for the currently-authenticated user.",
               "httpMethod": "GET",
-              "flatPath": "v1/users/{usersId}/assets",
               "id": "poly.users.assets.list",
               "parameterOrder": [
                 "name"
@@ -210,8 +205,8 @@
                   "description": "A valid user id. Currently, only the special value 'me', representing the currently-authenticated user is supported. To use 'me', you must pass an OAuth token with the request.",
                   "location": "path",
                   "pattern": "^users/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "orderBy": {
                   "description": "Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets based on a combination of popularity and other features.",
@@ -231,17 +226,17 @@
                 },
                 "visibility": {
                   "description": "The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which returns all assets.",
+                  "enum": [
+                    "VISIBILITY_UNSPECIFIED",
+                    "PUBLISHED",
+                    "PRIVATE"
+                  ],
                   "enumDescriptions": [
                     "No visibility specified. Returns all assets.",
                     "Returns only published assets.",
                     "Returns only private assets."
                   ],
                   "location": "query",
-                  "enum": [
-                    "VISIBILITY_UNSPECIFIED",
-                    "PUBLISHED",
-                    "PRIVATE"
-                  ],
                   "type": "string"
                 }
               },
@@ -257,7 +252,6 @@
             "list": {
               "description": "Lists assets that the user has liked. Only the value 'me', representing the currently-authenticated user, is supported. May include assets with an access level of UNLISTED.",
               "httpMethod": "GET",
-              "flatPath": "v1/users/{usersId}/likedassets",
               "id": "poly.users.likedassets.list",
               "parameterOrder": [
                 "name"
@@ -272,8 +266,8 @@
                   "description": "A valid user id. Currently, only the special value 'me', representing the currently-authenticated user is supported. To use 'me', you must pass an OAuth token with the request.",
                   "location": "path",
                   "pattern": "^users/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "orderBy": {
                   "description": "Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'. Defaults to `LIKED_TIME`, which ranks assets based on how recently they were liked.",
@@ -339,15 +333,15 @@
         },
         "license": {
           "description": "The license under which the author has made the asset available for use, if any.",
-          "enumDescriptions": [
-            "Unknown license value.",
-            "Creative Commons CC-BY 3.0. https://creativecommons.org/licenses/by/3.0/",
-            "Unlicensed: All Rights Reserved by the author. Unlicensed assets are **not** returned by List Assets."
-          ],
           "enum": [
             "UNKNOWN",
             "CREATIVE_COMMONS_BY",
             "ALL_RIGHTS_RESERVED"
+          ],
+          "enumDescriptions": [
+            "Unknown license value.",
+            "Creative Commons CC-BY 3.0. https://creativecommons.org/licenses/by/3.0/",
+            "Unlicensed: All Rights Reserved by the author. Unlicensed assets are **not** returned by List Assets."
           ],
           "type": "string"
         },
@@ -360,16 +354,16 @@
           "type": "string"
         },
         "presentationParams": {
-          "description": "Hints for displaying the asset. Note that these parameters are not immutable; the author of an asset may change them post-publication.",
-          "$ref": "PresentationParams"
+          "$ref": "PresentationParams",
+          "description": "Hints for displaying the asset. Note that these parameters are not immutable; the author of an asset may change them post-publication."
         },
         "remixInfo": {
-          "description": "The remix info for the asset.",
-          "$ref": "RemixInfo"
+          "$ref": "RemixInfo",
+          "description": "The remix info for the asset."
         },
         "thumbnail": {
-          "description": "The thumbnail image for the asset.",
-          "$ref": "File"
+          "$ref": "File",
+          "description": "The thumbnail image for the asset."
         },
         "updateTime": {
           "description": "The time when the asset was last modified. For published assets, whose contents are immutable, the update time changes only when metadata properties, such as visibility, are updated.",
@@ -378,17 +372,17 @@
         },
         "visibility": {
           "description": "The visibility of the asset and who can access it.",
-          "enumDescriptions": [
-            "Unknown (and invalid) visibility.",
-            "Access to the asset and its underlying files and resources is restricted to the author. **Authentication:** You must supply an OAuth token that corresponds to the author's account.",
-            "Access to the asset and its underlying files and resources is available to anyone with the asset's name. Unlisted assets are **not** returned by List Assets.",
-            "Access to the asset and its underlying files and resources is available to anyone."
-          ],
           "enum": [
             "VISIBILITY_UNSPECIFIED",
             "PRIVATE",
             "UNLISTED",
             "PUBLIC"
+          ],
+          "enumDescriptions": [
+            "Unknown (and invalid) visibility.",
+            "Access to the asset and its underlying files and resources is restricted to the author. **Authentication:** You must supply an OAuth token that corresponds to the author's account.",
+            "Access to the asset and its underlying files and resources is available to anyone with the asset's name. Unlisted assets are **not** returned by List Assets.",
+            "Access to the asset and its underlying files and resources is available to anyone."
           ],
           "type": "string"
         }
@@ -401,18 +395,6 @@
       "properties": {
         "code": {
           "description": "The code associated with this message.",
-          "enumDescriptions": [
-            "Unknown error code.",
-            "The asset import did not include any file that we can import (i.e. an OBJ file).",
-            "When generating the preview for the import, no geometry was found.",
-            "A problem was encountered while parsing the OBJ file. The converter makes a 'best effort' attempt to continue when encountering such issues. In some cases the resulting preview model may still be acceptable. The details can be found in the parse error message.",
-            "The importer was not able to import the model before the expiration time.",
-            "The importer encountered a problem reading an image file.",
-            "Multiple files were encountered in addition to a ZIP archive. When uploading an archive only one file is permitted.",
-            "Default materials are used in the model. This means that one or more faces is using default materials either because no usemtl statement was specified or because the requested material was not found due to a missing material file or bad material name. This does not cover the case of missing textures.",
-            "The importer encountered a fatal error and was unable to import the model.",
-            "The import includes a file of an unsupported element type. The file path is specified."
-          ],
           "enum": [
             "CODE_UNSPECIFIED",
             "NO_IMPORTABLE_FILE",
@@ -425,6 +407,18 @@
             "FATAL_ERROR",
             "INVALID_ELEMENT_TYPE"
           ],
+          "enumDescriptions": [
+            "Unknown error code.",
+            "The asset import did not include any file that we can import (i.e. an OBJ file).",
+            "When generating the preview for the import, no geometry was found.",
+            "A problem was encountered while parsing the OBJ file. The converter makes a 'best effort' attempt to continue when encountering such issues. In some cases the resulting preview model may still be acceptable. The details can be found in the parse error message.",
+            "The importer was not able to import the model before the expiration time.",
+            "The importer encountered a problem reading an image file.",
+            "Multiple files were encountered in addition to a ZIP archive. When uploading an archive only one file is permitted.",
+            "Default materials are used in the model. This means that one or more faces is using default materials either because no usemtl statement was specified or because the requested material was not found due to a missing material file or bad material name. This does not cover the case of missing textures.",
+            "The importer encountered a fatal error and was unable to import the model.",
+            "The import includes a file of an unsupported element type. The file path is specified."
+          ],
           "type": "string"
         },
         "filePath": {
@@ -432,12 +426,12 @@
           "type": "string"
         },
         "imageError": {
-          "description": "An optional image error. Only present for INVALID_IMAGE_FILE.",
-          "$ref": "ImageError"
+          "$ref": "ImageError",
+          "description": "An optional image error. Only present for INVALID_IMAGE_FILE."
         },
         "objParseError": {
-          "description": "An optional OBJ parse error. Only present for OBJ_PARSE_ERROR.",
-          "$ref": "ObjParseError"
+          "$ref": "ObjParseError",
+          "description": "An optional OBJ parse error. Only present for OBJ_PARSE_ERROR."
         }
       },
       "type": "object"
@@ -466,8 +460,8 @@
       "id": "Format",
       "properties": {
         "formatComplexity": {
-          "description": "Complexity stats about this representation of the asset.",
-          "$ref": "FormatComplexity"
+          "$ref": "FormatComplexity",
+          "description": "Complexity stats about this representation of the asset."
         },
         "formatType": {
           "description": "A short string that identifies the format type of this representation. Possible values are: `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.",
@@ -481,8 +475,8 @@
           "type": "array"
         },
         "root": {
-          "description": "The root of the file hierarchy. This will always be populated. For some format_types - such as `TILT`, which are self-contained - this is all of the data. Other types - such as `OBJ` - often reference other data elements. These are contained in the resources field.",
-          "$ref": "File"
+          "$ref": "File",
+          "description": "The root of the file hierarchy. This will always be populated. For some format_types - such as `TILT`, which are self-contained - this is all of the data. Other types - such as `OBJ` - often reference other data elements. These are contained in the resources field."
         }
       },
       "type": "object"
@@ -510,17 +504,17 @@
       "properties": {
         "code": {
           "description": "The type of image error encountered. Optional for older image errors.",
-          "enumDescriptions": [
-            "Unknown error code.",
-            "We were unable to read the image file.",
-            "The image size is too large.",
-            "The image data does not match the expected MIME type of the image."
-          ],
           "enum": [
             "CODE_UNSPECIFIED",
             "INVALID_IMAGE",
             "IMAGE_TOO_BIG",
             "WRONG_IMAGE_TYPE"
+          ],
+          "enumDescriptions": [
+            "Unknown error code.",
+            "We were unable to read the image file.",
+            "The image size is too large.",
+            "The image data does not match the expected MIME type of the image."
           ],
           "type": "string"
         },
@@ -606,34 +600,6 @@
       "properties": {
         "code": {
           "description": "The type of problem found (required).",
-          "enumDescriptions": [
-            "Unknown error code.",
-            "Vertex references are specified in an inconsistent style for a face (e.g. some vertices specify texture vertices but some don't).",
-            "The command is invalid.",
-            "A invalid number was specified.",
-            "An invalid vertex reference was specified.",
-            "A vertex reference does not specify a geometric vertex.",
-            "An expected token was not found.",
-            "The vertex specified too few dimensions for its usage.",
-            "The face specified too few vertices.",
-            "The vertex specified too many dimensions for its usage.",
-            "This command is a valid OBJ command but is not supported. This error is only generated for the first instance of such a command.",
-            "This line ended with unparsed token characters.",
-            "The specified vertex was not found.",
-            "The specified number was too large or small for its usage.",
-            "The specified parameter value was not recognized.",
-            "The specified texture option is not valid.",
-            "The maximum number of problems to report was reached. Parsing continues, but further problems will be ignored.",
-            "An expected file name was not specified.",
-            "The specified file was not found in the import.",
-            "The specified material was not found in any material definition in the import.",
-            "Material parameters were specified before the first material definition.",
-            "The smoothing group is not valid.",
-            "Vertex colors were specified for only some vertices of a face.",
-            "A missing file was found at a different file path.",
-            "A line in an OBJ or MTL file exceeded the maximum line length.",
-            "The file path was invalid. Only relative paths are supported."
-          ],
           "enum": [
             "CODE_UNSPECIFIED",
             "INCONSISTENT_VERTEX_REFS",
@@ -661,6 +627,34 @@
             "FILE_SUBSTITUTION",
             "LINE_TOO_LONG",
             "INVALID_FILE_PATH"
+          ],
+          "enumDescriptions": [
+            "Unknown error code.",
+            "Vertex references are specified in an inconsistent style for a face (e.g. some vertices specify texture vertices but some don't).",
+            "The command is invalid.",
+            "A invalid number was specified.",
+            "An invalid vertex reference was specified.",
+            "A vertex reference does not specify a geometric vertex.",
+            "An expected token was not found.",
+            "The vertex specified too few dimensions for its usage.",
+            "The face specified too few vertices.",
+            "The vertex specified too many dimensions for its usage.",
+            "This command is a valid OBJ command but is not supported. This error is only generated for the first instance of such a command.",
+            "This line ended with unparsed token characters.",
+            "The specified vertex was not found.",
+            "The specified number was too large or small for its usage.",
+            "The specified parameter value was not recognized.",
+            "The specified texture option is not valid.",
+            "The maximum number of problems to report was reached. Parsing continues, but further problems will be ignored.",
+            "An expected file name was not specified.",
+            "The specified file was not found in the import.",
+            "The specified material was not found in any material definition in the import.",
+            "Material parameters were specified before the first material definition.",
+            "The smoothing group is not valid.",
+            "Vertex colors were specified for only some vertices of a face.",
+            "A missing file was found at a different file path.",
+            "A line in an OBJ or MTL file exceeded the maximum line length.",
+            "The file path was invalid. Only relative paths are supported."
           ],
           "type": "string"
         },
@@ -700,21 +694,21 @@
         },
         "colorSpace": {
           "description": "The materials' diffuse/albedo color. This does not apply to vertex colors or texture maps.",
-          "enumDescriptions": [
-            "Invalid color value.",
-            "Linear color values. Default.",
-            "Colors should be converted to linear by assuming gamma = 2.0."
-          ],
           "enum": [
             "UNKNOWN",
             "LINEAR",
             "GAMMA"
           ],
+          "enumDescriptions": [
+            "Invalid color value.",
+            "Linear color values. Default.",
+            "Colors should be converted to linear by assuming gamma = 2.0."
+          ],
           "type": "string"
         },
         "orientingRotation": {
-          "description": "A rotation that should be applied to the object root to make it upright. More precisely, this quaternion transforms from \"object space\" (the space in which the object is defined) to \"presentation space\", a coordinate system where +Y is up, +X is right, -Z is forward. For example, if the object is the Eiffel Tower, in its local coordinate system the object might be laid out such that the base of the tower is on the YZ plane and the tip of the tower is towards positive X. In this case this quaternion would specify a rotation (of 90 degrees about the Z axis) such that in the presentation space the base of the tower is aligned with the XZ plane, and the tip of the tower lies towards +Y. This rotation is unrelated to the object's pose in the web preview, which is just a camera position setting and is *not* reflected in this rotation. Please note: this is applicable only to the gLTF.",
-          "$ref": "Quaternion"
+          "$ref": "Quaternion",
+          "description": "A rotation that should be applied to the object root to make it upright. More precisely, this quaternion transforms from \"object space\" (the space in which the object is defined) to \"presentation space\", a coordinate system where +Y is up, +X is right, -Z is forward. For example, if the object is the Eiffel Tower, in its local coordinate system the object might be laid out such that the base of the tower is on the YZ plane and the tip of the tower is towards positive X. In this case this quaternion would specify a rotation (of 90 degrees about the Z axis) such that in the presentation space the base of the tower is aligned with the XZ plane, and the tip of the tower lies towards +Y. This rotation is unrelated to the object's pose in the web preview, which is just a camera position setting and is *not* reflected in this rotation. Please note: this is applicable only to the gLTF."
         }
       },
       "type": "object"
@@ -791,8 +785,8 @@
       "id": "UserAsset",
       "properties": {
         "asset": {
-          "description": "An Asset.",
-          "$ref": "Asset"
+          "$ref": "Asset",
+          "description": "An Asset."
         }
       },
       "type": "object"
@@ -800,6 +794,6 @@
   },
   "servicePath": "",
   "title": "Poly API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

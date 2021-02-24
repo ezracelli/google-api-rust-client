@@ -15,29 +15,27 @@
   "description": "The cloud asset API manages the history and inventory of cloud resources.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/asset-inventory/docs/quickstart",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudasset:v1p4beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudasset.mtls.googleapis.com/",
   "name": "cloudasset",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "analyzeIamPolicy": {
           "description": "Analyzes IAM policies to answer which identities have what accesses on which resources.",
           "httpMethod": "GET",
-          "flatPath": "v1p4beta1/{v1p4beta1Id}/{v1p4beta1Id1}:analyzeIamPolicy",
           "id": "cloudasset.analyzeIamPolicy",
           "parameterOrder": [
             "parent"
@@ -119,14 +116,14 @@
             "analysisQuery.accessSelector.permissions": {
               "description": "Optional. The permissions to appear in result.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "analysisQuery.accessSelector.roles": {
               "description": "Optional. The roles to appear in result.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "analysisQuery.identitySelector.identity": {
               "description": "Required. The identity appear in the form of members in [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are: \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\". Notice that wildcard characters (such as * and ?) are not supported. You must give a specific identity.",
@@ -178,8 +175,8 @@
               "description": "Required. The relative name of the root asset. Only resources and IAM policies within the parent will be analyzed. This can only be an organization number (such as \"organizations/123\"), a folder number (such as \"folders/123\"), a project ID (such as \"projects/my-project-id\"), or a project number (such as \"projects/12345\"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).",
               "location": "path",
               "pattern": "^[^/]+/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1p4beta1/{+parent}:analyzeIamPolicy",
@@ -193,7 +190,6 @@
         "exportIamPolicyAnalysis": {
           "description": "Exports the answers of which identities have what accesses on which resources to a Google Cloud Storage destination. The output format is the JSON format that represents a AnalyzeIamPolicyResponse in the JSON format. This method implements the google.longrunning.Operation, which allows you to keep track of the export. We recommend intervals of at least 2 seconds with exponential retry to poll the export operation result. The metadata contains the request to help callers to map responses to requests.",
           "httpMethod": "POST",
-          "flatPath": "v1p4beta1/{v1p4beta1Id}/{v1p4beta1Id1}:exportIamPolicyAnalysis",
           "id": "cloudasset.exportIamPolicyAnalysis",
           "parameterOrder": [
             "parent"
@@ -203,8 +199,8 @@
               "description": "Required. The relative name of the root asset. Only resources and IAM policies within the parent will be analyzed. This can only be an organization number (such as \"organizations/123\"), a folder number (such as \"folders/123\"), a project ID (such as \"projects/my-project-id\"), or a project number (such as \"projects/12345\"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).",
               "location": "path",
               "pattern": "^[^/]+/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1p4beta1/{+parent}:exportIamPolicyAnalysis",
@@ -254,8 +250,8 @@
           "type": "boolean"
         },
         "mainAnalysis": {
-          "description": "The main analysis that matches the original request.",
-          "$ref": "IamPolicyAnalysis"
+          "$ref": "IamPolicyAnalysis",
+          "description": "The main analysis that matches the original request."
         },
         "nonCriticalErrors": {
           "description": "A list of non-critical errors happened during the request handling to explain why `fully_explored` is false, or empty if no error happened.",
@@ -279,8 +275,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -301,16 +297,16 @@
       "id": "ExportIamPolicyAnalysisRequest",
       "properties": {
         "analysisQuery": {
-          "description": "Required. The request query.",
-          "$ref": "IamPolicyAnalysisQuery"
+          "$ref": "IamPolicyAnalysisQuery",
+          "description": "Required. The request query."
         },
         "options": {
-          "description": "Optional. The request options.",
-          "$ref": "Options"
+          "$ref": "Options",
+          "description": "Optional. The request options."
         },
         "outputConfig": {
-          "description": "Required. Output configuration indicating where the results will be output to.",
-          "$ref": "IamPolicyAnalysisOutputConfig"
+          "$ref": "IamPolicyAnalysisOutputConfig",
+          "description": "Required. Output configuration indicating where the results will be output to."
         }
       },
       "type": "object"
@@ -354,8 +350,8 @@
       "id": "GoogleCloudAssetV1p4beta1Access",
       "properties": {
         "analysisState": {
-          "description": "The analysis state of this access.",
-          "$ref": "GoogleCloudAssetV1p4beta1AnalysisState"
+          "$ref": "GoogleCloudAssetV1p4beta1AnalysisState",
+          "description": "The analysis state of this access."
         },
         "permission": {
           "description": "The permission.",
@@ -406,25 +402,6 @@
         },
         "code": {
           "description": "The Google standard error code that best describes the state. For example: - OK means the analysis on this entity has been successfully finished; - PERMISSION_DENIED means an access denied error is encountered; - DEADLINE_EXCEEDED means the analysis on this entity hasn't been started in time;",
-          "enumDescriptions": [
-            "Not an error; returned on success HTTP Mapping: 200 OK",
-            "The operation was cancelled, typically by the caller. HTTP Mapping: 499 Client Closed Request",
-            "Unknown error. For example, this error may be returned when a `Status` value received from another address space belongs to an error space that is not known in this address space. Also errors raised by APIs that do not return enough error information may be converted to this error. HTTP Mapping: 500 Internal Server Error",
-            "The client specified an invalid argument. Note that this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates arguments that are problematic regardless of the state of the system (e.g., a malformed file name). HTTP Mapping: 400 Bad Request",
-            "The deadline expired before the operation could complete. For operations that change the state of the system, this error may be returned even if the operation has completed successfully. For example, a successful response from a server could have been delayed long enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout",
-            "Some requested entity (e.g., file or directory) was not found. Note to server developers: if a request is denied for an entire class of users, such as gradual feature rollout or undocumented allowlist, `NOT_FOUND` may be used. If a request is denied for some users within a class of users, such as user-based access control, `PERMISSION_DENIED` must be used. HTTP Mapping: 404 Not Found",
-            "The entity that a client attempted to create (e.g., file or directory) already exists. HTTP Mapping: 409 Conflict",
-            "The caller does not have permission to execute the specified operation. `PERMISSION_DENIED` must not be used for rejections caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for those errors). `PERMISSION_DENIED` must not be used if the caller can not be identified (use `UNAUTHENTICATED` instead for those errors). This error code does not imply the request is valid or the requested entity exists or satisfies other pre-conditions. HTTP Mapping: 403 Forbidden",
-            "The request does not have valid authentication credentials for the operation. HTTP Mapping: 401 Unauthorized",
-            "Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space. HTTP Mapping: 429 Too Many Requests",
-            "The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an \"rmdir\" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request",
-            "The operation was aborted, typically due to a concurrency issue such as a sequencer check failure or transaction abort. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 409 Conflict",
-            "The operation was attempted past the valid range. E.g., seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error indicates a problem that may be fixed if the system state changes. For example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to read at an offset that is not in the range [0,2^32-1], but it will generate `OUT_OF_RANGE` if asked to read from an offset past the current file size. There is a fair bit of overlap between `FAILED_PRECONDITION` and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific error) when it applies so that callers who are iterating through a space can easily look for an `OUT_OF_RANGE` error to detect when they are done. HTTP Mapping: 400 Bad Request",
-            "The operation is not implemented or is not supported/enabled in this service. HTTP Mapping: 501 Not Implemented",
-            "Internal errors. This means that some invariants expected by the underlying system have been broken. This error code is reserved for serious errors. HTTP Mapping: 500 Internal Server Error",
-            "The service is currently unavailable. This is most likely a transient condition, which can be corrected by retrying with a backoff. Note that it is not always safe to retry non-idempotent operations. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503 Service Unavailable",
-            "Unrecoverable data loss or corruption. HTTP Mapping: 500 Internal Server Error"
-          ],
           "enum": [
             "OK",
             "CANCELLED",
@@ -443,6 +420,25 @@
             "INTERNAL",
             "UNAVAILABLE",
             "DATA_LOSS"
+          ],
+          "enumDescriptions": [
+            "Not an error; returned on success HTTP Mapping: 200 OK",
+            "The operation was cancelled, typically by the caller. HTTP Mapping: 499 Client Closed Request",
+            "Unknown error. For example, this error may be returned when a `Status` value received from another address space belongs to an error space that is not known in this address space. Also errors raised by APIs that do not return enough error information may be converted to this error. HTTP Mapping: 500 Internal Server Error",
+            "The client specified an invalid argument. Note that this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates arguments that are problematic regardless of the state of the system (e.g., a malformed file name). HTTP Mapping: 400 Bad Request",
+            "The deadline expired before the operation could complete. For operations that change the state of the system, this error may be returned even if the operation has completed successfully. For example, a successful response from a server could have been delayed long enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout",
+            "Some requested entity (e.g., file or directory) was not found. Note to server developers: if a request is denied for an entire class of users, such as gradual feature rollout or undocumented allowlist, `NOT_FOUND` may be used. If a request is denied for some users within a class of users, such as user-based access control, `PERMISSION_DENIED` must be used. HTTP Mapping: 404 Not Found",
+            "The entity that a client attempted to create (e.g., file or directory) already exists. HTTP Mapping: 409 Conflict",
+            "The caller does not have permission to execute the specified operation. `PERMISSION_DENIED` must not be used for rejections caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for those errors). `PERMISSION_DENIED` must not be used if the caller can not be identified (use `UNAUTHENTICATED` instead for those errors). This error code does not imply the request is valid or the requested entity exists or satisfies other pre-conditions. HTTP Mapping: 403 Forbidden",
+            "The request does not have valid authentication credentials for the operation. HTTP Mapping: 401 Unauthorized",
+            "Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space. HTTP Mapping: 429 Too Many Requests",
+            "The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an \"rmdir\" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request",
+            "The operation was aborted, typically due to a concurrency issue such as a sequencer check failure or transaction abort. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 409 Conflict",
+            "The operation was attempted past the valid range. E.g., seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error indicates a problem that may be fixed if the system state changes. For example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to read at an offset that is not in the range [0,2^32-1], but it will generate `OUT_OF_RANGE` if asked to read from an offset past the current file size. There is a fair bit of overlap between `FAILED_PRECONDITION` and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific error) when it applies so that callers who are iterating through a space can easily look for an `OUT_OF_RANGE` error to detect when they are done. HTTP Mapping: 400 Bad Request",
+            "The operation is not implemented or is not supported/enabled in this service. HTTP Mapping: 501 Not Implemented",
+            "Internal errors. This means that some invariants expected by the underlying system have been broken. This error code is reserved for serious errors. HTTP Mapping: 500 Internal Server Error",
+            "The service is currently unavailable. This is most likely a transient condition, which can be corrected by retrying with a backoff. Note that it is not always safe to retry non-idempotent operations. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503 Service Unavailable",
+            "Unrecoverable data loss or corruption. HTTP Mapping: 500 Internal Server Error"
           ],
           "type": "string"
         }
@@ -469,8 +465,8 @@
       "id": "GoogleCloudAssetV1p4beta1Identity",
       "properties": {
         "analysisState": {
-          "description": "The analysis state of this identity.",
-          "$ref": "GoogleCloudAssetV1p4beta1AnalysisState"
+          "$ref": "GoogleCloudAssetV1p4beta1AnalysisState",
+          "description": "The analysis state of this identity."
         },
         "name": {
           "description": "The identity name in any form of members appear in [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding), such as: - user:foo@google.com - group:group1@google.com - serviceAccount:s1@prj1.iam.gserviceaccount.com - projectOwner:some_project_id - domain:google.com - allUsers - etc.",
@@ -504,8 +500,8 @@
       "id": "GoogleCloudAssetV1p4beta1Resource",
       "properties": {
         "analysisState": {
-          "description": "The analysis state of this resource.",
-          "$ref": "GoogleCloudAssetV1p4beta1AnalysisState"
+          "$ref": "GoogleCloudAssetV1p4beta1AnalysisState",
+          "description": "The analysis state of this resource."
         },
         "fullResourceName": {
           "description": "The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)",
@@ -519,8 +515,8 @@
       "id": "IamPolicyAnalysis",
       "properties": {
         "analysisQuery": {
-          "description": "The analysis query.",
-          "$ref": "IamPolicyAnalysisQuery"
+          "$ref": "IamPolicyAnalysisQuery",
+          "description": "The analysis query."
         },
         "analysisResults": {
           "description": "A list of IamPolicyAnalysisResult that matches the analysis query, or empty if no result is found.",
@@ -541,8 +537,8 @@
       "id": "IamPolicyAnalysisOutputConfig",
       "properties": {
         "gcsDestination": {
-          "description": "Destination on Cloud Storage.",
-          "$ref": "GcsDestination"
+          "$ref": "GcsDestination",
+          "description": "Destination on Cloud Storage."
         }
       },
       "type": "object"
@@ -552,20 +548,20 @@
       "id": "IamPolicyAnalysisQuery",
       "properties": {
         "accessSelector": {
-          "description": "Optional. Specifies roles or permissions for analysis. This is optional.",
-          "$ref": "AccessSelector"
+          "$ref": "AccessSelector",
+          "description": "Optional. Specifies roles or permissions for analysis. This is optional."
         },
         "identitySelector": {
-          "description": "Optional. Specifies an identity for analysis.",
-          "$ref": "IdentitySelector"
+          "$ref": "IdentitySelector",
+          "description": "Optional. Specifies an identity for analysis."
         },
         "parent": {
           "description": "Required. The relative name of the root asset. Only resources and IAM policies within the parent will be analyzed. This can only be an organization number (such as \"organizations/123\"), a folder number (such as \"folders/123\"), a project ID (such as \"projects/my-project-id\"), or a project number (such as \"projects/12345\"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).",
           "type": "string"
         },
         "resourceSelector": {
-          "description": "Optional. Specifies a resource for analysis.",
-          "$ref": "ResourceSelector"
+          "$ref": "ResourceSelector",
+          "description": "Optional. Specifies a resource for analysis."
         }
       },
       "type": "object"
@@ -590,12 +586,12 @@
           "type": "boolean"
         },
         "iamBinding": {
-          "description": "The Cloud IAM policy binding under analysis.",
-          "$ref": "Binding"
+          "$ref": "Binding",
+          "description": "The Cloud IAM policy binding under analysis."
         },
         "identityList": {
-          "description": "The identity list derived from members of the iam_binding that match or potentially match identity selector specified in the request.",
-          "$ref": "GoogleCloudAssetV1p4beta1IdentityList"
+          "$ref": "GoogleCloudAssetV1p4beta1IdentityList",
+          "description": "The identity list derived from members of the iam_binding that match or potentially match identity selector specified in the request."
         }
       },
       "type": "object"
@@ -620,8 +616,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -718,6 +714,6 @@
   },
   "servicePath": "",
   "title": "Cloud Asset API",
-  "version_module": true,
-  "version": "v1p4beta1"
+  "version": "v1p4beta1",
+  "version_module": true
 }

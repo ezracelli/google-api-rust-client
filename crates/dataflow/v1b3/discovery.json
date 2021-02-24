@@ -24,29 +24,27 @@
   "description": "Manages Google Cloud Dataflow projects on Google Cloud Platform.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/dataflow",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "dataflow:v1b3",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://dataflow.mtls.googleapis.com/",
   "name": "dataflow",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -57,17 +55,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -119,7 +117,6 @@
         "deleteSnapshots": {
           "description": "Deletes a snapshot.",
           "httpMethod": "DELETE",
-          "flatPath": "v1b3/projects/{projectId}/snapshots",
           "id": "dataflow.projects.deleteSnapshots",
           "parameterOrder": [
             "projectId"
@@ -133,8 +130,8 @@
             "projectId": {
               "description": "The ID of the Cloud Platform project that the snapshot belongs to.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "snapshotId": {
               "description": "The ID of the snapshot.",
@@ -156,7 +153,6 @@
         "workerMessages": {
           "description": "Send a worker_message to the service.",
           "httpMethod": "POST",
-          "flatPath": "v1b3/projects/{projectId}/WorkerMessages",
           "id": "dataflow.projects.workerMessages",
           "parameterOrder": [
             "projectId"
@@ -165,8 +161,8 @@
             "projectId": {
               "description": "The project to send the WorkerMessages to.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1b3/projects/{projectId}/WorkerMessages",
@@ -190,7 +186,6 @@
             "commit": {
               "description": "Creates a new TemplateVersion (Important: not new Template) entry in the spanner table. Requires project_id and display_name (template).",
               "httpMethod": "POST",
-              "flatPath": "v1b3/projects/{projectsId}/catalogTemplates/{catalogTemplatesId}:commit",
               "id": "dataflow.projects.catalogTemplates.commit",
               "parameterOrder": [
                 "name"
@@ -200,8 +195,8 @@
                   "description": "The location of the template, name includes project_id and display_name. Commit using project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/catalogTemplates/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/{+name}:commit",
@@ -219,7 +214,6 @@
             "delete": {
               "description": "Deletes an existing Template. Do nothing if Template does not exist.",
               "httpMethod": "DELETE",
-              "flatPath": "v1b3/projects/{projectsId}/catalogTemplates/{catalogTemplatesId}",
               "id": "dataflow.projects.catalogTemplates.delete",
               "parameterOrder": [
                 "name"
@@ -229,8 +223,8 @@
                   "description": "name includes project_id and display_name. Delete by project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/catalogTemplates/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/{+name}",
@@ -245,7 +239,6 @@
             "get": {
               "description": "Get TemplateVersion using project_id and display_name with an optional version_id field. Get latest (has tag \"latest\") TemplateVersion if version_id not set.",
               "httpMethod": "GET",
-              "flatPath": "v1b3/projects/{projectsId}/catalogTemplates/{catalogTemplatesId}",
               "id": "dataflow.projects.catalogTemplates.get",
               "parameterOrder": [
                 "name"
@@ -255,8 +248,8 @@
                   "description": "Resource name includes project_id and display_name. version_id is optional. Get the latest TemplateVersion if version_id not set. Get by project_id(pid1) and display_name(tid1): Format: projects/{pid1}/catalogTemplates/{tid1} Get by project_id(pid1), display_name(tid1), and version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/catalogTemplates/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/{+name}",
@@ -271,7 +264,6 @@
             "label": {
               "description": "Updates the label of the TemplateVersion. Label can be duplicated in Template, so either add or remove the label in the TemplateVersion.",
               "httpMethod": "POST",
-              "flatPath": "v1b3/projects/{projectsId}/catalogTemplates/{catalogTemplatesId}:label",
               "id": "dataflow.projects.catalogTemplates.label",
               "parameterOrder": [
                 "name"
@@ -281,8 +273,8 @@
                   "description": "Resource name includes project_id, display_name, and version_id. Updates by project_id(pid1), display_name(tid1), and version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/catalogTemplates/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/{+name}:label",
@@ -300,7 +292,6 @@
             "tag": {
               "description": "Updates the tag of the TemplateVersion, and tag is unique in Template. If tag exists in another TemplateVersion in the Template, updates the tag to this TemplateVersion will remove it from the old TemplateVersion and add it to this TemplateVersion. If request is remove_only (remove_only = true), remove the tag from this TemplateVersion.",
               "httpMethod": "POST",
-              "flatPath": "v1b3/projects/{projectsId}/catalogTemplates/{catalogTemplatesId}:tag",
               "id": "dataflow.projects.catalogTemplates.tag",
               "parameterOrder": [
                 "name"
@@ -310,8 +301,8 @@
                   "description": "Resource name includes project_id, display_name, and version_id. Updates by project_id(pid1), display_name(tid1), and version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/catalogTemplates/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/{+name}:tag",
@@ -333,7 +324,6 @@
                 "create": {
                   "description": "Creates a new Template with TemplateVersion. Requires project_id(projects) and template display_name(catalogTemplates). The template display_name is set by the user.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectsId}/catalogTemplates/{catalogTemplatesId}/templateVersions",
                   "id": "dataflow.projects.catalogTemplates.templateVersions.create",
                   "parameterOrder": [
                     "parent"
@@ -343,8 +333,8 @@
                       "description": "The parent project and template that the TemplateVersion will be created under. Create using project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/catalogTemplates/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/{+parent}/templateVersions",
@@ -368,7 +358,6 @@
             "aggregated": {
               "description": "List the jobs of a project across all regions.",
               "httpMethod": "GET",
-              "flatPath": "v1b3/projects/{projectId}/jobs:aggregated",
               "id": "dataflow.projects.jobs.aggregated",
               "parameterOrder": [
                 "projectId"
@@ -376,6 +365,12 @@
               "parameters": {
                 "filter": {
                   "description": "The kind of filter to use.",
+                  "enum": [
+                    "UNKNOWN",
+                    "ALL",
+                    "TERMINATED",
+                    "ACTIVE"
+                  ],
                   "enumDescriptions": [
                     "The filter isn't specified, or is unknown. This returns all jobs ordered on descending `JobUuid`.",
                     "Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs ordered on the termination timestamp.",
@@ -383,12 +378,6 @@
                     "Filters the jobs that are running ordered on the creation timestamp."
                   ],
                   "location": "query",
-                  "enum": [
-                    "UNKNOWN",
-                    "ALL",
-                    "TERMINATED",
-                    "ACTIVE"
-                  ],
                   "type": "string"
                 },
                 "location": {
@@ -410,11 +399,17 @@
                 "projectId": {
                   "description": "The project which owns the jobs.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.",
+                  "enum": [
+                    "JOB_VIEW_UNKNOWN",
+                    "JOB_VIEW_SUMMARY",
+                    "JOB_VIEW_ALL",
+                    "JOB_VIEW_DESCRIPTION"
+                  ],
                   "enumDescriptions": [
                     "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information.",
                     "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details.",
@@ -422,12 +417,6 @@
                     "Request summary info and limited job description data for steps, labels and environment."
                   ],
                   "location": "query",
-                  "enum": [
-                    "JOB_VIEW_UNKNOWN",
-                    "JOB_VIEW_SUMMARY",
-                    "JOB_VIEW_ALL",
-                    "JOB_VIEW_DESCRIPTION"
-                  ],
                   "type": "string"
                 }
               },
@@ -445,7 +434,6 @@
             "create": {
               "description": "Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.",
               "httpMethod": "POST",
-              "flatPath": "v1b3/projects/{projectId}/jobs",
               "id": "dataflow.projects.jobs.create",
               "parameterOrder": [
                 "projectId"
@@ -459,8 +447,8 @@
                 "projectId": {
                   "description": "The ID of the Cloud Platform project that the job belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "replaceJobId": {
                   "description": "Deprecated. This field is now in the Job message.",
@@ -469,6 +457,12 @@
                 },
                 "view": {
                   "description": "The level of information requested in response.",
+                  "enum": [
+                    "JOB_VIEW_UNKNOWN",
+                    "JOB_VIEW_SUMMARY",
+                    "JOB_VIEW_ALL",
+                    "JOB_VIEW_DESCRIPTION"
+                  ],
                   "enumDescriptions": [
                     "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information.",
                     "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details.",
@@ -476,12 +470,6 @@
                     "Request summary info and limited job description data for steps, labels and environment."
                   ],
                   "location": "query",
-                  "enum": [
-                    "JOB_VIEW_UNKNOWN",
-                    "JOB_VIEW_SUMMARY",
-                    "JOB_VIEW_ALL",
-                    "JOB_VIEW_DESCRIPTION"
-                  ],
                   "type": "string"
                 }
               },
@@ -502,7 +490,6 @@
             "get": {
               "description": "Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in `us-central1`.",
               "httpMethod": "GET",
-              "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}",
               "id": "dataflow.projects.jobs.get",
               "parameterOrder": [
                 "projectId",
@@ -512,8 +499,8 @@
                 "jobId": {
                   "description": "The job ID.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "location": {
                   "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.",
@@ -523,11 +510,17 @@
                 "projectId": {
                   "description": "The ID of the Cloud Platform project that the job belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "The level of information requested in response.",
+                  "enum": [
+                    "JOB_VIEW_UNKNOWN",
+                    "JOB_VIEW_SUMMARY",
+                    "JOB_VIEW_ALL",
+                    "JOB_VIEW_DESCRIPTION"
+                  ],
                   "enumDescriptions": [
                     "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information.",
                     "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details.",
@@ -535,12 +528,6 @@
                     "Request summary info and limited job description data for steps, labels and environment."
                   ],
                   "location": "query",
-                  "enum": [
-                    "JOB_VIEW_UNKNOWN",
-                    "JOB_VIEW_SUMMARY",
-                    "JOB_VIEW_ALL",
-                    "JOB_VIEW_DESCRIPTION"
-                  ],
                   "type": "string"
                 }
               },
@@ -558,7 +545,6 @@
             "getMetrics": {
               "description": "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are running in `us-central1`.",
               "httpMethod": "GET",
-              "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/metrics",
               "id": "dataflow.projects.jobs.getMetrics",
               "parameterOrder": [
                 "projectId",
@@ -568,8 +554,8 @@
                 "jobId": {
                   "description": "The job to get metrics for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "location": {
                   "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id.",
@@ -579,8 +565,8 @@
                 "projectId": {
                   "description": "A project id.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "startTime": {
                   "description": "Return only metric data that has changed since this time. Default is to return all information about all metrics for the job.",
@@ -603,7 +589,6 @@
             "list": {
               "description": "List the jobs of a project. To list the jobs of a project in a region, we recommend using `projects.locations.jobs.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only get the list of jobs that are running in `us-central1`.",
               "httpMethod": "GET",
-              "flatPath": "v1b3/projects/{projectId}/jobs",
               "id": "dataflow.projects.jobs.list",
               "parameterOrder": [
                 "projectId"
@@ -611,6 +596,12 @@
               "parameters": {
                 "filter": {
                   "description": "The kind of filter to use.",
+                  "enum": [
+                    "UNKNOWN",
+                    "ALL",
+                    "TERMINATED",
+                    "ACTIVE"
+                  ],
                   "enumDescriptions": [
                     "The filter isn't specified, or is unknown. This returns all jobs ordered on descending `JobUuid`.",
                     "Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs ordered on the termination timestamp.",
@@ -618,12 +609,6 @@
                     "Filters the jobs that are running ordered on the creation timestamp."
                   ],
                   "location": "query",
-                  "enum": [
-                    "UNKNOWN",
-                    "ALL",
-                    "TERMINATED",
-                    "ACTIVE"
-                  ],
                   "type": "string"
                 },
                 "location": {
@@ -645,11 +630,17 @@
                 "projectId": {
                   "description": "The project which owns the jobs.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.",
+                  "enum": [
+                    "JOB_VIEW_UNKNOWN",
+                    "JOB_VIEW_SUMMARY",
+                    "JOB_VIEW_ALL",
+                    "JOB_VIEW_DESCRIPTION"
+                  ],
                   "enumDescriptions": [
                     "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information.",
                     "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details.",
@@ -657,12 +648,6 @@
                     "Request summary info and limited job description data for steps, labels and environment."
                   ],
                   "location": "query",
-                  "enum": [
-                    "JOB_VIEW_UNKNOWN",
-                    "JOB_VIEW_SUMMARY",
-                    "JOB_VIEW_ALL",
-                    "JOB_VIEW_DESCRIPTION"
-                  ],
                   "type": "string"
                 }
               },
@@ -680,7 +665,6 @@
             "snapshot": {
               "description": "Snapshot the state of a streaming job.",
               "httpMethod": "POST",
-              "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}:snapshot",
               "id": "dataflow.projects.jobs.snapshot",
               "parameterOrder": [
                 "projectId",
@@ -690,14 +674,14 @@
                 "jobId": {
                   "description": "The job to be snapshotted.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "projectId": {
                   "description": "The project which owns the job to be snapshotted.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/projects/{projectId}/jobs/{jobId}:snapshot",
@@ -717,7 +701,6 @@
             "update": {
               "description": "Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in `us-central1`.",
               "httpMethod": "PUT",
-              "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}",
               "id": "dataflow.projects.jobs.update",
               "parameterOrder": [
                 "projectId",
@@ -727,8 +710,8 @@
                 "jobId": {
                   "description": "The job ID.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "location": {
                   "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.",
@@ -738,8 +721,8 @@
                 "projectId": {
                   "description": "The ID of the Cloud Platform project that the job belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/projects/{projectId}/jobs/{jobId}",
@@ -763,7 +746,6 @@
                 "getConfig": {
                   "description": "Get encoded debug configuration for component. Not cacheable.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig",
                   "id": "dataflow.projects.jobs.debug.getConfig",
                   "parameterOrder": [
                     "projectId",
@@ -773,14 +755,14 @@
                     "jobId": {
                       "description": "The job id.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The project id.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig",
@@ -800,7 +782,6 @@
                 "sendCapture": {
                   "description": "Send encoded debug capture data for component.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture",
                   "id": "dataflow.projects.jobs.debug.sendCapture",
                   "parameterOrder": [
                     "projectId",
@@ -810,14 +791,14 @@
                     "jobId": {
                       "description": "The job id.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The project id.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture",
@@ -841,7 +822,6 @@
                 "list": {
                   "description": "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that are running in `us-central1`.",
                   "httpMethod": "GET",
-                  "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/messages",
                   "id": "dataflow.projects.jobs.messages.list",
                   "parameterOrder": [
                     "projectId",
@@ -857,8 +837,8 @@
                     "jobId": {
                       "description": "The job to get messages about.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id.",
@@ -867,6 +847,14 @@
                     },
                     "minimumImportance": {
                       "description": "Filter to only get messages with importance >= level",
+                      "enum": [
+                        "JOB_MESSAGE_IMPORTANCE_UNKNOWN",
+                        "JOB_MESSAGE_DEBUG",
+                        "JOB_MESSAGE_DETAILED",
+                        "JOB_MESSAGE_BASIC",
+                        "JOB_MESSAGE_WARNING",
+                        "JOB_MESSAGE_ERROR"
+                      ],
                       "enumDescriptions": [
                         "The message importance isn't specified, or is unknown.",
                         "The message is at the 'debug' level: typically only useful for software engineers working on the code the job is running. Typically, Dataflow pipeline runners do not display log messages at this level by default.",
@@ -876,14 +864,6 @@
                         "The message is at the 'error' level: indicating a condition preventing a job from succeeding. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."
                       ],
                       "location": "query",
-                      "enum": [
-                        "JOB_MESSAGE_IMPORTANCE_UNKNOWN",
-                        "JOB_MESSAGE_DEBUG",
-                        "JOB_MESSAGE_DETAILED",
-                        "JOB_MESSAGE_BASIC",
-                        "JOB_MESSAGE_WARNING",
-                        "JOB_MESSAGE_ERROR"
-                      ],
                       "type": "string"
                     },
                     "pageSize": {
@@ -900,8 +880,8 @@
                     "projectId": {
                       "description": "A project id.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "startTime": {
                       "description": "If specified, return only messages with timestamps >= start_time. The default is the job creation time (i.e. beginning of messages).",
@@ -928,7 +908,6 @@
                 "lease": {
                   "description": "Leases a dataflow WorkItem to run.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/workItems:lease",
                   "id": "dataflow.projects.jobs.workItems.lease",
                   "parameterOrder": [
                     "projectId",
@@ -938,14 +917,14 @@
                     "jobId": {
                       "description": "Identifies the workflow job this worker belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "Identifies the project this worker belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/jobs/{jobId}/workItems:lease",
@@ -965,7 +944,6 @@
                 "reportStatus": {
                   "description": "Reports the status of dataflow WorkItems leased by a worker.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}/workItems:reportStatus",
                   "id": "dataflow.projects.jobs.workItems.reportStatus",
                   "parameterOrder": [
                     "projectId",
@@ -975,14 +953,14 @@
                     "jobId": {
                       "description": "The job which the WorkItem is part of.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The project which owns the WorkItem's job.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/jobs/{jobId}/workItems:reportStatus",
@@ -1008,7 +986,6 @@
             "workerMessages": {
               "description": "Send a worker_message to the service.",
               "httpMethod": "POST",
-              "flatPath": "v1b3/projects/{projectId}/locations/{location}/WorkerMessages",
               "id": "dataflow.projects.locations.workerMessages",
               "parameterOrder": [
                 "projectId",
@@ -1018,14 +995,14 @@
                 "location": {
                   "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "projectId": {
                   "description": "The project to send the WorkerMessages to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/projects/{projectId}/locations/{location}/WorkerMessages",
@@ -1049,7 +1026,6 @@
                 "launch": {
                   "description": "Launch a job with a FlexTemplate.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/flexTemplates:launch",
                   "id": "dataflow.projects.locations.flexTemplates.launch",
                   "parameterOrder": [
                     "projectId",
@@ -1059,14 +1035,14 @@
                     "location": {
                       "description": "Required. The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. E.g., us-central1, us-west1.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/locations/{location}/flexTemplates:launch",
@@ -1090,7 +1066,6 @@
                 "create": {
                   "description": "Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs",
                   "id": "dataflow.projects.locations.jobs.create",
                   "parameterOrder": [
                     "projectId",
@@ -1100,14 +1075,14 @@
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The ID of the Cloud Platform project that the job belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "replaceJobId": {
                       "description": "Deprecated. This field is now in the Job message.",
@@ -1116,6 +1091,12 @@
                     },
                     "view": {
                       "description": "The level of information requested in response.",
+                      "enum": [
+                        "JOB_VIEW_UNKNOWN",
+                        "JOB_VIEW_SUMMARY",
+                        "JOB_VIEW_ALL",
+                        "JOB_VIEW_DESCRIPTION"
+                      ],
                       "enumDescriptions": [
                         "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information.",
                         "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details.",
@@ -1123,12 +1104,6 @@
                         "Request summary info and limited job description data for steps, labels and environment."
                       ],
                       "location": "query",
-                      "enum": [
-                        "JOB_VIEW_UNKNOWN",
-                        "JOB_VIEW_SUMMARY",
-                        "JOB_VIEW_ALL",
-                        "JOB_VIEW_DESCRIPTION"
-                      ],
                       "type": "string"
                     }
                   },
@@ -1149,7 +1124,6 @@
                 "get": {
                   "description": "Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in `us-central1`.",
                   "httpMethod": "GET",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}",
                   "id": "dataflow.projects.locations.jobs.get",
                   "parameterOrder": [
                     "projectId",
@@ -1160,23 +1134,29 @@
                     "jobId": {
                       "description": "The job ID.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The ID of the Cloud Platform project that the job belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "view": {
                       "description": "The level of information requested in response.",
+                      "enum": [
+                        "JOB_VIEW_UNKNOWN",
+                        "JOB_VIEW_SUMMARY",
+                        "JOB_VIEW_ALL",
+                        "JOB_VIEW_DESCRIPTION"
+                      ],
                       "enumDescriptions": [
                         "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information.",
                         "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details.",
@@ -1184,12 +1164,6 @@
                         "Request summary info and limited job description data for steps, labels and environment."
                       ],
                       "location": "query",
-                      "enum": [
-                        "JOB_VIEW_UNKNOWN",
-                        "JOB_VIEW_SUMMARY",
-                        "JOB_VIEW_ALL",
-                        "JOB_VIEW_DESCRIPTION"
-                      ],
                       "type": "string"
                     }
                   },
@@ -1207,7 +1181,6 @@
                 "getExecutionDetails": {
                   "description": "Request detailed information about the execution status of the job. EXPERIMENTAL. This API is subject to change or removal without notice.",
                   "httpMethod": "GET",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/executionDetails",
                   "id": "dataflow.projects.locations.jobs.getExecutionDetails",
                   "parameterOrder": [
                     "projectId",
@@ -1218,14 +1191,14 @@
                     "jobId": {
                       "description": "The job to get execution details for.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "If specified, determines the maximum number of stages to return. If unspecified, the service may choose an appropriate default, or may return an arbitrarily large number of results.",
@@ -1241,8 +1214,8 @@
                     "projectId": {
                       "description": "A project id.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/executionDetails",
@@ -1259,7 +1232,6 @@
                 "getMetrics": {
                   "description": "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are running in `us-central1`.",
                   "httpMethod": "GET",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/metrics",
                   "id": "dataflow.projects.locations.jobs.getMetrics",
                   "parameterOrder": [
                     "projectId",
@@ -1270,20 +1242,20 @@
                     "jobId": {
                       "description": "The job to get metrics for.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "A project id.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "startTime": {
                       "description": "Return only metric data that has changed since this time. Default is to return all information about all metrics for the job.",
@@ -1306,7 +1278,6 @@
                 "list": {
                   "description": "List the jobs of a project. To list the jobs of a project in a region, we recommend using `projects.locations.jobs.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only get the list of jobs that are running in `us-central1`.",
                   "httpMethod": "GET",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs",
                   "id": "dataflow.projects.locations.jobs.list",
                   "parameterOrder": [
                     "projectId",
@@ -1315,6 +1286,12 @@
                   "parameters": {
                     "filter": {
                       "description": "The kind of filter to use.",
+                      "enum": [
+                        "UNKNOWN",
+                        "ALL",
+                        "TERMINATED",
+                        "ACTIVE"
+                      ],
                       "enumDescriptions": [
                         "The filter isn't specified, or is unknown. This returns all jobs ordered on descending `JobUuid`.",
                         "Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs ordered on the termination timestamp.",
@@ -1322,19 +1299,13 @@
                         "Filters the jobs that are running ordered on the creation timestamp."
                       ],
                       "location": "query",
-                      "enum": [
-                        "UNKNOWN",
-                        "ALL",
-                        "TERMINATED",
-                        "ACTIVE"
-                      ],
                       "type": "string"
                     },
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "If there are many jobs, limit response to at most this many. The actual number of jobs returned will be the lesser of max_responses and an unspecified server-defined limit.",
@@ -1350,11 +1321,17 @@
                     "projectId": {
                       "description": "The project which owns the jobs.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "view": {
                       "description": "Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.",
+                      "enum": [
+                        "JOB_VIEW_UNKNOWN",
+                        "JOB_VIEW_SUMMARY",
+                        "JOB_VIEW_ALL",
+                        "JOB_VIEW_DESCRIPTION"
+                      ],
                       "enumDescriptions": [
                         "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information.",
                         "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details.",
@@ -1362,12 +1339,6 @@
                         "Request summary info and limited job description data for steps, labels and environment."
                       ],
                       "location": "query",
-                      "enum": [
-                        "JOB_VIEW_UNKNOWN",
-                        "JOB_VIEW_SUMMARY",
-                        "JOB_VIEW_ALL",
-                        "JOB_VIEW_DESCRIPTION"
-                      ],
                       "type": "string"
                     }
                   },
@@ -1385,7 +1356,6 @@
                 "snapshot": {
                   "description": "Snapshot the state of a streaming job.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot",
                   "id": "dataflow.projects.locations.jobs.snapshot",
                   "parameterOrder": [
                     "projectId",
@@ -1396,20 +1366,20 @@
                     "jobId": {
                       "description": "The job to be snapshotted.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "location": {
                       "description": "The location that contains this job.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The project which owns the job to be snapshotted.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot",
@@ -1429,7 +1399,6 @@
                 "update": {
                   "description": "Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in `us-central1`.",
                   "httpMethod": "PUT",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}",
                   "id": "dataflow.projects.locations.jobs.update",
                   "parameterOrder": [
                     "projectId",
@@ -1440,20 +1409,20 @@
                     "jobId": {
                       "description": "The job ID.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The ID of the Cloud Platform project that the job belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}",
@@ -1477,7 +1446,6 @@
                     "getConfig": {
                       "description": "Get encoded debug configuration for component. Not cacheable.",
                       "httpMethod": "POST",
-                      "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig",
                       "id": "dataflow.projects.locations.jobs.debug.getConfig",
                       "parameterOrder": [
                         "projectId",
@@ -1488,20 +1456,20 @@
                         "jobId": {
                           "description": "The job id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "location": {
                           "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "projectId": {
                           "description": "The project id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig",
@@ -1521,7 +1489,6 @@
                     "sendCapture": {
                       "description": "Send encoded debug capture data for component.",
                       "httpMethod": "POST",
-                      "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/sendCapture",
                       "id": "dataflow.projects.locations.jobs.debug.sendCapture",
                       "parameterOrder": [
                         "projectId",
@@ -1532,20 +1499,20 @@
                         "jobId": {
                           "description": "The job id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "location": {
                           "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "projectId": {
                           "description": "The project id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/sendCapture",
@@ -1569,7 +1536,6 @@
                     "list": {
                       "description": "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that are running in `us-central1`.",
                       "httpMethod": "GET",
-                      "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/messages",
                       "id": "dataflow.projects.locations.jobs.messages.list",
                       "parameterOrder": [
                         "projectId",
@@ -1586,17 +1552,25 @@
                         "jobId": {
                           "description": "The job to get messages about.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "location": {
                           "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "minimumImportance": {
                           "description": "Filter to only get messages with importance >= level",
+                          "enum": [
+                            "JOB_MESSAGE_IMPORTANCE_UNKNOWN",
+                            "JOB_MESSAGE_DEBUG",
+                            "JOB_MESSAGE_DETAILED",
+                            "JOB_MESSAGE_BASIC",
+                            "JOB_MESSAGE_WARNING",
+                            "JOB_MESSAGE_ERROR"
+                          ],
                           "enumDescriptions": [
                             "The message importance isn't specified, or is unknown.",
                             "The message is at the 'debug' level: typically only useful for software engineers working on the code the job is running. Typically, Dataflow pipeline runners do not display log messages at this level by default.",
@@ -1606,14 +1580,6 @@
                             "The message is at the 'error' level: indicating a condition preventing a job from succeeding. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."
                           ],
                           "location": "query",
-                          "enum": [
-                            "JOB_MESSAGE_IMPORTANCE_UNKNOWN",
-                            "JOB_MESSAGE_DEBUG",
-                            "JOB_MESSAGE_DETAILED",
-                            "JOB_MESSAGE_BASIC",
-                            "JOB_MESSAGE_WARNING",
-                            "JOB_MESSAGE_ERROR"
-                          ],
                           "type": "string"
                         },
                         "pageSize": {
@@ -1630,8 +1596,8 @@
                         "projectId": {
                           "description": "A project id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "startTime": {
                           "description": "If specified, return only messages with timestamps >= start_time. The default is the job creation time (i.e. beginning of messages).",
@@ -1658,7 +1624,6 @@
                     "list": {
                       "description": "Lists snapshots.",
                       "httpMethod": "GET",
-                      "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots",
                       "id": "dataflow.projects.locations.jobs.snapshots.list",
                       "parameterOrder": [
                         "projectId",
@@ -1669,20 +1634,20 @@
                         "jobId": {
                           "description": "If specified, list snapshots created from this job.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "location": {
                           "description": "The location to list snapshots in.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "projectId": {
                           "description": "The project ID to list snapshots for.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots",
@@ -1703,7 +1668,6 @@
                     "getExecutionDetails": {
                       "description": "Request detailed information about the execution status of a stage of the job. EXPERIMENTAL. This API is subject to change or removal without notice.",
                       "httpMethod": "GET",
-                      "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/stages/{stageId}/executionDetails",
                       "id": "dataflow.projects.locations.jobs.stages.getExecutionDetails",
                       "parameterOrder": [
                         "projectId",
@@ -1721,14 +1685,14 @@
                         "jobId": {
                           "description": "The job to get execution details for.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "location": {
                           "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "pageSize": {
                           "description": "If specified, determines the maximum number of work items to return. If unspecified, the service may choose an appropriate default, or may return an arbitrarily large number of results.",
@@ -1744,14 +1708,14 @@
                         "projectId": {
                           "description": "A project id.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "stageId": {
                           "description": "The stage for which to fetch information.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "startTime": {
                           "description": "Lower time bound of work items to include, by start time.",
@@ -1778,7 +1742,6 @@
                     "lease": {
                       "description": "Leases a dataflow WorkItem to run.",
                       "httpMethod": "POST",
-                      "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:lease",
                       "id": "dataflow.projects.locations.jobs.workItems.lease",
                       "parameterOrder": [
                         "projectId",
@@ -1789,20 +1752,20 @@
                         "jobId": {
                           "description": "Identifies the workflow job this worker belongs to.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "location": {
                           "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the WorkItem's job.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "projectId": {
                           "description": "Identifies the project this worker belongs to.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:lease",
@@ -1822,7 +1785,6 @@
                     "reportStatus": {
                       "description": "Reports the status of dataflow WorkItems leased by a worker.",
                       "httpMethod": "POST",
-                      "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus",
                       "id": "dataflow.projects.locations.jobs.workItems.reportStatus",
                       "parameterOrder": [
                         "projectId",
@@ -1833,20 +1795,20 @@
                         "jobId": {
                           "description": "The job which the WorkItem is part of.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "location": {
                           "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the WorkItem's job.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "projectId": {
                           "description": "The project which owns the WorkItem's job.",
                           "location": "path",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus",
@@ -1872,7 +1834,6 @@
                 "delete": {
                   "description": "Deletes a snapshot.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
                   "id": "dataflow.projects.locations.snapshots.delete",
                   "parameterOrder": [
                     "projectId",
@@ -1883,20 +1844,20 @@
                     "location": {
                       "description": "The location that contains this snapshot.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The ID of the Cloud Platform project that the snapshot belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "snapshotId": {
                       "description": "The ID of the snapshot.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
@@ -1913,7 +1874,6 @@
                 "get": {
                   "description": "Gets information about a snapshot.",
                   "httpMethod": "GET",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
                   "id": "dataflow.projects.locations.snapshots.get",
                   "parameterOrder": [
                     "projectId",
@@ -1924,20 +1884,20 @@
                     "location": {
                       "description": "The location that contains this snapshot.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The ID of the Cloud Platform project that the snapshot belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "snapshotId": {
                       "description": "The ID of the snapshot.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
@@ -1954,7 +1914,6 @@
                 "list": {
                   "description": "Lists snapshots.",
                   "httpMethod": "GET",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/snapshots",
                   "id": "dataflow.projects.locations.snapshots.list",
                   "parameterOrder": [
                     "projectId",
@@ -1969,14 +1928,14 @@
                     "location": {
                       "description": "The location to list snapshots in.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "The project ID to list snapshots for.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/locations/{location}/snapshots",
@@ -1997,7 +1956,6 @@
                 "validate": {
                   "description": "Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the given query parses correctly, and if able to look up schema information from DataCatalog, will validate that the query analyzes properly as well.",
                   "httpMethod": "GET",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/sql:validate",
                   "id": "dataflow.projects.locations.sql.validate",
                   "parameterOrder": [
                     "projectId",
@@ -2007,14 +1965,14 @@
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "query": {
                       "description": "The sql query to validate.",
@@ -2038,7 +1996,6 @@
                 "create": {
                   "description": "Creates a Cloud Dataflow job from a template.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/templates",
                   "id": "dataflow.projects.locations.templates.create",
                   "parameterOrder": [
                     "projectId",
@@ -2048,14 +2005,14 @@
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1b3/projects/{projectId}/locations/{location}/templates",
@@ -2075,7 +2032,6 @@
                 "get": {
                   "description": "Get the template associated with a template.",
                   "httpMethod": "GET",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/templates:get",
                   "id": "dataflow.projects.locations.templates.get",
                   "parameterOrder": [
                     "projectId",
@@ -2090,24 +2046,24 @@
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "view": {
                       "description": "The view to retrieve. Defaults to METADATA_ONLY.",
+                      "enum": [
+                        "METADATA_ONLY"
+                      ],
                       "enumDescriptions": [
                         "Template view that retrieves only the metadata associated with the template."
                       ],
                       "location": "query",
-                      "enum": [
-                        "METADATA_ONLY"
-                      ],
                       "type": "string"
                     }
                   },
@@ -2125,7 +2081,6 @@
                 "launch": {
                   "description": "Launch a template.",
                   "httpMethod": "POST",
-                  "flatPath": "v1b3/projects/{projectId}/locations/{location}/templates:launch",
                   "id": "dataflow.projects.locations.templates.launch",
                   "parameterOrder": [
                     "projectId",
@@ -2150,14 +2105,14 @@
                     "location": {
                       "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "projectId": {
                       "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "validateOnly": {
                       "description": "If true, the request is validated but not actually executed. Defaults to false.",
@@ -2188,7 +2143,6 @@
             "get": {
               "description": "Gets information about a snapshot.",
               "httpMethod": "GET",
-              "flatPath": "v1b3/projects/{projectId}/snapshots/{snapshotId}",
               "id": "dataflow.projects.snapshots.get",
               "parameterOrder": [
                 "projectId",
@@ -2203,14 +2157,14 @@
                 "projectId": {
                   "description": "The ID of the Cloud Platform project that the snapshot belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "snapshotId": {
                   "description": "The ID of the snapshot.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/projects/{projectId}/snapshots/{snapshotId}",
@@ -2227,7 +2181,6 @@
             "list": {
               "description": "Lists snapshots.",
               "httpMethod": "GET",
-              "flatPath": "v1b3/projects/{projectId}/snapshots",
               "id": "dataflow.projects.snapshots.list",
               "parameterOrder": [
                 "projectId"
@@ -2246,8 +2199,8 @@
                 "projectId": {
                   "description": "The project ID to list snapshots for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/projects/{projectId}/snapshots",
@@ -2268,7 +2221,6 @@
             "list": {
               "description": "List TemplateVersions using project_id and an optional display_name field. List all the TemplateVersions in the Template if display set. List all the TemplateVersions in the Project if display_name not set.",
               "httpMethod": "GET",
-              "flatPath": "v1b3/projects/{projectsId}/templateVersions",
               "id": "dataflow.projects.templateVersions.list",
               "parameterOrder": [
                 "parent"
@@ -2289,8 +2241,8 @@
                   "description": "parent includes project_id, and display_name is optional. List by project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1} List by project_id(pid1). Format: projects/{pid1}",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/{+parent}/templateVersions",
@@ -2309,7 +2261,6 @@
             "create": {
               "description": "Creates a Cloud Dataflow job from a template.",
               "httpMethod": "POST",
-              "flatPath": "v1b3/projects/{projectId}/templates",
               "id": "dataflow.projects.templates.create",
               "parameterOrder": [
                 "projectId"
@@ -2318,8 +2269,8 @@
                 "projectId": {
                   "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1b3/projects/{projectId}/templates",
@@ -2339,7 +2290,6 @@
             "get": {
               "description": "Get the template associated with a template.",
               "httpMethod": "GET",
-              "flatPath": "v1b3/projects/{projectId}/templates:get",
               "id": "dataflow.projects.templates.get",
               "parameterOrder": [
                 "projectId"
@@ -2358,18 +2308,18 @@
                 "projectId": {
                   "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "The view to retrieve. Defaults to METADATA_ONLY.",
+                  "enum": [
+                    "METADATA_ONLY"
+                  ],
                   "enumDescriptions": [
                     "Template view that retrieves only the metadata associated with the template."
                   ],
                   "location": "query",
-                  "enum": [
-                    "METADATA_ONLY"
-                  ],
                   "type": "string"
                 }
               },
@@ -2387,7 +2337,6 @@
             "launch": {
               "description": "Launch a template.",
               "httpMethod": "POST",
-              "flatPath": "v1b3/projects/{projectId}/templates:launch",
               "id": "dataflow.projects.templates.launch",
               "parameterOrder": [
                 "projectId"
@@ -2416,8 +2365,8 @@
                 "projectId": {
                   "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "validateOnly": {
                   "description": "If true, the request is validated but not actually executed. Defaults to false.",
@@ -2457,8 +2406,8 @@
           "type": "number"
         },
         "position": {
-          "description": "Obsolete.",
-          "$ref": "Position"
+          "$ref": "Position",
+          "description": "Obsolete."
         },
         "remainingTime": {
           "description": "Obsolete.",
@@ -2473,8 +2422,8 @@
       "id": "ApproximateReportedProgress",
       "properties": {
         "consumedParallelism": {
-          "description": "Total amount of parallelism in the portion of input of this task that has already been consumed and is no longer active. In the first two examples above (see remaining_parallelism), the value should be 29 or 2 respectively. The sum of remaining_parallelism and consumed_parallelism should equal the total amount of parallelism in this work item. If specified, must be finite.",
-          "$ref": "ReportedParallelism"
+          "$ref": "ReportedParallelism",
+          "description": "Total amount of parallelism in the portion of input of this task that has already been consumed and is no longer active. In the first two examples above (see remaining_parallelism), the value should be 29 or 2 respectively. The sum of remaining_parallelism and consumed_parallelism should equal the total amount of parallelism in this work item. If specified, must be finite."
         },
         "fractionConsumed": {
           "description": "Completion as fraction of the input consumed, from 0.0 (beginning, nothing consumed), to 1.0 (end of the input, entire input consumed).",
@@ -2482,12 +2431,12 @@
           "type": "number"
         },
         "position": {
-          "description": "A Position within the work to represent a progress.",
-          "$ref": "Position"
+          "$ref": "Position",
+          "description": "A Position within the work to represent a progress."
         },
         "remainingParallelism": {
-          "description": "Total amount of parallelism in the input of this task that remains, (i.e. can be delegated to this task and any new tasks via dynamic splitting). Always at least 1 for non-finished work items and 0 for finished. \"Amount of parallelism\" refers to how many non-empty parts of the input can be read in parallel. This does not necessarily equal number of records. An input that can be read in parallel down to the individual records is called \"perfectly splittable\". An example of non-perfectly parallelizable input is a block-compressed file format where a block of records has to be read as a whole, but different blocks can be read in parallel. Examples: * If we are processing record #30 (starting at 1) out of 50 in a perfectly splittable 50-record input, this value should be 21 (20 remaining + 1 current). * If we are reading through block 3 in a block-compressed file consisting of 5 blocks, this value should be 3 (since blocks 4 and 5 can be processed in parallel by new tasks via dynamic splitting and the current task remains processing block 3). * If we are reading through the last block in a block-compressed file, or reading or processing the last record in a perfectly splittable input, this value should be 1, because apart from the current task, no additional remainder can be split off.",
-          "$ref": "ReportedParallelism"
+          "$ref": "ReportedParallelism",
+          "description": "Total amount of parallelism in the input of this task that remains, (i.e. can be delegated to this task and any new tasks via dynamic splitting). Always at least 1 for non-finished work items and 0 for finished. \"Amount of parallelism\" refers to how many non-empty parts of the input can be read in parallel. This does not necessarily equal number of records. An input that can be read in parallel down to the individual records is called \"perfectly splittable\". An example of non-perfectly parallelizable input is a block-compressed file format where a block of records has to be read as a whole, but different blocks can be read in parallel. Examples: * If we are processing record #30 (starting at 1) out of 50 in a perfectly splittable 50-record input, this value should be 21 (20 remaining + 1 current). * If we are reading through block 3 in a block-compressed file consisting of 5 blocks, this value should be 3 (since blocks 4 and 5 can be processed in parallel by new tasks via dynamic splitting and the current task remains processing block 3). * If we are reading through the last block in a block-compressed file, or reading or processing the last record in a perfectly splittable input, this value should be 1, because apart from the current task, no additional remainder can be split off."
         }
       },
       "type": "object"
@@ -2507,8 +2456,8 @@
           "type": "number"
         },
         "position": {
-          "description": "A Position at which to split the work item.",
-          "$ref": "Position"
+          "$ref": "Position",
+          "description": "A Position at which to split the work item."
         }
       },
       "type": "object"
@@ -2518,16 +2467,16 @@
       "id": "Artifact",
       "properties": {
         "containerSpec": {
-          "description": "Container image path set for flex Template.",
-          "$ref": "ContainerSpec"
+          "$ref": "ContainerSpec",
+          "description": "Container image path set for flex Template."
         },
         "jobGraphGcsPath": {
           "description": "job_graph_gcs_path set for legacy Template.",
           "type": "string"
         },
         "metadata": {
-          "description": "Metadata set for legacy Template.",
-          "$ref": "TemplateMetadata"
+          "$ref": "TemplateMetadata",
+          "description": "Metadata set for legacy Template."
         }
       },
       "type": "object"
@@ -2542,24 +2491,24 @@
           "type": "string"
         },
         "description": {
-          "description": "A message describing why the system decided to adjust the current number of workers, why it failed, or why the system decided to not make any changes to the number of workers.",
-          "$ref": "StructuredMessage"
+          "$ref": "StructuredMessage",
+          "description": "A message describing why the system decided to adjust the current number of workers, why it failed, or why the system decided to not make any changes to the number of workers."
         },
         "eventType": {
           "description": "The type of autoscaling event to report.",
-          "enumDescriptions": [
-            "Default type for the enum. Value should never be returned.",
-            "The TARGET_NUM_WORKERS_CHANGED type should be used when the target worker pool size has changed at the start of an actuation. An event should always be specified as TARGET_NUM_WORKERS_CHANGED if it reflects a change in the target_num_workers.",
-            "The CURRENT_NUM_WORKERS_CHANGED type should be used when actual worker pool size has been changed, but the target_num_workers has not changed.",
-            "The ACTUATION_FAILURE type should be used when we want to report an error to the user indicating why the current number of workers in the pool could not be changed. Displayed in the current status and history widgets.",
-            "Used when we want to report to the user a reason why we are not currently adjusting the number of workers. Should specify both target_num_workers, current_num_workers and a decision_message."
-          ],
           "enum": [
             "TYPE_UNKNOWN",
             "TARGET_NUM_WORKERS_CHANGED",
             "CURRENT_NUM_WORKERS_CHANGED",
             "ACTUATION_FAILURE",
             "NO_CHANGE"
+          ],
+          "enumDescriptions": [
+            "Default type for the enum. Value should never be returned.",
+            "The TARGET_NUM_WORKERS_CHANGED type should be used when the target worker pool size has changed at the start of an actuation. An event should always be specified as TARGET_NUM_WORKERS_CHANGED if it reflects a change in the target_num_workers.",
+            "The CURRENT_NUM_WORKERS_CHANGED type should be used when actual worker pool size has been changed, but the target_num_workers has not changed.",
+            "The ACTUATION_FAILURE type should be used when we want to report an error to the user indicating why the current number of workers in the pool could not be changed. Displayed in the current status and history widgets.",
+            "Used when we want to report to the user a reason why we are not currently adjusting the number of workers. Should specify both target_num_workers, current_num_workers and a decision_message."
           ],
           "type": "string"
         },
@@ -2586,15 +2535,15 @@
       "properties": {
         "algorithm": {
           "description": "The algorithm to use for autoscaling.",
-          "enumDescriptions": [
-            "The algorithm is unknown, or unspecified.",
-            "Disable autoscaling.",
-            "Increase worker count over time to reduce job execution time."
-          ],
           "enum": [
             "AUTOSCALING_ALGORITHM_UNKNOWN",
             "AUTOSCALING_ALGORITHM_NONE",
             "AUTOSCALING_ALGORITHM_BASIC"
+          ],
+          "enumDescriptions": [
+            "The algorithm is unknown, or unspecified.",
+            "Disable autoscaling.",
+            "Increase worker count over time to reduce job execution time."
           ],
           "type": "string"
         },
@@ -2675,8 +2624,8 @@
       "id": "CommitTemplateVersionRequest",
       "properties": {
         "templateVersion": {
-          "description": "TemplateVersion obejct to create.",
-          "$ref": "TemplateVersion"
+          "$ref": "TemplateVersion",
+          "description": "TemplateVersion obejct to create."
         }
       },
       "type": "object"
@@ -2772,8 +2721,8 @@
           "type": "integer"
         },
         "position": {
-          "description": "Position within the inner source.",
-          "$ref": "Position"
+          "$ref": "Position",
+          "description": "Position within the inner source."
         }
       },
       "type": "object"
@@ -2783,20 +2732,20 @@
       "id": "ContainerSpec",
       "properties": {
         "defaultEnvironment": {
-          "description": "Default runtime environment for the job.",
-          "$ref": "FlexTemplateRuntimeEnvironment"
+          "$ref": "FlexTemplateRuntimeEnvironment",
+          "description": "Default runtime environment for the job."
         },
         "image": {
           "description": "Name of the docker container image. E.g., gcr.io/project/some-image",
           "type": "string"
         },
         "metadata": {
-          "description": "Metadata describing a template including description and validation rules.",
-          "$ref": "TemplateMetadata"
+          "$ref": "TemplateMetadata",
+          "description": "Metadata describing a template including description and validation rules."
         },
         "sdkInfo": {
-          "description": "Required. SDK info of the Flex Template.",
-          "$ref": "SDKInfo"
+          "$ref": "SDKInfo",
+          "description": "Required. SDK info of the Flex Template."
         }
       },
       "type": "object"
@@ -2811,18 +2760,6 @@
         },
         "kind": {
           "description": "Counter aggregation kind.",
-          "enumDescriptions": [
-            "Counter aggregation kind was not set.",
-            "Aggregated value is the sum of all contributed values.",
-            "Aggregated value is the max of all contributed values.",
-            "Aggregated value is the min of all contributed values.",
-            "Aggregated value is the mean of all contributed values.",
-            "Aggregated value represents the logical 'or' of all contributed values.",
-            "Aggregated value represents the logical 'and' of all contributed values.",
-            "Aggregated value is a set of unique contributed values.",
-            "Aggregated value captures statistics about a distribution.",
-            "Aggregated value tracks the latest value of a variable."
-          ],
           "enum": [
             "INVALID",
             "SUM",
@@ -2835,6 +2772,18 @@
             "DISTRIBUTION",
             "LATEST_VALUE"
           ],
+          "enumDescriptions": [
+            "Counter aggregation kind was not set.",
+            "Aggregated value is the sum of all contributed values.",
+            "Aggregated value is the max of all contributed values.",
+            "Aggregated value is the min of all contributed values.",
+            "Aggregated value is the mean of all contributed values.",
+            "Aggregated value represents the logical 'or' of all contributed values.",
+            "Aggregated value represents the logical 'and' of all contributed values.",
+            "Aggregated value is a set of unique contributed values.",
+            "Aggregated value captures statistics about a distribution.",
+            "Aggregated value tracks the latest value of a variable."
+          ],
           "type": "string"
         },
         "otherUnits": {
@@ -2843,16 +2792,6 @@
         },
         "standardUnits": {
           "description": "System defined Units, see above enum.",
-          "enumDescriptions": [
-            "Counter returns a value in bytes.",
-            "Counter returns a value in bytes per second.",
-            "Counter returns a value in milliseconds.",
-            "Counter returns a value in microseconds.",
-            "Counter returns a value in nanoseconds.",
-            "Counter returns a timestamp in milliseconds.",
-            "Counter returns a timestamp in microseconds.",
-            "Counter returns a timestamp in nanoseconds."
-          ],
           "enum": [
             "BYTES",
             "BYTES_PER_SEC",
@@ -2862,6 +2801,16 @@
             "TIMESTAMP_MSEC",
             "TIMESTAMP_USEC",
             "TIMESTAMP_NSEC"
+          ],
+          "enumDescriptions": [
+            "Counter returns a value in bytes.",
+            "Counter returns a value in bytes per second.",
+            "Counter returns a value in milliseconds.",
+            "Counter returns a value in microseconds.",
+            "Counter returns a value in nanoseconds.",
+            "Counter returns a timestamp in milliseconds.",
+            "Counter returns a timestamp in microseconds.",
+            "Counter returns a timestamp in nanoseconds."
           ],
           "type": "string"
         }
@@ -2891,13 +2840,13 @@
         },
         "origin": {
           "description": "One of the standard Origins defined above.",
-          "enumDescriptions": [
-            "Counter was created by the Dataflow system.",
-            "Counter was created by the user."
-          ],
           "enum": [
             "SYSTEM",
             "USER"
+          ],
+          "enumDescriptions": [
+            "Counter was created by the Dataflow system.",
+            "Counter was created by the user."
           ],
           "type": "string"
         },
@@ -2915,15 +2864,15 @@
         },
         "portion": {
           "description": "Portion of this counter, either key or value.",
-          "enumDescriptions": [
-            "Counter portion has not been set.",
-            "Counter reports a key.",
-            "Counter reports a value."
-          ],
           "enum": [
             "ALL",
             "KEY",
             "VALUE"
+          ],
+          "enumDescriptions": [
+            "Counter portion has not been set.",
+            "Counter reports a key.",
+            "Counter reports a value."
           ],
           "type": "string"
         },
@@ -2939,12 +2888,12 @@
       "id": "CounterStructuredNameAndMetadata",
       "properties": {
         "metadata": {
-          "description": "Metadata associated with a counter",
-          "$ref": "CounterMetadata"
+          "$ref": "CounterMetadata",
+          "description": "Metadata associated with a counter"
         },
         "name": {
-          "description": "Structured name of the counter.",
-          "$ref": "CounterStructuredName"
+          "$ref": "CounterStructuredName",
+          "description": "Structured name of the counter."
         }
       },
       "type": "object"
@@ -2962,8 +2911,8 @@
           "type": "boolean"
         },
         "distribution": {
-          "description": "Distribution data",
-          "$ref": "DistributionUpdate"
+          "$ref": "DistributionUpdate",
+          "description": "Distribution data"
         },
         "floatingPoint": {
           "description": "Floating point value for Sum, Max, Min.",
@@ -2971,36 +2920,36 @@
           "type": "number"
         },
         "floatingPointList": {
-          "description": "List of floating point numbers, for Set.",
-          "$ref": "FloatingPointList"
+          "$ref": "FloatingPointList",
+          "description": "List of floating point numbers, for Set."
         },
         "floatingPointMean": {
-          "description": "Floating point mean aggregation value for Mean.",
-          "$ref": "FloatingPointMean"
+          "$ref": "FloatingPointMean",
+          "description": "Floating point mean aggregation value for Mean."
         },
         "integer": {
-          "description": "Integer value for Sum, Max, Min.",
-          "$ref": "SplitInt64"
+          "$ref": "SplitInt64",
+          "description": "Integer value for Sum, Max, Min."
         },
         "integerGauge": {
-          "description": "Gauge data",
-          "$ref": "IntegerGauge"
+          "$ref": "IntegerGauge",
+          "description": "Gauge data"
         },
         "integerList": {
-          "description": "List of integers, for Set.",
-          "$ref": "IntegerList"
+          "$ref": "IntegerList",
+          "description": "List of integers, for Set."
         },
         "integerMean": {
-          "description": "Integer mean aggregation value for Mean.",
-          "$ref": "IntegerMean"
+          "$ref": "IntegerMean",
+          "description": "Integer mean aggregation value for Mean."
         },
         "internal": {
           "description": "Value for internally-defined counters used by the Dataflow service.",
           "type": "any"
         },
         "nameAndKind": {
-          "description": "Counter name and aggregation type.",
-          "$ref": "NameAndKind"
+          "$ref": "NameAndKind",
+          "description": "Counter name and aggregation type."
         },
         "shortId": {
           "description": "The service-generated short identifier for this counter. The short_id -> (name, metadata) mapping is constant for the lifetime of a job.",
@@ -3008,12 +2957,12 @@
           "type": "string"
         },
         "stringList": {
-          "description": "List of strings, for Set.",
-          "$ref": "StringList"
+          "$ref": "StringList",
+          "description": "List of strings, for Set."
         },
         "structuredNameAndMetadata": {
-          "description": "Counter structured name and metadata.",
-          "$ref": "CounterStructuredNameAndMetadata"
+          "$ref": "CounterStructuredNameAndMetadata",
+          "description": "Counter structured name and metadata."
         }
       },
       "type": "object"
@@ -3023,8 +2972,8 @@
       "id": "CreateJobFromTemplateRequest",
       "properties": {
         "environment": {
-          "description": "The runtime environment for the job.",
-          "$ref": "RuntimeEnvironment"
+          "$ref": "RuntimeEnvironment",
+          "description": "The runtime environment for the job."
         },
         "gcsPath": {
           "description": "Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.",
@@ -3053,8 +3002,8 @@
       "id": "CreateTemplateVersionRequest",
       "properties": {
         "templateVersion": {
-          "description": "The TemplateVersion object to create.",
-          "$ref": "TemplateVersion"
+          "$ref": "TemplateVersion",
+          "description": "The TemplateVersion object to create."
         }
       },
       "type": "object"
@@ -3115,23 +3064,23 @@
       "properties": {
         "derivationMode": {
           "description": "What source to base the produced source on (if any).",
-          "enumDescriptions": [
-            "The source derivation is unknown, or unspecified.",
-            "Produce a completely independent Source with no base.",
-            "Produce a Source based on the Source being split.",
-            "Produce a Source based on the base of the Source being split."
-          ],
           "enum": [
             "SOURCE_DERIVATION_MODE_UNKNOWN",
             "SOURCE_DERIVATION_MODE_INDEPENDENT",
             "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT",
             "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT"
           ],
+          "enumDescriptions": [
+            "The source derivation is unknown, or unspecified.",
+            "Produce a completely independent Source with no base.",
+            "Produce a Source based on the Source being split.",
+            "Produce a Source based on the base of the Source being split."
+          ],
           "type": "string"
         },
         "source": {
-          "description": "Specification of the source.",
-          "$ref": "Source"
+          "$ref": "Source",
+          "description": "Specification of the source."
         }
       },
       "type": "object"
@@ -3220,24 +3169,24 @@
       "id": "DistributionUpdate",
       "properties": {
         "count": {
-          "description": "The count of the number of elements present in the distribution.",
-          "$ref": "SplitInt64"
+          "$ref": "SplitInt64",
+          "description": "The count of the number of elements present in the distribution."
         },
         "histogram": {
-          "description": "(Optional) Histogram of value counts for the distribution.",
-          "$ref": "Histogram"
+          "$ref": "Histogram",
+          "description": "(Optional) Histogram of value counts for the distribution."
         },
         "max": {
-          "description": "The maximum value present in the distribution.",
-          "$ref": "SplitInt64"
+          "$ref": "SplitInt64",
+          "description": "The maximum value present in the distribution."
         },
         "min": {
-          "description": "The minimum value present in the distribution.",
-          "$ref": "SplitInt64"
+          "$ref": "SplitInt64",
+          "description": "The minimum value present in the distribution."
         },
         "sum": {
-          "description": "Use an int64 since we'd prefer the added precision. If overflow is a common problem we can detect it and use an additional int64 or a double.",
-          "$ref": "SplitInt64"
+          "$ref": "SplitInt64",
+          "description": "Use an int64 since we'd prefer the added precision. If overflow is a common problem we can detect it and use an additional int64 or a double."
         },
         "sumOfSquares": {
           "description": "Use a double since the sum of squares is likely to overflow int64.",
@@ -3252,12 +3201,12 @@
       "id": "DynamicSourceSplit",
       "properties": {
         "primary": {
-          "description": "Primary part (continued to be processed by worker). Specified relative to the previously-current source. Becomes current.",
-          "$ref": "DerivedSource"
+          "$ref": "DerivedSource",
+          "description": "Primary part (continued to be processed by worker). Specified relative to the previously-current source. Becomes current."
         },
         "residual": {
-          "description": "Residual part (returned to the pool of work). Specified relative to the previously-current source.",
-          "$ref": "DerivedSource"
+          "$ref": "DerivedSource",
+          "description": "Residual part (returned to the pool of work). Specified relative to the previously-current source."
         }
       },
       "type": "object"
@@ -3289,15 +3238,15 @@
         },
         "flexResourceSchedulingGoal": {
           "description": "Which Flexible Resource Scheduling mode to run in.",
-          "enumDescriptions": [
-            "Run in the default mode.",
-            "Optimize for lower execution time.",
-            "Optimize for lower cost."
-          ],
           "enum": [
             "FLEXRS_UNSPECIFIED",
             "FLEXRS_SPEED_OPTIMIZED",
             "FLEXRS_COST_OPTIMIZED"
+          ],
+          "enumDescriptions": [
+            "Run in the default mode.",
+            "Optimize for lower execution time.",
+            "Optimize for lower cost."
           ],
           "type": "string"
         },
@@ -3327,18 +3276,18 @@
         },
         "shuffleMode": {
           "description": "Output only. The shuffle mode used for the job.",
-          "enumDescriptions": [
-            "Shuffle mode information is not available.",
-            "Shuffle is done on the worker VMs.",
-            "Shuffle is done on the service side."
-          ],
           "enum": [
             "SHUFFLE_MODE_UNSPECIFIED",
             "VM_BASED",
             "SERVICE_BASED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Shuffle mode information is not available.",
+            "Shuffle is done on the worker VMs.",
+            "Shuffle is done on the service side."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "tempStoragePrefix": {
           "description": "The prefix of the resources the system should use for temporary storage. The system will append the suffix \"/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}",
@@ -3393,21 +3342,6 @@
         },
         "executionStageState": {
           "description": "Executions stage states allow the same set of values as JobState.",
-          "enumDescriptions": [
-            "The job's run state isn't specified.",
-            "`JOB_STATE_STOPPED` indicates that the job has not yet started to run.",
-            "`JOB_STATE_RUNNING` indicates that the job is currently running.",
-            "`JOB_STATE_DONE` indicates that the job has successfully completed. This is a terminal job state. This state may be set by the Cloud Dataflow service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal state.",
-            "`JOB_STATE_FAILED` indicates that the job has failed. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
-            "`JOB_STATE_CANCELLED` indicates that the job has been explicitly cancelled. This is a terminal job state. This state may only be set via a Cloud Dataflow `UpdateJob` call, and only if the job has not yet reached another terminal state.",
-            "`JOB_STATE_UPDATED` indicates that the job was successfully updated, meaning that this job was stopped and another job was started, inheriting state from this one. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
-            "`JOB_STATE_DRAINING` indicates that the job is in the process of draining. A draining job has stopped pulling from its input sources and is processing any data that remains in-flight. This state may be set via a Cloud Dataflow `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs that are draining may only transition to `JOB_STATE_DRAINED`, `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.",
-            "`JOB_STATE_DRAINED` indicates that the job has been drained. A drained job terminated by stopping pulling from its input sources and processing any data that remained in-flight when draining was requested. This state is a terminal state, may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_DRAINING`.",
-            "`JOB_STATE_PENDING` indicates that the job has been created but is not yet running. Jobs that are pending may only transition to `JOB_STATE_RUNNING`, or `JOB_STATE_FAILED`.",
-            "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled and is in the process of stopping. Jobs that are cancelling may only transition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`.",
-            "`JOB_STATE_QUEUED` indicates that the job has been created but is being delayed until launch. Jobs that are queued may only transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`.",
-            "`JOB_STATE_RESOURCE_CLEANING_UP` indicates that the batch job's associated resources are currently being cleaned up after a successful run. Currently, this is an opt-in feature, please reach out to Cloud support team if you are intersted."
-          ],
           "enum": [
             "JOB_STATE_UNKNOWN",
             "JOB_STATE_STOPPED",
@@ -3422,6 +3356,21 @@
             "JOB_STATE_CANCELLING",
             "JOB_STATE_QUEUED",
             "JOB_STATE_RESOURCE_CLEANING_UP"
+          ],
+          "enumDescriptions": [
+            "The job's run state isn't specified.",
+            "`JOB_STATE_STOPPED` indicates that the job has not yet started to run.",
+            "`JOB_STATE_RUNNING` indicates that the job is currently running.",
+            "`JOB_STATE_DONE` indicates that the job has successfully completed. This is a terminal job state. This state may be set by the Cloud Dataflow service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal state.",
+            "`JOB_STATE_FAILED` indicates that the job has failed. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
+            "`JOB_STATE_CANCELLED` indicates that the job has been explicitly cancelled. This is a terminal job state. This state may only be set via a Cloud Dataflow `UpdateJob` call, and only if the job has not yet reached another terminal state.",
+            "`JOB_STATE_UPDATED` indicates that the job was successfully updated, meaning that this job was stopped and another job was started, inheriting state from this one. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
+            "`JOB_STATE_DRAINING` indicates that the job is in the process of draining. A draining job has stopped pulling from its input sources and is processing any data that remains in-flight. This state may be set via a Cloud Dataflow `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs that are draining may only transition to `JOB_STATE_DRAINED`, `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.",
+            "`JOB_STATE_DRAINED` indicates that the job has been drained. A drained job terminated by stopping pulling from its input sources and processing any data that remained in-flight when draining was requested. This state is a terminal state, may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_DRAINING`.",
+            "`JOB_STATE_PENDING` indicates that the job has been created but is not yet running. Jobs that are pending may only transition to `JOB_STATE_RUNNING`, or `JOB_STATE_FAILED`.",
+            "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled and is in the process of stopping. Jobs that are cancelling may only transition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`.",
+            "`JOB_STATE_QUEUED` indicates that the job has been created but is being delayed until launch. Jobs that are queued may only transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`.",
+            "`JOB_STATE_RESOURCE_CLEANING_UP` indicates that the batch job's associated resources are currently being cleaned up after a successful run. Currently, this is an opt-in feature, please reach out to Cloud support team if you are intersted."
           ],
           "type": "string"
         }
@@ -3459,17 +3408,6 @@
         },
         "kind": {
           "description": "Type of tranform this stage is executing.",
-          "enumDescriptions": [
-            "Unrecognized transform type.",
-            "ParDo transform.",
-            "Group By Key transform.",
-            "Flatten transform.",
-            "Read transform.",
-            "Write transform.",
-            "Constructs from a constant value, such as with Create.of.",
-            "Creates a Singleton view of a collection.",
-            "Opening or closing a shuffle session, often as part of a GroupByKey."
-          ],
           "enum": [
             "UNKNOWN_KIND",
             "PAR_DO_KIND",
@@ -3480,6 +3418,17 @@
             "CONSTANT_KIND",
             "SINGLETON_KIND",
             "SHUFFLE_KIND"
+          ],
+          "enumDescriptions": [
+            "Unrecognized transform type.",
+            "ParDo transform.",
+            "Group By Key transform.",
+            "Flatten transform.",
+            "Read transform.",
+            "Write transform.",
+            "Constructs from a constant value, such as with Create.of.",
+            "Creates a Singleton view of a collection.",
+            "Opening or closing a shuffle session, often as part of a GroupByKey."
           ],
           "type": "string"
         },
@@ -3564,29 +3513,29 @@
         },
         "flexrsGoal": {
           "description": "Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs",
-          "enumDescriptions": [
-            "Run in the default mode.",
-            "Optimize for lower execution time.",
-            "Optimize for lower cost."
-          ],
           "enum": [
             "FLEXRS_UNSPECIFIED",
             "FLEXRS_SPEED_OPTIMIZED",
             "FLEXRS_COST_OPTIMIZED"
           ],
+          "enumDescriptions": [
+            "Run in the default mode.",
+            "Optimize for lower execution time.",
+            "Optimize for lower cost."
+          ],
           "type": "string"
         },
         "ipConfiguration": {
           "description": "Configuration for VM IPs.",
-          "enumDescriptions": [
-            "The configuration is unknown, or unspecified.",
-            "Workers should have public IP addresses.",
-            "Workers should have private IP addresses."
-          ],
           "enum": [
             "WORKER_IP_UNSPECIFIED",
             "WORKER_IP_PUBLIC",
             "WORKER_IP_PRIVATE"
+          ],
+          "enumDescriptions": [
+            "The configuration is unknown, or unspecified.",
+            "Workers should have public IP addresses.",
+            "Workers should have private IP addresses."
           ],
           "type": "string"
         },
@@ -3659,8 +3608,8 @@
       "id": "FloatingPointMean",
       "properties": {
         "count": {
-          "description": "The number of values being aggregated.",
-          "$ref": "SplitInt64"
+          "$ref": "SplitInt64",
+          "description": "The number of values being aggregated."
         },
         "sum": {
           "description": "The sum of all values being aggregated.",
@@ -3705,28 +3654,28 @@
       "id": "GetTemplateResponse",
       "properties": {
         "metadata": {
-          "description": "The template metadata describing the template name, available parameters, etc.",
-          "$ref": "TemplateMetadata"
+          "$ref": "TemplateMetadata",
+          "description": "The template metadata describing the template name, available parameters, etc."
         },
         "runtimeMetadata": {
-          "description": "Describes the runtime metadata with SDKInfo and available parameters.",
-          "$ref": "RuntimeMetadata"
+          "$ref": "RuntimeMetadata",
+          "description": "Describes the runtime metadata with SDKInfo and available parameters."
         },
         "status": {
-          "description": "The status of the get template request. Any problems with the request will be indicated in the error_details.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The status of the get template request. Any problems with the request will be indicated in the error_details."
         },
         "templateType": {
           "description": "Template Type.",
-          "enumDescriptions": [
-            "Unknown Template Type.",
-            "Legacy Template.",
-            "Flex Template."
-          ],
           "enum": [
             "UNKNOWN",
             "LEGACY",
             "FLEX"
+          ],
+          "enumDescriptions": [
+            "Unknown Template Type.",
+            "Legacy Template.",
+            "Flex Template."
           ],
           "type": "string"
         }
@@ -3835,8 +3784,8 @@
           "type": "string"
         },
         "value": {
-          "description": "The value of the variable represented by this gauge.",
-          "$ref": "SplitInt64"
+          "$ref": "SplitInt64",
+          "description": "The value of the variable represented by this gauge."
         }
       },
       "type": "object"
@@ -3860,12 +3809,12 @@
       "id": "IntegerMean",
       "properties": {
         "count": {
-          "description": "The number of values being aggregated.",
-          "$ref": "SplitInt64"
+          "$ref": "SplitInt64",
+          "description": "The number of values being aggregated."
         },
         "sum": {
-          "description": "The sum of all values being aggregated.",
-          "$ref": "SplitInt64"
+          "$ref": "SplitInt64",
+          "description": "The sum of all values being aggregated."
         }
       },
       "type": "object"
@@ -3889,21 +3838,6 @@
         },
         "currentState": {
           "description": "The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.",
-          "enumDescriptions": [
-            "The job's run state isn't specified.",
-            "`JOB_STATE_STOPPED` indicates that the job has not yet started to run.",
-            "`JOB_STATE_RUNNING` indicates that the job is currently running.",
-            "`JOB_STATE_DONE` indicates that the job has successfully completed. This is a terminal job state. This state may be set by the Cloud Dataflow service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal state.",
-            "`JOB_STATE_FAILED` indicates that the job has failed. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
-            "`JOB_STATE_CANCELLED` indicates that the job has been explicitly cancelled. This is a terminal job state. This state may only be set via a Cloud Dataflow `UpdateJob` call, and only if the job has not yet reached another terminal state.",
-            "`JOB_STATE_UPDATED` indicates that the job was successfully updated, meaning that this job was stopped and another job was started, inheriting state from this one. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
-            "`JOB_STATE_DRAINING` indicates that the job is in the process of draining. A draining job has stopped pulling from its input sources and is processing any data that remains in-flight. This state may be set via a Cloud Dataflow `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs that are draining may only transition to `JOB_STATE_DRAINED`, `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.",
-            "`JOB_STATE_DRAINED` indicates that the job has been drained. A drained job terminated by stopping pulling from its input sources and processing any data that remained in-flight when draining was requested. This state is a terminal state, may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_DRAINING`.",
-            "`JOB_STATE_PENDING` indicates that the job has been created but is not yet running. Jobs that are pending may only transition to `JOB_STATE_RUNNING`, or `JOB_STATE_FAILED`.",
-            "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled and is in the process of stopping. Jobs that are cancelling may only transition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`.",
-            "`JOB_STATE_QUEUED` indicates that the job has been created but is being delayed until launch. Jobs that are queued may only transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`.",
-            "`JOB_STATE_RESOURCE_CLEANING_UP` indicates that the batch job's associated resources are currently being cleaned up after a successful run. Currently, this is an opt-in feature, please reach out to Cloud support team if you are intersted."
-          ],
           "enum": [
             "JOB_STATE_UNKNOWN",
             "JOB_STATE_STOPPED",
@@ -3919,6 +3853,21 @@
             "JOB_STATE_QUEUED",
             "JOB_STATE_RESOURCE_CLEANING_UP"
           ],
+          "enumDescriptions": [
+            "The job's run state isn't specified.",
+            "`JOB_STATE_STOPPED` indicates that the job has not yet started to run.",
+            "`JOB_STATE_RUNNING` indicates that the job is currently running.",
+            "`JOB_STATE_DONE` indicates that the job has successfully completed. This is a terminal job state. This state may be set by the Cloud Dataflow service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal state.",
+            "`JOB_STATE_FAILED` indicates that the job has failed. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
+            "`JOB_STATE_CANCELLED` indicates that the job has been explicitly cancelled. This is a terminal job state. This state may only be set via a Cloud Dataflow `UpdateJob` call, and only if the job has not yet reached another terminal state.",
+            "`JOB_STATE_UPDATED` indicates that the job was successfully updated, meaning that this job was stopped and another job was started, inheriting state from this one. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
+            "`JOB_STATE_DRAINING` indicates that the job is in the process of draining. A draining job has stopped pulling from its input sources and is processing any data that remains in-flight. This state may be set via a Cloud Dataflow `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs that are draining may only transition to `JOB_STATE_DRAINED`, `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.",
+            "`JOB_STATE_DRAINED` indicates that the job has been drained. A drained job terminated by stopping pulling from its input sources and processing any data that remained in-flight when draining was requested. This state is a terminal state, may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_DRAINING`.",
+            "`JOB_STATE_PENDING` indicates that the job has been created but is not yet running. Jobs that are pending may only transition to `JOB_STATE_RUNNING`, or `JOB_STATE_FAILED`.",
+            "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled and is in the process of stopping. Jobs that are cancelling may only transition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`.",
+            "`JOB_STATE_QUEUED` indicates that the job has been created but is being delayed until launch. Jobs that are queued may only transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`.",
+            "`JOB_STATE_RESOURCE_CLEANING_UP` indicates that the batch job's associated resources are currently being cleaned up after a successful run. Currently, this is an opt-in feature, please reach out to Cloud support team if you are intersted."
+          ],
           "type": "string"
         },
         "currentStateTime": {
@@ -3927,20 +3876,20 @@
           "type": "string"
         },
         "environment": {
-          "description": "The environment for the job.",
-          "$ref": "Environment"
+          "$ref": "Environment",
+          "description": "The environment for the job."
         },
         "executionInfo": {
-          "description": "Deprecated.",
-          "$ref": "JobExecutionInfo"
+          "$ref": "JobExecutionInfo",
+          "description": "Deprecated."
         },
         "id": {
           "description": "The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.",
           "type": "string"
         },
         "jobMetadata": {
-          "description": "This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.",
-          "$ref": "JobMetadata"
+          "$ref": "JobMetadata",
+          "description": "This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher."
         },
         "labels": {
           "additionalProperties": {
@@ -3958,8 +3907,8 @@
           "type": "string"
         },
         "pipelineDescription": {
-          "description": "Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.",
-          "$ref": "PipelineDescription"
+          "$ref": "PipelineDescription",
+          "description": "Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL."
         },
         "projectId": {
           "description": "The ID of the Cloud Platform project that the job belongs to.",
@@ -3975,21 +3924,6 @@
         },
         "requestedState": {
           "description": "The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.",
-          "enumDescriptions": [
-            "The job's run state isn't specified.",
-            "`JOB_STATE_STOPPED` indicates that the job has not yet started to run.",
-            "`JOB_STATE_RUNNING` indicates that the job is currently running.",
-            "`JOB_STATE_DONE` indicates that the job has successfully completed. This is a terminal job state. This state may be set by the Cloud Dataflow service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal state.",
-            "`JOB_STATE_FAILED` indicates that the job has failed. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
-            "`JOB_STATE_CANCELLED` indicates that the job has been explicitly cancelled. This is a terminal job state. This state may only be set via a Cloud Dataflow `UpdateJob` call, and only if the job has not yet reached another terminal state.",
-            "`JOB_STATE_UPDATED` indicates that the job was successfully updated, meaning that this job was stopped and another job was started, inheriting state from this one. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
-            "`JOB_STATE_DRAINING` indicates that the job is in the process of draining. A draining job has stopped pulling from its input sources and is processing any data that remains in-flight. This state may be set via a Cloud Dataflow `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs that are draining may only transition to `JOB_STATE_DRAINED`, `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.",
-            "`JOB_STATE_DRAINED` indicates that the job has been drained. A drained job terminated by stopping pulling from its input sources and processing any data that remained in-flight when draining was requested. This state is a terminal state, may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_DRAINING`.",
-            "`JOB_STATE_PENDING` indicates that the job has been created but is not yet running. Jobs that are pending may only transition to `JOB_STATE_RUNNING`, or `JOB_STATE_FAILED`.",
-            "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled and is in the process of stopping. Jobs that are cancelling may only transition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`.",
-            "`JOB_STATE_QUEUED` indicates that the job has been created but is being delayed until launch. Jobs that are queued may only transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`.",
-            "`JOB_STATE_RESOURCE_CLEANING_UP` indicates that the batch job's associated resources are currently being cleaned up after a successful run. Currently, this is an opt-in feature, please reach out to Cloud support team if you are intersted."
-          ],
           "enum": [
             "JOB_STATE_UNKNOWN",
             "JOB_STATE_STOPPED",
@@ -4004,6 +3938,21 @@
             "JOB_STATE_CANCELLING",
             "JOB_STATE_QUEUED",
             "JOB_STATE_RESOURCE_CLEANING_UP"
+          ],
+          "enumDescriptions": [
+            "The job's run state isn't specified.",
+            "`JOB_STATE_STOPPED` indicates that the job has not yet started to run.",
+            "`JOB_STATE_RUNNING` indicates that the job is currently running.",
+            "`JOB_STATE_DONE` indicates that the job has successfully completed. This is a terminal job state. This state may be set by the Cloud Dataflow service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal state.",
+            "`JOB_STATE_FAILED` indicates that the job has failed. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
+            "`JOB_STATE_CANCELLED` indicates that the job has been explicitly cancelled. This is a terminal job state. This state may only be set via a Cloud Dataflow `UpdateJob` call, and only if the job has not yet reached another terminal state.",
+            "`JOB_STATE_UPDATED` indicates that the job was successfully updated, meaning that this job was stopped and another job was started, inheriting state from this one. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`.",
+            "`JOB_STATE_DRAINING` indicates that the job is in the process of draining. A draining job has stopped pulling from its input sources and is processing any data that remains in-flight. This state may be set via a Cloud Dataflow `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs that are draining may only transition to `JOB_STATE_DRAINED`, `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.",
+            "`JOB_STATE_DRAINED` indicates that the job has been drained. A drained job terminated by stopping pulling from its input sources and processing any data that remained in-flight when draining was requested. This state is a terminal state, may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_DRAINING`.",
+            "`JOB_STATE_PENDING` indicates that the job has been created but is not yet running. Jobs that are pending may only transition to `JOB_STATE_RUNNING`, or `JOB_STATE_FAILED`.",
+            "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled and is in the process of stopping. Jobs that are cancelling may only transition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`.",
+            "`JOB_STATE_QUEUED` indicates that the job has been created but is being delayed until launch. Jobs that are queued may only transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`.",
+            "`JOB_STATE_RESOURCE_CLEANING_UP` indicates that the batch job's associated resources are currently being cleaned up after a successful run. Currently, this is an opt-in feature, please reach out to Cloud support team if you are intersted."
           ],
           "type": "string"
         },
@@ -4050,15 +3999,15 @@
         },
         "type": {
           "description": "The type of Cloud Dataflow job.",
-          "enumDescriptions": [
-            "The type of the job is unspecified, or unknown.",
-            "A batch job with a well-defined end point: data is read, data is processed, data is written, and the job is done.",
-            "A continuously streaming job with no end: data is read, processed, and written continuously."
-          ],
           "enum": [
             "JOB_TYPE_UNKNOWN",
             "JOB_TYPE_BATCH",
             "JOB_TYPE_STREAMING"
+          ],
+          "enumDescriptions": [
+            "The type of the job is unspecified, or unknown.",
+            "A batch job with a well-defined end point: data is read, data is processed, data is written, and the job is done.",
+            "A continuously streaming job with no end: data is read, processed, and written continuously."
           ],
           "type": "string"
         }
@@ -4121,14 +4070,6 @@
         },
         "messageImportance": {
           "description": "Importance level of the message.",
-          "enumDescriptions": [
-            "The message importance isn't specified, or is unknown.",
-            "The message is at the 'debug' level: typically only useful for software engineers working on the code the job is running. Typically, Dataflow pipeline runners do not display log messages at this level by default.",
-            "The message is at the 'detailed' level: somewhat verbose, but potentially useful to users. Typically, Dataflow pipeline runners do not display log messages at this level by default. These messages are displayed by default in the Dataflow monitoring UI.",
-            "The message is at the 'basic' level: useful for keeping track of the execution of a Dataflow pipeline. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI.",
-            "The message is at the 'warning' level: indicating a condition pertaining to a job which may require human intervention. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI.",
-            "The message is at the 'error' level: indicating a condition preventing a job from succeeding. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."
-          ],
           "enum": [
             "JOB_MESSAGE_IMPORTANCE_UNKNOWN",
             "JOB_MESSAGE_DEBUG",
@@ -4136,6 +4077,14 @@
             "JOB_MESSAGE_BASIC",
             "JOB_MESSAGE_WARNING",
             "JOB_MESSAGE_ERROR"
+          ],
+          "enumDescriptions": [
+            "The message importance isn't specified, or is unknown.",
+            "The message is at the 'debug' level: typically only useful for software engineers working on the code the job is running. Typically, Dataflow pipeline runners do not display log messages at this level by default.",
+            "The message is at the 'detailed' level: somewhat verbose, but potentially useful to users. Typically, Dataflow pipeline runners do not display log messages at this level by default. These messages are displayed by default in the Dataflow monitoring UI.",
+            "The message is at the 'basic' level: useful for keeping track of the execution of a Dataflow pipeline. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI.",
+            "The message is at the 'warning' level: indicating a condition pertaining to a job which may require human intervention. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI.",
+            "The message is at the 'error' level: indicating a condition preventing a job from succeeding. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."
           ],
           "type": "string"
         },
@@ -4191,8 +4140,8 @@
           "type": "array"
         },
         "sdkVersion": {
-          "description": "The SDK version used to run the job.",
-          "$ref": "SdkVersion"
+          "$ref": "SdkVersion",
+          "description": "The SDK version used to run the job."
         },
         "spannerDetails": {
           "description": "Identification of a Spanner source used in the Dataflow job.",
@@ -4274,16 +4223,16 @@
       "id": "LaunchFlexTemplateParameter",
       "properties": {
         "containerSpec": {
-          "description": "Spec about the container image to launch.",
-          "$ref": "ContainerSpec"
+          "$ref": "ContainerSpec",
+          "description": "Spec about the container image to launch."
         },
         "containerSpecGcsPath": {
           "description": "Gcs path to a file with json serialized ContainerSpec as content.",
           "type": "string"
         },
         "environment": {
-          "description": "The runtime environment for the FlexTemplate job",
-          "$ref": "FlexTemplateRuntimeEnvironment"
+          "$ref": "FlexTemplateRuntimeEnvironment",
+          "description": "The runtime environment for the FlexTemplate job"
         },
         "jobName": {
           "description": "Required. The job name to use for the created job. For update job request, job name should be same as the existing running job.",
@@ -4322,8 +4271,8 @@
       "id": "LaunchFlexTemplateRequest",
       "properties": {
         "launchParameter": {
-          "description": "Required. Parameter to launch a job form Flex Template.",
-          "$ref": "LaunchFlexTemplateParameter"
+          "$ref": "LaunchFlexTemplateParameter",
+          "description": "Required. Parameter to launch a job form Flex Template."
         },
         "validateOnly": {
           "description": "If true, the request is validated but not actually executed. Defaults to false.",
@@ -4337,8 +4286,8 @@
       "id": "LaunchFlexTemplateResponse",
       "properties": {
         "job": {
-          "description": "The job that was launched, if the request was not a dry run and the job was successfully launched.",
-          "$ref": "Job"
+          "$ref": "Job",
+          "description": "The job that was launched, if the request was not a dry run and the job was successfully launched."
         }
       },
       "type": "object"
@@ -4348,8 +4297,8 @@
       "id": "LaunchTemplateParameters",
       "properties": {
         "environment": {
-          "description": "The runtime environment for the job.",
-          "$ref": "RuntimeEnvironment"
+          "$ref": "RuntimeEnvironment",
+          "description": "The runtime environment for the job."
         },
         "jobName": {
           "description": "Required. The job name to use for the created job.",
@@ -4381,8 +4330,8 @@
       "id": "LaunchTemplateResponse",
       "properties": {
         "job": {
-          "description": "The job that was launched, if the request was not a dry run and the job was successfully launched.",
-          "$ref": "Job"
+          "$ref": "Job",
+          "description": "The job that was launched, if the request was not a dry run and the job was successfully launched."
         }
       },
       "type": "object"
@@ -4663,8 +4612,8 @@
           "type": "any"
         },
         "name": {
-          "description": "Name of the metric.",
-          "$ref": "MetricStructuredName"
+          "$ref": "MetricStructuredName",
+          "description": "Name of the metric."
         },
         "scalar": {
           "description": "Worker-computed aggregate value for aggregation kinds \"Sum\", \"Max\", \"Min\", \"And\", and \"Or\". The possible value types are Long, Double, and Boolean.",
@@ -4692,15 +4641,15 @@
         },
         "op": {
           "description": "Requests for add label to TemplateVersion or remove label from TemplateVersion.",
-          "enumDescriptions": [
-            "Default value.",
-            "Add the label to the TemplateVersion object.",
-            "Remove the label from the TemplateVersion object."
-          ],
           "enum": [
             "OPERATION_UNSPECIFIED",
             "ADD",
             "REMOVE"
+          ],
+          "enumDescriptions": [
+            "Default value.",
+            "Add the label to the TemplateVersion object.",
+            "Remove the label from the TemplateVersion object."
           ],
           "type": "string"
         },
@@ -4782,18 +4731,6 @@
       "properties": {
         "kind": {
           "description": "Counter aggregation kind.",
-          "enumDescriptions": [
-            "Counter aggregation kind was not set.",
-            "Aggregated value is the sum of all contributed values.",
-            "Aggregated value is the max of all contributed values.",
-            "Aggregated value is the min of all contributed values.",
-            "Aggregated value is the mean of all contributed values.",
-            "Aggregated value represents the logical 'or' of all contributed values.",
-            "Aggregated value represents the logical 'and' of all contributed values.",
-            "Aggregated value is a set of unique contributed values.",
-            "Aggregated value captures statistics about a distribution.",
-            "Aggregated value tracks the latest value of a variable."
-          ],
           "enum": [
             "INVALID",
             "SUM",
@@ -4805,6 +4742,18 @@
             "SET",
             "DISTRIBUTION",
             "LATEST_VALUE"
+          ],
+          "enumDescriptions": [
+            "Counter aggregation kind was not set.",
+            "Aggregated value is the sum of all contributed values.",
+            "Aggregated value is the max of all contributed values.",
+            "Aggregated value is the min of all contributed values.",
+            "Aggregated value is the mean of all contributed values.",
+            "Aggregated value represents the logical 'or' of all contributed values.",
+            "Aggregated value represents the logical 'and' of all contributed values.",
+            "Aggregated value is a set of unique contributed values.",
+            "Aggregated value captures statistics about a distribution.",
+            "Aggregated value tracks the latest value of a variable."
           ],
           "type": "string"
         },
@@ -4835,8 +4784,8 @@
       "id": "ParDoInstruction",
       "properties": {
         "input": {
-          "description": "The input.",
-          "$ref": "InstructionInput"
+          "$ref": "InstructionInput",
+          "description": "The input."
         },
         "multiOutputInfos": {
           "description": "Information about each of the outputs, if user_fn is a MultiDoFn.",
@@ -4873,8 +4822,8 @@
       "id": "ParallelInstruction",
       "properties": {
         "flatten": {
-          "description": "Additional information for Flatten instructions.",
-          "$ref": "FlattenInstruction"
+          "$ref": "FlattenInstruction",
+          "description": "Additional information for Flatten instructions."
         },
         "name": {
           "description": "User-provided name of this operation.",
@@ -4892,24 +4841,24 @@
           "type": "array"
         },
         "parDo": {
-          "description": "Additional information for ParDo instructions.",
-          "$ref": "ParDoInstruction"
+          "$ref": "ParDoInstruction",
+          "description": "Additional information for ParDo instructions."
         },
         "partialGroupByKey": {
-          "description": "Additional information for PartialGroupByKey instructions.",
-          "$ref": "PartialGroupByKeyInstruction"
+          "$ref": "PartialGroupByKeyInstruction",
+          "description": "Additional information for PartialGroupByKey instructions."
         },
         "read": {
-          "description": "Additional information for Read instructions.",
-          "$ref": "ReadInstruction"
+          "$ref": "ReadInstruction",
+          "description": "Additional information for Read instructions."
         },
         "systemName": {
           "description": "System-defined name of this operation. Unique across the workflow.",
           "type": "string"
         },
         "write": {
-          "description": "Additional information for Write instructions.",
-          "$ref": "WriteInstruction"
+          "$ref": "WriteInstruction",
+          "description": "Additional information for Write instructions."
         }
       },
       "type": "object"
@@ -4951,18 +4900,6 @@
         },
         "paramType": {
           "description": "Optional. The type of the parameter. Used for selecting input picker.",
-          "enumDescriptions": [
-            "Default input type.",
-            "The parameter specifies generic text input.",
-            "The parameter specifies a GCS Bucket to read from.",
-            "The parameter specifies a GCS Bucket to write to.",
-            "The parameter specifies a GCS file path to read from.",
-            "The parameter specifies a GCS file path to write to.",
-            "The parameter specifies a GCS folder path to read from.",
-            "The parameter specifies a GCS folder to write to.",
-            "The parameter specifies a Pub/Sub Topic.",
-            "The parameter specifies a Pub/Sub Subscription."
-          ],
           "enum": [
             "DEFAULT",
             "TEXT",
@@ -4974,6 +4911,18 @@
             "GCS_WRITE_FOLDER",
             "PUBSUB_TOPIC",
             "PUBSUB_SUBSCRIPTION"
+          ],
+          "enumDescriptions": [
+            "Default input type.",
+            "The parameter specifies generic text input.",
+            "The parameter specifies a GCS Bucket to read from.",
+            "The parameter specifies a GCS Bucket to write to.",
+            "The parameter specifies a GCS file path to read from.",
+            "The parameter specifies a GCS file path to write to.",
+            "The parameter specifies a GCS folder path to read from.",
+            "The parameter specifies a GCS folder to write to.",
+            "The parameter specifies a Pub/Sub Topic.",
+            "The parameter specifies a Pub/Sub Subscription."
           ],
           "type": "string"
         },
@@ -4992,8 +4941,8 @@
       "id": "PartialGroupByKeyInstruction",
       "properties": {
         "input": {
-          "description": "Describes the input to the partial group-by-key instruction.",
-          "$ref": "InstructionInput"
+          "$ref": "InstructionInput",
+          "description": "Describes the input to the partial group-by-key instruction."
         },
         "inputElementCodec": {
           "additionalProperties": {
@@ -5084,8 +5033,8 @@
           "type": "string"
         },
         "concatPosition": {
-          "description": "CloudPosition is a concat position.",
-          "$ref": "ConcatPosition"
+          "$ref": "ConcatPosition",
+          "description": "CloudPosition is a concat position."
         },
         "end": {
           "description": "Position is past all other positions. Also useful for the end position of an unbounded range.",
@@ -5203,13 +5152,13 @@
         "queryProperty": {
           "description": "Includes an entry for each satisfied QueryProperty.",
           "items": {
-            "enumDescriptions": [
-              "The query property is unknown or unspecified.",
-              "Indicates this query reads from >= 1 unbounded source."
-            ],
             "enum": [
               "QUERY_PROPERTY_UNSPECIFIED",
               "HAS_UNBOUNDED_SOURCE"
+            ],
+            "enumDescriptions": [
+              "The query property is unknown or unspecified.",
+              "Indicates this query reads from >= 1 unbounded source."
             ],
             "type": "string"
           },
@@ -5223,8 +5172,8 @@
       "id": "ReadInstruction",
       "properties": {
         "source": {
-          "description": "The source to read from.",
-          "$ref": "Source"
+          "$ref": "Source",
+          "description": "The source to read from."
         }
       },
       "type": "object"
@@ -5364,15 +5313,15 @@
         },
         "ipConfiguration": {
           "description": "Configuration for VM IPs.",
-          "enumDescriptions": [
-            "The configuration is unknown, or unspecified.",
-            "Workers should have public IP addresses.",
-            "Workers should have private IP addresses."
-          ],
           "enum": [
             "WORKER_IP_UNSPECIFIED",
             "WORKER_IP_PUBLIC",
             "WORKER_IP_PRIVATE"
+          ],
+          "enumDescriptions": [
+            "The configuration is unknown, or unspecified.",
+            "Workers should have public IP addresses.",
+            "Workers should have private IP addresses."
           ],
           "type": "string"
         },
@@ -5437,8 +5386,8 @@
           "type": "array"
         },
         "sdkInfo": {
-          "description": "SDK Info for the template.",
-          "$ref": "SDKInfo"
+          "$ref": "SDKInfo",
+          "description": "SDK Info for the template."
         }
       },
       "type": "object"
@@ -5449,15 +5398,15 @@
       "properties": {
         "language": {
           "description": "Required. The SDK Language.",
-          "enumDescriptions": [
-            "UNKNOWN Language.",
-            "Java.",
-            "Python."
-          ],
           "enum": [
             "UNKNOWN",
             "JAVA",
             "PYTHON"
+          ],
+          "enumDescriptions": [
+            "UNKNOWN Language.",
+            "Java.",
+            "Python."
           ],
           "type": "string"
         },
@@ -5493,19 +5442,19 @@
       "properties": {
         "sdkSupportStatus": {
           "description": "The support status for this SDK version.",
-          "enumDescriptions": [
-            "Cloud Dataflow is unaware of this version.",
-            "This is a known version of an SDK, and is supported.",
-            "A newer version of the SDK family exists, and an update is recommended.",
-            "This version of the SDK is deprecated and will eventually be no longer supported.",
-            "Support for this SDK version has ended and it should no longer be used."
-          ],
           "enum": [
             "UNKNOWN",
             "SUPPORTED",
             "STALE",
             "DEPRECATED",
             "UNSUPPORTED"
+          ],
+          "enumDescriptions": [
+            "Cloud Dataflow is unaware of this version.",
+            "This is a known version of an SDK, and is supported.",
+            "A newer version of the SDK family exists, and an update is recommended.",
+            "This version of the SDK is deprecated and will eventually be no longer supported.",
+            "Support for this SDK version has ended and it should no longer be used."
           ],
           "type": "string"
         },
@@ -5627,8 +5576,8 @@
       "id": "SeqMapTaskOutputInfo",
       "properties": {
         "sink": {
-          "description": "The sink to write the output value to.",
-          "$ref": "Sink"
+          "$ref": "Sink",
+          "description": "The sink to write the output value to."
         },
         "tag": {
           "description": "The id of the TupleTag the user code will tag the output value by.",
@@ -5741,14 +5690,6 @@
         },
         "state": {
           "description": "State of the snapshot.",
-          "enumDescriptions": [
-            "Unknown state.",
-            "Snapshot intent to create has been persisted, snapshotting of state has not yet started.",
-            "Snapshotting is being performed.",
-            "Snapshot has been created and is ready to be used.",
-            "Snapshot failed to be created.",
-            "Snapshot has been deleted."
-          ],
           "enum": [
             "UNKNOWN_SNAPSHOT_STATE",
             "PENDING",
@@ -5756,6 +5697,14 @@
             "READY",
             "FAILED",
             "DELETED"
+          ],
+          "enumDescriptions": [
+            "Unknown state.",
+            "Snapshot intent to create has been persisted, snapshotting of state has not yet started.",
+            "Snapshotting is being performed.",
+            "Snapshot has been created and is ready to be used.",
+            "Snapshot failed to be created.",
+            "Snapshot has been deleted."
           ],
           "type": "string"
         },
@@ -5819,8 +5768,8 @@
           "type": "boolean"
         },
         "metadata": {
-          "description": "Optionally, metadata for this source can be supplied right away, avoiding a SourceGetMetadataOperation roundtrip (see SourceOperationRequest). This field is meaningful only in the Source objects populated by the user (e.g. when filling in a DerivedSource). Source objects supplied by the framework to the user don't have this field populated.",
-          "$ref": "SourceMetadata"
+          "$ref": "SourceMetadata",
+          "description": "Optionally, metadata for this source can be supplied right away, avoiding a SourceGetMetadataOperation roundtrip (see SourceOperationRequest). This field is meaningful only in the Source objects populated by the user (e.g. when filling in a DerivedSource). Source objects supplied by the framework to the user don't have this field populated."
         },
         "spec": {
           "additionalProperties": {
@@ -5838,20 +5787,20 @@
       "id": "SourceFork",
       "properties": {
         "primary": {
-          "description": "DEPRECATED",
-          "$ref": "SourceSplitShard"
+          "$ref": "SourceSplitShard",
+          "description": "DEPRECATED"
         },
         "primarySource": {
-          "description": "DEPRECATED",
-          "$ref": "DerivedSource"
+          "$ref": "DerivedSource",
+          "description": "DEPRECATED"
         },
         "residual": {
-          "description": "DEPRECATED",
-          "$ref": "SourceSplitShard"
+          "$ref": "SourceSplitShard",
+          "description": "DEPRECATED"
         },
         "residualSource": {
-          "description": "DEPRECATED",
-          "$ref": "DerivedSource"
+          "$ref": "DerivedSource",
+          "description": "DEPRECATED"
         }
       },
       "type": "object"
@@ -5861,8 +5810,8 @@
       "id": "SourceGetMetadataRequest",
       "properties": {
         "source": {
-          "description": "Specification of the source whose metadata should be computed.",
-          "$ref": "Source"
+          "$ref": "Source",
+          "description": "Specification of the source whose metadata should be computed."
         }
       },
       "type": "object"
@@ -5872,8 +5821,8 @@
       "id": "SourceGetMetadataResponse",
       "properties": {
         "metadata": {
-          "description": "The computed metadata.",
-          "$ref": "SourceMetadata"
+          "$ref": "SourceMetadata",
+          "description": "The computed metadata."
         }
       },
       "type": "object"
@@ -5903,8 +5852,8 @@
       "id": "SourceOperationRequest",
       "properties": {
         "getMetadata": {
-          "description": "Information about a request to get metadata about a source.",
-          "$ref": "SourceGetMetadataRequest"
+          "$ref": "SourceGetMetadataRequest",
+          "description": "Information about a request to get metadata about a source."
         },
         "name": {
           "description": "User-provided name of the Read instruction for this source.",
@@ -5915,8 +5864,8 @@
           "type": "string"
         },
         "split": {
-          "description": "Information about a request to split a source.",
-          "$ref": "SourceSplitRequest"
+          "$ref": "SourceSplitRequest",
+          "description": "Information about a request to split a source."
         },
         "stageName": {
           "description": "System-defined name of the stage containing the source operation. Unique across the workflow.",
@@ -5934,12 +5883,12 @@
       "id": "SourceOperationResponse",
       "properties": {
         "getMetadata": {
-          "description": "A response to a request to get metadata about a source.",
-          "$ref": "SourceGetMetadataResponse"
+          "$ref": "SourceGetMetadataResponse",
+          "description": "A response to a request to get metadata about a source."
         },
         "split": {
-          "description": "A response to a request to split a source.",
-          "$ref": "SourceSplitResponse"
+          "$ref": "SourceSplitResponse",
+          "description": "A response to a request to split a source."
         }
       },
       "type": "object"
@@ -5966,12 +5915,12 @@
       "id": "SourceSplitRequest",
       "properties": {
         "options": {
-          "description": "Hints for tuning the splitting process.",
-          "$ref": "SourceSplitOptions"
+          "$ref": "SourceSplitOptions",
+          "description": "Hints for tuning the splitting process."
         },
         "source": {
-          "description": "Specification of the source to be split.",
-          "$ref": "Source"
+          "$ref": "Source",
+          "description": "Specification of the source to be split."
         }
       },
       "type": "object"
@@ -5989,15 +5938,15 @@
         },
         "outcome": {
           "description": "Indicates whether splitting happened and produced a list of bundles. If this is USE_CURRENT_SOURCE_AS_IS, the current source should be processed \"as is\" without splitting. \"bundles\" is ignored in this case. If this is SPLITTING_HAPPENED, then \"bundles\" contains a list of bundles into which the source was split.",
-          "enumDescriptions": [
-            "The source split outcome is unknown, or unspecified.",
-            "The current source should be processed \"as is\" without splitting.",
-            "Splitting produced a list of bundles."
-          ],
           "enum": [
             "SOURCE_SPLIT_OUTCOME_UNKNOWN",
             "SOURCE_SPLIT_OUTCOME_USE_CURRENT",
             "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED"
+          ],
+          "enumDescriptions": [
+            "The source split outcome is unknown, or unspecified.",
+            "The current source should be processed \"as is\" without splitting.",
+            "Splitting produced a list of bundles."
           ],
           "type": "string"
         },
@@ -6017,23 +5966,23 @@
       "properties": {
         "derivationMode": {
           "description": "DEPRECATED",
-          "enumDescriptions": [
-            "The source derivation is unknown, or unspecified.",
-            "Produce a completely independent Source with no base.",
-            "Produce a Source based on the Source being split.",
-            "Produce a Source based on the base of the Source being split."
-          ],
           "enum": [
             "SOURCE_DERIVATION_MODE_UNKNOWN",
             "SOURCE_DERIVATION_MODE_INDEPENDENT",
             "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT",
             "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT"
           ],
+          "enumDescriptions": [
+            "The source derivation is unknown, or unspecified.",
+            "Produce a completely independent Source with no base.",
+            "Produce a Source based on the Source being split.",
+            "Produce a Source based on the base of the Source being split."
+          ],
           "type": "string"
         },
         "source": {
-          "description": "DEPRECATED",
-          "$ref": "Source"
+          "$ref": "Source",
+          "description": "DEPRECATED"
         }
       },
       "type": "object"
@@ -6133,8 +6082,8 @@
           "type": "array"
         },
         "progress": {
-          "description": "Progress for this stage. Only applicable to Batch jobs.",
-          "$ref": "ProgressTimeseries"
+          "$ref": "ProgressTimeseries",
+          "description": "Progress for this stage. Only applicable to Batch jobs."
         },
         "stageId": {
           "description": "ID of this stage",
@@ -6147,14 +6096,6 @@
         },
         "state": {
           "description": "State of this stage.",
-          "enumDescriptions": [
-            "The component state is unknown or unspecified.",
-            "The component is not yet running.",
-            "The component is currently running.",
-            "The component succeeded.",
-            "The component failed.",
-            "Execution of the component was cancelled."
-          ],
           "enum": [
             "EXECUTION_STATE_UNKNOWN",
             "EXECUTION_STATE_NOT_STARTED",
@@ -6162,6 +6103,14 @@
             "EXECUTION_STATE_SUCCEEDED",
             "EXECUTION_STATE_FAILED",
             "EXECUTION_STATE_CANCELLED"
+          ],
+          "enumDescriptions": [
+            "The component state is unknown or unspecified.",
+            "The component is not yet running.",
+            "The component is currently running.",
+            "The component succeeded.",
+            "The component failed.",
+            "Execution of the component was cancelled."
           ],
           "type": "string"
         }
@@ -6238,20 +6187,20 @@
       "id": "StreamLocation",
       "properties": {
         "customSourceLocation": {
-          "description": "The stream is a custom source.",
-          "$ref": "CustomSourceLocation"
+          "$ref": "CustomSourceLocation",
+          "description": "The stream is a custom source."
         },
         "pubsubLocation": {
-          "description": "The stream is a pubsub stream.",
-          "$ref": "PubsubLocation"
+          "$ref": "PubsubLocation",
+          "description": "The stream is a pubsub stream."
         },
         "sideInputLocation": {
-          "description": "The stream is a streaming side input.",
-          "$ref": "StreamingSideInputLocation"
+          "$ref": "StreamingSideInputLocation",
+          "description": "The stream is a streaming side input."
         },
         "streamingStageLocation": {
-          "description": "The stream is part of another computation within the current streaming Dataflow job.",
-          "$ref": "StreamingStageLocation"
+          "$ref": "StreamingStageLocation",
+          "description": "The stream is part of another computation within the current streaming Dataflow job."
         }
       },
       "type": "object"
@@ -6342,15 +6291,15 @@
         },
         "taskType": {
           "description": "A type of streaming computation task.",
-          "enumDescriptions": [
-            "The streaming computation task is unknown, or unspecified.",
-            "Stop processing specified streaming computation range(s).",
-            "Start processing specified streaming computation range(s)."
-          ],
           "enum": [
             "STREAMING_COMPUTATION_TASK_UNKNOWN",
             "STREAMING_COMPUTATION_TASK_STOP",
             "STREAMING_COMPUTATION_TASK_START"
+          ],
+          "enumDescriptions": [
+            "The streaming computation task is unknown, or unspecified.",
+            "Stop processing specified streaming computation range(s).",
+            "Start processing specified streaming computation range(s)."
           ],
           "type": "string"
         }
@@ -6416,12 +6365,12 @@
           "type": "integer"
         },
         "snapshotConfig": {
-          "description": "Configures streaming appliance snapshot.",
-          "$ref": "StreamingApplianceSnapshotConfig"
+          "$ref": "StreamingApplianceSnapshotConfig",
+          "description": "Configures streaming appliance snapshot."
         },
         "streamingComputationTopology": {
-          "description": "The global topology of the streaming Dataflow job.",
-          "$ref": "TopologyConfig"
+          "$ref": "TopologyConfig",
+          "description": "The global topology of the streaming Dataflow job."
         },
         "workerHarnessPort": {
           "description": "The TCP port used by the worker to communicate with the Dataflow worker harness.",
@@ -6549,8 +6498,8 @@
           "type": "array"
         },
         "parallelWorkerSettings": {
-          "description": "The settings to pass to the parallel worker harness.",
-          "$ref": "WorkerSettings"
+          "$ref": "WorkerSettings",
+          "description": "The settings to pass to the parallel worker harness."
         },
         "streamingWorkerMainClass": {
           "description": "The streaming worker main class name.",
@@ -6606,8 +6555,8 @@
       "id": "TemplateVersion",
       "properties": {
         "artifact": {
-          "description": "Job graph and metadata if it is a legacy Template. Container image path and metadata if it is flex Template.",
-          "$ref": "Artifact"
+          "$ref": "Artifact",
+          "description": "Job graph and metadata if it is a legacy Template. Container image path and metadata if it is flex Template."
         },
         "createTime": {
           "description": "Creation time of this TemplateVersion.",
@@ -6642,15 +6591,15 @@
         },
         "type": {
           "description": "Either LEGACY or FLEX. This should match with the type of artifact.",
-          "enumDescriptions": [
-            "Default value. Not a useful zero case.",
-            "Legacy Template.",
-            "Flex Template."
-          ],
           "enum": [
             "TEMPLATE_TYPE_UNSPECIFIED",
             "LEGACY",
             "FLEX"
+          ],
+          "enumDescriptions": [
+            "Default value. Not a useful zero case.",
+            "Legacy Template.",
+            "Flex Template."
           ],
           "type": "string"
         },
@@ -6723,17 +6672,6 @@
         },
         "kind": {
           "description": "Type of transform.",
-          "enumDescriptions": [
-            "Unrecognized transform type.",
-            "ParDo transform.",
-            "Group By Key transform.",
-            "Flatten transform.",
-            "Read transform.",
-            "Write transform.",
-            "Constructs from a constant value, such as with Create.of.",
-            "Creates a Singleton view of a collection.",
-            "Opening or closing a shuffle session, often as part of a GroupByKey."
-          ],
           "enum": [
             "UNKNOWN_KIND",
             "PAR_DO_KIND",
@@ -6744,6 +6682,17 @@
             "CONSTANT_KIND",
             "SINGLETON_KIND",
             "SHUFFLE_KIND"
+          ],
+          "enumDescriptions": [
+            "Unrecognized transform type.",
+            "ParDo transform.",
+            "Group By Key transform.",
+            "Flatten transform.",
+            "Read transform.",
+            "Write transform.",
+            "Constructs from a constant value, such as with Create.of.",
+            "Creates a Singleton view of a collection.",
+            "Opening or closing a shuffle session, often as part of a GroupByKey."
           ],
           "type": "string"
         },
@@ -6770,8 +6719,8 @@
           "type": "string"
         },
         "queryInfo": {
-          "description": "Information about the validated query. Not defined if validation fails.",
-          "$ref": "QueryInfo"
+          "$ref": "QueryInfo",
+          "description": "Information about the validated query. Not defined if validation fails."
         }
       },
       "type": "object"
@@ -6804,8 +6753,8 @@
           "type": "string"
         },
         "mapTask": {
-          "description": "Additional information for MapTask WorkItems.",
-          "$ref": "MapTask"
+          "$ref": "MapTask",
+          "description": "Additional information for MapTask WorkItems."
         },
         "packages": {
           "description": "Any required packages that need to be fetched in order to execute this WorkItem.",
@@ -6824,28 +6773,28 @@
           "type": "string"
         },
         "seqMapTask": {
-          "description": "Additional information for SeqMapTask WorkItems.",
-          "$ref": "SeqMapTask"
+          "$ref": "SeqMapTask",
+          "description": "Additional information for SeqMapTask WorkItems."
         },
         "shellTask": {
-          "description": "Additional information for ShellTask WorkItems.",
-          "$ref": "ShellTask"
+          "$ref": "ShellTask",
+          "description": "Additional information for ShellTask WorkItems."
         },
         "sourceOperationTask": {
-          "description": "Additional information for source operation WorkItems.",
-          "$ref": "SourceOperationRequest"
+          "$ref": "SourceOperationRequest",
+          "description": "Additional information for source operation WorkItems."
         },
         "streamingComputationTask": {
-          "description": "Additional information for StreamingComputationTask WorkItems.",
-          "$ref": "StreamingComputationTask"
+          "$ref": "StreamingComputationTask",
+          "description": "Additional information for StreamingComputationTask WorkItems."
         },
         "streamingConfigTask": {
-          "description": "Additional information for StreamingConfigTask WorkItems.",
-          "$ref": "StreamingConfigTask"
+          "$ref": "StreamingConfigTask",
+          "description": "Additional information for StreamingConfigTask WorkItems."
         },
         "streamingSetupTask": {
-          "description": "Additional information for StreamingSetupTask WorkItems.",
-          "$ref": "StreamingSetupTask"
+          "$ref": "StreamingSetupTask",
+          "description": "Additional information for StreamingSetupTask WorkItems."
         }
       },
       "type": "object"
@@ -6871,8 +6820,8 @@
           "type": "array"
         },
         "progress": {
-          "description": "Progress of this work item.",
-          "$ref": "ProgressTimeseries"
+          "$ref": "ProgressTimeseries",
+          "description": "Progress of this work item."
         },
         "startTime": {
           "description": "Start time of this work item attempt.",
@@ -6881,14 +6830,6 @@
         },
         "state": {
           "description": "State of this work item.",
-          "enumDescriptions": [
-            "The component state is unknown or unspecified.",
-            "The component is not yet running.",
-            "The component is currently running.",
-            "The component succeeded.",
-            "The component failed.",
-            "Execution of the component was cancelled."
-          ],
           "enum": [
             "EXECUTION_STATE_UNKNOWN",
             "EXECUTION_STATE_NOT_STARTED",
@@ -6896,6 +6837,14 @@
             "EXECUTION_STATE_SUCCEEDED",
             "EXECUTION_STATE_FAILED",
             "EXECUTION_STATE_CANCELLED"
+          ],
+          "enumDescriptions": [
+            "The component state is unknown or unspecified.",
+            "The component is not yet running.",
+            "The component is currently running.",
+            "The component succeeded.",
+            "The component failed.",
+            "Execution of the component was cancelled."
           ],
           "type": "string"
         },
@@ -6911,8 +6860,8 @@
       "id": "WorkItemServiceState",
       "properties": {
         "completeWorkStatus": {
-          "description": "If set, a request to complete the work item with the given status. This will not be set to OK, unless supported by the specific kind of WorkItem. It can be used for the backend to indicate a WorkItem must terminate, e.g., for aborting work.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "If set, a request to complete the work item with the given status. This will not be set to OK, unless supported by the specific kind of WorkItem. It can be used for the backend to indicate a WorkItem must terminate, e.g., for aborting work."
         },
         "harnessData": {
           "additionalProperties": {
@@ -6923,8 +6872,8 @@
           "type": "object"
         },
         "hotKeyDetection": {
-          "description": "A hot key is a symptom of poor data distribution in which there are enough elements mapped to a single key to impact pipeline performance. When present, this field includes metadata associated with any hot key.",
-          "$ref": "HotKeyDetection"
+          "$ref": "HotKeyDetection",
+          "description": "A hot key is a symptom of poor data distribution in which there are enough elements mapped to a single key to impact pipeline performance. When present, this field includes metadata associated with any hot key."
         },
         "leaseExpireTime": {
           "description": "Time at which the current lease will expire.",
@@ -6949,16 +6898,16 @@
           "type": "string"
         },
         "splitRequest": {
-          "description": "The progress point in the WorkItem where the Dataflow service suggests that the worker truncate the task.",
-          "$ref": "ApproximateSplitRequest"
+          "$ref": "ApproximateSplitRequest",
+          "description": "The progress point in the WorkItem where the Dataflow service suggests that the worker truncate the task."
         },
         "suggestedStopPoint": {
-          "description": "DEPRECATED in favor of split_request.",
-          "$ref": "ApproximateProgress"
+          "$ref": "ApproximateProgress",
+          "description": "DEPRECATED in favor of split_request."
         },
         "suggestedStopPosition": {
-          "description": "Obsolete, always empty.",
-          "$ref": "Position"
+          "$ref": "Position",
+          "description": "Obsolete, always empty."
         }
       },
       "type": "object"
@@ -6979,8 +6928,8 @@
           "type": "array"
         },
         "dynamicSourceSplit": {
-          "description": "See documentation of stop_position.",
-          "$ref": "DynamicSourceSplit"
+          "$ref": "DynamicSourceSplit",
+          "description": "See documentation of stop_position."
         },
         "errors": {
           "description": "Specifies errors which occurred during processing. If errors are provided, and completed = true, then the WorkItem is considered to have failed.",
@@ -6997,8 +6946,8 @@
           "type": "array"
         },
         "progress": {
-          "description": "DEPRECATED in favor of reported_progress.",
-          "$ref": "ApproximateProgress"
+          "$ref": "ApproximateProgress",
+          "description": "DEPRECATED in favor of reported_progress."
         },
         "reportIndex": {
           "description": "The report index. When a WorkItem is leased, the lease will contain an initial report index. When a WorkItem's status is reported to the system, the report should be sent with that report index, and the response will contain the index the worker should use for the next report. Reports received with unexpected index values will be rejected by the service. In order to preserve idempotency, the worker should not alter the contents of a report, even if the worker must submit the same report multiple times before getting back a response. The worker should not submit a subsequent report until the response for the previous report had been received from the service.",
@@ -7006,8 +6955,8 @@
           "type": "string"
         },
         "reportedProgress": {
-          "description": "The worker's progress through this WorkItem.",
-          "$ref": "ApproximateReportedProgress"
+          "$ref": "ApproximateReportedProgress",
+          "description": "The worker's progress through this WorkItem."
         },
         "requestedLeaseDuration": {
           "description": "Amount of time the worker requests for its lease.",
@@ -7015,16 +6964,16 @@
           "type": "string"
         },
         "sourceFork": {
-          "description": "DEPRECATED in favor of dynamic_source_split.",
-          "$ref": "SourceFork"
+          "$ref": "SourceFork",
+          "description": "DEPRECATED in favor of dynamic_source_split."
         },
         "sourceOperationResponse": {
-          "description": "If the work item represented a SourceOperationRequest, and the work is completed, contains the result of the operation.",
-          "$ref": "SourceOperationResponse"
+          "$ref": "SourceOperationResponse",
+          "description": "If the work item represented a SourceOperationRequest, and the work is completed, contains the result of the operation."
         },
         "stopPosition": {
-          "description": "A worker may split an active map task in two parts, \"primary\" and \"residual\", continuing to process the primary part and returning the residual part into the pool of available work. This event is called a \"dynamic split\" and is critical to the dynamic work rebalancing feature. The two obtained sub-tasks are called \"parts\" of the split. The parts, if concatenated, must represent the same input as would be read by the current task if the split did not happen. The exact way in which the original task is decomposed into the two parts is specified either as a position demarcating them (stop_position), or explicitly as two DerivedSources, if this task consumes a user-defined source type (dynamic_source_split). The \"current\" task is adjusted as a result of the split: after a task with range [A, B) sends a stop_position update at C, its range is considered to be [A, C), e.g.: * Progress should be interpreted relative to the new range, e.g. \"75% completed\" means \"75% of [A, C) completed\" * The worker should interpret proposed_stop_position relative to the new range, e.g. \"split at 68%\" should be interpreted as \"split at 68% of [A, C)\". * If the worker chooses to split again using stop_position, only stop_positions in [A, C) will be accepted. * Etc. dynamic_source_split has similar semantics: e.g., if a task with source S splits using dynamic_source_split into {P, R} (where P and R must be together equivalent to S), then subsequent progress and proposed_stop_position should be interpreted relative to P, and in a potential subsequent dynamic_source_split into {P', R'}, P' and R' must be together equivalent to P, etc.",
-          "$ref": "Position"
+          "$ref": "Position",
+          "description": "A worker may split an active map task in two parts, \"primary\" and \"residual\", continuing to process the primary part and returning the residual part into the pool of available work. This event is called a \"dynamic split\" and is critical to the dynamic work rebalancing feature. The two obtained sub-tasks are called \"parts\" of the split. The parts, if concatenated, must represent the same input as would be read by the current task if the split did not happen. The exact way in which the original task is decomposed into the two parts is specified either as a position demarcating them (stop_position), or explicitly as two DerivedSources, if this task consumes a user-defined source type (dynamic_source_split). The \"current\" task is adjusted as a result of the split: after a task with range [A, B) sends a stop_position update at C, its range is considered to be [A, C), e.g.: * Progress should be interpreted relative to the new range, e.g. \"75% completed\" means \"75% of [A, C) completed\" * The worker should interpret proposed_stop_position relative to the new range, e.g. \"split at 68%\" should be interpreted as \"split at 68% of [A, C)\". * If the worker chooses to split again using stop_position, only stop_positions in [A, C) will be accepted. * Etc. dynamic_source_split has similar semantics: e.g., if a task with source S splits using dynamic_source_split into {P, R} (where P and R must be together equivalent to S), then subsequent progress and proposed_stop_position should be interpreted relative to P, and in a potential subsequent dynamic_source_split into {P', R'}, P' and R' must be together equivalent to P, etc."
         },
         "totalThrottlerWaitTimeSeconds": {
           "description": "Total time the worker spent being throttled by external systems.",
@@ -7119,16 +7068,6 @@
         },
         "event": {
           "description": "The event being reported.",
-          "enumDescriptions": [
-            "Invalid event.",
-            "The time the VM started.",
-            "Our container code starts running. Multiple containers could be distinguished with WorkerMessage.labels if desired.",
-            "The worker has a functional external network connection.",
-            "Started downloading staging files.",
-            "Finished downloading all staging files.",
-            "For applicable SDKs, started installation of SDK and worker packages.",
-            "Finished installing SDK."
-          ],
           "enum": [
             "UNKNOWN_EVENT",
             "OS_START",
@@ -7138,6 +7077,16 @@
             "STAGING_FILES_DOWNLOAD_FINISH",
             "SDK_INSTALL_START",
             "SDK_INSTALL_FINISH"
+          ],
+          "enumDescriptions": [
+            "Invalid event.",
+            "The time the VM started.",
+            "Our container code starts running. Multiple containers could be distinguished with WorkerMessage.labels if desired.",
+            "The worker has a functional external network connection.",
+            "Started downloading staging files.",
+            "Finished downloading all staging files.",
+            "For applicable SDKs, started installation of SDK and worker packages.",
+            "Finished installing SDK."
           ],
           "type": "string"
         },
@@ -7168,24 +7117,24 @@
           "type": "string"
         },
         "workerHealthReport": {
-          "description": "The health of a worker.",
-          "$ref": "WorkerHealthReport"
+          "$ref": "WorkerHealthReport",
+          "description": "The health of a worker."
         },
         "workerLifecycleEvent": {
-          "description": "Record of worker lifecycle events.",
-          "$ref": "WorkerLifecycleEvent"
+          "$ref": "WorkerLifecycleEvent",
+          "description": "Record of worker lifecycle events."
         },
         "workerMessageCode": {
-          "description": "A worker message code.",
-          "$ref": "WorkerMessageCode"
+          "$ref": "WorkerMessageCode",
+          "description": "A worker message code."
         },
         "workerMetrics": {
-          "description": "Resource metrics reported by workers.",
-          "$ref": "ResourceUtilizationReport"
+          "$ref": "ResourceUtilizationReport",
+          "description": "Resource metrics reported by workers."
         },
         "workerShutdownNotice": {
-          "description": "Shutdown notice by workers.",
-          "$ref": "WorkerShutdownNotice"
+          "$ref": "WorkerShutdownNotice",
+          "description": "Shutdown notice by workers."
         }
       },
       "type": "object"
@@ -7214,16 +7163,16 @@
       "id": "WorkerMessageResponse",
       "properties": {
         "workerHealthReportResponse": {
-          "description": "The service's response to a worker's health report.",
-          "$ref": "WorkerHealthReportResponse"
+          "$ref": "WorkerHealthReportResponse",
+          "description": "The service's response to a worker's health report."
         },
         "workerMetricsResponse": {
-          "description": "Service's response to reporting worker metrics (currently empty).",
-          "$ref": "ResourceUtilizationReportResponse"
+          "$ref": "ResourceUtilizationReportResponse",
+          "description": "Service's response to reporting worker metrics (currently empty)."
         },
         "workerShutdownNoticeResponse": {
-          "description": "Service's response to shutdown notice (currently empty).",
-          "$ref": "WorkerShutdownNoticeResponse"
+          "$ref": "WorkerShutdownNoticeResponse",
+          "description": "Service's response to shutdown notice (currently empty)."
         }
       },
       "type": "object"
@@ -7233,8 +7182,8 @@
       "id": "WorkerPool",
       "properties": {
         "autoscalingSettings": {
-          "description": "Settings for autoscaling of this WorkerPool.",
-          "$ref": "AutoscalingSettings"
+          "$ref": "AutoscalingSettings",
+          "description": "Settings for autoscaling of this WorkerPool."
         },
         "dataDisks": {
           "description": "Data disks that are used by a VM in this workflow.",
@@ -7245,17 +7194,17 @@
         },
         "defaultPackageSet": {
           "description": "The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.",
-          "enumDescriptions": [
-            "The default set of packages to stage is unknown, or unspecified.",
-            "Indicates that no packages should be staged at the worker unless explicitly specified by the job.",
-            "Stage packages typically useful to workers written in Java.",
-            "Stage pacakges typically useful to workers written in Python."
-          ],
           "enum": [
             "DEFAULT_PACKAGE_SET_UNKNOWN",
             "DEFAULT_PACKAGE_SET_NONE",
             "DEFAULT_PACKAGE_SET_JAVA",
             "DEFAULT_PACKAGE_SET_PYTHON"
+          ],
+          "enumDescriptions": [
+            "The default set of packages to stage is unknown, or unspecified.",
+            "Indicates that no packages should be staged at the worker unless explicitly specified by the job.",
+            "Stage packages typically useful to workers written in Java.",
+            "Stage pacakges typically useful to workers written in Python."
           ],
           "type": "string"
         },
@@ -7274,15 +7223,15 @@
         },
         "ipConfiguration": {
           "description": "Configuration for VM IPs.",
-          "enumDescriptions": [
-            "The configuration is unknown, or unspecified.",
-            "Workers should have public IP addresses.",
-            "Workers should have private IP addresses."
-          ],
           "enum": [
             "WORKER_IP_UNSPECIFIED",
             "WORKER_IP_PUBLIC",
             "WORKER_IP_PRIVATE"
+          ],
+          "enumDescriptions": [
+            "The configuration is unknown, or unspecified.",
+            "Workers should have public IP addresses.",
+            "Workers should have private IP addresses."
           ],
           "type": "string"
         },
@@ -7346,22 +7295,22 @@
           "type": "string"
         },
         "taskrunnerSettings": {
-          "description": "Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.",
-          "$ref": "TaskRunnerSettings"
+          "$ref": "TaskRunnerSettings",
+          "description": "Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field."
         },
         "teardownPolicy": {
           "description": "Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.",
-          "enumDescriptions": [
-            "The teardown policy isn't specified, or is unknown.",
-            "Always teardown the resource.",
-            "Teardown the resource on success. This is useful for debugging failures.",
-            "Never teardown the resource. This is useful for debugging and development."
-          ],
           "enum": [
             "TEARDOWN_POLICY_UNKNOWN",
             "TEARDOWN_ALWAYS",
             "TEARDOWN_ON_SUCCESS",
             "TEARDOWN_NEVER"
+          ],
+          "enumDescriptions": [
+            "The teardown policy isn't specified, or is unknown.",
+            "Always teardown the resource.",
+            "Teardown the resource on success. This is useful for debugging failures.",
+            "Never teardown the resource. This is useful for debugging and development."
           ],
           "type": "string"
         },
@@ -7429,12 +7378,12 @@
       "id": "WriteInstruction",
       "properties": {
         "input": {
-          "description": "The input.",
-          "$ref": "InstructionInput"
+          "$ref": "InstructionInput",
+          "description": "The input."
         },
         "sink": {
-          "description": "The sink to write to.",
-          "$ref": "Sink"
+          "$ref": "Sink",
+          "description": "The sink to write to."
         }
       },
       "type": "object"

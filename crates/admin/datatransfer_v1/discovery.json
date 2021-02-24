@@ -18,14 +18,12 @@
   "description": "Admin SDK lets administrators of enterprise domains to view and manage resources like user, groups etc. It also provides audit and usage reports of domain.",
   "discoveryVersion": "v1",
   "documentationLink": "http://developers.google.com/admin-sdk/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "admin:datatransfer_v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://admin.mtls.googleapis.com/",
   "name": "admin",
   "ownerDomain": "google.com",
   "ownerName": "Google",
@@ -33,15 +31,15 @@
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -52,17 +50,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -114,7 +112,6 @@
         "get": {
           "description": "Retrieves information about an application for the given application ID.",
           "httpMethod": "GET",
-          "flatPath": "admin/datatransfer/v1/applications/{applicationId}",
           "id": "datatransfer.applications.get",
           "parameterOrder": [
             "applicationId"
@@ -124,8 +121,8 @@
               "description": "ID of the application resource to be retrieved.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "admin/datatransfer/v1/applications/{applicationId}",
@@ -140,7 +137,6 @@
         "list": {
           "description": "Lists the applications available for data transfer for a customer.",
           "httpMethod": "GET",
-          "flatPath": "admin/datatransfer/v1/applications",
           "id": "datatransfer.applications.list",
           "parameterOrder": [],
           "parameters": {
@@ -179,7 +175,6 @@
         "get": {
           "description": "Retrieves a data transfer request by its resource ID.",
           "httpMethod": "GET",
-          "flatPath": "admin/datatransfer/v1/transfers/{dataTransferId}",
           "id": "datatransfer.transfers.get",
           "parameterOrder": [
             "dataTransferId"
@@ -188,8 +183,8 @@
             "dataTransferId": {
               "description": "ID of the resource to be retrieved. This is returned in the response from the insert method.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "admin/datatransfer/v1/transfers/{dataTransferId}",
@@ -204,7 +199,6 @@
         "insert": {
           "description": "Inserts a data transfer request.",
           "httpMethod": "POST",
-          "flatPath": "admin/datatransfer/v1/transfers",
           "id": "datatransfer.transfers.insert",
           "parameterOrder": [],
           "parameters": {},
@@ -222,7 +216,6 @@
         "list": {
           "description": "Lists the transfers for a customer by source user, destination user, or status.",
           "httpMethod": "GET",
-          "flatPath": "admin/datatransfer/v1/transfers",
           "id": "datatransfer.transfers.list",
           "parameterOrder": [],
           "parameters": {

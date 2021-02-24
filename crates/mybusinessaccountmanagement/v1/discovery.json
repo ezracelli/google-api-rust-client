@@ -6,29 +6,27 @@
   "description": "The My Business Account Management API provides an interface for managing access to a location on Google.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/my-business/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "mybusinessaccountmanagement:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://mybusinessaccountmanagement.mtls.googleapis.com/",
   "name": "mybusinessaccountmanagement",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -39,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -101,7 +99,6 @@
         "create": {
           "description": "Creates an account with the specified name and type under the given parent. - Personal accounts and Organizations cannot be created. - User Groups cannot be created with a Personal account as primary owner. - Location Groups cannot be created with a primary owner of a Personal account if the Personal account is in an Organization. - Location Groups cannot own Location Groups.",
           "httpMethod": "POST",
-          "flatPath": "v1/accounts",
           "id": "mybusinessaccountmanagement.accounts.create",
           "parameterOrder": [],
           "parameters": {},
@@ -116,7 +113,6 @@
         "get": {
           "description": "Gets the specified account. Returns `NOT_FOUND` if the account does not exist or if the caller does not have access rights to it.",
           "httpMethod": "GET",
-          "flatPath": "v1/accounts/{accountsId}",
           "id": "mybusinessaccountmanagement.accounts.get",
           "parameterOrder": [
             "name"
@@ -126,8 +122,8 @@
               "description": "Required. The name of the account to fetch.",
               "location": "path",
               "pattern": "^accounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -138,7 +134,6 @@
         "list": {
           "description": "Lists all of the accounts for the authenticated user. This includes all accounts that the user owns, as well as any accounts for which the user has management rights.",
           "httpMethod": "GET",
-          "flatPath": "v1/accounts",
           "id": "mybusinessaccountmanagement.accounts.list",
           "parameterOrder": [],
           "parameters": {
@@ -172,7 +167,6 @@
         "patch": {
           "description": "Updates the specified business account. Personal accounts cannot be updated using this method.",
           "httpMethod": "PATCH",
-          "flatPath": "v1/accounts/{accountsId}",
           "id": "mybusinessaccountmanagement.accounts.patch",
           "parameterOrder": [
             "name"
@@ -182,8 +176,8 @@
               "description": "Immutable. The resource name, in the format `accounts/{account_id}`.",
               "location": "path",
               "pattern": "^accounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "Required. The specific fields that should be updated. The only editable field is `accountName`.",
@@ -212,7 +206,6 @@
             "create": {
               "description": "Invites the specified user to become an administrator for the specified account. The invitee must accept the invitation in order to be granted access to the account. See AcceptInvitation to programmatically accept an invitation.",
               "httpMethod": "POST",
-              "flatPath": "v1/accounts/{accountsId}/admins",
               "id": "mybusinessaccountmanagement.accounts.admins.create",
               "parameterOrder": [
                 "parent"
@@ -222,8 +215,8 @@
                   "description": "Required. The resource name of the account this admin is created for. `accounts/{account_id}`.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/admins",
@@ -237,7 +230,6 @@
             "delete": {
               "description": "Removes the specified admin from the specified account.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/accounts/{accountsId}/admins/{adminsId}",
               "id": "mybusinessaccountmanagement.accounts.admins.delete",
               "parameterOrder": [
                 "name"
@@ -247,8 +239,8 @@
                   "description": "Required. The resource name of the admin to remove from the account. `accounts/{account_id}/admins/{admin_id}`.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/admins/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -259,7 +251,6 @@
             "list": {
               "description": "Lists the admins for the specified account.",
               "httpMethod": "GET",
-              "flatPath": "v1/accounts/{accountsId}/admins",
               "id": "mybusinessaccountmanagement.accounts.admins.list",
               "parameterOrder": [
                 "parent"
@@ -269,8 +260,8 @@
                   "description": "Required. The name of the account from which to retrieve a list of admins. `accounts/{account_id}/admins`.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/admins",
@@ -281,7 +272,6 @@
             "patch": {
               "description": "Updates the Admin for the specified Account Admin.",
               "httpMethod": "PATCH",
-              "flatPath": "v1/accounts/{accountsId}/admins/{adminsId}",
               "id": "mybusinessaccountmanagement.accounts.admins.patch",
               "parameterOrder": [
                 "name"
@@ -291,8 +281,8 @@
                   "description": "Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/admins/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. The specific fields that should be updated. The only editable field is role.",
@@ -316,7 +306,6 @@
             "accept": {
               "description": "Accepts the specified invitation.",
               "httpMethod": "POST",
-              "flatPath": "v1/accounts/{accountsId}/invitations/{invitationsId}:accept",
               "id": "mybusinessaccountmanagement.accounts.invitations.accept",
               "parameterOrder": [
                 "name"
@@ -326,8 +315,8 @@
                   "description": "Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}`",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/invitations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:accept",
@@ -341,7 +330,6 @@
             "decline": {
               "description": "Declines the specified invitation.",
               "httpMethod": "POST",
-              "flatPath": "v1/accounts/{accountsId}/invitations/{invitationsId}:decline",
               "id": "mybusinessaccountmanagement.accounts.invitations.decline",
               "parameterOrder": [
                 "name"
@@ -351,8 +339,8 @@
                   "description": "Required. The name of the account invitation that is being declined. `accounts/{account_id}/invitations/{invitation_id}`",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/invitations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:decline",
@@ -366,7 +354,6 @@
             "list": {
               "description": "Lists pending invitations for the specified account.",
               "httpMethod": "GET",
-              "flatPath": "v1/accounts/{accountsId}/invitations",
               "id": "mybusinessaccountmanagement.accounts.invitations.list",
               "parameterOrder": [
                 "parent"
@@ -381,8 +368,8 @@
                   "description": "Required. The name of the account from which the list of invitations is being retrieved. `accounts/{account_id}/invitations`",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/invitations",
@@ -401,7 +388,6 @@
             "create": {
               "description": "Invites the specified user to become an administrator for the specified location. The invitee must accept the invitation in order to be granted access to the location. See AcceptInvitation to programmatically accept an invitation.",
               "httpMethod": "POST",
-              "flatPath": "v1/locations/{locationsId}/admins",
               "id": "mybusinessaccountmanagement.locations.admins.create",
               "parameterOrder": [
                 "parent"
@@ -411,8 +397,8 @@
                   "description": "Required. The resource name of the location this admin is created for. `locations/{location_id}/admins`.",
                   "location": "path",
                   "pattern": "^locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/admins",
@@ -426,7 +412,6 @@
             "delete": {
               "description": "Removes the specified admin as a manager of the specified location.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/locations/{locationsId}/admins/{adminsId}",
               "id": "mybusinessaccountmanagement.locations.admins.delete",
               "parameterOrder": [
                 "name"
@@ -436,8 +421,8 @@
                   "description": "Required. The resource name of the admin to remove from the location.",
                   "location": "path",
                   "pattern": "^locations/[^/]+/admins/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -448,7 +433,6 @@
             "list": {
               "description": "Lists all of the admins for the specified location.",
               "httpMethod": "GET",
-              "flatPath": "v1/locations/{locationsId}/admins",
               "id": "mybusinessaccountmanagement.locations.admins.list",
               "parameterOrder": [
                 "parent"
@@ -458,8 +442,8 @@
                   "description": "Required. The name of the location to list admins of. `locations/{location_id}/admins`.",
                   "location": "path",
                   "pattern": "^locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/admins",
@@ -470,7 +454,6 @@
             "patch": {
               "description": "Updates the Admin for the specified location. Only the AdminRole of the Admin can be updated.",
               "httpMethod": "PATCH",
-              "flatPath": "v1/locations/{locationsId}/admins/{adminsId}",
               "id": "mybusinessaccountmanagement.locations.admins.patch",
               "parameterOrder": [
                 "name"
@@ -480,8 +463,8 @@
                   "description": "Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation.",
                   "location": "path",
                   "pattern": "^locations/[^/]+/admins/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. The specific fields that should be updated. The only editable field is role.",
@@ -522,32 +505,32 @@
         },
         "accountNumber": {
           "description": "Output only. Account reference number if provisioned.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Immutable. The resource name, in the format `accounts/{account_id}`.",
           "type": "string"
         },
         "organizationInfo": {
-          "description": "Output only. Additional info for an organization. This is populated only for an organization account.",
           "$ref": "OrganizationInfo",
+          "description": "Output only. Additional info for an organization. This is populated only for an organization account.",
           "readOnly": true
         },
         "permissionLevel": {
           "description": "Output only. Specifies the permission level the user has for this account.",
-          "enumDescriptions": [
-            "Not specified.",
-            "The user has owner level permission.",
-            "The user has member level permission."
-          ],
           "enum": [
             "PERMISSION_LEVEL_UNSPECIFIED",
             "OWNER_LEVEL",
             "MEMBER_LEVEL"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Not specified.",
+            "The user has owner level permission.",
+            "The user has member level permission."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "primaryOwner": {
           "description": "Required. Input only. The resource name of the account which will be the primary owner of the account being created. It should be of the form `accounts/{account_id}/`.",
@@ -555,13 +538,6 @@
         },
         "role": {
           "description": "Output only. Specifies the AccountRole of this account.",
-          "enumDescriptions": [
-            "Not specified.",
-            "The user is the primary owner this account.",
-            "The user owner of the account.",
-            "The user can manage this account.",
-            "The user can manage a limited set of features for the account."
-          ],
           "enum": [
             "ACCOUNT_ROLE_UNSPECIFIED",
             "PRIMARY_OWNER",
@@ -569,18 +545,18 @@
             "MANAGER",
             "SITE_MANAGER"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Not specified.",
+            "The user is the primary owner this account.",
+            "The user owner of the account.",
+            "The user can manage this account.",
+            "The user can manage a limited set of features for the account."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "type": {
           "description": "Required. Contains the type of account. Accounts of type PERSONAL and ORGANIZATION cannot be created using this API.",
-          "enumDescriptions": [
-            "Not specified.",
-            "An end-user account.",
-            "A group of Locations. For more information, see the [help center article] (https://support.google.com/business/answer/6085326)",
-            "A User Group for segregating organization staff in groups. For more information, see the [help center article](https://support.google.com/business/answer/7655731)",
-            "An organization representing a company. For more information, see the [help center article](https://support.google.com/business/answer/7663063)"
-          ],
           "enum": [
             "ACCOUNT_TYPE_UNSPECIFIED",
             "PERSONAL",
@@ -588,41 +564,48 @@
             "USER_GROUP",
             "ORGANIZATION"
           ],
+          "enumDescriptions": [
+            "Not specified.",
+            "An end-user account.",
+            "A group of Locations. For more information, see the [help center article] (https://support.google.com/business/answer/6085326)",
+            "A User Group for segregating organization staff in groups. For more information, see the [help center article](https://support.google.com/business/answer/7655731)",
+            "An organization representing a company. For more information, see the [help center article](https://support.google.com/business/answer/7663063)"
+          ],
           "type": "string"
         },
         "verificationState": {
           "description": "Output only. If verified, future locations that are created are automatically connected to Google Maps, and have Google+ pages created, without requiring moderation.",
-          "enumDescriptions": [
-            "Not specified.",
-            "Verified account.",
-            "Account that is not verified, and verification has not been requested.",
-            "Account that is not verified, but verification has been requested."
-          ],
           "enum": [
             "VERIFICATION_STATE_UNSPECIFIED",
             "VERIFIED",
             "UNVERIFIED",
             "VERIFICATION_REQUESTED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Not specified.",
+            "Verified account.",
+            "Account that is not verified, and verification has not been requested.",
+            "Account that is not verified, but verification has been requested."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "vettedState": {
           "description": "Output only. Indicates whether the account is vetted by Google. A vetted account is able to verify locations via the VETTED_PARTNER method.",
-          "enumDescriptions": [
-            "Not Specified",
-            "The account is not vetted by Google.",
-            "The account is vetted by Google and in a valid state. An account is automatically vetted if it has direct access to a vetted group account.",
-            "The account is vetted but in an invalid state. The account will behave like an unvetted account."
-          ],
           "enum": [
             "VETTED_STATE_UNSPECIFIED",
             "NOT_VETTED",
             "VETTED",
             "INVALID"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Not Specified",
+            "The account is not vetted by Google.",
+            "The account is vetted by Google and in a valid state. An account is automatically vetted if it has direct access to a vetted group account.",
+            "The account is vetted but in an invalid state. The account will behave like an unvetted account."
+          ],
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -641,24 +624,24 @@
         },
         "pendingInvitation": {
           "description": "Output only. Indicates whether this admin has a pending invitation for the specified resource.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "role": {
           "description": "Required. Specifies the role that this admin uses with the specified Account or Location.",
-          "enumDescriptions": [
-            "Not specified.",
-            "The admin has owner-level access and is the primary owner. (Displays as 'Primary Owner' in UI).",
-            "The admin has owner-level access. (Displays as 'Owner' in UI).",
-            "The admin has managerial access.",
-            "The admin can manage social (Google+) pages. (Displays as 'Site Manager' in UI). This API doesn't allow creating an account admin with a SITE_MANAGER role."
-          ],
           "enum": [
             "ADMIN_ROLE_UNSPECIFIED",
             "PRIMARY_OWNER",
             "OWNER",
             "MANAGER",
             "SITE_MANAGER"
+          ],
+          "enumDescriptions": [
+            "Not specified.",
+            "The admin has owner-level access and is the primary owner. (Displays as 'Primary Owner' in UI).",
+            "The admin has owner-level access. (Displays as 'Owner' in UI).",
+            "The admin has managerial access.",
+            "The admin can manage social (Google+) pages. (Displays as 'Site Manager' in UI). This API doesn't allow creating an account admin with a SITE_MANAGER role."
           ],
           "type": "string"
         }
@@ -687,13 +670,6 @@
         },
         "role": {
           "description": "Output only. The invited role on the account.",
-          "enumDescriptions": [
-            "Not specified.",
-            "The admin has owner-level access and is the primary owner. (Displays as 'Primary Owner' in UI).",
-            "The admin has owner-level access. (Displays as 'Owner' in UI).",
-            "The admin has managerial access.",
-            "The admin can manage social (Google+) pages. (Displays as 'Site Manager' in UI). This API doesn't allow creating an account admin with a SITE_MANAGER role."
-          ],
           "enum": [
             "ADMIN_ROLE_UNSPECIFIED",
             "PRIMARY_OWNER",
@@ -701,31 +677,38 @@
             "MANAGER",
             "SITE_MANAGER"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Not specified.",
+            "The admin has owner-level access and is the primary owner. (Displays as 'Primary Owner' in UI).",
+            "The admin has owner-level access. (Displays as 'Owner' in UI).",
+            "The admin has managerial access.",
+            "The admin can manage social (Google+) pages. (Displays as 'Site Manager' in UI). This API doesn't allow creating an account admin with a SITE_MANAGER role."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "targetAccount": {
-          "description": "The sparsely populated account this invitation is for.",
-          "$ref": "Account"
+          "$ref": "Account",
+          "description": "The sparsely populated account this invitation is for."
         },
         "targetLocation": {
-          "description": "The target location this invitation is for.",
-          "$ref": "TargetLocation"
+          "$ref": "TargetLocation",
+          "description": "The target location this invitation is for."
         },
         "targetType": {
           "description": "Output only. Specifies which target types should appear in the response.",
-          "enumDescriptions": [
-            "Set when target type is unspecified.",
-            "List invitations only for targets of type Account.",
-            "List invitations only for targets of type Location."
-          ],
           "enum": [
             "TARGET_TYPE_UNSPECIFIED",
             "ACCOUNTS_ONLY",
             "LOCATIONS_ONLY"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Set when target type is unspecified.",
+            "List invitations only for targets of type Account.",
+            "List invitations only for targets of type Location."
+          ],
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -795,19 +778,19 @@
       "id": "OrganizationInfo",
       "properties": {
         "address": {
-          "description": "Output only. The postal address for the account.",
           "$ref": "PostalAddress",
+          "description": "Output only. The postal address for the account.",
           "readOnly": true
         },
         "phoneNumber": {
           "description": "Output only. The contact number for the organization.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "registeredDomain": {
           "description": "Output only. The registered domain for the account.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -888,6 +871,6 @@
   },
   "servicePath": "",
   "title": "My Business Account Management API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

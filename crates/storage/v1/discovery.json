@@ -36,7 +36,6 @@
   "labels": [
     "labs"
   ],
-  "mtlsRootUrl": "https://storage.mtls.googleapis.com/",
   "name": "storage",
   "ownerDomain": "google.com",
   "ownerName": "Google",
@@ -44,13 +43,13 @@
     "alt": {
       "default": "json",
       "description": "Data format for the response.",
+      "enum": [
+        "json"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json"
       ],
       "location": "query",
-      "enum": [
-        "json"
-      ],
       "type": "string"
     },
     "fields": {
@@ -101,14 +100,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -139,14 +138,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -179,8 +178,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -216,8 +215,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -251,14 +250,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -295,14 +294,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -342,8 +341,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ifMetagenerationMatch": {
               "description": "If set, only deletes the bucket if its metageneration matches this value.",
@@ -386,8 +385,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ifMetagenerationMatch": {
               "description": "Makes the return of the bucket metadata conditional on whether the bucket's current metageneration matches the given value.",
@@ -403,15 +402,15 @@
             },
             "projection": {
               "description": "Set of properties to return. Defaults to noAcl.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit owner, acl and defaultObjectAcl properties."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -448,8 +447,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "optionsRequestedPolicyVersion": {
               "description": "The IAM policy format version to be returned. If the optionsRequestedPolicyVersion is for an older version that doesn't support part of the requested IAM policy, the request fails.",
@@ -488,6 +487,13 @@
           "parameters": {
             "predefinedAcl": {
               "description": "Apply a predefined set of access controls to this bucket.",
+              "enum": [
+                "authenticatedRead",
+                "private",
+                "projectPrivate",
+                "publicRead",
+                "publicReadWrite"
+              ],
               "enumDescriptions": [
                 "Project team owners get OWNER access, and allAuthenticatedUsers get READER access.",
                 "Project team owners get OWNER access.",
@@ -496,17 +502,18 @@
                 "Project team owners get OWNER access, and allUsers get WRITER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "private",
-                "projectPrivate",
-                "publicRead",
-                "publicReadWrite"
-              ],
               "type": "string"
             },
             "predefinedDefaultObjectAcl": {
               "description": "Apply a predefined set of default object access controls to this bucket.",
+              "enum": [
+                "authenticatedRead",
+                "bucketOwnerFullControl",
+                "bucketOwnerRead",
+                "private",
+                "projectPrivate",
+                "publicRead"
+              ],
               "enumDescriptions": [
                 "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
                 "Object owner gets OWNER access, and project team owners get OWNER access.",
@@ -516,33 +523,25 @@
                 "Object owner gets OWNER access, and allUsers get READER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "bucketOwnerFullControl",
-                "bucketOwnerRead",
-                "private",
-                "projectPrivate",
-                "publicRead"
-              ],
               "type": "string"
             },
             "project": {
               "description": "A valid API project identifier.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "projection": {
               "description": "Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit owner, acl and defaultObjectAcl properties."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -598,20 +597,20 @@
             "project": {
               "description": "A valid API project identifier.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "projection": {
               "description": "Set of properties to return. Defaults to noAcl.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit owner, acl and defaultObjectAcl properties."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -649,15 +648,15 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ifMetagenerationMatch": {
               "description": "Makes the operation conditional on whether bucket's current metageneration matches the given value.",
               "format": "int64",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -691,8 +690,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ifMetagenerationMatch": {
               "description": "Makes the return of the bucket metadata conditional on whether the bucket's current metageneration matches the given value.",
@@ -708,6 +707,13 @@
             },
             "predefinedAcl": {
               "description": "Apply a predefined set of access controls to this bucket.",
+              "enum": [
+                "authenticatedRead",
+                "private",
+                "projectPrivate",
+                "publicRead",
+                "publicReadWrite"
+              ],
               "enumDescriptions": [
                 "Project team owners get OWNER access, and allAuthenticatedUsers get READER access.",
                 "Project team owners get OWNER access.",
@@ -716,17 +722,18 @@
                 "Project team owners get OWNER access, and allUsers get WRITER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "private",
-                "projectPrivate",
-                "publicRead",
-                "publicReadWrite"
-              ],
               "type": "string"
             },
             "predefinedDefaultObjectAcl": {
               "description": "Apply a predefined set of default object access controls to this bucket.",
+              "enum": [
+                "authenticatedRead",
+                "bucketOwnerFullControl",
+                "bucketOwnerRead",
+                "private",
+                "projectPrivate",
+                "publicRead"
+              ],
               "enumDescriptions": [
                 "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
                 "Object owner gets OWNER access, and project team owners get OWNER access.",
@@ -736,27 +743,19 @@
                 "Object owner gets OWNER access, and allUsers get READER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "bucketOwnerFullControl",
-                "bucketOwnerRead",
-                "private",
-                "projectPrivate",
-                "publicRead"
-              ],
               "type": "string"
             },
             "projection": {
               "description": "Set of properties to return. Defaults to full.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit owner, acl and defaultObjectAcl properties."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -793,8 +792,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -831,15 +830,15 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "permissions": {
               "description": "Permissions to test.",
               "location": "query",
-              "type": "string",
               "repeated": true,
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -875,8 +874,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ifMetagenerationMatch": {
               "description": "Makes the return of the bucket metadata conditional on whether the bucket's current metageneration matches the given value.",
@@ -892,6 +891,13 @@
             },
             "predefinedAcl": {
               "description": "Apply a predefined set of access controls to this bucket.",
+              "enum": [
+                "authenticatedRead",
+                "private",
+                "projectPrivate",
+                "publicRead",
+                "publicReadWrite"
+              ],
               "enumDescriptions": [
                 "Project team owners get OWNER access, and allAuthenticatedUsers get READER access.",
                 "Project team owners get OWNER access.",
@@ -900,17 +906,18 @@
                 "Project team owners get OWNER access, and allUsers get WRITER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "private",
-                "projectPrivate",
-                "publicRead",
-                "publicReadWrite"
-              ],
               "type": "string"
             },
             "predefinedDefaultObjectAcl": {
               "description": "Apply a predefined set of default object access controls to this bucket.",
+              "enum": [
+                "authenticatedRead",
+                "bucketOwnerFullControl",
+                "bucketOwnerRead",
+                "private",
+                "projectPrivate",
+                "publicRead"
+              ],
               "enumDescriptions": [
                 "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
                 "Object owner gets OWNER access, and project team owners get OWNER access.",
@@ -920,27 +927,19 @@
                 "Object owner gets OWNER access, and allUsers get READER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "bucketOwnerFullControl",
-                "bucketOwnerRead",
-                "private",
-                "projectPrivate",
-                "publicRead"
-              ],
               "type": "string"
             },
             "projection": {
               "description": "Set of properties to return. Defaults to full.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit owner, acl and defaultObjectAcl properties."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -1003,14 +1002,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1041,14 +1040,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1081,8 +1080,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1118,8 +1117,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ifMetagenerationMatch": {
               "description": "If present, only return default ACL listing if the bucket's current metageneration matches this value.",
@@ -1165,14 +1164,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1209,14 +1208,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1257,14 +1256,14 @@
             "bucket": {
               "description": "The parent bucket of the notification.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "notification": {
               "description": "ID of the notification to delete.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1296,14 +1295,14 @@
             "bucket": {
               "description": "The parent bucket of the notification.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "notification": {
               "description": "Notification ID",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1339,8 +1338,8 @@
             "bucket": {
               "description": "The parent bucket of the notification.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1377,8 +1376,8 @@
             "bucket": {
               "description": "Name of a Google Cloud Storage bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1420,14 +1419,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -1438,8 +1437,8 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1471,14 +1470,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -1489,8 +1488,8 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1524,8 +1523,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -1536,8 +1535,8 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1574,8 +1573,8 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -1586,8 +1585,8 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1622,14 +1621,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -1640,8 +1639,8 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1679,14 +1678,14 @@
             "bucket": {
               "description": "Name of a bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "entity": {
               "description": "The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -1697,8 +1696,8 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -1739,17 +1738,25 @@
             "destinationBucket": {
               "description": "Name of the bucket containing the source objects. The destination object is stored in this bucket.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "destinationObject": {
               "description": "Name of the new object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "destinationPredefinedAcl": {
               "description": "Apply a predefined set of access controls to the destination object.",
+              "enum": [
+                "authenticatedRead",
+                "bucketOwnerFullControl",
+                "bucketOwnerRead",
+                "private",
+                "projectPrivate",
+                "publicRead"
+              ],
               "enumDescriptions": [
                 "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
                 "Object owner gets OWNER access, and project team owners get OWNER access.",
@@ -1759,14 +1766,6 @@
                 "Object owner gets OWNER access, and allUsers get READER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "bucketOwnerFullControl",
-                "bucketOwnerRead",
-                "private",
-                "projectPrivate",
-                "publicRead"
-              ],
               "type": "string"
             },
             "ifGenerationMatch": {
@@ -1824,8 +1823,8 @@
             "destinationBucket": {
               "description": "Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "destinationKmsKeyName": {
               "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.",
@@ -1835,11 +1834,19 @@
             "destinationObject": {
               "description": "Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "destinationPredefinedAcl": {
               "description": "Apply a predefined set of access controls to the destination object.",
+              "enum": [
+                "authenticatedRead",
+                "bucketOwnerFullControl",
+                "bucketOwnerRead",
+                "private",
+                "projectPrivate",
+                "publicRead"
+              ],
               "enumDescriptions": [
                 "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
                 "Object owner gets OWNER access, and project team owners get OWNER access.",
@@ -1849,14 +1856,6 @@
                 "Object owner gets OWNER access, and allUsers get READER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "bucketOwnerFullControl",
-                "bucketOwnerRead",
-                "private",
-                "projectPrivate",
-                "publicRead"
-              ],
               "type": "string"
             },
             "ifGenerationMatch": {
@@ -1909,15 +1908,15 @@
             },
             "projection": {
               "description": "Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit the owner, acl property."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -1928,8 +1927,8 @@
             "sourceBucket": {
               "description": "Name of the bucket in which to find the source object.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sourceGeneration": {
               "description": "If present, selects a specific revision of the source object (as opposed to the latest version, the default).",
@@ -1940,8 +1939,8 @@
             "sourceObject": {
               "description": "Name of the source object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "userProject": {
               "description": "The project to be billed for this request. Required for Requester Pays buckets.",
@@ -1974,8 +1973,8 @@
             "bucket": {
               "description": "Name of the bucket in which the object resides.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, permanently deletes a specific revision of this object (as opposed to the latest version, the default).",
@@ -2010,8 +2009,8 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -2043,8 +2042,8 @@
             "bucket": {
               "description": "Name of the bucket in which the object resides.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -2079,20 +2078,20 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "projection": {
               "description": "Set of properties to return. Defaults to noAcl.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit the owner, acl property."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -2132,8 +2131,8 @@
             "bucket": {
               "description": "Name of the bucket in which the object resides.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -2144,8 +2143,8 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -2180,12 +2179,12 @@
             ],
             "protocols": {
               "resumable": {
-                "path": "/resumable/upload/storage/v1/b/{bucket}/o",
-                "multipart": true
+                "multipart": true,
+                "path": "/resumable/upload/storage/v1/b/{bucket}/o"
               },
               "simple": {
-                "path": "/upload/storage/v1/b/{bucket}/o",
-                "multipart": true
+                "multipart": true,
+                "path": "/upload/storage/v1/b/{bucket}/o"
               }
             }
           },
@@ -2196,8 +2195,8 @@
             "bucket": {
               "description": "Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "contentEncoding": {
               "description": "If set, sets the contentEncoding property of the final object to this value. Setting this parameter is equivalent to setting the contentEncoding metadata property. This can be useful when uploading an object with uploadType=media to indicate the encoding of the content being uploaded.",
@@ -2240,6 +2239,14 @@
             },
             "predefinedAcl": {
               "description": "Apply a predefined set of access controls to this object.",
+              "enum": [
+                "authenticatedRead",
+                "bucketOwnerFullControl",
+                "bucketOwnerRead",
+                "private",
+                "projectPrivate",
+                "publicRead"
+              ],
               "enumDescriptions": [
                 "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
                 "Object owner gets OWNER access, and project team owners get OWNER access.",
@@ -2249,27 +2256,19 @@
                 "Object owner gets OWNER access, and allUsers get READER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "bucketOwnerFullControl",
-                "bucketOwnerRead",
-                "private",
-                "projectPrivate",
-                "publicRead"
-              ],
               "type": "string"
             },
             "projection": {
               "description": "Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit the owner, acl property."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -2308,8 +2307,8 @@
             "bucket": {
               "description": "Name of the bucket in which to look for objects.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "delimiter": {
               "description": "Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted.",
@@ -2346,15 +2345,15 @@
             },
             "projection": {
               "description": "Set of properties to return. Defaults to noAcl.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit the owner, acl property."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -2403,8 +2402,8 @@
             "bucket": {
               "description": "Name of the bucket in which the object resides.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -2439,11 +2438,19 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "predefinedAcl": {
               "description": "Apply a predefined set of access controls to this object.",
+              "enum": [
+                "authenticatedRead",
+                "bucketOwnerFullControl",
+                "bucketOwnerRead",
+                "private",
+                "projectPrivate",
+                "publicRead"
+              ],
               "enumDescriptions": [
                 "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
                 "Object owner gets OWNER access, and project team owners get OWNER access.",
@@ -2453,27 +2460,19 @@
                 "Object owner gets OWNER access, and allUsers get READER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "bucketOwnerFullControl",
-                "bucketOwnerRead",
-                "private",
-                "projectPrivate",
-                "publicRead"
-              ],
               "type": "string"
             },
             "projection": {
               "description": "Set of properties to return. Defaults to full.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit the owner, acl property."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -2513,8 +2512,8 @@
             "destinationBucket": {
               "description": "Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value, if any.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "destinationKmsKeyName": {
               "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.",
@@ -2524,11 +2523,19 @@
             "destinationObject": {
               "description": "Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "destinationPredefinedAcl": {
               "description": "Apply a predefined set of access controls to the destination object.",
+              "enum": [
+                "authenticatedRead",
+                "bucketOwnerFullControl",
+                "bucketOwnerRead",
+                "private",
+                "projectPrivate",
+                "publicRead"
+              ],
               "enumDescriptions": [
                 "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
                 "Object owner gets OWNER access, and project team owners get OWNER access.",
@@ -2538,14 +2545,6 @@
                 "Object owner gets OWNER access, and allUsers get READER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "bucketOwnerFullControl",
-                "bucketOwnerRead",
-                "private",
-                "projectPrivate",
-                "publicRead"
-              ],
               "type": "string"
             },
             "ifGenerationMatch": {
@@ -2604,15 +2603,15 @@
             },
             "projection": {
               "description": "Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit the owner, acl property."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -2628,8 +2627,8 @@
             "sourceBucket": {
               "description": "Name of the bucket in which to find the source object.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sourceGeneration": {
               "description": "If present, selects a specific revision of the source object (as opposed to the latest version, the default).",
@@ -2640,8 +2639,8 @@
             "sourceObject": {
               "description": "Name of the source object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "userProject": {
               "description": "The project to be billed for this request. Required for Requester Pays buckets.",
@@ -2674,8 +2673,8 @@
             "bucket": {
               "description": "Name of the bucket in which the object resides.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -2686,8 +2685,8 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -2726,8 +2725,8 @@
             "bucket": {
               "description": "Name of the bucket in which the object resides.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -2738,15 +2737,15 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "permissions": {
               "description": "Permissions to test.",
               "location": "query",
-              "type": "string",
               "repeated": true,
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -2783,8 +2782,8 @@
             "bucket": {
               "description": "Name of the bucket in which the object resides.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "generation": {
               "description": "If present, selects a specific revision of this object (as opposed to the latest version, the default).",
@@ -2819,11 +2818,19 @@
             "object": {
               "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "predefinedAcl": {
               "description": "Apply a predefined set of access controls to this object.",
+              "enum": [
+                "authenticatedRead",
+                "bucketOwnerFullControl",
+                "bucketOwnerRead",
+                "private",
+                "projectPrivate",
+                "publicRead"
+              ],
               "enumDescriptions": [
                 "Object owner gets OWNER access, and allAuthenticatedUsers get READER access.",
                 "Object owner gets OWNER access, and project team owners get OWNER access.",
@@ -2833,27 +2840,19 @@
                 "Object owner gets OWNER access, and allUsers get READER access."
               ],
               "location": "query",
-              "enum": [
-                "authenticatedRead",
-                "bucketOwnerFullControl",
-                "bucketOwnerRead",
-                "private",
-                "projectPrivate",
-                "publicRead"
-              ],
               "type": "string"
             },
             "projection": {
               "description": "Set of properties to return. Defaults to full.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit the owner, acl property."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -2890,8 +2889,8 @@
             "bucket": {
               "description": "Name of the bucket in which to look for objects.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "delimiter": {
               "description": "Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted.",
@@ -2928,15 +2927,15 @@
             },
             "projection": {
               "description": "Set of properties to return. Defaults to noAcl.",
+              "enum": [
+                "full",
+                "noAcl"
+              ],
               "enumDescriptions": [
                 "Include all properties.",
                 "Omit the owner, acl property."
               ],
               "location": "query",
-              "enum": [
-                "full",
-                "noAcl"
-              ],
               "type": "string"
             },
             "provisionalUserProject": {
@@ -2995,14 +2994,14 @@
                 "projectId": {
                   "description": "Project ID owning the service account.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "serviceAccountEmail": {
                   "description": "Email address of the service account.",
                   "location": "query",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userProject": {
                   "description": "The project to be billed for this request.",
@@ -3031,14 +3030,14 @@
                 "accessId": {
                   "description": "Name of the HMAC key to be deleted.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "projectId": {
                   "description": "Project ID owning the requested key",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userProject": {
                   "description": "The project to be billed for this request.",
@@ -3065,14 +3064,14 @@
                 "accessId": {
                   "description": "Name of the HMAC key.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "projectId": {
                   "description": "Project ID owning the service account of the requested key.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userProject": {
                   "description": "The project to be billed for this request.",
@@ -3115,8 +3114,8 @@
                 "projectId": {
                   "description": "Name of the project in which to look for HMAC keys.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "serviceAccountEmail": {
                   "description": "If present, only keys for the given service account are returned.",
@@ -3157,14 +3156,14 @@
                 "accessId": {
                   "description": "Name of the HMAC key being updated.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "projectId": {
                   "description": "Project ID owning the service account of the updated key.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "userProject": {
                   "description": "The project to be billed for this request.",
@@ -3199,8 +3198,8 @@
                 "projectId": {
                   "description": "Project ID",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "provisionalUserProject": {
                   "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
@@ -3764,8 +3763,8 @@
       "id": "ComposeRequest",
       "properties": {
         "destination": {
-          "description": "Properties of the resulting object.",
-          "$ref": "Object"
+          "$ref": "Object",
+          "description": "Properties of the resulting object."
         },
         "kind": {
           "default": "storage#composeRequest",
@@ -3847,8 +3846,8 @@
           "type": "string"
         },
         "metadata": {
-          "description": "Key metadata.",
-          "$ref": "HmacKeyMetadata"
+          "$ref": "HmacKeyMetadata",
+          "description": "Key metadata."
         },
         "secret": {
           "description": "HMAC secret key material.",
@@ -4335,8 +4334,8 @@
           "items": {
             "properties": {
               "condition": {
-                "description": "The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.",
-                "$ref": "Expr"
+                "$ref": "Expr",
+                "description": "The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently."
               },
               "members": {
                 "annotations": {
@@ -4407,8 +4406,8 @@
           "type": "string"
         },
         "resource": {
-          "description": "A resource containing the metadata for the copied-to object. This property is present in the response only when copying completes.",
-          "$ref": "Object"
+          "$ref": "Object",
+          "description": "A resource containing the metadata for the copied-to object. This property is present in the response only when copying completes."
         },
         "rewriteToken": {
           "description": "A token to use in subsequent requests to continue copying data. This token is present in the response only when there is more data to copy.",

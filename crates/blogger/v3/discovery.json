@@ -18,29 +18,27 @@
   "description": "The Blogger API provides access to posts, comments and pages of a Blogger blog.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/blogger/docs/3.0/getting_started",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "blogger:v3",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://blogger.mtls.googleapis.com/",
   "name": "blogger",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -113,7 +111,6 @@
         "get": {
           "description": "Gets one blog and user info pair by blog id and user id.",
           "httpMethod": "GET",
-          "flatPath": "v3/users/{userId}/blogs/{blogId}",
           "id": "blogger.blogUserInfos.get",
           "parameterOrder": [
             "userId",
@@ -122,8 +119,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxPosts": {
               "format": "uint32",
@@ -132,8 +129,8 @@
             },
             "userId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/users/{userId}/blogs/{blogId}",
@@ -152,7 +149,6 @@
         "get": {
           "description": "Gets a blog by id.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}",
           "id": "blogger.blogs.get",
           "parameterOrder": [
             "blogId"
@@ -160,8 +156,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxPosts": {
               "format": "uint32",
@@ -169,6 +165,12 @@
               "type": "integer"
             },
             "view": {
+              "enum": [
+                "VIEW_TYPE_UNSPECIFIED",
+                "READER",
+                "AUTHOR",
+                "ADMIN"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -176,12 +178,6 @@
                 ""
               ],
               "location": "query",
-              "enum": [
-                "VIEW_TYPE_UNSPECIFIED",
-                "READER",
-                "AUTHOR",
-                "ADMIN"
-              ],
               "type": "string"
             }
           },
@@ -197,7 +193,6 @@
         "getByUrl": {
           "description": "Gets a blog by url.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/byurl",
           "id": "blogger.blogs.getByUrl",
           "parameterOrder": [
             "url"
@@ -205,10 +200,16 @@
           "parameters": {
             "url": {
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "view": {
+              "enum": [
+                "VIEW_TYPE_UNSPECIFIED",
+                "READER",
+                "AUTHOR",
+                "ADMIN"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -216,12 +217,6 @@
                 ""
               ],
               "location": "query",
-              "enum": [
-                "VIEW_TYPE_UNSPECIFIED",
-                "READER",
-                "AUTHOR",
-                "ADMIN"
-              ],
               "type": "string"
             }
           },
@@ -237,7 +232,6 @@
         "listByUser": {
           "description": "Lists blogs by user.",
           "httpMethod": "GET",
-          "flatPath": "v3/users/{userId}/blogs",
           "id": "blogger.blogs.listByUser",
           "parameterOrder": [
             "userId"
@@ -248,42 +242,48 @@
               "type": "boolean"
             },
             "role": {
-              "enumDescriptions": [
-                "",
-                "",
-                "",
-                ""
-              ],
-              "location": "query",
               "enum": [
                 "VIEW_TYPE_UNSPECIFIED",
                 "READER",
                 "AUTHOR",
                 "ADMIN"
               ],
-              "type": "string",
-              "repeated": true
-            },
-            "status": {
-              "description": "Default value of status is LIVE.",
               "enumDescriptions": [
+                "",
+                "",
                 "",
                 ""
               ],
               "location": "query",
+              "repeated": true,
+              "type": "string"
+            },
+            "status": {
+              "description": "Default value of status is LIVE.",
               "enum": [
                 "LIVE",
                 "DELETED"
               ],
-              "type": "string",
-              "repeated": true
+              "enumDescriptions": [
+                "",
+                ""
+              ],
+              "location": "query",
+              "repeated": true,
+              "type": "string"
             },
             "userId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "view": {
+              "enum": [
+                "VIEW_TYPE_UNSPECIFIED",
+                "READER",
+                "AUTHOR",
+                "ADMIN"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -291,12 +291,6 @@
                 ""
               ],
               "location": "query",
-              "enum": [
-                "VIEW_TYPE_UNSPECIFIED",
-                "READER",
-                "AUTHOR",
-                "ADMIN"
-              ],
               "type": "string"
             }
           },
@@ -316,7 +310,6 @@
         "approve": {
           "description": "Marks a comment as not spam by blog id, post id and comment id.",
           "httpMethod": "POST",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve",
           "id": "blogger.comments.approve",
           "parameterOrder": [
             "blogId",
@@ -326,18 +319,18 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "commentId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve",
@@ -351,7 +344,6 @@
         "delete": {
           "description": "Deletes a comment by blog id, post id and comment id.",
           "httpMethod": "DELETE",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}",
           "id": "blogger.comments.delete",
           "parameterOrder": [
             "blogId",
@@ -361,18 +353,18 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "commentId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}",
@@ -383,7 +375,6 @@
         "get": {
           "description": "Gets a comment by id.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}",
           "id": "blogger.comments.get",
           "parameterOrder": [
             "blogId",
@@ -393,20 +384,26 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "commentId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "view": {
+              "enum": [
+                "VIEW_TYPE_UNSPECIFIED",
+                "READER",
+                "AUTHOR",
+                "ADMIN"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -414,12 +411,6 @@
                 ""
               ],
               "location": "query",
-              "enum": [
-                "VIEW_TYPE_UNSPECIFIED",
-                "READER",
-                "AUTHOR",
-                "ADMIN"
-              ],
               "type": "string"
             }
           },
@@ -435,7 +426,6 @@
         "list": {
           "description": "Lists comments.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments",
           "id": "blogger.comments.list",
           "parameterOrder": [
             "blogId",
@@ -444,8 +434,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "endDate": {
               "location": "query",
@@ -466,30 +456,20 @@
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "startDate": {
               "location": "query",
               "type": "string"
             },
             "status": {
-              "enumDescriptions": [
-                "",
-                "",
-                "",
-                ""
-              ],
-              "location": "query",
               "enum": [
                 "LIVE",
                 "EMPTIED",
                 "PENDING",
                 "SPAM"
               ],
-              "type": "string"
-            },
-            "view": {
               "enumDescriptions": [
                 "",
                 "",
@@ -497,12 +477,22 @@
                 ""
               ],
               "location": "query",
+              "type": "string"
+            },
+            "view": {
               "enum": [
                 "VIEW_TYPE_UNSPECIFIED",
                 "READER",
                 "AUTHOR",
                 "ADMIN"
               ],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
+              "location": "query",
               "type": "string"
             }
           },
@@ -518,7 +508,6 @@
         "listByBlog": {
           "description": "Lists comments by blog.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/comments",
           "id": "blogger.comments.listByBlog",
           "parameterOrder": [
             "blogId"
@@ -526,8 +515,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "endDate": {
               "location": "query",
@@ -551,6 +540,12 @@
               "type": "string"
             },
             "status": {
+              "enum": [
+                "LIVE",
+                "EMPTIED",
+                "PENDING",
+                "SPAM"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -558,14 +553,8 @@
                 ""
               ],
               "location": "query",
-              "enum": [
-                "LIVE",
-                "EMPTIED",
-                "PENDING",
-                "SPAM"
-              ],
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/comments",
@@ -580,7 +569,6 @@
         "markAsSpam": {
           "description": "Marks a comment as spam by blog id, post id and comment id.",
           "httpMethod": "POST",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam",
           "id": "blogger.comments.markAsSpam",
           "parameterOrder": [
             "blogId",
@@ -590,18 +578,18 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "commentId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam",
@@ -615,7 +603,6 @@
         "removeContent": {
           "description": "Removes the content of a comment by blog id, post id and comment id.",
           "httpMethod": "POST",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent",
           "id": "blogger.comments.removeContent",
           "parameterOrder": [
             "blogId",
@@ -625,18 +612,18 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "commentId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent",
@@ -654,7 +641,6 @@
         "get": {
           "description": "Gets page views by blog id.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/pageviews",
           "id": "blogger.pageViews.get",
           "parameterOrder": [
             "blogId"
@@ -662,23 +648,23 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "range": {
+              "enum": [
+                "all",
+                "30DAYS",
+                "7DAYS"
+              ],
               "enumDescriptions": [
                 "",
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "all",
-                "30DAYS",
-                "7DAYS"
-              ],
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/pageviews",
@@ -696,7 +682,6 @@
         "delete": {
           "description": "Deletes a page by blog id and page id.",
           "httpMethod": "DELETE",
-          "flatPath": "v3/blogs/{blogId}/pages/{pageId}",
           "id": "blogger.pages.delete",
           "parameterOrder": [
             "blogId",
@@ -705,13 +690,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/pages/{pageId}",
@@ -722,7 +707,6 @@
         "get": {
           "description": "Gets a page by blog id and page id.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/pages/{pageId}",
           "id": "blogger.pages.get",
           "parameterOrder": [
             "blogId",
@@ -731,15 +715,21 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "view": {
+              "enum": [
+                "VIEW_TYPE_UNSPECIFIED",
+                "READER",
+                "AUTHOR",
+                "ADMIN"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -747,12 +737,6 @@
                 ""
               ],
               "location": "query",
-              "enum": [
-                "VIEW_TYPE_UNSPECIFIED",
-                "READER",
-                "AUTHOR",
-                "ADMIN"
-              ],
               "type": "string"
             }
           },
@@ -768,7 +752,6 @@
         "insert": {
           "description": "Inserts a page.",
           "httpMethod": "POST",
-          "flatPath": "v3/blogs/{blogId}/pages",
           "id": "blogger.pages.insert",
           "parameterOrder": [
             "blogId"
@@ -776,8 +759,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "isDraft": {
               "location": "query",
@@ -798,7 +781,6 @@
         "list": {
           "description": "Lists pages.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/pages",
           "id": "blogger.pages.list",
           "parameterOrder": [
             "blogId"
@@ -806,8 +788,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "fetchBodies": {
               "location": "query",
@@ -823,32 +805,32 @@
               "type": "string"
             },
             "status": {
-              "enumDescriptions": [
-                "",
-                ""
-              ],
-              "location": "query",
               "enum": [
                 "LIVE",
                 "DRAFT"
               ],
-              "type": "string",
-              "repeated": true
-            },
-            "view": {
               "enumDescriptions": [
-                "",
-                "",
                 "",
                 ""
               ],
               "location": "query",
+              "repeated": true,
+              "type": "string"
+            },
+            "view": {
               "enum": [
                 "VIEW_TYPE_UNSPECIFIED",
                 "READER",
                 "AUTHOR",
                 "ADMIN"
               ],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
+              "location": "query",
               "type": "string"
             }
           },
@@ -864,7 +846,6 @@
         "patch": {
           "description": "Patches a page.",
           "httpMethod": "PATCH",
-          "flatPath": "v3/blogs/{blogId}/pages/{pageId}",
           "id": "blogger.pages.patch",
           "parameterOrder": [
             "blogId",
@@ -873,13 +854,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "publish": {
               "location": "query",
@@ -904,7 +885,6 @@
         "publish": {
           "description": "Publishes a page.",
           "httpMethod": "POST",
-          "flatPath": "v3/blogs/{blogId}/pages/{pageId}/publish",
           "id": "blogger.pages.publish",
           "parameterOrder": [
             "blogId",
@@ -913,13 +893,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/pages/{pageId}/publish",
@@ -933,7 +913,6 @@
         "revert": {
           "description": "Reverts a published or scheduled page to draft state.",
           "httpMethod": "POST",
-          "flatPath": "v3/blogs/{blogId}/pages/{pageId}/revert",
           "id": "blogger.pages.revert",
           "parameterOrder": [
             "blogId",
@@ -942,13 +921,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/pages/{pageId}/revert",
@@ -962,7 +941,6 @@
         "update": {
           "description": "Updates a page by blog id and page id.",
           "httpMethod": "PUT",
-          "flatPath": "v3/blogs/{blogId}/pages/{pageId}",
           "id": "blogger.pages.update",
           "parameterOrder": [
             "blogId",
@@ -971,13 +949,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "publish": {
               "location": "query",
@@ -1006,7 +984,6 @@
         "get": {
           "description": "Gets one post and user info pair, by post_id and user_id.",
           "httpMethod": "GET",
-          "flatPath": "v3/users/{userId}/blogs/{blogId}/posts/{postId}",
           "id": "blogger.postUserInfos.get",
           "parameterOrder": [
             "userId",
@@ -1016,8 +993,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxComments": {
               "format": "uint32",
@@ -1026,13 +1003,13 @@
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "userId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/users/{userId}/blogs/{blogId}/posts/{postId}",
@@ -1047,7 +1024,6 @@
         "list": {
           "description": "Lists post and user info pairs.",
           "httpMethod": "GET",
-          "flatPath": "v3/users/{userId}/blogs/{blogId}/posts",
           "id": "blogger.postUserInfos.list",
           "parameterOrder": [
             "userId",
@@ -1056,8 +1032,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "endDate": {
               "location": "query",
@@ -1079,17 +1055,17 @@
             },
             "orderBy": {
               "default": "PUBLISHED",
+              "enum": [
+                "ORDER_BY_UNSPECIFIED",
+                "PUBLISHED",
+                "UPDATED"
+              ],
               "enumDescriptions": [
                 "",
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "ORDER_BY_UNSPECIFIED",
-                "PUBLISHED",
-                "UPDATED"
-              ],
               "type": "string"
             },
             "pageToken": {
@@ -1101,39 +1077,39 @@
               "type": "string"
             },
             "status": {
-              "enumDescriptions": [
-                "",
-                "",
-                ""
-              ],
-              "location": "query",
               "enum": [
                 "LIVE",
                 "DRAFT",
                 "SCHEDULED"
               ],
-              "type": "string",
-              "repeated": true
-            },
-            "userId": {
-              "location": "path",
-              "type": "string",
-              "required": true
-            },
-            "view": {
               "enumDescriptions": [
-                "",
                 "",
                 "",
                 ""
               ],
               "location": "query",
+              "repeated": true,
+              "type": "string"
+            },
+            "userId": {
+              "location": "path",
+              "required": true,
+              "type": "string"
+            },
+            "view": {
               "enum": [
                 "VIEW_TYPE_UNSPECIFIED",
                 "READER",
                 "AUTHOR",
                 "ADMIN"
               ],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
+              "location": "query",
               "type": "string"
             }
           },
@@ -1153,7 +1129,6 @@
         "delete": {
           "description": "Deletes a post by blog id and post id.",
           "httpMethod": "DELETE",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}",
           "id": "blogger.posts.delete",
           "parameterOrder": [
             "blogId",
@@ -1162,13 +1137,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/posts/{postId}",
@@ -1179,7 +1154,6 @@
         "get": {
           "description": "Gets a post by blog id and post id",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}",
           "id": "blogger.posts.get",
           "parameterOrder": [
             "blogId",
@@ -1188,8 +1162,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "fetchBody": {
               "default": "true",
@@ -1207,10 +1181,16 @@
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "view": {
+              "enum": [
+                "VIEW_TYPE_UNSPECIFIED",
+                "READER",
+                "AUTHOR",
+                "ADMIN"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -1218,12 +1198,6 @@
                 ""
               ],
               "location": "query",
-              "enum": [
-                "VIEW_TYPE_UNSPECIFIED",
-                "READER",
-                "AUTHOR",
-                "ADMIN"
-              ],
               "type": "string"
             }
           },
@@ -1239,7 +1213,6 @@
         "getByPath": {
           "description": "Gets a post by path.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/posts/bypath",
           "id": "blogger.posts.getByPath",
           "parameterOrder": [
             "blogId",
@@ -1248,8 +1221,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxComments": {
               "format": "uint32",
@@ -1258,10 +1231,16 @@
             },
             "path": {
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "view": {
+              "enum": [
+                "VIEW_TYPE_UNSPECIFIED",
+                "READER",
+                "AUTHOR",
+                "ADMIN"
+              ],
               "enumDescriptions": [
                 "",
                 "",
@@ -1269,12 +1248,6 @@
                 ""
               ],
               "location": "query",
-              "enum": [
-                "VIEW_TYPE_UNSPECIFIED",
-                "READER",
-                "AUTHOR",
-                "ADMIN"
-              ],
               "type": "string"
             }
           },
@@ -1290,7 +1263,6 @@
         "insert": {
           "description": "Inserts a post.",
           "httpMethod": "POST",
-          "flatPath": "v3/blogs/{blogId}/posts",
           "id": "blogger.posts.insert",
           "parameterOrder": [
             "blogId"
@@ -1298,8 +1270,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "fetchBody": {
               "default": "true",
@@ -1329,7 +1301,6 @@
         "list": {
           "description": "Lists posts.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/posts",
           "id": "blogger.posts.list",
           "parameterOrder": [
             "blogId"
@@ -1337,8 +1308,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "endDate": {
               "location": "query",
@@ -1364,17 +1335,17 @@
             },
             "orderBy": {
               "default": "PUBLISHED",
+              "enum": [
+                "ORDER_BY_UNSPECIFIED",
+                "PUBLISHED",
+                "UPDATED"
+              ],
               "enumDescriptions": [
                 "",
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "ORDER_BY_UNSPECIFIED",
-                "PUBLISHED",
-                "UPDATED"
-              ],
               "type": "string"
             },
             "pageToken": {
@@ -1386,34 +1357,34 @@
               "type": "string"
             },
             "status": {
-              "enumDescriptions": [
-                "",
-                "",
-                ""
-              ],
-              "location": "query",
               "enum": [
                 "LIVE",
                 "DRAFT",
                 "SCHEDULED"
               ],
-              "type": "string",
-              "repeated": true
-            },
-            "view": {
               "enumDescriptions": [
-                "",
                 "",
                 "",
                 ""
               ],
               "location": "query",
+              "repeated": true,
+              "type": "string"
+            },
+            "view": {
               "enum": [
                 "VIEW_TYPE_UNSPECIFIED",
                 "READER",
                 "AUTHOR",
                 "ADMIN"
               ],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
+              "location": "query",
               "type": "string"
             }
           },
@@ -1429,7 +1400,6 @@
         "patch": {
           "description": "Patches a post.",
           "httpMethod": "PATCH",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}",
           "id": "blogger.posts.patch",
           "parameterOrder": [
             "blogId",
@@ -1438,8 +1408,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "fetchBody": {
               "default": "true",
@@ -1457,8 +1427,8 @@
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "publish": {
               "location": "query",
@@ -1483,7 +1453,6 @@
         "publish": {
           "description": "Publishes a post.",
           "httpMethod": "POST",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}/publish",
           "id": "blogger.posts.publish",
           "parameterOrder": [
             "blogId",
@@ -1492,13 +1461,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "publishDate": {
               "location": "query",
@@ -1516,7 +1485,6 @@
         "revert": {
           "description": "Reverts a published or scheduled post to draft state.",
           "httpMethod": "POST",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}/revert",
           "id": "blogger.posts.revert",
           "parameterOrder": [
             "blogId",
@@ -1525,13 +1493,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/posts/{postId}/revert",
@@ -1545,7 +1513,6 @@
         "search": {
           "description": "Searches for posts matching given query terms in the specified blog.",
           "httpMethod": "GET",
-          "flatPath": "v3/blogs/{blogId}/posts/search",
           "id": "blogger.posts.search",
           "parameterOrder": [
             "blogId",
@@ -1554,8 +1521,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "fetchBodies": {
               "default": "true",
@@ -1564,23 +1531,23 @@
             },
             "orderBy": {
               "default": "PUBLISHED",
+              "enum": [
+                "ORDER_BY_UNSPECIFIED",
+                "PUBLISHED",
+                "UPDATED"
+              ],
               "enumDescriptions": [
                 "",
                 "",
                 ""
               ],
               "location": "query",
-              "enum": [
-                "ORDER_BY_UNSPECIFIED",
-                "PUBLISHED",
-                "UPDATED"
-              ],
               "type": "string"
             },
             "q": {
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/blogs/{blogId}/posts/search",
@@ -1595,7 +1562,6 @@
         "update": {
           "description": "Updates a post by blog id and post id.",
           "httpMethod": "PUT",
-          "flatPath": "v3/blogs/{blogId}/posts/{postId}",
           "id": "blogger.posts.update",
           "parameterOrder": [
             "blogId",
@@ -1604,8 +1570,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "fetchBody": {
               "default": "true",
@@ -1623,8 +1589,8 @@
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "publish": {
               "location": "query",
@@ -1653,7 +1619,6 @@
         "get": {
           "description": "Gets one user by user_id.",
           "httpMethod": "GET",
-          "flatPath": "v3/users/{userId}",
           "id": "blogger.users.get",
           "parameterOrder": [
             "userId"
@@ -1661,8 +1626,8 @@
           "parameters": {
             "userId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/users/{userId}",
@@ -1768,13 +1733,13 @@
         },
         "status": {
           "description": "The status of the blog.",
-          "enumDescriptions": [
-            "",
-            ""
-          ],
           "enum": [
             "LIVE",
             "DELETED"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -1834,17 +1799,17 @@
         },
         "role": {
           "description": "Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER).",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "VIEW_TYPE_UNSPECIFIED",
             "READER",
             "AUTHOR",
             "ADMIN"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -1859,12 +1824,12 @@
       "id": "BlogUserInfo",
       "properties": {
         "blog": {
-          "description": "The Blog resource.",
-          "$ref": "Blog"
+          "$ref": "Blog",
+          "description": "The Blog resource."
         },
         "blog_user_info": {
-          "description": "Information about a User for the Blog.",
-          "$ref": "BlogPerUserInfo"
+          "$ref": "BlogPerUserInfo",
+          "description": "Information about a User for the Blog."
         },
         "kind": {
           "description": "The kind of this entity. Always blogger#blogUserInfo.",
@@ -1956,17 +1921,17 @@
         },
         "status": {
           "description": "The status of the comment (only populated for admin users).",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "LIVE",
             "EMPTIED",
             "PENDING",
             "SPAM"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -2073,13 +2038,13 @@
         },
         "status": {
           "description": "The status of the page for admin resources (either LIVE or DRAFT).",
-          "enumDescriptions": [
-            "",
-            ""
-          ],
           "enum": [
             "LIVE",
             "DRAFT"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -2141,15 +2106,15 @@
               },
               "timeRange": {
                 "description": "Time range the given count applies to.",
-                "enumDescriptions": [
-                  "",
-                  "",
-                  ""
-                ],
                 "enum": [
                   "ALL_TIME",
                   "THIRTY_DAYS",
                   "SEVEN_DAYS"
+                ],
+                "enumDescriptions": [
+                  "",
+                  "",
+                  ""
                 ],
                 "type": "string"
               }
@@ -2275,15 +2240,15 @@
         },
         "readerComments": {
           "description": "Comment control and display setting for readers of this post.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "ALLOW",
             "DONT_ALLOW_SHOW_EXISTING",
             "DONT_ALLOW_HIDE_EXISTING"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -2315,15 +2280,15 @@
         },
         "status": {
           "description": "Status of the post. Only set for admin-level requests.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "LIVE",
             "DRAFT",
             "SCHEDULED"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -2409,12 +2374,12 @@
           "type": "string"
         },
         "post": {
-          "description": "The Post resource.",
-          "$ref": "Post"
+          "$ref": "Post",
+          "description": "The Post resource."
         },
         "post_user_info": {
-          "description": "Information about a User for the Post.",
-          "$ref": "PostPerUserInfo"
+          "$ref": "PostPerUserInfo",
+          "description": "Information about a User for the Post."
         }
       },
       "type": "object"

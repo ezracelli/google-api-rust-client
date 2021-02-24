@@ -15,29 +15,27 @@
   "description": "Public API for Google Cloud AI Data Labeling Service.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/data-labeling/docs/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "datalabeling:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://datalabeling.mtls.googleapis.com/",
   "name": "datalabeling",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "create": {
               "description": "Creates an annotation spec set by providing a set of labels.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/annotationSpecSets",
               "id": "datalabeling.projects.annotationSpecSets.create",
               "parameterOrder": [
                 "parent"
@@ -122,8 +119,8 @@
                   "description": "Required. AnnotationSpecSet resource parent, format: projects/{project_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/annotationSpecSets",
@@ -140,7 +137,6 @@
             "delete": {
               "description": "Deletes an annotation spec set by resource name.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/projects/{projectsId}/annotationSpecSets/{annotationSpecSetsId}",
               "id": "datalabeling.projects.annotationSpecSets.delete",
               "parameterOrder": [
                 "name"
@@ -150,8 +146,8 @@
                   "description": "Required. AnnotationSpec resource name, format: `projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/annotationSpecSets/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -165,7 +161,6 @@
             "get": {
               "description": "Gets an annotation spec set by resource name.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/annotationSpecSets/{annotationSpecSetsId}",
               "id": "datalabeling.projects.annotationSpecSets.get",
               "parameterOrder": [
                 "name"
@@ -175,8 +170,8 @@
                   "description": "Required. AnnotationSpecSet resource name, format: projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/annotationSpecSets/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -190,7 +185,6 @@
             "list": {
               "description": "Lists annotation spec sets for a project. Pagination is supported.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/annotationSpecSets",
               "id": "datalabeling.projects.annotationSpecSets.list",
               "parameterOrder": [
                 "parent"
@@ -216,8 +210,8 @@
                   "description": "Required. Parent of AnnotationSpecSet resource, format: projects/{project_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/annotationSpecSets",
@@ -235,7 +229,6 @@
             "create": {
               "description": "Creates dataset. If success return a Dataset resource.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/datasets",
               "id": "datalabeling.projects.datasets.create",
               "parameterOrder": [
                 "parent"
@@ -245,8 +238,8 @@
                   "description": "Required. Dataset resource parent, format: projects/{project_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/datasets",
@@ -263,7 +256,6 @@
             "delete": {
               "description": "Deletes a dataset by resource name.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}",
               "id": "datalabeling.projects.datasets.delete",
               "parameterOrder": [
                 "name"
@@ -273,8 +265,8 @@
                   "description": "Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/datasets/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -288,7 +280,6 @@
             "exportData": {
               "description": "Exports data and annotations from dataset.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}:exportData",
               "id": "datalabeling.projects.datasets.exportData",
               "parameterOrder": [
                 "name"
@@ -298,8 +289,8 @@
                   "description": "Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/datasets/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:exportData",
@@ -316,7 +307,6 @@
             "get": {
               "description": "Gets dataset by resource name.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}",
               "id": "datalabeling.projects.datasets.get",
               "parameterOrder": [
                 "name"
@@ -326,8 +316,8 @@
                   "description": "Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/datasets/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -341,7 +331,6 @@
             "importData": {
               "description": "Imports data into dataset based on source locations defined in request. It can be called multiple times for the same dataset. Each dataset can only have one long running operation running on it. For example, no labeling task (also long running operation) can be started while importing is still ongoing. Vice versa.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}:importData",
               "id": "datalabeling.projects.datasets.importData",
               "parameterOrder": [
                 "name"
@@ -351,8 +340,8 @@
                   "description": "Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/datasets/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:importData",
@@ -369,7 +358,6 @@
             "list": {
               "description": "Lists datasets under a project. Pagination is supported.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/datasets",
               "id": "datalabeling.projects.datasets.list",
               "parameterOrder": [
                 "parent"
@@ -395,8 +383,8 @@
                   "description": "Required. Dataset resource parent, format: projects/{project_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/datasets",
@@ -414,7 +402,6 @@
                 "delete": {
                   "description": "Deletes an annotated dataset by resource name.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}",
                   "id": "datalabeling.projects.datasets.annotatedDatasets.delete",
                   "parameterOrder": [
                     "name"
@@ -424,8 +411,8 @@
                       "description": "Required. Name of the annotated dataset to delete, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -439,7 +426,6 @@
                 "get": {
                   "description": "Gets an annotated dataset by resource name.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}",
                   "id": "datalabeling.projects.datasets.annotatedDatasets.get",
                   "parameterOrder": [
                     "name"
@@ -449,8 +435,8 @@
                       "description": "Required. Name of the annotated dataset to get, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -464,7 +450,6 @@
                 "list": {
                   "description": "Lists annotated datasets for a dataset. Pagination is supported.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets",
                   "id": "datalabeling.projects.datasets.annotatedDatasets.list",
                   "parameterOrder": [
                     "parent"
@@ -490,8 +475,8 @@
                       "description": "Required. Name of the dataset to list annotated datasets, format: projects/{project_id}/datasets/{dataset_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/datasets/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/annotatedDatasets",
@@ -509,7 +494,6 @@
                     "get": {
                       "description": "Gets a data item in a dataset by resource name. This API can be called after data are imported into dataset.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/dataItems/{dataItemsId}",
                       "id": "datalabeling.projects.datasets.annotatedDatasets.dataItems.get",
                       "parameterOrder": [
                         "name"
@@ -519,8 +503,8 @@
                           "description": "Required. The name of the data item to get, format: projects/{project_id}/datasets/{dataset_id}/dataItems/{data_item_id}",
                           "location": "path",
                           "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+/dataItems/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -534,7 +518,6 @@
                     "list": {
                       "description": "Lists data items in a dataset. This API can be called after data are imported into dataset. Pagination is supported.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/dataItems",
                       "id": "datalabeling.projects.datasets.annotatedDatasets.dataItems.list",
                       "parameterOrder": [
                         "parent"
@@ -560,8 +543,8 @@
                           "description": "Required. Name of the dataset to list data items, format: projects/{project_id}/datasets/{dataset_id}",
                           "location": "path",
                           "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+parent}/dataItems",
@@ -579,7 +562,6 @@
                     "get": {
                       "description": "Gets an example by resource name, including both data and annotation.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/examples/{examplesId}",
                       "id": "datalabeling.projects.datasets.annotatedDatasets.examples.get",
                       "parameterOrder": [
                         "name"
@@ -594,8 +576,8 @@
                           "description": "Required. Name of example, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id}/examples/{example_id}",
                           "location": "path",
                           "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+/examples/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -609,7 +591,6 @@
                     "list": {
                       "description": "Lists examples in an annotated dataset. Pagination is supported.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/examples",
                       "id": "datalabeling.projects.datasets.annotatedDatasets.examples.list",
                       "parameterOrder": [
                         "parent"
@@ -635,8 +616,8 @@
                           "description": "Required. Example resource parent.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+parent}/examples",
@@ -654,7 +635,6 @@
                     "delete": {
                       "description": "Delete a FeedbackThread.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}",
                       "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.delete",
                       "parameterOrder": [
                         "name"
@@ -664,8 +644,8 @@
                           "description": "Required. Name of the FeedbackThread that is going to be deleted. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}'.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+/feedbackThreads/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -679,7 +659,6 @@
                     "get": {
                       "description": "Get a FeedbackThread object.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}",
                       "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.get",
                       "parameterOrder": [
                         "name"
@@ -689,8 +668,8 @@
                           "description": "Required. Name of the feedback. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}'.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+/feedbackThreads/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+name}",
@@ -704,7 +683,6 @@
                     "list": {
                       "description": "List FeedbackThreads with pagination.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads",
                       "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.list",
                       "parameterOrder": [
                         "parent"
@@ -725,8 +703,8 @@
                           "description": "Required. FeedbackThread resource parent. Format: \"projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}\"",
                           "location": "path",
                           "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+parent}/feedbackThreads",
@@ -744,7 +722,6 @@
                         "create": {
                           "description": "Create a FeedbackMessage object.",
                           "httpMethod": "POST",
-                          "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages",
                           "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.create",
                           "parameterOrder": [
                             "parent"
@@ -754,8 +731,8 @@
                               "description": "Required. FeedbackMessage resource parent, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+/feedbackThreads/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             }
                           },
                           "path": "v1beta1/{+parent}/feedbackMessages",
@@ -772,7 +749,6 @@
                         "delete": {
                           "description": "Delete a FeedbackMessage.",
                           "httpMethod": "DELETE",
-                          "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages/{feedbackMessagesId}",
                           "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.delete",
                           "parameterOrder": [
                             "name"
@@ -782,8 +758,8 @@
                               "description": "Required. Name of the FeedbackMessage that is going to be deleted. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}'.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+/feedbackThreads/[^/]+/feedbackMessages/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             }
                           },
                           "path": "v1beta1/{+name}",
@@ -797,7 +773,6 @@
                         "get": {
                           "description": "Get a FeedbackMessage object.",
                           "httpMethod": "GET",
-                          "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages/{feedbackMessagesId}",
                           "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.get",
                           "parameterOrder": [
                             "name"
@@ -807,8 +782,8 @@
                               "description": "Required. Name of the feedback. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}'.",
                               "location": "path",
                               "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+/feedbackThreads/[^/]+/feedbackMessages/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             }
                           },
                           "path": "v1beta1/{+name}",
@@ -822,7 +797,6 @@
                         "list": {
                           "description": "List FeedbackMessages with pagination.",
                           "httpMethod": "GET",
-                          "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages",
                           "id": "datalabeling.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.list",
                           "parameterOrder": [
                             "parent"
@@ -843,8 +817,8 @@
                               "description": "Required. FeedbackMessage resource parent. Format: \"projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}\"",
                               "location": "path",
                               "pattern": "^projects/[^/]+/datasets/[^/]+/annotatedDatasets/[^/]+/feedbackThreads/[^/]+$",
-                              "type": "string",
-                              "required": true
+                              "required": true,
+                              "type": "string"
                             }
                           },
                           "path": "v1beta1/{+parent}/feedbackMessages",
@@ -866,7 +840,6 @@
                 "get": {
                   "description": "Gets a data item in a dataset by resource name. This API can be called after data are imported into dataset.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/dataItems/{dataItemsId}",
                   "id": "datalabeling.projects.datasets.dataItems.get",
                   "parameterOrder": [
                     "name"
@@ -876,8 +849,8 @@
                       "description": "Required. The name of the data item to get, format: projects/{project_id}/datasets/{dataset_id}/dataItems/{data_item_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/datasets/[^/]+/dataItems/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -891,7 +864,6 @@
                 "list": {
                   "description": "Lists data items in a dataset. This API can be called after data are imported into dataset. Pagination is supported.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/dataItems",
                   "id": "datalabeling.projects.datasets.dataItems.list",
                   "parameterOrder": [
                     "parent"
@@ -917,8 +889,8 @@
                       "description": "Required. Name of the dataset to list data items, format: projects/{project_id}/datasets/{dataset_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/datasets/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/dataItems",
@@ -936,7 +908,6 @@
                 "get": {
                   "description": "Gets an evaluation by resource name (to search, use projects.evaluations.search).",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/evaluations/{evaluationsId}",
                   "id": "datalabeling.projects.datasets.evaluations.get",
                   "parameterOrder": [
                     "name"
@@ -946,8 +917,8 @@
                       "description": "Required. Name of the evaluation. Format: \"projects/{project_id}/datasets/ {dataset_id}/evaluations/{evaluation_id}'",
                       "location": "path",
                       "pattern": "^projects/[^/]+/datasets/[^/]+/evaluations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -965,7 +936,6 @@
                     "search": {
                       "description": "Searches example comparisons from an evaluation. The return format is a list of example comparisons that show ground truth and prediction(s) for a single input. Search by providing an evaluation ID.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/evaluations/{evaluationsId}/exampleComparisons:search",
                       "id": "datalabeling.projects.datasets.evaluations.exampleComparisons.search",
                       "parameterOrder": [
                         "parent"
@@ -975,8 +945,8 @@
                           "description": "Required. Name of the Evaluation resource to search for example comparisons from. Format: \"projects/{project_id}/datasets/{dataset_id}/evaluations/ {evaluation_id}\"",
                           "location": "path",
                           "pattern": "^projects/[^/]+/datasets/[^/]+/evaluations/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta1/{+parent}/exampleComparisons:search",
@@ -999,7 +969,6 @@
                 "label": {
                   "description": "Starts a labeling task for image. The type of image labeling task is configured by feature in the request.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/image:label",
                   "id": "datalabeling.projects.datasets.image.label",
                   "parameterOrder": [
                     "parent"
@@ -1009,8 +978,8 @@
                       "description": "Required. Name of the dataset to request labeling task, format: projects/{project_id}/datasets/{dataset_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/datasets/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/image:label",
@@ -1031,7 +1000,6 @@
                 "label": {
                   "description": "Starts a labeling task for text. The type of text labeling task is configured by feature in the request.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/text:label",
                   "id": "datalabeling.projects.datasets.text.label",
                   "parameterOrder": [
                     "parent"
@@ -1041,8 +1009,8 @@
                       "description": "Required. Name of the data set to request labeling task, format: projects/{project_id}/datasets/{dataset_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/datasets/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/text:label",
@@ -1063,7 +1031,6 @@
                 "label": {
                   "description": "Starts a labeling task for video. The type of video labeling task is configured by feature in the request.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/datasets/{datasetsId}/video:label",
                   "id": "datalabeling.projects.datasets.video.label",
                   "parameterOrder": [
                     "parent"
@@ -1073,8 +1040,8 @@
                       "description": "Required. Name of the dataset to request labeling task, format: projects/{project_id}/datasets/{dataset_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/datasets/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/video:label",
@@ -1097,7 +1064,6 @@
             "create": {
               "description": "Creates an evaluation job.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs",
               "id": "datalabeling.projects.evaluationJobs.create",
               "parameterOrder": [
                 "parent"
@@ -1107,8 +1073,8 @@
                   "description": "Required. Evaluation job resource parent. Format: \"projects/{project_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/evaluationJobs",
@@ -1125,7 +1091,6 @@
             "delete": {
               "description": "Stops and deletes an evaluation job.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}",
               "id": "datalabeling.projects.evaluationJobs.delete",
               "parameterOrder": [
                 "name"
@@ -1135,8 +1100,8 @@
                   "description": "Required. Name of the evaluation job that is going to be deleted. Format: \"projects/{project_id}/evaluationJobs/{evaluation_job_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+/evaluationJobs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -1150,7 +1115,6 @@
             "get": {
               "description": "Gets an evaluation job by resource name.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}",
               "id": "datalabeling.projects.evaluationJobs.get",
               "parameterOrder": [
                 "name"
@@ -1160,8 +1124,8 @@
                   "description": "Required. Name of the evaluation job. Format: \"projects/{project_id} /evaluationJobs/{evaluation_job_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+/evaluationJobs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -1175,7 +1139,6 @@
             "list": {
               "description": "Lists all evaluation jobs within a project with possible filters. Pagination is supported.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs",
               "id": "datalabeling.projects.evaluationJobs.list",
               "parameterOrder": [
                 "parent"
@@ -1201,8 +1164,8 @@
                   "description": "Required. Evaluation job resource parent. Format: \"projects/{project_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/evaluationJobs",
@@ -1216,7 +1179,6 @@
             "patch": {
               "description": "Updates an evaluation job. You can only update certain fields of the job's EvaluationJobConfig: `humanAnnotationConfig.instruction`, `exampleCount`, and `exampleSamplePercentage`. If you want to change any other aspect of the evaluation job, you must delete the job and create a new one.",
               "httpMethod": "PATCH",
-              "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}",
               "id": "datalabeling.projects.evaluationJobs.patch",
               "parameterOrder": [
                 "name"
@@ -1226,8 +1188,8 @@
                   "description": "Output only. After you create a job, Data Labeling Service assigns a name to the job with the following format: \"projects/{project_id}/evaluationJobs/ {evaluation_job_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+/evaluationJobs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Optional. Mask for which fields to update. You can only provide the following fields: * `evaluationJobConfig.humanAnnotationConfig.instruction` * `evaluationJobConfig.exampleCount` * `evaluationJobConfig.exampleSamplePercentage` You can provide more than one of these fields by separating them with commas.",
@@ -1250,7 +1212,6 @@
             "pause": {
               "description": "Pauses an evaluation job. Pausing an evaluation job that is already in a `PAUSED` state is a no-op.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}:pause",
               "id": "datalabeling.projects.evaluationJobs.pause",
               "parameterOrder": [
                 "name"
@@ -1260,8 +1221,8 @@
                   "description": "Required. Name of the evaluation job that is going to be paused. Format: \"projects/{project_id}/evaluationJobs/{evaluation_job_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+/evaluationJobs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:pause",
@@ -1278,7 +1239,6 @@
             "resume": {
               "description": "Resumes a paused evaluation job. A deleted evaluation job can't be resumed. Resuming a running or scheduled evaluation job is a no-op.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}:resume",
               "id": "datalabeling.projects.evaluationJobs.resume",
               "parameterOrder": [
                 "name"
@@ -1288,8 +1248,8 @@
                   "description": "Required. Name of the evaluation job that is going to be resumed. Format: \"projects/{project_id}/evaluationJobs/{evaluation_job_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+/evaluationJobs/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:resume",
@@ -1310,7 +1270,6 @@
             "search": {
               "description": "Searches evaluations within a project.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/evaluations:search",
               "id": "datalabeling.projects.evaluations.search",
               "parameterOrder": [
                 "parent"
@@ -1336,8 +1295,8 @@
                   "description": "Required. Evaluation search parent (project ID). Format: \"projects/ {project_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/evaluations:search",
@@ -1355,7 +1314,6 @@
             "create": {
               "description": "Creates an instruction for how data should be labeled.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/projects/{projectsId}/instructions",
               "id": "datalabeling.projects.instructions.create",
               "parameterOrder": [
                 "parent"
@@ -1365,8 +1323,8 @@
                   "description": "Required. Instruction resource parent, format: projects/{project_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/instructions",
@@ -1383,7 +1341,6 @@
             "delete": {
               "description": "Deletes an instruction object by resource name.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/projects/{projectsId}/instructions/{instructionsId}",
               "id": "datalabeling.projects.instructions.delete",
               "parameterOrder": [
                 "name"
@@ -1393,8 +1350,8 @@
                   "description": "Required. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/instructions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -1408,7 +1365,6 @@
             "get": {
               "description": "Gets an instruction by resource name.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/instructions/{instructionsId}",
               "id": "datalabeling.projects.instructions.get",
               "parameterOrder": [
                 "name"
@@ -1418,8 +1374,8 @@
                   "description": "Required. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/instructions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -1433,7 +1389,6 @@
             "list": {
               "description": "Lists instructions for a project. Pagination is supported.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/instructions",
               "id": "datalabeling.projects.instructions.list",
               "parameterOrder": [
                 "parent"
@@ -1459,8 +1414,8 @@
                   "description": "Required. Instruction resource parent, format: projects/{project_id}",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/instructions",
@@ -1478,7 +1433,6 @@
             "cancel": {
               "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/operations/{operationsId}:cancel",
               "id": "datalabeling.projects.operations.cancel",
               "parameterOrder": [
                 "name"
@@ -1488,8 +1442,8 @@
                   "description": "The name of the operation resource to be cancelled.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/operations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:cancel",
@@ -1503,7 +1457,6 @@
             "delete": {
               "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/projects/{projectsId}/operations/{operationsId}",
               "id": "datalabeling.projects.operations.delete",
               "parameterOrder": [
                 "name"
@@ -1513,8 +1466,8 @@
                   "description": "The name of the operation resource to be deleted.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/operations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -1528,7 +1481,6 @@
             "get": {
               "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/operations/{operationsId}",
               "id": "datalabeling.projects.operations.get",
               "parameterOrder": [
                 "name"
@@ -1538,8 +1490,8 @@
                   "description": "The name of the operation resource.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/operations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -1553,7 +1505,6 @@
             "list": {
               "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/operations",
               "id": "datalabeling.projects.operations.list",
               "parameterOrder": [
                 "name"
@@ -1568,8 +1519,8 @@
                   "description": "The name of the operation's parent resource.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -1667,12 +1618,12 @@
           "type": "integer"
         },
         "labelStats": {
-          "description": "Output only. Statistic infos of labels in the exported dataset.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelStats"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelStats",
+          "description": "Output only. Statistic infos of labels in the exported dataset."
         },
         "outputConfig": {
-          "description": "Output only. output_config in the ExportData request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1OutputConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1OutputConfig",
+          "description": "Output only. output_config in the ExportData request."
         },
         "totalCount": {
           "description": "Output only. Total number of examples requested to export",
@@ -1805,8 +1756,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -1816,8 +1767,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -1827,8 +1778,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -1838,8 +1789,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config."
         }
       },
       "type": "object"
@@ -1849,8 +1800,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -1860,8 +1811,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config."
         }
       },
       "type": "object"
@@ -1884,28 +1835,28 @@
           "type": "string"
         },
         "imageBoundingBoxDetails": {
-          "description": "Details of label image bounding box operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata",
+          "description": "Details of label image bounding box operation."
         },
         "imageBoundingPolyDetails": {
-          "description": "Details of label image bounding poly operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata",
+          "description": "Details of label image bounding poly operation."
         },
         "imageClassificationDetails": {
-          "description": "Details of label image classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata",
+          "description": "Details of label image classification operation."
         },
         "imageOrientedBoundingBoxDetails": {
-          "description": "Details of label image oriented bounding box operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata",
+          "description": "Details of label image oriented bounding box operation."
         },
         "imagePolylineDetails": {
-          "description": "Details of label image polyline operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata",
+          "description": "Details of label image polyline operation."
         },
         "imageSegmentationDetails": {
-          "description": "Details of label image segmentation operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata",
+          "description": "Details of label image segmentation operation."
         },
         "partialFailures": {
           "description": "Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details.",
@@ -1920,28 +1871,28 @@
           "type": "integer"
         },
         "textClassificationDetails": {
-          "description": "Details of label text classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata",
+          "description": "Details of label text classification operation."
         },
         "textEntityExtractionDetails": {
-          "description": "Details of label text entity extraction operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata",
+          "description": "Details of label text entity extraction operation."
         },
         "videoClassificationDetails": {
-          "description": "Details of label video classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata",
+          "description": "Details of label video classification operation."
         },
         "videoEventDetails": {
-          "description": "Details of label video event operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata",
+          "description": "Details of label video event operation."
         },
         "videoObjectDetectionDetails": {
-          "description": "Details of label video object detection operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata",
+          "description": "Details of label video object detection operation."
         },
         "videoObjectTrackingDetails": {
-          "description": "Details of label video object tracking operation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata",
+          "description": "Details of label video object tracking operation."
         }
       },
       "type": "object"
@@ -1966,8 +1917,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -1977,8 +1928,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -1988,8 +1939,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -1999,8 +1950,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -2010,8 +1961,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -2021,8 +1972,8 @@
       "id": "GoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -2032,12 +1983,12 @@
       "id": "GoogleCloudDatalabelingV1alpha1OutputConfig",
       "properties": {
         "gcsDestination": {
-          "description": "Output to a file in Cloud Storage. Should be used for labeling output other than image segmentation.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1GcsDestination"
+          "$ref": "GoogleCloudDatalabelingV1alpha1GcsDestination",
+          "description": "Output to a file in Cloud Storage. Should be used for labeling output other than image segmentation."
         },
         "gcsFolderDestination": {
-          "description": "Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs.",
-          "$ref": "GoogleCloudDatalabelingV1alpha1GcsFolderDestination"
+          "$ref": "GoogleCloudDatalabelingV1alpha1GcsFolderDestination",
+          "description": "Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs."
         }
       },
       "type": "object"
@@ -2048,34 +1999,18 @@
       "properties": {
         "annotationSource": {
           "description": "Output only. Source of the annotation.",
-          "enumDescriptions": [
-            "",
-            "Answer is provided by a human contributor."
-          ],
           "enum": [
             "ANNOTATION_SOURCE_UNSPECIFIED",
             "OPERATOR"
+          ],
+          "enumDescriptions": [
+            "",
+            "Answer is provided by a human contributor."
           ],
           "type": "string"
         },
         "annotationType": {
           "description": "Output only. Type of the annotation. It is specified when starting labeling task.",
-          "enumDescriptions": [
-            "",
-            "Classification annotations in an image. Allowed for continuous evaluation.",
-            "Bounding box annotations in an image. A form of image object detection. Allowed for continuous evaluation.",
-            "Oriented bounding box. The box does not have to be parallel to horizontal line.",
-            "Bounding poly annotations in an image.",
-            "Polyline annotations in an image.",
-            "Segmentation annotations in an image.",
-            "Classification annotations in video shots.",
-            "Video object tracking annotation.",
-            "Video object detection annotation.",
-            "Video event annotation.",
-            "Classification for text. Allowed for continuous evaluation.",
-            "Entity extraction for text.",
-            "General classification. Allowed for continuous evaluation."
-          ],
           "enum": [
             "ANNOTATION_TYPE_UNSPECIFIED",
             "IMAGE_CLASSIFICATION_ANNOTATION",
@@ -2091,6 +2026,22 @@
             "TEXT_CLASSIFICATION_ANNOTATION",
             "TEXT_ENTITY_EXTRACTION_ANNOTATION",
             "GENERAL_CLASSIFICATION_ANNOTATION"
+          ],
+          "enumDescriptions": [
+            "",
+            "Classification annotations in an image. Allowed for continuous evaluation.",
+            "Bounding box annotations in an image. A form of image object detection. Allowed for continuous evaluation.",
+            "Oriented bounding box. The box does not have to be parallel to horizontal line.",
+            "Bounding poly annotations in an image.",
+            "Polyline annotations in an image.",
+            "Segmentation annotations in an image.",
+            "Classification annotations in video shots.",
+            "Video object tracking annotation.",
+            "Video object detection annotation.",
+            "Video event annotation.",
+            "Classification for text. Allowed for continuous evaluation.",
+            "Entity extraction for text.",
+            "General classification. Allowed for continuous evaluation."
           ],
           "type": "string"
         },
@@ -2125,12 +2076,12 @@
           "type": "string"
         },
         "labelStats": {
-          "description": "Output only. Per label statistics.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelStats"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelStats",
+          "description": "Output only. Per label statistics."
         },
         "metadata": {
-          "description": "Output only. Additional information about AnnotatedDataset.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata",
+          "description": "Output only. Additional information about AnnotatedDataset."
         },
         "name": {
           "description": "Output only. AnnotatedDataset resource name in format of: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id}",
@@ -2144,48 +2095,48 @@
       "id": "GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata",
       "properties": {
         "boundingPolyConfig": {
-          "description": "Configuration for image bounding box and bounding poly task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1BoundingPolyConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1BoundingPolyConfig",
+          "description": "Configuration for image bounding box and bounding poly task."
         },
         "eventConfig": {
-          "description": "Configuration for video event labeling task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1EventConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1EventConfig",
+          "description": "Configuration for video event labeling task."
         },
         "humanAnnotationConfig": {
-          "description": "HumanAnnotationConfig used when requesting the human labeling task for this AnnotatedDataset.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "HumanAnnotationConfig used when requesting the human labeling task for this AnnotatedDataset."
         },
         "imageClassificationConfig": {
-          "description": "Configuration for image classification task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ImageClassificationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1ImageClassificationConfig",
+          "description": "Configuration for image classification task."
         },
         "objectDetectionConfig": {
-          "description": "Configuration for video object detection task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ObjectDetectionConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1ObjectDetectionConfig",
+          "description": "Configuration for video object detection task."
         },
         "objectTrackingConfig": {
-          "description": "Configuration for video object tracking task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ObjectTrackingConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1ObjectTrackingConfig",
+          "description": "Configuration for video object tracking task."
         },
         "polylineConfig": {
-          "description": "Configuration for image polyline task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1PolylineConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1PolylineConfig",
+          "description": "Configuration for image polyline task."
         },
         "segmentationConfig": {
-          "description": "Configuration for image segmentation task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1SegmentationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1SegmentationConfig",
+          "description": "Configuration for image segmentation task."
         },
         "textClassificationConfig": {
-          "description": "Configuration for text classification task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextClassificationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextClassificationConfig",
+          "description": "Configuration for text classification task."
         },
         "textEntityExtractionConfig": {
-          "description": "Configuration for text entity extraction task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig",
+          "description": "Configuration for text entity extraction task."
         },
         "videoClassificationConfig": {
-          "description": "Configuration for video classification task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1VideoClassificationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1VideoClassificationConfig",
+          "description": "Configuration for video classification task."
         }
       },
       "type": "object"
@@ -2195,38 +2146,38 @@
       "id": "GoogleCloudDatalabelingV1beta1Annotation",
       "properties": {
         "annotationMetadata": {
-          "description": "Output only. Annotation metadata, including information like votes for labels.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationMetadata",
+          "description": "Output only. Annotation metadata, including information like votes for labels."
         },
         "annotationSentiment": {
           "description": "Output only. Sentiment for this annotation.",
-          "enumDescriptions": [
-            "",
-            "This annotation describes negatively about the data.",
-            "This label describes positively about the data."
-          ],
           "enum": [
             "ANNOTATION_SENTIMENT_UNSPECIFIED",
             "NEGATIVE",
             "POSITIVE"
           ],
+          "enumDescriptions": [
+            "",
+            "This annotation describes negatively about the data.",
+            "This label describes positively about the data."
+          ],
           "type": "string"
         },
         "annotationSource": {
           "description": "Output only. The source of the annotation.",
-          "enumDescriptions": [
-            "",
-            "Answer is provided by a human contributor."
-          ],
           "enum": [
             "ANNOTATION_SOURCE_UNSPECIFIED",
             "OPERATOR"
           ],
+          "enumDescriptions": [
+            "",
+            "Answer is provided by a human contributor."
+          ],
           "type": "string"
         },
         "annotationValue": {
-          "description": "Output only. This is the actual annotation value, e.g classification, bounding box values are stored here.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationValue"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationValue",
+          "description": "Output only. This is the actual annotation value, e.g classification, bounding box values are stored here."
         },
         "name": {
           "description": "Output only. Unique name of this annotation, format is: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset}/examples/{example_id}/annotations/{annotation_id}",
@@ -2240,8 +2191,8 @@
       "id": "GoogleCloudDatalabelingV1beta1AnnotationMetadata",
       "properties": {
         "operatorMetadata": {
-          "description": "Metadata related to human labeling.",
-          "$ref": "GoogleCloudDatalabelingV1beta1OperatorMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1OperatorMetadata",
+          "description": "Metadata related to human labeling."
         }
       },
       "type": "object"
@@ -2319,40 +2270,40 @@
       "id": "GoogleCloudDatalabelingV1beta1AnnotationValue",
       "properties": {
         "imageBoundingPolyAnnotation": {
-          "description": "Annotation value for image bounding box, oriented bounding box and polygon cases.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation"
+          "$ref": "GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation",
+          "description": "Annotation value for image bounding box, oriented bounding box and polygon cases."
         },
         "imageClassificationAnnotation": {
-          "description": "Annotation value for image classification case.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation"
+          "$ref": "GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation",
+          "description": "Annotation value for image classification case."
         },
         "imagePolylineAnnotation": {
-          "description": "Annotation value for image polyline cases. Polyline here is different from BoundingPoly. It is formed by line segments connected to each other but not closed form(Bounding Poly). The line segments can cross each other.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation"
+          "$ref": "GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation",
+          "description": "Annotation value for image polyline cases. Polyline here is different from BoundingPoly. It is formed by line segments connected to each other but not closed form(Bounding Poly). The line segments can cross each other."
         },
         "imageSegmentationAnnotation": {
-          "description": "Annotation value for image segmentation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation"
+          "$ref": "GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation",
+          "description": "Annotation value for image segmentation."
         },
         "textClassificationAnnotation": {
-          "description": "Annotation value for text classification case.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextClassificationAnnotation"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextClassificationAnnotation",
+          "description": "Annotation value for text classification case."
         },
         "textEntityExtractionAnnotation": {
-          "description": "Annotation value for text entity extraction case.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation",
+          "description": "Annotation value for text entity extraction case."
         },
         "videoClassificationAnnotation": {
-          "description": "Annotation value for video classification case.",
-          "$ref": "GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation"
+          "$ref": "GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation",
+          "description": "Annotation value for video classification case."
         },
         "videoEventAnnotation": {
-          "description": "Annotation value for video event case.",
-          "$ref": "GoogleCloudDatalabelingV1beta1VideoEventAnnotation"
+          "$ref": "GoogleCloudDatalabelingV1beta1VideoEventAnnotation",
+          "description": "Annotation value for video event case."
         },
         "videoObjectTrackingAnnotation": {
-          "description": "Annotation value for video object detection and tracking case.",
-          "$ref": "GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation"
+          "$ref": "GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation",
+          "description": "Annotation value for video object detection and tracking case."
         }
       },
       "type": "object"
@@ -2443,12 +2394,12 @@
       "id": "GoogleCloudDatalabelingV1beta1ClassificationMetrics",
       "properties": {
         "confusionMatrix": {
-          "description": "Confusion matrix of predicted labels vs. ground truth labels.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ConfusionMatrix"
+          "$ref": "GoogleCloudDatalabelingV1beta1ConfusionMatrix",
+          "description": "Confusion matrix of predicted labels vs. ground truth labels."
         },
         "prCurve": {
-          "description": "Precision-recall curve based on ground truth labels, predicted labels, and scores for the predicted labels.",
-          "$ref": "GoogleCloudDatalabelingV1beta1PrCurve"
+          "$ref": "GoogleCloudDatalabelingV1beta1PrCurve",
+          "description": "Precision-recall curve based on ground truth labels, predicted labels, and scores for the predicted labels."
         }
       },
       "type": "object"
@@ -2526,8 +2477,8 @@
       "id": "GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry",
       "properties": {
         "annotationSpec": {
-          "description": "The annotation spec of a predicted label.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "The annotation spec of a predicted label."
         },
         "itemCount": {
           "description": "Number of items predicted to have this label. (The ground truth label for these items is the `Row.annotationSpec` of this entry's parent.)",
@@ -2542,8 +2493,8 @@
       "id": "GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest",
       "properties": {
         "annotationSpecSet": {
-          "description": "Required. Annotation spec set to create. Annotation specs must be included. Only one annotation spec will be accepted for annotation specs with same display_name.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpecSet"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpecSet",
+          "description": "Required. Annotation spec set to create. Annotation specs must be included. Only one annotation spec will be accepted for annotation specs with same display_name."
         }
       },
       "type": "object"
@@ -2553,8 +2504,8 @@
       "id": "GoogleCloudDatalabelingV1beta1CreateDatasetRequest",
       "properties": {
         "dataset": {
-          "description": "Required. The dataset to be created.",
-          "$ref": "GoogleCloudDatalabelingV1beta1Dataset"
+          "$ref": "GoogleCloudDatalabelingV1beta1Dataset",
+          "description": "Required. The dataset to be created."
         }
       },
       "type": "object"
@@ -2564,8 +2515,8 @@
       "id": "GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest",
       "properties": {
         "job": {
-          "description": "Required. The evaluation job to create.",
-          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationJob"
+          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationJob",
+          "description": "Required. The evaluation job to create."
         }
       },
       "type": "object"
@@ -2598,8 +2549,8 @@
       "id": "GoogleCloudDatalabelingV1beta1CreateInstructionRequest",
       "properties": {
         "instruction": {
-          "description": "Required. Instruction of how to perform the labeling task.",
-          "$ref": "GoogleCloudDatalabelingV1beta1Instruction"
+          "$ref": "GoogleCloudDatalabelingV1beta1Instruction",
+          "description": "Required. Instruction of how to perform the labeling task."
         }
       },
       "type": "object"
@@ -2620,20 +2571,20 @@
       "id": "GoogleCloudDatalabelingV1beta1DataItem",
       "properties": {
         "imagePayload": {
-          "description": "The image payload, a container of the image bytes/uri.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ImagePayload"
+          "$ref": "GoogleCloudDatalabelingV1beta1ImagePayload",
+          "description": "The image payload, a container of the image bytes/uri."
         },
         "name": {
           "description": "Output only. Name of the data item, in format of: projects/{project_id}/datasets/{dataset_id}/dataItems/{data_item_id}",
           "type": "string"
         },
         "textPayload": {
-          "description": "The text payload, a container of text content.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextPayload"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextPayload",
+          "description": "The text payload, a container of text content."
         },
         "videoPayload": {
-          "description": "The video payload, a container of the video uri.",
-          "$ref": "GoogleCloudDatalabelingV1beta1VideoPayload"
+          "$ref": "GoogleCloudDatalabelingV1beta1VideoPayload",
+          "description": "The video payload, a container of the video uri."
         }
       },
       "type": "object"
@@ -2692,22 +2643,6 @@
       "properties": {
         "annotationType": {
           "description": "Output only. Type of task that the model version being evaluated performs, as defined in the evaluationJobConfig.inputConfig.annotationType field of the evaluation job that created this evaluation.",
-          "enumDescriptions": [
-            "",
-            "Classification annotations in an image. Allowed for continuous evaluation.",
-            "Bounding box annotations in an image. A form of image object detection. Allowed for continuous evaluation.",
-            "Oriented bounding box. The box does not have to be parallel to horizontal line.",
-            "Bounding poly annotations in an image.",
-            "Polyline annotations in an image.",
-            "Segmentation annotations in an image.",
-            "Classification annotations in video shots.",
-            "Video object tracking annotation.",
-            "Video object detection annotation.",
-            "Video event annotation.",
-            "Classification for text. Allowed for continuous evaluation.",
-            "Entity extraction for text.",
-            "General classification. Allowed for continuous evaluation."
-          ],
           "enum": [
             "ANNOTATION_TYPE_UNSPECIFIED",
             "IMAGE_CLASSIFICATION_ANNOTATION",
@@ -2724,11 +2659,27 @@
             "TEXT_ENTITY_EXTRACTION_ANNOTATION",
             "GENERAL_CLASSIFICATION_ANNOTATION"
           ],
+          "enumDescriptions": [
+            "",
+            "Classification annotations in an image. Allowed for continuous evaluation.",
+            "Bounding box annotations in an image. A form of image object detection. Allowed for continuous evaluation.",
+            "Oriented bounding box. The box does not have to be parallel to horizontal line.",
+            "Bounding poly annotations in an image.",
+            "Polyline annotations in an image.",
+            "Segmentation annotations in an image.",
+            "Classification annotations in video shots.",
+            "Video object tracking annotation.",
+            "Video object detection annotation.",
+            "Video event annotation.",
+            "Classification for text. Allowed for continuous evaluation.",
+            "Entity extraction for text.",
+            "General classification. Allowed for continuous evaluation."
+          ],
           "type": "string"
         },
         "config": {
-          "description": "Output only. Options used in the evaluation job that created this evaluation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationConfig",
+          "description": "Output only. Options used in the evaluation job that created this evaluation."
         },
         "createTime": {
           "description": "Output only. Timestamp for when this evaluation was created.",
@@ -2746,8 +2697,8 @@
           "type": "string"
         },
         "evaluationMetrics": {
-          "description": "Output only. Metrics comparing predictions to ground truth labels.",
-          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationMetrics"
+          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationMetrics",
+          "description": "Output only. Metrics comparing predictions to ground truth labels."
         },
         "name": {
           "description": "Output only. Resource name of an evaluation. The name has the following format: \"projects/{project_id}/datasets/{dataset_id}/evaluations/ {evaluation_id}'",
@@ -2761,8 +2712,8 @@
       "id": "GoogleCloudDatalabelingV1beta1EvaluationConfig",
       "properties": {
         "boundingBoxEvaluationOptions": {
-          "description": "Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.",
-          "$ref": "GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions"
+          "$ref": "GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions",
+          "description": "Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes."
         }
       },
       "type": "object"
@@ -2792,8 +2743,8 @@
           "type": "string"
         },
         "evaluationJobConfig": {
-          "description": "Required. Configuration details for the evaluation job.",
-          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationJobConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationJobConfig",
+          "description": "Required. Configuration details for the evaluation job."
         },
         "labelMissingGroundTruth": {
           "description": "Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.",
@@ -2813,19 +2764,19 @@
         },
         "state": {
           "description": "Output only. Describes the current state of the job.",
-          "enumDescriptions": [
-            "",
-            "The job is scheduled to run at the configured interval. You can pause or delete the job. When the job is in this state, it samples prediction input and output from your model version into your BigQuery table as predictions occur.",
-            "The job is currently running. When the job runs, Data Labeling Service does several things: 1. If you have configured your job to use Data Labeling Service for ground truth labeling, the service creates a Dataset and a labeling task for all data sampled since the last time the job ran. Human labelers provide ground truth labels for your data. Human labeling may take hours, or even days, depending on how much data has been sampled. The job remains in the `RUNNING` state during this time, and it can even be running multiple times in parallel if it gets triggered again (for example 24 hours later) before the earlier run has completed. When human labelers have finished labeling the data, the next step occurs. If you have configured your job to provide your own ground truth labels, Data Labeling Service still creates a Dataset for newly sampled data, but it expects that you have already added ground truth labels to the BigQuery table by this time. The next step occurs immediately. 2. Data Labeling Service creates an Evaluation by comparing your model version's predictions with the ground truth labels. If the job remains in this state for a long time, it continues to sample prediction data into your BigQuery table and will run again at the next interval, even if it causes the job to run multiple times in parallel.",
-            "The job is not sampling prediction input and output into your BigQuery table and it will not run according to its schedule. You can resume the job.",
-            "The job has this state right before it is deleted."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "SCHEDULED",
             "RUNNING",
             "PAUSED",
             "STOPPED"
+          ],
+          "enumDescriptions": [
+            "",
+            "The job is scheduled to run at the configured interval. You can pause or delete the job. When the job is in this state, it samples prediction input and output from your model version into your BigQuery table as predictions occur.",
+            "The job is currently running. When the job runs, Data Labeling Service does several things: 1. If you have configured your job to use Data Labeling Service for ground truth labeling, the service creates a Dataset and a labeling task for all data sampled since the last time the job ran. Human labelers provide ground truth labels for your data. Human labeling may take hours, or even days, depending on how much data has been sampled. The job remains in the `RUNNING` state during this time, and it can even be running multiple times in parallel if it gets triggered again (for example 24 hours later) before the earlier run has completed. When human labelers have finished labeling the data, the next step occurs. If you have configured your job to provide your own ground truth labels, Data Labeling Service still creates a Dataset for newly sampled data, but it expects that you have already added ground truth labels to the BigQuery table by this time. The next step occurs immediately. 2. Data Labeling Service creates an Evaluation by comparing your model version's predictions with the ground truth labels. If the job remains in this state for a long time, it continues to sample prediction data into your BigQuery table and will run again at the next interval, even if it causes the job to run multiple times in parallel.",
+            "The job is not sampling prediction input and output into your BigQuery table and it will not run according to its schedule. You can resume the job.",
+            "The job has this state right before it is deleted."
           ],
           "type": "string"
         }
@@ -2860,16 +2811,16 @@
           "type": "object"
         },
         "boundingPolyConfig": {
-          "description": "Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.",
-          "$ref": "GoogleCloudDatalabelingV1beta1BoundingPolyConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1BoundingPolyConfig",
+          "description": "Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet."
         },
         "evaluationConfig": {
-          "description": "Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.",
-          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationConfig",
+          "description": "Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration."
         },
         "evaluationJobAlertConfig": {
-          "description": "Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.",
-          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig",
+          "description": "Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run."
         },
         "exampleCount": {
           "description": "Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.",
@@ -2882,20 +2833,20 @@
           "type": "number"
         },
         "humanAnnotationConfig": {
-          "description": "Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration."
         },
         "imageClassificationConfig": {
-          "description": "Specify this field if your model version performs image classification or general classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ImageClassificationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1ImageClassificationConfig",
+          "description": "Specify this field if your model version performs image classification or general classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config."
         },
         "inputConfig": {
-          "description": "Rquired. Details for the sampled prediction input. Within this configuration, there are requirements for several fields: * `dataType` must be one of `IMAGE`, `TEXT`, or `GENERAL_DATA`. * `annotationType` must be one of `IMAGE_CLASSIFICATION_ANNOTATION`, `TEXT_CLASSIFICATION_ANNOTATION`, `GENERAL_CLASSIFICATION_ANNOTATION`, or `IMAGE_BOUNDING_BOX_ANNOTATION` (image object detection). * If your machine learning model performs classification, you must specify `classificationMetadata.isMultiLabel`. * You must specify `bigquerySource` (not `gcsSource`).",
-          "$ref": "GoogleCloudDatalabelingV1beta1InputConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1InputConfig",
+          "description": "Rquired. Details for the sampled prediction input. Within this configuration, there are requirements for several fields: * `dataType` must be one of `IMAGE`, `TEXT`, or `GENERAL_DATA`. * `annotationType` must be one of `IMAGE_CLASSIFICATION_ANNOTATION`, `TEXT_CLASSIFICATION_ANNOTATION`, `GENERAL_CLASSIFICATION_ANNOTATION`, or `IMAGE_BOUNDING_BOX_ANNOTATION` (image object detection). * If your machine learning model performs classification, you must specify `classificationMetadata.isMultiLabel`. * You must specify `bigquerySource` (not `gcsSource`)."
         },
         "textClassificationConfig": {
-          "description": "Specify this field if your model version performs text classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextClassificationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextClassificationConfig",
+          "description": "Specify this field if your model version performs text classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config."
         }
       },
       "type": "object"
@@ -2948,20 +2899,20 @@
           "type": "array"
         },
         "imagePayload": {
-          "description": "The image payload, a container of the image bytes/uri.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ImagePayload"
+          "$ref": "GoogleCloudDatalabelingV1beta1ImagePayload",
+          "description": "The image payload, a container of the image bytes/uri."
         },
         "name": {
           "description": "Output only. Name of the example, in format of: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id}/examples/{example_id}",
           "type": "string"
         },
         "textPayload": {
-          "description": "The text payload, a container of the text content.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextPayload"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextPayload",
+          "description": "The text payload, a container of the text content."
         },
         "videoPayload": {
-          "description": "The video payload, a container of the video uri.",
-          "$ref": "GoogleCloudDatalabelingV1beta1VideoPayload"
+          "$ref": "GoogleCloudDatalabelingV1beta1VideoPayload",
+          "description": "The video payload, a container of the video uri."
         }
       },
       "type": "object"
@@ -2971,8 +2922,8 @@
       "id": "GoogleCloudDatalabelingV1beta1ExampleComparison",
       "properties": {
         "groundTruthExample": {
-          "description": "The ground truth output for the input.",
-          "$ref": "GoogleCloudDatalabelingV1beta1Example"
+          "$ref": "GoogleCloudDatalabelingV1beta1Example",
+          "description": "The ground truth output for the input."
         },
         "modelCreatedExamples": {
           "description": "Predictions by the model for the input.",
@@ -3029,12 +2980,12 @@
           "type": "integer"
         },
         "labelStats": {
-          "description": "Output only. Statistic infos of labels in the exported dataset.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelStats"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelStats",
+          "description": "Output only. Statistic infos of labels in the exported dataset."
         },
         "outputConfig": {
-          "description": "Output only. output_config in the ExportData request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1OutputConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1OutputConfig",
+          "description": "Output only. output_config in the ExportData request."
         },
         "totalCount": {
           "description": "Output only. Total number of examples requested to export",
@@ -3057,8 +3008,8 @@
           "type": "string"
         },
         "outputConfig": {
-          "description": "Required. Specify the output destination.",
-          "$ref": "GoogleCloudDatalabelingV1beta1OutputConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1OutputConfig",
+          "description": "Required. Specify the output destination."
         },
         "userEmailAddress": {
           "description": "Email of the user who started the export task and should be notified by email. If empty no notification will be sent.",
@@ -3103,8 +3054,8 @@
       "id": "GoogleCloudDatalabelingV1beta1FeedbackThread",
       "properties": {
         "feedbackThreadMetadata": {
-          "description": "Metadata regarding the feedback thread.",
-          "$ref": "GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata",
+          "description": "Metadata regarding the feedback thread."
         },
         "name": {
           "description": "Name of the feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}'",
@@ -3127,15 +3078,15 @@
           "type": "string"
         },
         "status": {
-          "enumDescriptions": [
-            "",
-            "Feedback thread is created with no reply;",
-            "Feedback thread is replied at least once;"
-          ],
           "enum": [
             "FEEDBACK_THREAD_STATUS_UNSPECIFIED",
             "NEW",
             "REPLIED"
+          ],
+          "enumDescriptions": [
+            "",
+            "Feedback thread is created with no reply;",
+            "Feedback thread is replied at least once;"
           ],
           "type": "string"
         },
@@ -3241,8 +3192,8 @@
       "id": "GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation",
       "properties": {
         "annotationSpec": {
-          "description": "Label of object in this bounding polygon.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "Label of object in this bounding polygon."
         },
         "boundingPoly": {
           "$ref": "GoogleCloudDatalabelingV1beta1BoundingPoly"
@@ -3258,8 +3209,8 @@
       "id": "GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation",
       "properties": {
         "annotationSpec": {
-          "description": "Label of image.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "Label of image."
         }
       },
       "type": "object"
@@ -3278,17 +3229,17 @@
         },
         "answerAggregationType": {
           "description": "Optional. The type of how to aggregate answers.",
-          "enumDescriptions": [
-            "",
-            "Majority vote to aggregate answers.",
-            "Unanimous answers will be adopted.",
-            "Preserve all answers by crowd compute."
-          ],
           "enum": [
             "STRING_AGGREGATION_TYPE_UNSPECIFIED",
             "MAJORITY_VOTE",
             "UNANIMOUS_VOTE",
             "NO_AGGREGATION"
+          ],
+          "enumDescriptions": [
+            "",
+            "Majority vote to aggregate answers.",
+            "Unanimous answers will be adopted.",
+            "Preserve all answers by crowd compute."
           ],
           "type": "string"
         }
@@ -3324,8 +3275,8 @@
       "id": "GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation",
       "properties": {
         "annotationSpec": {
-          "description": "Label of this polyline.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "Label of this polyline."
         },
         "normalizedPolyline": {
           "$ref": "GoogleCloudDatalabelingV1beta1NormalizedPolyline"
@@ -3408,8 +3359,8 @@
       "id": "GoogleCloudDatalabelingV1beta1ImportDataRequest",
       "properties": {
         "inputConfig": {
-          "description": "Required. Specify the input source of the data.",
-          "$ref": "GoogleCloudDatalabelingV1beta1InputConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1InputConfig",
+          "description": "Required. Specify the input source of the data."
         },
         "userEmailAddress": {
           "description": "Email of the user who started the import task and should be notified by email. If empty no notification will be sent.",
@@ -3424,22 +3375,6 @@
       "properties": {
         "annotationType": {
           "description": "Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.",
-          "enumDescriptions": [
-            "",
-            "Classification annotations in an image. Allowed for continuous evaluation.",
-            "Bounding box annotations in an image. A form of image object detection. Allowed for continuous evaluation.",
-            "Oriented bounding box. The box does not have to be parallel to horizontal line.",
-            "Bounding poly annotations in an image.",
-            "Polyline annotations in an image.",
-            "Segmentation annotations in an image.",
-            "Classification annotations in video shots.",
-            "Video object tracking annotation.",
-            "Video object detection annotation.",
-            "Video event annotation.",
-            "Classification for text. Allowed for continuous evaluation.",
-            "Entity extraction for text.",
-            "General classification. Allowed for continuous evaluation."
-          ],
           "enum": [
             "ANNOTATION_TYPE_UNSPECIFIED",
             "IMAGE_CLASSIFICATION_ANNOTATION",
@@ -3456,25 +3391,34 @@
             "TEXT_ENTITY_EXTRACTION_ANNOTATION",
             "GENERAL_CLASSIFICATION_ANNOTATION"
           ],
+          "enumDescriptions": [
+            "",
+            "Classification annotations in an image. Allowed for continuous evaluation.",
+            "Bounding box annotations in an image. A form of image object detection. Allowed for continuous evaluation.",
+            "Oriented bounding box. The box does not have to be parallel to horizontal line.",
+            "Bounding poly annotations in an image.",
+            "Polyline annotations in an image.",
+            "Segmentation annotations in an image.",
+            "Classification annotations in video shots.",
+            "Video object tracking annotation.",
+            "Video object detection annotation.",
+            "Video event annotation.",
+            "Classification for text. Allowed for continuous evaluation.",
+            "Entity extraction for text.",
+            "General classification. Allowed for continuous evaluation."
+          ],
           "type": "string"
         },
         "bigquerySource": {
-          "description": "Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.",
-          "$ref": "GoogleCloudDatalabelingV1beta1BigQuerySource"
+          "$ref": "GoogleCloudDatalabelingV1beta1BigQuerySource",
+          "description": "Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob."
         },
         "classificationMetadata": {
-          "description": "Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ClassificationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1ClassificationMetadata",
+          "description": "Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification."
         },
         "dataType": {
           "description": "Required. Data type must be specifed when user tries to import data.",
-          "enumDescriptions": [
-            "Data type is unspecified.",
-            "Allowed for continuous evaluation.",
-            "Video data type.",
-            "Allowed for continuous evaluation.",
-            "Allowed for continuous evaluation."
-          ],
           "enum": [
             "DATA_TYPE_UNSPECIFIED",
             "IMAGE",
@@ -3482,15 +3426,22 @@
             "TEXT",
             "GENERAL_DATA"
           ],
+          "enumDescriptions": [
+            "Data type is unspecified.",
+            "Allowed for continuous evaluation.",
+            "Video data type.",
+            "Allowed for continuous evaluation.",
+            "Allowed for continuous evaluation."
+          ],
           "type": "string"
         },
         "gcsSource": {
-          "description": "Source located in Cloud Storage.",
-          "$ref": "GoogleCloudDatalabelingV1beta1GcsSource"
+          "$ref": "GoogleCloudDatalabelingV1beta1GcsSource",
+          "description": "Source located in Cloud Storage."
         },
         "textMetadata": {
-          "description": "Required for text import, as language code must be specified.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextMetadata",
+          "description": "Required for text import, as language code must be specified."
         }
       },
       "type": "object"
@@ -3512,24 +3463,24 @@
           "type": "string"
         },
         "csvInstruction": {
-          "description": "Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.",
-          "$ref": "GoogleCloudDatalabelingV1beta1CsvInstruction"
+          "$ref": "GoogleCloudDatalabelingV1beta1CsvInstruction",
+          "description": "Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data."
         },
         "dataType": {
           "description": "Required. The data type of this instruction.",
-          "enumDescriptions": [
-            "Data type is unspecified.",
-            "Allowed for continuous evaluation.",
-            "Video data type.",
-            "Allowed for continuous evaluation.",
-            "Allowed for continuous evaluation."
-          ],
           "enum": [
             "DATA_TYPE_UNSPECIFIED",
             "IMAGE",
             "VIDEO",
             "TEXT",
             "GENERAL_DATA"
+          ],
+          "enumDescriptions": [
+            "Data type is unspecified.",
+            "Allowed for continuous evaluation.",
+            "Video data type.",
+            "Allowed for continuous evaluation.",
+            "Allowed for continuous evaluation."
           ],
           "type": "string"
         },
@@ -3546,8 +3497,8 @@
           "type": "string"
         },
         "pdfInstruction": {
-          "description": "Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.",
-          "$ref": "GoogleCloudDatalabelingV1beta1PdfInstruction"
+          "$ref": "GoogleCloudDatalabelingV1beta1PdfInstruction",
+          "description": "Instruction from a PDF document. The PDF should be in a Cloud Storage bucket."
         },
         "updateTime": {
           "description": "Output only. Last update time of instruction.",
@@ -3562,8 +3513,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3573,8 +3524,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3584,8 +3535,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3595,8 +3546,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config."
         }
       },
       "type": "object"
@@ -3606,8 +3557,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3617,24 +3568,15 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelImageRequest",
       "properties": {
         "basicConfig": {
-          "description": "Required. Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Required. Basic human annotation config."
         },
         "boundingPolyConfig": {
-          "description": "Configuration for bounding box and bounding poly task. One of image_classification_config, bounding_poly_config, polyline_config and segmentation_config are required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1BoundingPolyConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1BoundingPolyConfig",
+          "description": "Configuration for bounding box and bounding poly task. One of image_classification_config, bounding_poly_config, polyline_config and segmentation_config are required."
         },
         "feature": {
           "description": "Required. The type of image labeling task.",
-          "enumDescriptions": [
-            "",
-            "Label whole image with one or more of labels.",
-            "Label image with bounding boxes for labels.",
-            "Label oriented bounding box. The box does not have to be parallel to horizontal line.",
-            "Label images with bounding poly. A bounding poly is a plane figure that is bounded by a finite chain of straight line segments closing in a loop.",
-            "Label images with polyline. Polyline is formed by connected line segments which are not in closed form.",
-            "Label images with segmentation. Segmentation is different from bounding poly since it is more fine-grained, pixel level annotation."
-          ],
           "enum": [
             "FEATURE_UNSPECIFIED",
             "CLASSIFICATION",
@@ -3644,19 +3586,28 @@
             "POLYLINE",
             "SEGMENTATION"
           ],
+          "enumDescriptions": [
+            "",
+            "Label whole image with one or more of labels.",
+            "Label image with bounding boxes for labels.",
+            "Label oriented bounding box. The box does not have to be parallel to horizontal line.",
+            "Label images with bounding poly. A bounding poly is a plane figure that is bounded by a finite chain of straight line segments closing in a loop.",
+            "Label images with polyline. Polyline is formed by connected line segments which are not in closed form.",
+            "Label images with segmentation. Segmentation is different from bounding poly since it is more fine-grained, pixel level annotation."
+          ],
           "type": "string"
         },
         "imageClassificationConfig": {
-          "description": "Configuration for image classification task. One of image_classification_config, bounding_poly_config, polyline_config and segmentation_config are required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ImageClassificationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1ImageClassificationConfig",
+          "description": "Configuration for image classification task. One of image_classification_config, bounding_poly_config, polyline_config and segmentation_config are required."
         },
         "polylineConfig": {
-          "description": "Configuration for polyline task. One of image_classification_config, bounding_poly_config, polyline_config and segmentation_config are required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1PolylineConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1PolylineConfig",
+          "description": "Configuration for polyline task. One of image_classification_config, bounding_poly_config, polyline_config and segmentation_config are required."
         },
         "segmentationConfig": {
-          "description": "Configuration for segmentation task. One of image_classification_config, bounding_poly_config, polyline_config and segmentation_config are required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1SegmentationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1SegmentationConfig",
+          "description": "Configuration for segmentation task. One of image_classification_config, bounding_poly_config, polyline_config and segmentation_config are required."
         }
       },
       "type": "object"
@@ -3666,8 +3617,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config."
         }
       },
       "type": "object"
@@ -3690,28 +3641,28 @@
           "type": "string"
         },
         "imageBoundingBoxDetails": {
-          "description": "Details of label image bounding box operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata",
+          "description": "Details of label image bounding box operation."
         },
         "imageBoundingPolyDetails": {
-          "description": "Details of label image bounding poly operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata",
+          "description": "Details of label image bounding poly operation."
         },
         "imageClassificationDetails": {
-          "description": "Details of label image classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata",
+          "description": "Details of label image classification operation."
         },
         "imageOrientedBoundingBoxDetails": {
-          "description": "Details of label image oriented bounding box operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata",
+          "description": "Details of label image oriented bounding box operation."
         },
         "imagePolylineDetails": {
-          "description": "Details of label image polyline operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata",
+          "description": "Details of label image polyline operation."
         },
         "imageSegmentationDetails": {
-          "description": "Details of label image segmentation operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata",
+          "description": "Details of label image segmentation operation."
         },
         "partialFailures": {
           "description": "Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details.",
@@ -3726,28 +3677,28 @@
           "type": "integer"
         },
         "textClassificationDetails": {
-          "description": "Details of label text classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata",
+          "description": "Details of label text classification operation."
         },
         "textEntityExtractionDetails": {
-          "description": "Details of label text entity extraction operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata",
+          "description": "Details of label text entity extraction operation."
         },
         "videoClassificationDetails": {
-          "description": "Details of label video classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata",
+          "description": "Details of label video classification operation."
         },
         "videoEventDetails": {
-          "description": "Details of label video event operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata",
+          "description": "Details of label video event operation."
         },
         "videoObjectDetectionDetails": {
-          "description": "Details of label video object detection operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata",
+          "description": "Details of label video object detection operation."
         },
         "videoObjectTrackingDetails": {
-          "description": "Details of label video object tracking operation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata",
+          "description": "Details of label video object tracking operation."
         }
       },
       "type": "object"
@@ -3772,8 +3723,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3783,8 +3734,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3794,30 +3745,30 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelTextRequest",
       "properties": {
         "basicConfig": {
-          "description": "Required. Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Required. Basic human annotation config."
         },
         "feature": {
           "description": "Required. The type of text labeling task.",
-          "enumDescriptions": [
-            "",
-            "Label text content to one of more labels.",
-            "Label entities and their span in text."
-          ],
           "enum": [
             "FEATURE_UNSPECIFIED",
             "TEXT_CLASSIFICATION",
             "TEXT_ENTITY_EXTRACTION"
           ],
+          "enumDescriptions": [
+            "",
+            "Label text content to one of more labels.",
+            "Label entities and their span in text."
+          ],
           "type": "string"
         },
         "textClassificationConfig": {
-          "description": "Configuration for text classification task. One of text_classification_config and text_entity_extraction_config is required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextClassificationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextClassificationConfig",
+          "description": "Configuration for text classification task. One of text_classification_config and text_entity_extraction_config is required."
         },
         "textEntityExtractionConfig": {
-          "description": "Configuration for entity extraction task. One of text_classification_config and text_entity_extraction_config is required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig",
+          "description": "Configuration for entity extraction task. One of text_classification_config and text_entity_extraction_config is required."
         }
       },
       "type": "object"
@@ -3827,8 +3778,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3838,8 +3789,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3849,8 +3800,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3860,8 +3811,8 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -3871,22 +3822,15 @@
       "id": "GoogleCloudDatalabelingV1beta1LabelVideoRequest",
       "properties": {
         "basicConfig": {
-          "description": "Required. Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1HumanAnnotationConfig",
+          "description": "Required. Basic human annotation config."
         },
         "eventConfig": {
-          "description": "Configuration for video event task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1EventConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1EventConfig",
+          "description": "Configuration for video event task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required."
         },
         "feature": {
           "description": "Required. The type of video labeling task.",
-          "enumDescriptions": [
-            "",
-            "Label whole video or video segment with one or more labels.",
-            "Label objects with bounding box on image frames extracted from the video.",
-            "Label and track objects in video.",
-            "Label the range of video for the specified events."
-          ],
           "enum": [
             "FEATURE_UNSPECIFIED",
             "CLASSIFICATION",
@@ -3894,19 +3838,26 @@
             "OBJECT_TRACKING",
             "EVENT"
           ],
+          "enumDescriptions": [
+            "",
+            "Label whole video or video segment with one or more labels.",
+            "Label objects with bounding box on image frames extracted from the video.",
+            "Label and track objects in video.",
+            "Label the range of video for the specified events."
+          ],
           "type": "string"
         },
         "objectDetectionConfig": {
-          "description": "Configuration for video object detection task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ObjectDetectionConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1ObjectDetectionConfig",
+          "description": "Configuration for video object detection task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required."
         },
         "objectTrackingConfig": {
-          "description": "Configuration for video object tracking task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1ObjectTrackingConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1ObjectTrackingConfig",
+          "description": "Configuration for video object tracking task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required."
         },
         "videoClassificationConfig": {
-          "description": "Configuration for video classification task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required.",
-          "$ref": "GoogleCloudDatalabelingV1beta1VideoClassificationConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1VideoClassificationConfig",
+          "description": "Configuration for video classification task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required."
         }
       },
       "type": "object"
@@ -4139,8 +4090,8 @@
       "id": "GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics",
       "properties": {
         "prCurve": {
-          "description": "Precision-recall curve.",
-          "$ref": "GoogleCloudDatalabelingV1beta1PrCurve"
+          "$ref": "GoogleCloudDatalabelingV1beta1PrCurve",
+          "description": "Precision-recall curve."
         }
       },
       "type": "object"
@@ -4224,12 +4175,12 @@
       "id": "GoogleCloudDatalabelingV1beta1OutputConfig",
       "properties": {
         "gcsDestination": {
-          "description": "Output to a file in Cloud Storage. Should be used for labeling output other than image segmentation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1GcsDestination"
+          "$ref": "GoogleCloudDatalabelingV1beta1GcsDestination",
+          "description": "Output to a file in Cloud Storage. Should be used for labeling output other than image segmentation."
         },
         "gcsFolderDestination": {
-          "description": "Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs.",
-          "$ref": "GoogleCloudDatalabelingV1beta1GcsFolderDestination"
+          "$ref": "GoogleCloudDatalabelingV1beta1GcsFolderDestination",
+          "description": "Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs."
         }
       },
       "type": "object"
@@ -4284,8 +4235,8 @@
       "id": "GoogleCloudDatalabelingV1beta1PrCurve",
       "properties": {
         "annotationSpec": {
-          "description": "The annotation spec of the label for which the precision-recall curve calculated. If this field is empty, that means the precision-recall curve is an aggregate curve for all labels.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "The annotation spec of the label for which the precision-recall curve calculated. If this field is empty, that means the precision-recall curve is an aggregate curve for all labels."
         },
         "areaUnderCurve": {
           "description": "Area under the precision-recall curve. Not to be confused with area under a receiver operating characteristic (ROC) curve.",
@@ -4324,8 +4275,8 @@
       "id": "GoogleCloudDatalabelingV1beta1Row",
       "properties": {
         "annotationSpec": {
-          "description": "The annotation spec of the ground truth label for this row.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "The annotation spec of the ground truth label for this row."
         },
         "entries": {
           "description": "A list of the confusion matrix entries. One entry for each possible predicted label.",
@@ -4437,8 +4388,8 @@
       "id": "GoogleCloudDatalabelingV1beta1TextClassificationAnnotation",
       "properties": {
         "annotationSpec": {
-          "description": "Label of the text.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "Label of the text."
         }
       },
       "type": "object"
@@ -4456,8 +4407,8 @@
           "type": "string"
         },
         "sentimentConfig": {
-          "description": "Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.",
-          "$ref": "GoogleCloudDatalabelingV1beta1SentimentConfig"
+          "$ref": "GoogleCloudDatalabelingV1beta1SentimentConfig",
+          "description": "Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP."
         }
       },
       "type": "object"
@@ -4467,12 +4418,12 @@
       "id": "GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation",
       "properties": {
         "annotationSpec": {
-          "description": "Label of the text entities.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "Label of the text entities."
         },
         "sequentialSegment": {
-          "description": "Position of the entity.",
-          "$ref": "GoogleCloudDatalabelingV1beta1SequentialSegment"
+          "$ref": "GoogleCloudDatalabelingV1beta1SequentialSegment",
+          "description": "Position of the entity."
         }
       },
       "type": "object"
@@ -4549,12 +4500,12 @@
       "id": "GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation",
       "properties": {
         "annotationSpec": {
-          "description": "Label of the segment specified by time_segment.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "Label of the segment specified by time_segment."
         },
         "timeSegment": {
-          "description": "The time segment of the video to which the annotation applies.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TimeSegment"
+          "$ref": "GoogleCloudDatalabelingV1beta1TimeSegment",
+          "description": "The time segment of the video to which the annotation applies."
         }
       },
       "type": "object"
@@ -4582,12 +4533,12 @@
       "id": "GoogleCloudDatalabelingV1beta1VideoEventAnnotation",
       "properties": {
         "annotationSpec": {
-          "description": "Label of the event in this annotation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "Label of the event in this annotation."
         },
         "timeSegment": {
-          "description": "The time segment of the video to which the annotation applies.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TimeSegment"
+          "$ref": "GoogleCloudDatalabelingV1beta1TimeSegment",
+          "description": "The time segment of the video to which the annotation applies."
         }
       },
       "type": "object"
@@ -4597,8 +4548,8 @@
       "id": "GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation",
       "properties": {
         "annotationSpec": {
-          "description": "Label of the object tracked in this annotation.",
-          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec"
+          "$ref": "GoogleCloudDatalabelingV1beta1AnnotationSpec",
+          "description": "Label of the object tracked in this annotation."
         },
         "objectTrackingFrames": {
           "description": "The list of frames where this object track appears.",
@@ -4608,8 +4559,8 @@
           "type": "array"
         },
         "timeSegment": {
-          "description": "The time segment of the video to which object tracking applies.",
-          "$ref": "GoogleCloudDatalabelingV1beta1TimeSegment"
+          "$ref": "GoogleCloudDatalabelingV1beta1TimeSegment",
+          "description": "The time segment of the video to which object tracking applies."
         }
       },
       "type": "object"
@@ -4730,12 +4681,12 @@
           "type": "integer"
         },
         "labelStats": {
-          "description": "Output only. Statistic infos of labels in the exported dataset.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelStats"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelStats",
+          "description": "Output only. Statistic infos of labels in the exported dataset."
         },
         "outputConfig": {
-          "description": "Output only. output_config in the ExportData request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1OutputConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1OutputConfig",
+          "description": "Output only. output_config in the ExportData request."
         },
         "totalCount": {
           "description": "Output only. Total number of examples requested to export",
@@ -4884,8 +4835,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -4895,8 +4846,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -4906,8 +4857,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -4917,8 +4868,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config."
         }
       },
       "type": "object"
@@ -4928,8 +4879,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -4939,8 +4890,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config."
         }
       },
       "type": "object"
@@ -4963,28 +4914,28 @@
           "type": "string"
         },
         "imageBoundingBoxDetails": {
-          "description": "Details of label image bounding box operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata",
+          "description": "Details of label image bounding box operation."
         },
         "imageBoundingPolyDetails": {
-          "description": "Details of label image bounding poly operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata",
+          "description": "Details of label image bounding poly operation."
         },
         "imageClassificationDetails": {
-          "description": "Details of label image classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata",
+          "description": "Details of label image classification operation."
         },
         "imageOrientedBoundingBoxDetails": {
-          "description": "Details of label image oriented bounding box operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata",
+          "description": "Details of label image oriented bounding box operation."
         },
         "imagePolylineDetails": {
-          "description": "Details of label image polyline operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata",
+          "description": "Details of label image polyline operation."
         },
         "imageSegmentationDetails": {
-          "description": "Details of label image segmentation operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata",
+          "description": "Details of label image segmentation operation."
         },
         "partialFailures": {
           "description": "Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details.",
@@ -4999,28 +4950,28 @@
           "type": "integer"
         },
         "textClassificationDetails": {
-          "description": "Details of label text classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata",
+          "description": "Details of label text classification operation."
         },
         "textEntityExtractionDetails": {
-          "description": "Details of label text entity extraction operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata",
+          "description": "Details of label text entity extraction operation."
         },
         "videoClassificationDetails": {
-          "description": "Details of label video classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata",
+          "description": "Details of label video classification operation."
         },
         "videoEventDetails": {
-          "description": "Details of label video event operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata",
+          "description": "Details of label video event operation."
         },
         "videoObjectDetectionDetails": {
-          "description": "Details of label video object detection operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata",
+          "description": "Details of label video object detection operation."
         },
         "videoObjectTrackingDetails": {
-          "description": "Details of label video object tracking operation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata",
+          "description": "Details of label video object tracking operation."
         }
       },
       "type": "object"
@@ -5045,8 +4996,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5056,8 +5007,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5067,8 +5018,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5078,8 +5029,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5089,8 +5040,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5100,8 +5051,8 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5111,12 +5062,12 @@
       "id": "GoogleCloudDatalabelingV1p1alpha1OutputConfig",
       "properties": {
         "gcsDestination": {
-          "description": "Output to a file in Cloud Storage. Should be used for labeling output other than image segmentation.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1GcsDestination"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1GcsDestination",
+          "description": "Output to a file in Cloud Storage. Should be used for labeling output other than image segmentation."
         },
         "gcsFolderDestination": {
-          "description": "Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs.",
-          "$ref": "GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination"
+          "$ref": "GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination",
+          "description": "Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs."
         }
       },
       "type": "object"
@@ -5189,12 +5140,12 @@
           "type": "integer"
         },
         "labelStats": {
-          "description": "Output only. Statistic infos of labels in the exported dataset.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelStats"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelStats",
+          "description": "Output only. Statistic infos of labels in the exported dataset."
         },
         "outputConfig": {
-          "description": "Output only. output_config in the ExportData request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1OutputConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1OutputConfig",
+          "description": "Output only. output_config in the ExportData request."
         },
         "totalCount": {
           "description": "Output only. Total number of examples requested to export",
@@ -5327,8 +5278,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5338,8 +5289,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5349,8 +5300,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5360,8 +5311,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config."
         }
       },
       "type": "object"
@@ -5371,8 +5322,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5382,8 +5333,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config."
         }
       },
       "type": "object"
@@ -5406,28 +5357,28 @@
           "type": "string"
         },
         "imageBoundingBoxDetails": {
-          "description": "Details of label image bounding box operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata",
+          "description": "Details of label image bounding box operation."
         },
         "imageBoundingPolyDetails": {
-          "description": "Details of label image bounding poly operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata",
+          "description": "Details of label image bounding poly operation."
         },
         "imageClassificationDetails": {
-          "description": "Details of label image classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata",
+          "description": "Details of label image classification operation."
         },
         "imageOrientedBoundingBoxDetails": {
-          "description": "Details of label image oriented bounding box operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata",
+          "description": "Details of label image oriented bounding box operation."
         },
         "imagePolylineDetails": {
-          "description": "Details of label image polyline operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata",
+          "description": "Details of label image polyline operation."
         },
         "imageSegmentationDetails": {
-          "description": "Details of label image segmentation operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata",
+          "description": "Details of label image segmentation operation."
         },
         "partialFailures": {
           "description": "Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details.",
@@ -5442,28 +5393,28 @@
           "type": "integer"
         },
         "textClassificationDetails": {
-          "description": "Details of label text classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata",
+          "description": "Details of label text classification operation."
         },
         "textEntityExtractionDetails": {
-          "description": "Details of label text entity extraction operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata",
+          "description": "Details of label text entity extraction operation."
         },
         "videoClassificationDetails": {
-          "description": "Details of label video classification operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata",
+          "description": "Details of label video classification operation."
         },
         "videoEventDetails": {
-          "description": "Details of label video event operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata",
+          "description": "Details of label video event operation."
         },
         "videoObjectDetectionDetails": {
-          "description": "Details of label video object detection operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata",
+          "description": "Details of label video object detection operation."
         },
         "videoObjectTrackingDetails": {
-          "description": "Details of label video object tracking operation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata",
+          "description": "Details of label video object tracking operation."
         }
       },
       "type": "object"
@@ -5488,8 +5439,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5499,8 +5450,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5510,8 +5461,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5521,8 +5472,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5532,8 +5483,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5543,8 +5494,8 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata",
       "properties": {
         "basicConfig": {
-          "description": "Basic human annotation config used in labeling request.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig",
+          "description": "Basic human annotation config used in labeling request."
         }
       },
       "type": "object"
@@ -5554,12 +5505,12 @@
       "id": "GoogleCloudDatalabelingV1p2alpha1OutputConfig",
       "properties": {
         "gcsDestination": {
-          "description": "Output to a file in Cloud Storage. Should be used for labeling output other than image segmentation.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1GcsDestination"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1GcsDestination",
+          "description": "Output to a file in Cloud Storage. Should be used for labeling output other than image segmentation."
         },
         "gcsFolderDestination": {
-          "description": "Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs.",
-          "$ref": "GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination"
+          "$ref": "GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination",
+          "description": "Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs."
         }
       },
       "type": "object"
@@ -5591,8 +5542,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -5653,6 +5604,6 @@
   },
   "servicePath": "",
   "title": "Data Labeling API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

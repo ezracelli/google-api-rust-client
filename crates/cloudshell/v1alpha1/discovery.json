@@ -15,29 +15,27 @@
   "description": "Allows users to start, configure, and connect to interactive shell sessions running in the cloud. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/shell/docs/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudshell:v1alpha1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudshell.mtls.googleapis.com/",
   "name": "cloudshell",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "authorize": {
               "description": "Sends OAuth credentials to a running environment on behalf of a user. When this completes, the environment will be authorized to run various Google Cloud command line tools without requiring the user to manually authenticate.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/users/{usersId}/environments/{environmentsId}:authorize",
               "id": "cloudshell.users.environments.authorize",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Name of the resource that should receive the credentials, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.",
                   "location": "path",
                   "pattern": "^users/[^/]+/environments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:authorize",
@@ -140,7 +137,6 @@
             "get": {
               "description": "Gets an environment. Returns NOT_FOUND if the environment does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/users/{usersId}/environments/{environmentsId}",
               "id": "cloudshell.users.environments.get",
               "parameterOrder": [
                 "name"
@@ -150,8 +146,8 @@
                   "description": "Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.",
                   "location": "path",
                   "pattern": "^users/[^/]+/environments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -165,7 +161,6 @@
             "patch": {
               "description": "Updates an existing environment.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/users/{usersId}/environments/{environmentsId}",
               "id": "cloudshell.users.environments.patch",
               "parameterOrder": [
                 "name"
@@ -175,8 +170,8 @@
                   "description": "Name of the resource to be updated, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.",
                   "location": "path",
                   "pattern": "^users/[^/]+/environments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Mask specifying which fields in the environment should be updated.",
@@ -199,7 +194,6 @@
             "start": {
               "description": "Starts an existing environment, allowing clients to connect to it. The returned operation will contain an instance of StartEnvironmentMetadata in its metadata field. Users can wait for the environment to start by polling this operation via GetOperation. Once the environment has finished starting and is ready to accept connections, the operation will contain a StartEnvironmentResponse in its response field.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/users/{usersId}/environments/{environmentsId}:start",
               "id": "cloudshell.users.environments.start",
               "parameterOrder": [
                 "name"
@@ -209,8 +203,8 @@
                   "description": "Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.",
                   "location": "path",
                   "pattern": "^users/[^/]+/environments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}:start",
@@ -231,7 +225,6 @@
                 "create": {
                   "description": "Adds a public SSH key to an environment, allowing clients with the corresponding private key to connect to that environment via SSH. If a key with the same format and content already exists, this will return the existing key.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha1/users/{usersId}/environments/{environmentsId}/publicKeys",
                   "id": "cloudshell.users.environments.publicKeys.create",
                   "parameterOrder": [
                     "parent"
@@ -241,8 +234,8 @@
                       "description": "Parent resource name, e.g. `users/me/environments/default`.",
                       "location": "path",
                       "pattern": "^users/[^/]+/environments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+parent}/publicKeys",
@@ -259,7 +252,6 @@
                 "delete": {
                   "description": "Removes a public SSH key from an environment. Clients will no longer be able to connect to the environment using the corresponding private key.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1alpha1/users/{usersId}/environments/{environmentsId}/publicKeys/{publicKeysId}",
                   "id": "cloudshell.users.environments.publicKeys.delete",
                   "parameterOrder": [
                     "name"
@@ -269,8 +261,8 @@
                       "description": "Name of the resource to be deleted, e.g. `users/me/environments/default/publicKeys/my-key`.",
                       "location": "path",
                       "pattern": "^users/[^/]+/environments/[^/]+/publicKeys/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha1/{+name}",
@@ -288,7 +280,7 @@
       }
     }
   },
-  "revision": "20210217",
+  "revision": "20210219",
   "rootUrl": "https://cloudshell.googleapis.com/",
   "schemas": {
     "AuthorizeEnvironmentRequest": {
@@ -316,8 +308,8 @@
       "id": "CreatePublicKeyRequest",
       "properties": {
         "key": {
-          "description": "Key that should be added to the environment.",
-          "$ref": "PublicKey"
+          "$ref": "PublicKey",
+          "description": "Key that should be added to the environment."
         }
       },
       "type": "object"
@@ -353,15 +345,15 @@
         },
         "size": {
           "description": "Indicates the size of the backing VM running the environment. If set to something other than DEFAULT, it will be reverted to the default VM size after vm_size_expire_time.",
-          "enumDescriptions": [
-            "The VM size is unknown.",
-            "The default VM size.",
-            "The boosted VM size."
-          ],
           "enum": [
             "VM_SIZE_UNSPECIFIED",
             "DEFAULT",
             "BOOSTED"
+          ],
+          "enumDescriptions": [
+            "The VM size is unknown.",
+            "The default VM size.",
+            "The boosted VM size."
           ],
           "type": "string"
         },
@@ -380,19 +372,19 @@
         },
         "state": {
           "description": "Output only. Current execution state of this environment.",
-          "enumDescriptions": [
-            "The environment's states is unknown.",
-            "The environment is not running and can't be connected to. Starting the environment will transition it to the STARTING state.",
-            "The environment is being started but is not yet ready to accept connections.",
-            "The environment is running and ready to accept connections. It will automatically transition back to DISABLED after a period of inactivity or if another environment is started.",
-            "The environment is being deleted and can't be connected to."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "DISABLED",
             "STARTING",
             "RUNNING",
             "DELETING"
+          ],
+          "enumDescriptions": [
+            "The environment's states is unknown.",
+            "The environment is not running and can't be connected to. Starting the environment will transition it to the STARTING state.",
+            "The environment is being started but is not yet ready to accept connections.",
+            "The environment is running and ready to accept connections. It will automatically transition back to DISABLED after a period of inactivity or if another environment is started.",
+            "The environment is being deleted and can't be connected to."
           ],
           "type": "string"
         },
@@ -425,8 +417,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -457,14 +449,6 @@
       "properties": {
         "format": {
           "description": "Required. Format of this key's content.",
-          "enumDescriptions": [
-            "Unknown format. Do not use.",
-            "`ssh-dss` key format (see RFC4253).",
-            "`ssh-rsa` key format (see RFC4253).",
-            "`ecdsa-sha2-nistp256` key format (see RFC5656).",
-            "`ecdsa-sha2-nistp384` key format (see RFC5656).",
-            "`ecdsa-sha2-nistp521` key format (see RFC5656)."
-          ],
           "enum": [
             "FORMAT_UNSPECIFIED",
             "SSH_DSS",
@@ -472,6 +456,14 @@
             "ECDSA_SHA2_NISTP256",
             "ECDSA_SHA2_NISTP384",
             "ECDSA_SHA2_NISTP521"
+          ],
+          "enumDescriptions": [
+            "Unknown format. Do not use.",
+            "`ssh-dss` key format (see RFC4253).",
+            "`ssh-rsa` key format (see RFC4253).",
+            "`ecdsa-sha2-nistp256` key format (see RFC5656).",
+            "`ecdsa-sha2-nistp384` key format (see RFC5656).",
+            "`ecdsa-sha2-nistp521` key format (see RFC5656)."
           ],
           "type": "string"
         },
@@ -493,14 +485,6 @@
       "properties": {
         "state": {
           "description": "Current state of the environment being started.",
-          "enumDescriptions": [
-            "The environment's start state is unknown.",
-            "The environment is in the process of being started, but no additional details are available.",
-            "Startup is waiting for the user's disk to be unarchived. This can happen when the user returns to Cloud Shell after not having used it for a while, and suggests that startup will take longer than normal.",
-            "Startup is waiting for a VM to be assigned to the environment. This should normally happen very quickly, but an environment might stay in this state for an extended period of time if the system is experiencing heavy load.",
-            "Startup is waiting for compute resources to be assigned to the environment. This should normally happen very quickly, but an environment might stay in this state for an extended period of time if the system is experiencing heavy load.",
-            "Startup has completed. If the start operation was successful, the user should be able to establish an SSH connection to their environment. Otherwise, the operation will contain details of the failure."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "STARTING",
@@ -508,6 +492,14 @@
             "AWAITING_VM",
             "AWAITING_COMPUTE_RESOURCES",
             "FINISHED"
+          ],
+          "enumDescriptions": [
+            "The environment's start state is unknown.",
+            "The environment is in the process of being started, but no additional details are available.",
+            "Startup is waiting for the user's disk to be unarchived. This can happen when the user returns to Cloud Shell after not having used it for a while, and suggests that startup will take longer than normal.",
+            "Startup is waiting for a VM to be assigned to the environment. This should normally happen very quickly, but an environment might stay in this state for an extended period of time if the system is experiencing heavy load.",
+            "Startup is waiting for compute resources to be assigned to the environment. This should normally happen very quickly, but an environment might stay in this state for an extended period of time if the system is experiencing heavy load.",
+            "Startup has completed. If the start operation was successful, the user should be able to establish an SSH connection to their environment. Otherwise, the operation will contain details of the failure."
           ],
           "type": "string"
         }
@@ -537,8 +529,8 @@
       "id": "StartEnvironmentResponse",
       "properties": {
         "environment": {
-          "description": "Environment that was started.",
-          "$ref": "Environment"
+          "$ref": "Environment",
+          "description": "Environment that was started."
         }
       },
       "type": "object"
@@ -573,6 +565,6 @@
   },
   "servicePath": "",
   "title": "Cloud Shell API",
-  "version_module": true,
-  "version": "v1alpha1"
+  "version": "v1alpha1",
+  "version_module": true
 }

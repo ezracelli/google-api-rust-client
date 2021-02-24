@@ -15,29 +15,27 @@
   "description": "The Blogger API provides access to posts, comments and pages of a Blogger blog.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/blogger/docs/3.0/getting_started",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "blogger:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://blogger.mtls.googleapis.com/",
   "name": "blogger",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "get": {
           "description": "Gets a blog by id.",
           "httpMethod": "GET",
-          "flatPath": "v2/blogs/{blogId}",
           "id": "blogger.blogs.get",
           "parameterOrder": [
             "blogId"
@@ -118,8 +115,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/blogs/{blogId}",
@@ -133,7 +130,6 @@
         "list": {
           "description": "Lists blogs by user id, possibly filtered.",
           "httpMethod": "GET",
-          "flatPath": "v2/users/{userId}/blogs",
           "id": "blogger.blogs.list",
           "parameterOrder": [
             "userId"
@@ -141,8 +137,8 @@
           "parameters": {
             "userId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/users/{userId}/blogs",
@@ -160,7 +156,6 @@
         "get": {
           "description": "Gets a comment by blog id, post id and comment id.",
           "httpMethod": "GET",
-          "flatPath": "v2/blogs/{blogId}/posts/{postId}/comments/{commentId}",
           "id": "blogger.comments.get",
           "parameterOrder": [
             "blogId",
@@ -170,18 +165,18 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "commentId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/blogs/{blogId}/posts/{postId}/comments/{commentId}",
@@ -195,7 +190,6 @@
         "list": {
           "description": "Lists comments.",
           "httpMethod": "GET",
-          "flatPath": "v2/blogs/{blogId}/posts/{postId}/comments",
           "id": "blogger.comments.list",
           "parameterOrder": [
             "blogId",
@@ -204,8 +198,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "fetchBodies": {
               "location": "query",
@@ -222,8 +216,8 @@
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "startDate": {
               "location": "query",
@@ -245,7 +239,6 @@
         "get": {
           "description": "Gets a page by blog id and page id.",
           "httpMethod": "GET",
-          "flatPath": "v2/blogs/{blogId}/pages/{pageId}",
           "id": "blogger.pages.get",
           "parameterOrder": [
             "blogId",
@@ -254,13 +247,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/blogs/{blogId}/pages/{pageId}",
@@ -274,7 +267,6 @@
         "list": {
           "description": "Lists pages.",
           "httpMethod": "GET",
-          "flatPath": "v2/blogs/{blogId}/pages",
           "id": "blogger.pages.list",
           "parameterOrder": [
             "blogId"
@@ -282,8 +274,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "fetchBodies": {
               "location": "query",
@@ -305,7 +297,6 @@
         "get": {
           "description": "Gets a post by blog id and post id",
           "httpMethod": "GET",
-          "flatPath": "v2/blogs/{blogId}/posts/{postId}",
           "id": "blogger.posts.get",
           "parameterOrder": [
             "blogId",
@@ -314,13 +305,13 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "postId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/blogs/{blogId}/posts/{postId}",
@@ -334,7 +325,6 @@
         "list": {
           "description": "Lists posts.",
           "httpMethod": "GET",
-          "flatPath": "v2/blogs/{blogId}/posts",
           "id": "blogger.posts.list",
           "parameterOrder": [
             "blogId"
@@ -342,8 +332,8 @@
           "parameters": {
             "blogId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "fetchBodies": {
               "location": "query",
@@ -378,7 +368,6 @@
         "get": {
           "description": "Gets a user by user id.",
           "httpMethod": "GET",
-          "flatPath": "v2/users/{userId}",
           "id": "blogger.users.get",
           "parameterOrder": [
             "userId"
@@ -386,8 +375,8 @@
           "parameters": {
             "userId": {
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/users/{userId}",
@@ -492,13 +481,13 @@
         },
         "status": {
           "description": "The status of the blog.",
-          "enumDescriptions": [
-            "",
-            ""
-          ],
           "enum": [
             "LIVE",
             "DELETED"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -558,17 +547,17 @@
         },
         "role": {
           "description": "Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER).",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "VIEW_TYPE_UNSPECIFIED",
             "READER",
             "AUTHOR",
             "ADMIN"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -583,12 +572,12 @@
       "id": "BlogUserInfo",
       "properties": {
         "blog": {
-          "description": "The Blog resource.",
-          "$ref": "Blog"
+          "$ref": "Blog",
+          "description": "The Blog resource."
         },
         "blog_user_info": {
-          "description": "Information about a User for the Blog.",
-          "$ref": "BlogPerUserInfo"
+          "$ref": "BlogPerUserInfo",
+          "description": "Information about a User for the Blog."
         },
         "kind": {
           "description": "The kind of this entity. Always blogger#blogUserInfo.",
@@ -680,17 +669,17 @@
         },
         "status": {
           "description": "The status of the comment (only populated for admin users).",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "LIVE",
             "EMPTIED",
             "PENDING",
             "SPAM"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -797,13 +786,13 @@
         },
         "status": {
           "description": "The status of the page for admin resources (either LIVE or DRAFT).",
-          "enumDescriptions": [
-            "",
-            ""
-          ],
           "enum": [
             "LIVE",
             "DRAFT"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -957,15 +946,15 @@
         },
         "readerComments": {
           "description": "Comment control and display setting for readers of this post.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "ALLOW",
             "DONT_ALLOW_SHOW_EXISTING",
             "DONT_ALLOW_HIDE_EXISTING"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -997,15 +986,15 @@
         },
         "status": {
           "description": "Status of the post. Only set for admin-level requests.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "LIVE",
             "DRAFT",
             "SCHEDULED"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },

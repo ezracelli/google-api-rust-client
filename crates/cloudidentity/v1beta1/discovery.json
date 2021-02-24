@@ -24,29 +24,27 @@
   "description": "API for provisioning and managing identity resources.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/identity/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudidentity:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudidentity.mtls.googleapis.com/",
   "name": "cloudidentity",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -57,17 +55,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -119,7 +117,6 @@
         "cancelWipe": {
           "description": "Cancels an unfinished device wipe. This operation can be used to cancel device wipe in the gap between the wipe operation returning success and the device being wiped.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1/devices/{devicesId}:cancelWipe",
           "id": "cloudidentity.devices.cancelWipe",
           "parameterOrder": [
             "name"
@@ -129,8 +126,8 @@
               "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.",
               "location": "path",
               "pattern": "^devices/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/{+name}:cancelWipe",
@@ -144,7 +141,6 @@
         "create": {
           "description": "Creates a device. Only company-owned device may be created. **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium",
           "httpMethod": "POST",
-          "flatPath": "v1beta1/devices",
           "id": "cloudidentity.devices.create",
           "parameterOrder": [],
           "parameters": {},
@@ -159,7 +155,6 @@
         "delete": {
           "description": "Deletes the specified device.",
           "httpMethod": "DELETE",
-          "flatPath": "v1beta1/devices/{devicesId}",
           "id": "cloudidentity.devices.delete",
           "parameterOrder": [
             "name"
@@ -174,8 +169,8 @@
               "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.",
               "location": "path",
               "pattern": "^devices/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/{+name}",
@@ -186,7 +181,6 @@
         "get": {
           "description": "Retrieves the specified device.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1/devices/{devicesId}",
           "id": "cloudidentity.devices.get",
           "parameterOrder": [
             "name"
@@ -201,8 +195,8 @@
               "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.",
               "location": "path",
               "pattern": "^devices/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/{+name}",
@@ -213,7 +207,6 @@
         "list": {
           "description": "Lists/Searches devices.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1/devices",
           "id": "cloudidentity.devices.list",
           "parameterOrder": [],
           "parameters": {
@@ -245,17 +238,17 @@
             },
             "view": {
               "description": "Optional. The view to use for the List request.",
+              "enum": [
+                "VIEW_UNSPECIFIED",
+                "COMPANY_INVENTORY",
+                "USER_ASSIGNED_DEVICES"
+              ],
               "enumDescriptions": [
                 "Default value. The value is unused.",
                 "This view contains all devices imported by the company admin. Each device in the response contains all information specified by the company admin when importing the device (i.e. asset tags).",
                 "This view contains all devices with at least one user registered on the device. Each device in the response contains all device information, except for asset tags."
               ],
               "location": "query",
-              "enum": [
-                "VIEW_UNSPECIFIED",
-                "COMPANY_INVENTORY",
-                "USER_ASSIGNED_DEVICES"
-              ],
               "type": "string"
             }
           },
@@ -267,7 +260,6 @@
         "wipe": {
           "description": "Wipes all data on the specified device.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1/devices/{devicesId}:wipe",
           "id": "cloudidentity.devices.wipe",
           "parameterOrder": [
             "name"
@@ -277,8 +269,8 @@
               "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User.",
               "location": "path",
               "pattern": "^devices/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/{+name}:wipe",
@@ -296,7 +288,6 @@
             "approve": {
               "description": "Approves device to access user data.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}:approve",
               "id": "cloudidentity.devices.deviceUsers.approve",
               "parameterOrder": [
                 "name"
@@ -306,8 +297,8 @@
                   "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User.",
                   "location": "path",
                   "pattern": "^devices/[^/]+/deviceUsers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:approve",
@@ -321,7 +312,6 @@
             "block": {
               "description": "Blocks device from accessing user data",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}:block",
               "id": "cloudidentity.devices.deviceUsers.block",
               "parameterOrder": [
                 "name"
@@ -331,8 +321,8 @@
                   "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User.",
                   "location": "path",
                   "pattern": "^devices/[^/]+/deviceUsers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:block",
@@ -346,7 +336,6 @@
             "cancelWipe": {
               "description": "Cancels an unfinished user account wipe. This operation can be used to cancel device wipe in the gap between the wipe operation returning success and the device being wiped.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}:cancelWipe",
               "id": "cloudidentity.devices.deviceUsers.cancelWipe",
               "parameterOrder": [
                 "name"
@@ -356,8 +345,8 @@
                   "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User.",
                   "location": "path",
                   "pattern": "^devices/[^/]+/deviceUsers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:cancelWipe",
@@ -371,7 +360,6 @@
             "delete": {
               "description": "Deletes the specified DeviceUser. This also revokes the user's access to device data.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}",
               "id": "cloudidentity.devices.deviceUsers.delete",
               "parameterOrder": [
                 "name"
@@ -386,8 +374,8 @@
                   "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User.",
                   "location": "path",
                   "pattern": "^devices/[^/]+/deviceUsers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -398,7 +386,6 @@
             "get": {
               "description": "Retrieves the specified DeviceUser",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}",
               "id": "cloudidentity.devices.deviceUsers.get",
               "parameterOrder": [
                 "name"
@@ -413,8 +400,8 @@
                   "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User.",
                   "location": "path",
                   "pattern": "^devices/[^/]+/deviceUsers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -425,7 +412,6 @@
             "list": {
               "description": "Lists/Searches DeviceUsers.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/devices/{devicesId}/deviceUsers",
               "id": "cloudidentity.devices.deviceUsers.list",
               "parameterOrder": [
                 "parent"
@@ -461,8 +447,8 @@
                   "description": "Required. To list all DeviceUsers, set this to \"devices/-\". To list all DeviceUsers owned by a device, set this to the resource name of the device. Format: devices/{device}",
                   "location": "path",
                   "pattern": "^devices/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/deviceUsers",
@@ -473,7 +459,6 @@
             "lookup": {
               "description": "Looks up resource names of the DeviceUsers associated with the caller's credentials, as well as the properties provided in the request. This method must be called with end-user credentials with the scope: https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an AND. Different platforms require different amounts of information from the caller to ensure that the DeviceUser is uniquely identified. - iOS: No properties need to be passed, the caller's credentials are sufficient to identify the corresponding DeviceUser. - Android: Specifying the 'android_id' field is required. - Desktop: Specifying the 'raw_resource_id' field is required.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/devices/{devicesId}/deviceUsers:lookup",
               "id": "cloudidentity.devices.deviceUsers.lookup",
               "parameterOrder": [
                 "parent"
@@ -499,8 +484,8 @@
                   "description": "Must be set to \"devices/-/deviceUsers\" to search across all DeviceUser belonging to the user.",
                   "location": "path",
                   "pattern": "^devices/[^/]+/deviceUsers$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "rawResourceId": {
                   "description": "Raw Resource Id used by Google Endpoint Verification. If the user is enrolled into Google Endpoint Verification, this id will be saved as the 'device_resource_id' field in the following platform dependent files. Mac: ~/.secureConnect/context_aware_config.json Windows: C:\\Users\\%USERPROFILE%\\.secureConnect\\context_aware_config.json Linux: ~/.secureConnect/context_aware_config.json",
@@ -524,7 +509,6 @@
             "wipe": {
               "description": "Wipes the user's account on a device.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}:wipe",
               "id": "cloudidentity.devices.deviceUsers.wipe",
               "parameterOrder": [
                 "name"
@@ -534,8 +518,8 @@
                   "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User.",
                   "location": "path",
                   "pattern": "^devices/[^/]+/deviceUsers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:wipe",
@@ -553,7 +537,6 @@
                 "get": {
                   "description": "Gets the client state for the device user",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}/clientStates/{clientStatesId}",
                   "id": "cloudidentity.devices.deviceUsers.clientStates.get",
                   "parameterOrder": [
                     "name"
@@ -568,8 +551,8 @@
                       "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where device_id is the unique ID assigned to the Device, device_user_id is the unique ID assigned to the User and partner_id identifies the partner storing the data. To get the client state for devices belonging to your own organization, the `partnerId` is in the format: `customerId-*anystring*`. Where the `customerId` is your organization's customer ID and `anystring` is any suffix. This suffix is used in setting up Custom Access Levels in Context-Aware Access. You may use `my_customer` instead of the customer ID for devices managed by your own organization.",
                       "location": "path",
                       "pattern": "^devices/[^/]+/deviceUsers/[^/]+/clientStates/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -580,7 +563,6 @@
                 "patch": {
                   "description": "Updates the client state for the device user **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1beta1/devices/{devicesId}/deviceUsers/{deviceUsersId}/clientStates/{clientStatesId}",
                   "id": "cloudidentity.devices.deviceUsers.clientStates.patch",
                   "parameterOrder": [
                     "name"
@@ -595,8 +577,8 @@
                       "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id corresponds to the partner storing the data.",
                       "location": "path",
                       "pattern": "^devices/[^/]+/deviceUsers/[^/]+/clientStates/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "Optional. Comma-separated list of fully qualified names of fields to be updated. If not specified, all updatable fields in ClientState are updated.",
@@ -624,23 +606,22 @@
         "create": {
           "description": "Creates a `Group`.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1/groups",
           "id": "cloudidentity.groups.create",
           "parameterOrder": [],
           "parameters": {
             "initialGroupConfig": {
               "description": "Required. The initial configuration option for the `Group`.",
+              "enum": [
+                "INITIAL_GROUP_CONFIG_UNSPECIFIED",
+                "WITH_INITIAL_OWNER",
+                "EMPTY"
+              ],
               "enumDescriptions": [
                 "Default. Should not be used.",
                 "The end user making the request will be added as the initial owner of the `Group`.",
                 "An empty group is created without any initial owners. This can only be used by admins of the domain."
               ],
               "location": "query",
-              "enum": [
-                "INITIAL_GROUP_CONFIG_UNSPECIFIED",
-                "WITH_INITIAL_OWNER",
-                "EMPTY"
-              ],
               "type": "string"
             }
           },
@@ -659,7 +640,6 @@
         "delete": {
           "description": "Deletes a `Group`.",
           "httpMethod": "DELETE",
-          "flatPath": "v1beta1/groups/{groupsId}",
           "id": "cloudidentity.groups.delete",
           "parameterOrder": [
             "name"
@@ -669,8 +649,8 @@
               "description": "Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to retrieve. Must be of the form `groups/{group_id}`.",
               "location": "path",
               "pattern": "^groups/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/{+name}",
@@ -685,7 +665,6 @@
         "get": {
           "description": "Retrieves a `Group`.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1/groups/{groupsId}",
           "id": "cloudidentity.groups.get",
           "parameterOrder": [
             "name"
@@ -695,8 +674,8 @@
               "description": "Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to retrieve. Must be of the form `groups/{group_id}`.",
               "location": "path",
               "pattern": "^groups/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1/{+name}",
@@ -712,7 +691,6 @@
         "list": {
           "description": "Lists the `Group`s under a customer or namespace.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1/groups",
           "id": "cloudidentity.groups.list",
           "parameterOrder": [],
           "parameters": {
@@ -734,17 +712,17 @@
             },
             "view": {
               "description": "The level of detail to be returned. If unspecified, defaults to `View.BASIC`.",
+              "enum": [
+                "VIEW_UNSPECIFIED",
+                "BASIC",
+                "FULL"
+              ],
               "enumDescriptions": [
                 "Default. Should not be used.",
                 "Only basic resource information is returned.",
                 "All resource information is returned."
               ],
               "location": "query",
-              "enum": [
-                "VIEW_UNSPECIFIED",
-                "BASIC",
-                "FULL"
-              ],
               "type": "string"
             }
           },
@@ -761,7 +739,6 @@
         "lookup": {
           "description": "Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a `Group` by its `EntityKey`.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1/groups:lookup",
           "id": "cloudidentity.groups.lookup",
           "parameterOrder": [],
           "parameters": {
@@ -789,7 +766,6 @@
         "patch": {
           "description": "Updates a `Group`.",
           "httpMethod": "PATCH",
-          "flatPath": "v1beta1/groups/{groupsId}",
           "id": "cloudidentity.groups.patch",
           "parameterOrder": [
             "name"
@@ -799,8 +775,8 @@
               "description": "Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.",
               "location": "path",
               "pattern": "^groups/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "Required. The fully-qualified names of fields to update. May only contain the following fields: `display_name`, `description`.",
@@ -824,7 +800,6 @@
         "search": {
           "description": "Searches for `Group`s matching a specified query.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1/groups:search",
           "id": "cloudidentity.groups.search",
           "parameterOrder": [],
           "parameters": {
@@ -846,15 +821,15 @@
             },
             "view": {
               "description": "The level of detail to be returned. If unspecified, defaults to `View.BASIC`.",
+              "enum": [
+                "BASIC",
+                "FULL"
+              ],
               "enumDescriptions": [
                 "Default. Only basic resource information is returned.",
                 "All resource information is returned."
               ],
               "location": "query",
-              "enum": [
-                "BASIC",
-                "FULL"
-              ],
               "type": "string"
             }
           },
@@ -875,7 +850,6 @@
             "checkTransitiveMembership": {
               "description": "Check a potential member for membership in a group. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. A member has membership to a group as long as there is a single viewable transitive membership between the group and the member. The actor must have view permissions to at least one transitive membership between the member and group.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships:checkTransitiveMembership",
               "id": "cloudidentity.groups.memberships.checkTransitiveMembership",
               "parameterOrder": [
                 "parent"
@@ -885,8 +859,8 @@
                   "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to check the transitive membership in. Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group to which the Membership belongs to.",
                   "location": "path",
                   "pattern": "^groups/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "query": {
                   "description": "Required. A CEL expression that MUST include member specification. This is a `required` field. Certain groups are uniquely identified by both a 'member_key_id' and a 'member_key_namespace', which requires an additional query input: 'member_key_namespace'. Example query: `member_key_id == 'member_key_id_value'`",
@@ -907,7 +881,6 @@
             "create": {
               "description": "Creates a `Membership`.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships",
               "id": "cloudidentity.groups.memberships.create",
               "parameterOrder": [
                 "parent"
@@ -917,8 +890,8 @@
                   "description": "Required. The parent `Group` resource under which to create the `Membership`. Must be of the form `groups/{group_id}`.",
                   "location": "path",
                   "pattern": "^groups/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/memberships",
@@ -936,7 +909,6 @@
             "delete": {
               "description": "Deletes a `Membership`.",
               "httpMethod": "DELETE",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships/{membershipsId}",
               "id": "cloudidentity.groups.memberships.delete",
               "parameterOrder": [
                 "name"
@@ -946,8 +918,8 @@
                   "description": "Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to delete. Must be of the form `groups/{group_id}/memberships/{membership_id}`.",
                   "location": "path",
                   "pattern": "^groups/[^/]+/memberships/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -962,7 +934,6 @@
             "get": {
               "description": "Retrieves a `Membership`.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships/{membershipsId}",
               "id": "cloudidentity.groups.memberships.get",
               "parameterOrder": [
                 "name"
@@ -972,8 +943,8 @@
                   "description": "Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to retrieve. Must be of the form `groups/{group_id}/memberships/{membership_id}`.",
                   "location": "path",
                   "pattern": "^groups/[^/]+/memberships/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -989,7 +960,6 @@
             "getMembershipGraph": {
               "description": "Get a membership graph of just a member or both a member and a group. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. Given a member, the response will contain all membership paths from the member. Given both a group and a member, the response will contain all membership paths between the group and the member.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships:getMembershipGraph",
               "id": "cloudidentity.groups.memberships.getMembershipGraph",
               "parameterOrder": [
                 "parent"
@@ -999,8 +969,8 @@
                   "description": "Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group to which the Membership belongs to. group_id can be a wildcard collection id \"-\". When a group_id is specified, the membership graph will be constrained to paths between the member (defined in the query) and the parent. If a wildcard collection is provided, all membership paths connected to the member will be returned.",
                   "location": "path",
                   "pattern": "^groups/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "query": {
                   "description": "Required. A CEL expression that MUST include member specification AND label(s). Certain groups are uniquely identified by both a 'member_key_id' and a 'member_key_namespace', which requires an additional query input: 'member_key_namespace'. Example query: `member_key_id == 'member_key_id_value' && in labels`",
@@ -1021,7 +991,6 @@
             "list": {
               "description": "Lists the `Membership`s within a `Group`.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships",
               "id": "cloudidentity.groups.memberships.list",
               "parameterOrder": [
                 "parent"
@@ -1042,20 +1011,20 @@
                   "description": "Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of the form `groups/{group_id}`.",
                   "location": "path",
                   "pattern": "^groups/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "The level of detail to be returned. If unspecified, defaults to `MembershipView.BASIC`.",
+                  "enum": [
+                    "BASIC",
+                    "FULL"
+                  ],
                   "enumDescriptions": [
                     "Default. Only basic resource information is returned.",
                     "All resource information is returned."
                   ],
                   "location": "query",
-                  "enum": [
-                    "BASIC",
-                    "FULL"
-                  ],
                   "type": "string"
                 }
               },
@@ -1072,7 +1041,6 @@
             "lookup": {
               "description": "Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a `Membership` by its `EntityKey`.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships:lookup",
               "id": "cloudidentity.groups.memberships.lookup",
               "parameterOrder": [
                 "parent"
@@ -1092,8 +1060,8 @@
                   "description": "Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of the form `groups/{group_id}`.",
                   "location": "path",
                   "pattern": "^groups/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/memberships:lookup",
@@ -1109,7 +1077,6 @@
             "modifyMembershipRoles": {
               "description": "Modifies the `MembershipRole`s of a `Membership`.",
               "httpMethod": "POST",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships/{membershipsId}:modifyMembershipRoles",
               "id": "cloudidentity.groups.memberships.modifyMembershipRoles",
               "parameterOrder": [
                 "name"
@@ -1119,8 +1086,8 @@
                   "description": "Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` whose roles are to be modified. Must be of the form `groups/{group_id}/memberships/{membership_id}`.",
                   "location": "path",
                   "pattern": "^groups/[^/]+/memberships/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}:modifyMembershipRoles",
@@ -1138,7 +1105,6 @@
             "searchTransitiveGroups": {
               "description": "Search transitive groups of a member. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. A transitive group is any group that has a direct or indirect membership to the member. Actor must have view permissions all transitive groups.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships:searchTransitiveGroups",
               "id": "cloudidentity.groups.memberships.searchTransitiveGroups",
               "parameterOrder": [
                 "parent"
@@ -1159,8 +1125,8 @@
                   "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is always '-' as this API will search across all groups for a given member.",
                   "location": "path",
                   "pattern": "^groups/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "query": {
                   "description": "Required. A CEL expression that MUST include member specification AND label(s). This is a `required` field. Users can search on label attributes of groups. CONTAINS match ('in') is supported on labels. Certain groups are uniquely identified by both a 'member_key_id' and a 'member_key_namespace', which requires an additional query input: 'member_key_namespace'. Example query: `member_key_id == 'member_key_id_value' && in labels`",
@@ -1181,7 +1147,6 @@
             "searchTransitiveMemberships": {
               "description": "Search transitive memberships of a group. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. A transitive membership is any direct or indirect membership of a group. Actor must have view permissions to all transitive memberships.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/groups/{groupsId}/memberships:searchTransitiveMemberships",
               "id": "cloudidentity.groups.memberships.searchTransitiveMemberships",
               "parameterOrder": [
                 "parent"
@@ -1202,8 +1167,8 @@
                   "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.",
                   "location": "path",
                   "pattern": "^groups/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+parent}/memberships:searchTransitiveMemberships",
@@ -1238,17 +1203,17 @@
         },
         "ownershipPrivilege": {
           "description": "Ownership privileges on device.",
-          "enumDescriptions": [
-            "Ownership privilege is not set.",
-            "Active device administrator privileges on the device.",
-            "Profile Owner privileges. The account is in a managed corporate profile.",
-            "Device Owner privileges on the device."
-          ],
           "enum": [
             "OWNERSHIP_PRIVILEGE_UNSPECIFIED",
             "DEVICE_ADMINISTRATOR",
             "PROFILE_OWNER",
             "DEVICE_OWNER"
+          ],
+          "enumDescriptions": [
+            "Ownership privilege is not set.",
+            "Active device administrator privileges on the device.",
+            "Profile Owner privileges. The account is in a managed corporate profile.",
+            "Device Owner privileges on the device."
           ],
           "type": "string"
         },
@@ -1275,8 +1240,8 @@
       "id": "ApproveDeviceUserResponse",
       "properties": {
         "deviceUser": {
-          "description": "Resultant DeviceUser object for the action.",
-          "$ref": "DeviceUser"
+          "$ref": "DeviceUser",
+          "description": "Resultant DeviceUser object for the action."
         }
       },
       "type": "object"
@@ -1297,8 +1262,8 @@
       "id": "BlockDeviceUserResponse",
       "properties": {
         "deviceUser": {
-          "description": "Resultant DeviceUser object for the action.",
-          "$ref": "DeviceUser"
+          "$ref": "DeviceUser",
+          "description": "Resultant DeviceUser object for the action."
         }
       },
       "type": "object"
@@ -1319,8 +1284,8 @@
       "id": "CancelWipeDeviceResponse",
       "properties": {
         "device": {
-          "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object.",
-          "$ref": "Device"
+          "$ref": "Device",
+          "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object."
         }
       },
       "type": "object"
@@ -1341,8 +1306,8 @@
       "id": "CancelWipeDeviceUserResponse",
       "properties": {
         "deviceUser": {
-          "description": "Resultant DeviceUser object for the action.",
-          "$ref": "DeviceUser"
+          "$ref": "DeviceUser",
+          "description": "Resultant DeviceUser object for the action."
         }
       },
       "type": "object"
@@ -1371,23 +1336,23 @@
         },
         "complianceState": {
           "description": "The compliance state of the resource as specified by the API client.",
-          "enumDescriptions": [
-            "The compliance state of the resource is unknown or unspecified.",
-            "Device is compliant with third party policies",
-            "Device is not compliant with third party policies"
-          ],
           "enum": [
             "COMPLIANCE_STATE_UNSPECIFIED",
             "COMPLIANT",
             "NON_COMPLIANT"
+          ],
+          "enumDescriptions": [
+            "The compliance state of the resource is unknown or unspecified.",
+            "Device is compliant with third party policies",
+            "Device is not compliant with third party policies"
           ],
           "type": "string"
         },
         "createTime": {
           "description": "Output only. The time the client state data was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "customId": {
           "description": "This field may be used to store a unique identifier for the API resource within which these CustomAttributes are a field.",
@@ -1399,14 +1364,6 @@
         },
         "healthScore": {
           "description": "The Health score of the resource",
-          "enumDescriptions": [
-            "Default value",
-            "The object is in very poor health as defined by the caller.",
-            "The object is in poor health as defined by the caller.",
-            "The object health is neither good nor poor, as defined by the caller.",
-            "The object is in good health as defined by the caller.",
-            "The object is in very good health as defined by the caller."
-          ],
           "enum": [
             "HEALTH_SCORE_UNSPECIFIED",
             "VERY_POOR",
@@ -1414,6 +1371,14 @@
             "NEUTRAL",
             "GOOD",
             "VERY_GOOD"
+          ],
+          "enumDescriptions": [
+            "Default value",
+            "The object is in very poor health as defined by the caller.",
+            "The object is in poor health as defined by the caller.",
+            "The object health is neither good nor poor, as defined by the caller.",
+            "The object is in good health as defined by the caller.",
+            "The object is in very good health as defined by the caller."
           ],
           "type": "string"
         },
@@ -1427,42 +1392,42 @@
         "lastUpdateTime": {
           "description": "Output only. The time the client state data was last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "managed": {
           "description": "The management state of the resource as specified by the API client.",
-          "enumDescriptions": [
-            "The management state of the resource is unknown or unspecified.",
-            "The resource is managed.",
-            "The resource is not managed."
-          ],
           "enum": [
             "MANAGED_STATE_UNSPECIFIED",
             "MANAGED",
             "UNMANAGED"
           ],
+          "enumDescriptions": [
+            "The management state of the resource is unknown or unspecified.",
+            "The resource is managed.",
+            "The resource is not managed."
+          ],
           "type": "string"
         },
         "name": {
           "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id corresponds to the partner storing the data.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "ownerType": {
           "description": "Output only. The owner of the ClientState",
-          "enumDescriptions": [
-            "Unknown owner type",
-            "Customer is the owner",
-            "Partner is the owner"
-          ],
           "enum": [
             "OWNER_TYPE_UNSPECIFIED",
             "OWNER_TYPE_CUSTOMER",
             "OWNER_TYPE_PARTNER"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Unknown owner type",
+            "Customer is the owner",
+            "Partner is the owner"
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "scoreReason": {
           "description": "A descriptive cause of the health score.",
@@ -1480,8 +1445,8 @@
           "type": "string"
         },
         "device": {
-          "description": "Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device.`device_type` and `serial_number` are required.",
-          "$ref": "Device"
+          "$ref": "Device",
+          "description": "Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device.`device_type` and `serial_number` are required."
         }
       },
       "type": "object"
@@ -1511,8 +1476,8 @@
       "id": "Device",
       "properties": {
         "androidSpecificAttributes": {
-          "description": "Output only. Attributes specific to Android devices.",
           "$ref": "AndroidAttributes",
+          "description": "Output only. Attributes specific to Android devices.",
           "readOnly": true
         },
         "assetTag": {
@@ -1521,57 +1486,47 @@
         },
         "basebandVersion": {
           "description": "Output only. Baseband version of the device.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "bootloaderVersion": {
           "description": "Output only. Device bootloader version. Example: 0.6.7.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "brand": {
           "description": "Output only. Device brand. Example: Samsung.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "buildNumber": {
           "description": "Output only. Build number of the device.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "compromisedState": {
           "description": "Output only. Represents whether the Device is compromised.",
-          "enumDescriptions": [
-            "Default value.",
-            "The device is compromised (currently, this means Android device is rooted).",
-            "The device is safe (currently, this means Android device is unrooted)."
-          ],
           "enum": [
             "COMPROMISED_STATE_UNSPECIFIED",
             "COMPROMISED",
             "UNCOMPROMISED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Default value.",
+            "The device is compromised (currently, this means Android device is rooted).",
+            "The device is safe (currently, this means Android device is unrooted)."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. When the Company-Owned device was imported. This field is empty for BYOD devices.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "deviceType": {
           "description": "Output only. Type of device.",
-          "enumDescriptions": [
-            "Unknown device type",
-            "Device is an Android device",
-            "Device is an iOS device",
-            "Device is a Google Sync device.",
-            "Device is a Windows device.",
-            "Device is a MacOS device.",
-            "Device is a Linux device.",
-            "Device is a ChromeOS device."
-          ],
           "enum": [
             "DEVICE_TYPE_UNSPECIFIED",
             "ANDROID",
@@ -1582,45 +1537,55 @@
             "LINUX",
             "CHROME_OS"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Unknown device type",
+            "Device is an Android device",
+            "Device is an iOS device",
+            "Device is a Google Sync device.",
+            "Device is a Windows device.",
+            "Device is a MacOS device.",
+            "Device is a Linux device.",
+            "Device is a ChromeOS device."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "enabledDeveloperOptions": {
           "description": "Output only. Whether developer options is enabled on device.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "enabledUsbDebugging": {
           "description": "Output only. Whether USB debugging is enabled on device.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "encryptionState": {
           "description": "Output only. Device encryption state.",
-          "enumDescriptions": [
-            "Encryption Status is not set.",
-            "Device doesn't support encryption.",
-            "Device is encrypted.",
-            "Device is not encrypted."
-          ],
           "enum": [
             "ENCRYPTION_STATE_UNSPECIFIED",
             "UNSUPPORTED_BY_DEVICE",
             "ENCRYPTED",
             "NOT_ENCRYPTED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Encryption Status is not set.",
+            "Device doesn't support encryption.",
+            "Device is encrypted.",
+            "Device is not encrypted."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "imei": {
           "description": "Output only. IMEI number of device if GSM device; empty otherwise.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "kernelVersion": {
           "description": "Output only. Kernel version of the device.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "lastSyncTime": {
           "description": "Most recent time when device synced with this service.",
@@ -1629,15 +1594,6 @@
         },
         "managementState": {
           "description": "Output only. Management state of the device",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "Device is approved.",
-            "Device is blocked.",
-            "Device is pending approval.",
-            "The device is not provisioned. Device will start from this state until some action is taken (i.e. a user starts using the device).",
-            "Data and settings on the device are being removed.",
-            "All data and settings on the device are removed."
-          ],
           "enum": [
             "MANAGEMENT_STATE_UNSPECIFIED",
             "APPROVED",
@@ -1647,72 +1603,81 @@
             "WIPING",
             "WIPED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "Device is approved.",
+            "Device is blocked.",
+            "Device is pending approval.",
+            "The device is not provisioned. Device will start from this state until some action is taken (i.e. a user starts using the device).",
+            "Data and settings on the device are being removed.",
+            "All data and settings on the device are removed."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "manufacturer": {
           "description": "Output only. Device manufacturer. Example: Motorola.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "meid": {
           "description": "Output only. MEID number of device if CDMA device; empty otherwise.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "model": {
           "description": "Output only. Model name of device. Example: Pixel 3.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "networkOperator": {
           "description": "Output only. Mobile or network operator of device, if available.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "osVersion": {
           "description": "Output only. OS version of the device. Example: Android 8.1.0.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "otherAccounts": {
           "description": "Output only. Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: \"com.example\", \"xyz.com\".",
           "items": {
             "type": "string"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "ownerType": {
           "description": "Output only. Whether the device is owned by the company or an individual",
-          "enumDescriptions": [
-            "Default value. The value is unused.",
-            "Company owns the device.",
-            "Bring Your Own Device (i.e. individual owns the device)"
-          ],
           "enum": [
             "DEVICE_OWNERSHIP_UNSPECIFIED",
             "COMPANY",
             "BYOD"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Default value. The value is unused.",
+            "Company owns the device.",
+            "Bring Your Own Device (i.e. individual owns the device)"
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "releaseVersion": {
           "description": "Output only. OS release version. Example: 6.0.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "securityPatchTime": {
           "description": "Output only. OS security patch update time on device.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "serialNumber": {
           "description": "Serial Number of device. Example: HT82V1A01076.",
@@ -1734,15 +1699,15 @@
       "properties": {
         "compromisedState": {
           "description": "Compromised State of the DeviceUser object",
-          "enumDescriptions": [
-            "Compromised state of Device User account is unknown or unspecified.",
-            "Device User Account is compromised.",
-            "Device User Account is not compromised."
-          ],
           "enum": [
             "COMPROMISED_STATE_UNSPECIFIED",
             "COMPROMISED",
             "NOT_COMPROMISED"
+          ],
+          "enumDescriptions": [
+            "Compromised state of Device User account is unknown or unspecified.",
+            "Device User Account is compromised.",
+            "Device User Account is not compromised."
           ],
           "type": "string"
         },
@@ -1754,31 +1719,22 @@
         "firstSyncTime": {
           "description": "Output only. Most recent time when user registered with this service.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "languageCode": {
           "description": "Output only. Default locale used on device, in IETF BCP-47 format.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "lastSyncTime": {
           "description": "Output only. Last time when user synced with policies.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "managementState": {
           "description": "Output only. Management state of the user on the device.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "This user's data and profile is being removed from the device.",
-            "This user's data and profile is removed from the device.",
-            "User is approved to access data on the device.",
-            "User is blocked from accessing data on the device.",
-            "User is awaiting approval.",
-            "User is unenrolled from Advanced Windows Management, but the Windows account is still intact."
-          ],
           "enum": [
             "MANAGEMENT_STATE_UNSPECIFIED",
             "WIPING",
@@ -1788,32 +1744,41 @@
             "PENDING_APPROVAL",
             "UNENROLLED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "This user's data and profile is being removed from the device.",
+            "This user's data and profile is removed from the device.",
+            "User is approved to access data on the device.",
+            "User is blocked from accessing data on the device.",
+            "User is awaiting approval.",
+            "User is unenrolled from Advanced Windows Management, but the Windows account is still intact."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser in format: `devices/{device_id}/deviceUsers/{user_id}`, where user_id is the ID of the user associated with the user session.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "passwordState": {
           "description": "Password state of the DeviceUser object",
-          "enumDescriptions": [
-            "Password state not set.",
-            "Password set in object.",
-            "Password not set in object."
-          ],
           "enum": [
             "PASSWORD_STATE_UNSPECIFIED",
             "PASSWORD_SET",
             "PASSWORD_NOT_SET"
           ],
+          "enumDescriptions": [
+            "Password state not set.",
+            "Password set in object.",
+            "Password not set in object."
+          ],
           "type": "string"
         },
         "userAgent": {
           "description": "Output only. User agent on the device for this specific user",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "userEmail": {
           "description": "Email address of the user registered on the device.",
@@ -1834,8 +1799,8 @@
           "type": "array"
         },
         "status": {
-          "description": "Output only. Status of the dynamic group.",
           "$ref": "DynamicGroupStatus",
+          "description": "Output only. Status of the dynamic group.",
           "readOnly": true
         }
       },
@@ -1850,13 +1815,13 @@
           "type": "string"
         },
         "resourceType": {
-          "enumDescriptions": [
-            "Default value (not valid)",
-            "For queries on User"
-          ],
           "enum": [
             "RESOURCE_TYPE_UNSPECIFIED",
             "USER"
+          ],
+          "enumDescriptions": [
+            "Default value (not valid)",
+            "For queries on User"
           ],
           "type": "string"
         }
@@ -1869,15 +1834,15 @@
       "properties": {
         "status": {
           "description": "Status of the dynamic group.",
-          "enumDescriptions": [
-            "Default.",
-            "The dynamic group is up-to-date.",
-            "The dynamic group has just been created and memberships are being updated."
-          ],
           "enum": [
             "STATUS_UNSPECIFIED",
             "UP_TO_DATE",
             "UPDATING_MEMBERSHIPS"
+          ],
+          "enumDescriptions": [
+            "Default.",
+            "The dynamic group is up-to-date.",
+            "The dynamic group has just been created and memberships are being updated."
           ],
           "type": "string"
         },
@@ -1951,17 +1916,17 @@
         },
         "ownershipPrivilege": {
           "description": "Ownership privileges on device.",
-          "enumDescriptions": [
-            "Ownership privilege is not set.",
-            "Active device administrator privileges on the device.",
-            "Profile Owner privileges. The account is in a managed corporate profile.",
-            "Device Owner privileges on the device."
-          ],
           "enum": [
             "OWNERSHIP_PRIVILEGE_UNSPECIFIED",
             "DEVICE_ADMINISTRATOR",
             "PROFILE_OWNER",
             "DEVICE_OWNER"
+          ],
+          "enumDescriptions": [
+            "Ownership privilege is not set.",
+            "Active device administrator privileges on the device.",
+            "Profile Owner privileges. The account is in a managed corporate profile.",
+            "Device Owner privileges on the device."
           ],
           "type": "string"
         },
@@ -1977,8 +1942,8 @@
       "id": "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse",
       "properties": {
         "deviceUser": {
-          "description": "Resultant DeviceUser object for the action.",
-          "$ref": "GoogleAppsCloudidentityDevicesV1DeviceUser"
+          "$ref": "GoogleAppsCloudidentityDevicesV1DeviceUser",
+          "description": "Resultant DeviceUser object for the action."
         }
       },
       "type": "object"
@@ -1988,8 +1953,8 @@
       "id": "GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse",
       "properties": {
         "deviceUser": {
-          "description": "Resultant DeviceUser object for the action.",
-          "$ref": "GoogleAppsCloudidentityDevicesV1DeviceUser"
+          "$ref": "GoogleAppsCloudidentityDevicesV1DeviceUser",
+          "description": "Resultant DeviceUser object for the action."
         }
       },
       "type": "object"
@@ -1999,8 +1964,8 @@
       "id": "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse",
       "properties": {
         "device": {
-          "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object.",
-          "$ref": "GoogleAppsCloudidentityDevicesV1Device"
+          "$ref": "GoogleAppsCloudidentityDevicesV1Device",
+          "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object."
         }
       },
       "type": "object"
@@ -2010,8 +1975,8 @@
       "id": "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse",
       "properties": {
         "deviceUser": {
-          "description": "Resultant DeviceUser object for the action.",
-          "$ref": "GoogleAppsCloudidentityDevicesV1DeviceUser"
+          "$ref": "GoogleAppsCloudidentityDevicesV1DeviceUser",
+          "description": "Resultant DeviceUser object for the action."
         }
       },
       "type": "object"
@@ -2029,23 +1994,23 @@
         },
         "complianceState": {
           "description": "The compliance state of the resource as specified by the API client.",
-          "enumDescriptions": [
-            "The compliance state of the resource is unknown or unspecified.",
-            "Device is compliant with third party policies",
-            "Device is not compliant with third party policies"
-          ],
           "enum": [
             "COMPLIANCE_STATE_UNSPECIFIED",
             "COMPLIANT",
             "NON_COMPLIANT"
+          ],
+          "enumDescriptions": [
+            "The compliance state of the resource is unknown or unspecified.",
+            "Device is compliant with third party policies",
+            "Device is not compliant with third party policies"
           ],
           "type": "string"
         },
         "createTime": {
           "description": "Output only. The time the client state data was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "customId": {
           "description": "This field may be used to store a unique identifier for the API resource within which these CustomAttributes are a field.",
@@ -2057,14 +2022,6 @@
         },
         "healthScore": {
           "description": "The Health score of the resource. The Health score is the callers specification of the condition of the device from a usability point of view. For example, a third-party device management provider may specify a health score based on its compliance with organizational policies.",
-          "enumDescriptions": [
-            "Default value",
-            "The object is in very poor health as defined by the caller.",
-            "The object is in poor health as defined by the caller.",
-            "The object health is neither good nor poor, as defined by the caller.",
-            "The object is in good health as defined by the caller.",
-            "The object is in very good health as defined by the caller."
-          ],
           "enum": [
             "HEALTH_SCORE_UNSPECIFIED",
             "VERY_POOR",
@@ -2072,6 +2029,14 @@
             "NEUTRAL",
             "GOOD",
             "VERY_GOOD"
+          ],
+          "enumDescriptions": [
+            "Default value",
+            "The object is in very poor health as defined by the caller.",
+            "The object is in poor health as defined by the caller.",
+            "The object health is neither good nor poor, as defined by the caller.",
+            "The object is in good health as defined by the caller.",
+            "The object is in very good health as defined by the caller."
           ],
           "type": "string"
         },
@@ -2085,42 +2050,42 @@
         "lastUpdateTime": {
           "description": "Output only. The time the client state data was last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "managed": {
           "description": "The management state of the resource as specified by the API client.",
-          "enumDescriptions": [
-            "The management state of the resource is unknown or unspecified.",
-            "The resource is managed.",
-            "The resource is not managed."
-          ],
           "enum": [
             "MANAGED_STATE_UNSPECIFIED",
             "MANAGED",
             "UNMANAGED"
           ],
+          "enumDescriptions": [
+            "The management state of the resource is unknown or unspecified.",
+            "The resource is managed.",
+            "The resource is not managed."
+          ],
           "type": "string"
         },
         "name": {
           "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id corresponds to the partner storing the data. For partners belonging to the \"BeyondCorp Alliance\", this is the partner ID specified to you by Google. For all other callers, this is a string of the form: `{customer_id}-suffix`, where `customer_id` is your customer ID. The *suffix* is any string the caller specifies. This string will be displayed verbatim in the administration console. This suffix is used in setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID can be obtained from the URL: `GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response contains the customer ID starting with the letter 'C'. The customer ID to be used in this API is the string after the letter 'C' (not including 'C')",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "ownerType": {
           "description": "Output only. The owner of the ClientState",
-          "enumDescriptions": [
-            "Unknown owner type",
-            "Customer is the owner",
-            "Partner is the owner"
-          ],
           "enum": [
             "OWNER_TYPE_UNSPECIFIED",
             "OWNER_TYPE_CUSTOMER",
             "OWNER_TYPE_PARTNER"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Unknown owner type",
+            "Customer is the owner",
+            "Partner is the owner"
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "scoreReason": {
           "description": "A descriptive cause of the health score.",
@@ -2154,8 +2119,8 @@
       "id": "GoogleAppsCloudidentityDevicesV1Device",
       "properties": {
         "androidSpecificAttributes": {
-          "description": "Output only. Attributes specific to Android devices.",
           "$ref": "GoogleAppsCloudidentityDevicesV1AndroidAttributes",
+          "description": "Output only. Attributes specific to Android devices.",
           "readOnly": true
         },
         "assetTag": {
@@ -2164,57 +2129,47 @@
         },
         "basebandVersion": {
           "description": "Output only. Baseband version of the device.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "bootloaderVersion": {
           "description": "Output only. Device bootloader version. Example: 0.6.7.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "brand": {
           "description": "Output only. Device brand. Example: Samsung.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "buildNumber": {
           "description": "Output only. Build number of the device.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "compromisedState": {
           "description": "Output only. Represents whether the Device is compromised.",
-          "enumDescriptions": [
-            "Default value.",
-            "The device is compromised (currently, this means Android device is rooted).",
-            "The device is safe (currently, this means Android device is unrooted)."
-          ],
           "enum": [
             "COMPROMISED_STATE_UNSPECIFIED",
             "COMPROMISED",
             "UNCOMPROMISED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Default value.",
+            "The device is compromised (currently, this means Android device is rooted).",
+            "The device is safe (currently, this means Android device is unrooted)."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. When the Company-Owned device was imported. This field is empty for BYOD devices.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "deviceType": {
           "description": "Output only. Type of device.",
-          "enumDescriptions": [
-            "Unknown device type",
-            "Device is an Android device",
-            "Device is an iOS device",
-            "Device is a Google Sync device.",
-            "Device is a Windows device.",
-            "Device is a MacOS device.",
-            "Device is a Linux device.",
-            "Device is a ChromeOS device."
-          ],
           "enum": [
             "DEVICE_TYPE_UNSPECIFIED",
             "ANDROID",
@@ -2225,45 +2180,55 @@
             "LINUX",
             "CHROME_OS"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Unknown device type",
+            "Device is an Android device",
+            "Device is an iOS device",
+            "Device is a Google Sync device.",
+            "Device is a Windows device.",
+            "Device is a MacOS device.",
+            "Device is a Linux device.",
+            "Device is a ChromeOS device."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "enabledDeveloperOptions": {
           "description": "Output only. Whether developer options is enabled on device.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "enabledUsbDebugging": {
           "description": "Output only. Whether USB debugging is enabled on device.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "encryptionState": {
           "description": "Output only. Device encryption state.",
-          "enumDescriptions": [
-            "Encryption Status is not set.",
-            "Device doesn't support encryption.",
-            "Device is encrypted.",
-            "Device is not encrypted."
-          ],
           "enum": [
             "ENCRYPTION_STATE_UNSPECIFIED",
             "UNSUPPORTED_BY_DEVICE",
             "ENCRYPTED",
             "NOT_ENCRYPTED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Encryption Status is not set.",
+            "Device doesn't support encryption.",
+            "Device is encrypted.",
+            "Device is not encrypted."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "imei": {
           "description": "Output only. IMEI number of device if GSM device; empty otherwise.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "kernelVersion": {
           "description": "Output only. Kernel version of the device.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "lastSyncTime": {
           "description": "Most recent time when device synced with this service.",
@@ -2272,15 +2237,6 @@
         },
         "managementState": {
           "description": "Output only. Management state of the device",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "Device is approved.",
-            "Device is blocked.",
-            "Device is pending approval.",
-            "The device is not provisioned. Device will start from this state until some action is taken (i.e. a user starts using the device).",
-            "Data and settings on the device are being removed.",
-            "All data and settings on the device are removed."
-          ],
           "enum": [
             "MANAGEMENT_STATE_UNSPECIFIED",
             "APPROVED",
@@ -2290,72 +2246,81 @@
             "WIPING",
             "WIPED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "Device is approved.",
+            "Device is blocked.",
+            "Device is pending approval.",
+            "The device is not provisioned. Device will start from this state until some action is taken (i.e. a user starts using the device).",
+            "Data and settings on the device are being removed.",
+            "All data and settings on the device are removed."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "manufacturer": {
           "description": "Output only. Device manufacturer. Example: Motorola.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "meid": {
           "description": "Output only. MEID number of device if CDMA device; empty otherwise.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "model": {
           "description": "Output only. Model name of device. Example: Pixel 3.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "networkOperator": {
           "description": "Output only. Mobile or network operator of device, if available.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "osVersion": {
           "description": "Output only. OS version of the device. Example: Android 8.1.0.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "otherAccounts": {
           "description": "Output only. Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: \"com.example\", \"xyz.com\".",
           "items": {
             "type": "string"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "ownerType": {
           "description": "Output only. Whether the device is owned by the company or an individual",
-          "enumDescriptions": [
-            "Default value. The value is unused.",
-            "Company owns the device.",
-            "Bring Your Own Device (i.e. individual owns the device)"
-          ],
           "enum": [
             "DEVICE_OWNERSHIP_UNSPECIFIED",
             "COMPANY",
             "BYOD"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Default value. The value is unused.",
+            "Company owns the device.",
+            "Bring Your Own Device (i.e. individual owns the device)"
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "releaseVersion": {
           "description": "Output only. OS release version. Example: 6.0.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "securityPatchTime": {
           "description": "Output only. OS security patch update time on device.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "serialNumber": {
           "description": "Serial Number of device. Example: HT82V1A01076.",
@@ -2377,15 +2342,15 @@
       "properties": {
         "compromisedState": {
           "description": "Compromised State of the DeviceUser object",
-          "enumDescriptions": [
-            "Compromised state of Device User account is unknown or unspecified.",
-            "Device User Account is compromised.",
-            "Device User Account is not compromised."
-          ],
           "enum": [
             "COMPROMISED_STATE_UNSPECIFIED",
             "COMPROMISED",
             "NOT_COMPROMISED"
+          ],
+          "enumDescriptions": [
+            "Compromised state of Device User account is unknown or unspecified.",
+            "Device User Account is compromised.",
+            "Device User Account is not compromised."
           ],
           "type": "string"
         },
@@ -2397,31 +2362,22 @@
         "firstSyncTime": {
           "description": "Output only. Most recent time when user registered with this service.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "languageCode": {
           "description": "Output only. Default locale used on device, in IETF BCP-47 format.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "lastSyncTime": {
           "description": "Output only. Last time when user synced with policies.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "managementState": {
           "description": "Output only. Management state of the user on the device.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "This user's data and profile is being removed from the device.",
-            "This user's data and profile is removed from the device.",
-            "User is approved to access data on the device.",
-            "User is blocked from accessing data on the device.",
-            "User is awaiting approval.",
-            "User is unenrolled from Advanced Windows Management, but the Windows account is still intact."
-          ],
           "enum": [
             "MANAGEMENT_STATE_UNSPECIFIED",
             "WIPING",
@@ -2431,32 +2387,41 @@
             "PENDING_APPROVAL",
             "UNENROLLED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "This user's data and profile is being removed from the device.",
+            "This user's data and profile is removed from the device.",
+            "User is approved to access data on the device.",
+            "User is blocked from accessing data on the device.",
+            "User is awaiting approval.",
+            "User is unenrolled from Advanced Windows Management, but the Windows account is still intact."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser in format: `devices/{device_id}/deviceUsers/{user_id}`, where user_id is the ID of the user associated with the user session.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "passwordState": {
           "description": "Password state of the DeviceUser object",
-          "enumDescriptions": [
-            "Password state not set.",
-            "Password set in object.",
-            "Password not set in object."
-          ],
           "enum": [
             "PASSWORD_STATE_UNSPECIFIED",
             "PASSWORD_SET",
             "PASSWORD_NOT_SET"
           ],
+          "enumDescriptions": [
+            "Password state not set.",
+            "Password set in object.",
+            "Password not set in object."
+          ],
           "type": "string"
         },
         "userAgent": {
           "description": "Output only. User agent on the device for this specific user",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "userEmail": {
           "description": "Email address of the user registered on the device.",
@@ -2470,8 +2435,8 @@
       "id": "GoogleAppsCloudidentityDevicesV1WipeDeviceResponse",
       "properties": {
         "device": {
-          "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object.",
-          "$ref": "GoogleAppsCloudidentityDevicesV1Device"
+          "$ref": "GoogleAppsCloudidentityDevicesV1Device",
+          "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object."
         }
       },
       "type": "object"
@@ -2481,8 +2446,8 @@
       "id": "GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse",
       "properties": {
         "deviceUser": {
-          "description": "Resultant DeviceUser object for the action.",
-          "$ref": "GoogleAppsCloudidentityDevicesV1DeviceUser"
+          "$ref": "GoogleAppsCloudidentityDevicesV1DeviceUser",
+          "description": "Resultant DeviceUser object for the action."
         }
       },
       "type": "object"
@@ -2501,8 +2466,8 @@
         "createTime": {
           "description": "Output only. The time when the `Group` was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "description": {
           "description": "An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.",
@@ -2513,12 +2478,12 @@
           "type": "string"
         },
         "dynamicGroupMetadata": {
-          "description": "Optional. Dynamic group metadata like queries and status.",
-          "$ref": "DynamicGroupMetadata"
+          "$ref": "DynamicGroupMetadata",
+          "description": "Optional. Dynamic group metadata like queries and status."
         },
         "groupKey": {
-          "description": "Required. Immutable. The `EntityKey` of the `Group`.",
-          "$ref": "EntityKey"
+          "$ref": "EntityKey",
+          "description": "Required. Immutable. The `EntityKey` of the `Group`."
         },
         "labels": {
           "additionalProperties": {
@@ -2529,8 +2494,8 @@
         },
         "name": {
           "description": "Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "parent": {
           "description": "Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.",
@@ -2539,8 +2504,8 @@
         "updateTime": {
           "description": "Output only. The time when the `Group` was last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2558,8 +2523,8 @@
           "type": "string"
         },
         "groupKey": {
-          "description": "Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace.",
-          "$ref": "EntityKey"
+          "$ref": "EntityKey",
+          "description": "Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace."
         },
         "labels": {
           "additionalProperties": {
@@ -2570,17 +2535,17 @@
         },
         "relationType": {
           "description": "The relation between the member and the transitive group.",
-          "enumDescriptions": [
-            "The relation type is undefined or undetermined.",
-            "The two entities have only a direct membership with each other.",
-            "The two entities have only an indirect membership with each other.",
-            "The two entities have both a direct and an indirect membership with each other."
-          ],
           "enum": [
             "RELATION_TYPE_UNSPECIFIED",
             "DIRECT",
             "INDIRECT",
             "DIRECT_AND_INDIRECT"
+          ],
+          "enumDescriptions": [
+            "The relation type is undefined or undetermined.",
+            "The two entities have only a direct membership with each other.",
+            "The two entities have only an indirect membership with each other.",
+            "The two entities have both a direct and an indirect membership with each other."
           ],
           "type": "string"
         },
@@ -2690,8 +2655,8 @@
       "properties": {
         "name": {
           "description": "Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up `Group`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2746,17 +2711,17 @@
         },
         "relationType": {
           "description": "The relation between the group and the transitive member.",
-          "enumDescriptions": [
-            "The relation type is undefined or undetermined.",
-            "The two entities have only a direct membership with each other.",
-            "The two entities have only an indirect membership with each other.",
-            "The two entities have both a direct and an indirect membership with each other."
-          ],
           "enum": [
             "RELATION_TYPE_UNSPECIFIED",
             "DIRECT",
             "INDIRECT",
             "DIRECT_AND_INDIRECT"
+          ],
+          "enumDescriptions": [
+            "The relation type is undefined or undetermined.",
+            "The two entities have only a direct membership with each other.",
+            "The two entities have only an indirect membership with each other.",
+            "The two entities have both a direct and an indirect membership with each other."
           ],
           "type": "string"
         },
@@ -2777,21 +2742,21 @@
         "createTime": {
           "description": "Output only. The time when the `Membership` was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "memberKey": {
-          "description": "Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.",
-          "$ref": "EntityKey"
+          "$ref": "EntityKey",
+          "description": "Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned."
         },
         "name": {
           "description": "Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "preferredMemberKey": {
-          "description": "Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.",
-          "$ref": "EntityKey"
+          "$ref": "EntityKey",
+          "description": "Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned."
         },
         "roles": {
           "description": "The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.",
@@ -2802,13 +2767,6 @@
         },
         "type": {
           "description": "Output only. The type of the membership.",
-          "enumDescriptions": [
-            "Default. Should not be used.",
-            "Represents user type.",
-            "Represents service account type.",
-            "Represents group type.",
-            "Represents other type."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "USER",
@@ -2816,14 +2774,21 @@
             "GROUP",
             "OTHER"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Default. Should not be used.",
+            "Represents user type.",
+            "Represents service account type.",
+            "Represents group type.",
+            "Represents other type."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. The time when the `Membership` was last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2851,8 +2816,8 @@
       "id": "MembershipRole",
       "properties": {
         "expiryDetail": {
-          "description": "The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.",
-          "$ref": "ExpiryDetail"
+          "$ref": "ExpiryDetail",
+          "description": "The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value."
         },
         "name": {
           "description": "The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.",
@@ -2894,8 +2859,8 @@
       "id": "ModifyMembershipRolesResponse",
       "properties": {
         "membership": {
-          "description": "The `Membership` resource after modifying its `MembershipRole`s.",
-          "$ref": "Membership"
+          "$ref": "Membership",
+          "description": "The `Membership` resource after modifying its `MembershipRole`s."
         }
       },
       "type": "object"
@@ -2909,8 +2874,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -3037,8 +3002,8 @@
           "type": "string"
         },
         "membershipRole": {
-          "description": "The `MembershipRole`s to be updated. Only `MEMBER` `MembershipRoles` can currently be updated. May only contain a `MembershipRole` with `name` `MEMBER`.",
-          "$ref": "MembershipRole"
+          "$ref": "MembershipRole",
+          "description": "The `MembershipRole`s to be updated. Only `MEMBER` `MembershipRoles` can currently be updated. May only contain a `MembershipRole` with `name` `MEMBER`."
         }
       },
       "type": "object"
@@ -3058,19 +3023,19 @@
         },
         "state": {
           "description": "State of the `UserInvitation`.",
-          "enumDescriptions": [
-            "The default value. This value is used if the state is omitted.",
-            "The `UserInvitation` has been created and is ready for sending as an email.",
-            "The user has been invited by email.",
-            "The user has accepted the invitation and is part of the organization.",
-            "The user declined the invitation."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "NOT_YET_SENT",
             "INVITED",
             "ACCEPTED",
             "DECLINED"
+          ],
+          "enumDescriptions": [
+            "The default value. This value is used if the state is omitted.",
+            "The `UserInvitation` has been created and is ready for sending as an email.",
+            "The user has been invited by email.",
+            "The user has accepted the invitation and is part of the organization.",
+            "The user declined the invitation."
           ],
           "type": "string"
         },
@@ -3098,8 +3063,8 @@
       "id": "WipeDeviceResponse",
       "properties": {
         "device": {
-          "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object.",
-          "$ref": "Device"
+          "$ref": "Device",
+          "description": "Resultant Device object for the action. Note that asset tags will not be returned in the device object."
         }
       },
       "type": "object"
@@ -3120,8 +3085,8 @@
       "id": "WipeDeviceUserResponse",
       "properties": {
         "deviceUser": {
-          "description": "Resultant DeviceUser object for the action.",
-          "$ref": "DeviceUser"
+          "$ref": "DeviceUser",
+          "description": "Resultant DeviceUser object for the action."
         }
       },
       "type": "object"
@@ -3129,6 +3094,6 @@
   },
   "servicePath": "",
   "title": "Cloud Identity API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

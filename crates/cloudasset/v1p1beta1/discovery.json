@@ -15,29 +15,27 @@
   "description": "The cloud asset API manages the history and inventory of cloud resources.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/asset-inventory/docs/quickstart",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudasset:v1p1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudasset.mtls.googleapis.com/",
   "name": "cloudasset",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "searchAll": {
           "description": "Searches all the IAM policies within a given accessible CRM scope (project/folder/organization). This RPC gives callers especially administrators the ability to search all the IAM policies within a scope, even if they don't have `.getIamPolicy` permission of all the IAM policies. Callers should have `cloud.assets.SearchAllIamPolicies` permission on the requested scope, otherwise the request will be rejected.",
           "httpMethod": "GET",
-          "flatPath": "v1p1beta1/{v1p1beta1Id}/{v1p1beta1Id1}/iamPolicies:searchAll",
           "id": "cloudasset.iamPolicies.searchAll",
           "parameterOrder": [
             "scope"
@@ -136,8 +133,8 @@
               "description": "Required. The relative name of an asset. The search is limited to the resources within the `scope`. The allowed value must be: * Organization number (such as \"organizations/123\") * Folder number(such as \"folders/1234\") * Project number (such as \"projects/12345\") * Project id (such as \"projects/abc\")",
               "location": "path",
               "pattern": "^[^/]+/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1p1beta1/{+scope}/iamPolicies:searchAll",
@@ -155,7 +152,6 @@
         "searchAll": {
           "description": "Searches all the resources within a given accessible CRM scope (project/folder/organization). This RPC gives callers especially administrators the ability to search all the resources within a scope, even if they don't have `.get` permission of all the resources. Callers should have `cloud.assets.SearchAllResources` permission on the requested scope, otherwise the request will be rejected.",
           "httpMethod": "GET",
-          "flatPath": "v1p1beta1/{v1p1beta1Id}/{v1p1beta1Id1}/resources:searchAll",
           "id": "cloudasset.resources.searchAll",
           "parameterOrder": [
             "scope"
@@ -164,8 +160,8 @@
             "assetTypes": {
               "description": "Optional. A list of asset types that this request searches for. If empty, it will search all the supported asset types.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "orderBy": {
               "description": "Optional. A comma separated list of fields specifying the sorting order of the results. The default order is ascending. Add ` DESC` after the field name to indicate descending order. Redundant space characters are ignored. For example, ` location DESC , name `.",
@@ -192,8 +188,8 @@
               "description": "Required. The relative name of an asset. The search is limited to the resources within the `scope`. The allowed value must be: * Organization number (such as \"organizations/123\") * Folder number(such as \"folders/1234\") * Project number (such as \"projects/12345\") * Project id (such as \"projects/abc\")",
               "location": "path",
               "pattern": "^[^/]+/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1p1beta1/{+scope}/resources:searchAll",
@@ -241,17 +237,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -263,8 +259,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -322,12 +318,12 @@
       "id": "IamPolicySearchResult",
       "properties": {
         "explanation": {
-          "description": "Explanation about the IAM policy search result. It contains additional information to explain why the search result matches the query.",
-          "$ref": "Explanation"
+          "$ref": "Explanation",
+          "description": "Explanation about the IAM policy search result. It contains additional information to explain why the search result matches the query."
         },
         "policy": {
-          "description": "The IAM policy directly set on the given resource. Note that the original IAM policy can contain multiple bindings. This only contains the bindings that match the given query. For queries that don't contain a constrain on policies (e.g. an empty query), this contains all the bindings.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "The IAM policy directly set on the given resource. Note that the original IAM policy can contain multiple bindings. This only contains the bindings that match the given query. For queries that don't contain a constrain on policies (e.g. an empty query), this contains all the bindings."
         },
         "project": {
           "description": "The project that the associated GCP resource belongs to, in the form of `projects/{project_number}`. If an IAM policy is set on a resource (like VM instance, Cloud Storage bucket), the project field will indicate the project that contains the resource. If an IAM policy is set on a folder or orgnization, the project field will be empty.",
@@ -476,6 +472,6 @@
   },
   "servicePath": "",
   "title": "Cloud Asset API",
-  "version_module": true,
-  "version": "v1p1beta1"
+  "version": "v1p1beta1",
+  "version_module": true
 }

@@ -15,29 +15,27 @@
   "description": "Creates short-lived credentials for impersonating IAM service accounts. To enable this API, you must enable the IAM API (iam.googleapis.com). ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "iamcredentials:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://iamcredentials.mtls.googleapis.com/",
   "name": "iamcredentials",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "generateAccessToken": {
               "description": "Generates an OAuth 2.0 access token for a service account.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:generateAccessToken",
               "id": "iamcredentials.projects.serviceAccounts.generateAccessToken",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:generateAccessToken",
@@ -140,7 +137,6 @@
             "generateIdToken": {
               "description": "Generates an OpenID Connect ID token for a service account.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:generateIdToken",
               "id": "iamcredentials.projects.serviceAccounts.generateIdToken",
               "parameterOrder": [
                 "name"
@@ -150,8 +146,8 @@
                   "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:generateIdToken",
@@ -168,7 +164,6 @@
             "signBlob": {
               "description": "Signs a blob using a service account's system-managed private key.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signBlob",
               "id": "iamcredentials.projects.serviceAccounts.signBlob",
               "parameterOrder": [
                 "name"
@@ -178,8 +173,8 @@
                   "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:signBlob",
@@ -196,7 +191,6 @@
             "signJwt": {
               "description": "Signs a JWT using a service account's system-managed private key.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signJwt",
               "id": "iamcredentials.projects.serviceAccounts.signJwt",
               "parameterOrder": [
                 "name"
@@ -206,8 +200,8 @@
                   "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:signJwt",
@@ -226,7 +220,7 @@
       }
     }
   },
-  "revision": "20210205",
+  "revision": "20210219",
   "rootUrl": "https://iamcredentials.googleapis.com/",
   "schemas": {
     "GenerateAccessTokenRequest": {
@@ -367,6 +361,6 @@
   },
   "servicePath": "",
   "title": "IAM Service Account Credentials API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

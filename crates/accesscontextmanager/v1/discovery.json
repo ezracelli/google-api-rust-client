@@ -15,29 +15,27 @@
   "description": "An API for setting attribute based access control to requests to GCP services.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/access-context-manager/docs/reference/rest/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "accesscontextmanager:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://accesscontextmanager.mtls.googleapis.com/",
   "name": "accesscontextmanager",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "create": {
           "description": "Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.",
           "httpMethod": "POST",
-          "flatPath": "v1/accessPolicies",
           "id": "accesscontextmanager.accessPolicies.create",
           "parameterOrder": [],
           "parameters": {},
@@ -128,7 +125,6 @@
         "delete": {
           "description": "Delete an AccessPolicy by resource name. The longrunning Operation will have a successful status once the AccessPolicy has been removed from long-lasting storage.",
           "httpMethod": "DELETE",
-          "flatPath": "v1/accessPolicies/{accessPoliciesId}",
           "id": "accesscontextmanager.accessPolicies.delete",
           "parameterOrder": [
             "name"
@@ -138,8 +134,8 @@
               "description": "Required. Resource name for the access policy to delete. Format `accessPolicies/{policy_id}`",
               "location": "path",
               "pattern": "^accessPolicies/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -153,7 +149,6 @@
         "get": {
           "description": "Get an AccessPolicy by name.",
           "httpMethod": "GET",
-          "flatPath": "v1/accessPolicies/{accessPoliciesId}",
           "id": "accesscontextmanager.accessPolicies.get",
           "parameterOrder": [
             "name"
@@ -163,8 +158,8 @@
               "description": "Required. Resource name for the access policy to get. Format `accessPolicies/{policy_id}`",
               "location": "path",
               "pattern": "^accessPolicies/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -178,7 +173,6 @@
         "list": {
           "description": "List all AccessPolicies under a container.",
           "httpMethod": "GET",
-          "flatPath": "v1/accessPolicies",
           "id": "accesscontextmanager.accessPolicies.list",
           "parameterOrder": [],
           "parameters": {
@@ -210,7 +204,6 @@
         "patch": {
           "description": "Update an AccessPolicy. The longrunning Operation from this RPC will have a successful status once the changes to the AccessPolicy have propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.",
           "httpMethod": "PATCH",
-          "flatPath": "v1/accessPolicies/{accessPoliciesId}",
           "id": "accesscontextmanager.accessPolicies.patch",
           "parameterOrder": [
             "name"
@@ -220,8 +213,8 @@
               "description": "Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`",
               "location": "path",
               "pattern": "^accessPolicies/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "Required. Mask to control which fields get updated. Must be non-empty.",
@@ -248,7 +241,6 @@
             "create": {
               "description": "Create an Access Level. The longrunning operation from this RPC will have a successful status once the Access Level has propagated to long-lasting storage. Access Levels containing errors will result in an error response for the first error encountered.",
               "httpMethod": "POST",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/accessLevels",
               "id": "accesscontextmanager.accessPolicies.accessLevels.create",
               "parameterOrder": [
                 "parent"
@@ -258,8 +250,8 @@
                   "description": "Required. Resource name for the access policy which owns this Access Level. Format: `accessPolicies/{policy_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/accessLevels",
@@ -276,7 +268,6 @@
             "delete": {
               "description": "Delete an Access Level by resource name. The longrunning operation from this RPC will have a successful status once the Access Level has been removed from long-lasting storage.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/accessLevels/{accessLevelsId}",
               "id": "accesscontextmanager.accessPolicies.accessLevels.delete",
               "parameterOrder": [
                 "name"
@@ -286,8 +277,8 @@
                   "description": "Required. Resource name for the Access Level. Format: `accessPolicies/{policy_id}/accessLevels/{access_level_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+/accessLevels/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -301,7 +292,6 @@
             "get": {
               "description": "Get an Access Level by resource name.",
               "httpMethod": "GET",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/accessLevels/{accessLevelsId}",
               "id": "accesscontextmanager.accessPolicies.accessLevels.get",
               "parameterOrder": [
                 "name"
@@ -309,25 +299,25 @@
               "parameters": {
                 "accessLevelFormat": {
                   "description": "Whether to return `BasicLevels` in the Cloud Common Expression Language rather than as `BasicLevels`. Defaults to AS_DEFINED, where Access Levels are returned as `BasicLevels` or `CustomLevels` based on how they were created. If set to CEL, all Access Levels are returned as `CustomLevels`. In the CEL case, `BasicLevels` are translated to equivalent `CustomLevels`.",
+                  "enum": [
+                    "LEVEL_FORMAT_UNSPECIFIED",
+                    "AS_DEFINED",
+                    "CEL"
+                  ],
                   "enumDescriptions": [
                     "The format was not specified.",
                     "Uses the format the resource was defined in. BasicLevels are returned as BasicLevels, CustomLevels are returned as CustomLevels.",
                     "Use Cloud Common Expression Language when returning the resource. Both BasicLevels and CustomLevels are returned as CustomLevels."
                   ],
                   "location": "query",
-                  "enum": [
-                    "LEVEL_FORMAT_UNSPECIFIED",
-                    "AS_DEFINED",
-                    "CEL"
-                  ],
                   "type": "string"
                 },
                 "name": {
                   "description": "Required. Resource name for the Access Level. Format: `accessPolicies/{policy_id}/accessLevels/{access_level_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+/accessLevels/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -341,7 +331,6 @@
             "list": {
               "description": "List all Access Levels for an access policy.",
               "httpMethod": "GET",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/accessLevels",
               "id": "accesscontextmanager.accessPolicies.accessLevels.list",
               "parameterOrder": [
                 "parent"
@@ -349,17 +338,17 @@
               "parameters": {
                 "accessLevelFormat": {
                   "description": "Whether to return `BasicLevels` in the Cloud Common Expression language, as `CustomLevels`, rather than as `BasicLevels`. Defaults to returning `AccessLevels` in the format they were defined.",
+                  "enum": [
+                    "LEVEL_FORMAT_UNSPECIFIED",
+                    "AS_DEFINED",
+                    "CEL"
+                  ],
                   "enumDescriptions": [
                     "The format was not specified.",
                     "Uses the format the resource was defined in. BasicLevels are returned as BasicLevels, CustomLevels are returned as CustomLevels.",
                     "Use Cloud Common Expression Language when returning the resource. Both BasicLevels and CustomLevels are returned as CustomLevels."
                   ],
                   "location": "query",
-                  "enum": [
-                    "LEVEL_FORMAT_UNSPECIFIED",
-                    "AS_DEFINED",
-                    "CEL"
-                  ],
                   "type": "string"
                 },
                 "pageSize": {
@@ -377,8 +366,8 @@
                   "description": "Required. Resource name for the access policy to list Access Levels from. Format: `accessPolicies/{policy_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/accessLevels",
@@ -392,7 +381,6 @@
             "patch": {
               "description": "Update an Access Level. The longrunning operation from this RPC will have a successful status once the changes to the Access Level have propagated to long-lasting storage. Access Levels containing errors will result in an error response for the first error encountered.",
               "httpMethod": "PATCH",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/accessLevels/{accessLevelsId}",
               "id": "accesscontextmanager.accessPolicies.accessLevels.patch",
               "parameterOrder": [
                 "name"
@@ -402,8 +390,8 @@
                   "description": "Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+/accessLevels/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. Mask to control which fields get updated. Must be non-empty.",
@@ -426,7 +414,6 @@
             "replaceAll": {
               "description": "Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is done atomically. The longrunning operation from this RPC will have a successful status once all replacements have propagated to long-lasting storage. Replacements containing errors will result in an error response for the first error encountered. Replacement will be cancelled on error, existing Access Levels will not be affected. Operation.response field will contain ReplaceAccessLevelsResponse. Removing Access Levels contained in existing Service Perimeters will result in error.",
               "httpMethod": "POST",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/accessLevels:replaceAll",
               "id": "accesscontextmanager.accessPolicies.accessLevels.replaceAll",
               "parameterOrder": [
                 "parent"
@@ -436,8 +423,8 @@
                   "description": "Required. Resource name for the access policy which owns these Access Levels. Format: `accessPolicies/{policy_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/accessLevels:replaceAll",
@@ -458,7 +445,6 @@
             "commit": {
               "description": "Commit the dry-run spec for all the Service Perimeters in an Access Policy. A commit operation on a Service Perimeter involves copying its `spec` field to that Service Perimeter's `status` field. Only Service Perimeters with `use_explicit_dry_run_spec` field set to true are affected by a commit operation. The longrunning operation from this RPC will have a successful status once the dry-run specs for all the Service Perimeters have been committed. If a commit fails, it will cause the longrunning operation to return an error response and the entire commit operation will be cancelled. When successful, Operation.response field will contain CommitServicePerimetersResponse. The `dry_run` and the `spec` fields will be cleared after a successful commit operation.",
               "httpMethod": "POST",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/servicePerimeters:commit",
               "id": "accesscontextmanager.accessPolicies.servicePerimeters.commit",
               "parameterOrder": [
                 "parent"
@@ -468,8 +454,8 @@
                   "description": "Required. Resource name for the parent Access Policy which owns all Service Perimeters in scope for the commit operation. Format: `accessPolicies/{policy_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/servicePerimeters:commit",
@@ -486,7 +472,6 @@
             "create": {
               "description": "Create a Service Perimeter. The longrunning operation from this RPC will have a successful status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing errors will result in an error response for the first error encountered.",
               "httpMethod": "POST",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/servicePerimeters",
               "id": "accesscontextmanager.accessPolicies.servicePerimeters.create",
               "parameterOrder": [
                 "parent"
@@ -496,8 +481,8 @@
                   "description": "Required. Resource name for the access policy which owns this Service Perimeter. Format: `accessPolicies/{policy_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/servicePerimeters",
@@ -514,7 +499,6 @@
             "delete": {
               "description": "Delete a Service Perimeter by resource name. The longrunning operation from this RPC will have a successful status once the Service Perimeter has been removed from long-lasting storage.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/servicePerimeters/{servicePerimetersId}",
               "id": "accesscontextmanager.accessPolicies.servicePerimeters.delete",
               "parameterOrder": [
                 "name"
@@ -524,8 +508,8 @@
                   "description": "Required. Resource name for the Service Perimeter. Format: `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+/servicePerimeters/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -539,7 +523,6 @@
             "get": {
               "description": "Get a Service Perimeter by resource name.",
               "httpMethod": "GET",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/servicePerimeters/{servicePerimetersId}",
               "id": "accesscontextmanager.accessPolicies.servicePerimeters.get",
               "parameterOrder": [
                 "name"
@@ -549,8 +532,8 @@
                   "description": "Required. Resource name for the Service Perimeter. Format: `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+/servicePerimeters/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -564,7 +547,6 @@
             "list": {
               "description": "List all Service Perimeters for an access policy.",
               "httpMethod": "GET",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/servicePerimeters",
               "id": "accesscontextmanager.accessPolicies.servicePerimeters.list",
               "parameterOrder": [
                 "parent"
@@ -585,8 +567,8 @@
                   "description": "Required. Resource name for the access policy to list Service Perimeters from. Format: `accessPolicies/{policy_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/servicePerimeters",
@@ -600,7 +582,6 @@
             "patch": {
               "description": "Update a Service Perimeter. The longrunning operation from this RPC will have a successful status once the changes to the Service Perimeter have propagated to long-lasting storage. Service Perimeter containing errors will result in an error response for the first error encountered.",
               "httpMethod": "PATCH",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/servicePerimeters/{servicePerimetersId}",
               "id": "accesscontextmanager.accessPolicies.servicePerimeters.patch",
               "parameterOrder": [
                 "name"
@@ -610,8 +591,8 @@
                   "description": "Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+/servicePerimeters/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. Mask to control which fields get updated. Must be non-empty.",
@@ -634,7 +615,6 @@
             "replaceAll": {
               "description": "Replace all existing Service Perimeters in an Access Policy with the Service Perimeters provided. This is done atomically. The longrunning operation from this RPC will have a successful status once all replacements have propagated to long-lasting storage. Replacements containing errors will result in an error response for the first error encountered. Replacement will be cancelled on error, existing Service Perimeters will not be affected. Operation.response field will contain ReplaceServicePerimetersResponse.",
               "httpMethod": "POST",
-              "flatPath": "v1/accessPolicies/{accessPoliciesId}/servicePerimeters:replaceAll",
               "id": "accesscontextmanager.accessPolicies.servicePerimeters.replaceAll",
               "parameterOrder": [
                 "parent"
@@ -644,8 +624,8 @@
                   "description": "Required. Resource name for the access policy which owns these Service Perimeters. Format: `accessPolicies/{policy_id}`",
                   "location": "path",
                   "pattern": "^accessPolicies/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/servicePerimeters:replaceAll",
@@ -668,7 +648,6 @@
         "cancel": {
           "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
           "httpMethod": "POST",
-          "flatPath": "v1/operations/{operationsId}:cancel",
           "id": "accesscontextmanager.operations.cancel",
           "parameterOrder": [
             "name"
@@ -678,8 +657,8 @@
               "description": "The name of the operation resource to be cancelled.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}:cancel",
@@ -696,7 +675,6 @@
         "delete": {
           "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
           "httpMethod": "DELETE",
-          "flatPath": "v1/operations/{operationsId}",
           "id": "accesscontextmanager.operations.delete",
           "parameterOrder": [
             "name"
@@ -706,8 +684,8 @@
               "description": "The name of the operation resource to be deleted.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -721,7 +699,6 @@
         "get": {
           "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
           "httpMethod": "GET",
-          "flatPath": "v1/operations/{operationsId}",
           "id": "accesscontextmanager.operations.get",
           "parameterOrder": [
             "name"
@@ -731,8 +708,8 @@
               "description": "The name of the operation resource.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -746,7 +723,6 @@
         "list": {
           "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
           "httpMethod": "GET",
-          "flatPath": "v1/operations",
           "id": "accesscontextmanager.operations.list",
           "parameterOrder": [
             "name"
@@ -761,8 +737,8 @@
               "description": "The name of the operation's parent resource.",
               "location": "path",
               "pattern": "^operations$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageSize": {
               "description": "The standard list page size.",
@@ -793,7 +769,6 @@
             "create": {
               "description": "Creates a GcpUserAccessBinding. If the client specifies a name, the server will ignore it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.",
               "httpMethod": "POST",
-              "flatPath": "v1/organizations/{organizationsId}/gcpUserAccessBindings",
               "id": "accesscontextmanager.organizations.gcpUserAccessBindings.create",
               "parameterOrder": [
                 "parent"
@@ -803,8 +778,8 @@
                   "description": "Required. Example: \"organizations/256\"",
                   "location": "path",
                   "pattern": "^organizations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/gcpUserAccessBindings",
@@ -821,7 +796,6 @@
             "delete": {
               "description": "Deletes a GcpUserAccessBinding. Completion of this long-running operation does not necessarily signify that the binding deletion is deployed onto all affected users, which may take more time.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/organizations/{organizationsId}/gcpUserAccessBindings/{gcpUserAccessBindingsId}",
               "id": "accesscontextmanager.organizations.gcpUserAccessBindings.delete",
               "parameterOrder": [
                 "name"
@@ -831,8 +805,8 @@
                   "description": "Required. Example: \"organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N\"",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/gcpUserAccessBindings/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -846,7 +820,6 @@
             "get": {
               "description": "Gets the GcpUserAccessBinding with the given name.",
               "httpMethod": "GET",
-              "flatPath": "v1/organizations/{organizationsId}/gcpUserAccessBindings/{gcpUserAccessBindingsId}",
               "id": "accesscontextmanager.organizations.gcpUserAccessBindings.get",
               "parameterOrder": [
                 "name"
@@ -856,8 +829,8 @@
                   "description": "Required. Example: \"organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N\"",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/gcpUserAccessBindings/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -871,7 +844,6 @@
             "list": {
               "description": "Lists all GcpUserAccessBindings for a Google Cloud organization.",
               "httpMethod": "GET",
-              "flatPath": "v1/organizations/{organizationsId}/gcpUserAccessBindings",
               "id": "accesscontextmanager.organizations.gcpUserAccessBindings.list",
               "parameterOrder": [
                 "parent"
@@ -892,8 +864,8 @@
                   "description": "Required. Example: \"organizations/256\"",
                   "location": "path",
                   "pattern": "^organizations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/gcpUserAccessBindings",
@@ -907,7 +879,6 @@
             "patch": {
               "description": "Updates a GcpUserAccessBinding. Completion of this long-running operation does not necessarily signify that the changed binding is deployed onto all affected users, which may take more time.",
               "httpMethod": "PATCH",
-              "flatPath": "v1/organizations/{organizationsId}/gcpUserAccessBindings/{gcpUserAccessBindingsId}",
               "id": "accesscontextmanager.organizations.gcpUserAccessBindings.patch",
               "parameterOrder": [
                 "name"
@@ -917,8 +888,8 @@
                   "description": "Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: \"organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N\"",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/gcpUserAccessBindings/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. Only the fields specified in this mask are updated. Because name and group_key cannot be changed, update_mask is required and must always be: update_mask { paths: \"access_levels\" }",
@@ -951,12 +922,12 @@
       "id": "AccessLevel",
       "properties": {
         "basic": {
-          "description": "A `BasicLevel` composed of `Conditions`.",
-          "$ref": "BasicLevel"
+          "$ref": "BasicLevel",
+          "description": "A `BasicLevel` composed of `Conditions`."
         },
         "custom": {
-          "description": "A `CustomLevel` written in the Common Expression Language.",
-          "$ref": "CustomLevel"
+          "$ref": "CustomLevel",
+          "description": "A `CustomLevel` written in the Common Expression Language."
         },
         "description": {
           "description": "Description of the `AccessLevel` and its use. Does not affect behavior.",
@@ -1020,13 +991,13 @@
       "properties": {
         "combiningFunction": {
           "description": "How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.",
-          "enumDescriptions": [
-            "All `Conditions` must be true for the `BasicLevel` to be true.",
-            "If at least one `Condition` is true, then the `BasicLevel` is true."
-          ],
           "enum": [
             "AND",
             "OR"
+          ],
+          "enumDescriptions": [
+            "All `Conditions` must be true for the `BasicLevel` to be true.",
+            "If at least one `Condition` is true, then the `BasicLevel` is true."
           ],
           "type": "string"
         },
@@ -1076,8 +1047,8 @@
       "id": "Condition",
       "properties": {
         "devicePolicy": {
-          "description": "Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed.",
-          "$ref": "DevicePolicy"
+          "$ref": "DevicePolicy",
+          "description": "Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed."
         },
         "ipSubnetworks": {
           "description": "CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, \"192.0.2.0/24\" is accepted but \"192.0.2.1/24\" is not. Similarly, for IPv6, \"2001:db8::/32\" is accepted whereas \"2001:db8::1/32\" is not. The originating IP of a request must be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed.",
@@ -1119,8 +1090,8 @@
       "id": "CustomLevel",
       "properties": {
         "expr": {
-          "description": "Required. A Cloud CEL expression evaluating to a boolean.",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "Required. A Cloud CEL expression evaluating to a boolean."
         }
       },
       "type": "object"
@@ -1132,17 +1103,17 @@
         "allowedDeviceManagementLevels": {
           "description": "Allowed device management levels, an empty list allows all management levels.",
           "items": {
-            "enumDescriptions": [
-              "The device's management level is not specified or not known.",
-              "The device is not managed.",
-              "Basic management is enabled, which is generally limited to monitoring and wiping the corporate account.",
-              "Complete device management. This includes more thorough monitoring and the ability to directly manage the device (such as remote wiping). This can be enabled through the Android Enterprise Platform."
-            ],
             "enum": [
               "MANAGEMENT_UNSPECIFIED",
               "NONE",
               "BASIC",
               "COMPLETE"
+            ],
+            "enumDescriptions": [
+              "The device's management level is not specified or not known.",
+              "The device is not managed.",
+              "Basic management is enabled, which is generally limited to monitoring and wiping the corporate account.",
+              "Complete device management. This includes more thorough monitoring and the ability to directly manage the device (such as remote wiping). This can be enabled through the Android Enterprise Platform."
             ],
             "type": "string"
           },
@@ -1151,17 +1122,17 @@
         "allowedEncryptionStatuses": {
           "description": "Allowed encryptions statuses, an empty list allows all statuses.",
           "items": {
-            "enumDescriptions": [
-              "The encryption status of the device is not specified or not known.",
-              "The device does not support encryption.",
-              "The device supports encryption, but is currently unencrypted.",
-              "The device is encrypted."
-            ],
             "enum": [
               "ENCRYPTION_UNSPECIFIED",
               "ENCRYPTION_UNSUPPORTED",
               "UNENCRYPTED",
               "ENCRYPTED"
+            ],
+            "enumDescriptions": [
+              "The encryption status of the device is not specified or not known.",
+              "The device does not support encryption.",
+              "The device supports encryption, but is currently unencrypted.",
+              "The device is encrypted."
             ],
             "type": "string"
           },
@@ -1202,17 +1173,17 @@
         },
         "identityType": {
           "description": "Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.",
-          "enumDescriptions": [
-            "No blanket identity group specified.",
-            "Authorize access from all identities outside the perimeter.",
-            "Authorize access from all human users outside the perimeter.",
-            "Authorize access from all service accounts outside the perimeter."
-          ],
           "enum": [
             "IDENTITY_TYPE_UNSPECIFIED",
             "ANY_IDENTITY",
             "ANY_USER_ACCOUNT",
             "ANY_SERVICE_ACCOUNT"
+          ],
+          "enumDescriptions": [
+            "No blanket identity group specified.",
+            "Authorize access from all identities outside the perimeter.",
+            "Authorize access from all human users outside the perimeter.",
+            "Authorize access from all service accounts outside the perimeter."
           ],
           "type": "string"
         }
@@ -1224,12 +1195,12 @@
       "id": "EgressPolicy",
       "properties": {
         "egressFrom": {
-          "description": "Defines conditions on the source of a request causing this EgressPolicy to apply.",
-          "$ref": "EgressFrom"
+          "$ref": "EgressFrom",
+          "description": "Defines conditions on the source of a request causing this EgressPolicy to apply."
         },
         "egressTo": {
-          "description": "Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.",
-          "$ref": "EgressTo"
+          "$ref": "EgressTo",
+          "description": "Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply."
         }
       },
       "type": "object"
@@ -1319,17 +1290,17 @@
         },
         "identityType": {
           "description": "Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.",
-          "enumDescriptions": [
-            "No blanket identity group specified.",
-            "Authorize access from all identities outside the perimeter.",
-            "Authorize access from all human users outside the perimeter.",
-            "Authorize access from all service accounts outside the perimeter."
-          ],
           "enum": [
             "IDENTITY_TYPE_UNSPECIFIED",
             "ANY_IDENTITY",
             "ANY_USER_ACCOUNT",
             "ANY_SERVICE_ACCOUNT"
+          ],
+          "enumDescriptions": [
+            "No blanket identity group specified.",
+            "Authorize access from all identities outside the perimeter.",
+            "Authorize access from all human users outside the perimeter.",
+            "Authorize access from all service accounts outside the perimeter."
           ],
           "type": "string"
         },
@@ -1348,12 +1319,12 @@
       "id": "IngressPolicy",
       "properties": {
         "ingressFrom": {
-          "description": "Defines the conditions on the source of a request causing this IngressPolicy to apply.",
-          "$ref": "IngressFrom"
+          "$ref": "IngressFrom",
+          "description": "Defines the conditions on the source of a request causing this IngressPolicy to apply."
         },
         "ingressTo": {
-          "description": "Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply.",
-          "$ref": "IngressTo"
+          "$ref": "IngressTo",
+          "description": "Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply."
         }
       },
       "type": "object"
@@ -1508,8 +1479,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1544,15 +1515,6 @@
         },
         "osType": {
           "description": "Required. The allowed OS type.",
-          "enumDescriptions": [
-            "The operating system of the device is not specified or not known.",
-            "A desktop Mac operating system.",
-            "A desktop Windows operating system.",
-            "A desktop Linux operating system.",
-            "A desktop ChromeOS operating system.",
-            "An Android operating system.",
-            "An iOS operating system."
-          ],
           "enum": [
             "OS_UNSPECIFIED",
             "DESKTOP_MAC",
@@ -1561,6 +1523,15 @@
             "DESKTOP_CHROME_OS",
             "ANDROID",
             "IOS"
+          ],
+          "enumDescriptions": [
+            "The operating system of the device is not specified or not known.",
+            "A desktop Mac operating system.",
+            "A desktop Windows operating system.",
+            "A desktop Linux operating system.",
+            "A desktop ChromeOS operating system.",
+            "An Android operating system.",
+            "An iOS operating system."
           ],
           "type": "string"
         },
@@ -1649,23 +1620,23 @@
         },
         "perimeterType": {
           "description": "Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.",
-          "enumDescriptions": [
-            "Regular Perimeter.",
-            "Perimeter Bridge."
-          ],
           "enum": [
             "PERIMETER_TYPE_REGULAR",
             "PERIMETER_TYPE_BRIDGE"
           ],
+          "enumDescriptions": [
+            "Regular Perimeter.",
+            "Perimeter Bridge."
+          ],
           "type": "string"
         },
         "spec": {
-          "description": "Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the \"use_explicit_dry_run_spec\" flag is set.",
-          "$ref": "ServicePerimeterConfig"
+          "$ref": "ServicePerimeterConfig",
+          "description": "Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the \"use_explicit_dry_run_spec\" flag is set."
         },
         "status": {
-          "description": "Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.",
-          "$ref": "ServicePerimeterConfig"
+          "$ref": "ServicePerimeterConfig",
+          "description": "Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries."
         },
         "title": {
           "description": "Human readable title. Must be unique within the Policy.",
@@ -1718,8 +1689,8 @@
           "type": "array"
         },
         "vpcAccessibleServices": {
-          "description": "Configuration for APIs allowed within Perimeter.",
-          "$ref": "VpcAccessibleServices"
+          "$ref": "VpcAccessibleServices",
+          "description": "Configuration for APIs allowed within Perimeter."
         }
       },
       "type": "object"
@@ -1772,6 +1743,6 @@
   },
   "servicePath": "",
   "title": "Access Context Manager API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

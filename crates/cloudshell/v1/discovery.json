@@ -15,29 +15,27 @@
   "description": "Allows users to start, configure, and connect to interactive shell sessions running in the cloud. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/shell/docs/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudshell:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudshell.mtls.googleapis.com/",
   "name": "cloudshell",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "cancel": {
           "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
           "httpMethod": "POST",
-          "flatPath": "v1/operations/{operationsId}:cancel",
           "id": "cloudshell.operations.cancel",
           "parameterOrder": [
             "name"
@@ -120,8 +117,8 @@
               "description": "The name of the operation resource to be cancelled.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}:cancel",
@@ -138,7 +135,6 @@
         "delete": {
           "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
           "httpMethod": "DELETE",
-          "flatPath": "v1/operations/{operationsId}",
           "id": "cloudshell.operations.delete",
           "parameterOrder": [
             "name"
@@ -148,8 +144,8 @@
               "description": "The name of the operation resource to be deleted.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -163,7 +159,6 @@
         "get": {
           "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
           "httpMethod": "GET",
-          "flatPath": "v1/operations/{operationsId}",
           "id": "cloudshell.operations.get",
           "parameterOrder": [
             "name"
@@ -173,8 +168,8 @@
               "description": "The name of the operation resource.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -188,7 +183,6 @@
         "list": {
           "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
           "httpMethod": "GET",
-          "flatPath": "v1/operations",
           "id": "cloudshell.operations.list",
           "parameterOrder": [
             "name"
@@ -203,8 +197,8 @@
               "description": "The name of the operation's parent resource.",
               "location": "path",
               "pattern": "^operations$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "pageSize": {
               "description": "The standard list page size.",
@@ -235,7 +229,6 @@
             "addPublicKey": {
               "description": "Adds a public SSH key to an environment, allowing clients with the corresponding private key to connect to that environment via SSH. If a key with the same content already exists, this will error with ALREADY_EXISTS.",
               "httpMethod": "POST",
-              "flatPath": "v1/users/{usersId}/environments/{environmentsId}:addPublicKey",
               "id": "cloudshell.users.environments.addPublicKey",
               "parameterOrder": [
                 "environment"
@@ -245,8 +238,8 @@
                   "description": "Environment this key should be added to, e.g. `users/me/environments/default`.",
                   "location": "path",
                   "pattern": "^users/[^/]+/environments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+environment}:addPublicKey",
@@ -263,7 +256,6 @@
             "authorize": {
               "description": "Sends OAuth credentials to a running environment on behalf of a user. When this completes, the environment will be authorized to run various Google Cloud command line tools without requiring the user to manually authenticate.",
               "httpMethod": "POST",
-              "flatPath": "v1/users/{usersId}/environments/{environmentsId}:authorize",
               "id": "cloudshell.users.environments.authorize",
               "parameterOrder": [
                 "name"
@@ -273,8 +265,8 @@
                   "description": "Name of the resource that should receive the credentials, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.",
                   "location": "path",
                   "pattern": "^users/[^/]+/environments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:authorize",
@@ -291,7 +283,6 @@
             "get": {
               "description": "Gets an environment. Returns NOT_FOUND if the environment does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1/users/{usersId}/environments/{environmentsId}",
               "id": "cloudshell.users.environments.get",
               "parameterOrder": [
                 "name"
@@ -301,8 +292,8 @@
                   "description": "Required. Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.",
                   "location": "path",
                   "pattern": "^users/[^/]+/environments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -316,7 +307,6 @@
             "removePublicKey": {
               "description": "Removes a public SSH key from an environment. Clients will no longer be able to connect to the environment using the corresponding private key. If a key with the same content is not present, this will error with NOT_FOUND.",
               "httpMethod": "POST",
-              "flatPath": "v1/users/{usersId}/environments/{environmentsId}:removePublicKey",
               "id": "cloudshell.users.environments.removePublicKey",
               "parameterOrder": [
                 "environment"
@@ -326,8 +316,8 @@
                   "description": "Environment this key should be removed from, e.g. `users/me/environments/default`.",
                   "location": "path",
                   "pattern": "^users/[^/]+/environments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+environment}:removePublicKey",
@@ -344,7 +334,6 @@
             "start": {
               "description": "Starts an existing environment, allowing clients to connect to it. The returned operation will contain an instance of StartEnvironmentMetadata in its metadata field. Users can wait for the environment to start by polling this operation via GetOperation. Once the environment has finished starting and is ready to accept connections, the operation will contain a StartEnvironmentResponse in its response field.",
               "httpMethod": "POST",
-              "flatPath": "v1/users/{usersId}/environments/{environmentsId}:start",
               "id": "cloudshell.users.environments.start",
               "parameterOrder": [
                 "name"
@@ -354,8 +343,8 @@
                   "description": "Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.",
                   "location": "path",
                   "pattern": "^users/[^/]+/environments/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:start",
@@ -374,7 +363,7 @@
       }
     }
   },
-  "revision": "20210217",
+  "revision": "20210219",
   "rootUrl": "https://cloudshell.googleapis.com/",
   "schemas": {
     "AddPublicKeyMetadata": {
@@ -471,8 +460,8 @@
         },
         "id": {
           "description": "Output only. The environment's identifier, unique among the user's environments.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Immutable. Full name of this resource, in the format `users/{owner_email}/environments/{environment_id}`. `{owner_email}` is the email address of the user to whom this environment belongs, and `{environment_id}` is the identifier of this environment. For example, `users/someone@example.com/environments/default`.",
@@ -483,34 +472,27 @@
           "items": {
             "type": "string"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "sshHost": {
           "description": "Output only. Host to which clients can connect to initiate SSH sessions with the environment.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "sshPort": {
           "description": "Output only. Port to which clients can connect to initiate SSH sessions with the environment.",
           "format": "int32",
-          "type": "integer",
-          "readOnly": true
+          "readOnly": true,
+          "type": "integer"
         },
         "sshUsername": {
           "description": "Output only. Username that clients should use when initiating SSH sessions with the environment.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "state": {
           "description": "Output only. Current execution state of this environment.",
-          "enumDescriptions": [
-            "The environment's states is unknown.",
-            "The environment is not running and can't be connected to. Starting the environment will transition it to the PENDING state.",
-            "The environment is being started but is not yet ready to accept connections.",
-            "The environment is running and ready to accept connections. It will automatically transition back to DISABLED after a period of inactivity or if another environment is started.",
-            "The environment is being deleted and can't be connected to."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "SUSPENDED",
@@ -518,13 +500,20 @@
             "RUNNING",
             "DELETING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "The environment's states is unknown.",
+            "The environment is not running and can't be connected to. Starting the environment will transition it to the PENDING state.",
+            "The environment is being started but is not yet ready to accept connections.",
+            "The environment is running and ready to accept connections. It will automatically transition back to DISABLED after a period of inactivity or if another environment is started.",
+            "The environment is being deleted and can't be connected to."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "webHost": {
           "description": "Output only. Host to which clients can connect to initiate HTTPS or WSS connections with the environment.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -556,8 +545,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -611,19 +600,19 @@
       "properties": {
         "state": {
           "description": "Current state of the environment being started.",
-          "enumDescriptions": [
-            "The environment's start state is unknown.",
-            "The environment is in the process of being started, but no additional details are available.",
-            "Startup is waiting for the user's disk to be unarchived. This can happen when the user returns to Cloud Shell after not having used it for a while, and suggests that startup will take longer than normal.",
-            "Startup is waiting for compute resources to be assigned to the environment. This should normally happen very quickly, but an environment might stay in this state for an extended period of time if the system is experiencing heavy load.",
-            "Startup has completed. If the start operation was successful, the user should be able to establish an SSH connection to their environment. Otherwise, the operation will contain details of the failure."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "STARTING",
             "UNARCHIVING_DISK",
             "AWAITING_COMPUTE_RESOURCES",
             "FINISHED"
+          ],
+          "enumDescriptions": [
+            "The environment's start state is unknown.",
+            "The environment is in the process of being started, but no additional details are available.",
+            "Startup is waiting for the user's disk to be unarchived. This can happen when the user returns to Cloud Shell after not having used it for a while, and suggests that startup will take longer than normal.",
+            "Startup is waiting for compute resources to be assigned to the environment. This should normally happen very quickly, but an environment might stay in this state for an extended period of time if the system is experiencing heavy load.",
+            "Startup has completed. If the start operation was successful, the user should be able to establish an SSH connection to their environment. Otherwise, the operation will contain details of the failure."
           ],
           "type": "string"
         }
@@ -653,8 +642,8 @@
       "id": "StartEnvironmentResponse",
       "properties": {
         "environment": {
-          "description": "Environment that was started.",
-          "$ref": "Environment"
+          "$ref": "Environment",
+          "description": "Environment that was started."
         }
       },
       "type": "object"
@@ -689,6 +678,6 @@
   },
   "servicePath": "",
   "title": "Cloud Shell API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

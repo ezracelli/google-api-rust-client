@@ -21,29 +21,27 @@
   "description": "Allows developers to manage billing for their Google Cloud Platform projects programmatically.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/billing/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudbilling:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudbilling.mtls.googleapis.com/",
   "name": "cloudbilling",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -54,17 +52,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -116,7 +114,6 @@
         "create": {
           "description": "Creates a billing account. This method can only be used to create [billing subaccounts](https://cloud.google.com/billing/docs/concepts) by Google Cloud resellers. When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the master account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the master account has not been provisioned as a reseller account.",
           "httpMethod": "POST",
-          "flatPath": "v1/billingAccounts",
           "id": "cloudbilling.billingAccounts.create",
           "parameterOrder": [],
           "parameters": {},
@@ -135,7 +132,6 @@
         "get": {
           "description": "Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).",
           "httpMethod": "GET",
-          "flatPath": "v1/billingAccounts/{billingAccountsId}",
           "id": "cloudbilling.billingAccounts.get",
           "parameterOrder": [
             "name"
@@ -145,8 +141,8 @@
               "description": "Required. The resource name of the billing account to retrieve. For example, `billingAccounts/012345-567890-ABCDEF`.",
               "location": "path",
               "pattern": "^billingAccounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -162,7 +158,6 @@
         "getIamPolicy": {
           "description": "Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).",
           "httpMethod": "GET",
-          "flatPath": "v1/billingAccounts/{billingAccountsId}:getIamPolicy",
           "id": "cloudbilling.billingAccounts.getIamPolicy",
           "parameterOrder": [
             "resource"
@@ -178,8 +173,8 @@
               "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^billingAccounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:getIamPolicy",
@@ -195,7 +190,6 @@
         "list": {
           "description": "Lists the billing accounts that the current authenticated user has permission to [view](https://cloud.google.com/billing/docs/how-to/billing-access).",
           "httpMethod": "GET",
-          "flatPath": "v1/billingAccounts",
           "id": "cloudbilling.billingAccounts.list",
           "parameterOrder": [],
           "parameters": {
@@ -229,7 +223,6 @@
         "patch": {
           "description": "Updates a billing account's fields. Currently the only field that can be edited is `display_name`. The current authenticated user must have the `billing.accounts.update` IAM permission, which is typically given to the [administrator](https://cloud.google.com/billing/docs/how-to/billing-access) of the billing account.",
           "httpMethod": "PATCH",
-          "flatPath": "v1/billingAccounts/{billingAccountsId}",
           "id": "cloudbilling.billingAccounts.patch",
           "parameterOrder": [
             "name"
@@ -239,8 +232,8 @@
               "description": "Required. The name of the billing account resource to be updated.",
               "location": "path",
               "pattern": "^billingAccounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "The update mask applied to the resource. Only \"display_name\" is currently supported.",
@@ -264,7 +257,6 @@
         "setIamPolicy": {
           "description": "Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).",
           "httpMethod": "POST",
-          "flatPath": "v1/billingAccounts/{billingAccountsId}:setIamPolicy",
           "id": "cloudbilling.billingAccounts.setIamPolicy",
           "parameterOrder": [
             "resource"
@@ -274,8 +266,8 @@
               "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^billingAccounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:setIamPolicy",
@@ -293,7 +285,6 @@
         "testIamPermissions": {
           "description": "Tests the access control policy for a billing account. This method takes the resource and a set of permissions as input and returns the subset of the input permissions that the caller is allowed for that resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/billingAccounts/{billingAccountsId}:testIamPermissions",
           "id": "cloudbilling.billingAccounts.testIamPermissions",
           "parameterOrder": [
             "resource"
@@ -303,8 +294,8 @@
               "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^billingAccounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:testIamPermissions",
@@ -327,7 +318,6 @@
             "list": {
               "description": "Lists the projects associated with a billing account. The current authenticated user must have the `billing.resourceAssociations.list` IAM permission, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).",
               "httpMethod": "GET",
-              "flatPath": "v1/billingAccounts/{billingAccountsId}/projects",
               "id": "cloudbilling.billingAccounts.projects.list",
               "parameterOrder": [
                 "name"
@@ -337,8 +327,8 @@
                   "description": "Required. The resource name of the billing account associated with the projects that you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.",
                   "location": "path",
                   "pattern": "^billingAccounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "Requested page size. The maximum page size is 100; this is also the default.",
@@ -371,7 +361,6 @@
         "getBillingInfo": {
           "description": "Gets the billing information for a project. The current authenticated user must have [permission to view the project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ).",
           "httpMethod": "GET",
-          "flatPath": "v1/projects/{projectsId}/billingInfo",
           "id": "cloudbilling.projects.getBillingInfo",
           "parameterOrder": [
             "name"
@@ -381,8 +370,8 @@
               "description": "Required. The resource name of the project for which billing information is retrieved. For example, `projects/tokyo-rain-123`.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}/billingInfo",
@@ -398,7 +387,6 @@
         "updateBillingInfo": {
           "description": "Sets or updates the billing account associated with a project. You specify the new billing account by setting the `billing_account_name` in the `ProjectBillingInfo` resource to the resource name of a billing account. Associating a project with an open billing account enables billing on the project and allows charges for resource usage. If the project already had a billing account, this method changes the billing account used for resource usage charges. *Note:* Incurred charges that have not yet been reported in the transaction history of the Google Cloud Console might be billed to the new billing account, even if the charge occurred before the new billing account was assigned to the project. The current authenticated user must have ownership privileges for both the [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ) and the [billing account](https://cloud.google.com/billing/docs/how-to/billing-access). You can disable billing on the project by setting the `billing_account_name` field to empty. This action disassociates the current billing account from the project. Any billable activity of your in-use services will stop, and your application could stop functioning as expected. Any unbilled charges to date will be billed to the previously associated account. The current authenticated user must be either an owner of the project or an owner of the billing account for the project. Note that associating a project with a *closed* billing account will have much the same effect as disabling billing on the project: any paid resources used by the project will be shut down. Thus, unless you wish to disable billing, you should always call this method with the name of an *open* billing account.",
           "httpMethod": "PUT",
-          "flatPath": "v1/projects/{projectsId}/billingInfo",
           "id": "cloudbilling.projects.updateBillingInfo",
           "parameterOrder": [
             "name"
@@ -408,8 +396,8 @@
               "description": "Required. The resource name of the project associated with the billing information that you want to update. For example, `projects/tokyo-rain-123`.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}/billingInfo",
@@ -431,7 +419,6 @@
         "list": {
           "description": "Lists all public cloud services.",
           "httpMethod": "GET",
-          "flatPath": "v1/services",
           "id": "cloudbilling.services.list",
           "parameterOrder": [],
           "parameters": {
@@ -464,7 +451,6 @@
             "list": {
               "description": "Lists all publicly available SKUs for a given cloud service.",
               "httpMethod": "GET",
-              "flatPath": "v1/services/{servicesId}/skus",
               "id": "cloudbilling.services.skus.list",
               "parameterOrder": [
                 "parent"
@@ -496,8 +482,8 @@
                   "description": "Required. The name of the service. Example: \"services/DA34-426B-A397\"",
                   "location": "path",
                   "pattern": "^services/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "startTime": {
                   "description": "Optional inclusive start time of the time range for which the pricing versions will be returned. Timestamps in the future are not allowed. The time range has to be within a single calendar month in America/Los_Angeles timezone. Time range as a whole is optional. If not specified, the latest pricing will be returned (up to 12 hours old at most).",
@@ -534,28 +520,28 @@
           "type": "integer"
         },
         "aggregationInterval": {
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "AGGREGATION_INTERVAL_UNSPECIFIED",
             "DAILY",
             "MONTHLY"
           ],
-          "type": "string"
-        },
-        "aggregationLevel": {
           "enumDescriptions": [
             "",
             "",
             ""
           ],
+          "type": "string"
+        },
+        "aggregationLevel": {
           "enum": [
             "AGGREGATION_LEVEL_UNSPECIFIED",
             "ACCOUNT",
             "PROJECT"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         }
@@ -593,17 +579,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -624,13 +610,13 @@
         },
         "name": {
           "description": "Output only. The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "open": {
           "description": "Output only. True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -640,8 +626,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -716,17 +702,17 @@
         },
         "type": {
           "description": "The type of Geo Taxonomy: GLOBAL, REGIONAL, or MULTI_REGIONAL.",
-          "enumDescriptions": [
-            "The type is not specified.",
-            "The sku is global in nature, e.g. a license sku. Global skus are available in all regions, and so have an empty region list.",
-            "The sku is available in a specific region, e.g. \"us-west2\".",
-            "The sku is associated with multiple regions, e.g. \"us-west2\" and \"us-east1\"."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "GLOBAL",
             "REGIONAL",
             "MULTI_REGIONAL"
+          ],
+          "enumDescriptions": [
+            "The type is not specified.",
+            "The sku is global in nature, e.g. a license sku. Global skus are available in all regions, and so have an empty region list.",
+            "The sku is available in a specific region, e.g. \"us-west2\".",
+            "The sku is associated with multiple regions, e.g. \"us-west2\" and \"us-east1\"."
           ],
           "type": "string"
         }
@@ -902,8 +888,8 @@
       "id": "PricingInfo",
       "properties": {
         "aggregationInfo": {
-          "description": "Aggregation Info. This can be left unspecified if the pricing expression doesn't require aggregation.",
-          "$ref": "AggregationInfo"
+          "$ref": "AggregationInfo",
+          "description": "Aggregation Info. This can be left unspecified if the pricing expression doesn't require aggregation."
         },
         "currencyConversionRate": {
           "description": "Conversion rate used for currency conversion, from USD to the currency specified in the request. This includes any surcharge collected for billing in non USD currency. If a currency is not specified in the request this defaults to 1.0. Example: USD * currency_conversion_rate = JPY",
@@ -916,8 +902,8 @@
           "type": "string"
         },
         "pricingExpression": {
-          "description": "Expresses the pricing formula. See `PricingExpression` for an example.",
-          "$ref": "PricingExpression"
+          "$ref": "PricingExpression",
+          "description": "Expresses the pricing formula. See `PricingExpression` for an example."
         },
         "summary": {
           "description": "An optional human readable summary of the pricing information, has a maximum length of 256 characters.",
@@ -977,8 +963,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -993,16 +979,16 @@
       "id": "Sku",
       "properties": {
         "category": {
-          "description": "The category hierarchy of this SKU, purely for organizational purpose.",
-          "$ref": "Category"
+          "$ref": "Category",
+          "description": "The category hierarchy of this SKU, purely for organizational purpose."
         },
         "description": {
           "description": "A human readable description of the SKU, has a maximum length of 256 characters.",
           "type": "string"
         },
         "geoTaxonomy": {
-          "description": "The geographic taxonomy for this sku.",
-          "$ref": "GeoTaxonomy"
+          "$ref": "GeoTaxonomy",
+          "description": "The geographic taxonomy for this sku."
         },
         "name": {
           "description": "The resource name for the SKU. Example: \"services/DA34-426B-A397/skus/AA95-CD31-42FE\"",
@@ -1071,8 +1057,8 @@
           "type": "number"
         },
         "unitPrice": {
-          "description": "The price per unit of usage. Example: unit_price of amount $10 indicates that each unit will cost $10.",
-          "$ref": "Money"
+          "$ref": "Money",
+          "description": "The price per unit of usage. Example: unit_price of amount $10 indicates that each unit will cost $10."
         }
       },
       "type": "object"

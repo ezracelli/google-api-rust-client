@@ -46,13 +46,13 @@
     "alt": {
       "default": "json",
       "description": "Data format for the response.",
+      "enum": [
+        "json"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json"
       ],
       "location": "query",
-      "enum": [
-        "json"
-      ],
       "type": "string"
     },
     "fields": {
@@ -114,8 +114,8 @@
                   "description": "End date for fetching Analytics data. Request can should specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is yesterday.",
                   "location": "query",
                   "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "filters": {
                   "description": "A comma-separated list of dimension or metric filters to be applied to Analytics data.",
@@ -127,8 +127,8 @@
                   "description": "Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.",
                   "location": "query",
                   "pattern": "ga:[0-9]+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "include-empty-rows": {
                   "description": "The response will include empty rows if this parameter is set to true, the default is true",
@@ -145,35 +145,35 @@
                   "description": "A comma-separated list of Analytics metrics. E.g., 'ga:sessions,ga:pageviews'. At least one metric must be specified.",
                   "location": "query",
                   "pattern": "ga:.+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "output": {
                   "description": "The selected format for the response. Default format is JSON.",
+                  "enum": [
+                    "dataTable",
+                    "json"
+                  ],
                   "enumDescriptions": [
                     "Returns the response in Google Charts Data Table format. This is useful in creating visualization using Google Charts.",
                     "Returns the response in standard JSON format."
                   ],
                   "location": "query",
-                  "enum": [
-                    "dataTable",
-                    "json"
-                  ],
                   "type": "string"
                 },
                 "samplingLevel": {
                   "description": "The desired sampling level.",
+                  "enum": [
+                    "DEFAULT",
+                    "FASTER",
+                    "HIGHER_PRECISION"
+                  ],
                   "enumDescriptions": [
                     "Returns response with a sample size that balances speed and accuracy.",
                     "Returns a fast response with a smaller sample size.",
                     "Returns a more accurate response using a large sample size, but this may result in the response being slower."
                   ],
                   "location": "query",
-                  "enum": [
-                    "DEFAULT",
-                    "FASTER",
-                    "HIGHER_PRECISION"
-                  ],
                   "type": "string"
                 },
                 "segment": {
@@ -191,8 +191,8 @@
                   "description": "Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo.",
                   "location": "query",
                   "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "start-index": {
                   "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
@@ -236,8 +236,8 @@
                   "description": "End date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo.",
                   "location": "query",
                   "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "filters": {
                   "description": "A comma-separated list of dimension or metric filters to be applied to the Analytics data.",
@@ -249,8 +249,8 @@
                   "description": "Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.",
                   "location": "query",
                   "pattern": "ga:[0-9]+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of entries to include in this feed.",
@@ -262,22 +262,22 @@
                   "description": "A comma-separated list of Multi-Channel Funnels metrics. E.g., 'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must be specified.",
                   "location": "query",
                   "pattern": "mcf:.+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "samplingLevel": {
                   "description": "The desired sampling level.",
+                  "enum": [
+                    "DEFAULT",
+                    "FASTER",
+                    "HIGHER_PRECISION"
+                  ],
                   "enumDescriptions": [
                     "Returns response with a sample size that balances speed and accuracy.",
                     "Returns a fast response with a smaller sample size.",
                     "Returns a more accurate response using a large sample size, but this may result in the response being slower."
                   ],
                   "location": "query",
-                  "enum": [
-                    "DEFAULT",
-                    "FASTER",
-                    "HIGHER_PRECISION"
-                  ],
                   "type": "string"
                 },
                 "sort": {
@@ -290,8 +290,8 @@
                   "description": "Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo.",
                   "location": "query",
                   "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "start-index": {
                   "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
@@ -339,8 +339,8 @@
                   "description": "Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.",
                   "location": "query",
                   "pattern": "ga:[0-9]+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of entries to include in this feed.",
@@ -352,8 +352,8 @@
                   "description": "A comma-separated list of real time metrics. E.g., 'rt:activeUsers'. At least one metric must be specified.",
                   "location": "query",
                   "pattern": "(ga:.+)|(rt:.+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "sort": {
                   "description": "A comma-separated list of dimensions or metrics that determine the sort order for real time data.",
@@ -423,14 +423,14 @@
                 "accountId": {
                   "description": "Account ID to delete the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "Link ID to delete the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/entityUserLinks/{linkId}",
@@ -449,8 +449,8 @@
                 "accountId": {
                   "description": "Account ID to create the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/entityUserLinks",
@@ -475,8 +475,8 @@
                 "accountId": {
                   "description": "Account ID to retrieve the user links for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of account-user links to include in this response.",
@@ -513,14 +513,14 @@
                 "accountId": {
                   "description": "Account ID to update the account-user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "Link ID to update the account-user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/entityUserLinks/{linkId}",
@@ -604,8 +604,8 @@
                   "description": "Account Id for the custom data sources to retrieve.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of custom data sources to include in this response.",
@@ -625,8 +625,8 @@
                   "description": "Web property Id for the custom data sources to retrieve.",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources",
@@ -656,20 +656,20 @@
                 "accountId": {
                   "description": "Account ID for the custom dimension to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customDimensionId": {
                   "description": "The ID of the custom dimension to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID for the custom dimension to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}",
@@ -693,14 +693,14 @@
                 "accountId": {
                   "description": "Account ID for the custom dimension to create.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID for the custom dimension to create.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions",
@@ -726,8 +726,8 @@
                 "accountId": {
                   "description": "Account ID for the custom dimensions to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of custom dimensions to include in this response.",
@@ -745,8 +745,8 @@
                 "webPropertyId": {
                   "description": "Web property ID for the custom dimensions to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions",
@@ -771,14 +771,14 @@
                 "accountId": {
                   "description": "Account ID for the custom dimension to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customDimensionId": {
                   "description": "Custom dimension ID for the custom dimension to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "ignoreCustomDataSourceLinks": {
                   "default": "false",
@@ -789,8 +789,8 @@
                 "webPropertyId": {
                   "description": "Web property ID for the custom dimension to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}",
@@ -817,14 +817,14 @@
                 "accountId": {
                   "description": "Account ID for the custom dimension to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customDimensionId": {
                   "description": "Custom dimension ID for the custom dimension to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "ignoreCustomDataSourceLinks": {
                   "default": "false",
@@ -835,8 +835,8 @@
                 "webPropertyId": {
                   "description": "Web property ID for the custom dimension to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}",
@@ -867,20 +867,20 @@
                 "accountId": {
                   "description": "Account ID for the custom metric to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customMetricId": {
                   "description": "The ID of the custom metric to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID for the custom metric to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}",
@@ -904,14 +904,14 @@
                 "accountId": {
                   "description": "Account ID for the custom metric to create.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID for the custom dimension to create.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics",
@@ -937,8 +937,8 @@
                 "accountId": {
                   "description": "Account ID for the custom metrics to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of custom metrics to include in this response.",
@@ -956,8 +956,8 @@
                 "webPropertyId": {
                   "description": "Web property ID for the custom metrics to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics",
@@ -982,14 +982,14 @@
                 "accountId": {
                   "description": "Account ID for the custom metric to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customMetricId": {
                   "description": "Custom metric ID for the custom metric to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "ignoreCustomDataSourceLinks": {
                   "default": "false",
@@ -1000,8 +1000,8 @@
                 "webPropertyId": {
                   "description": "Web property ID for the custom metric to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}",
@@ -1028,14 +1028,14 @@
                 "accountId": {
                   "description": "Account ID for the custom metric to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customMetricId": {
                   "description": "Custom metric ID for the custom metric to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "ignoreCustomDataSourceLinks": {
                   "default": "false",
@@ -1046,8 +1046,8 @@
                 "webPropertyId": {
                   "description": "Web property ID for the custom metric to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}",
@@ -1079,26 +1079,26 @@
                 "accountId": {
                   "description": "Account ID to which the experiment belongs",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "experimentId": {
                   "description": "ID of the experiment to delete",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to which the experiment belongs",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to which the experiment belongs",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}",
@@ -1121,26 +1121,26 @@
                 "accountId": {
                   "description": "Account ID to retrieve the experiment for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "experimentId": {
                   "description": "Experiment ID to retrieve the experiment for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to retrieve the experiment for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to retrieve the experiment for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}",
@@ -1166,20 +1166,20 @@
                 "accountId": {
                   "description": "Account ID to create the experiment for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to create the experiment for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to create the experiment for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments",
@@ -1208,8 +1208,8 @@
                   "description": "Account ID to retrieve experiments for.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of experiments to include in this response.",
@@ -1221,8 +1221,8 @@
                   "description": "View (Profile) ID to retrieve experiments for.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "start-index": {
                   "description": "An index of the first experiment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
@@ -1235,8 +1235,8 @@
                   "description": "Web property ID to retrieve experiments for.",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments",
@@ -1263,26 +1263,26 @@
                 "accountId": {
                   "description": "Account ID of the experiment to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "experimentId": {
                   "description": "Experiment ID of the experiment to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID of the experiment to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID of the experiment to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}",
@@ -1311,26 +1311,26 @@
                 "accountId": {
                   "description": "Account ID of the experiment to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "experimentId": {
                   "description": "Experiment ID of the experiment to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID of the experiment to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID of the experiment to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}",
@@ -1361,14 +1361,14 @@
                 "accountId": {
                   "description": "Account ID to delete the filter for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "filterId": {
                   "description": "ID of the filter to be deleted.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/filters/{filterId}",
@@ -1391,14 +1391,14 @@
                 "accountId": {
                   "description": "Account ID to retrieve filters for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "filterId": {
                   "description": "Filter ID to retrieve filters for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/filters/{filterId}",
@@ -1421,8 +1421,8 @@
                 "accountId": {
                   "description": "Account ID to create filter for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/filters",
@@ -1448,8 +1448,8 @@
                   "description": "Account ID to retrieve filters for.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of filters to include in this response.",
@@ -1486,14 +1486,14 @@
                 "accountId": {
                   "description": "Account ID to which the filter belongs.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "filterId": {
                   "description": "ID of the filter to be updated.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/filters/{filterId}",
@@ -1519,14 +1519,14 @@
                 "accountId": {
                   "description": "Account ID to which the filter belongs.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "filterId": {
                   "description": "ID of the filter to be updated.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/filters/{filterId}",
@@ -1558,26 +1558,26 @@
                 "accountId": {
                   "description": "Account ID to retrieve the goal for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "goalId": {
                   "description": "Goal ID to retrieve the goal for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to retrieve the goal for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to retrieve the goal for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}",
@@ -1602,20 +1602,20 @@
                 "accountId": {
                   "description": "Account ID to create the goal for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to create the goal for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to create the goal for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals",
@@ -1642,8 +1642,8 @@
                 "accountId": {
                   "description": "Account ID to retrieve goals for. Can either be a specific account ID or '~all', which refers to all the accounts that user has access to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of goals to include in this response.",
@@ -1654,8 +1654,8 @@
                 "profileId": {
                   "description": "View (Profile) ID to retrieve goals for. Can either be a specific view (profile) ID or '~all', which refers to all the views (profiles) that user has access to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "start-index": {
                   "description": "An index of the first goal to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
@@ -1667,8 +1667,8 @@
                 "webPropertyId": {
                   "description": "Web property ID to retrieve goals for. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals",
@@ -1695,26 +1695,26 @@
                 "accountId": {
                   "description": "Account ID to update the goal.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "goalId": {
                   "description": "Index of the goal to be updated.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to update the goal.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to update the goal.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}",
@@ -1742,26 +1742,26 @@
                 "accountId": {
                   "description": "Account ID to update the goal.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "goalId": {
                   "description": "Index of the goal to be updated.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to update the goal.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to update the goal.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}",
@@ -1794,29 +1794,29 @@
                   "description": "Account ID to which the profile filter link belongs.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "ID of the profile filter link to delete.",
                   "location": "path",
                   "pattern": "\\d+:\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "Profile ID to which the filter link belongs.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property Id to which the profile filter link belongs.",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}",
@@ -1839,29 +1839,29 @@
                   "description": "Account ID to retrieve profile filter link for.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "ID of the profile filter link.",
                   "location": "path",
                   "pattern": "\\d+:\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "Profile ID to retrieve filter link for.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property Id to retrieve profile filter link for.",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}",
@@ -1887,22 +1887,22 @@
                   "description": "Account ID to create profile filter link for.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "Profile ID to create filter link for.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property Id to create profile filter link for.",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks",
@@ -1930,8 +1930,8 @@
                   "description": "Account ID to retrieve profile filter links for.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of profile filter links to include in this response.",
@@ -1942,8 +1942,8 @@
                 "profileId": {
                   "description": "Profile ID to retrieve filter links for. Can either be a specific profile ID or '~all', which refers to all the profiles that user has access to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "start-index": {
                   "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
@@ -1955,8 +1955,8 @@
                 "webPropertyId": {
                   "description": "Web property Id for profile filter links for. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks",
@@ -1983,29 +1983,29 @@
                   "description": "Account ID to which profile filter link belongs.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "ID of the profile filter link to be updated.",
                   "location": "path",
                   "pattern": "\\d+:\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "Profile ID to which filter link belongs",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property Id to which profile filter link belongs",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}",
@@ -2034,29 +2034,29 @@
                   "description": "Account ID to which profile filter link belongs.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "ID of the profile filter link to be updated.",
                   "location": "path",
                   "pattern": "\\d+:\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "Profile ID to which filter link belongs",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property Id to which profile filter link belongs",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}",
@@ -2088,26 +2088,26 @@
                 "accountId": {
                   "description": "Account ID to delete the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "Link ID to delete the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to delete the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web Property ID to delete the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}",
@@ -2128,20 +2128,20 @@
                 "accountId": {
                   "description": "Account ID to create the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to create the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web Property ID to create the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks",
@@ -2168,8 +2168,8 @@
                 "accountId": {
                   "description": "Account ID which the given view (profile) belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of profile-user links to include in this response.",
@@ -2180,8 +2180,8 @@
                 "profileId": {
                   "description": "View (Profile) ID to retrieve the profile-user links for. Can either be a specific profile ID or '~all', which refers to all the profiles that user has access to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "start-index": {
                   "description": "An index of the first profile-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
@@ -2193,8 +2193,8 @@
                 "webPropertyId": {
                   "description": "Web Property ID which the given view (profile) belongs to. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks",
@@ -2220,26 +2220,26 @@
                 "accountId": {
                   "description": "Account ID to update the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "Link ID to update the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile ID) to update the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web Property ID to update the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}",
@@ -2270,20 +2270,20 @@
                 "accountId": {
                   "description": "Account ID to delete the view (profile) for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "ID of the view (profile) to be deleted.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to delete the view (profile) for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}",
@@ -2305,22 +2305,22 @@
                   "description": "Account ID to retrieve the view (profile) for.",
                   "location": "path",
                   "pattern": "[0-9]+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to retrieve the view (profile) for.",
                   "location": "path",
                   "pattern": "[0-9]+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to retrieve the view (profile) for.",
                   "location": "path",
                   "pattern": "UA-[0-9]+-[0-9]+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}",
@@ -2344,14 +2344,14 @@
                 "accountId": {
                   "description": "Account ID to create the view (profile) for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to create the view (profile) for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles",
@@ -2377,8 +2377,8 @@
                 "accountId": {
                   "description": "Account ID for the view (profiles) to retrieve. Can either be a specific account ID or '~all', which refers to all the accounts to which the user has access.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of views (profiles) to include in this response.",
@@ -2396,8 +2396,8 @@
                 "webPropertyId": {
                   "description": "Web property ID for the views (profiles) to retrieve. Can either be a specific web property ID or '~all', which refers to all the web properties to which the user has access.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles",
@@ -2423,20 +2423,20 @@
                 "accountId": {
                   "description": "Account ID to which the view (profile) belongs",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "ID of the view (profile) to be updated.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to which the view (profile) belongs",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}",
@@ -2463,20 +2463,20 @@
                 "accountId": {
                   "description": "Account ID to which the view (profile) belongs",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "ID of the view (profile) to be updated.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to which the view (profile) belongs",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}",
@@ -2507,20 +2507,20 @@
                 "accountId": {
                   "description": "Account ID to which the remarketing audience belongs.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "remarketingAudienceId": {
                   "description": "The ID of the remarketing audience to delete.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to which the remarketing audience belongs.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}",
@@ -2541,20 +2541,20 @@
                 "accountId": {
                   "description": "The account ID of the remarketing audience to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "remarketingAudienceId": {
                   "description": "The ID of the remarketing audience to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "The web property ID of the remarketing audience to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}",
@@ -2578,14 +2578,14 @@
                 "accountId": {
                   "description": "The account ID for which to create the remarketing audience.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID for which to create the remarketing audience.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences",
@@ -2611,8 +2611,8 @@
                 "accountId": {
                   "description": "The account ID of the remarketing audiences to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of remarketing audiences to include in this response.",
@@ -2635,8 +2635,8 @@
                 "webPropertyId": {
                   "description": "The web property ID of the remarketing audiences to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences",
@@ -2661,20 +2661,20 @@
                 "accountId": {
                   "description": "The account ID of the remarketing audience to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "remarketingAudienceId": {
                   "description": "The ID of the remarketing audience to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "The web property ID of the remarketing audience to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}",
@@ -2701,20 +2701,20 @@
                 "accountId": {
                   "description": "The account ID of the remarketing audience to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "remarketingAudienceId": {
                   "description": "The ID of the remarketing audience to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "The web property ID of the remarketing audience to update.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}",
@@ -2779,26 +2779,26 @@
                 "accountId": {
                   "description": "Account ID to delete the unsampled report for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to delete the unsampled report for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "unsampledReportId": {
                   "description": "ID of the unsampled report to be deleted.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to delete the unsampled reports for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}",
@@ -2820,26 +2820,26 @@
                 "accountId": {
                   "description": "Account ID to retrieve unsampled report for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to retrieve unsampled report for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "unsampledReportId": {
                   "description": "ID of the unsampled report to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to retrieve unsampled reports for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}",
@@ -2865,20 +2865,20 @@
                 "accountId": {
                   "description": "Account ID to create the unsampled report for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "profileId": {
                   "description": "View (Profile) ID to create the unsampled report for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to create the unsampled report for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports",
@@ -2906,8 +2906,8 @@
                 "accountId": {
                   "description": "Account ID to retrieve unsampled reports for. Must be a specific account ID, ~all is not supported.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of unsampled reports to include in this response.",
@@ -2918,8 +2918,8 @@
                 "profileId": {
                   "description": "View (Profile) ID to retrieve unsampled reports for. Must be a specific view (profile) ID, ~all is not supported.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "start-index": {
                   "description": "An index of the first unsampled report to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
@@ -2931,8 +2931,8 @@
                 "webPropertyId": {
                   "description": "Web property ID to retrieve unsampled reports for. Must be a specific web property ID, ~all is not supported.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports",
@@ -2963,22 +2963,22 @@
                   "description": "Account Id for the uploads to be deleted.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customDataSourceId": {
                   "description": "Custom data source Id for the uploads to be deleted.",
                   "location": "path",
                   "pattern": ".{22}",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property Id for the uploads to be deleted.",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData",
@@ -3005,29 +3005,29 @@
                   "description": "Account Id for the upload to retrieve.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customDataSourceId": {
                   "description": "Custom data source Id for upload to retrieve.",
                   "location": "path",
                   "pattern": ".{22}",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "uploadId": {
                   "description": "Upload Id to retrieve.",
                   "location": "path",
                   "pattern": ".{22}",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property Id for the upload to retrieve.",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads/{uploadId}",
@@ -3054,15 +3054,15 @@
                   "description": "Account Id for the uploads to retrieve.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customDataSourceId": {
                   "description": "Custom data source Id for uploads to retrieve.",
                   "location": "path",
                   "pattern": ".{22}",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of uploads to include in this response.",
@@ -3082,8 +3082,8 @@
                   "description": "Web property Id for the uploads to retrieve.",
                   "location": "path",
                   "pattern": "UA-(\\d+)-(\\d+)",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads",
@@ -3107,12 +3107,12 @@
                 "maxSize": "1GB",
                 "protocols": {
                   "resumable": {
-                    "path": "/resumable/upload/analytics/v3/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/resumable/upload/analytics/v3/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads"
                   },
                   "simple": {
-                    "path": "/upload/analytics/v3/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/upload/analytics/v3/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads"
                   }
                 }
               },
@@ -3126,21 +3126,21 @@
                   "description": "Account Id associated with the upload.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "customDataSourceId": {
                   "description": "Custom data source Id to which the data being uploaded belongs.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property UA-string associated with the upload.",
                   "location": "path",
                   "pattern": "UA-\\d+-\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads",
@@ -3170,20 +3170,20 @@
                 "accountId": {
                   "description": "ID of the account which the given web property belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyAdWordsLinkId": {
                   "description": "Web property Google Ads link ID.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to delete the Google Ads link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}",
@@ -3204,20 +3204,20 @@
                 "accountId": {
                   "description": "ID of the account which the given web property belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyAdWordsLinkId": {
                   "description": "Web property-Google Ads link ID.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to retrieve the Google Ads link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}",
@@ -3241,14 +3241,14 @@
                 "accountId": {
                   "description": "ID of the Google Analytics account to create the link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to create the link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks",
@@ -3275,8 +3275,8 @@
                   "description": "ID of the account which the given web property belongs to.",
                   "location": "path",
                   "pattern": "\\d+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of webProperty-Google Ads links to include in this response.",
@@ -3294,8 +3294,8 @@
                 "webPropertyId": {
                   "description": "Web property ID to retrieve the Google Ads links for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks",
@@ -3320,20 +3320,20 @@
                 "accountId": {
                   "description": "ID of the account which the given web property belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyAdWordsLinkId": {
                   "description": "Web property-Google Ads link ID.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to retrieve the Google Ads link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}",
@@ -3360,20 +3360,20 @@
                 "accountId": {
                   "description": "ID of the account which the given web property belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyAdWordsLinkId": {
                   "description": "Web property-Google Ads link ID.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to retrieve the Google Ads link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}",
@@ -3404,15 +3404,15 @@
                   "description": "Account ID to retrieve the web property for.",
                   "location": "path",
                   "pattern": "[0-9]+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "ID to retrieve the web property for.",
                   "location": "path",
                   "pattern": "UA-[0-9]+-[0-9]+",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}",
@@ -3435,8 +3435,8 @@
                 "accountId": {
                   "description": "Account ID to create the web property for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties",
@@ -3461,8 +3461,8 @@
                 "accountId": {
                   "description": "Account ID to retrieve web properties for. Can either be a specific account ID or '~all', which refers to all the accounts that user has access to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of web properties to include in this response.",
@@ -3500,14 +3500,14 @@
                 "accountId": {
                   "description": "Account ID to which the web property belongs",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}",
@@ -3533,14 +3533,14 @@
                 "accountId": {
                   "description": "Account ID to which the web property belongs",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}",
@@ -3571,20 +3571,20 @@
                 "accountId": {
                   "description": "Account ID to delete the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "Link ID to delete the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web Property ID to delete the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}",
@@ -3604,14 +3604,14 @@
                 "accountId": {
                   "description": "Account ID to create the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web Property ID to create the user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks",
@@ -3637,8 +3637,8 @@
                 "accountId": {
                   "description": "Account ID which the given web property belongs to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "max-results": {
                   "description": "The maximum number of webProperty-user Links to include in this response.",
@@ -3656,8 +3656,8 @@
                 "webPropertyId": {
                   "description": "Web Property ID for the webProperty-user links to retrieve. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks",
@@ -3682,20 +3682,20 @@
                 "accountId": {
                   "description": "Account ID to update the account-user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "linkId": {
                   "description": "Link ID to update the account-user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "webPropertyId": {
                   "description": "Web property ID to update the account-user link for.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}",
@@ -3729,8 +3729,8 @@
                   "description": "Report type. Allowed Values: 'ga'. Where 'ga' corresponds to the Core Reporting API",
                   "location": "path",
                   "pattern": "ga",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "metadata/{reportType}/columns",
@@ -3853,8 +3853,8 @@
               "items": {
                 "type": "string"
               },
-              "type": "array",
-              "readOnly": true
+              "readOnly": true,
+              "type": "array"
             }
           },
           "type": "object"
@@ -3981,8 +3981,8 @@
       "id": "AccountTicket",
       "properties": {
         "account": {
-          "description": "Account for this ticket.",
-          "$ref": "Account"
+          "$ref": "Account",
+          "description": "Account for this ticket."
         },
         "id": {
           "description": "Account ticket ID used to access the account ticket.",
@@ -3994,16 +3994,16 @@
           "type": "string"
         },
         "profile": {
-          "description": "View (Profile) for the account.",
-          "$ref": "Profile"
+          "$ref": "Profile",
+          "description": "View (Profile) for the account."
         },
         "redirectUri": {
           "description": "Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in APIs console as a callback URL.",
           "type": "string"
         },
         "webproperty": {
-          "description": "Web property for the account.",
-          "$ref": "Webproperty"
+          "$ref": "Webproperty",
+          "description": "Web property for the account."
         }
       },
       "type": "object"
@@ -4065,8 +4065,8 @@
       "id": "AccountTreeResponse",
       "properties": {
         "account": {
-          "description": "The account created.",
-          "$ref": "Account"
+          "$ref": "Account",
+          "description": "The account created."
         },
         "kind": {
           "default": "analytics#accountTreeResponse",
@@ -4074,12 +4074,12 @@
           "type": "string"
         },
         "profile": {
-          "description": "View (Profile) for the account.",
-          "$ref": "Profile"
+          "$ref": "Profile",
+          "description": "View (Profile) for the account."
         },
         "webproperty": {
-          "description": "Web property for the account.",
-          "$ref": "Webproperty"
+          "$ref": "Webproperty",
+          "description": "Web property for the account."
         }
       },
       "type": "object"
@@ -4389,8 +4389,8 @@
         "created": {
           "description": "Time the custom dimension was created.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "id": {
           "description": "Custom dimension ID.",
@@ -4399,14 +4399,14 @@
         "index": {
           "description": "Index of the custom dimension.",
           "format": "int32",
-          "type": "integer",
-          "readOnly": true
+          "readOnly": true,
+          "type": "integer"
         },
         "kind": {
           "default": "analytics#customDimension",
           "description": "Kind value for a custom dimension. Set to \"analytics#customDimension\". It is a read-only field.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Name of the custom dimension.",
@@ -4433,14 +4433,14 @@
         },
         "selfLink": {
           "description": "Link for the custom dimension",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updated": {
           "description": "Time the custom dimension was last modified.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "webPropertyId": {
           "description": "Property ID.",
@@ -4510,8 +4510,8 @@
         "created": {
           "description": "Time the custom metric was created.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "id": {
           "description": "Custom metric ID.",
@@ -4520,14 +4520,14 @@
         "index": {
           "description": "Index of the custom metric.",
           "format": "int32",
-          "type": "integer",
-          "readOnly": true
+          "readOnly": true,
+          "type": "integer"
         },
         "kind": {
           "default": "analytics#customMetric",
           "description": "Kind value for a custom metric. Set to \"analytics#customMetric\". It is a read-only field.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "max_value": {
           "description": "Max value of custom metric.",
@@ -4562,8 +4562,8 @@
         },
         "selfLink": {
           "description": "Link for the custom metric",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "type": {
           "description": "Data type of custom metric.",
@@ -4572,8 +4572,8 @@
         "updated": {
           "description": "Time the custom metric was last modified.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "webPropertyId": {
           "description": "Property ID.",
@@ -4737,16 +4737,16 @@
           "description": "Entity for this link. It can be an account, a web property, or a view (profile).",
           "properties": {
             "accountRef": {
-              "description": "Account for this link.",
-              "$ref": "AccountRef"
+              "$ref": "AccountRef",
+              "description": "Account for this link."
             },
             "profileRef": {
-              "description": "View (Profile) for this link.",
-              "$ref": "ProfileRef"
+              "$ref": "ProfileRef",
+              "description": "View (Profile) for this link."
             },
             "webPropertyRef": {
-              "description": "Web property for this link.",
-              "$ref": "WebPropertyRef"
+              "$ref": "WebPropertyRef",
+              "description": "Web property for this link."
             }
           },
           "type": "object"
@@ -4768,8 +4768,8 @@
               "items": {
                 "type": "string"
               },
-              "type": "array",
-              "readOnly": true
+              "readOnly": true,
+              "type": "array"
             },
             "local": {
               "description": "Permissions that a user has been assigned at this very level. Does not include any implied or inherited permissions. Local permissions are modifiable.",
@@ -4786,8 +4786,8 @@
           "type": "string"
         },
         "userRef": {
-          "description": "User reference.",
-          "$ref": "UserRef"
+          "$ref": "UserRef",
+          "description": "User reference."
         }
       },
       "type": "object"
@@ -5140,26 +5140,26 @@
         "created": {
           "description": "Time this filter was created.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "excludeDetails": {
-          "description": "Details for the filter of the type EXCLUDE.",
-          "$ref": "FilterExpression"
+          "$ref": "FilterExpression",
+          "description": "Details for the filter of the type EXCLUDE."
         },
         "id": {
           "description": "Filter ID.",
           "type": "string"
         },
         "includeDetails": {
-          "description": "Details for the filter of the type INCLUDE.",
-          "$ref": "FilterExpression"
+          "$ref": "FilterExpression",
+          "description": "Details for the filter of the type INCLUDE."
         },
         "kind": {
           "default": "analytics#filter",
           "description": "Resource type for Analytics filter.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "lowercaseDetails": {
           "description": "Details for the filter of the type LOWER.",
@@ -5230,8 +5230,8 @@
         },
         "selfLink": {
           "description": "Link for this filter.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "type": {
           "annotations": {
@@ -5246,8 +5246,8 @@
         "updated": {
           "description": "Time this filter was last modified.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "uppercaseDetails": {
           "description": "Details for the filter of the type UPPER.",
@@ -5306,8 +5306,8 @@
       "properties": {
         "accountId": {
           "description": "Account ID to which this filter belongs.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "href": {
           "description": "Link for this filter.",
@@ -5329,8 +5329,8 @@
         },
         "name": {
           "description": "Name of this filter.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -5921,8 +5921,8 @@
         },
         "eligibleForSearch": {
           "description": "Boolean indicating whether this is eligible for search.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "id": {
           "description": "Entity ad account link ID.",
@@ -5930,8 +5930,8 @@
         },
         "internalWebPropertyId": {
           "description": "Internal ID for the web property to which this linked foreign account belongs.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "kind": {
           "default": "analytics#linkedForeignAccount",
@@ -6194,8 +6194,8 @@
         "created": {
           "description": "Time this view (profile) was created.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "currency": {
           "description": "The currency type associated with this view (profile), defaults to USD. The supported values are:\nUSD, JPY, EUR, GBP, AUD, KRW, BRL, CNY, DKK, RUB, SEK, NOK, PLN, TRY, TWD, HKD, THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL, ZAR, UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN, PKR, RON, RSD, SAR, SGD, VEF, LVL",
@@ -6223,14 +6223,14 @@
         },
         "internalWebPropertyId": {
           "description": "Internal ID for the web property to which this view (profile) belongs.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "kind": {
           "default": "analytics#profile",
           "description": "Resource type for Analytics view (profile).",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Name of this view (profile).",
@@ -6259,16 +6259,16 @@
               "items": {
                 "type": "string"
               },
-              "type": "array",
-              "readOnly": true
+              "readOnly": true,
+              "type": "array"
             }
           },
           "type": "object"
         },
         "selfLink": {
           "description": "Link for this view (profile).",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "siteSearchCategoryParameters": {
           "description": "Site search category parameters for this view (profile).",
@@ -6301,13 +6301,13 @@
         "updated": {
           "description": "Time this view (profile) was last modified.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "webPropertyId": {
           "description": "Web property ID of the form UA-XXXXX-YY to which this view (profile) belongs.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "websiteUrl": {
           "description": "Website URL for this view (profile).",
@@ -6321,8 +6321,8 @@
       "id": "ProfileFilterLink",
       "properties": {
         "filterRef": {
-          "description": "Filter for this link.",
-          "$ref": "FilterRef"
+          "$ref": "FilterRef",
+          "description": "Filter for this link."
         },
         "id": {
           "description": "Profile filter link ID.",
@@ -6331,12 +6331,12 @@
         "kind": {
           "default": "analytics#profileFilterLink",
           "description": "Resource type for Analytics filter.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "profileRef": {
-          "description": "View (Profile) for this link.",
-          "$ref": "ProfileRef"
+          "$ref": "ProfileRef",
+          "description": "View (Profile) for this link."
         },
         "rank": {
           "description": "The rank of this profile filter link relative to the other filters linked to the same profile.\nFor readonly (i.e., list and get) operations, the rank always starts at 1.\nFor write (i.e., create, update, or delete) operations, you may specify a value between 0 and 255 inclusively, [0, 255]. In order to insert a link at the end of the list, either don't specify a rank or set a rank to a number greater than the largest rank in the list. In order to insert a link to the beginning of the list specify a rank that is less than or equal to 1. The new link will move all existing filters with the same or lower rank down the list. After the link is inserted/updated/deleted all profile filter links will be renumbered starting at 1.",
@@ -6345,8 +6345,8 @@
         },
         "selfLink": {
           "description": "Link for this profile filter link.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -6650,8 +6650,8 @@
           "description": "The simple audience definition that will cause a user to be added to an audience.",
           "properties": {
             "includeConditions": {
-              "description": "Defines the conditions to include users to the audience.",
-              "$ref": "IncludeConditions"
+              "$ref": "IncludeConditions",
+              "description": "Defines the conditions to include users to the audience."
             }
           },
           "type": "object"
@@ -6663,13 +6663,13 @@
         "created": {
           "description": "Time this remarketing audience was created.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "description": {
           "description": "The description of this remarketing audience.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "id": {
           "description": "Remarketing Audience ID.",
@@ -6677,8 +6677,8 @@
         },
         "internalWebPropertyId": {
           "description": "Internal ID for the web property to which this remarketing audience belongs.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "kind": {
           "default": "analytics#remarketingAudience",
@@ -6721,8 +6721,8 @@
               "type": "object"
             },
             "includeConditions": {
-              "description": "Defines the conditions to include users to the audience.",
-              "$ref": "IncludeConditions"
+              "$ref": "IncludeConditions",
+              "description": "Defines the conditions to include users to the audience."
             }
           },
           "type": "object"
@@ -6730,8 +6730,8 @@
         "updated": {
           "description": "Time this remarketing audience was last modified.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "webPropertyId": {
           "description": "Web property ID of the form UA-XXXXX-YY to which this remarketing audience belongs.",
@@ -6898,14 +6898,14 @@
               "type": "string"
             }
           },
-          "type": "object",
-          "readOnly": true
+          "readOnly": true,
+          "type": "object"
         },
         "created": {
           "description": "Time this unsampled report was created.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "dimensions": {
           "description": "The dimensions for the unsampled report.",
@@ -6913,8 +6913,8 @@
         },
         "downloadType": {
           "description": "The type of download you need to use for the report data file. Possible values include `GOOGLE_DRIVE` and `GOOGLE_CLOUD_STORAGE`. If the value is `GOOGLE_DRIVE`, see the `driveDownloadDetails` field. If the value is `GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails` field.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "driveDownloadDetails": {
           "description": "Download details for a file stored in Google Drive.",
@@ -6924,8 +6924,8 @@
               "type": "string"
             }
           },
-          "type": "object",
-          "readOnly": true
+          "readOnly": true,
+          "type": "object"
         },
         "end-date": {
           "annotations": {
@@ -6948,8 +6948,8 @@
         "kind": {
           "default": "analytics#unsampledReport",
           "description": "Resource type for an Analytics unsampled report.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "metrics": {
           "annotations": {
@@ -6971,8 +6971,8 @@
         },
         "selfLink": {
           "description": "Link for this unsampled report.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "start-date": {
           "annotations": {
@@ -6986,8 +6986,8 @@
         },
         "status": {
           "description": "Status of this unsampled report. Possible values are PENDING, COMPLETED, or FAILED.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "title": {
           "annotations": {
@@ -7002,8 +7002,8 @@
         "updated": {
           "description": "Time this unsampled report was last modified.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "webPropertyId": {
           "description": "Web property ID to which this unsampled report belongs. The web property ID is of the form UA-XXXXX-YY.",
@@ -7148,8 +7148,8 @@
         "deletionRequestTime": {
           "description": "This marks the point in time for which all user data before should be deleted",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "firebaseProjectId": {
           "description": "Firebase Project Id",
@@ -7351,8 +7351,8 @@
         "created": {
           "description": "Time this web property was created.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "dataRetentionResetOnNewActivity": {
           "description": "Set to true to reset the retention period of the user identifier with each new event from that user (thus setting the expiration date to current time plus retention period).\nSet to false to delete data associated with the user identifier automatically after the rentention period.\nThis property cannot be set on insert.",
@@ -7377,19 +7377,19 @@
         },
         "internalWebPropertyId": {
           "description": "Internal ID for this web property.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "kind": {
           "default": "analytics#webproperty",
           "description": "Resource type for Analytics WebProperty.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "level": {
           "description": "Level for this web property. Possible values are STANDARD or PREMIUM.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Name of this web property.",
@@ -7418,8 +7418,8 @@
               "items": {
                 "type": "string"
               },
-              "type": "array",
-              "readOnly": true
+              "readOnly": true,
+              "type": "array"
             }
           },
           "type": "object"
@@ -7427,13 +7427,13 @@
         "profileCount": {
           "description": "View (Profile) count for this web property.",
           "format": "int32",
-          "type": "integer",
-          "readOnly": true
+          "readOnly": true,
+          "type": "integer"
         },
         "selfLink": {
           "description": "Link for this web property.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "starred": {
           "description": "Indicates whether this web property is starred or not.",
@@ -7442,8 +7442,8 @@
         "updated": {
           "description": "Time this web property was last modified.",
           "format": "date-time",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "websiteUrl": {
           "description": "Website url for this web property.",

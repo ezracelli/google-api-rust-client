@@ -30,29 +30,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://support.google.com/area120-tables/answer/10011390",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "area120tables:v1alpha1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://area120tables.mtls.googleapis.com/",
   "name": "area120tables",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -63,17 +61,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -125,7 +123,6 @@
         "get": {
           "description": "Gets a table. Returns NOT_FOUND if the table does not exist.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/tables/{tablesId}",
           "id": "area120tables.tables.get",
           "parameterOrder": [
             "name"
@@ -135,8 +132,8 @@
               "description": "Required. The name of the table to retrieve. Format: tables/{table}",
               "location": "path",
               "pattern": "^tables/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha1/{+name}",
@@ -155,7 +152,6 @@
         "list": {
           "description": "Lists tables for the user.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/tables",
           "id": "area120tables.tables.list",
           "parameterOrder": [],
           "parameters": {
@@ -191,7 +187,6 @@
             "batchCreate": {
               "description": "Creates multiple rows.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/tables/{tablesId}/rows:batchCreate",
               "id": "area120tables.tables.rows.batchCreate",
               "parameterOrder": [
                 "parent"
@@ -201,8 +196,8 @@
                   "description": "Required. The parent table where the rows will be created. Format: tables/{table}",
                   "location": "path",
                   "pattern": "^tables/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/rows:batchCreate",
@@ -222,7 +217,6 @@
             "batchDelete": {
               "description": "Deletes multiple rows.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/tables/{tablesId}/rows:batchDelete",
               "id": "area120tables.tables.rows.batchDelete",
               "parameterOrder": [
                 "parent"
@@ -232,8 +226,8 @@
                   "description": "Required. The parent table shared by all rows being deleted. Format: tables/{table}",
                   "location": "path",
                   "pattern": "^tables/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/rows:batchDelete",
@@ -253,7 +247,6 @@
             "batchUpdate": {
               "description": "Updates multiple rows.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/tables/{tablesId}/rows:batchUpdate",
               "id": "area120tables.tables.rows.batchUpdate",
               "parameterOrder": [
                 "parent"
@@ -263,8 +256,8 @@
                   "description": "Required. The parent table shared by all rows being updated. Format: tables/{table}",
                   "location": "path",
                   "pattern": "^tables/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+parent}/rows:batchUpdate",
@@ -284,7 +277,6 @@
             "create": {
               "description": "Creates a row.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha1/tables/{tablesId}/rows",
               "id": "area120tables.tables.rows.create",
               "parameterOrder": [
                 "parent"
@@ -294,20 +286,20 @@
                   "description": "Required. The parent table where this row will be created. Format: tables/{table}",
                   "location": "path",
                   "pattern": "^tables/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "Optional. Column key to use for values in the row. Defaults to user entered name.",
+                  "enum": [
+                    "VIEW_UNSPECIFIED",
+                    "COLUMN_ID_VIEW"
+                  ],
                   "enumDescriptions": [
                     "Defaults to user entered text.",
                     "Uses internally generated column id to identify values."
                   ],
                   "location": "query",
-                  "enum": [
-                    "VIEW_UNSPECIFIED",
-                    "COLUMN_ID_VIEW"
-                  ],
                   "type": "string"
                 }
               },
@@ -328,7 +320,6 @@
             "delete": {
               "description": "Deletes a row.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha1/tables/{tablesId}/rows/{rowsId}",
               "id": "area120tables.tables.rows.delete",
               "parameterOrder": [
                 "name"
@@ -338,8 +329,8 @@
                   "description": "Required. The name of the row to delete. Format: tables/{table}/rows/{row}",
                   "location": "path",
                   "pattern": "^tables/[^/]+/rows/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha1/{+name}",
@@ -356,7 +347,6 @@
             "get": {
               "description": "Gets a row. Returns NOT_FOUND if the row does not exist in the table.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/tables/{tablesId}/rows/{rowsId}",
               "id": "area120tables.tables.rows.get",
               "parameterOrder": [
                 "name"
@@ -366,20 +356,20 @@
                   "description": "Required. The name of the row to retrieve. Format: tables/{table}/rows/{row}",
                   "location": "path",
                   "pattern": "^tables/[^/]+/rows/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "Optional. Column key to use for values in the row. Defaults to user entered name.",
+                  "enum": [
+                    "VIEW_UNSPECIFIED",
+                    "COLUMN_ID_VIEW"
+                  ],
                   "enumDescriptions": [
                     "Defaults to user entered text.",
                     "Uses internally generated column id to identify values."
                   ],
                   "location": "query",
-                  "enum": [
-                    "VIEW_UNSPECIFIED",
-                    "COLUMN_ID_VIEW"
-                  ],
                   "type": "string"
                 }
               },
@@ -399,7 +389,6 @@
             "list": {
               "description": "Lists rows in a table. Returns NOT_FOUND if the table does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha1/tables/{tablesId}/rows",
               "id": "area120tables.tables.rows.list",
               "parameterOrder": [
                 "parent"
@@ -425,20 +414,20 @@
                   "description": "Required. The parent table. Format: tables/{table}",
                   "location": "path",
                   "pattern": "^tables/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "view": {
                   "description": "Optional. Column key to use for values in the row. Defaults to user entered name.",
+                  "enum": [
+                    "VIEW_UNSPECIFIED",
+                    "COLUMN_ID_VIEW"
+                  ],
                   "enumDescriptions": [
                     "Defaults to user entered text.",
                     "Uses internally generated column id to identify values."
                   ],
                   "location": "query",
-                  "enum": [
-                    "VIEW_UNSPECIFIED",
-                    "COLUMN_ID_VIEW"
-                  ],
                   "type": "string"
                 }
               },
@@ -458,7 +447,6 @@
             "patch": {
               "description": "Updates a row.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha1/tables/{tablesId}/rows/{rowsId}",
               "id": "area120tables.tables.rows.patch",
               "parameterOrder": [
                 "name"
@@ -468,8 +456,8 @@
                   "description": "The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is ignored when creating a row.",
                   "location": "path",
                   "pattern": "^tables/[^/]+/rows/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "The list of fields to update.",
@@ -479,15 +467,15 @@
                 },
                 "view": {
                   "description": "Optional. Column key to use for values in the row. Defaults to user entered name.",
+                  "enum": [
+                    "VIEW_UNSPECIFIED",
+                    "COLUMN_ID_VIEW"
+                  ],
                   "enumDescriptions": [
                     "Defaults to user entered text.",
                     "Uses internally generated column id to identify values."
                   ],
                   "location": "query",
-                  "enum": [
-                    "VIEW_UNSPECIFIED",
-                    "COLUMN_ID_VIEW"
-                  ],
                   "type": "string"
                 }
               },
@@ -514,7 +502,6 @@
         "get": {
           "description": "Gets a workspace. Returns NOT_FOUND if the workspace does not exist.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/workspaces/{workspacesId}",
           "id": "area120tables.workspaces.get",
           "parameterOrder": [
             "name"
@@ -524,8 +511,8 @@
               "description": "Required. The name of the workspace to retrieve. Format: workspaces/{workspace}",
               "location": "path",
               "pattern": "^workspaces/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha1/{+name}",
@@ -544,7 +531,6 @@
         "list": {
           "description": "Lists workspaces for the user.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha1/workspaces",
           "id": "area120tables.workspaces.list",
           "parameterOrder": [],
           "parameters": {
@@ -576,7 +562,7 @@
       }
     }
   },
-  "revision": "20210222",
+  "revision": "20210223",
   "rootUrl": "https://area120tables.googleapis.com/",
   "schemas": {
     "BatchCreateRowsRequest": {
@@ -669,16 +655,16 @@
           "type": "array"
         },
         "lookupDetails": {
-          "description": "Optional. Indicates that this is a lookup column whose value is derived from the relationship column specified in the details. Lookup columns can not be updated directly. To change the value you must update the associated relationship column.",
-          "$ref": "LookupDetails"
+          "$ref": "LookupDetails",
+          "description": "Optional. Indicates that this is a lookup column whose value is derived from the relationship column specified in the details. Lookup columns can not be updated directly. To change the value you must update the associated relationship column."
         },
         "name": {
           "description": "column name",
           "type": "string"
         },
         "relationshipDetails": {
-          "description": "Optional. Additional details about a relationship column. Specified when data_type is relationship.",
-          "$ref": "RelationshipDetails"
+          "$ref": "RelationshipDetails",
+          "description": "Optional. Additional details about a relationship column. Specified when data_type is relationship."
         }
       },
       "type": "object"
@@ -692,18 +678,18 @@
           "type": "string"
         },
         "row": {
-          "description": "Required. The row to create.",
-          "$ref": "Row"
+          "$ref": "Row",
+          "description": "Required. The row to create."
         },
         "view": {
           "description": "Optional. Column key to use for values in the row. Defaults to user entered name.",
-          "enumDescriptions": [
-            "Defaults to user entered text.",
-            "Uses internally generated column id to identify values."
-          ],
           "enum": [
             "VIEW_UNSPECIFIED",
             "COLUMN_ID_VIEW"
+          ],
+          "enumDescriptions": [
+            "Defaults to user entered text.",
+            "Uses internally generated column id to identify values."
           ],
           "type": "string"
         }
@@ -876,8 +862,8 @@
       "id": "UpdateRowRequest",
       "properties": {
         "row": {
-          "description": "Required. The row to update.",
-          "$ref": "Row"
+          "$ref": "Row",
+          "description": "Required. The row to update."
         },
         "updateMask": {
           "description": "The list of fields to update.",
@@ -886,13 +872,13 @@
         },
         "view": {
           "description": "Optional. Column key to use for values in the row. Defaults to user entered name.",
-          "enumDescriptions": [
-            "Defaults to user entered text.",
-            "Uses internally generated column id to identify values."
-          ],
           "enum": [
             "VIEW_UNSPECIFIED",
             "COLUMN_ID_VIEW"
+          ],
+          "enumDescriptions": [
+            "Defaults to user entered text.",
+            "Uses internally generated column id to identify values."
           ],
           "type": "string"
         }
@@ -934,6 +920,6 @@
   },
   "servicePath": "",
   "title": "Area120 Tables API",
-  "version_module": true,
-  "version": "v1alpha1"
+  "version": "v1alpha1",
+  "version_module": true
 }

@@ -15,29 +15,27 @@
   "description": "The PageSpeed Insights API lets you analyze the performance of your website with a simple API. It offers tailored suggestions for how you can optimize your site, and lets you easily integrate PageSpeed Insights analysis into your development tools and workflow. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/speed/docs/insights/v5/about",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "pagespeedonline:v5",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://pagespeedonline.mtls.googleapis.com/",
   "name": "pagespeedonline",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "runpagespeed": {
           "description": "Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information.",
           "httpMethod": "GET",
-          "flatPath": "pagespeedonline/v5/runPagespeed",
           "id": "pagespeedonline.pagespeedapi.runpagespeed",
           "parameterOrder": [
             "url"
@@ -123,6 +120,14 @@
             },
             "category": {
               "description": "A Lighthouse category to run; if none are given, only Performance category will be run",
+              "enum": [
+                "CATEGORY_UNSPECIFIED",
+                "ACCESSIBILITY",
+                "BEST_PRACTICES",
+                "PERFORMANCE",
+                "PWA",
+                "SEO"
+              ],
               "enumDescriptions": [
                 "Default UNDEFINED category.",
                 "Accessibility (a11y), category pertaining to a website's capacity to be accessible to all users.",
@@ -132,16 +137,8 @@
                 "Search Engine Optimization (SEO), category pertaining to a website's ability to be indexed by search engines."
               ],
               "location": "query",
-              "enum": [
-                "CATEGORY_UNSPECIFIED",
-                "ACCESSIBILITY",
-                "BEST_PRACTICES",
-                "PERFORMANCE",
-                "PWA",
-                "SEO"
-              ],
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "locale": {
               "description": "The locale used to localize formatted results",
@@ -151,25 +148,25 @@
             },
             "strategy": {
               "description": "The analysis strategy (desktop or mobile) to use, and desktop is the default",
+              "enum": [
+                "STRATEGY_UNSPECIFIED",
+                "DESKTOP",
+                "MOBILE"
+              ],
               "enumDescriptions": [
                 "UNDEFINED.",
                 "Fetch and analyze the URL for desktop browsers.",
                 "Fetch and analyze the URL for mobile devices."
               ],
               "location": "query",
-              "enum": [
-                "STRATEGY_UNSPECIFIED",
-                "DESKTOP",
-                "MOBILE"
-              ],
               "type": "string"
             },
             "url": {
               "description": "Required. The URL to fetch and analyze",
               "location": "query",
               "pattern": "(?i)(url:|origin:)?http(s)?://.*",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "utm_campaign": {
               "description": "Campaign name for analytics.",
@@ -243,24 +240,24 @@
       "id": "Categories",
       "properties": {
         "accessibility": {
-          "description": "The accessibility category, containing all accessibility related audits.",
-          "$ref": "LighthouseCategoryV5"
+          "$ref": "LighthouseCategoryV5",
+          "description": "The accessibility category, containing all accessibility related audits."
         },
         "best-practices": {
-          "description": "The best practices category, containing all best practices related audits.",
-          "$ref": "LighthouseCategoryV5"
+          "$ref": "LighthouseCategoryV5",
+          "description": "The best practices category, containing all best practices related audits."
         },
         "performance": {
-          "description": "The performance category, containing all performance related audits.",
-          "$ref": "LighthouseCategoryV5"
+          "$ref": "LighthouseCategoryV5",
+          "description": "The performance category, containing all performance related audits."
         },
         "pwa": {
-          "description": "The Progressive-Web-App (PWA) category, containing all pwa related audits.",
-          "$ref": "LighthouseCategoryV5"
+          "$ref": "LighthouseCategoryV5",
+          "description": "The Progressive-Web-App (PWA) category, containing all pwa related audits."
         },
         "seo": {
-          "description": "The Search-Engine-Optimization (SEO) category, containing all seo related audits.",
-          "$ref": "LighthouseCategoryV5"
+          "$ref": "LighthouseCategoryV5",
+          "description": "The Search-Engine-Optimization (SEO) category, containing all seo related audits."
         }
       },
       "type": "object"
@@ -332,8 +329,8 @@
       "id": "I18n",
       "properties": {
         "rendererFormattedStrings": {
-          "description": "Internationalized strings that are formatted to the locale in configSettings.",
-          "$ref": "RendererFormattedStrings"
+          "$ref": "RendererFormattedStrings",
+          "description": "Internationalized strings that are formatted to the locale in configSettings."
         }
       },
       "type": "object"
@@ -440,8 +437,8 @@
           "type": "object"
         },
         "categories": {
-          "description": "Map of categories in the LHR.",
-          "$ref": "Categories"
+          "$ref": "Categories",
+          "description": "Map of categories in the LHR."
         },
         "categoryGroups": {
           "additionalProperties": {
@@ -451,12 +448,12 @@
           "type": "object"
         },
         "configSettings": {
-          "description": "The configuration settings for this LHR.",
-          "$ref": "ConfigSettings"
+          "$ref": "ConfigSettings",
+          "description": "The configuration settings for this LHR."
         },
         "environment": {
-          "description": "Environment settings that were used when making this LHR.",
-          "$ref": "Environment"
+          "$ref": "Environment",
+          "description": "Environment settings that were used when making this LHR."
         },
         "fetchTime": {
           "description": "The time that this run was fetched.",
@@ -467,8 +464,8 @@
           "type": "string"
         },
         "i18n": {
-          "description": "The internationalization strings that are required to render the LHR.",
-          "$ref": "I18n"
+          "$ref": "I18n",
+          "description": "The internationalization strings that are required to render the LHR."
         },
         "lighthouseVersion": {
           "description": "The lighthouse version that was used to generate this LHR.",
@@ -486,8 +483,8 @@
           "type": "array"
         },
         "runtimeError": {
-          "description": "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded.",
-          "$ref": "RuntimeError"
+          "$ref": "RuntimeError",
+          "description": "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded."
         },
         "stackPacks": {
           "description": "The Stack Pack advice strings.",
@@ -497,8 +494,8 @@
           "type": "array"
         },
         "timing": {
-          "description": "Timing information for this LHR.",
-          "$ref": "Timing"
+          "$ref": "Timing",
+          "description": "Timing information for this LHR."
         },
         "userAgent": {
           "description": "The user agent that was used to run this LHR.",
@@ -558,20 +555,20 @@
           "type": "string"
         },
         "lighthouseResult": {
-          "description": "Lighthouse response for the audit url as an object.",
-          "$ref": "LighthouseResultV5"
+          "$ref": "LighthouseResultV5",
+          "description": "Lighthouse response for the audit url as an object."
         },
         "loadingExperience": {
-          "description": "Metrics of end users' page loading experience.",
-          "$ref": "PagespeedApiLoadingExperienceV5"
+          "$ref": "PagespeedApiLoadingExperienceV5",
+          "description": "Metrics of end users' page loading experience."
         },
         "originLoadingExperience": {
-          "description": "Metrics of the aggregated page loading experience of the origin",
-          "$ref": "PagespeedApiLoadingExperienceV5"
+          "$ref": "PagespeedApiLoadingExperienceV5",
+          "description": "Metrics of the aggregated page loading experience of the origin"
         },
         "version": {
-          "description": "The version of PageSpeed used to generate these results.",
-          "$ref": "PagespeedVersion"
+          "$ref": "PagespeedVersion",
+          "description": "The version of PageSpeed used to generate these results."
         }
       },
       "type": "object"
@@ -754,6 +751,6 @@
   },
   "servicePath": "",
   "title": "PageSpeed Insights API",
-  "version_module": true,
-  "version": "v5"
+  "version": "v5",
+  "version_module": true
 }

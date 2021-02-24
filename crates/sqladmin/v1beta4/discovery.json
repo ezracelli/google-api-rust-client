@@ -18,29 +18,27 @@
   "description": "API for Cloud SQL database instance management",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/cloud-sql/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "sqladmin:v1beta4",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://sqladmin.mtls.googleapis.com/",
   "name": "sqladmin",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -113,7 +111,6 @@
         "delete": {
           "description": "Deletes the backup taken by a backup run.",
           "httpMethod": "DELETE",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}",
           "id": "sql.backupRuns.delete",
           "parameterOrder": [
             "project",
@@ -125,20 +122,20 @@
               "description": "The ID of the Backup Run to delete. To find a Backup Run ID, use the list method.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}",
@@ -153,7 +150,6 @@
         "get": {
           "description": "Retrieves a resource containing information about a backup run.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}",
           "id": "sql.backupRuns.get",
           "parameterOrder": [
             "project",
@@ -165,20 +161,20 @@
               "description": "The ID of this Backup Run.",
               "format": "int64",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}",
@@ -193,7 +189,6 @@
         "insert": {
           "description": "Creates a new backup run on demand. This method is applicable only to Second Generation instances.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns",
           "id": "sql.backupRuns.insert",
           "parameterOrder": [
             "project",
@@ -203,14 +198,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns",
@@ -228,7 +223,6 @@
         "list": {
           "description": "Lists all backup runs associated with a given instance and configuration in the reverse chronological order of the backup initiation time.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns",
           "id": "sql.backupRuns.list",
           "parameterOrder": [
             "project",
@@ -238,8 +232,8 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "Maximum number of backup runs per response.",
@@ -255,8 +249,8 @@
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns",
@@ -275,7 +269,6 @@
         "delete": {
           "description": "Deletes a database from a Cloud SQL instance.",
           "httpMethod": "DELETE",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
           "id": "sql.databases.delete",
           "parameterOrder": [
             "project",
@@ -286,20 +279,20 @@
             "database": {
               "description": "Name of the database to be deleted in the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
@@ -314,7 +307,6 @@
         "get": {
           "description": "Retrieves a resource containing information about a database inside a Cloud SQL instance.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
           "id": "sql.databases.get",
           "parameterOrder": [
             "project",
@@ -325,20 +317,20 @@
             "database": {
               "description": "Name of the database in the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
@@ -353,7 +345,6 @@
         "insert": {
           "description": "Inserts a resource containing information about a database inside a Cloud SQL instance.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases",
           "id": "sql.databases.insert",
           "parameterOrder": [
             "project",
@@ -363,14 +354,14 @@
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases",
@@ -388,7 +379,6 @@
         "list": {
           "description": "Lists databases in the specified Cloud SQL instance.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases",
           "id": "sql.databases.list",
           "parameterOrder": [
             "project",
@@ -398,14 +388,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases",
@@ -420,7 +410,6 @@
         "patch": {
           "description": "Partially updates a resource containing information about a database inside a Cloud SQL instance. This method supports patch semantics.",
           "httpMethod": "PATCH",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
           "id": "sql.databases.patch",
           "parameterOrder": [
             "project",
@@ -431,20 +420,20 @@
             "database": {
               "description": "Name of the database to be updated in the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
@@ -462,7 +451,6 @@
         "update": {
           "description": "Updates a resource containing information about a database inside a Cloud SQL instance.",
           "httpMethod": "PUT",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
           "id": "sql.databases.update",
           "parameterOrder": [
             "project",
@@ -473,20 +461,20 @@
             "database": {
               "description": "Name of the database to be updated in the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}",
@@ -508,7 +496,6 @@
         "list": {
           "description": "List all available database flags for Cloud SQL instances.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/flags",
           "id": "sql.flags.list",
           "parameterOrder": [],
           "parameters": {
@@ -534,7 +521,6 @@
         "addServerCa": {
           "description": "Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a certificate rotation. If a CA version was previously added but never used in a certificate rotation, this operation replaces that version. There cannot be more than one CA version waiting to be rotated in.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/addServerCa",
           "id": "sql.instances.addServerCa",
           "parameterOrder": [
             "project",
@@ -544,14 +530,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/addServerCa",
@@ -566,7 +552,6 @@
         "clone": {
           "description": "Creates a Cloud SQL instance as a clone of the source instance. Using this operation might cause your instance to restart.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/clone",
           "id": "sql.instances.clone",
           "parameterOrder": [
             "project",
@@ -576,14 +561,14 @@
             "instance": {
               "description": "The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the source as well as the clone Cloud SQL instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/clone",
@@ -601,7 +586,6 @@
         "delete": {
           "description": "Deletes a Cloud SQL instance.",
           "httpMethod": "DELETE",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}",
           "id": "sql.instances.delete",
           "parameterOrder": [
             "project",
@@ -611,14 +595,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance to be deleted.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}",
@@ -633,7 +617,6 @@
         "demoteMaster": {
           "description": "Demotes the stand-alone instance to be a Cloud SQL read replica for an external database server.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/demoteMaster",
           "id": "sql.instances.demoteMaster",
           "parameterOrder": [
             "project",
@@ -643,14 +626,14 @@
             "instance": {
               "description": "Cloud SQL instance name.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/demoteMaster",
@@ -668,7 +651,6 @@
         "export": {
           "description": "Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL dump or CSV file.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/export",
           "id": "sql.instances.export",
           "parameterOrder": [
             "project",
@@ -678,14 +660,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance to be exported.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/export",
@@ -702,7 +684,6 @@
         "failover": {
           "description": "Failover the instance to its failover replica instance. Using this operation might cause your instance to restart.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/failover",
           "id": "sql.instances.failover",
           "parameterOrder": [
             "project",
@@ -712,14 +693,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "ID of the project that contains the read replica.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/failover",
@@ -737,7 +718,6 @@
         "get": {
           "description": "Retrieves a resource containing information about a Cloud SQL instance.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}",
           "id": "sql.instances.get",
           "parameterOrder": [
             "project",
@@ -747,14 +727,14 @@
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}",
@@ -769,7 +749,6 @@
         "import": {
           "description": "Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud Storage.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/import",
           "id": "sql.instances.import",
           "parameterOrder": [
             "project",
@@ -779,14 +758,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/import",
@@ -803,7 +782,6 @@
         "insert": {
           "description": "Creates a new Cloud SQL instance.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances",
           "id": "sql.instances.insert",
           "parameterOrder": [
             "project"
@@ -812,8 +790,8 @@
             "project": {
               "description": "Project ID of the project to which the newly created Cloud SQL instances should belong.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances",
@@ -831,7 +809,6 @@
         "list": {
           "description": "Lists instances under a given project.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances",
           "id": "sql.instances.list",
           "parameterOrder": [
             "project"
@@ -856,8 +833,8 @@
             "project": {
               "description": "Project ID of the project for which to list Cloud SQL instances.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances",
@@ -872,7 +849,6 @@
         "listServerCas": {
           "description": "Lists all of the trusted Certificate Authorities (CAs) for the specified instance. There can be up to three CAs listed: the CA that was used to sign the certificate that is currently in use, a CA that has been added but not yet used to sign a certificate, and a CA used to sign a certificate that has previously rotated out.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/listServerCas",
           "id": "sql.instances.listServerCas",
           "parameterOrder": [
             "project",
@@ -882,14 +858,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/listServerCas",
@@ -904,7 +880,6 @@
         "patch": {
           "description": "Updates settings of a Cloud SQL instance. This method supports patch semantics.",
           "httpMethod": "PATCH",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}",
           "id": "sql.instances.patch",
           "parameterOrder": [
             "project",
@@ -914,14 +889,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}",
@@ -939,7 +914,6 @@
         "promoteReplica": {
           "description": "Promotes the read replica instance to be a stand-alone Cloud SQL instance. Using this operation might cause your instance to restart.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/promoteReplica",
           "id": "sql.instances.promoteReplica",
           "parameterOrder": [
             "project",
@@ -949,14 +923,14 @@
             "instance": {
               "description": "Cloud SQL read replica instance name.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "ID of the project that contains the read replica.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/promoteReplica",
@@ -971,7 +945,6 @@
         "resetSslConfig": {
           "description": "Deletes all client certificates and generates a new server SSL certificate for the instance.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/resetSslConfig",
           "id": "sql.instances.resetSslConfig",
           "parameterOrder": [
             "project",
@@ -981,14 +954,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/resetSslConfig",
@@ -1003,7 +976,6 @@
         "restart": {
           "description": "Restarts a Cloud SQL instance.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/restart",
           "id": "sql.instances.restart",
           "parameterOrder": [
             "project",
@@ -1013,14 +985,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance to be restarted.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/restart",
@@ -1035,7 +1007,6 @@
         "restoreBackup": {
           "description": "Restores a backup of a Cloud SQL instance. Using this operation might cause your instance to restart.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/restoreBackup",
           "id": "sql.instances.restoreBackup",
           "parameterOrder": [
             "project",
@@ -1045,14 +1016,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/restoreBackup",
@@ -1070,7 +1041,6 @@
         "rotateServerCa": {
           "description": "Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with the addServerCA method.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/rotateServerCa",
           "id": "sql.instances.rotateServerCa",
           "parameterOrder": [
             "project",
@@ -1080,14 +1050,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/rotateServerCa",
@@ -1105,7 +1075,6 @@
         "startReplica": {
           "description": "Starts the replication in the read replica instance.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/startReplica",
           "id": "sql.instances.startReplica",
           "parameterOrder": [
             "project",
@@ -1115,14 +1084,14 @@
             "instance": {
               "description": "Cloud SQL read replica instance name.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "ID of the project that contains the read replica.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/startReplica",
@@ -1137,7 +1106,6 @@
         "stopReplica": {
           "description": "Stops the replication in the read replica instance.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/stopReplica",
           "id": "sql.instances.stopReplica",
           "parameterOrder": [
             "project",
@@ -1147,14 +1115,14 @@
             "instance": {
               "description": "Cloud SQL read replica instance name.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "ID of the project that contains the read replica.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/stopReplica",
@@ -1169,7 +1137,6 @@
         "truncateLog": {
           "description": "Truncate MySQL general and slow query log tables",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/truncateLog",
           "id": "sql.instances.truncateLog",
           "parameterOrder": [
             "project",
@@ -1179,14 +1146,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the Cloud SQL project.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/truncateLog",
@@ -1204,7 +1171,6 @@
         "update": {
           "description": "Updates settings of a Cloud SQL instance. Using this operation might cause your instance to restart.",
           "httpMethod": "PUT",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}",
           "id": "sql.instances.update",
           "parameterOrder": [
             "project",
@@ -1214,14 +1180,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}",
@@ -1243,7 +1209,6 @@
         "get": {
           "description": "Retrieves an instance operation that has been performed on an instance.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/operations/{operation}",
           "id": "sql.operations.get",
           "parameterOrder": [
             "project",
@@ -1253,14 +1218,14 @@
             "operation": {
               "description": "Instance operation ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/operations/{operation}",
@@ -1275,7 +1240,6 @@
         "list": {
           "description": "Lists all instance operations that have been performed on the given Cloud SQL instance in the reverse chronological order of the start time.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/operations",
           "id": "sql.operations.list",
           "parameterOrder": [
             "project"
@@ -1300,8 +1264,8 @@
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/operations",
@@ -1322,7 +1286,6 @@
             "rescheduleMaintenance": {
               "description": "Reschedules the maintenance on the given instance.",
               "httpMethod": "POST",
-              "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/rescheduleMaintenance",
               "id": "sql.projects.instances.rescheduleMaintenance",
               "parameterOrder": [
                 "project",
@@ -1332,14 +1295,14 @@
                 "instance": {
                   "description": "Cloud SQL instance ID. This does not include the project ID.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "project": {
                   "description": "ID of the project that contains the instance.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "sql/v1beta4/projects/{project}/instances/{instance}/rescheduleMaintenance",
@@ -1357,7 +1320,6 @@
             "startExternalSync": {
               "description": "Start External primary instance migration.",
               "httpMethod": "POST",
-              "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/startExternalSync",
               "id": "sql.projects.instances.startExternalSync",
               "parameterOrder": [
                 "project",
@@ -1367,14 +1329,14 @@
                 "instance": {
                   "description": "Cloud SQL instance ID. This does not include the project ID.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "project": {
                   "description": "ID of the project that contains the instance.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "skipVerification": {
                   "description": "Whether to skip the verification step (VESS).",
@@ -1383,17 +1345,17 @@
                 },
                 "syncMode": {
                   "description": "External sync mode.",
+                  "enum": [
+                    "EXTERNAL_SYNC_MODE_UNSPECIFIED",
+                    "ONLINE",
+                    "OFFLINE"
+                  ],
                   "enumDescriptions": [
                     "Unknown external sync mode, will be defaulted to ONLINE mode",
                     "Online external sync will set up replication after initial data external sync",
                     "Offline external sync only dumps and loads a one-time snapshot of the primary instance's data"
                   ],
                   "location": "query",
-                  "enum": [
-                    "EXTERNAL_SYNC_MODE_UNSPECIFIED",
-                    "ONLINE",
-                    "OFFLINE"
-                  ],
                   "type": "string"
                 }
               },
@@ -1409,7 +1371,6 @@
             "verifyExternalSyncSettings": {
               "description": "Verify External primary instance external sync settings.",
               "httpMethod": "POST",
-              "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/verifyExternalSyncSettings",
               "id": "sql.projects.instances.verifyExternalSyncSettings",
               "parameterOrder": [
                 "project",
@@ -1419,28 +1380,28 @@
                 "instance": {
                   "description": "Cloud SQL instance ID. This does not include the project ID.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "project": {
                   "description": "Project ID of the project that contains the instance.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "syncMode": {
                   "description": "External sync mode",
+                  "enum": [
+                    "EXTERNAL_SYNC_MODE_UNSPECIFIED",
+                    "ONLINE",
+                    "OFFLINE"
+                  ],
                   "enumDescriptions": [
                     "Unknown external sync mode, will be defaulted to ONLINE mode",
                     "Online external sync will set up replication after initial data external sync",
                     "Offline external sync only dumps and loads a one-time snapshot of the primary instance's data"
                   ],
                   "location": "query",
-                  "enum": [
-                    "EXTERNAL_SYNC_MODE_UNSPECIFIED",
-                    "ONLINE",
-                    "OFFLINE"
-                  ],
                   "type": "string"
                 },
                 "verifyConnectionOnly": {
@@ -1467,7 +1428,6 @@
         "createEphemeral": {
           "description": "Generates a short-lived X509 certificate containing the provided public key and signed by a private key specific to the target instance. Users may use the certificate to authenticate as themselves when connecting to the database.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/createEphemeral",
           "id": "sql.sslCerts.createEphemeral",
           "parameterOrder": [
             "project",
@@ -1477,14 +1437,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the Cloud SQL project.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/createEphemeral",
@@ -1502,7 +1462,6 @@
         "delete": {
           "description": "Deletes the SSL certificate. For First Generation instances, the certificate remains valid until the instance is restarted.",
           "httpMethod": "DELETE",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
           "id": "sql.sslCerts.delete",
           "parameterOrder": [
             "project",
@@ -1513,20 +1472,20 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sha1Fingerprint": {
               "description": "Sha1 FingerPrint.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
@@ -1541,7 +1500,6 @@
         "get": {
           "description": "Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
           "id": "sql.sslCerts.get",
           "parameterOrder": [
             "project",
@@ -1552,20 +1510,20 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sha1Fingerprint": {
               "description": "Sha1 FingerPrint.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}",
@@ -1580,7 +1538,6 @@
         "insert": {
           "description": "Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts",
           "id": "sql.sslCerts.insert",
           "parameterOrder": [
             "project",
@@ -1590,14 +1547,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts",
@@ -1615,7 +1572,6 @@
         "list": {
           "description": "Lists all of the current SSL certificates for the instance.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts",
           "id": "sql.sslCerts.list",
           "parameterOrder": [
             "project",
@@ -1625,14 +1581,14 @@
             "instance": {
               "description": "Cloud SQL instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts",
@@ -1651,7 +1607,6 @@
         "list": {
           "description": "Lists all available machine types (tiers) for Cloud SQL, for example, db-n1-standard-1. For related information, see Pricing.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/tiers",
           "id": "sql.tiers.list",
           "parameterOrder": [
             "project"
@@ -1660,8 +1615,8 @@
             "project": {
               "description": "Project ID of the project for which to list tiers.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/tiers",
@@ -1680,7 +1635,6 @@
         "delete": {
           "description": "Deletes a user from a Cloud SQL instance.",
           "httpMethod": "DELETE",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
           "id": "sql.users.delete",
           "parameterOrder": [
             "project",
@@ -1695,8 +1649,8 @@
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "name": {
               "description": "Name of the user in the instance.",
@@ -1706,8 +1660,8 @@
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/users",
@@ -1722,7 +1676,6 @@
         "insert": {
           "description": "Creates a new user in a Cloud SQL instance.",
           "httpMethod": "POST",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
           "id": "sql.users.insert",
           "parameterOrder": [
             "project",
@@ -1732,14 +1685,14 @@
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/users",
@@ -1757,7 +1710,6 @@
         "list": {
           "description": "Lists users in the specified Cloud SQL instance.",
           "httpMethod": "GET",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
           "id": "sql.users.list",
           "parameterOrder": [
             "project",
@@ -1767,14 +1719,14 @@
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/users",
@@ -1789,7 +1741,6 @@
         "update": {
           "description": "Updates an existing user in a Cloud SQL instance.",
           "httpMethod": "PUT",
-          "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
           "id": "sql.users.update",
           "parameterOrder": [
             "project",
@@ -1804,8 +1755,8 @@
             "instance": {
               "description": "Database instance ID. This does not include the project ID.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "name": {
               "description": "Name of the user in the instance.",
@@ -1815,8 +1766,8 @@
             "project": {
               "description": "Project ID of the project that contains the instance.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "sql/v1beta4/projects/{project}/instances/{instance}/users",
@@ -1867,13 +1818,13 @@
       "properties": {
         "code": {
           "description": "Code to uniquely identify the warning type.",
-          "enumDescriptions": [
-            "An unknown or unset warning type from Cloud SQL API.",
-            "Warning when one or more regions are not reachable. The returned result set may be incomplete."
-          ],
           "enum": [
             "SQL_API_WARNING_CODE_UNSPECIFIED",
             "REGION_UNREACHABLE"
+          ],
+          "enumDescriptions": [
+            "An unknown or unset warning type from Cloud SQL API.",
+            "Warning when one or more regions are not reachable. The returned result set may be incomplete."
           ],
           "type": "string"
         },
@@ -1893,8 +1844,8 @@
       "id": "BackupConfiguration",
       "properties": {
         "backupRetentionSettings": {
-          "description": "Backup retention settings.",
-          "$ref": "BackupRetentionSettings"
+          "$ref": "BackupRetentionSettings",
+          "description": "Backup retention settings."
         },
         "binaryLogEnabled": {
           "description": "(MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.",
@@ -1959,13 +1910,13 @@
         },
         "retentionUnit": {
           "description": "The unit that 'retained_backups' represents.",
-          "enumDescriptions": [
-            "Backup retention unit is unspecified, will be treated as COUNT.",
-            "Retention will be by count, eg. \"retain the most recent 7 backups\"."
-          ],
           "enum": [
             "RETENTION_UNIT_UNSPECIFIED",
             "COUNT"
+          ],
+          "enumDescriptions": [
+            "Backup retention unit is unspecified, will be treated as COUNT.",
+            "Retention will be by count, eg. \"retain the most recent 7 backups\"."
           ],
           "type": "string"
         }
@@ -1978,15 +1929,15 @@
       "properties": {
         "backupKind": {
           "description": "Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.",
-          "enumDescriptions": [
-            "This is an unknown BackupKind.",
-            "The snapshot based backups",
-            "Physical backups"
-          ],
           "enum": [
             "SQL_BACKUP_KIND_UNSPECIFIED",
             "SNAPSHOT",
             "PHYSICAL"
+          ],
+          "enumDescriptions": [
+            "This is an unknown BackupKind.",
+            "The snapshot based backups",
+            "Physical backups"
           ],
           "type": "string"
         },
@@ -1995,12 +1946,12 @@
           "type": "string"
         },
         "diskEncryptionConfiguration": {
-          "description": "Encryption configuration specific to a backup. Applies only to Second Generation instances.",
-          "$ref": "DiskEncryptionConfiguration"
+          "$ref": "DiskEncryptionConfiguration",
+          "description": "Encryption configuration specific to a backup. Applies only to Second Generation instances."
         },
         "diskEncryptionStatus": {
-          "description": "Encryption status specific to a backup. Applies only to Second Generation instances.",
-          "$ref": "DiskEncryptionStatus"
+          "$ref": "DiskEncryptionStatus",
+          "description": "Encryption status specific to a backup. Applies only to Second Generation instances."
         },
         "endTime": {
           "description": "The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.",
@@ -2013,8 +1964,8 @@
           "type": "string"
         },
         "error": {
-          "description": "Information about why the backup operation failed. This is only present if the run has the FAILED status.",
-          "$ref": "OperationError"
+          "$ref": "OperationError",
+          "description": "Information about why the backup operation failed. This is only present if the run has the FAILED status."
         },
         "id": {
           "description": "The identifier for this backup run. Unique only for a specific Cloud SQL instance.",
@@ -2044,18 +1995,6 @@
         },
         "status": {
           "description": "The status of this run.",
-          "enumDescriptions": [
-            "The status of the run is unknown.",
-            "The backup operation was enqueued.",
-            "The backup is overdue across a given backup window. Indicates a problem. Example: Long-running operation in progress during the whole window.",
-            "The backup is in progress.",
-            "The backup failed.",
-            "The backup was successful.",
-            "The backup was skipped (without problems) for a given backup window. Example: Instance was idle.",
-            "The backup is about to be deleted.",
-            "The backup deletion failed.",
-            "The backup has been deleted."
-          ],
           "enum": [
             "SQL_BACKUP_RUN_STATUS_UNSPECIFIED",
             "ENQUEUED",
@@ -2068,19 +2007,31 @@
             "DELETION_FAILED",
             "DELETED"
           ],
+          "enumDescriptions": [
+            "The status of the run is unknown.",
+            "The backup operation was enqueued.",
+            "The backup is overdue across a given backup window. Indicates a problem. Example: Long-running operation in progress during the whole window.",
+            "The backup is in progress.",
+            "The backup failed.",
+            "The backup was successful.",
+            "The backup was skipped (without problems) for a given backup window. Example: Instance was idle.",
+            "The backup is about to be deleted.",
+            "The backup deletion failed.",
+            "The backup has been deleted."
+          ],
           "type": "string"
         },
         "type": {
           "description": "The type of this run; can be either \"AUTOMATED\" or \"ON_DEMAND\". This field defaults to \"ON_DEMAND\" and is ignored, when specified for insert requests.",
-          "enumDescriptions": [
-            "This is an unknown BackupRun type.",
-            "The backup schedule automatically triggers a backup.",
-            "The user manually triggers a backup."
-          ],
           "enum": [
             "SQL_BACKUP_RUN_TYPE_UNSPECIFIED",
             "AUTOMATED",
             "ON_DEMAND"
+          ],
+          "enumDescriptions": [
+            "This is an unknown BackupRun type.",
+            "The backup schedule automatically triggers a backup.",
+            "The user manually triggers a backup."
           ],
           "type": "string"
         },
@@ -2139,8 +2090,8 @@
       "id": "CloneContext",
       "properties": {
         "binLogCoordinates": {
-          "description": "Binary log coordinates, if specified, identify the position up to which the source instance is cloned. If not specified, the source instance is cloned up to the most recent binary log coordinates.",
-          "$ref": "BinLogCoordinates"
+          "$ref": "BinLogCoordinates",
+          "description": "Binary log coordinates, if specified, identify the position up to which the source instance is cloned. If not specified, the source instance is cloned up to the most recent binary log coordinates."
         },
         "destinationInstanceName": {
           "description": "Name of the Cloud SQL instance to be created as a clone.",
@@ -2226,17 +2177,17 @@
       "properties": {
         "backendType": {
           "description": " *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.",
-          "enumDescriptions": [
-            "This is an unknown backend type for instance.",
-            "V1 speckle instance.",
-            "V2 speckle instance.",
-            "On premises instance."
-          ],
           "enum": [
             "SQL_BACKEND_TYPE_UNSPECIFIED",
             "FIRST_GEN",
             "SECOND_GEN",
             "EXTERNAL"
+          ],
+          "enumDescriptions": [
+            "This is an unknown backend type for instance.",
+            "V1 speckle instance.",
+            "V2 speckle instance.",
+            "On premises instance."
           ],
           "type": "string"
         },
@@ -2251,23 +2202,6 @@
         },
         "databaseVersion": {
           "description": "The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11* or *POSTGRES_12* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.",
-          "enumDescriptions": [
-            "This is an unknown database version.",
-            "The database version is MySQL 5.1.",
-            "The database version is MySQL 5.5.",
-            "The database version is MySQL 5.6.",
-            "The database version is MySQL 5.7.",
-            "The database version is PostgreSQL 9.6.",
-            "The database version is PostgreSQL 11.",
-            "The database version is SQL Server 2017 Standard.",
-            "The database version is SQL Server 2017 Enterprise.",
-            "The database version is SQL Server 2017 Express.",
-            "The database version is SQL Server 2017 Web.",
-            "The database version is PostgreSQL 10.",
-            "The database version is PostgreSQL 12.",
-            "The database version is MySQL 8.",
-            "The database version is PostgreSQL 13."
-          ],
           "enum": [
             "SQL_DATABASE_VERSION_UNSPECIFIED",
             "MYSQL_5_1",
@@ -2285,15 +2219,32 @@
             "MYSQL_8_0",
             "POSTGRES_13"
           ],
+          "enumDescriptions": [
+            "This is an unknown database version.",
+            "The database version is MySQL 5.1.",
+            "The database version is MySQL 5.5.",
+            "The database version is MySQL 5.6.",
+            "The database version is MySQL 5.7.",
+            "The database version is PostgreSQL 9.6.",
+            "The database version is PostgreSQL 11.",
+            "The database version is SQL Server 2017 Standard.",
+            "The database version is SQL Server 2017 Enterprise.",
+            "The database version is SQL Server 2017 Express.",
+            "The database version is SQL Server 2017 Web.",
+            "The database version is PostgreSQL 10.",
+            "The database version is PostgreSQL 12.",
+            "The database version is MySQL 8.",
+            "The database version is PostgreSQL 13."
+          ],
           "type": "string"
         },
         "diskEncryptionConfiguration": {
-          "description": "Disk encryption configuration specific to an instance. Applies only to Second Generation instances.",
-          "$ref": "DiskEncryptionConfiguration"
+          "$ref": "DiskEncryptionConfiguration",
+          "description": "Disk encryption configuration specific to an instance. Applies only to Second Generation instances."
         },
         "diskEncryptionStatus": {
-          "description": "Disk encryption status specific to an instance. Applies only to Second Generation instances.",
-          "$ref": "DiskEncryptionStatus"
+          "$ref": "DiskEncryptionStatus",
+          "description": "Disk encryption status specific to an instance. Applies only to Second Generation instances."
         },
         "etag": {
           "description": "This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.",
@@ -2319,17 +2270,17 @@
         },
         "instanceType": {
           "description": "The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.",
-          "enumDescriptions": [
-            "This is an unknown Cloud SQL instance type.",
-            "A regular Cloud SQL instance.",
-            "An instance running on the customer's premises that is not managed by Cloud SQL.",
-            "A Cloud SQL instance acting as a read-replica."
-          ],
           "enum": [
             "SQL_INSTANCE_TYPE_UNSPECIFIED",
             "CLOUD_SQL_INSTANCE",
             "ON_PREMISES_INSTANCE",
             "READ_REPLICA_INSTANCE"
+          ],
+          "enumDescriptions": [
+            "This is an unknown Cloud SQL instance type.",
+            "A regular Cloud SQL instance.",
+            "An instance running on the customer's premises that is not managed by Cloud SQL.",
+            "A Cloud SQL instance acting as a read-replica."
           ],
           "type": "string"
         },
@@ -2362,8 +2313,8 @@
           "type": "string"
         },
         "onPremisesConfiguration": {
-          "description": "Configuration specific to on-premises instances.",
-          "$ref": "OnPremisesConfiguration"
+          "$ref": "OnPremisesConfiguration",
+          "description": "Configuration specific to on-premises instances."
         },
         "project": {
           "description": "The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.",
@@ -2374,8 +2325,8 @@
           "type": "string"
         },
         "replicaConfiguration": {
-          "description": "Configuration specific to failover replicas and read replicas.",
-          "$ref": "ReplicaConfiguration"
+          "$ref": "ReplicaConfiguration",
+          "description": "Configuration specific to failover replicas and read replicas."
         },
         "replicaNames": {
           "description": "The replicas of the instance.",
@@ -2393,8 +2344,8 @@
           "type": "boolean"
         },
         "scheduledMaintenance": {
-          "description": "The start time of any upcoming scheduled maintenance for this instance.",
-          "$ref": "SqlScheduledMaintenance"
+          "$ref": "SqlScheduledMaintenance",
+          "description": "The start time of any upcoming scheduled maintenance for this instance."
         },
         "secondaryGceZone": {
           "description": "The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.",
@@ -2405,28 +2356,19 @@
           "type": "string"
         },
         "serverCaCert": {
-          "description": "SSL configuration.",
-          "$ref": "SslCert"
+          "$ref": "SslCert",
+          "description": "SSL configuration."
         },
         "serviceAccountEmailAddress": {
           "description": "The service account email address assigned to the instance. This property is applicable only to Second Generation instances.",
           "type": "string"
         },
         "settings": {
-          "description": "The user settings.",
-          "$ref": "Settings"
+          "$ref": "Settings",
+          "description": "The user settings."
         },
         "state": {
           "description": "The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.",
-          "enumDescriptions": [
-            "The state of the instance is unknown.",
-            "The instance is running, or has been stopped by owner.",
-            "The instance is not available, for example due to problems with billing.",
-            "The instance is being deleted.",
-            "The instance is being created.",
-            "The instance is down for maintenance.",
-            "The creation of the instance failed or a fatal error occurred during maintenance."
-          ],
           "enum": [
             "SQL_INSTANCE_STATE_UNSPECIFIED",
             "RUNNABLE",
@@ -2436,24 +2378,33 @@
             "MAINTENANCE",
             "FAILED"
           ],
+          "enumDescriptions": [
+            "The state of the instance is unknown.",
+            "The instance is running, or has been stopped by owner.",
+            "The instance is not available, for example due to problems with billing.",
+            "The instance is being deleted.",
+            "The instance is being created.",
+            "The instance is down for maintenance.",
+            "The creation of the instance failed or a fatal error occurred during maintenance."
+          ],
           "type": "string"
         },
         "suspensionReason": {
           "description": "If the instance state is SUSPENDED, the reason for the suspension.",
           "items": {
-            "enumDescriptions": [
-              "This is an unknown suspension reason.",
-              "The instance is suspended due to billing issues (for example:, GCP account issue)",
-              "The instance is suspended due to illegal content (for example:, child pornography, copyrighted material, etc.).",
-              "The instance is causing operational issues (for example:, causing the database to crash).",
-              "The KMS key used by the instance is either revoked or denied access to"
-            ],
             "enum": [
               "SQL_SUSPENSION_REASON_UNSPECIFIED",
               "BILLING_ISSUE",
               "LEGAL_ISSUE",
               "OPERATIONAL_ISSUE",
               "KMS_KEY_ISSUE"
+            ],
+            "enumDescriptions": [
+              "This is an unknown suspension reason.",
+              "The instance is suspended due to billing issues (for example:, GCP account issue)",
+              "The instance is suspended due to illegal content (for example:, child pornography, copyrighted material, etc.).",
+              "The instance is causing operational issues (for example:, causing the database to crash).",
+              "The KMS key used by the instance is either revoked or denied access to"
             ],
             "type": "string"
           },
@@ -2489,8 +2440,8 @@
           "type": "string"
         },
         "mysqlReplicaConfiguration": {
-          "description": "MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.",
-          "$ref": "DemoteMasterMySqlReplicaConfiguration"
+          "$ref": "DemoteMasterMySqlReplicaConfiguration",
+          "description": "MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory."
         }
       },
       "type": "object"
@@ -2508,8 +2459,8 @@
           "type": "string"
         },
         "replicaConfiguration": {
-          "description": "Configuration specific to read-replicas replicating from the on-premises primary instance.",
-          "$ref": "DemoteMasterConfiguration"
+          "$ref": "DemoteMasterConfiguration",
+          "description": "Configuration specific to read-replicas replicating from the on-premises primary instance."
         },
         "verifyGtidConsistency": {
           "description": "Verify GTID consistency for demote operation. Default value: *True*. Second Generation instances only. Setting this flag to false enables you to bypass GTID consistency check between on-premises primary instance and Cloud SQL instance during the demotion operation but also exposes you to the risk of future replication failures. Change the value only if you know the reason for the GTID divergence and are confident that doing so will not cause any replication issues.",
@@ -2621,17 +2572,17 @@
         },
         "fileType": {
           "description": "The file type for the specified uri. *SQL*: The file contains SQL statements. *CSV*: The file contains CSV data. *BAK*: The file contains backup data for a SQL Server instance.",
-          "enumDescriptions": [
-            "Unknown file type.",
-            "File containing SQL statements.",
-            "File in CSV format.",
-            ""
-          ],
           "enum": [
             "SQL_FILE_TYPE_UNSPECIFIED",
             "SQL",
             "CSV",
             "BAK"
+          ],
+          "enumDescriptions": [
+            "Unknown file type.",
+            "File containing SQL statements.",
+            "File in CSV format.",
+            ""
           ],
           "type": "string"
         },
@@ -2716,23 +2667,6 @@
         "appliesTo": {
           "description": "The database version this flag applies to. Can be *MYSQL_8_0*, *MYSQL_5_6*, or *MYSQL_5_7*.",
           "items": {
-            "enumDescriptions": [
-              "This is an unknown database version.",
-              "The database version is MySQL 5.1.",
-              "The database version is MySQL 5.5.",
-              "The database version is MySQL 5.6.",
-              "The database version is MySQL 5.7.",
-              "The database version is PostgreSQL 9.6.",
-              "The database version is PostgreSQL 11.",
-              "The database version is SQL Server 2017 Standard.",
-              "The database version is SQL Server 2017 Enterprise.",
-              "The database version is SQL Server 2017 Express.",
-              "The database version is SQL Server 2017 Web.",
-              "The database version is PostgreSQL 10.",
-              "The database version is PostgreSQL 12.",
-              "The database version is MySQL 8.",
-              "The database version is PostgreSQL 13."
-            ],
             "enum": [
               "SQL_DATABASE_VERSION_UNSPECIFIED",
               "MYSQL_5_1",
@@ -2749,6 +2683,23 @@
               "POSTGRES_12",
               "MYSQL_8_0",
               "POSTGRES_13"
+            ],
+            "enumDescriptions": [
+              "This is an unknown database version.",
+              "The database version is MySQL 5.1.",
+              "The database version is MySQL 5.5.",
+              "The database version is MySQL 5.6.",
+              "The database version is MySQL 5.7.",
+              "The database version is PostgreSQL 9.6.",
+              "The database version is PostgreSQL 11.",
+              "The database version is SQL Server 2017 Standard.",
+              "The database version is SQL Server 2017 Enterprise.",
+              "The database version is SQL Server 2017 Express.",
+              "The database version is SQL Server 2017 Web.",
+              "The database version is PostgreSQL 10.",
+              "The database version is PostgreSQL 12.",
+              "The database version is MySQL 8.",
+              "The database version is PostgreSQL 13."
             ],
             "type": "string"
           },
@@ -2782,16 +2733,6 @@
         },
         "type": {
           "description": "The type of the flag. Flags are typed to being *BOOLEAN*, *STRING*, *INTEGER* or *NONE*. *NONE* is used for flags which do not take a value, such as *skip_grant_tables*.",
-          "enumDescriptions": [
-            "This is an unknown flag type.",
-            "Boolean type flag.",
-            "String type flag.",
-            "Integer type flag.",
-            "Flag type used for a server startup option.",
-            "Type introduced specically for MySQL TimeZone offset. Accept a string value with the format [-12:59, 13:00].",
-            "Float type flag.",
-            "Comma-separated list of the strings in a SqlFlagType enum."
-          ],
           "enum": [
             "SQL_FLAG_TYPE_UNSPECIFIED",
             "BOOLEAN",
@@ -2801,6 +2742,16 @@
             "MYSQL_TIMEZONE_OFFSET",
             "FLOAT",
             "REPEATED_STRING"
+          ],
+          "enumDescriptions": [
+            "This is an unknown flag type.",
+            "Boolean type flag.",
+            "String type flag.",
+            "Integer type flag.",
+            "Flag type used for a server startup option.",
+            "Type introduced specically for MySQL TimeZone offset. Accept a string value with the format [-12:59, 13:00].",
+            "Float type flag.",
+            "Comma-separated list of the strings in a SqlFlagType enum."
           ],
           "type": "string"
         }
@@ -2875,17 +2826,17 @@
         },
         "fileType": {
           "description": "The file type for the specified uri. *SQL*: The file contains SQL statements. *CSV*: The file contains CSV data.",
-          "enumDescriptions": [
-            "Unknown file type.",
-            "File containing SQL statements.",
-            "File in CSV format.",
-            ""
-          ],
           "enum": [
             "SQL_FILE_TYPE_UNSPECIFIED",
             "SQL",
             "CSV",
             "BAK"
+          ],
+          "enumDescriptions": [
+            "Unknown file type.",
+            "File containing SQL statements.",
+            "File in CSV format.",
+            ""
           ],
           "type": "string"
         },
@@ -2933,8 +2884,8 @@
       "id": "InstancesCloneRequest",
       "properties": {
         "cloneContext": {
-          "description": "Contains details about the clone operation.",
-          "$ref": "CloneContext"
+          "$ref": "CloneContext",
+          "description": "Contains details about the clone operation."
         }
       },
       "type": "object"
@@ -2944,8 +2895,8 @@
       "id": "InstancesDemoteMasterRequest",
       "properties": {
         "demoteMasterContext": {
-          "description": "Contains details about the demoteMaster operation.",
-          "$ref": "DemoteMasterContext"
+          "$ref": "DemoteMasterContext",
+          "description": "Contains details about the demoteMaster operation."
         }
       },
       "type": "object"
@@ -2955,8 +2906,8 @@
       "id": "InstancesExportRequest",
       "properties": {
         "exportContext": {
-          "description": "Contains details about the export operation.",
-          "$ref": "ExportContext"
+          "$ref": "ExportContext",
+          "description": "Contains details about the export operation."
         }
       },
       "type": "object"
@@ -2966,8 +2917,8 @@
       "id": "InstancesFailoverRequest",
       "properties": {
         "failoverContext": {
-          "description": "Failover Context.",
-          "$ref": "FailoverContext"
+          "$ref": "FailoverContext",
+          "description": "Failover Context."
         }
       },
       "type": "object"
@@ -2977,8 +2928,8 @@
       "id": "InstancesImportRequest",
       "properties": {
         "importContext": {
-          "description": "Contains details about the import operation.",
-          "$ref": "ImportContext"
+          "$ref": "ImportContext",
+          "description": "Contains details about the import operation."
         }
       },
       "type": "object"
@@ -3038,8 +2989,8 @@
       "id": "InstancesRestoreBackupRequest",
       "properties": {
         "restoreBackupContext": {
-          "description": "Parameters required to perform the restore backup operation.",
-          "$ref": "RestoreBackupContext"
+          "$ref": "RestoreBackupContext",
+          "description": "Parameters required to perform the restore backup operation."
         }
       },
       "type": "object"
@@ -3049,8 +3000,8 @@
       "id": "InstancesRotateServerCaRequest",
       "properties": {
         "rotateServerCaContext": {
-          "description": "Contains details about the rotate server CA operation.",
-          "$ref": "RotateServerCaContext"
+          "$ref": "RotateServerCaContext",
+          "description": "Contains details about the rotate server CA operation."
         }
       },
       "type": "object"
@@ -3060,8 +3011,8 @@
       "id": "InstancesTruncateLogRequest",
       "properties": {
         "truncateLogContext": {
-          "description": "Contains details about the truncate log operation.",
-          "$ref": "TruncateLogContext"
+          "$ref": "TruncateLogContext",
+          "description": "Contains details about the truncate log operation."
         }
       },
       "type": "object"
@@ -3107,19 +3058,19 @@
         },
         "type": {
           "description": "The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.",
-          "enumDescriptions": [
-            "This is an unknown IP address type.",
-            "IP address the customer is supposed to connect to. Usually this is the load balancer's IP address",
-            "Source IP address of the connection a read replica establishes to its external primary instance. This IP address can be allowlisted by the customer in case it has a firewall that filters incoming connection to its on premises primary instance.",
-            "Private IP used when using private IPs and network peering.",
-            "V1 IP of a migrated instance. We want the user to decommission this IP as soon as the migration is complete. Note: V1 instances with V1 ip addresses will be counted as PRIMARY."
-          ],
           "enum": [
             "SQL_IP_ADDRESS_TYPE_UNSPECIFIED",
             "PRIMARY",
             "OUTGOING",
             "PRIVATE",
             "MIGRATED_1ST_GEN"
+          ],
+          "enumDescriptions": [
+            "This is an unknown IP address type.",
+            "IP address the customer is supposed to connect to. Usually this is the load balancer's IP address",
+            "Source IP address of the connection a read replica establishes to its external primary instance. This IP address can be allowlisted by the customer in case it has a firewall that filters incoming connection to its on premises primary instance.",
+            "Private IP used when using private IPs and network peering.",
+            "V1 IP of a migrated instance. We want the user to decommission this IP as soon as the migration is complete. Note: V1 instances with V1 ip addresses will be counted as PRIMARY."
           ],
           "type": "string"
         }
@@ -3169,15 +3120,15 @@
         },
         "updateTrack": {
           "description": "Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.",
-          "enumDescriptions": [
-            "This is an unknown maintenance timing preference.",
-            "For instance update that requires a restart, this update track indicates your instance prefer to restart for new version early in maintenance window.",
-            "For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable)."
-          ],
           "enum": [
             "SQL_UPDATE_TRACK_UNSPECIFIED",
             "canary",
             "stable"
+          ],
+          "enumDescriptions": [
+            "This is an unknown maintenance timing preference.",
+            "For instance update that requires a restart, this update track indicates your instance prefer to restart for new version early in maintenance window.",
+            "For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable)."
           ],
           "type": "string"
         }
@@ -3281,8 +3232,8 @@
       "id": "Operation",
       "properties": {
         "backupContext": {
-          "description": "The context for backup operation, if applicable.",
-          "$ref": "BackupContext"
+          "$ref": "BackupContext",
+          "description": "The context for backup operation, if applicable."
         },
         "endTime": {
           "description": "The time this operation finished in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.",
@@ -3290,16 +3241,16 @@
           "type": "string"
         },
         "error": {
-          "description": "If errors occurred during processing of this operation, this field will be populated.",
-          "$ref": "OperationErrors"
+          "$ref": "OperationErrors",
+          "description": "If errors occurred during processing of this operation, this field will be populated."
         },
         "exportContext": {
-          "description": "The context for export operation, if applicable.",
-          "$ref": "ExportContext"
+          "$ref": "ExportContext",
+          "description": "The context for export operation, if applicable."
         },
         "importContext": {
-          "description": "The context for import operation, if applicable.",
-          "$ref": "ImportContext"
+          "$ref": "ImportContext",
+          "description": "The context for import operation, if applicable."
         },
         "insertTime": {
           "description": "The time this operation was enqueued in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.",
@@ -3316,43 +3267,6 @@
         },
         "operationType": {
           "description": "The type of the operation. Valid values are: *CREATE* *DELETE* *UPDATE* *RESTART* *IMPORT* *EXPORT* *BACKUP_VOLUME* *RESTORE_VOLUME* *CREATE_USER* *DELETE_USER* *CREATE_DATABASE* *DELETE_DATABASE*",
-          "enumDescriptions": [
-            "Unknown operation type.",
-            "Imports data into a Cloud SQL instance.",
-            "Exports data from a Cloud SQL instance to a Cloud Storage bucket.",
-            "Creates a new Cloud SQL instance.",
-            "Updates the settings of a Cloud SQL instance.",
-            "Deletes a Cloud SQL instance.",
-            "Restarts the Cloud SQL instance.",
-            "",
-            "",
-            "Performs instance backup.",
-            "Deletes an instance backup.",
-            "Restores an instance backup.",
-            "Injects a privileged user in mysql for MOB instances.",
-            "Clones a Cloud SQL instance.",
-            "Stops replication on a Cloud SQL read replica instance.",
-            "Starts replication on a Cloud SQL read replica instance.",
-            "Promotes a Cloud SQL replica instance.",
-            "Creates a Cloud SQL replica instance.",
-            "Creates a new user in a Cloud SQL instance.",
-            "Deletes a user from a Cloud SQL instance.",
-            "Updates an existing user in a Cloud SQL instance.",
-            "Creates a database in the Cloud SQL instance.",
-            "Deletes a database in the Cloud SQL instance.",
-            "Updates a database in the Cloud SQL instance.",
-            "Performs failover of an HA-enabled Cloud SQL failover replica.",
-            "Deletes the backup taken by a backup run.",
-            "",
-            "Truncates a general or slow log table in MySQL.",
-            "Demotes the stand-alone instance to be a Cloud SQL read replica for an external database server.",
-            "Indicates that the instance is currently in maintenance. Maintenance typically causes the instance to be unavailable for 1-3 minutes.",
-            "This field is deprecated, and will be removed in future version of API.",
-            "",
-            "Creates clone instance.",
-            "Reschedule maintenance to another time.",
-            "Starts external sync of a Cloud SQL EM replica to an external primary instance."
-          ],
           "enum": [
             "SQL_OPERATION_TYPE_UNSPECIFIED",
             "IMPORT",
@@ -3390,6 +3304,43 @@
             "RESCHEDULE_MAINTENANCE",
             "START_EXTERNAL_SYNC"
           ],
+          "enumDescriptions": [
+            "Unknown operation type.",
+            "Imports data into a Cloud SQL instance.",
+            "Exports data from a Cloud SQL instance to a Cloud Storage bucket.",
+            "Creates a new Cloud SQL instance.",
+            "Updates the settings of a Cloud SQL instance.",
+            "Deletes a Cloud SQL instance.",
+            "Restarts the Cloud SQL instance.",
+            "",
+            "",
+            "Performs instance backup.",
+            "Deletes an instance backup.",
+            "Restores an instance backup.",
+            "Injects a privileged user in mysql for MOB instances.",
+            "Clones a Cloud SQL instance.",
+            "Stops replication on a Cloud SQL read replica instance.",
+            "Starts replication on a Cloud SQL read replica instance.",
+            "Promotes a Cloud SQL replica instance.",
+            "Creates a Cloud SQL replica instance.",
+            "Creates a new user in a Cloud SQL instance.",
+            "Deletes a user from a Cloud SQL instance.",
+            "Updates an existing user in a Cloud SQL instance.",
+            "Creates a database in the Cloud SQL instance.",
+            "Deletes a database in the Cloud SQL instance.",
+            "Updates a database in the Cloud SQL instance.",
+            "Performs failover of an HA-enabled Cloud SQL failover replica.",
+            "Deletes the backup taken by a backup run.",
+            "",
+            "Truncates a general or slow log table in MySQL.",
+            "Demotes the stand-alone instance to be a Cloud SQL read replica for an external database server.",
+            "Indicates that the instance is currently in maintenance. Maintenance typically causes the instance to be unavailable for 1-3 minutes.",
+            "This field is deprecated, and will be removed in future version of API.",
+            "",
+            "Creates clone instance.",
+            "Reschedule maintenance to another time.",
+            "Starts external sync of a Cloud SQL EM replica to an external primary instance."
+          ],
           "type": "string"
         },
         "selfLink": {
@@ -3403,17 +3354,17 @@
         },
         "status": {
           "description": "The status of an operation. Valid values are: *PENDING* *RUNNING* *DONE* *SQL_OPERATION_STATUS_UNSPECIFIED*",
-          "enumDescriptions": [
-            "The state of the operation is unknown.",
-            "The operation has been queued, but has not started yet.",
-            "The operation is running.",
-            "The operation completed."
-          ],
           "enum": [
             "SQL_OPERATION_STATUS_UNSPECIFIED",
             "PENDING",
             "RUNNING",
             "DONE"
+          ],
+          "enumDescriptions": [
+            "The state of the operation is unknown.",
+            "The operation has been queued, but has not started yet.",
+            "The operation is running.",
+            "The operation completed."
           ],
           "type": "string"
         },
@@ -3507,8 +3458,8 @@
           "type": "string"
         },
         "mysqlReplicaConfiguration": {
-          "description": "MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.",
-          "$ref": "MySqlReplicaConfiguration"
+          "$ref": "MySqlReplicaConfiguration",
+          "description": "MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory."
         }
       },
       "type": "object"
@@ -3518,17 +3469,17 @@
       "properties": {
         "rescheduleType": {
           "description": "Required. The type of the reschedule.",
-          "enumDescriptions": [
-            "",
-            "If the user wants to schedule the maintenance to happen now.",
-            "If the user wants to use the existing maintenance policy to find the next available window.",
-            "If the user wants to reschedule the maintenance to a specific time."
-          ],
           "enum": [
             "RESCHEDULE_TYPE_UNSPECIFIED",
             "IMMEDIATE",
             "NEXT_AVAILABLE_WINDOW",
             "SPECIFIC_TIME"
+          ],
+          "enumDescriptions": [
+            "",
+            "If the user wants to schedule the maintenance to happen now.",
+            "If the user wants to use the existing maintenance policy to find the next available window.",
+            "If the user wants to reschedule the maintenance to a specific time."
           ],
           "type": "string"
         },
@@ -3585,23 +3536,23 @@
       "properties": {
         "activationPolicy": {
           "description": "The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.",
-          "enumDescriptions": [
-            "Unknown activation plan.",
-            "The instance is always up and running.",
-            "The instance never starts.",
-            "The instance starts upon receiving requests."
-          ],
           "enum": [
             "SQL_ACTIVATION_POLICY_UNSPECIFIED",
             "ALWAYS",
             "NEVER",
             "ON_DEMAND"
           ],
+          "enumDescriptions": [
+            "Unknown activation plan.",
+            "The instance is always up and running.",
+            "The instance never starts.",
+            "The instance starts upon receiving requests."
+          ],
           "type": "string"
         },
         "activeDirectoryConfig": {
-          "description": "Active Directory configuration, relevant only for Cloud SQL for SQL Server.",
-          "$ref": "SqlActiveDirectoryConfig"
+          "$ref": "SqlActiveDirectoryConfig",
+          "description": "Active Directory configuration, relevant only for Cloud SQL for SQL Server."
         },
         "authorizedGaeApplications": {
           "description": "The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.",
@@ -3612,21 +3563,21 @@
         },
         "availabilityType": {
           "description": "Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.",
-          "enumDescriptions": [
-            "This is an unknown Availability type.",
-            "Zonal available instance.",
-            "Regional available instance."
-          ],
           "enum": [
             "SQL_AVAILABILITY_TYPE_UNSPECIFIED",
             "ZONAL",
             "REGIONAL"
           ],
+          "enumDescriptions": [
+            "This is an unknown Availability type.",
+            "Zonal available instance.",
+            "Regional available instance."
+          ],
           "type": "string"
         },
         "backupConfiguration": {
-          "description": "The daily backup configuration for the instance.",
-          "$ref": "BackupConfiguration"
+          "$ref": "BackupConfiguration",
+          "description": "The daily backup configuration for the instance."
         },
         "collation": {
           "description": "The name of server Instance collation.",
@@ -3643,17 +3594,17 @@
         },
         "dataDiskType": {
           "description": "The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.",
-          "enumDescriptions": [
-            "This is an unknown data disk type.",
-            "An SSD data disk.",
-            "An HDD data disk.",
-            "This field is deprecated and will be removed from a future version of the API."
-          ],
           "enum": [
             "SQL_DATA_DISK_TYPE_UNSPECIFIED",
             "PD_SSD",
             "PD_HDD",
             "OBSOLETE_LOCAL_SSD"
+          ],
+          "enumDescriptions": [
+            "This is an unknown data disk type.",
+            "An SSD data disk.",
+            "An HDD data disk.",
+            "This field is deprecated and will be removed from a future version of the API."
           ],
           "type": "string"
         },
@@ -3676,50 +3627,50 @@
           "type": "array"
         },
         "insightsConfig": {
-          "description": "Insights configuration, for now relevant only for Postgres.",
-          "$ref": "InsightsConfig"
+          "$ref": "InsightsConfig",
+          "description": "Insights configuration, for now relevant only for Postgres."
         },
         "ipConfiguration": {
-          "description": "The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.",
-          "$ref": "IpConfiguration"
+          "$ref": "IpConfiguration",
+          "description": "The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances."
         },
         "kind": {
           "description": "This is always *sql#settings*.",
           "type": "string"
         },
         "locationPreference": {
-          "description": "The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.",
-          "$ref": "LocationPreference"
+          "$ref": "LocationPreference",
+          "description": "The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances."
         },
         "maintenanceWindow": {
-          "description": "The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.",
-          "$ref": "MaintenanceWindow"
+          "$ref": "MaintenanceWindow",
+          "description": "The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes."
         },
         "pricingPlan": {
           "description": "The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.",
-          "enumDescriptions": [
-            "This is an unknown pricing plan for this instance.",
-            "The instance is billed at a monthly flat rate.",
-            "The instance is billed per usage."
-          ],
           "enum": [
             "SQL_PRICING_PLAN_UNSPECIFIED",
             "PACKAGE",
             "PER_USE"
           ],
+          "enumDescriptions": [
+            "This is an unknown pricing plan for this instance.",
+            "The instance is billed at a monthly flat rate.",
+            "The instance is billed per usage."
+          ],
           "type": "string"
         },
         "replicationType": {
           "description": "The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only applicable to First Generation instances.",
-          "enumDescriptions": [
-            "This is an unknown replication type for a Cloud SQL instance.",
-            "The synchronous replication mode for First Generation instances. It is the default value.",
-            "The asynchronous replication mode for First Generation instances. It provides a slight performance gain, but if an outage occurs while this option is set to asynchronous, you can lose up to a few seconds of updates to your data."
-          ],
           "enum": [
             "SQL_REPLICATION_TYPE_UNSPECIFIED",
             "SYNCHRONOUS",
             "ASYNCHRONOUS"
+          ],
+          "enumDescriptions": [
+            "This is an unknown replication type for a Cloud SQL instance.",
+            "The synchronous replication mode for First Generation instances. It is the default value.",
+            "The asynchronous replication mode for First Generation instances. It provides a slight performance gain, but if an outage occurs while this option is set to asynchronous, you can lose up to a few seconds of updates to your data."
           ],
           "type": "string"
         },
@@ -3780,30 +3731,6 @@
         },
         "type": {
           "description": "Identifies the specific error that occurred.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "Unsupported migration type.",
-            "No pglogical extension installed on databases, applicable for postgres.",
-            "pglogical node already exists on databases, applicable for postgres.",
-            "The value of parameter wal_level is not set to logical.",
-            "The value of parameter shared_preload_libraries does not include pglogical.",
-            "The value of parameter max_replication_slots is not sufficient.",
-            "The value of parameter max_wal_senders is not sufficient.",
-            "The value of parameter max_worker_processes is not sufficient.",
-            "Extensions installed are either not supported or having unsupported versions",
-            "The value of parameter rds.logical_replication is not set to 1.",
-            "The primary instance logging setup doesn't allow EM sync.",
-            "The primary instance database parameter setup doesn't allow EM sync.",
-            "The gtid_mode is not supported, applicable for MySQL.",
-            "SQL Server Agent is not running.",
-            "The table definition is not support due to missing primary key or replica identity, applicable for postgres.",
-            "The customer has a definer that will break EM setup."
-          ],
           "enum": [
             "SQL_EXTERNAL_SYNC_SETTING_ERROR_TYPE_UNSPECIFIED",
             "CONNECTION_FAILURE",
@@ -3828,6 +3755,30 @@
             "UNSUPPORTED_TABLE_DEFINITION",
             "UNSUPPORTED_DEFINER"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Unsupported migration type.",
+            "No pglogical extension installed on databases, applicable for postgres.",
+            "pglogical node already exists on databases, applicable for postgres.",
+            "The value of parameter wal_level is not set to logical.",
+            "The value of parameter shared_preload_libraries does not include pglogical.",
+            "The value of parameter max_replication_slots is not sufficient.",
+            "The value of parameter max_wal_senders is not sufficient.",
+            "The value of parameter max_worker_processes is not sufficient.",
+            "Extensions installed are either not supported or having unsupported versions",
+            "The value of parameter rds.logical_replication is not set to 1.",
+            "The primary instance logging setup doesn't allow EM sync.",
+            "The primary instance database parameter setup doesn't allow EM sync.",
+            "The gtid_mode is not supported, applicable for MySQL.",
+            "SQL Server Agent is not running.",
+            "The table definition is not support due to missing primary key or replica identity, applicable for postgres.",
+            "The customer has a definer that will break EM setup."
+          ],
           "type": "string"
         }
       },
@@ -3838,8 +3789,8 @@
       "id": "SqlInstancesRescheduleMaintenanceRequestBody",
       "properties": {
         "reschedule": {
-          "description": "Required. The type of the reschedule the user wants.",
-          "$ref": "Reschedule"
+          "$ref": "Reschedule",
+          "description": "Required. The type of the reschedule the user wants."
         }
       },
       "type": "object"
@@ -3965,8 +3916,8 @@
       "id": "SslCertDetail",
       "properties": {
         "certInfo": {
-          "description": "The public information about the cert.",
-          "$ref": "SslCert"
+          "$ref": "SslCert",
+          "description": "The public information about the cert."
         },
         "certPrivateKey": {
           "description": "The private key for the client cert, in pem format. Keep private in order to protect your security.",
@@ -4006,20 +3957,20 @@
       "id": "SslCertsInsertResponse",
       "properties": {
         "clientCert": {
-          "description": "The new client certificate and private key.",
-          "$ref": "SslCertDetail"
+          "$ref": "SslCertDetail",
+          "description": "The new client certificate and private key."
         },
         "kind": {
           "description": "This is always *sql#sslCertsInsert*.",
           "type": "string"
         },
         "operation": {
-          "description": "The operation to track the ssl certs insert request.",
-          "$ref": "Operation"
+          "$ref": "Operation",
+          "description": "The operation to track the ssl certs insert request."
         },
         "serverCaCert": {
-          "description": "The server Certificate Authority's certificate. If this is missing you can force a new one to be generated by calling resetSslConfig method on instances resource.",
-          "$ref": "SslCert"
+          "$ref": "SslCert",
+          "description": "The server Certificate Authority's certificate. If this is missing you can force a new one to be generated by calling resetSslConfig method on instances resource."
         }
       },
       "type": "object"
@@ -4144,15 +4095,15 @@
         },
         "type": {
           "description": "The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.",
-          "enumDescriptions": [
-            "The database's built-in user type.",
-            "Cloud IAM user.",
-            "Cloud IAM service account."
-          ],
           "enum": [
             "BUILT_IN",
             "CLOUD_IAM_USER",
             "CLOUD_IAM_SERVICE_ACCOUNT"
+          ],
+          "enumDescriptions": [
+            "The database's built-in user type.",
+            "Cloud IAM user.",
+            "Cloud IAM service account."
           ],
           "type": "string"
         }

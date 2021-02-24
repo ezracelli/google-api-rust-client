@@ -30,7 +30,6 @@ pub enum Publish {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "kebab-case")]
-#[serde(deny_unknown_fields)]
 pub struct Package {
     pub authors: Option<Vec<String>>,
     pub build: Option<String>,
@@ -58,7 +57,6 @@ pub struct Package {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "kebab-case")]
-#[serde(deny_unknown_fields)]
 pub struct Workspace {
     pub default_members: Option<Vec<String>>,
     pub exclude: Option<Vec<String>>,
@@ -69,7 +67,6 @@ pub struct Workspace {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "kebab-case")]
-#[serde(deny_unknown_fields)]
 pub struct Manifest {
     pub build_dependencies: Option<std::collections::BTreeMap<String, Dependency>>,
     pub dependencies: Option<std::collections::BTreeMap<String, Dependency>>,

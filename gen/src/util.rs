@@ -1,4 +1,6 @@
-use crate::models::json_schema::{JsonSchema, JsonSchemaType};
+use crate::models::{
+    json_schema::JsonSchema, rest_method::RestMethod, rest_resource::RestResource,
+};
 
 lazy_static::lazy_static! {
     static ref RE_UNDERSCORE: regex::Regex = regex::Regex::new(r"[_.]").unwrap();
@@ -9,6 +11,7 @@ lazy_static::lazy_static! {
                 async|
                 await|
                 break|
+                build|
                 const|
                 continue|
                 crate|
@@ -31,6 +34,7 @@ lazy_static::lazy_static! {
                 mod|
                 move|
                 mut|
+                override|
                 pub|
                 ref|
                 return|
@@ -62,7 +66,7 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
     let name = change_case::snake_case(name.as_ref());
     let name = RE_INVALID.replace_all(&*name, "_${1}");
 
-    if let Some(ref r#ref) = schema.r#ref {
+    if let Some(ref r#ref) = schema._ref {
         let r#ref = change_case::pascal_case(&*r#ref);
         let r#ref = RE_UNDERSCORE.replace_all(&*r#ref, "");
         let r#ref = quote::format_ident!("{}", r#ref);
@@ -72,33 +76,41 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
             quote::quote!(::std::boxed::Box<#r#ref>),
             None,
         ))
-    } else if let Some(ref ty) = schema.r#type {
-        match ty {
-            JsonSchemaType::Any | JsonSchemaType::Null => Ok((
+    } else if let Some(ref ty) = schema._type {
+        match ty.as_ref() {
+            "any" | "null" => Ok((
                 quote::format_ident!("{}", name),
                 quote::quote!(::serde_json::Value),
                 None,
             )),
-            JsonSchemaType::Array => {
+            "array" => {
                 if let Some(ref items) = schema.items {
                     let (ident, ty, tokens) =
                         generate_tokens_for_schema(parent_ident, name, &**items)?;
 
                     Ok((ident, quote::quote!(::std::vec::Vec<#ty>), tokens))
                 } else {
-                    unimplemented!()
+                    anyhow::bail!(
+                        ".items not specified in `JsonSchema` for `JsonSchemaType::Array`"
+                    );
                 }
             }
-            JsonSchemaType::Boolean => {
-                Ok((quote::format_ident!("{}", name), quote::quote!(::std::primitive::bool), None))
-            }
-            JsonSchemaType::Integer => {
-                Ok((quote::format_ident!("{}", name), quote::quote!(::std::primitive::i64), None))
-            }
-            JsonSchemaType::Number => {
-                Ok((quote::format_ident!("{}", name), quote::quote!(::std::primitive::f64), None))
-            }
-            JsonSchemaType::Object => {
+            "boolean" => Ok((
+                quote::format_ident!("{}", name),
+                quote::quote!(::std::primitive::bool),
+                None,
+            )),
+            "integer" => Ok((
+                quote::format_ident!("{}", name),
+                quote::quote!(::std::primitive::i64),
+                None,
+            )),
+            "number" => Ok((
+                quote::format_ident!("{}", name),
+                quote::quote!(::std::primitive::f64),
+                None,
+            )),
+            "object" => {
                 if let Some(ref properties) = schema.properties {
                     let doc = schema
                         .description
@@ -111,9 +123,12 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
                         Some(parent_ident) => quote::format_ident!("{}{}", parent_ident, ident),
                         None => quote::format_ident!("{}", ident),
                     };
+                    let builder_ident = quote::format_ident!("{}Builder", ident);
 
-                    let defaults_mod_ident =
-                        quote::format_ident!("{}_defaults", change_case::snake_case(&*ident.to_string()));
+                    let defaults_mod_ident = quote::format_ident!(
+                        "{}_defaults",
+                        change_case::snake_case(&*ident.to_string())
+                    );
 
                     let generated: Vec<_> = properties
                         .iter()
@@ -134,13 +149,49 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
                             let (ident, ty, tokens) =
                                 generate_tokens_for_schema(Some(&ident), name, schema)?;
 
-                            let ty = if schema.required == Some(true) || schema.default.is_some() {
+                            let ty = if schema.required == Some(true) || schema._default.is_some() {
                                 ty
                             } else {
                                 quote::quote!(::std::option::Option<#ty>)
                             };
 
-                            let serde_default = schema.default.as_ref().map(|_| {
+                            let builder = {
+                                let default = if schema._default.is_some() {
+                                    let default = quote::quote!({ #defaults_mod_ident::#ident() })
+                                        .to_string();
+                                    Some(quote::quote!(default = #default))
+                                } else {
+                                    Some(quote::quote!(
+                                        default = "{ ::std::default::Default::default() }"
+                                    ))
+                                };
+
+                                let setter = {
+                                    let into = Some(quote::quote!(into));
+
+                                    let setter_opt: Vec<_> =
+                                        vec![into].into_iter().filter(Option::is_some).collect();
+
+                                    if setter_opt.is_empty() {
+                                        None
+                                    } else {
+                                        Some(quote::quote!(setter(#(#setter_opt),*)))
+                                    }
+                                };
+
+                                let builder_opt: Vec<_> = vec![default, setter]
+                                    .into_iter()
+                                    .filter(Option::is_some)
+                                    .collect();
+
+                                if builder_opt.is_empty() {
+                                    None
+                                } else {
+                                    Some(quote::quote!(#[builder(#(#builder_opt),*)]))
+                                }
+                            };
+
+                            let serde_default = schema._default.as_ref().map(|_| {
                                 let default =
                                     quote::quote!(#defaults_mod_ident::#ident).to_string();
 
@@ -150,7 +201,7 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
                             });
 
                             let serde_skip = if schema.required == Some(true)
-                                || schema.default.is_some()
+                                || schema._default.is_some()
                             {
                                 None
                             } else {
@@ -159,9 +210,9 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
                                 })
                             };
 
-                            let default_fn = schema.default.as_ref().map(|default| {
-                                let default = if Some(JsonSchemaType::String) == schema.r#type
-                                    && schema.r#enum.is_none()
+                            let default_fn = schema._default.as_ref().map(|default| {
+                                let default = if Some(String::from("string")) == schema._type
+                                    && schema._enum.is_none()
                                 {
                                     quote::quote!(String::from(#default))
                                 } else {
@@ -185,6 +236,7 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
 
                             Ok::<_, anyhow::Error>((
                                 quote::quote! {
+                                    #builder
                                     #[serde(rename = #name)]
                                     #serde_default
                                     #serde_skip
@@ -216,11 +268,18 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
                         quote::format_ident!("{}", name),
                         quote::quote!(#ident),
                         Some(quote::quote! {
-                            #[derive(Debug, Default, PartialEq, Clone, serde::Serialize, serde::Deserialize)]
-                            #[serde(deny_unknown_fields)]
+                            #[derive(Clone, Debug, PartialEq)]
+                            #[derive(derive_builder::Builder)]
+                            #[derive(serde::Serialize, serde::Deserialize)]
                             #doc
                             pub struct #ident {
                                 #(#fields),*
+                            }
+
+                            impl #ident {
+                                pub fn builder() -> #builder_ident {
+                                    #builder_ident::default()
+                                }
                             }
 
                             #defaults_mod
@@ -238,11 +297,14 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
                         tokens,
                     ))
                 } else {
-                    unimplemented!()
+                    anyhow::bail!(
+                        "no .properties or .additional_properties specified \
+                        in `JsonSchema` for `JsonSchemaType::Array`"
+                    );
                 }
             }
-            JsonSchemaType::String => {
-                if let Some(ref r#enum) = schema.r#enum {
+            "string" => {
+                if let Some(ref r#enum) = schema._enum {
                     let doc = schema
                         .description
                         .as_ref()
@@ -280,20 +342,27 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
                         })
                         .collect();
 
-                    let default_impl = schema.default.as_ref().map(|default| {
-                        let default = change_case::pascal_case(&*default);
-                        let default = RE_UNDERSCORE.replace_all(&*default, "");
-                        let default =
-                            quote::format_ident!("{}", RE_INVALID.replace_all(&*default, "_${1}"));
+                    let default_impl =
+                        schema
+                            ._default
+                            .as_ref()
+                            .or_else(|| r#enum.first())
+                            .map(|default| {
+                                let default = change_case::pascal_case(&*default);
+                                let default = RE_UNDERSCORE.replace_all(&*default, "");
+                                let default = quote::format_ident!(
+                                    "{}",
+                                    RE_INVALID.replace_all(&*default, "_${1}")
+                                );
 
-                        quote::quote! {
-                            impl ::std::default::Default for #ident {
-                                fn default() -> Self {
-                                    Self::#default
+                                quote::quote! {
+                                    impl ::std::default::Default for #ident {
+                                        fn default() -> Self {
+                                            Self::#default
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                    });
+                            });
 
                     Ok((
                         quote::format_ident!("{}", name),
@@ -316,8 +385,148 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
                     ))
                 }
             }
+            _ => anyhow::bail!("unknown .type \"{}\"", ty),
         }
     } else {
-        unimplemented!()
+        anyhow::bail!("no .type or .$ref specified in `JsonSchema`");
     }
+}
+
+pub fn generate_tokens_for_rest_method(
+    method: &RestMethod,
+) -> anyhow::Result<proc_macro2::TokenStream> {
+    let method = method
+        .parameters
+        .as_ref()
+        .map(|parameters| {
+            let properties = parameters
+                .clone()
+                .into_iter()
+                .filter(|(_, parameter)| parameter.location == Some(String::from("query")))
+                .collect::<std::collections::BTreeMap<_, _>>();
+
+            if properties.is_empty() {
+                Ok::<_, anyhow::Error>(None)
+            } else {
+                let schema = crate::models::json_schema::JsonSchema::builder()
+                    ._type(Some(String::from("object")))
+                    .properties(properties)
+                    .build()
+                    .unwrap();
+
+                let (_, _, parameters) =
+                    generate_tokens_for_schema(None, "QueryParameters", &schema)?;
+
+                Ok(parameters)
+            }
+        })
+        .transpose()
+        .map(|opt| opt.flatten())?;
+
+    Ok(quote::quote!(#method))
+}
+
+pub fn generate_tokens_for_rest_methods(
+    methods: &std::collections::BTreeMap<String, Box<RestMethod>>,
+) -> anyhow::Result<Vec<Option<proc_macro2::TokenStream>>> {
+    methods
+        .iter()
+        .map(|(name, method)| {
+            let method = generate_tokens_for_rest_method(method)?;
+
+            if method.is_empty() {
+                Ok(None)
+            } else {
+                let ident = change_case::snake_case(name.as_ref());
+                let ident = RE_INVALID.replace_all(&*ident, "_${1}");
+                let ident = quote::format_ident!("{}", ident);
+
+                Ok(Some(quote::quote! {
+                    pub mod #ident {
+                        #method
+                    }
+                }))
+            }
+        })
+        .collect()
+}
+
+pub fn generate_tokens_for_rest_resources(
+    resources: &std::collections::BTreeMap<String, Box<RestResource>>,
+) -> anyhow::Result<Vec<Option<proc_macro2::TokenStream>>> {
+    resources
+        .iter()
+        .map(|(name, resource)| {
+            let resource = generate_tokens_for_rest_resource(resource)?;
+
+            if resource.is_empty() {
+                Ok(None)
+            } else {
+                let ident = change_case::snake_case(name.as_ref());
+                let ident = RE_INVALID.replace_all(&*ident, "_${1}");
+                let ident = quote::format_ident!("{}", ident);
+
+                Ok(Some(quote::quote! {
+                    pub mod #ident {
+                        #resource
+                    }
+                }))
+            }
+        })
+        .collect()
+}
+
+pub fn generate_tokens_for_rest_resource(
+    resource: &RestResource,
+) -> anyhow::Result<proc_macro2::TokenStream> {
+    let methods = resource
+        .methods
+        .as_ref()
+        .map(generate_tokens_for_rest_methods)
+        .transpose()?
+        .and_then(|methods| {
+            let methods: Vec<_> = methods
+                .into_iter()
+                .filter(Option::is_some)
+                .map(Option::unwrap)
+                .collect();
+
+            if methods.is_empty() {
+                None
+            } else {
+                Some(quote::quote! {
+                    pub mod methods {
+                        #(#methods)*
+                    }
+                })
+            }
+        });
+
+    let resources = resource
+        .resources
+        .as_ref()
+        .map(generate_tokens_for_rest_resources)
+        .transpose()?
+        .and_then(|resources| {
+            let resources: Vec<_> = resources
+                .into_iter()
+                .filter(Option::is_some)
+                .map(Option::unwrap)
+                .collect();
+
+            if resources.is_empty() {
+                None
+            } else {
+                Some(quote::quote! {
+                    pub mod resources {
+                        #(#resources)*
+                    }
+                })
+            }
+        });
+
+    Ok(quote::quote! {
+        #methods
+        #resources
+    })
 }

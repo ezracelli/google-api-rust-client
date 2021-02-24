@@ -15,29 +15,27 @@
   "description": "Creates and manages builds on Google Cloud Platform.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/cloud-build/docs/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudbuild:v1alpha2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudbuild.mtls.googleapis.com/",
   "name": "cloudbuild",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -114,7 +112,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "cloudbuild.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -124,8 +121,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha2/{+name}:cancel",
@@ -142,7 +139,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "cloudbuild.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -152,8 +148,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha2/{+name}",
@@ -173,7 +169,6 @@
             "create": {
               "description": "Creates a `WorkerPool` to run the builds, and returns the new worker pool.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha2/projects/{projectsId}/workerPools",
               "id": "cloudbuild.projects.workerPools.create",
               "parameterOrder": [
                 "parent"
@@ -183,8 +178,8 @@
                   "description": "Required. The parent resource where this book will be created. Format: projects/{project}",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "workerPoolId": {
                   "description": "Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.",
@@ -206,7 +201,6 @@
             "delete": {
               "description": "Deletes a `WorkerPool`.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha2/projects/{projectsId}/workerPools/{workerPoolsId}",
               "id": "cloudbuild.projects.workerPools.delete",
               "parameterOrder": [
                 "name"
@@ -216,8 +210,8 @@
                   "description": "Required. The name of the `WorkerPool` to delete. Format: projects/{project}/workerPools/{workerPool}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/workerPools/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha2/{+name}",
@@ -231,7 +225,6 @@
             "get": {
               "description": "Returns details of a `WorkerPool`.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha2/projects/{projectsId}/workerPools/{workerPoolsId}",
               "id": "cloudbuild.projects.workerPools.get",
               "parameterOrder": [
                 "name"
@@ -241,8 +234,8 @@
                   "description": "Required. The name of the `WorkerPool` to retrieve. Format: projects/{project}/workerPools/{workerPool}",
                   "location": "path",
                   "pattern": "^projects/[^/]+/workerPools/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha2/{+name}",
@@ -256,7 +249,6 @@
             "list": {
               "description": "Lists `WorkerPool`s by project.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha2/projects/{projectsId}/workerPools",
               "id": "cloudbuild.projects.workerPools.list",
               "parameterOrder": [
                 "parent"
@@ -266,8 +258,8 @@
                   "description": "Required. The parent, which owns this collection of `WorkerPools`. Format: projects/{project}",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha2/{+parent}/workerPools",
@@ -281,7 +273,6 @@
             "patch": {
               "description": "Updates a `WorkerPool`.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha2/projects/{projectsId}/workerPools/{workerPoolsId}",
               "id": "cloudbuild.projects.workerPools.patch",
               "parameterOrder": [
                 "name"
@@ -291,8 +282,8 @@
                   "description": "Output only. The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/workerPools/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "A mask specifying which fields in `WorkerPool` should be updated.",
@@ -336,8 +327,8 @@
           "type": "array"
         },
         "timing": {
-          "description": "Output only. Stores timing information for pushing all artifact objects.",
           "$ref": "TimeSpan",
+          "description": "Output only. Stores timing information for pushing all artifact objects.",
           "readOnly": true
         }
       },
@@ -373,8 +364,8 @@
           "type": "array"
         },
         "objects": {
-          "description": "A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.",
-          "$ref": "ArtifactObjects"
+          "$ref": "ArtifactObjects",
+          "description": "A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE."
         }
       },
       "type": "object"
@@ -384,34 +375,34 @@
       "id": "Build",
       "properties": {
         "artifacts": {
-          "description": "Artifacts produced by the build that should be uploaded upon successful completion of all build steps.",
-          "$ref": "Artifacts"
+          "$ref": "Artifacts",
+          "description": "Artifacts produced by the build that should be uploaded upon successful completion of all build steps."
         },
         "availableSecrets": {
-          "description": "Secrets and secret environment variables.",
-          "$ref": "Secrets"
+          "$ref": "Secrets",
+          "description": "Secrets and secret environment variables."
         },
         "buildTriggerId": {
           "description": "Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. Time at which the request to create the build was received.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "finishTime": {
           "description": "Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "id": {
           "description": "Output only. Unique identifier of the build.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "images": {
           "description": "A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.",
@@ -422,8 +413,8 @@
         },
         "logUrl": {
           "description": "Output only. URL to logs for this build in Google Cloud Console.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "logsBucket": {
           "description": "Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.",
@@ -431,17 +422,17 @@
         },
         "name": {
           "description": "Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "options": {
-          "description": "Special options for this build.",
-          "$ref": "BuildOptions"
+          "$ref": "BuildOptions",
+          "description": "Special options for this build."
         },
         "projectId": {
           "description": "Output only. ID of the project.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "queueTtl": {
           "description": "TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.",
@@ -449,8 +440,8 @@
           "type": "string"
         },
         "results": {
-          "description": "Output only. Results of the build.",
           "$ref": "Results",
+          "description": "Output only. Results of the build.",
           "readOnly": true
         },
         "secrets": {
@@ -465,33 +456,22 @@
           "type": "string"
         },
         "source": {
-          "description": "The location of the source files to build.",
-          "$ref": "Source"
+          "$ref": "Source",
+          "description": "The location of the source files to build."
         },
         "sourceProvenance": {
-          "description": "Output only. A permanent fixed identifier for source.",
           "$ref": "SourceProvenance",
+          "description": "Output only. A permanent fixed identifier for source.",
           "readOnly": true
         },
         "startTime": {
           "description": "Output only. Time at which execution of the build was started.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "status": {
           "description": "Output only. Status of the build.",
-          "enumDescriptions": [
-            "Status of the build is unknown.",
-            "Build or step is queued; work has not yet begun.",
-            "Build or step is being executed.",
-            "Build or step finished successfully.",
-            "Build or step failed to complete successfully.",
-            "Build or step failed due to an internal cause.",
-            "Build or step took longer than was allowed.",
-            "Build or step was canceled by a user.",
-            "Build was enqueued for longer than the value of `queue_ttl`."
-          ],
           "enum": [
             "STATUS_UNKNOWN",
             "QUEUED",
@@ -503,13 +483,24 @@
             "CANCELLED",
             "EXPIRED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Status of the build is unknown.",
+            "Build or step is queued; work has not yet begun.",
+            "Build or step is being executed.",
+            "Build or step finished successfully.",
+            "Build or step failed to complete successfully.",
+            "Build or step failed due to an internal cause.",
+            "Build or step took longer than was allowed.",
+            "Build or step was canceled by a user.",
+            "Build was enqueued for longer than the value of `queue_ttl`."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "statusDetail": {
           "description": "Output only. Customer-readable message about the current status.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "steps": {
           "description": "Required. The operations to be performed on the workspace.",
@@ -542,8 +533,8 @@
             "$ref": "TimeSpan"
           },
           "description": "Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.",
-          "type": "object",
-          "readOnly": true
+          "readOnly": true,
+          "type": "object"
         }
       },
       "type": "object"
@@ -553,8 +544,8 @@
       "id": "BuildOperationMetadata",
       "properties": {
         "build": {
-          "description": "The build that the operation is tracking.",
-          "$ref": "Build"
+          "$ref": "Build",
+          "description": "The build that the operation is tracking."
         }
       },
       "type": "object"
@@ -581,28 +572,20 @@
         },
         "logStreamingOption": {
           "description": "Option to define build log streaming behavior to Google Cloud Storage.",
-          "enumDescriptions": [
-            "Service may automatically determine build log streaming behavior.",
-            "Build logs should be streamed to Google Cloud Storage.",
-            "Build logs should not be streamed to Google Cloud Storage; they will be written when the build is completed."
-          ],
           "enum": [
             "STREAM_DEFAULT",
             "STREAM_ON",
             "STREAM_OFF"
           ],
+          "enumDescriptions": [
+            "Service may automatically determine build log streaming behavior.",
+            "Build logs should be streamed to Google Cloud Storage.",
+            "Build logs should not be streamed to Google Cloud Storage; they will be written when the build is completed."
+          ],
           "type": "string"
         },
         "logging": {
           "description": "Option to specify the logging mode, which determines if and where build logs are stored.",
-          "enumDescriptions": [
-            "The service determines the logging mode. The default is `LEGACY`. Do not rely on the default logging behavior as it may change in the future.",
-            "Cloud Logging and Cloud Storage logging are enabled.",
-            "Only Cloud Storage logging is enabled.",
-            "This option is the same as CLOUD_LOGGING_ONLY.",
-            "Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen.",
-            "Turn off all logging. No build logs will be captured."
-          ],
           "enum": [
             "LOGGING_UNSPECIFIED",
             "LEGACY",
@@ -611,17 +594,18 @@
             "CLOUD_LOGGING_ONLY",
             "NONE"
           ],
+          "enumDescriptions": [
+            "The service determines the logging mode. The default is `LEGACY`. Do not rely on the default logging behavior as it may change in the future.",
+            "Cloud Logging and Cloud Storage logging are enabled.",
+            "Only Cloud Storage logging is enabled.",
+            "This option is the same as CLOUD_LOGGING_ONLY.",
+            "Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen.",
+            "Turn off all logging. No build logs will be captured."
+          ],
           "type": "string"
         },
         "machineType": {
           "description": "Compute Engine machine type on which to run the build.",
-          "enumDescriptions": [
-            "Standard machine type.",
-            "Highcpu machine with 8 CPUs.",
-            "Highcpu machine with 32 CPUs.",
-            "Highcpu e2 machine with 8 CPUs.",
-            "Highcpu e2 machine with 32 CPUs."
-          ],
           "enum": [
             "UNSPECIFIED",
             "N1_HIGHCPU_8",
@@ -629,17 +613,24 @@
             "E2_HIGHCPU_8",
             "E2_HIGHCPU_32"
           ],
+          "enumDescriptions": [
+            "Standard machine type.",
+            "Highcpu machine with 8 CPUs.",
+            "Highcpu machine with 32 CPUs.",
+            "Highcpu e2 machine with 8 CPUs.",
+            "Highcpu e2 machine with 32 CPUs."
+          ],
           "type": "string"
         },
         "requestedVerifyOption": {
           "description": "Requested verifiability options.",
-          "enumDescriptions": [
-            "Not a verifiable build. (default)",
-            "Verified build."
-          ],
           "enum": [
             "NOT_VERIFIED",
             "VERIFIED"
+          ],
+          "enumDescriptions": [
+            "Not a verifiable build. (default)",
+            "Verified build."
           ],
           "type": "string"
         },
@@ -653,15 +644,15 @@
         "sourceProvenanceHash": {
           "description": "Requested hash for SourceProvenance.",
           "items": {
-            "enumDescriptions": [
-              "No hash requested.",
-              "Use a sha256 hash.",
-              "Use a md5 hash."
-            ],
             "enum": [
               "NONE",
               "SHA256",
               "MD5"
+            ],
+            "enumDescriptions": [
+              "No hash requested.",
+              "Use a sha256 hash.",
+              "Use a md5 hash."
             ],
             "type": "string"
           },
@@ -669,13 +660,13 @@
         },
         "substitutionOption": {
           "description": "Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.",
-          "enumDescriptions": [
-            "Fails the build if error in substitutions checks, like missing a substitution in the template or in the map.",
-            "Do not fail the build if error in substitutions checks."
-          ],
           "enum": [
             "MUST_MATCH",
             "ALLOW_LOOSE"
+          ],
+          "enumDescriptions": [
+            "Fails the build if error in substitutions checks, like missing a substitution in the template or in the map.",
+            "Do not fail the build if error in substitutions checks."
           ],
           "type": "string"
         },
@@ -728,8 +719,8 @@
           "type": "string"
         },
         "pullTiming": {
-          "description": "Output only. Stores timing information for pulling this build step's builder image only.",
           "$ref": "TimeSpan",
+          "description": "Output only. Stores timing information for pulling this build step's builder image only.",
           "readOnly": true
         },
         "secretEnv": {
@@ -741,17 +732,6 @@
         },
         "status": {
           "description": "Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.",
-          "enumDescriptions": [
-            "Status of the build is unknown.",
-            "Build or step is queued; work has not yet begun.",
-            "Build or step is being executed.",
-            "Build or step finished successfully.",
-            "Build or step failed to complete successfully.",
-            "Build or step failed due to an internal cause.",
-            "Build or step took longer than was allowed.",
-            "Build or step was canceled by a user.",
-            "Build was enqueued for longer than the value of `queue_ttl`."
-          ],
           "enum": [
             "STATUS_UNKNOWN",
             "QUEUED",
@@ -763,8 +743,19 @@
             "CANCELLED",
             "EXPIRED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Status of the build is unknown.",
+            "Build or step is queued; work has not yet begun.",
+            "Build or step is being executed.",
+            "Build or step finished successfully.",
+            "Build or step failed to complete successfully.",
+            "Build or step failed due to an internal cause.",
+            "Build or step took longer than was allowed.",
+            "Build or step was canceled by a user.",
+            "Build was enqueued for longer than the value of `queue_ttl`."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "timeout": {
           "description": "Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.",
@@ -772,8 +763,8 @@
           "type": "string"
         },
         "timing": {
-          "description": "Output only. Stores timing information for executing this build step.",
           "$ref": "TimeSpan",
+          "description": "Output only. Stores timing information for executing this build step.",
           "readOnly": true
         },
         "volumes": {
@@ -806,8 +797,8 @@
           "type": "string"
         },
         "pushTiming": {
-          "description": "Output only. Stores timing information for pushing the specified image.",
           "$ref": "TimeSpan",
+          "description": "Output only. Stores timing information for pushing the specified image.",
           "readOnly": true
         }
       },
@@ -856,15 +847,15 @@
       "properties": {
         "type": {
           "description": "The type of hash that was performed.",
-          "enumDescriptions": [
-            "No hash requested.",
-            "Use a sha256 hash.",
-            "Use a md5 hash."
-          ],
           "enum": [
             "NONE",
             "SHA256",
             "MD5"
+          ],
+          "enumDescriptions": [
+            "No hash requested.",
+            "Use a sha256 hash.",
+            "Use a md5 hash."
           ],
           "type": "string"
         },
@@ -929,16 +920,16 @@
           "type": "string"
         },
         "httpDelivery": {
-          "description": "Configuration for HTTP delivery.",
-          "$ref": "HTTPDelivery"
+          "$ref": "HTTPDelivery",
+          "description": "Configuration for HTTP delivery."
         },
         "slackDelivery": {
-          "description": "Configuration for Slack delivery.",
-          "$ref": "SlackDelivery"
+          "$ref": "SlackDelivery",
+          "description": "Configuration for Slack delivery."
         },
         "smtpDelivery": {
-          "description": "Configuration for SMTP (email) delivery.",
-          "$ref": "SMTPDelivery"
+          "$ref": "SMTPDelivery",
+          "description": "Configuration for SMTP (email) delivery."
         },
         "structDelivery": {
           "additionalProperties": {
@@ -964,12 +955,12 @@
           "type": "string"
         },
         "metadata": {
-          "description": "Metadata for referring to/handling/deploying this notifier.",
-          "$ref": "NotifierMetadata"
+          "$ref": "NotifierMetadata",
+          "description": "Metadata for referring to/handling/deploying this notifier."
         },
         "spec": {
-          "description": "The actual configuration for this notifier.",
-          "$ref": "NotifierSpec"
+          "$ref": "NotifierSpec",
+          "description": "The actual configuration for this notifier."
         }
       },
       "type": "object"
@@ -1020,8 +1011,8 @@
       "id": "NotifierSpec",
       "properties": {
         "notification": {
-          "description": "The configuration of this particular notifier.",
-          "$ref": "Notification"
+          "$ref": "Notification",
+          "description": "The configuration of this particular notifier."
         },
         "secrets": {
           "description": "Configurations for secret resources used by this particular notifier.",
@@ -1042,8 +1033,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1119,8 +1110,8 @@
           "type": "string"
         },
         "artifactTiming": {
-          "description": "Time to push all non-container artifacts.",
-          "$ref": "TimeSpan"
+          "$ref": "TimeSpan",
+          "description": "Time to push all non-container artifacts."
         },
         "buildStepImages": {
           "description": "List of build step digests, in the order corresponding to build step indices.",
@@ -1161,8 +1152,8 @@
           "type": "string"
         },
         "password": {
-          "description": "The SMTP sender's password.",
-          "$ref": "NotifierSecretRef"
+          "$ref": "NotifierSecretRef",
+          "description": "The SMTP sender's password."
         },
         "port": {
           "description": "The SMTP port of the server.",
@@ -1246,8 +1237,8 @@
       "id": "SlackDelivery",
       "properties": {
         "webhookUri": {
-          "description": "The secret reference for the Slack webhook URI for sending messages to a channel.",
-          "$ref": "NotifierSecretRef"
+          "$ref": "NotifierSecretRef",
+          "description": "The secret reference for the Slack webhook URI for sending messages to a channel."
         }
       },
       "type": "object"
@@ -1257,12 +1248,12 @@
       "id": "Source",
       "properties": {
         "repoSource": {
-          "description": "If provided, get the source from this location in a Cloud Source Repository.",
-          "$ref": "RepoSource"
+          "$ref": "RepoSource",
+          "description": "If provided, get the source from this location in a Cloud Source Repository."
         },
         "storageSource": {
-          "description": "If provided, get the source from this location in Google Cloud Storage.",
-          "$ref": "StorageSource"
+          "$ref": "StorageSource",
+          "description": "If provided, get the source from this location in Google Cloud Storage."
         }
       },
       "type": "object"
@@ -1276,16 +1267,16 @@
             "$ref": "FileHashes"
           },
           "description": "Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.",
-          "type": "object",
-          "readOnly": true
+          "readOnly": true,
+          "type": "object"
         },
         "resolvedRepoSource": {
-          "description": "A copy of the build's `source.repo_source`, if exists, with any revisions resolved.",
-          "$ref": "RepoSource"
+          "$ref": "RepoSource",
+          "description": "A copy of the build's `source.repo_source`, if exists, with any revisions resolved."
         },
         "resolvedStorageSource": {
-          "description": "A copy of the build's `source.storage_source`, if exists, with any generations resolved.",
-          "$ref": "StorageSource"
+          "$ref": "StorageSource",
+          "description": "A copy of the build's `source.storage_source`, if exists, with any generations resolved."
         }
       },
       "type": "object"
@@ -1392,23 +1383,23 @@
         "createTime": {
           "description": "Output only. Time at which the request to create the `WorkerPool` was received.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "deleteTime": {
           "description": "Output only. Time at which the request to delete the `WorkerPool` was received.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "networkConfig": {
-          "description": "Network configuration for the `WorkerPool`.",
-          "$ref": "NetworkConfig"
+          "$ref": "NetworkConfig",
+          "description": "Network configuration for the `WorkerPool`."
         },
         "region": {
           "description": "Required. Immutable. The region where the `WorkerPool` runs. Only \"us-central1\" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.",
@@ -1416,13 +1407,6 @@
         },
         "state": {
           "description": "Output only. WorkerPool state.",
-          "enumDescriptions": [
-            "State of the `WorkerPool` is unknown.",
-            "`WorkerPool` is being created.",
-            "`WorkerPool` is running.",
-            "`WorkerPool` is being deleted: cancelling builds and draining workers.",
-            "`WorkerPool` is deleted."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -1430,18 +1414,25 @@
             "DELETING",
             "DELETED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "State of the `WorkerPool` is unknown.",
+            "`WorkerPool` is being created.",
+            "`WorkerPool` is running.",
+            "`WorkerPool` is being deleted: cancelling builds and draining workers.",
+            "`WorkerPool` is deleted."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. Time at which the request to update the `WorkerPool` was received.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "workerConfig": {
-          "description": "Worker configuration for the `WorkerPool`.",
-          "$ref": "WorkerConfig"
+          "$ref": "WorkerConfig",
+          "description": "Worker configuration for the `WorkerPool`."
         }
       },
       "type": "object"
@@ -1449,6 +1440,6 @@
   },
   "servicePath": "",
   "title": "Cloud Build API",
-  "version_module": true,
-  "version": "v1alpha2"
+  "version": "v1alpha2",
+  "version_module": true
 }

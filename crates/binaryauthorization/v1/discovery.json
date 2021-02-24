@@ -15,29 +15,27 @@
   "description": "The management interface for Binary Authorization, a system providing policy control for images deployed to Kubernetes Engine clusters. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/binary-authorization/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "binaryauthorization:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://binaryauthorization.mtls.googleapis.com/",
   "name": "binaryauthorization",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "getPolicy": {
           "description": "A policy specifies the attestors that must attest to a container image, before the project is allowed to deploy that image. There is at most one policy per project. All image admission requests are permitted if a project has no policy. Gets the policy for this project. Returns a default policy if the project does not have one.",
           "httpMethod": "GET",
-          "flatPath": "v1/projects/{projectsId}/policy",
           "id": "binaryauthorization.projects.getPolicy",
           "parameterOrder": [
             "name"
@@ -120,8 +117,8 @@
               "description": "Required. The resource name of the policy to retrieve, in the format `projects/*/policy`.",
               "location": "path",
               "pattern": "^projects/[^/]+/policy$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -135,7 +132,6 @@
         "updatePolicy": {
           "description": "Creates or updates a project's policy, and returns a copy of the new policy. A policy is always updated as a whole, to avoid race conditions with concurrent policy enforcement (or management!) requests. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed.",
           "httpMethod": "PUT",
-          "flatPath": "v1/projects/{projectsId}/policy",
           "id": "binaryauthorization.projects.updatePolicy",
           "parameterOrder": [
             "name"
@@ -145,8 +141,8 @@
               "description": "Output only. The resource name, in the format `projects/*/policy`. There is at most one policy per project.",
               "location": "path",
               "pattern": "^projects/[^/]+/policy$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -167,7 +163,6 @@
             "create": {
               "description": "Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/attestors",
               "id": "binaryauthorization.projects.attestors.create",
               "parameterOrder": [
                 "parent"
@@ -182,8 +177,8 @@
                   "description": "Required. The parent of this attestor.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/attestors",
@@ -200,7 +195,6 @@
             "delete": {
               "description": "Deletes an attestor. Returns NOT_FOUND if the attestor does not exist.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/projects/{projectsId}/attestors/{attestorsId}",
               "id": "binaryauthorization.projects.attestors.delete",
               "parameterOrder": [
                 "name"
@@ -210,8 +204,8 @@
                   "description": "Required. The name of the attestors to delete, in the format `projects/*/attestors/*`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/attestors/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -225,7 +219,6 @@
             "get": {
               "description": "Gets an attestor. Returns NOT_FOUND if the attestor does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/attestors/{attestorsId}",
               "id": "binaryauthorization.projects.attestors.get",
               "parameterOrder": [
                 "name"
@@ -235,8 +228,8 @@
                   "description": "Required. The name of the attestor to retrieve, in the format `projects/*/attestors/*`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/attestors/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -250,7 +243,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/attestors/{attestorsId}:getIamPolicy",
               "id": "binaryauthorization.projects.attestors.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -266,8 +258,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/attestors/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:getIamPolicy",
@@ -281,7 +273,6 @@
             "list": {
               "description": "Lists attestors. Returns INVALID_ARGUMENT if the project does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/attestors",
               "id": "binaryauthorization.projects.attestors.list",
               "parameterOrder": [
                 "parent"
@@ -302,8 +293,8 @@
                   "description": "Required. The resource name of the project associated with the attestors, in the format `projects/*`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/attestors",
@@ -317,7 +308,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/attestors/{attestorsId}:setIamPolicy",
               "id": "binaryauthorization.projects.attestors.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -327,8 +317,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/attestors/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:setIamPolicy",
@@ -345,7 +335,6 @@
             "testIamPermissions": {
               "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/attestors/{attestorsId}:testIamPermissions",
               "id": "binaryauthorization.projects.attestors.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -355,8 +344,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/attestors/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:testIamPermissions",
@@ -373,7 +362,6 @@
             "update": {
               "description": "Updates an attestor. Returns NOT_FOUND if the attestor does not exist.",
               "httpMethod": "PUT",
-              "flatPath": "v1/projects/{projectsId}/attestors/{attestorsId}",
               "id": "binaryauthorization.projects.attestors.update",
               "parameterOrder": [
                 "name"
@@ -383,8 +371,8 @@
                   "description": "Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/attestors/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -401,7 +389,6 @@
             "validateAttestationOccurrence": {
               "description": "Returns whether the given Attestation for the given image URI was signed by the given Attestor",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/attestors/{attestorsId}:validateAttestationOccurrence",
               "id": "binaryauthorization.projects.attestors.validateAttestationOccurrence",
               "parameterOrder": [
                 "attestor"
@@ -411,8 +398,8 @@
                   "description": "Required. The resource name of the Attestor of the occurrence, in the format `projects/*/attestors/*`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/attestors/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+attestor}:validateAttestationOccurrence",
@@ -433,7 +420,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/policy:getIamPolicy",
               "id": "binaryauthorization.projects.policy.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -449,8 +435,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/policy$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:getIamPolicy",
@@ -464,7 +450,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/policy:setIamPolicy",
               "id": "binaryauthorization.projects.policy.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -474,8 +459,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/policy$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:setIamPolicy",
@@ -492,7 +477,6 @@
             "testIamPermissions": {
               "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/policy:testIamPermissions",
               "id": "binaryauthorization.projects.policy.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -502,8 +486,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/policy$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:testIamPermissions",
@@ -526,7 +510,6 @@
         "getPolicy": {
           "description": "Gets the current system policy in the specified location.",
           "httpMethod": "GET",
-          "flatPath": "v1/locations/{locationsId}/policy",
           "id": "binaryauthorization.systempolicy.getPolicy",
           "parameterOrder": [
             "name"
@@ -536,8 +519,8 @@
               "description": "Required. The resource name, in the format `locations/*/policy`. Note that the system policy is not associated with a project.",
               "location": "path",
               "pattern": "^locations/[^/]+/policy$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -551,7 +534,7 @@
       }
     }
   },
-  "revision": "20210212",
+  "revision": "20210219",
   "rootUrl": "https://binaryauthorization.googleapis.com/",
   "schemas": {
     "AdmissionRule": {
@@ -560,31 +543,31 @@
       "properties": {
         "enforcementMode": {
           "description": "Required. The action when a pod creation is denied by the admission rule.",
-          "enumDescriptions": [
-            "Do not use.",
-            "Enforce the admission rule by blocking the pod creation.",
-            "Dryrun mode: Audit logging only. This will allow the pod creation as if the admission request had specified break-glass."
-          ],
           "enum": [
             "ENFORCEMENT_MODE_UNSPECIFIED",
             "ENFORCED_BLOCK_AND_AUDIT_LOG",
             "DRYRUN_AUDIT_LOG_ONLY"
           ],
+          "enumDescriptions": [
+            "Do not use.",
+            "Enforce the admission rule by blocking the pod creation.",
+            "Dryrun mode: Audit logging only. This will allow the pod creation as if the admission request had specified break-glass."
+          ],
           "type": "string"
         },
         "evaluationMode": {
           "description": "Required. How this admission rule will be evaluated.",
-          "enumDescriptions": [
-            "Do not use.",
-            "This rule allows all all pod creations.",
-            "This rule allows a pod creation if all the attestors listed in 'require_attestations_by' have valid attestations for all of the images in the pod spec.",
-            "This rule denies all pod creations."
-          ],
           "enum": [
             "EVALUATION_MODE_UNSPECIFIED",
             "ALWAYS_ALLOW",
             "REQUIRE_ATTESTATION",
             "ALWAYS_DENY"
+          ],
+          "enumDescriptions": [
+            "Do not use.",
+            "This rule allows all all pod creations.",
+            "This rule allows a pod creation if all the attestors listed in 'require_attestations_by' have valid attestations for all of the images in the pod spec.",
+            "This rule denies all pod creations."
           ],
           "type": "string"
         },
@@ -650,12 +633,12 @@
         "updateTime": {
           "description": "Output only. Time when the attestor was last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "userOwnedGrafeasNote": {
-          "description": "This specifies how an attestation will be read, and how it will be used during policy enforcement.",
-          "$ref": "UserOwnedGrafeasNote"
+          "$ref": "UserOwnedGrafeasNote",
+          "description": "This specifies how an attestation will be read, and how it will be used during policy enforcement."
         }
       },
       "type": "object"
@@ -677,8 +660,8 @@
           "type": "string"
         },
         "pkixPublicKey": {
-          "description": "A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.",
-          "$ref": "PkixPublicKey"
+          "$ref": "PkixPublicKey",
+          "description": "A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key."
         }
       },
       "type": "object"
@@ -688,8 +671,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -796,23 +779,6 @@
         },
         "signatureAlgorithm": {
           "description": "The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).",
-          "enumDescriptions": [
-            "Not specified.",
-            "RSASSA-PSS 2048 bit key with a SHA256 digest.",
-            "RSASSA-PSS 3072 bit key with a SHA256 digest.",
-            "RSASSA-PSS 4096 bit key with a SHA256 digest.",
-            "RSASSA-PSS 4096 bit key with a SHA512 digest.",
-            "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest.",
-            "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest.",
-            "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest.",
-            "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest.",
-            "ECDSA on the NIST P-256 curve with a SHA256 digest.",
-            "ECDSA on the NIST P-256 curve with a SHA256 digest.",
-            "ECDSA on the NIST P-384 curve with a SHA384 digest.",
-            "ECDSA on the NIST P-384 curve with a SHA384 digest.",
-            "ECDSA on the NIST P-521 curve with a SHA512 digest.",
-            "ECDSA on the NIST P-521 curve with a SHA512 digest."
-          ],
           "enum": [
             "SIGNATURE_ALGORITHM_UNSPECIFIED",
             "RSA_PSS_2048_SHA256",
@@ -829,6 +795,23 @@
             "EC_SIGN_P384_SHA384",
             "ECDSA_P521_SHA512",
             "EC_SIGN_P521_SHA512"
+          ],
+          "enumDescriptions": [
+            "Not specified.",
+            "RSASSA-PSS 2048 bit key with a SHA256 digest.",
+            "RSASSA-PSS 3072 bit key with a SHA256 digest.",
+            "RSASSA-PSS 4096 bit key with a SHA256 digest.",
+            "RSASSA-PSS 4096 bit key with a SHA512 digest.",
+            "RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest.",
+            "RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest.",
+            "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA256 digest.",
+            "RSASSA-PKCS1-v1_5 with a 4096 bit key and a SHA512 digest.",
+            "ECDSA on the NIST P-256 curve with a SHA256 digest.",
+            "ECDSA on the NIST P-256 curve with a SHA256 digest.",
+            "ECDSA on the NIST P-384 curve with a SHA384 digest.",
+            "ECDSA on the NIST P-384 curve with a SHA384 digest.",
+            "ECDSA on the NIST P-521 curve with a SHA512 digest.",
+            "ECDSA on the NIST P-521 curve with a SHA512 digest."
           ],
           "type": "string"
         }
@@ -854,8 +837,8 @@
           "type": "object"
         },
         "defaultAdmissionRule": {
-          "description": "Required. Default admission rule for a cluster without a per-cluster, per- kubernetes-service-account, or per-istio-service-identity admission rule.",
-          "$ref": "AdmissionRule"
+          "$ref": "AdmissionRule",
+          "description": "Required. Default admission rule for a cluster without a per-cluster, per- kubernetes-service-account, or per-istio-service-identity admission rule."
         },
         "description": {
           "description": "Optional. A descriptive comment.",
@@ -863,15 +846,15 @@
         },
         "globalPolicyEvaluationMode": {
           "description": "Optional. Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not covered by the global policy will be subject to the project admission policy. This setting has no effect when specified inside a global admission policy.",
-          "enumDescriptions": [
-            "Not specified: DISABLE is assumed.",
-            "Enables global policy evaluation.",
-            "Disables global policy evaluation."
-          ],
           "enum": [
             "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED",
             "ENABLE",
             "DISABLE"
+          ],
+          "enumDescriptions": [
+            "Not specified: DISABLE is assumed.",
+            "Enables global policy evaluation.",
+            "Disables global policy evaluation."
           ],
           "type": "string"
         },
@@ -898,14 +881,14 @@
         },
         "name": {
           "description": "Output only. The resource name, in the format `projects/*/policy`. There is at most one policy per project.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. Time when the policy was last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -915,8 +898,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "IamPolicy"
+          "$ref": "IamPolicy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         }
       },
       "type": "object"
@@ -971,8 +954,8 @@
       "properties": {
         "delegationServiceAccountEmail": {
           "description": "Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "noteReference": {
           "description": "Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.",
@@ -993,8 +976,8 @@
       "id": "ValidateAttestationOccurrenceRequest",
       "properties": {
         "attestation": {
-          "description": "Required. An AttestationOccurrence to be checked that it can be verified by the Attestor. It does not have to be an existing entity in Container Analysis. It must otherwise be a valid AttestationOccurrence.",
-          "$ref": "AttestationOccurrence"
+          "$ref": "AttestationOccurrence",
+          "description": "Required. An AttestationOccurrence to be checked that it can be verified by the Attestor. It does not have to be an existing entity in Container Analysis. It must otherwise be a valid AttestationOccurrence."
         },
         "occurrenceNote": {
           "description": "Required. The resource name of the Note to which the containing Occurrence is associated.",
@@ -1017,15 +1000,15 @@
         },
         "result": {
           "description": "The result of the Attestation validation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "The Attestation was able to verified by the Attestor.",
-            "The Attestation was not able to verified by the Attestor."
-          ],
           "enum": [
             "RESULT_UNSPECIFIED",
             "VERIFIED",
             "ATTESTATION_NOT_VERIFIABLE"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "The Attestation was able to verified by the Attestor.",
+            "The Attestation was not able to verified by the Attestor."
           ],
           "type": "string"
         }
@@ -1035,6 +1018,6 @@
   },
   "servicePath": "",
   "title": "Binary Authorization API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

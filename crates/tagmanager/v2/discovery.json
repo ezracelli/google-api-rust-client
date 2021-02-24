@@ -39,22 +39,21 @@
   },
   "id": "tagmanager:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://tagmanager.mtls.googleapis.com/",
   "name": "tagmanager",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -65,17 +64,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -127,7 +126,6 @@
         "get": {
           "description": "Gets a GTM Account.",
           "httpMethod": "GET",
-          "flatPath": "tagmanager/v2/accounts/{accountsId}",
           "id": "tagmanager.accounts.get",
           "parameterOrder": [
             "path"
@@ -137,8 +135,8 @@
               "description": "GTM Accounts's API relative path. Example: accounts/{account_id}",
               "location": "path",
               "pattern": "^accounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "tagmanager/v2/{+path}",
@@ -154,7 +152,6 @@
         "list": {
           "description": "Lists all GTM Accounts that a user has access to.",
           "httpMethod": "GET",
-          "flatPath": "tagmanager/v2/accounts",
           "id": "tagmanager.accounts.list",
           "parameterOrder": [],
           "parameters": {
@@ -177,7 +174,6 @@
         "update": {
           "description": "Updates a GTM Account.",
           "httpMethod": "PUT",
-          "flatPath": "tagmanager/v2/accounts/{accountsId}",
           "id": "tagmanager.accounts.update",
           "parameterOrder": [
             "path"
@@ -192,8 +188,8 @@
               "description": "GTM Accounts's API relative path. Example: accounts/{account_id}",
               "location": "path",
               "pattern": "^accounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "tagmanager/v2/{+path}",
@@ -214,7 +210,6 @@
             "create": {
               "description": "Creates a Container.",
               "httpMethod": "POST",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/containers",
               "id": "tagmanager.accounts.containers.create",
               "parameterOrder": [
                 "parent"
@@ -224,8 +219,8 @@
                   "description": "GTM Account's API relative path. Example: accounts/{account_id}.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+parent}/containers",
@@ -242,7 +237,6 @@
             "delete": {
               "description": "Deletes a Container.",
               "httpMethod": "DELETE",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}",
               "id": "tagmanager.accounts.containers.delete",
               "parameterOrder": [
                 "path"
@@ -252,8 +246,8 @@
                   "description": "GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+path}",
@@ -264,7 +258,6 @@
             "get": {
               "description": "Gets a Container.",
               "httpMethod": "GET",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}",
               "id": "tagmanager.accounts.containers.get",
               "parameterOrder": [
                 "path"
@@ -274,8 +267,8 @@
                   "description": "GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+path}",
@@ -290,7 +283,6 @@
             "list": {
               "description": "Lists all Containers that belongs to a GTM Account.",
               "httpMethod": "GET",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/containers",
               "id": "tagmanager.accounts.containers.list",
               "parameterOrder": [
                 "parent"
@@ -305,8 +297,8 @@
                   "description": "GTM Accounts's API relative path. Example: accounts/{account_id}.",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+parent}/containers",
@@ -321,7 +313,6 @@
             "update": {
               "description": "Updates a Container.",
               "httpMethod": "PUT",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}",
               "id": "tagmanager.accounts.containers.update",
               "parameterOrder": [
                 "path"
@@ -336,8 +327,8 @@
                   "description": "GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+path}",
@@ -358,7 +349,6 @@
                 "create": {
                   "description": "Creates a GTM Environment.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments",
                   "id": "tagmanager.accounts.containers.environments.create",
                   "parameterOrder": [
                     "parent"
@@ -368,8 +358,8 @@
                       "description": "GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+parent}/environments",
@@ -386,7 +376,6 @@
                 "delete": {
                   "description": "Deletes a GTM Environment.",
                   "httpMethod": "DELETE",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments/{environmentsId}",
                   "id": "tagmanager.accounts.containers.environments.delete",
                   "parameterOrder": [
                     "path"
@@ -396,8 +385,8 @@
                       "description": "GTM Environment's API relative path. Example: accounts/{account_id}/containers/{container_id}/environments/{environment_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}",
@@ -408,7 +397,6 @@
                 "get": {
                   "description": "Gets a GTM Environment.",
                   "httpMethod": "GET",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments/{environmentsId}",
                   "id": "tagmanager.accounts.containers.environments.get",
                   "parameterOrder": [
                     "path"
@@ -418,8 +406,8 @@
                       "description": "GTM Environment's API relative path. Example: accounts/{account_id}/containers/{container_id}/environments/{environment_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}",
@@ -434,7 +422,6 @@
                 "list": {
                   "description": "Lists all GTM Environments of a GTM Container.",
                   "httpMethod": "GET",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments",
                   "id": "tagmanager.accounts.containers.environments.list",
                   "parameterOrder": [
                     "parent"
@@ -449,8 +436,8 @@
                       "description": "GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+parent}/environments",
@@ -465,7 +452,6 @@
                 "reauthorize": {
                   "description": "Re-generates the authorization code for a GTM Environment.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments/{environmentsId}:reauthorize",
                   "id": "tagmanager.accounts.containers.environments.reauthorize",
                   "parameterOrder": [
                     "path"
@@ -475,8 +461,8 @@
                       "description": "GTM Environment's API relative path. Example: accounts/{account_id}/containers/{container_id}/environments/{environment_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}:reauthorize",
@@ -493,7 +479,6 @@
                 "update": {
                   "description": "Updates a GTM Environment.",
                   "httpMethod": "PUT",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/environments/{environmentsId}",
                   "id": "tagmanager.accounts.containers.environments.update",
                   "parameterOrder": [
                     "path"
@@ -508,8 +493,8 @@
                       "description": "GTM Environment's API relative path. Example: accounts/{account_id}/containers/{container_id}/environments/{environment_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}",
@@ -530,7 +515,6 @@
                 "latest": {
                   "description": "Gets the latest container version header",
                   "httpMethod": "GET",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/version_headers:latest",
                   "id": "tagmanager.accounts.containers.version_headers.latest",
                   "parameterOrder": [
                     "parent"
@@ -540,8 +524,8 @@
                       "description": "GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+parent}/version_headers:latest",
@@ -556,7 +540,6 @@
                 "list": {
                   "description": "Lists all Container Versions of a GTM Container.",
                   "httpMethod": "GET",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/version_headers",
                   "id": "tagmanager.accounts.containers.version_headers.list",
                   "parameterOrder": [
                     "parent"
@@ -576,8 +559,8 @@
                       "description": "GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+parent}/version_headers",
@@ -597,7 +580,6 @@
                 "delete": {
                   "description": "Deletes a Container Version.",
                   "httpMethod": "DELETE",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}",
                   "id": "tagmanager.accounts.containers.versions.delete",
                   "parameterOrder": [
                     "path"
@@ -607,8 +589,8 @@
                       "description": "GTM ContainerVersion's API relative path. Example: accounts/{account_id}/containers/{container_id}/versions/{version_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}",
@@ -619,7 +601,6 @@
                 "get": {
                   "description": "Gets a Container Version.",
                   "httpMethod": "GET",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}",
                   "id": "tagmanager.accounts.containers.versions.get",
                   "parameterOrder": [
                     "path"
@@ -634,8 +615,8 @@
                       "description": "GTM ContainerVersion's API relative path. Example: accounts/{account_id}/containers/{container_id}/versions/{version_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}",
@@ -651,7 +632,6 @@
                 "live": {
                   "description": "Gets the live (i.e. published) container version",
                   "httpMethod": "GET",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions:live",
                   "id": "tagmanager.accounts.containers.versions.live",
                   "parameterOrder": [
                     "parent"
@@ -661,8 +641,8 @@
                       "description": "GTM Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+parent}/versions:live",
@@ -677,7 +657,6 @@
                 "publish": {
                   "description": "Publishes a Container Version.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}:publish",
                   "id": "tagmanager.accounts.containers.versions.publish",
                   "parameterOrder": [
                     "path"
@@ -692,8 +671,8 @@
                       "description": "GTM ContainerVersion's API relative path. Example: accounts/{account_id}/containers/{container_id}/versions/{version_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}:publish",
@@ -707,7 +686,6 @@
                 "set_latest": {
                   "description": "Sets the latest version used for synchronization of workspaces when detecting conflicts and errors.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}:set_latest",
                   "id": "tagmanager.accounts.containers.versions.set_latest",
                   "parameterOrder": [
                     "path"
@@ -717,8 +695,8 @@
                       "description": "GTM ContainerVersion's API relative path. Example: accounts/{account_id}/containers/{container_id}/versions/{version_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}:set_latest",
@@ -732,7 +710,6 @@
                 "undelete": {
                   "description": "Undeletes a Container Version.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}:undelete",
                   "id": "tagmanager.accounts.containers.versions.undelete",
                   "parameterOrder": [
                     "path"
@@ -742,8 +719,8 @@
                       "description": "GTM ContainerVersion's API relative path. Example: accounts/{account_id}/containers/{container_id}/versions/{version_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}:undelete",
@@ -757,7 +734,6 @@
                 "update": {
                   "description": "Updates a Container Version.",
                   "httpMethod": "PUT",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/versions/{versionsId}",
                   "id": "tagmanager.accounts.containers.versions.update",
                   "parameterOrder": [
                     "path"
@@ -772,8 +748,8 @@
                       "description": "GTM ContainerVersion's API relative path. Example: accounts/{account_id}/containers/{container_id}/versions/{version_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}",
@@ -794,7 +770,6 @@
                 "create": {
                   "description": "Creates a Workspace.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces",
                   "id": "tagmanager.accounts.containers.workspaces.create",
                   "parameterOrder": [
                     "parent"
@@ -804,8 +779,8 @@
                       "description": "GTM parent Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+parent}/workspaces",
@@ -822,7 +797,6 @@
                 "create_version": {
                   "description": "Creates a Container Version from the entities present in the workspace, deletes the workspace, and sets the base container version to the newly created version.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}:create_version",
                   "id": "tagmanager.accounts.containers.workspaces.create_version",
                   "parameterOrder": [
                     "path"
@@ -832,8 +806,8 @@
                       "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}:create_version",
@@ -850,7 +824,6 @@
                 "delete": {
                   "description": "Deletes a Workspace.",
                   "httpMethod": "DELETE",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}",
                   "id": "tagmanager.accounts.containers.workspaces.delete",
                   "parameterOrder": [
                     "path"
@@ -860,8 +833,8 @@
                       "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}",
@@ -872,7 +845,6 @@
                 "get": {
                   "description": "Gets a Workspace.",
                   "httpMethod": "GET",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}",
                   "id": "tagmanager.accounts.containers.workspaces.get",
                   "parameterOrder": [
                     "path"
@@ -882,8 +854,8 @@
                       "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}",
@@ -898,7 +870,6 @@
                 "getStatus": {
                   "description": "Finds conflicting and modified entities in the workspace.",
                   "httpMethod": "GET",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/status",
                   "id": "tagmanager.accounts.containers.workspaces.getStatus",
                   "parameterOrder": [
                     "path"
@@ -908,8 +879,8 @@
                       "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}/status",
@@ -924,7 +895,6 @@
                 "list": {
                   "description": "Lists all Workspaces that belong to a GTM Container.",
                   "httpMethod": "GET",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces",
                   "id": "tagmanager.accounts.containers.workspaces.list",
                   "parameterOrder": [
                     "parent"
@@ -939,8 +909,8 @@
                       "description": "GTM parent Container's API relative path. Example: accounts/{account_id}/containers/{container_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+parent}/workspaces",
@@ -955,7 +925,6 @@
                 "quick_preview": {
                   "description": "Quick previews a workspace by creating a fake container version from all entities in the provided workspace.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}:quick_preview",
                   "id": "tagmanager.accounts.containers.workspaces.quick_preview",
                   "parameterOrder": [
                     "path"
@@ -965,8 +934,8 @@
                       "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}:quick_preview",
@@ -980,7 +949,6 @@
                 "resolve_conflict": {
                   "description": "Resolves a merge conflict for a workspace entity by updating it to the resolved entity passed in the request.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}:resolve_conflict",
                   "id": "tagmanager.accounts.containers.workspaces.resolve_conflict",
                   "parameterOrder": [
                     "path"
@@ -995,8 +963,8 @@
                       "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}:resolve_conflict",
@@ -1010,7 +978,6 @@
                 "sync": {
                   "description": "Syncs a workspace to the latest container version by updating all unmodified workspace entities and displaying conflicts for modified entities.",
                   "httpMethod": "POST",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}:sync",
                   "id": "tagmanager.accounts.containers.workspaces.sync",
                   "parameterOrder": [
                     "path"
@@ -1020,8 +987,8 @@
                       "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}:sync",
@@ -1035,7 +1002,6 @@
                 "update": {
                   "description": "Updates a Workspace.",
                   "httpMethod": "PUT",
-                  "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}",
                   "id": "tagmanager.accounts.containers.workspaces.update",
                   "parameterOrder": [
                     "path"
@@ -1050,8 +1016,8 @@
                       "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                       "location": "path",
                       "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "tagmanager/v2/{+path}",
@@ -1072,7 +1038,6 @@
                     "create": {
                       "description": "Creates one or more GTM Built-In Variables.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/built_in_variables",
                       "id": "tagmanager.accounts.containers.workspaces.built_in_variables.create",
                       "parameterOrder": [
                         "parent"
@@ -1082,11 +1047,123 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "type": {
                           "description": "The types of built-in variables to enable.",
+                          "enum": [
+                            "builtInVariableTypeUnspecified",
+                            "pageUrl",
+                            "pageHostname",
+                            "pagePath",
+                            "referrer",
+                            "event",
+                            "clickElement",
+                            "clickClasses",
+                            "clickId",
+                            "clickTarget",
+                            "clickUrl",
+                            "clickText",
+                            "firstPartyServingUrl",
+                            "formElement",
+                            "formClasses",
+                            "formId",
+                            "formTarget",
+                            "formUrl",
+                            "formText",
+                            "errorMessage",
+                            "errorUrl",
+                            "errorLine",
+                            "newHistoryUrl",
+                            "oldHistoryUrl",
+                            "newHistoryFragment",
+                            "oldHistoryFragment",
+                            "newHistoryState",
+                            "oldHistoryState",
+                            "historySource",
+                            "containerVersion",
+                            "debugMode",
+                            "randomNumber",
+                            "containerId",
+                            "appId",
+                            "appName",
+                            "appVersionCode",
+                            "appVersionName",
+                            "language",
+                            "osVersion",
+                            "platform",
+                            "sdkVersion",
+                            "deviceName",
+                            "resolution",
+                            "advertiserId",
+                            "advertisingTrackingEnabled",
+                            "htmlId",
+                            "environmentName",
+                            "ampBrowserLanguage",
+                            "ampCanonicalPath",
+                            "ampCanonicalUrl",
+                            "ampCanonicalHost",
+                            "ampReferrer",
+                            "ampTitle",
+                            "ampClientId",
+                            "ampClientTimezone",
+                            "ampClientTimestamp",
+                            "ampClientScreenWidth",
+                            "ampClientScreenHeight",
+                            "ampClientScrollX",
+                            "ampClientScrollY",
+                            "ampClientMaxScrollX",
+                            "ampClientMaxScrollY",
+                            "ampTotalEngagedTime",
+                            "ampPageViewId",
+                            "ampPageLoadTime",
+                            "ampPageDownloadTime",
+                            "ampGtmEvent",
+                            "eventName",
+                            "firebaseEventParameterCampaign",
+                            "firebaseEventParameterCampaignAclid",
+                            "firebaseEventParameterCampaignAnid",
+                            "firebaseEventParameterCampaignClickTimestamp",
+                            "firebaseEventParameterCampaignContent",
+                            "firebaseEventParameterCampaignCp1",
+                            "firebaseEventParameterCampaignGclid",
+                            "firebaseEventParameterCampaignSource",
+                            "firebaseEventParameterCampaignTerm",
+                            "firebaseEventParameterCurrency",
+                            "firebaseEventParameterDynamicLinkAcceptTime",
+                            "firebaseEventParameterDynamicLinkLinkid",
+                            "firebaseEventParameterNotificationMessageDeviceTime",
+                            "firebaseEventParameterNotificationMessageId",
+                            "firebaseEventParameterNotificationMessageName",
+                            "firebaseEventParameterNotificationMessageTime",
+                            "firebaseEventParameterNotificationTopic",
+                            "firebaseEventParameterPreviousAppVersion",
+                            "firebaseEventParameterPreviousOsVersion",
+                            "firebaseEventParameterPrice",
+                            "firebaseEventParameterProductId",
+                            "firebaseEventParameterQuantity",
+                            "firebaseEventParameterValue",
+                            "videoProvider",
+                            "videoUrl",
+                            "videoTitle",
+                            "videoDuration",
+                            "videoPercent",
+                            "videoVisible",
+                            "videoStatus",
+                            "videoCurrentTime",
+                            "scrollDepthThreshold",
+                            "scrollDepthUnits",
+                            "scrollDepthDirection",
+                            "elementVisibilityRatio",
+                            "elementVisibilityTime",
+                            "elementVisibilityFirstTime",
+                            "elementVisibilityRecentTime",
+                            "requestPath",
+                            "requestMethod",
+                            "clientName",
+                            "queryString"
+                          ],
                           "enumDescriptions": [
                             "",
                             "",
@@ -1200,120 +1277,8 @@
                             ""
                           ],
                           "location": "query",
-                          "enum": [
-                            "builtInVariableTypeUnspecified",
-                            "pageUrl",
-                            "pageHostname",
-                            "pagePath",
-                            "referrer",
-                            "event",
-                            "clickElement",
-                            "clickClasses",
-                            "clickId",
-                            "clickTarget",
-                            "clickUrl",
-                            "clickText",
-                            "firstPartyServingUrl",
-                            "formElement",
-                            "formClasses",
-                            "formId",
-                            "formTarget",
-                            "formUrl",
-                            "formText",
-                            "errorMessage",
-                            "errorUrl",
-                            "errorLine",
-                            "newHistoryUrl",
-                            "oldHistoryUrl",
-                            "newHistoryFragment",
-                            "oldHistoryFragment",
-                            "newHistoryState",
-                            "oldHistoryState",
-                            "historySource",
-                            "containerVersion",
-                            "debugMode",
-                            "randomNumber",
-                            "containerId",
-                            "appId",
-                            "appName",
-                            "appVersionCode",
-                            "appVersionName",
-                            "language",
-                            "osVersion",
-                            "platform",
-                            "sdkVersion",
-                            "deviceName",
-                            "resolution",
-                            "advertiserId",
-                            "advertisingTrackingEnabled",
-                            "htmlId",
-                            "environmentName",
-                            "ampBrowserLanguage",
-                            "ampCanonicalPath",
-                            "ampCanonicalUrl",
-                            "ampCanonicalHost",
-                            "ampReferrer",
-                            "ampTitle",
-                            "ampClientId",
-                            "ampClientTimezone",
-                            "ampClientTimestamp",
-                            "ampClientScreenWidth",
-                            "ampClientScreenHeight",
-                            "ampClientScrollX",
-                            "ampClientScrollY",
-                            "ampClientMaxScrollX",
-                            "ampClientMaxScrollY",
-                            "ampTotalEngagedTime",
-                            "ampPageViewId",
-                            "ampPageLoadTime",
-                            "ampPageDownloadTime",
-                            "ampGtmEvent",
-                            "eventName",
-                            "firebaseEventParameterCampaign",
-                            "firebaseEventParameterCampaignAclid",
-                            "firebaseEventParameterCampaignAnid",
-                            "firebaseEventParameterCampaignClickTimestamp",
-                            "firebaseEventParameterCampaignContent",
-                            "firebaseEventParameterCampaignCp1",
-                            "firebaseEventParameterCampaignGclid",
-                            "firebaseEventParameterCampaignSource",
-                            "firebaseEventParameterCampaignTerm",
-                            "firebaseEventParameterCurrency",
-                            "firebaseEventParameterDynamicLinkAcceptTime",
-                            "firebaseEventParameterDynamicLinkLinkid",
-                            "firebaseEventParameterNotificationMessageDeviceTime",
-                            "firebaseEventParameterNotificationMessageId",
-                            "firebaseEventParameterNotificationMessageName",
-                            "firebaseEventParameterNotificationMessageTime",
-                            "firebaseEventParameterNotificationTopic",
-                            "firebaseEventParameterPreviousAppVersion",
-                            "firebaseEventParameterPreviousOsVersion",
-                            "firebaseEventParameterPrice",
-                            "firebaseEventParameterProductId",
-                            "firebaseEventParameterQuantity",
-                            "firebaseEventParameterValue",
-                            "videoProvider",
-                            "videoUrl",
-                            "videoTitle",
-                            "videoDuration",
-                            "videoPercent",
-                            "videoVisible",
-                            "videoStatus",
-                            "videoCurrentTime",
-                            "scrollDepthThreshold",
-                            "scrollDepthUnits",
-                            "scrollDepthDirection",
-                            "elementVisibilityRatio",
-                            "elementVisibilityTime",
-                            "elementVisibilityFirstTime",
-                            "elementVisibilityRecentTime",
-                            "requestPath",
-                            "requestMethod",
-                            "clientName",
-                            "queryString"
-                          ],
-                          "type": "string",
-                          "repeated": true
+                          "repeated": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/built_in_variables",
@@ -1327,7 +1292,6 @@
                     "delete": {
                       "description": "Deletes one or more GTM Built-In Variables.",
                       "httpMethod": "DELETE",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/built_in_variables",
                       "id": "tagmanager.accounts.containers.workspaces.built_in_variables.delete",
                       "parameterOrder": [
                         "path"
@@ -1337,11 +1301,123 @@
                           "description": "GTM BuiltInVariable's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/built_in_variables$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "type": {
                           "description": "The types of built-in variables to delete.",
+                          "enum": [
+                            "builtInVariableTypeUnspecified",
+                            "pageUrl",
+                            "pageHostname",
+                            "pagePath",
+                            "referrer",
+                            "event",
+                            "clickElement",
+                            "clickClasses",
+                            "clickId",
+                            "clickTarget",
+                            "clickUrl",
+                            "clickText",
+                            "firstPartyServingUrl",
+                            "formElement",
+                            "formClasses",
+                            "formId",
+                            "formTarget",
+                            "formUrl",
+                            "formText",
+                            "errorMessage",
+                            "errorUrl",
+                            "errorLine",
+                            "newHistoryUrl",
+                            "oldHistoryUrl",
+                            "newHistoryFragment",
+                            "oldHistoryFragment",
+                            "newHistoryState",
+                            "oldHistoryState",
+                            "historySource",
+                            "containerVersion",
+                            "debugMode",
+                            "randomNumber",
+                            "containerId",
+                            "appId",
+                            "appName",
+                            "appVersionCode",
+                            "appVersionName",
+                            "language",
+                            "osVersion",
+                            "platform",
+                            "sdkVersion",
+                            "deviceName",
+                            "resolution",
+                            "advertiserId",
+                            "advertisingTrackingEnabled",
+                            "htmlId",
+                            "environmentName",
+                            "ampBrowserLanguage",
+                            "ampCanonicalPath",
+                            "ampCanonicalUrl",
+                            "ampCanonicalHost",
+                            "ampReferrer",
+                            "ampTitle",
+                            "ampClientId",
+                            "ampClientTimezone",
+                            "ampClientTimestamp",
+                            "ampClientScreenWidth",
+                            "ampClientScreenHeight",
+                            "ampClientScrollX",
+                            "ampClientScrollY",
+                            "ampClientMaxScrollX",
+                            "ampClientMaxScrollY",
+                            "ampTotalEngagedTime",
+                            "ampPageViewId",
+                            "ampPageLoadTime",
+                            "ampPageDownloadTime",
+                            "ampGtmEvent",
+                            "eventName",
+                            "firebaseEventParameterCampaign",
+                            "firebaseEventParameterCampaignAclid",
+                            "firebaseEventParameterCampaignAnid",
+                            "firebaseEventParameterCampaignClickTimestamp",
+                            "firebaseEventParameterCampaignContent",
+                            "firebaseEventParameterCampaignCp1",
+                            "firebaseEventParameterCampaignGclid",
+                            "firebaseEventParameterCampaignSource",
+                            "firebaseEventParameterCampaignTerm",
+                            "firebaseEventParameterCurrency",
+                            "firebaseEventParameterDynamicLinkAcceptTime",
+                            "firebaseEventParameterDynamicLinkLinkid",
+                            "firebaseEventParameterNotificationMessageDeviceTime",
+                            "firebaseEventParameterNotificationMessageId",
+                            "firebaseEventParameterNotificationMessageName",
+                            "firebaseEventParameterNotificationMessageTime",
+                            "firebaseEventParameterNotificationTopic",
+                            "firebaseEventParameterPreviousAppVersion",
+                            "firebaseEventParameterPreviousOsVersion",
+                            "firebaseEventParameterPrice",
+                            "firebaseEventParameterProductId",
+                            "firebaseEventParameterQuantity",
+                            "firebaseEventParameterValue",
+                            "videoProvider",
+                            "videoUrl",
+                            "videoTitle",
+                            "videoDuration",
+                            "videoPercent",
+                            "videoVisible",
+                            "videoStatus",
+                            "videoCurrentTime",
+                            "scrollDepthThreshold",
+                            "scrollDepthUnits",
+                            "scrollDepthDirection",
+                            "elementVisibilityRatio",
+                            "elementVisibilityTime",
+                            "elementVisibilityFirstTime",
+                            "elementVisibilityRecentTime",
+                            "requestPath",
+                            "requestMethod",
+                            "clientName",
+                            "queryString"
+                          ],
                           "enumDescriptions": [
                             "",
                             "",
@@ -1455,120 +1531,8 @@
                             ""
                           ],
                           "location": "query",
-                          "enum": [
-                            "builtInVariableTypeUnspecified",
-                            "pageUrl",
-                            "pageHostname",
-                            "pagePath",
-                            "referrer",
-                            "event",
-                            "clickElement",
-                            "clickClasses",
-                            "clickId",
-                            "clickTarget",
-                            "clickUrl",
-                            "clickText",
-                            "firstPartyServingUrl",
-                            "formElement",
-                            "formClasses",
-                            "formId",
-                            "formTarget",
-                            "formUrl",
-                            "formText",
-                            "errorMessage",
-                            "errorUrl",
-                            "errorLine",
-                            "newHistoryUrl",
-                            "oldHistoryUrl",
-                            "newHistoryFragment",
-                            "oldHistoryFragment",
-                            "newHistoryState",
-                            "oldHistoryState",
-                            "historySource",
-                            "containerVersion",
-                            "debugMode",
-                            "randomNumber",
-                            "containerId",
-                            "appId",
-                            "appName",
-                            "appVersionCode",
-                            "appVersionName",
-                            "language",
-                            "osVersion",
-                            "platform",
-                            "sdkVersion",
-                            "deviceName",
-                            "resolution",
-                            "advertiserId",
-                            "advertisingTrackingEnabled",
-                            "htmlId",
-                            "environmentName",
-                            "ampBrowserLanguage",
-                            "ampCanonicalPath",
-                            "ampCanonicalUrl",
-                            "ampCanonicalHost",
-                            "ampReferrer",
-                            "ampTitle",
-                            "ampClientId",
-                            "ampClientTimezone",
-                            "ampClientTimestamp",
-                            "ampClientScreenWidth",
-                            "ampClientScreenHeight",
-                            "ampClientScrollX",
-                            "ampClientScrollY",
-                            "ampClientMaxScrollX",
-                            "ampClientMaxScrollY",
-                            "ampTotalEngagedTime",
-                            "ampPageViewId",
-                            "ampPageLoadTime",
-                            "ampPageDownloadTime",
-                            "ampGtmEvent",
-                            "eventName",
-                            "firebaseEventParameterCampaign",
-                            "firebaseEventParameterCampaignAclid",
-                            "firebaseEventParameterCampaignAnid",
-                            "firebaseEventParameterCampaignClickTimestamp",
-                            "firebaseEventParameterCampaignContent",
-                            "firebaseEventParameterCampaignCp1",
-                            "firebaseEventParameterCampaignGclid",
-                            "firebaseEventParameterCampaignSource",
-                            "firebaseEventParameterCampaignTerm",
-                            "firebaseEventParameterCurrency",
-                            "firebaseEventParameterDynamicLinkAcceptTime",
-                            "firebaseEventParameterDynamicLinkLinkid",
-                            "firebaseEventParameterNotificationMessageDeviceTime",
-                            "firebaseEventParameterNotificationMessageId",
-                            "firebaseEventParameterNotificationMessageName",
-                            "firebaseEventParameterNotificationMessageTime",
-                            "firebaseEventParameterNotificationTopic",
-                            "firebaseEventParameterPreviousAppVersion",
-                            "firebaseEventParameterPreviousOsVersion",
-                            "firebaseEventParameterPrice",
-                            "firebaseEventParameterProductId",
-                            "firebaseEventParameterQuantity",
-                            "firebaseEventParameterValue",
-                            "videoProvider",
-                            "videoUrl",
-                            "videoTitle",
-                            "videoDuration",
-                            "videoPercent",
-                            "videoVisible",
-                            "videoStatus",
-                            "videoCurrentTime",
-                            "scrollDepthThreshold",
-                            "scrollDepthUnits",
-                            "scrollDepthDirection",
-                            "elementVisibilityRatio",
-                            "elementVisibilityTime",
-                            "elementVisibilityFirstTime",
-                            "elementVisibilityRecentTime",
-                            "requestPath",
-                            "requestMethod",
-                            "clientName",
-                            "queryString"
-                          ],
-                          "type": "string",
-                          "repeated": true
+                          "repeated": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -1579,7 +1543,6 @@
                     "list": {
                       "description": "Lists all the enabled Built-In Variables of a GTM Container.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/built_in_variables",
                       "id": "tagmanager.accounts.containers.workspaces.built_in_variables.list",
                       "parameterOrder": [
                         "parent"
@@ -1594,8 +1557,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/built_in_variables",
@@ -1610,7 +1573,6 @@
                     "revert": {
                       "description": "Reverts changes to a GTM Built-In Variables in a GTM Workspace.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/built_in_variables:revert",
                       "id": "tagmanager.accounts.containers.workspaces.built_in_variables.revert",
                       "parameterOrder": [
                         "path"
@@ -1620,11 +1582,123 @@
                           "description": "GTM BuiltInVariable's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "type": {
                           "description": "The type of built-in variable to revert.",
+                          "enum": [
+                            "builtInVariableTypeUnspecified",
+                            "pageUrl",
+                            "pageHostname",
+                            "pagePath",
+                            "referrer",
+                            "event",
+                            "clickElement",
+                            "clickClasses",
+                            "clickId",
+                            "clickTarget",
+                            "clickUrl",
+                            "clickText",
+                            "firstPartyServingUrl",
+                            "formElement",
+                            "formClasses",
+                            "formId",
+                            "formTarget",
+                            "formUrl",
+                            "formText",
+                            "errorMessage",
+                            "errorUrl",
+                            "errorLine",
+                            "newHistoryUrl",
+                            "oldHistoryUrl",
+                            "newHistoryFragment",
+                            "oldHistoryFragment",
+                            "newHistoryState",
+                            "oldHistoryState",
+                            "historySource",
+                            "containerVersion",
+                            "debugMode",
+                            "randomNumber",
+                            "containerId",
+                            "appId",
+                            "appName",
+                            "appVersionCode",
+                            "appVersionName",
+                            "language",
+                            "osVersion",
+                            "platform",
+                            "sdkVersion",
+                            "deviceName",
+                            "resolution",
+                            "advertiserId",
+                            "advertisingTrackingEnabled",
+                            "htmlId",
+                            "environmentName",
+                            "ampBrowserLanguage",
+                            "ampCanonicalPath",
+                            "ampCanonicalUrl",
+                            "ampCanonicalHost",
+                            "ampReferrer",
+                            "ampTitle",
+                            "ampClientId",
+                            "ampClientTimezone",
+                            "ampClientTimestamp",
+                            "ampClientScreenWidth",
+                            "ampClientScreenHeight",
+                            "ampClientScrollX",
+                            "ampClientScrollY",
+                            "ampClientMaxScrollX",
+                            "ampClientMaxScrollY",
+                            "ampTotalEngagedTime",
+                            "ampPageViewId",
+                            "ampPageLoadTime",
+                            "ampPageDownloadTime",
+                            "ampGtmEvent",
+                            "eventName",
+                            "firebaseEventParameterCampaign",
+                            "firebaseEventParameterCampaignAclid",
+                            "firebaseEventParameterCampaignAnid",
+                            "firebaseEventParameterCampaignClickTimestamp",
+                            "firebaseEventParameterCampaignContent",
+                            "firebaseEventParameterCampaignCp1",
+                            "firebaseEventParameterCampaignGclid",
+                            "firebaseEventParameterCampaignSource",
+                            "firebaseEventParameterCampaignTerm",
+                            "firebaseEventParameterCurrency",
+                            "firebaseEventParameterDynamicLinkAcceptTime",
+                            "firebaseEventParameterDynamicLinkLinkid",
+                            "firebaseEventParameterNotificationMessageDeviceTime",
+                            "firebaseEventParameterNotificationMessageId",
+                            "firebaseEventParameterNotificationMessageName",
+                            "firebaseEventParameterNotificationMessageTime",
+                            "firebaseEventParameterNotificationTopic",
+                            "firebaseEventParameterPreviousAppVersion",
+                            "firebaseEventParameterPreviousOsVersion",
+                            "firebaseEventParameterPrice",
+                            "firebaseEventParameterProductId",
+                            "firebaseEventParameterQuantity",
+                            "firebaseEventParameterValue",
+                            "videoProvider",
+                            "videoUrl",
+                            "videoTitle",
+                            "videoDuration",
+                            "videoPercent",
+                            "videoVisible",
+                            "videoStatus",
+                            "videoCurrentTime",
+                            "scrollDepthThreshold",
+                            "scrollDepthUnits",
+                            "scrollDepthDirection",
+                            "elementVisibilityRatio",
+                            "elementVisibilityTime",
+                            "elementVisibilityFirstTime",
+                            "elementVisibilityRecentTime",
+                            "requestPath",
+                            "requestMethod",
+                            "clientName",
+                            "queryString"
+                          ],
                           "enumDescriptions": [
                             "",
                             "",
@@ -1738,118 +1812,6 @@
                             ""
                           ],
                           "location": "query",
-                          "enum": [
-                            "builtInVariableTypeUnspecified",
-                            "pageUrl",
-                            "pageHostname",
-                            "pagePath",
-                            "referrer",
-                            "event",
-                            "clickElement",
-                            "clickClasses",
-                            "clickId",
-                            "clickTarget",
-                            "clickUrl",
-                            "clickText",
-                            "firstPartyServingUrl",
-                            "formElement",
-                            "formClasses",
-                            "formId",
-                            "formTarget",
-                            "formUrl",
-                            "formText",
-                            "errorMessage",
-                            "errorUrl",
-                            "errorLine",
-                            "newHistoryUrl",
-                            "oldHistoryUrl",
-                            "newHistoryFragment",
-                            "oldHistoryFragment",
-                            "newHistoryState",
-                            "oldHistoryState",
-                            "historySource",
-                            "containerVersion",
-                            "debugMode",
-                            "randomNumber",
-                            "containerId",
-                            "appId",
-                            "appName",
-                            "appVersionCode",
-                            "appVersionName",
-                            "language",
-                            "osVersion",
-                            "platform",
-                            "sdkVersion",
-                            "deviceName",
-                            "resolution",
-                            "advertiserId",
-                            "advertisingTrackingEnabled",
-                            "htmlId",
-                            "environmentName",
-                            "ampBrowserLanguage",
-                            "ampCanonicalPath",
-                            "ampCanonicalUrl",
-                            "ampCanonicalHost",
-                            "ampReferrer",
-                            "ampTitle",
-                            "ampClientId",
-                            "ampClientTimezone",
-                            "ampClientTimestamp",
-                            "ampClientScreenWidth",
-                            "ampClientScreenHeight",
-                            "ampClientScrollX",
-                            "ampClientScrollY",
-                            "ampClientMaxScrollX",
-                            "ampClientMaxScrollY",
-                            "ampTotalEngagedTime",
-                            "ampPageViewId",
-                            "ampPageLoadTime",
-                            "ampPageDownloadTime",
-                            "ampGtmEvent",
-                            "eventName",
-                            "firebaseEventParameterCampaign",
-                            "firebaseEventParameterCampaignAclid",
-                            "firebaseEventParameterCampaignAnid",
-                            "firebaseEventParameterCampaignClickTimestamp",
-                            "firebaseEventParameterCampaignContent",
-                            "firebaseEventParameterCampaignCp1",
-                            "firebaseEventParameterCampaignGclid",
-                            "firebaseEventParameterCampaignSource",
-                            "firebaseEventParameterCampaignTerm",
-                            "firebaseEventParameterCurrency",
-                            "firebaseEventParameterDynamicLinkAcceptTime",
-                            "firebaseEventParameterDynamicLinkLinkid",
-                            "firebaseEventParameterNotificationMessageDeviceTime",
-                            "firebaseEventParameterNotificationMessageId",
-                            "firebaseEventParameterNotificationMessageName",
-                            "firebaseEventParameterNotificationMessageTime",
-                            "firebaseEventParameterNotificationTopic",
-                            "firebaseEventParameterPreviousAppVersion",
-                            "firebaseEventParameterPreviousOsVersion",
-                            "firebaseEventParameterPrice",
-                            "firebaseEventParameterProductId",
-                            "firebaseEventParameterQuantity",
-                            "firebaseEventParameterValue",
-                            "videoProvider",
-                            "videoUrl",
-                            "videoTitle",
-                            "videoDuration",
-                            "videoPercent",
-                            "videoVisible",
-                            "videoStatus",
-                            "videoCurrentTime",
-                            "scrollDepthThreshold",
-                            "scrollDepthUnits",
-                            "scrollDepthDirection",
-                            "elementVisibilityRatio",
-                            "elementVisibilityTime",
-                            "elementVisibilityFirstTime",
-                            "elementVisibilityRecentTime",
-                            "requestPath",
-                            "requestMethod",
-                            "clientName",
-                            "queryString"
-                          ],
                           "type": "string"
                         }
                       },
@@ -1868,7 +1830,6 @@
                     "create": {
                       "description": "Creates a GTM Folder.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders",
                       "id": "tagmanager.accounts.containers.workspaces.folders.create",
                       "parameterOrder": [
                         "parent"
@@ -1878,8 +1839,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/folders",
@@ -1896,7 +1857,6 @@
                     "delete": {
                       "description": "Deletes a GTM Folder.",
                       "httpMethod": "DELETE",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}",
                       "id": "tagmanager.accounts.containers.workspaces.folders.delete",
                       "parameterOrder": [
                         "path"
@@ -1906,8 +1866,8 @@
                           "description": "GTM Folder's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -1918,7 +1878,6 @@
                     "entities": {
                       "description": "List all entities in a GTM Folder.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}:entities",
                       "id": "tagmanager.accounts.containers.workspaces.folders.entities",
                       "parameterOrder": [
                         "path"
@@ -1933,8 +1892,8 @@
                           "description": "GTM Folder's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}:entities",
@@ -1949,7 +1908,6 @@
                     "get": {
                       "description": "Gets a GTM Folder.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}",
                       "id": "tagmanager.accounts.containers.workspaces.folders.get",
                       "parameterOrder": [
                         "path"
@@ -1959,8 +1917,8 @@
                           "description": "GTM Folder's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -1975,7 +1933,6 @@
                     "list": {
                       "description": "Lists all GTM Folders of a Container.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders",
                       "id": "tagmanager.accounts.containers.workspaces.folders.list",
                       "parameterOrder": [
                         "parent"
@@ -1990,8 +1947,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/folders",
@@ -2006,7 +1963,6 @@
                     "move_entities_to_folder": {
                       "description": "Moves entities to a GTM Folder.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}:move_entities_to_folder",
                       "id": "tagmanager.accounts.containers.workspaces.folders.move_entities_to_folder",
                       "parameterOrder": [
                         "path"
@@ -2016,26 +1972,26 @@
                           "description": "GTM Folder's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "tagId": {
                           "description": "The tags to be moved to the folder.",
                           "location": "query",
-                          "type": "string",
-                          "repeated": true
+                          "repeated": true,
+                          "type": "string"
                         },
                         "triggerId": {
                           "description": "The triggers to be moved to the folder.",
                           "location": "query",
-                          "type": "string",
-                          "repeated": true
+                          "repeated": true,
+                          "type": "string"
                         },
                         "variableId": {
                           "description": "The variables to be moved to the folder.",
                           "location": "query",
-                          "type": "string",
-                          "repeated": true
+                          "repeated": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}:move_entities_to_folder",
@@ -2049,7 +2005,6 @@
                     "revert": {
                       "description": "Reverts changes to a GTM Folder in a GTM Workspace.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}:revert",
                       "id": "tagmanager.accounts.containers.workspaces.folders.revert",
                       "parameterOrder": [
                         "path"
@@ -2064,8 +2019,8 @@
                           "description": "GTM Folder's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}:revert",
@@ -2079,7 +2034,6 @@
                     "update": {
                       "description": "Updates a GTM Folder.",
                       "httpMethod": "PUT",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/folders/{foldersId}",
                       "id": "tagmanager.accounts.containers.workspaces.folders.update",
                       "parameterOrder": [
                         "path"
@@ -2094,8 +2048,8 @@
                           "description": "GTM Folder's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2116,7 +2070,6 @@
                     "create": {
                       "description": "Creates a GTM Tag.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags",
                       "id": "tagmanager.accounts.containers.workspaces.tags.create",
                       "parameterOrder": [
                         "parent"
@@ -2126,8 +2079,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/tags",
@@ -2144,7 +2097,6 @@
                     "delete": {
                       "description": "Deletes a GTM Tag.",
                       "httpMethod": "DELETE",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags/{tagsId}",
                       "id": "tagmanager.accounts.containers.workspaces.tags.delete",
                       "parameterOrder": [
                         "path"
@@ -2154,8 +2106,8 @@
                           "description": "GTM Tag's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2166,7 +2118,6 @@
                     "get": {
                       "description": "Gets a GTM Tag.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags/{tagsId}",
                       "id": "tagmanager.accounts.containers.workspaces.tags.get",
                       "parameterOrder": [
                         "path"
@@ -2176,8 +2127,8 @@
                           "description": "GTM Tag's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2192,7 +2143,6 @@
                     "list": {
                       "description": "Lists all GTM Tags of a Container.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags",
                       "id": "tagmanager.accounts.containers.workspaces.tags.list",
                       "parameterOrder": [
                         "parent"
@@ -2207,8 +2157,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/tags",
@@ -2223,7 +2173,6 @@
                     "revert": {
                       "description": "Reverts changes to a GTM Tag in a GTM Workspace.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags/{tagsId}:revert",
                       "id": "tagmanager.accounts.containers.workspaces.tags.revert",
                       "parameterOrder": [
                         "path"
@@ -2238,8 +2187,8 @@
                           "description": "GTM Tag's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}:revert",
@@ -2253,7 +2202,6 @@
                     "update": {
                       "description": "Updates a GTM Tag.",
                       "httpMethod": "PUT",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/tags/{tagsId}",
                       "id": "tagmanager.accounts.containers.workspaces.tags.update",
                       "parameterOrder": [
                         "path"
@@ -2268,8 +2216,8 @@
                           "description": "GTM Tag's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2290,7 +2238,6 @@
                     "create": {
                       "description": "Creates a GTM Custom Template.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates",
                       "id": "tagmanager.accounts.containers.workspaces.templates.create",
                       "parameterOrder": [
                         "parent"
@@ -2300,8 +2247,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/templates",
@@ -2318,7 +2265,6 @@
                     "delete": {
                       "description": "Deletes a GTM Template.",
                       "httpMethod": "DELETE",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates/{templatesId}",
                       "id": "tagmanager.accounts.containers.workspaces.templates.delete",
                       "parameterOrder": [
                         "path"
@@ -2328,8 +2274,8 @@
                           "description": "GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2340,7 +2286,6 @@
                     "get": {
                       "description": "Gets a GTM Template.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates/{templatesId}",
                       "id": "tagmanager.accounts.containers.workspaces.templates.get",
                       "parameterOrder": [
                         "path"
@@ -2350,8 +2295,8 @@
                           "description": "GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2366,7 +2311,6 @@
                     "list": {
                       "description": "Lists all GTM Templates of a GTM container workspace.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates",
                       "id": "tagmanager.accounts.containers.workspaces.templates.list",
                       "parameterOrder": [
                         "parent"
@@ -2381,8 +2325,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/templates",
@@ -2397,7 +2341,6 @@
                     "revert": {
                       "description": "Reverts changes to a GTM Template in a GTM Workspace.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates/{templatesId}:revert",
                       "id": "tagmanager.accounts.containers.workspaces.templates.revert",
                       "parameterOrder": [
                         "path"
@@ -2412,8 +2355,8 @@
                           "description": "GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}:revert",
@@ -2427,7 +2370,6 @@
                     "update": {
                       "description": "Updates a GTM Template.",
                       "httpMethod": "PUT",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/templates/{templatesId}",
                       "id": "tagmanager.accounts.containers.workspaces.templates.update",
                       "parameterOrder": [
                         "path"
@@ -2442,8 +2384,8 @@
                           "description": "GTM Custom Template's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2464,7 +2406,6 @@
                     "create": {
                       "description": "Creates a GTM Trigger.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers",
                       "id": "tagmanager.accounts.containers.workspaces.triggers.create",
                       "parameterOrder": [
                         "parent"
@@ -2474,8 +2415,8 @@
                           "description": "GTM Workspaces's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/triggers",
@@ -2492,7 +2433,6 @@
                     "delete": {
                       "description": "Deletes a GTM Trigger.",
                       "httpMethod": "DELETE",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers/{triggersId}",
                       "id": "tagmanager.accounts.containers.workspaces.triggers.delete",
                       "parameterOrder": [
                         "path"
@@ -2502,8 +2442,8 @@
                           "description": "GTM Trigger's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2514,7 +2454,6 @@
                     "get": {
                       "description": "Gets a GTM Trigger.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers/{triggersId}",
                       "id": "tagmanager.accounts.containers.workspaces.triggers.get",
                       "parameterOrder": [
                         "path"
@@ -2524,8 +2463,8 @@
                           "description": "GTM Trigger's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2540,7 +2479,6 @@
                     "list": {
                       "description": "Lists all GTM Triggers of a Container.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers",
                       "id": "tagmanager.accounts.containers.workspaces.triggers.list",
                       "parameterOrder": [
                         "parent"
@@ -2555,8 +2493,8 @@
                           "description": "GTM Workspaces's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/triggers",
@@ -2571,7 +2509,6 @@
                     "revert": {
                       "description": "Reverts changes to a GTM Trigger in a GTM Workspace.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers/{triggersId}:revert",
                       "id": "tagmanager.accounts.containers.workspaces.triggers.revert",
                       "parameterOrder": [
                         "path"
@@ -2586,8 +2523,8 @@
                           "description": "GTM Trigger's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}:revert",
@@ -2601,7 +2538,6 @@
                     "update": {
                       "description": "Updates a GTM Trigger.",
                       "httpMethod": "PUT",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/triggers/{triggersId}",
                       "id": "tagmanager.accounts.containers.workspaces.triggers.update",
                       "parameterOrder": [
                         "path"
@@ -2616,8 +2552,8 @@
                           "description": "GTM Trigger's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2638,7 +2574,6 @@
                     "create": {
                       "description": "Creates a GTM Variable.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables",
                       "id": "tagmanager.accounts.containers.workspaces.variables.create",
                       "parameterOrder": [
                         "parent"
@@ -2648,8 +2583,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/variables",
@@ -2666,7 +2601,6 @@
                     "delete": {
                       "description": "Deletes a GTM Variable.",
                       "httpMethod": "DELETE",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables/{variablesId}",
                       "id": "tagmanager.accounts.containers.workspaces.variables.delete",
                       "parameterOrder": [
                         "path"
@@ -2676,8 +2610,8 @@
                           "description": "GTM Variable's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2688,7 +2622,6 @@
                     "get": {
                       "description": "Gets a GTM Variable.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables/{variablesId}",
                       "id": "tagmanager.accounts.containers.workspaces.variables.get",
                       "parameterOrder": [
                         "path"
@@ -2698,8 +2631,8 @@
                           "description": "GTM Variable's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2714,7 +2647,6 @@
                     "list": {
                       "description": "Lists all GTM Variables of a Container.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables",
                       "id": "tagmanager.accounts.containers.workspaces.variables.list",
                       "parameterOrder": [
                         "parent"
@@ -2729,8 +2661,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/variables",
@@ -2745,7 +2677,6 @@
                     "revert": {
                       "description": "Reverts changes to a GTM Variable in a GTM Workspace.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables/{variablesId}:revert",
                       "id": "tagmanager.accounts.containers.workspaces.variables.revert",
                       "parameterOrder": [
                         "path"
@@ -2760,8 +2691,8 @@
                           "description": "GTM Variable's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}:revert",
@@ -2775,7 +2706,6 @@
                     "update": {
                       "description": "Updates a GTM Variable.",
                       "httpMethod": "PUT",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/variables/{variablesId}",
                       "id": "tagmanager.accounts.containers.workspaces.variables.update",
                       "parameterOrder": [
                         "path"
@@ -2790,8 +2720,8 @@
                           "description": "GTM Variable's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2812,7 +2742,6 @@
                     "create": {
                       "description": "Creates a GTM Zone.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones",
                       "id": "tagmanager.accounts.containers.workspaces.zones.create",
                       "parameterOrder": [
                         "parent"
@@ -2822,8 +2751,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/zones",
@@ -2840,7 +2769,6 @@
                     "delete": {
                       "description": "Deletes a GTM Zone.",
                       "httpMethod": "DELETE",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones/{zonesId}",
                       "id": "tagmanager.accounts.containers.workspaces.zones.delete",
                       "parameterOrder": [
                         "path"
@@ -2850,8 +2778,8 @@
                           "description": "GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2862,7 +2790,6 @@
                     "get": {
                       "description": "Gets a GTM Zone.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones/{zonesId}",
                       "id": "tagmanager.accounts.containers.workspaces.zones.get",
                       "parameterOrder": [
                         "path"
@@ -2872,8 +2799,8 @@
                           "description": "GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2888,7 +2815,6 @@
                     "list": {
                       "description": "Lists all GTM Zones of a GTM container workspace.",
                       "httpMethod": "GET",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones",
                       "id": "tagmanager.accounts.containers.workspaces.zones.list",
                       "parameterOrder": [
                         "parent"
@@ -2903,8 +2829,8 @@
                           "description": "GTM Workspace's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+parent}/zones",
@@ -2919,7 +2845,6 @@
                     "revert": {
                       "description": "Reverts changes to a GTM Zone in a GTM Workspace.",
                       "httpMethod": "POST",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones/{zonesId}:revert",
                       "id": "tagmanager.accounts.containers.workspaces.zones.revert",
                       "parameterOrder": [
                         "path"
@@ -2934,8 +2859,8 @@
                           "description": "GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}:revert",
@@ -2949,7 +2874,6 @@
                     "update": {
                       "description": "Updates a GTM Zone.",
                       "httpMethod": "PUT",
-                      "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/workspaces/{workspacesId}/zones/{zonesId}",
                       "id": "tagmanager.accounts.containers.workspaces.zones.update",
                       "parameterOrder": [
                         "path"
@@ -2964,8 +2888,8 @@
                           "description": "GTM Zone's API relative path. Example: accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}",
                           "location": "path",
                           "pattern": "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "tagmanager/v2/{+path}",
@@ -2990,7 +2914,6 @@
             "create": {
               "description": "Creates a user's Account & Container access.",
               "httpMethod": "POST",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/user_permissions",
               "id": "tagmanager.accounts.user_permissions.create",
               "parameterOrder": [
                 "parent"
@@ -3000,8 +2923,8 @@
                   "description": "GTM Account's API relative path. Example: accounts/{account_id}",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+parent}/user_permissions",
@@ -3018,7 +2941,6 @@
             "delete": {
               "description": "Removes a user from the account, revoking access to it and all of its containers.",
               "httpMethod": "DELETE",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/user_permissions/{user_permissionsId}",
               "id": "tagmanager.accounts.user_permissions.delete",
               "parameterOrder": [
                 "path"
@@ -3028,8 +2950,8 @@
                   "description": "GTM UserPermission's API relative path. Example: accounts/{account_id}/user_permissions/{user_permission_id}",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/user_permissions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+path}",
@@ -3040,7 +2962,6 @@
             "get": {
               "description": "Gets a user's Account & Container access.",
               "httpMethod": "GET",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/user_permissions/{user_permissionsId}",
               "id": "tagmanager.accounts.user_permissions.get",
               "parameterOrder": [
                 "path"
@@ -3050,8 +2971,8 @@
                   "description": "GTM UserPermission's API relative path. Example: accounts/{account_id}/user_permissions/{user_permission_id}",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/user_permissions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+path}",
@@ -3065,7 +2986,6 @@
             "list": {
               "description": "List all users that have access to the account along with Account and Container user access granted to each of them.",
               "httpMethod": "GET",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/user_permissions",
               "id": "tagmanager.accounts.user_permissions.list",
               "parameterOrder": [
                 "parent"
@@ -3080,8 +3000,8 @@
                   "description": "GTM Accounts's API relative path. Example: accounts/{account_id}",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+parent}/user_permissions",
@@ -3095,7 +3015,6 @@
             "update": {
               "description": "Updates a user's Account & Container access.",
               "httpMethod": "PUT",
-              "flatPath": "tagmanager/v2/accounts/{accountsId}/user_permissions/{user_permissionsId}",
               "id": "tagmanager.accounts.user_permissions.update",
               "parameterOrder": [
                 "path"
@@ -3105,8 +3024,8 @@
                   "description": "GTM UserPermission's API relative path. Example: accounts/{account_id}/user_permissions/{user_permission_id}",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/user_permissions/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "tagmanager/v2/{+path}",
@@ -3165,17 +3084,17 @@
       "properties": {
         "permission": {
           "description": "Whether the user has no access, user access, or admin access to an account. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "accountPermissionUnspecified",
             "noAccess",
             "user",
             "admin"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         }
@@ -3204,118 +3123,6 @@
         },
         "type": {
           "description": "Type of built-in variable. @required.tagmanager.accounts.containers.workspaces.built_in_variable.update @mutable tagmanager.accounts.containers.workspaces.built_in_variable.update",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "For web or mobile.",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "For web or mobile.",
-            "",
-            "For web or mobile.",
-            "For web or mobile.",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "builtInVariableTypeUnspecified",
             "pageUrl",
@@ -3428,6 +3235,118 @@
             "clientName",
             "queryString"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "For web or mobile.",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "For web or mobile.",
+            "",
+            "For web or mobile.",
+            "For web or mobile.",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "type": "string"
         },
         "workspaceId": {
@@ -3524,20 +3443,6 @@
             ]
           },
           "description": "The type of operator for this condition. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "NOTE(lanzone): When defining a ConditionType here, don't forget to also define a matching PredicateType (in condition.proto)."
-          ],
           "enum": [
             "conditionTypeUnspecified",
             "equals",
@@ -3551,6 +3456,20 @@
             "lessOrEquals",
             "cssSelector",
             "urlMatches"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "NOTE(lanzone): When defining a ConditionType here, don't forget to also define a matching PredicateType (in condition.proto)."
           ],
           "type": "string"
         }
@@ -3614,16 +3533,6 @@
           },
           "description": "List of Usage Contexts for the Container. Valid values include: web, android, or ios. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update",
           "items": {
-            "enumDescriptions": [
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
             "enum": [
               "usageContextUnspecified",
               "web",
@@ -3633,6 +3542,16 @@
               "iosSdk5",
               "amp",
               "server"
+            ],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
             ],
             "type": "string"
           },
@@ -3651,14 +3570,6 @@
         },
         "permission": {
           "description": "List of Container permissions. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "containerPermissionUnspecified",
             "noAccess",
@@ -3666,6 +3577,14 @@
             "edit",
             "approve",
             "publish"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         }
@@ -3695,8 +3614,8 @@
           "type": "array"
         },
         "container": {
-          "description": "The container that this version was taken from.",
-          "$ref": "Container"
+          "$ref": "Container",
+          "description": "The container that this version was taken from."
         },
         "containerId": {
           "description": "GTM Container ID.",
@@ -3875,16 +3794,16 @@
           "type": "boolean"
         },
         "containerVersion": {
-          "description": "The container version created.",
-          "$ref": "ContainerVersion"
+          "$ref": "ContainerVersion",
+          "description": "The container version created."
         },
         "newWorkspacePath": {
           "description": "Auto generated workspace path created as a result of version creation. This field should only be populated if the created version was not a quick preview.",
           "type": "string"
         },
         "syncStatus": {
-          "description": "Whether version creation failed when syncing the workspace to the latest container version.",
-          "$ref": "SyncStatus"
+          "$ref": "SyncStatus",
+          "description": "Whether version creation failed when syncing the workspace to the latest container version."
         }
       },
       "type": "object"
@@ -3906,8 +3825,8 @@
           "type": "string"
         },
         "galleryReference": {
-          "description": "A reference to the Community Template Gallery entry.",
-          "$ref": "GalleryReference"
+          "$ref": "GalleryReference",
+          "description": "A reference to the Community Template Gallery entry."
         },
         "name": {
           "description": "Custom Template display name.",
@@ -3942,13 +3861,6 @@
       "properties": {
         "changeStatus": {
           "description": "Represents how the entity has been changed in the workspace.",
-          "enumDescriptions": [
-            "",
-            "The entity has never been changed.",
-            "The entity is added to the workspace.",
-            "The entity is deleted from the workspace.",
-            "The entity has been updated in the workspace."
-          ],
           "enum": [
             "changeStatusUnspecified",
             "none",
@@ -3956,27 +3868,34 @@
             "deleted",
             "updated"
           ],
+          "enumDescriptions": [
+            "",
+            "The entity has never been changed.",
+            "The entity is added to the workspace.",
+            "The entity is deleted from the workspace.",
+            "The entity has been updated in the workspace."
+          ],
           "type": "string"
         },
         "client": {
-          "description": "The client being represented by the entity.",
-          "$ref": "Client"
+          "$ref": "Client",
+          "description": "The client being represented by the entity."
         },
         "folder": {
-          "description": "The folder being represented by the entity.",
-          "$ref": "Folder"
+          "$ref": "Folder",
+          "description": "The folder being represented by the entity."
         },
         "tag": {
-          "description": "The tag being represented by the entity.",
-          "$ref": "Tag"
+          "$ref": "Tag",
+          "description": "The tag being represented by the entity."
         },
         "trigger": {
-          "description": "The trigger being represented by the entity.",
-          "$ref": "Trigger"
+          "$ref": "Trigger",
+          "description": "The trigger being represented by the entity."
         },
         "variable": {
-          "description": "The variable being represented by the entity.",
-          "$ref": "Variable"
+          "$ref": "Variable",
+          "description": "The variable being represented by the entity."
         }
       },
       "type": "object"
@@ -4042,17 +3961,17 @@
         },
         "type": {
           "description": "The type of this environment.",
-          "enumDescriptions": [
-            "Points to a user defined environment.",
-            "Points to the current live container version.",
-            "Points to the latest container version.",
-            "Automatically managed environment that points to a workspace preview or version created by a workspace."
-          ],
           "enum": [
             "user",
             "live",
             "latest",
             "workspace"
+          ],
+          "enumDescriptions": [
+            "Points to a user defined environment.",
+            "Points to the current live container version.",
+            "Points to the latest container version.",
+            "Automatically managed environment that points to a workspace preview or version created by a workspace."
           ],
           "type": "string"
         },
@@ -4437,12 +4356,12 @@
       "id": "MergeConflict",
       "properties": {
         "entityInBaseVersion": {
-          "description": "The base version entity (since the latest sync operation) that has conflicting changes compared to the workspace. If this field is missing, it means the workspace entity is deleted from the base version.",
-          "$ref": "Entity"
+          "$ref": "Entity",
+          "description": "The base version entity (since the latest sync operation) that has conflicting changes compared to the workspace. If this field is missing, it means the workspace entity is deleted from the base version."
         },
         "entityInWorkspace": {
-          "description": "The workspace entity that has conflicting changes compared to the base version. If an entity is deleted in a workspace, it will still appear with a deleted change status.",
-          "$ref": "Entity"
+          "$ref": "Entity",
+          "description": "The workspace entity that has conflicting changes compared to the base version. If an entity is deleted in a workspace, it will still appear with a deleted change status."
         }
       },
       "type": "object"
@@ -4481,16 +4400,6 @@
             ]
           },
           "description": "The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of parameters should be specified - map: A map of parameters should be specified - template: The value represents any text; this can include variable references (even variable references that might return non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id - tag_reference: The value represents a tag, represented as the tag name @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update",
-          "enumDescriptions": [
-            "",
-            "May include variable references (such as \"{{myVariable}}\").",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "typeUnspecified",
             "template",
@@ -4500,6 +4409,16 @@
             "map",
             "triggerReference",
             "tagReference"
+          ],
+          "enumDescriptions": [
+            "",
+            "May include variable references (such as \"{{myVariable}}\").",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -4519,8 +4438,8 @@
           "type": "boolean"
         },
         "containerVersion": {
-          "description": "The container version created.",
-          "$ref": "ContainerVersion"
+          "$ref": "ContainerVersion",
+          "description": "The container version created."
         }
       },
       "type": "object"
@@ -4534,12 +4453,12 @@
           "type": "boolean"
         },
         "containerVersion": {
-          "description": "The quick previewed container version.",
-          "$ref": "ContainerVersion"
+          "$ref": "ContainerVersion",
+          "description": "The quick previewed container version."
         },
         "syncStatus": {
-          "description": "Whether quick previewing failed when syncing the workspace to the latest container version.",
-          "$ref": "SyncStatus"
+          "$ref": "SyncStatus",
+          "description": "Whether quick previewing failed when syncing the workspace to the latest container version."
         }
       },
       "type": "object"
@@ -4560,8 +4479,8 @@
       "id": "RevertFolderResponse",
       "properties": {
         "folder": {
-          "description": "Folder as it appears in the latest container version since the last workspace synchronization operation. If no folder is present, that means the folder was deleted in the latest container version.",
-          "$ref": "Folder"
+          "$ref": "Folder",
+          "description": "Folder as it appears in the latest container version since the last workspace synchronization operation. If no folder is present, that means the folder was deleted in the latest container version."
         }
       },
       "type": "object"
@@ -4571,8 +4490,8 @@
       "id": "RevertTagResponse",
       "properties": {
         "tag": {
-          "description": "Tag as it appears in the latest container version since the last workspace synchronization operation. If no tag is present, that means the tag was deleted in the latest container version.",
-          "$ref": "Tag"
+          "$ref": "Tag",
+          "description": "Tag as it appears in the latest container version since the last workspace synchronization operation. If no tag is present, that means the tag was deleted in the latest container version."
         }
       },
       "type": "object"
@@ -4582,8 +4501,8 @@
       "id": "RevertTemplateResponse",
       "properties": {
         "template": {
-          "description": "Template as it appears in the latest container version since the last workspace synchronization operation. If no template is present, that means the template was deleted in the latest container version.",
-          "$ref": "CustomTemplate"
+          "$ref": "CustomTemplate",
+          "description": "Template as it appears in the latest container version since the last workspace synchronization operation. If no template is present, that means the template was deleted in the latest container version."
         }
       },
       "type": "object"
@@ -4593,8 +4512,8 @@
       "id": "RevertTriggerResponse",
       "properties": {
         "trigger": {
-          "description": "Trigger as it appears in the latest container version since the last workspace synchronization operation. If no trigger is present, that means the trigger was deleted in the latest container version.",
-          "$ref": "Trigger"
+          "$ref": "Trigger",
+          "description": "Trigger as it appears in the latest container version since the last workspace synchronization operation. If no trigger is present, that means the trigger was deleted in the latest container version."
         }
       },
       "type": "object"
@@ -4604,8 +4523,8 @@
       "id": "RevertVariableResponse",
       "properties": {
         "variable": {
-          "description": "Variable as it appears in the latest container version since the last workspace synchronization operation. If no variable is present, that means the variable was deleted in the latest container version.",
-          "$ref": "Variable"
+          "$ref": "Variable",
+          "description": "Variable as it appears in the latest container version since the last workspace synchronization operation. If no variable is present, that means the variable was deleted in the latest container version."
         }
       },
       "type": "object"
@@ -4615,8 +4534,8 @@
       "id": "RevertZoneResponse",
       "properties": {
         "zone": {
-          "description": "Zone as it appears in the latest container version since the last workspace synchronization operation. If no zone is present, that means the zone was deleted in the latest container version.",
-          "$ref": "Zone"
+          "$ref": "Zone",
+          "description": "Zone as it appears in the latest container version since the last workspace synchronization operation. If no zone is present, that means the zone was deleted in the latest container version."
         }
       },
       "type": "object"
@@ -4663,8 +4582,8 @@
           "type": "array"
         },
         "syncStatus": {
-          "description": "Indicates whether synchronization caused a merge conflict or sync error.",
-          "$ref": "SyncStatus"
+          "$ref": "SyncStatus",
+          "description": "Indicates whether synchronization caused a merge conflict or sync error."
         }
       },
       "type": "object"
@@ -4718,8 +4637,8 @@
           "type": "boolean"
         },
         "monitoringMetadata": {
-          "description": "A map of key-value pairs of tag metadata to be included in the event data for tag monitoring. Notes: - This parameter must be type MAP. - Each parameter in the map are type TEMPLATE, however cannot contain variable references. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "A map of key-value pairs of tag metadata to be included in the event data for tag monitoring. Notes: - This parameter must be type MAP. - Each parameter in the map are type TEMPLATE, however cannot contain variable references. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"
         },
         "monitoringMetadataTagNameKey": {
           "description": "If non-empty, then the tag display name will be included in the monitoring metadata map using the key specified. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update",
@@ -4759,8 +4678,8 @@
           "type": "boolean"
         },
         "priority": {
-          "description": "User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"
         },
         "scheduleEndMs": {
           "description": "The end timestamp in milliseconds to schedule a tag. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update",
@@ -4781,17 +4700,17 @@
         },
         "tagFiringOption": {
           "description": "Option to fire this tag.",
-          "enumDescriptions": [
-            "",
-            "Tag can be fired multiple times per event.",
-            "Tag can only be fired per event but can be fired multiple times per load (e.g., app load or page load).",
-            "Tag can only be fired per load (e.g., app load or page load)."
-          ],
           "enum": [
             "tagFiringOptionUnspecified",
             "unlimited",
             "oncePerEvent",
             "oncePerLoad"
+          ],
+          "enumDescriptions": [
+            "",
+            "Tag can be fired multiple times per event.",
+            "Tag can only be fired per event but can be fired multiple times per load (e.g., app load or page load).",
+            "Tag can only be fired per load (e.g., app load or page load)."
           ],
           "type": "string"
         },
@@ -4858,16 +4777,16 @@
           "type": "array"
         },
         "checkValidation": {
-          "description": "Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "containerId": {
           "description": "GTM Container ID.",
           "type": "string"
         },
         "continuousTimeMinMilliseconds": {
-          "description": "A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "customEventFilter": {
           "description": "Used in the case of custom event, which is fired iff all Conditions are true. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
@@ -4877,8 +4796,8 @@
           "type": "array"
         },
         "eventName": {
-          "description": "Name of the GTM event that is fired. Only valid for Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "Name of the GTM event that is fired. Only valid for Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "filter": {
           "description": "The trigger will only fire iff all Conditions are true. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
@@ -4892,24 +4811,24 @@
           "type": "string"
         },
         "horizontalScrollPercentageList": {
-          "description": "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "interval": {
-          "description": "Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "intervalSeconds": {
-          "description": "Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "limit": {
-          "description": "Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "maxTimerLengthSeconds": {
-          "description": "Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "name": {
           "annotations": {
@@ -4941,16 +4860,16 @@
           "type": "string"
         },
         "selector": {
-          "description": "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP Click trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP Click trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "tagManagerUrl": {
           "description": "Auto generated link to the tag manager UI",
           "type": "string"
         },
         "totalTimeMinMilliseconds": {
-          "description": "A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "triggerId": {
           "description": "The Trigger ID uniquely identifies the GTM Trigger.",
@@ -4963,40 +4882,6 @@
             ]
           },
           "description": "Defines the data layer event that causes this trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "eventTypeUnspecified",
             "pageview",
@@ -5031,35 +4916,69 @@
             "scrollDepth",
             "elementVisibility"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "type": "string"
         },
         "uniqueTriggerId": {
-          "description": "Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "verticalScrollPercentageList": {
-          "description": "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "visibilitySelector": {
-          "description": "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "visiblePercentageMax": {
-          "description": "A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "visiblePercentageMin": {
-          "description": "A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "waitForTags": {
-          "description": "Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "waitForTagsTimeout": {
-          "description": "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"
         },
         "workspaceId": {
           "description": "GTM Workspace ID.",
@@ -5073,8 +4992,8 @@
       "id": "UserPermission",
       "properties": {
         "accountAccess": {
-          "description": "GTM Account access permissions. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update",
-          "$ref": "AccountAccess"
+          "$ref": "AccountAccess",
+          "description": "GTM Account access permissions. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update"
         },
         "accountId": {
           "description": "The Account ID uniquely identifies the GTM Account.",
@@ -5129,8 +5048,8 @@
           "type": "string"
         },
         "formatValue": {
-          "description": "Option to convert a variable value to other value.",
-          "$ref": "VariableFormatValue"
+          "$ref": "VariableFormatValue",
+          "description": "Option to convert a variable value to other value."
         },
         "name": {
           "annotations": {
@@ -5201,33 +5120,33 @@
       "properties": {
         "caseConversionType": {
           "description": "The option to convert a string-type variable value to either lowercase or uppercase.",
-          "enumDescriptions": [
-            "",
-            "The option to convert a variable value to lowercase.",
-            "The option to convert a variable value to uppercase."
-          ],
           "enum": [
             "none",
             "lowercase",
             "uppercase"
           ],
+          "enumDescriptions": [
+            "",
+            "The option to convert a variable value to lowercase.",
+            "The option to convert a variable value to uppercase."
+          ],
           "type": "string"
         },
         "convertFalseToValue": {
-          "description": "The value to convert if a variable value is false.",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "The value to convert if a variable value is false."
         },
         "convertNullToValue": {
-          "description": "The value to convert if a variable value is null.",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "The value to convert if a variable value is null."
         },
         "convertTrueToValue": {
-          "description": "The value to convert if a variable value is true.",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "The value to convert if a variable value is true."
         },
         "convertUndefinedToValue": {
-          "description": "The value to convert if a variable value is undefined.",
-          "$ref": "Parameter"
+          "$ref": "Parameter",
+          "description": "The value to convert if a variable value is undefined."
         }
       },
       "type": "object"
@@ -5286,8 +5205,8 @@
           "type": "string"
         },
         "boundary": {
-          "description": "This Zone's boundary.",
-          "$ref": "ZoneBoundary"
+          "$ref": "ZoneBoundary",
+          "description": "This Zone's boundary."
         },
         "childContainer": {
           "description": "Containers that are children of this Zone.",
@@ -5321,8 +5240,8 @@
           "type": "string"
         },
         "typeRestriction": {
-          "description": "This Zone's type restrictions.",
-          "$ref": "ZoneTypeRestriction"
+          "$ref": "ZoneTypeRestriction",
+          "description": "This Zone's type restrictions."
         },
         "workspaceId": {
           "description": "GTM Workspace ID.",

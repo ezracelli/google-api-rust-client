@@ -6,29 +6,27 @@
   "description": "Enables bots to fetch information and perform actions in Google Chat.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/hangouts/chat",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "chat:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://chat.mtls.googleapis.com/",
   "name": "chat",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -39,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -101,7 +99,6 @@
         "messages": {
           "description": "Legacy path for creating message. Calling these will result in a BadRequest response.",
           "httpMethod": "POST",
-          "flatPath": "v1/dms/{dmsId}/messages",
           "id": "chat.dms.messages",
           "parameterOrder": [
             "parent"
@@ -111,8 +108,8 @@
               "description": "Required. Space resource name, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
               "location": "path",
               "pattern": "^dms/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "threadKey": {
               "description": "Opaque thread identifier string that can be specified to group messages into a single thread. If this is the first message with a given thread identifier, a new thread is created. Subsequent messages with the same thread identifier will be posted into the same thread. This relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in message.",
@@ -131,7 +128,6 @@
         "webhooks": {
           "description": "Legacy path for creating message. Calling these will result in a BadRequest response.",
           "httpMethod": "POST",
-          "flatPath": "v1/dms/{dmsId}/webhooks",
           "id": "chat.dms.webhooks",
           "parameterOrder": [
             "parent"
@@ -141,8 +137,8 @@
               "description": "Required. Space resource name, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
               "location": "path",
               "pattern": "^dms/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "threadKey": {
               "description": "Opaque thread identifier string that can be specified to group messages into a single thread. If this is the first message with a given thread identifier, a new thread is created. Subsequent messages with the same thread identifier will be posted into the same thread. This relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in message.",
@@ -165,7 +161,6 @@
             "messages": {
               "description": "Legacy path for creating message. Calling these will result in a BadRequest response.",
               "httpMethod": "POST",
-              "flatPath": "v1/dms/{dmsId}/conversations/{conversationsId}/messages",
               "id": "chat.dms.conversations.messages",
               "parameterOrder": [
                 "parent"
@@ -175,8 +170,8 @@
                   "description": "Required. Space resource name, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
                   "location": "path",
                   "pattern": "^dms/[^/]+/conversations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "threadKey": {
                   "description": "Opaque thread identifier string that can be specified to group messages into a single thread. If this is the first message with a given thread identifier, a new thread is created. Subsequent messages with the same thread identifier will be posted into the same thread. This relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in message.",
@@ -201,7 +196,6 @@
         "download": {
           "description": "Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`.",
           "httpMethod": "GET",
-          "flatPath": "v1/media/{mediaId}",
           "id": "chat.media.download",
           "parameterOrder": [
             "resourceName"
@@ -211,8 +205,8 @@
               "description": "Name of the media that is being downloaded. See ReadRequest.resource_name.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/media/{+resourceName}",
@@ -228,7 +222,6 @@
         "messages": {
           "description": "Legacy path for creating message. Calling these will result in a BadRequest response.",
           "httpMethod": "POST",
-          "flatPath": "v1/rooms/{roomsId}/messages",
           "id": "chat.rooms.messages",
           "parameterOrder": [
             "parent"
@@ -238,8 +231,8 @@
               "description": "Required. Space resource name, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
               "location": "path",
               "pattern": "^rooms/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "threadKey": {
               "description": "Opaque thread identifier string that can be specified to group messages into a single thread. If this is the first message with a given thread identifier, a new thread is created. Subsequent messages with the same thread identifier will be posted into the same thread. This relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in message.",
@@ -258,7 +251,6 @@
         "webhooks": {
           "description": "Legacy path for creating message. Calling these will result in a BadRequest response.",
           "httpMethod": "POST",
-          "flatPath": "v1/rooms/{roomsId}/webhooks",
           "id": "chat.rooms.webhooks",
           "parameterOrder": [
             "parent"
@@ -268,8 +260,8 @@
               "description": "Required. Space resource name, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
               "location": "path",
               "pattern": "^rooms/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "threadKey": {
               "description": "Opaque thread identifier string that can be specified to group messages into a single thread. If this is the first message with a given thread identifier, a new thread is created. Subsequent messages with the same thread identifier will be posted into the same thread. This relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in message.",
@@ -292,7 +284,6 @@
             "messages": {
               "description": "Legacy path for creating message. Calling these will result in a BadRequest response.",
               "httpMethod": "POST",
-              "flatPath": "v1/rooms/{roomsId}/conversations/{conversationsId}/messages",
               "id": "chat.rooms.conversations.messages",
               "parameterOrder": [
                 "parent"
@@ -302,8 +293,8 @@
                   "description": "Required. Space resource name, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
                   "location": "path",
                   "pattern": "^rooms/[^/]+/conversations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "threadKey": {
                   "description": "Opaque thread identifier string that can be specified to group messages into a single thread. If this is the first message with a given thread identifier, a new thread is created. Subsequent messages with the same thread identifier will be posted into the same thread. This relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in message.",
@@ -328,7 +319,6 @@
         "get": {
           "description": "Returns a space.",
           "httpMethod": "GET",
-          "flatPath": "v1/spaces/{spacesId}",
           "id": "chat.spaces.get",
           "parameterOrder": [
             "name"
@@ -338,8 +328,8 @@
               "description": "Required. Resource name of the space, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
               "location": "path",
               "pattern": "^spaces/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -350,7 +340,6 @@
         "list": {
           "description": "Lists spaces the caller is a member of.",
           "httpMethod": "GET",
-          "flatPath": "v1/spaces",
           "id": "chat.spaces.list",
           "parameterOrder": [],
           "parameters": {
@@ -374,7 +363,6 @@
         "webhooks": {
           "description": "Legacy path for creating message. Calling these will result in a BadRequest response.",
           "httpMethod": "POST",
-          "flatPath": "v1/spaces/{spacesId}/webhooks",
           "id": "chat.spaces.webhooks",
           "parameterOrder": [
             "parent"
@@ -384,8 +372,8 @@
               "description": "Required. Space resource name, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
               "location": "path",
               "pattern": "^spaces/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "threadKey": {
               "description": "Opaque thread identifier string that can be specified to group messages into a single thread. If this is the first message with a given thread identifier, a new thread is created. Subsequent messages with the same thread identifier will be posted into the same thread. This relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in message.",
@@ -408,7 +396,6 @@
             "get": {
               "description": "Returns a membership.",
               "httpMethod": "GET",
-              "flatPath": "v1/spaces/{spacesId}/members/{membersId}",
               "id": "chat.spaces.members.get",
               "parameterOrder": [
                 "name"
@@ -418,8 +405,8 @@
                   "description": "Required. Resource name of the membership to be retrieved, in the form \"spaces/*/members/*\". Example: spaces/AAAAMpdlehY/members/105115627578887013105",
                   "location": "path",
                   "pattern": "^spaces/[^/]+/members/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -430,7 +417,6 @@
             "list": {
               "description": "Lists human memberships in a space.",
               "httpMethod": "GET",
-              "flatPath": "v1/spaces/{spacesId}/members",
               "id": "chat.spaces.members.list",
               "parameterOrder": [
                 "parent"
@@ -451,8 +437,8 @@
                   "description": "Required. The resource name of the space for which membership list is to be fetched, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
                   "location": "path",
                   "pattern": "^spaces/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/members",
@@ -467,7 +453,6 @@
             "create": {
               "description": "Creates a message.",
               "httpMethod": "POST",
-              "flatPath": "v1/spaces/{spacesId}/messages",
               "id": "chat.spaces.messages.create",
               "parameterOrder": [
                 "parent"
@@ -477,8 +462,8 @@
                   "description": "Required. Space resource name, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY",
                   "location": "path",
                   "pattern": "^spaces/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "threadKey": {
                   "description": "Opaque thread identifier string that can be specified to group messages into a single thread. If this is the first message with a given thread identifier, a new thread is created. Subsequent messages with the same thread identifier will be posted into the same thread. This relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in message.",
@@ -497,7 +482,6 @@
             "delete": {
               "description": "Deletes a message.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
               "id": "chat.spaces.messages.delete",
               "parameterOrder": [
                 "name"
@@ -507,8 +491,8 @@
                   "description": "Required. Resource name of the message to be deleted, in the form \"spaces/*/messages/*\" Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
                   "location": "path",
                   "pattern": "^spaces/[^/]+/messages/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -519,7 +503,6 @@
             "get": {
               "description": "Returns a message.",
               "httpMethod": "GET",
-              "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
               "id": "chat.spaces.messages.get",
               "parameterOrder": [
                 "name"
@@ -529,8 +512,8 @@
                   "description": "Required. Resource name of the message to be retrieved, in the form \"spaces/*/messages/*\". Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
                   "location": "path",
                   "pattern": "^spaces/[^/]+/messages/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -541,7 +524,6 @@
             "update": {
               "description": "Updates a message.",
               "httpMethod": "PUT",
-              "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
               "id": "chat.spaces.messages.update",
               "parameterOrder": [
                 "name"
@@ -551,8 +533,8 @@
                   "description": "Resource name, in the form \"spaces/*/messages/*\". Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4",
                   "location": "path",
                   "pattern": "^spaces/[^/]+/messages/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. The field paths to be updated, comma separated if there are multiple. Currently supported field paths: * text * cards",
@@ -576,7 +558,6 @@
                 "get": {
                   "description": "Gets the metadata of a message attachment. The attachment data is fetched using the media API.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}/attachments/{attachmentsId}",
                   "id": "chat.spaces.messages.attachments.get",
                   "parameterOrder": [
                     "name"
@@ -586,8 +567,8 @@
                       "description": "Resource name of the attachment, in the form \"spaces/*/messages/*/attachments/*\".",
                       "location": "path",
                       "pattern": "^spaces/[^/]+/messages/[^/]+/attachments/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -626,17 +607,17 @@
       "properties": {
         "type": {
           "description": "The type of bot response.",
-          "enumDescriptions": [
-            "Default type; will be handled as NEW_MESSAGE.",
-            "Post as a new message in the topic.",
-            "Update the bot's own message. (Only after CARD_CLICKED events.)",
-            "Privately ask the user for additional auth or config."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "NEW_MESSAGE",
             "UPDATE_MESSAGE",
             "REQUEST_CONFIG"
+          ],
+          "enumDescriptions": [
+            "Default type; will be handled as NEW_MESSAGE.",
+            "Post as a new message in the topic.",
+            "Update the bot's own message. (Only after CARD_CLICKED events.)",
+            "Privately ask the user for additional auth or config."
           ],
           "type": "string"
         },
@@ -657,8 +638,8 @@
           "type": "integer"
         },
         "slashCommand": {
-          "description": "The metadata for a slash command.",
-          "$ref": "SlashCommandMetadata"
+          "$ref": "SlashCommandMetadata",
+          "description": "The metadata for a slash command."
         },
         "startIndex": {
           "description": "Start index (0-based, inclusive) in the plain-text message body this annotation corresponds to.",
@@ -667,21 +648,21 @@
         },
         "type": {
           "description": "The type of this annotation.",
-          "enumDescriptions": [
-            "Default value for the enum. DO NOT USE.",
-            "A user is mentioned.",
-            "A slash command is invoked."
-          ],
           "enum": [
             "ANNOTATION_TYPE_UNSPECIFIED",
             "USER_MENTION",
             "SLASH_COMMAND"
           ],
+          "enumDescriptions": [
+            "Default value for the enum. DO NOT USE.",
+            "A user is mentioned.",
+            "A slash command is invoked."
+          ],
           "type": "string"
         },
         "userMention": {
-          "description": "The metadata of user mention.",
-          "$ref": "UserMentionMetadata"
+          "$ref": "UserMentionMetadata",
+          "description": "The metadata of user mention."
         }
       },
       "type": "object"
@@ -691,8 +672,8 @@
       "id": "Attachment",
       "properties": {
         "attachmentDataRef": {
-          "description": "A reference to the attachment data. This is used with the media API to download the attachment data.",
-          "$ref": "AttachmentDataRef"
+          "$ref": "AttachmentDataRef",
+          "description": "A reference to the attachment data. This is used with the media API to download the attachment data."
         },
         "contentName": {
           "description": "The original file name for the content, not the full path.",
@@ -707,8 +688,8 @@
           "type": "string"
         },
         "driveDataRef": {
-          "description": "A reference to the drive attachment. This is used with the Drive API.",
-          "$ref": "DriveDataRef"
+          "$ref": "DriveDataRef",
+          "description": "A reference to the drive attachment. This is used with the Drive API."
         },
         "name": {
           "description": "Resource name of the attachment, in the form \"spaces/*/messages/*/attachments/*\".",
@@ -716,15 +697,15 @@
         },
         "source": {
           "description": "The source of the attachment.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "SOURCE_UNSPECIFIED",
             "DRIVE_FILE",
             "UPLOADED_CONTENT"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -751,12 +732,12 @@
       "id": "Button",
       "properties": {
         "imageButton": {
-          "description": "A button with image and onclick action.",
-          "$ref": "ImageButton"
+          "$ref": "ImageButton",
+          "description": "A button with image and onclick action."
         },
         "textButton": {
-          "description": "A button with text and onclick action.",
-          "$ref": "TextButton"
+          "$ref": "TextButton",
+          "description": "A button with text and onclick action."
         }
       },
       "type": "object"
@@ -773,8 +754,8 @@
           "type": "array"
         },
         "header": {
-          "description": "The header of the card. A header usually contains a title and an image.",
-          "$ref": "CardHeader"
+          "$ref": "CardHeader",
+          "description": "The header of the card. A header usually contains a title and an image."
         },
         "name": {
           "description": "Name of the card.",
@@ -799,8 +780,8 @@
           "type": "string"
         },
         "onClick": {
-          "description": "The onclick action for this action item.",
-          "$ref": "OnClick"
+          "$ref": "OnClick",
+          "description": "The onclick action for this action item."
         }
       },
       "type": "object"
@@ -810,15 +791,15 @@
       "properties": {
         "imageStyle": {
           "description": "The image's type (e.g. square border or circular border).",
-          "enumDescriptions": [
-            "",
-            "Square border.",
-            "Circular border."
-          ],
           "enum": [
             "IMAGE_STYLE_UNSPECIFIED",
             "IMAGE",
             "AVATAR"
+          ],
+          "enumDescriptions": [
+            "",
+            "Square border.",
+            "Circular border."
           ],
           "type": "string"
         },
@@ -842,8 +823,8 @@
       "id": "DeprecatedEvent",
       "properties": {
         "action": {
-          "description": "The form action data associated with an interactive card that was clicked. Only populated for CARD_CLICKED events. See the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick) for more information.",
-          "$ref": "FormAction"
+          "$ref": "FormAction",
+          "description": "The form action data associated with an interactive card that was clicked. Only populated for CARD_CLICKED events. See the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick) for more information."
         },
         "configCompleteRedirectUrl": {
           "description": "The URL the bot should redirect the user to after they have completed an authorization or configuration flow outside of Google Chat. See the [Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p) for more information.",
@@ -855,12 +836,12 @@
           "type": "string"
         },
         "message": {
-          "description": "The message that triggered the event, if applicable.",
-          "$ref": "Message"
+          "$ref": "Message",
+          "description": "The message that triggered the event, if applicable."
         },
         "space": {
-          "description": "The room or DM in which the event occurred.",
-          "$ref": "Space"
+          "$ref": "Space",
+          "description": "The room or DM in which the event occurred."
         },
         "threadKey": {
           "description": "The bot-defined key for the thread related to the event. See the thread_key field of the `spaces.message.create` request for more information.",
@@ -872,13 +853,6 @@
         },
         "type": {
           "description": "The type of the event.",
-          "enumDescriptions": [
-            "Default value for the enum. DO NOT USE.",
-            "A message was sent in a room or direct message.",
-            "The bot was added to a room or DM.",
-            "The bot was removed from a room or DM.",
-            "The bot's interactive card was clicked."
-          ],
           "enum": [
             "UNSPECIFIED",
             "MESSAGE",
@@ -886,11 +860,18 @@
             "REMOVED_FROM_SPACE",
             "CARD_CLICKED"
           ],
+          "enumDescriptions": [
+            "Default value for the enum. DO NOT USE.",
+            "A message was sent in a room or direct message.",
+            "The bot was added to a room or DM.",
+            "The bot was removed from a room or DM.",
+            "The bot's interactive card was clicked."
+          ],
           "type": "string"
         },
         "user": {
-          "description": "The user that triggered the event.",
-          "$ref": "User"
+          "$ref": "User",
+          "description": "The user that triggered the event."
         }
       },
       "type": "object"
@@ -944,8 +925,8 @@
           "type": "string"
         },
         "onClick": {
-          "description": "The onclick action.",
-          "$ref": "OnClick"
+          "$ref": "OnClick",
+          "description": "The onclick action."
         }
       },
       "type": "object"
@@ -956,39 +937,6 @@
       "properties": {
         "icon": {
           "description": "The icon specified by an enum that indices to an icon provided by Chat API.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "ICON_UNSPECIFIED",
             "AIRPLANE",
@@ -1022,6 +970,39 @@
             "VIDEO_CAMERA",
             "VIDEO_PLAY"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "type": "string"
         },
         "iconUrl": {
@@ -1033,8 +1014,8 @@
           "type": "string"
         },
         "onClick": {
-          "description": "The onclick action.",
-          "$ref": "OnClick"
+          "$ref": "OnClick",
+          "description": "The onclick action."
         }
       },
       "type": "object"
@@ -1048,8 +1029,8 @@
           "type": "string"
         },
         "button": {
-          "description": "A button that can be clicked to trigger an action.",
-          "$ref": "Button"
+          "$ref": "Button",
+          "description": "A button that can be clicked to trigger an action."
         },
         "content": {
           "description": "The text of the content. Formatted text supported and always required.",
@@ -1061,39 +1042,6 @@
         },
         "icon": {
           "description": "An enum value that will be replaced by the Chat API with the corresponding icon image.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "ICON_UNSPECIFIED",
             "AIRPLANE",
@@ -1127,6 +1075,39 @@
             "VIDEO_CAMERA",
             "VIDEO_PLAY"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "type": "string"
         },
         "iconUrl": {
@@ -1134,8 +1115,8 @@
           "type": "string"
         },
         "onClick": {
-          "description": "The onclick action. Only the top label, bottom label and content region are clickable.",
-          "$ref": "OnClick"
+          "$ref": "OnClick",
+          "description": "The onclick action. Only the top label, bottom label and content region are clickable."
         },
         "topLabel": {
           "description": "The text of the top label. Formatted text supported.",
@@ -1199,25 +1180,25 @@
           "type": "string"
         },
         "member": {
-          "description": "A User in Hangout Chat",
-          "$ref": "User"
+          "$ref": "User",
+          "description": "A User in Hangout Chat"
         },
         "name": {
           "type": "string"
         },
         "state": {
           "description": "State of the membership.",
-          "enumDescriptions": [
-            "Default, do not use.",
-            "The user has joined the space.",
-            "The user has been invited, is able to join the space, but currently has not joined.",
-            "The user is not a member of the space, has not been invited and is not able to join the space."
-          ],
           "enum": [
             "MEMBERSHIP_STATE_UNSPECIFIED",
             "JOINED",
             "INVITED",
             "NOT_A_MEMBER"
+          ],
+          "enumDescriptions": [
+            "Default, do not use.",
+            "The user has joined the space.",
+            "The user has been invited, is able to join the space, but currently has not joined.",
+            "The user is not a member of the space, has not been invited and is not able to join the space."
           ],
           "type": "string"
         }
@@ -1229,8 +1210,8 @@
       "id": "Message",
       "properties": {
         "actionResponse": {
-          "description": "Input only. Parameters that a bot can use to configure how its response is posted.",
-          "$ref": "ActionResponse"
+          "$ref": "ActionResponse",
+          "description": "Input only. Parameters that a bot can use to configure how its response is posted."
         },
         "annotations": {
           "description": "Output only. Annotations associated with the text in this message.",
@@ -1275,24 +1256,24 @@
           "type": "string"
         },
         "sender": {
-          "description": "The user who created the message.",
-          "$ref": "User"
+          "$ref": "User",
+          "description": "The user who created the message."
         },
         "slashCommand": {
-          "description": "Slash command information, if applicable.",
-          "$ref": "SlashCommand"
+          "$ref": "SlashCommand",
+          "description": "Slash command information, if applicable."
         },
         "space": {
-          "description": "The space the message belongs to.",
-          "$ref": "Space"
+          "$ref": "Space",
+          "description": "The space the message belongs to."
         },
         "text": {
           "description": "Plain-text body of the message.",
           "type": "string"
         },
         "thread": {
-          "description": "The thread the message belongs to.",
-          "$ref": "Thread"
+          "$ref": "Thread",
+          "description": "The thread the message belongs to."
         }
       },
       "type": "object"
@@ -1302,12 +1283,12 @@
       "id": "OnClick",
       "properties": {
         "action": {
-          "description": "A form action will be triggered by this onclick if specified.",
-          "$ref": "FormAction"
+          "$ref": "FormAction",
+          "description": "A form action will be triggered by this onclick if specified."
         },
         "openLink": {
-          "description": "This onclick triggers an open link action if specified.",
-          "$ref": "OpenLink"
+          "$ref": "OpenLink",
+          "description": "This onclick triggers an open link action if specified."
         }
       },
       "type": "object"
@@ -1358,8 +1339,8 @@
       "id": "SlashCommandMetadata",
       "properties": {
         "bot": {
-          "description": "The bot whose command was invoked.",
-          "$ref": "User"
+          "$ref": "User",
+          "description": "The bot whose command was invoked."
         },
         "commandId": {
           "description": "The command id of the invoked slash command.",
@@ -1376,15 +1357,15 @@
         },
         "type": {
           "description": "The type of slash command.",
-          "enumDescriptions": [
-            "Default value for the enum. DO NOT USE.",
-            "Add bot to space.",
-            "Invoke slash command in space."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "ADD",
             "INVOKE"
+          ],
+          "enumDescriptions": [
+            "Default value for the enum. DO NOT USE.",
+            "Add bot to space.",
+            "Invoke slash command in space."
           ],
           "type": "string"
         }
@@ -1413,15 +1394,15 @@
         },
         "type": {
           "description": "Output only. The type of a space. This is deprecated. Use `single_user_bot_dm` instead.",
-          "enumDescriptions": [
-            "",
-            "Multi-user spaces such as rooms and DMs between humans.",
-            "1:1 Direct Message between a human and a bot, where all messages are flat."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "ROOM",
             "DM"
+          ],
+          "enumDescriptions": [
+            "",
+            "Multi-user spaces such as rooms and DMs between humans.",
+            "1:1 Direct Message between a human and a bot, where all messages are flat."
           ],
           "type": "string"
         }
@@ -1433,8 +1414,8 @@
       "id": "TextButton",
       "properties": {
         "onClick": {
-          "description": "The onclick action of the button.",
-          "$ref": "OnClick"
+          "$ref": "OnClick",
+          "description": "The onclick action of the button."
         },
         "text": {
           "description": "The text of the button.",
@@ -1486,15 +1467,15 @@
         },
         "type": {
           "description": "User type.",
-          "enumDescriptions": [
-            "Default value for the enum. DO NOT USE.",
-            "Human user.",
-            "Bot user."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "HUMAN",
             "BOT"
+          ],
+          "enumDescriptions": [
+            "Default value for the enum. DO NOT USE.",
+            "Human user.",
+            "Bot user."
           ],
           "type": "string"
         }
@@ -1507,21 +1488,21 @@
       "properties": {
         "type": {
           "description": "The type of user mention.",
-          "enumDescriptions": [
-            "Default value for the enum. DO NOT USE.",
-            "Add user to space.",
-            "Mention user in space."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "ADD",
             "MENTION"
           ],
+          "enumDescriptions": [
+            "Default value for the enum. DO NOT USE.",
+            "Add user to space.",
+            "Mention user in space."
+          ],
           "type": "string"
         },
         "user": {
-          "description": "The user mentioned.",
-          "$ref": "User"
+          "$ref": "User",
+          "description": "The user mentioned."
         }
       },
       "type": "object"
@@ -1538,16 +1519,16 @@
           "type": "array"
         },
         "image": {
-          "description": "Display an image in this widget.",
-          "$ref": "Image"
+          "$ref": "Image",
+          "description": "Display an image in this widget."
         },
         "keyValue": {
-          "description": "Display a key value item in this widget.",
-          "$ref": "KeyValue"
+          "$ref": "KeyValue",
+          "description": "Display a key value item in this widget."
         },
         "textParagraph": {
-          "description": "Display a text paragraph in this widget.",
-          "$ref": "TextParagraph"
+          "$ref": "TextParagraph",
+          "description": "Display a text paragraph in this widget."
         }
       },
       "type": "object"
@@ -1555,6 +1536,6 @@
   },
   "servicePath": "",
   "title": "Google Chat API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

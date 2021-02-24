@@ -15,29 +15,27 @@
   "description": "Service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/document-ai/docs/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "documentai:v1beta2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://documentai.mtls.googleapis.com/",
   "name": "documentai",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "batchProcess": {
               "description": "LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format.",
               "httpMethod": "POST",
-              "flatPath": "v1beta2/projects/{projectsId}/documents:batchProcess",
               "id": "documentai.projects.documents.batchProcess",
               "parameterOrder": [
                 "parent"
@@ -122,8 +119,8 @@
                   "description": "Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no location is specified, a region will be chosen automatically.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta2/{+parent}/documents:batchProcess",
@@ -140,7 +137,6 @@
             "process": {
               "description": "Processes a single document.",
               "httpMethod": "POST",
-              "flatPath": "v1beta2/projects/{projectsId}/documents:process",
               "id": "documentai.projects.documents.process",
               "parameterOrder": [
                 "parent"
@@ -150,8 +146,8 @@
                   "description": "Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no location is specified, a region will be chosen automatically. This field is only populated when used in ProcessDocument method.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta2/{+parent}/documents:process",
@@ -174,7 +170,6 @@
                 "batchProcess": {
                   "description": "LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta2/projects/{projectsId}/locations/{locationsId}/documents:batchProcess",
                   "id": "documentai.projects.locations.documents.batchProcess",
                   "parameterOrder": [
                     "parent"
@@ -184,8 +179,8 @@
                       "description": "Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no location is specified, a region will be chosen automatically.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta2/{+parent}/documents:batchProcess",
@@ -202,7 +197,6 @@
                 "process": {
                   "description": "Processes a single document.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta2/projects/{projectsId}/locations/{locationsId}/documents:process",
                   "id": "documentai.projects.locations.documents.process",
                   "parameterOrder": [
                     "parent"
@@ -212,8 +206,8 @@
                       "description": "Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no location is specified, a region will be chosen automatically. This field is only populated when used in ProcessDocument method.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta2/{+parent}/documents:process",
@@ -234,7 +228,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "documentai.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -244,8 +237,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta2/{+name}",
@@ -265,7 +258,6 @@
             "get": {
               "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
               "httpMethod": "GET",
-              "flatPath": "v1beta2/projects/{projectsId}/operations/{operationsId}",
               "id": "documentai.projects.operations.get",
               "parameterOrder": [
                 "name"
@@ -275,8 +267,8 @@
                   "description": "The name of the operation resource.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/operations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta2/{+name}",
@@ -306,14 +298,6 @@
         },
         "state": {
           "description": "The state of the operation.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Operation is still running.",
-            "Operation is being cancelled.",
-            "Operation succeeded.",
-            "Operation failed.",
-            "Operation is cancelled."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "RUNNING",
@@ -321,6 +305,14 @@
             "SUCCEEDED",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Operation is still running.",
+            "Operation is being cancelled.",
+            "Operation succeeded.",
+            "Operation failed.",
+            "Operation is cancelled."
           ],
           "type": "string"
         },
@@ -341,8 +333,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -352,8 +344,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -363,8 +355,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -374,8 +366,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -385,8 +377,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -402,8 +394,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -419,8 +411,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -436,8 +428,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -458,16 +450,16 @@
       "id": "GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         },
         "testDatasetValidation": {
-          "description": "The test dataset validation information.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation",
+          "description": "The test dataset validation information."
         },
         "trainingDatasetValidation": {
-          "description": "The training dataset validation information.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation",
+          "description": "The training dataset validation information."
         }
       },
       "type": "object"
@@ -509,8 +501,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -526,8 +518,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -537,8 +529,8 @@
       "id": "GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -561,15 +553,6 @@
         },
         "state": {
           "description": "The state of the current batch processing.",
-          "enumDescriptions": [
-            "The default value. This value is used if the state is omitted.",
-            "Request operation is waiting for scheduling.",
-            "Request is being processed.",
-            "The batch processing completed successfully.",
-            "The batch processing was being cancelled.",
-            "The batch processing was cancelled.",
-            "The batch processing has failed."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "WAITING",
@@ -578,6 +561,15 @@
             "CANCELLING",
             "CANCELLED",
             "FAILED"
+          ],
+          "enumDescriptions": [
+            "The default value. This value is used if the state is omitted.",
+            "Request operation is waiting for scheduling.",
+            "Request is being processed.",
+            "The batch processing completed successfully.",
+            "The batch processing was being cancelled.",
+            "The batch processing was cancelled.",
+            "The batch processing has failed."
           ],
           "type": "string"
         },
@@ -598,8 +590,8 @@
       "id": "GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus",
       "properties": {
         "humanReviewStatus": {
-          "description": "The status of human review on the processed document.",
-          "$ref": "GoogleCloudDocumentaiV1HumanReviewStatus"
+          "$ref": "GoogleCloudDocumentaiV1HumanReviewStatus",
+          "description": "The status of human review on the processed document."
         },
         "inputGcsSource": {
           "description": "The source of the document, same as the [input_gcs_source] field in the request when the batch process started. The batch process is started by take snapshot of that document, since a user can move or change that document during the process.",
@@ -610,8 +602,8 @@
           "type": "string"
         },
         "status": {
-          "description": "The status of the processing of the document.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The status of the processing of the document."
         }
       },
       "type": "object"
@@ -633,14 +625,6 @@
         },
         "state": {
           "description": "The state of the operation.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Operation is still running.",
-            "Operation is being cancelled.",
-            "Operation succeeded.",
-            "Operation failed.",
-            "Operation is cancelled."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "RUNNING",
@@ -648,6 +632,14 @@
             "SUCCEEDED",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Operation is still running.",
+            "Operation is being cancelled.",
+            "Operation succeeded.",
+            "Operation failed.",
+            "Operation is cancelled."
           ],
           "type": "string"
         },
@@ -673,19 +665,19 @@
         },
         "state": {
           "description": "The state of human review on the processing request.",
-          "enumDescriptions": [
-            "Human review state is unspecified. Most likely due to an internal error.",
-            "Human review is skipped for the document. This can happen because human review is not enabled on the processor or the processing request has been set to skip this document.",
-            "Human review validation is triggered and passed, so no review is needed.",
-            "Human review validation is triggered and the document is under review.",
-            "Some error happened during triggering human review, see the [state_message] for details."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "HUMAN_REVIEW_SKIPPED",
             "HUMAN_REVIEW_VALIDATION_PASSED",
             "HUMAN_REVIEW_IN_PROGRESS",
             "HUMAN_REVIEW_ERROR"
+          ],
+          "enumDescriptions": [
+            "Human review state is unspecified. Most likely due to an internal error.",
+            "Human review is skipped for the document. This can happen because human review is not enabled on the processor or the processing request has been set to skip this document.",
+            "Human review validation is triggered and passed, so no review is needed.",
+            "Human review validation is triggered and the document is under review.",
+            "Some error happened during triggering human review, see the [state_message] for details."
           ],
           "type": "string"
         },
@@ -701,8 +693,8 @@
       "id": "GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiV1CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiV1CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         }
       },
       "type": "object"
@@ -777,8 +769,8 @@
           "type": "array"
         },
         "error": {
-          "description": "Any error that occurred while processing this document.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "Any error that occurred while processing this document."
         },
         "mimeType": {
           "description": "An IANA published MIME type (also referred to as media type). For more information, see https://www.iana.org/assignments/media-types/media-types.xhtml.",
@@ -799,8 +791,8 @@
           "type": "array"
         },
         "shardInfo": {
-          "description": "Information about the sharding if this document is sharded part of a larger document. If the document is not sharded, this message is not specified.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentShardInfo"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentShardInfo",
+          "description": "Information about the sharding if this document is sharded part of a larger document. If the document is not sharded, this message is not specified."
         },
         "text": {
           "description": "UTF-8 encoded text in reading order from the document.",
@@ -856,12 +848,12 @@
           "type": "string"
         },
         "normalizedValue": {
-          "description": "Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g. address) is not supported for certain parsers. This field is also only populated for certain supported document types.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue",
+          "description": "Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g. address) is not supported for certain parsers. This field is also only populated for certain supported document types."
         },
         "pageAnchor": {
-          "description": "Optional. Represents the provenance of this entity wrt. the location on the page where it was found.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageAnchor",
+          "description": "Optional. Represents the provenance of this entity wrt. the location on the page where it was found."
         },
         "properties": {
           "description": "Optional. Entities can be nested to form a hierarchical data structure representing the content in the document.",
@@ -871,16 +863,16 @@
           "type": "array"
         },
         "provenance": {
-          "description": "Optional. The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+          "description": "Optional. The history of this annotation."
         },
         "redacted": {
           "description": "Optional. Whether the entity will be redacted for de-identification purposes.",
           "type": "boolean"
         },
         "textAnchor": {
-          "description": "Provenance of the entity. Text anchor indexing into the Document.text.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor",
+          "description": "Provenance of the entity. Text anchor indexing into the Document.text."
         },
         "type": {
           "description": "Entity type from a schema e.g. `Address`.",
@@ -894,20 +886,20 @@
       "id": "GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue",
       "properties": {
         "addressValue": {
-          "description": "Postal address. See also: https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto",
-          "$ref": "GoogleTypePostalAddress"
+          "$ref": "GoogleTypePostalAddress",
+          "description": "Postal address. See also: https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto"
         },
         "dateValue": {
-          "description": "Date value. Includes year, month, day. See also: https://github.com/googleapis/googleapis/blob/master/google/type/date.proto",
-          "$ref": "GoogleTypeDate"
+          "$ref": "GoogleTypeDate",
+          "description": "Date value. Includes year, month, day. See also: https://github.com/googleapis/googleapis/blob/master/google/type/date.proto"
         },
         "datetimeValue": {
-          "description": "DateTime value. Includes date, time, and timezone. See also: https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto",
-          "$ref": "GoogleTypeDateTime"
+          "$ref": "GoogleTypeDateTime",
+          "description": "DateTime value. Includes date, time, and timezone. See also: https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto"
         },
         "moneyValue": {
-          "description": "Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto",
-          "$ref": "GoogleTypeMoney"
+          "$ref": "GoogleTypeMoney",
+          "description": "Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto"
         },
         "text": {
           "description": "Required. Normalized entity value stored as a string. This field is populated for supported document type (e.g. Invoice). For some entity types, one of respective 'structured_value' fields may also be populated. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.",
@@ -954,8 +946,8 @@
           "type": "array"
         },
         "dimension": {
-          "description": "Physical dimension of the page.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageDimension"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageDimension",
+          "description": "Physical dimension of the page."
         },
         "formFields": {
           "description": "A list of visually detected form fields on the page.",
@@ -965,12 +957,12 @@
           "type": "array"
         },
         "image": {
-          "description": "Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageImage"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageImage",
+          "description": "Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned."
         },
         "layout": {
-          "description": "Layout for the page.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for the page."
         },
         "lines": {
           "description": "A list of visually detected text lines on the page. A collection of tokens that a human would perceive as a line.",
@@ -1041,8 +1033,8 @@
       "id": "GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef",
       "properties": {
         "boundingPoly": {
-          "description": "Optional. Identifies the bounding polygon of a layout element on the page.",
-          "$ref": "GoogleCloudDocumentaiV1beta1BoundingPoly"
+          "$ref": "GoogleCloudDocumentaiV1beta1BoundingPoly",
+          "description": "Optional. Identifies the bounding polygon of a layout element on the page."
         },
         "layoutId": {
           "description": "Optional. Deprecated. Use PageRef.bounding_poly instead.",
@@ -1050,16 +1042,6 @@
         },
         "layoutType": {
           "description": "Optional. The type of the layout element that is being referenced if any.",
-          "enumDescriptions": [
-            "Layout Unspecified.",
-            "References a Page.blocks element.",
-            "References a Page.paragraphs element.",
-            "References a Page.lines element.",
-            "References a Page.tokens element.",
-            "References a Page.visual_elements element.",
-            "Refrrences a Page.tables element.",
-            "References a Page.form_fields element."
-          ],
           "enum": [
             "LAYOUT_TYPE_UNSPECIFIED",
             "BLOCK",
@@ -1069,6 +1051,16 @@
             "VISUAL_ELEMENT",
             "TABLE",
             "FORM_FIELD"
+          ],
+          "enumDescriptions": [
+            "Layout Unspecified.",
+            "References a Page.blocks element.",
+            "References a Page.paragraphs element.",
+            "References a Page.lines element.",
+            "References a Page.tokens element.",
+            "References a Page.visual_elements element.",
+            "Refrrences a Page.tables element.",
+            "References a Page.form_fields element."
           ],
           "type": "string"
         },
@@ -1092,12 +1084,12 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Block.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for Block."
         },
         "provenance": {
-          "description": "The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+          "description": "The history of this annotation."
         }
       },
       "type": "object"
@@ -1144,12 +1136,12 @@
       "id": "GoogleCloudDocumentaiV1beta1DocumentPageFormField",
       "properties": {
         "fieldName": {
-          "description": "Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc."
         },
         "fieldValue": {
-          "description": "Layout for the FormField value.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for the FormField value."
         },
         "nameDetectedLanguages": {
           "description": "A list of detected languages for name together with confidence.",
@@ -1203,8 +1195,8 @@
       "id": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
       "properties": {
         "boundingPoly": {
-          "description": "The bounding polygon for the Layout.",
-          "$ref": "GoogleCloudDocumentaiV1beta1BoundingPoly"
+          "$ref": "GoogleCloudDocumentaiV1beta1BoundingPoly",
+          "description": "The bounding polygon for the Layout."
         },
         "confidence": {
           "description": "Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].",
@@ -1213,13 +1205,6 @@
         },
         "orientation": {
           "description": "Detected orientation for the Layout.",
-          "enumDescriptions": [
-            "Unspecified orientation.",
-            "Orientation is aligned with page up.",
-            "Orientation is aligned with page right. Turn the head 90 degrees clockwise from upright to read.",
-            "Orientation is aligned with page down. Turn the head 180 degrees from upright to read.",
-            "Orientation is aligned with page left. Turn the head 90 degrees counterclockwise from upright to read."
-          ],
           "enum": [
             "ORIENTATION_UNSPECIFIED",
             "PAGE_UP",
@@ -1227,11 +1212,18 @@
             "PAGE_DOWN",
             "PAGE_LEFT"
           ],
+          "enumDescriptions": [
+            "Unspecified orientation.",
+            "Orientation is aligned with page up.",
+            "Orientation is aligned with page right. Turn the head 90 degrees clockwise from upright to read.",
+            "Orientation is aligned with page down. Turn the head 180 degrees from upright to read.",
+            "Orientation is aligned with page left. Turn the head 90 degrees counterclockwise from upright to read."
+          ],
           "type": "string"
         },
         "textAnchor": {
-          "description": "Text anchor indexing into the Document.text.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor",
+          "description": "Text anchor indexing into the Document.text."
         }
       },
       "type": "object"
@@ -1248,12 +1240,12 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Line.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for Line."
         },
         "provenance": {
-          "description": "The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+          "description": "The history of this annotation."
         }
       },
       "type": "object"
@@ -1297,12 +1289,12 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Paragraph.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for Paragraph."
         },
         "provenance": {
-          "description": "The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+          "description": "The history of this annotation."
         }
       },
       "type": "object"
@@ -1333,8 +1325,8 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Table.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for Table."
         }
       },
       "type": "object"
@@ -1356,8 +1348,8 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for TableCell.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for TableCell."
         },
         "rowSpan": {
           "description": "How many rows this cell spans.",
@@ -1386,8 +1378,8 @@
       "id": "GoogleCloudDocumentaiV1beta1DocumentPageToken",
       "properties": {
         "detectedBreak": {
-          "description": "Detected break at the end of a Token.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak",
+          "description": "Detected break at the end of a Token."
         },
         "detectedLanguages": {
           "description": "A list of detected languages together with confidence.",
@@ -1397,12 +1389,12 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Token.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for Token."
         },
         "provenance": {
-          "description": "The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+          "description": "The history of this annotation."
         }
       },
       "type": "object"
@@ -1413,17 +1405,17 @@
       "properties": {
         "type": {
           "description": "Detected break type.",
-          "enumDescriptions": [
-            "Unspecified break type.",
-            "A single whitespace.",
-            "A wider whitespace.",
-            "A hyphen that indicates that a token has been split across lines."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "SPACE",
             "WIDE_SPACE",
             "HYPHEN"
+          ],
+          "enumDescriptions": [
+            "Unspecified break type.",
+            "A single whitespace.",
+            "A wider whitespace.",
+            "A hyphen that indicates that a token has been split across lines."
           ],
           "type": "string"
         }
@@ -1442,8 +1434,8 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for VisualElement.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
+          "description": "Layout for VisualElement."
         },
         "type": {
           "description": "Type of the VisualElement.",
@@ -1475,14 +1467,6 @@
         },
         "type": {
           "description": "The type of provenance operation.",
-          "enumDescriptions": [
-            "Operation type unspecified.",
-            "Add an element. Implicit if no `parents` are set for the provenance.",
-            "The element is removed. No `parents` should be set.",
-            "Explicitly replaces the element(s) identified by `parents`.",
-            "Element is requested for human review.",
-            "Element is review and approved at human review, confidence will be set to 1.0"
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "ADD",
@@ -1490,6 +1474,14 @@
             "REPLACE",
             "EVAL_REQUESTED",
             "EVAL_APPROVED"
+          ],
+          "enumDescriptions": [
+            "Operation type unspecified.",
+            "Add an element. Implicit if no `parents` are set for the provenance.",
+            "The element is removed. No `parents` should be set.",
+            "Explicitly replaces the element(s) identified by `parents`.",
+            "Element is requested for human review.",
+            "Element is review and approved at human review, confidence will be set to 1.0"
           ],
           "type": "string"
         }
@@ -1527,8 +1519,8 @@
           "type": "string"
         },
         "humanReview": {
-          "description": "Human Review information of this revision.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview",
+          "description": "Human Review information of this revision."
         },
         "id": {
           "description": "Id of the revision. Unique within the context of the document.",
@@ -1591,24 +1583,24 @@
       "id": "GoogleCloudDocumentaiV1beta1DocumentStyle",
       "properties": {
         "backgroundColor": {
-          "description": "Text background color.",
-          "$ref": "GoogleTypeColor"
+          "$ref": "GoogleTypeColor",
+          "description": "Text background color."
         },
         "color": {
-          "description": "Text color.",
-          "$ref": "GoogleTypeColor"
+          "$ref": "GoogleTypeColor",
+          "description": "Text color."
         },
         "fontSize": {
-          "description": "Font size.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentStyleFontSize"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentStyleFontSize",
+          "description": "Font size."
         },
         "fontWeight": {
           "description": "Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp",
           "type": "string"
         },
         "textAnchor": {
-          "description": "Text anchor indexing into the Document.text.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor",
+          "description": "Text anchor indexing into the Document.text."
         },
         "textDecoration": {
           "description": "Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp",
@@ -1688,8 +1680,8 @@
           "type": "array"
         },
         "textAnchor": {
-          "description": "Provenance of the correction. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor",
+          "description": "Provenance of the correction. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index."
         }
       },
       "type": "object"
@@ -1710,8 +1702,8 @@
           "type": "array"
         },
         "textAnchor": {
-          "description": "Provenance of the translation. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index.",
-          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentTextAnchor",
+          "description": "Provenance of the translation. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index."
         },
         "translatedText": {
           "description": "Text translated into the target language.",
@@ -1745,8 +1737,8 @@
       "id": "GoogleCloudDocumentaiV1beta1InputConfig",
       "properties": {
         "gcsSource": {
-          "description": "The Google Cloud Storage location to read the input from. This must be a single file.",
-          "$ref": "GoogleCloudDocumentaiV1beta1GcsSource"
+          "$ref": "GoogleCloudDocumentaiV1beta1GcsSource",
+          "description": "The Google Cloud Storage location to read the input from. This must be a single file."
         },
         "mimeType": {
           "description": "Required. Mimetype of the input. Current supported mimetypes are application/pdf, image/tiff, and image/gif. In addition, application/json type is supported for requests with ProcessDocumentRequest.automl_params field set. The JSON file needs to be in Document format.",
@@ -1783,15 +1775,6 @@
         },
         "state": {
           "description": "The state of the current batch processing.",
-          "enumDescriptions": [
-            "The default value. This value is used if the state is omitted.",
-            "Request is received.",
-            "Request operation is waiting for scheduling.",
-            "Request is being processed.",
-            "The batch processing completed successfully.",
-            "The batch processing was cancelled.",
-            "The batch processing has failed."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ACCEPTED",
@@ -1800,6 +1783,15 @@
             "SUCCEEDED",
             "CANCELLED",
             "FAILED"
+          ],
+          "enumDescriptions": [
+            "The default value. This value is used if the state is omitted.",
+            "Request is received.",
+            "Request operation is waiting for scheduling.",
+            "Request is being processed.",
+            "The batch processing completed successfully.",
+            "The batch processing was cancelled.",
+            "The batch processing has failed."
           ],
           "type": "string"
         },
@@ -1820,8 +1812,8 @@
       "id": "GoogleCloudDocumentaiV1beta1OutputConfig",
       "properties": {
         "gcsDestination": {
-          "description": "The Google Cloud Storage location to write the output to.",
-          "$ref": "GoogleCloudDocumentaiV1beta1GcsDestination"
+          "$ref": "GoogleCloudDocumentaiV1beta1GcsDestination",
+          "description": "The Google Cloud Storage location to write the output to."
         },
         "pagesPerShard": {
           "description": "The max number of pages to include into each output Document shard JSON on Google Cloud Storage. The valid range is [1, 100]. If not specified, the default value is 20. For example, for one pdf file with 100 pages, 100 parsed pages will be produced. If `pages_per_shard` = 20, then 5 Document shard JSON files each containing 20 parsed pages will be written under the prefix OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where x and y are 1-indexed page numbers. Example GCS outputs with 157 pages and pages_per_shard = 50: pages-001-to-050.json pages-051-to-100.json pages-101-to-150.json pages-151-to-157.json",
@@ -1836,12 +1828,12 @@
       "id": "GoogleCloudDocumentaiV1beta1ProcessDocumentResponse",
       "properties": {
         "inputConfig": {
-          "description": "Information about the input file. This is the same as the corresponding input config in the request.",
-          "$ref": "GoogleCloudDocumentaiV1beta1InputConfig"
+          "$ref": "GoogleCloudDocumentaiV1beta1InputConfig",
+          "description": "Information about the input file. This is the same as the corresponding input config in the request."
         },
         "outputConfig": {
-          "description": "The output location of the parsed responses. The responses are written to this location as JSON-serialized `Document` objects.",
-          "$ref": "GoogleCloudDocumentaiV1beta1OutputConfig"
+          "$ref": "GoogleCloudDocumentaiV1beta1OutputConfig",
+          "description": "The output location of the parsed responses. The responses are written to this location as JSON-serialized `Document` objects."
         }
       },
       "type": "object"
@@ -1947,8 +1939,8 @@
           "type": "array"
         },
         "error": {
-          "description": "Any error that occurred while processing this document.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "Any error that occurred while processing this document."
         },
         "labels": {
           "description": "Labels for this document.",
@@ -1976,8 +1968,8 @@
           "type": "array"
         },
         "shardInfo": {
-          "description": "Information about the sharding if this document is sharded part of a larger document. If the document is not sharded, this message is not specified.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentShardInfo"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentShardInfo",
+          "description": "Information about the sharding if this document is sharded part of a larger document. If the document is not sharded, this message is not specified."
         },
         "text": {
           "description": "UTF-8 encoded text in reading order from the document.",
@@ -2033,12 +2025,12 @@
           "type": "string"
         },
         "normalizedValue": {
-          "description": "Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g. address) is not supported for certain parsers. This field is also only populated for certain supported document types.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue",
+          "description": "Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g. address) is not supported for certain parsers. This field is also only populated for certain supported document types."
         },
         "pageAnchor": {
-          "description": "Optional. Represents the provenance of this entity wrt. the location on the page where it was found.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageAnchor",
+          "description": "Optional. Represents the provenance of this entity wrt. the location on the page where it was found."
         },
         "properties": {
           "description": "Optional. Entities can be nested to form a hierarchical data structure representing the content in the document.",
@@ -2048,16 +2040,16 @@
           "type": "array"
         },
         "provenance": {
-          "description": "Optional. The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+          "description": "Optional. The history of this annotation."
         },
         "redacted": {
           "description": "Optional. Whether the entity will be redacted for de-identification purposes.",
           "type": "boolean"
         },
         "textAnchor": {
-          "description": "Provenance of the entity. Text anchor indexing into the Document.text.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor",
+          "description": "Provenance of the entity. Text anchor indexing into the Document.text."
         },
         "type": {
           "description": "Entity type from a schema e.g. `Address`.",
@@ -2071,20 +2063,20 @@
       "id": "GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue",
       "properties": {
         "addressValue": {
-          "description": "Postal address. See also: https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto",
-          "$ref": "GoogleTypePostalAddress"
+          "$ref": "GoogleTypePostalAddress",
+          "description": "Postal address. See also: https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto"
         },
         "dateValue": {
-          "description": "Date value. Includes year, month, day. See also: https://github.com/googleapis/googleapis/blob/master/google/type/date.proto",
-          "$ref": "GoogleTypeDate"
+          "$ref": "GoogleTypeDate",
+          "description": "Date value. Includes year, month, day. See also: https://github.com/googleapis/googleapis/blob/master/google/type/date.proto"
         },
         "datetimeValue": {
-          "description": "DateTime value. Includes date, time, and timezone. See also: https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto",
-          "$ref": "GoogleTypeDateTime"
+          "$ref": "GoogleTypeDateTime",
+          "description": "DateTime value. Includes date, time, and timezone. See also: https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto"
         },
         "moneyValue": {
-          "description": "Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto",
-          "$ref": "GoogleTypeMoney"
+          "$ref": "GoogleTypeMoney",
+          "description": "Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto"
         },
         "text": {
           "description": "Required. Normalized entity value stored as a string. This field is populated for supported document type (e.g. Invoice). For some entity types, one of respective 'structured_value' fields may also be populated. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.",
@@ -2151,8 +2143,8 @@
           "type": "array"
         },
         "dimension": {
-          "description": "Physical dimension of the page.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageDimension"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageDimension",
+          "description": "Physical dimension of the page."
         },
         "formFields": {
           "description": "A list of visually detected form fields on the page.",
@@ -2162,12 +2154,12 @@
           "type": "array"
         },
         "image": {
-          "description": "Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageImage"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageImage",
+          "description": "Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned."
         },
         "layout": {
-          "description": "Layout for the page.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for the page."
         },
         "lines": {
           "description": "A list of visually detected text lines on the page. A collection of tokens that a human would perceive as a line.",
@@ -2238,8 +2230,8 @@
       "id": "GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef",
       "properties": {
         "boundingPoly": {
-          "description": "Optional. Identifies the bounding polygon of a layout element on the page.",
-          "$ref": "GoogleCloudDocumentaiV1beta2BoundingPoly"
+          "$ref": "GoogleCloudDocumentaiV1beta2BoundingPoly",
+          "description": "Optional. Identifies the bounding polygon of a layout element on the page."
         },
         "layoutId": {
           "description": "Optional. Deprecated. Use PageRef.bounding_poly instead.",
@@ -2247,16 +2239,6 @@
         },
         "layoutType": {
           "description": "Optional. The type of the layout element that is being referenced if any.",
-          "enumDescriptions": [
-            "Layout Unspecified.",
-            "References a Page.blocks element.",
-            "References a Page.paragraphs element.",
-            "References a Page.lines element.",
-            "References a Page.tokens element.",
-            "References a Page.visual_elements element.",
-            "Refrrences a Page.tables element.",
-            "References a Page.form_fields element."
-          ],
           "enum": [
             "LAYOUT_TYPE_UNSPECIFIED",
             "BLOCK",
@@ -2266,6 +2248,16 @@
             "VISUAL_ELEMENT",
             "TABLE",
             "FORM_FIELD"
+          ],
+          "enumDescriptions": [
+            "Layout Unspecified.",
+            "References a Page.blocks element.",
+            "References a Page.paragraphs element.",
+            "References a Page.lines element.",
+            "References a Page.tokens element.",
+            "References a Page.visual_elements element.",
+            "Refrrences a Page.tables element.",
+            "References a Page.form_fields element."
           ],
           "type": "string"
         },
@@ -2289,12 +2281,12 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Block.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for Block."
         },
         "provenance": {
-          "description": "The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+          "description": "The history of this annotation."
         }
       },
       "type": "object"
@@ -2341,12 +2333,12 @@
       "id": "GoogleCloudDocumentaiV1beta2DocumentPageFormField",
       "properties": {
         "fieldName": {
-          "description": "Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc."
         },
         "fieldValue": {
-          "description": "Layout for the FormField value.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for the FormField value."
         },
         "nameDetectedLanguages": {
           "description": "A list of detected languages for name together with confidence.",
@@ -2400,8 +2392,8 @@
       "id": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
       "properties": {
         "boundingPoly": {
-          "description": "The bounding polygon for the Layout.",
-          "$ref": "GoogleCloudDocumentaiV1beta2BoundingPoly"
+          "$ref": "GoogleCloudDocumentaiV1beta2BoundingPoly",
+          "description": "The bounding polygon for the Layout."
         },
         "confidence": {
           "description": "Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].",
@@ -2410,13 +2402,6 @@
         },
         "orientation": {
           "description": "Detected orientation for the Layout.",
-          "enumDescriptions": [
-            "Unspecified orientation.",
-            "Orientation is aligned with page up.",
-            "Orientation is aligned with page right. Turn the head 90 degrees clockwise from upright to read.",
-            "Orientation is aligned with page down. Turn the head 180 degrees from upright to read.",
-            "Orientation is aligned with page left. Turn the head 90 degrees counterclockwise from upright to read."
-          ],
           "enum": [
             "ORIENTATION_UNSPECIFIED",
             "PAGE_UP",
@@ -2424,11 +2409,18 @@
             "PAGE_DOWN",
             "PAGE_LEFT"
           ],
+          "enumDescriptions": [
+            "Unspecified orientation.",
+            "Orientation is aligned with page up.",
+            "Orientation is aligned with page right. Turn the head 90 degrees clockwise from upright to read.",
+            "Orientation is aligned with page down. Turn the head 180 degrees from upright to read.",
+            "Orientation is aligned with page left. Turn the head 90 degrees counterclockwise from upright to read."
+          ],
           "type": "string"
         },
         "textAnchor": {
-          "description": "Text anchor indexing into the Document.text.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor",
+          "description": "Text anchor indexing into the Document.text."
         }
       },
       "type": "object"
@@ -2445,12 +2437,12 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Line.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for Line."
         },
         "provenance": {
-          "description": "The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+          "description": "The history of this annotation."
         }
       },
       "type": "object"
@@ -2494,12 +2486,12 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Paragraph.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for Paragraph."
         },
         "provenance": {
-          "description": "The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+          "description": "The history of this annotation."
         }
       },
       "type": "object"
@@ -2530,8 +2522,8 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Table.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for Table."
         }
       },
       "type": "object"
@@ -2553,8 +2545,8 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for TableCell.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for TableCell."
         },
         "rowSpan": {
           "description": "How many rows this cell spans.",
@@ -2583,8 +2575,8 @@
       "id": "GoogleCloudDocumentaiV1beta2DocumentPageToken",
       "properties": {
         "detectedBreak": {
-          "description": "Detected break at the end of a Token.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak",
+          "description": "Detected break at the end of a Token."
         },
         "detectedLanguages": {
           "description": "A list of detected languages together with confidence.",
@@ -2594,12 +2586,12 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for Token.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for Token."
         },
         "provenance": {
-          "description": "The history of this annotation.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+          "description": "The history of this annotation."
         }
       },
       "type": "object"
@@ -2610,17 +2602,17 @@
       "properties": {
         "type": {
           "description": "Detected break type.",
-          "enumDescriptions": [
-            "Unspecified break type.",
-            "A single whitespace.",
-            "A wider whitespace.",
-            "A hyphen that indicates that a token has been split across lines."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "SPACE",
             "WIDE_SPACE",
             "HYPHEN"
+          ],
+          "enumDescriptions": [
+            "Unspecified break type.",
+            "A single whitespace.",
+            "A wider whitespace.",
+            "A hyphen that indicates that a token has been split across lines."
           ],
           "type": "string"
         }
@@ -2639,8 +2631,8 @@
           "type": "array"
         },
         "layout": {
-          "description": "Layout for VisualElement.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
+          "description": "Layout for VisualElement."
         },
         "type": {
           "description": "Type of the VisualElement.",
@@ -2672,14 +2664,6 @@
         },
         "type": {
           "description": "The type of provenance operation.",
-          "enumDescriptions": [
-            "Operation type unspecified.",
-            "Add an element. Implicit if no `parents` are set for the provenance.",
-            "The element is removed. No `parents` should be set.",
-            "Explicitly replaces the element(s) identified by `parents`.",
-            "Element is requested for human review.",
-            "Element is review and approved at human review, confidence will be set to 1.0"
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "ADD",
@@ -2687,6 +2671,14 @@
             "REPLACE",
             "EVAL_REQUESTED",
             "EVAL_APPROVED"
+          ],
+          "enumDescriptions": [
+            "Operation type unspecified.",
+            "Add an element. Implicit if no `parents` are set for the provenance.",
+            "The element is removed. No `parents` should be set.",
+            "Explicitly replaces the element(s) identified by `parents`.",
+            "Element is requested for human review.",
+            "Element is review and approved at human review, confidence will be set to 1.0"
           ],
           "type": "string"
         }
@@ -2724,8 +2716,8 @@
           "type": "string"
         },
         "humanReview": {
-          "description": "Human Review information of this revision.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview",
+          "description": "Human Review information of this revision."
         },
         "id": {
           "description": "Id of the revision. Unique within the context of the document.",
@@ -2788,24 +2780,24 @@
       "id": "GoogleCloudDocumentaiV1beta2DocumentStyle",
       "properties": {
         "backgroundColor": {
-          "description": "Text background color.",
-          "$ref": "GoogleTypeColor"
+          "$ref": "GoogleTypeColor",
+          "description": "Text background color."
         },
         "color": {
-          "description": "Text color.",
-          "$ref": "GoogleTypeColor"
+          "$ref": "GoogleTypeColor",
+          "description": "Text color."
         },
         "fontSize": {
-          "description": "Font size.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentStyleFontSize"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentStyleFontSize",
+          "description": "Font size."
         },
         "fontWeight": {
           "description": "Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp",
           "type": "string"
         },
         "textAnchor": {
-          "description": "Text anchor indexing into the Document.text.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor",
+          "description": "Text anchor indexing into the Document.text."
         },
         "textDecoration": {
           "description": "Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp",
@@ -2885,8 +2877,8 @@
           "type": "array"
         },
         "textAnchor": {
-          "description": "Provenance of the correction. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor",
+          "description": "Provenance of the correction. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index."
         }
       },
       "type": "object"
@@ -2907,8 +2899,8 @@
           "type": "array"
         },
         "textAnchor": {
-          "description": "Provenance of the translation. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index.",
-          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor"
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentTextAnchor",
+          "description": "Provenance of the translation. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index."
         },
         "translatedText": {
           "description": "Text translated into the target language.",
@@ -2984,8 +2976,8 @@
           "type": "string"
         },
         "gcsSource": {
-          "description": "The Google Cloud Storage location to read the input from. This must be a single file.",
-          "$ref": "GoogleCloudDocumentaiV1beta2GcsSource"
+          "$ref": "GoogleCloudDocumentaiV1beta2GcsSource",
+          "description": "The Google Cloud Storage location to read the input from. This must be a single file."
         },
         "mimeType": {
           "description": "Required. Mimetype of the input. Current supported mimetypes are application/pdf, image/tiff, and image/gif. In addition, application/json type is supported for requests with ProcessDocumentRequest.automl_params field set. The JSON file needs to be in Document format.",
@@ -3054,15 +3046,6 @@
         },
         "state": {
           "description": "The state of the current batch processing.",
-          "enumDescriptions": [
-            "The default value. This value is used if the state is omitted.",
-            "Request is received.",
-            "Request operation is waiting for scheduling.",
-            "Request is being processed.",
-            "The batch processing completed successfully.",
-            "The batch processing was cancelled.",
-            "The batch processing has failed."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ACCEPTED",
@@ -3071,6 +3054,15 @@
             "SUCCEEDED",
             "CANCELLED",
             "FAILED"
+          ],
+          "enumDescriptions": [
+            "The default value. This value is used if the state is omitted.",
+            "Request is received.",
+            "Request operation is waiting for scheduling.",
+            "Request is being processed.",
+            "The batch processing completed successfully.",
+            "The batch processing was cancelled.",
+            "The batch processing has failed."
           ],
           "type": "string"
         },
@@ -3091,8 +3083,8 @@
       "id": "GoogleCloudDocumentaiV1beta2OutputConfig",
       "properties": {
         "gcsDestination": {
-          "description": "The Google Cloud Storage location to write the output to.",
-          "$ref": "GoogleCloudDocumentaiV1beta2GcsDestination"
+          "$ref": "GoogleCloudDocumentaiV1beta2GcsDestination",
+          "description": "The Google Cloud Storage location to write the output to."
         },
         "pagesPerShard": {
           "description": "The max number of pages to include into each output Document shard JSON on Google Cloud Storage. The valid range is [1, 100]. If not specified, the default value is 20. For example, for one pdf file with 100 pages, 100 parsed pages will be produced. If `pages_per_shard` = 20, then 5 Document shard JSON files each containing 20 parsed pages will be written under the prefix OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where x and y are 1-indexed page numbers. Example GCS outputs with 157 pages and pages_per_shard = 50: pages-001-to-050.json pages-051-to-100.json pages-101-to-150.json pages-151-to-157.json",
@@ -3107,40 +3099,40 @@
       "id": "GoogleCloudDocumentaiV1beta2ProcessDocumentRequest",
       "properties": {
         "automlParams": {
-          "description": "Controls AutoML model prediction behavior. AutoMlParams cannot be used together with other Params.",
-          "$ref": "GoogleCloudDocumentaiV1beta2AutoMlParams"
+          "$ref": "GoogleCloudDocumentaiV1beta2AutoMlParams",
+          "description": "Controls AutoML model prediction behavior. AutoMlParams cannot be used together with other Params."
         },
         "documentType": {
           "description": "Specifies a known document type for deeper structure detection. Valid values are currently \"general\" and \"invoice\". If not provided, \"general\"\\ is used as default. If any other value is given, the request is rejected.",
           "type": "string"
         },
         "entityExtractionParams": {
-          "description": "Controls entity extraction behavior. If not specified, the system will decide reasonable defaults.",
-          "$ref": "GoogleCloudDocumentaiV1beta2EntityExtractionParams"
+          "$ref": "GoogleCloudDocumentaiV1beta2EntityExtractionParams",
+          "description": "Controls entity extraction behavior. If not specified, the system will decide reasonable defaults."
         },
         "formExtractionParams": {
-          "description": "Controls form extraction behavior. If not specified, the system will decide reasonable defaults.",
-          "$ref": "GoogleCloudDocumentaiV1beta2FormExtractionParams"
+          "$ref": "GoogleCloudDocumentaiV1beta2FormExtractionParams",
+          "description": "Controls form extraction behavior. If not specified, the system will decide reasonable defaults."
         },
         "inputConfig": {
-          "description": "Required. Information about the input file.",
-          "$ref": "GoogleCloudDocumentaiV1beta2InputConfig"
+          "$ref": "GoogleCloudDocumentaiV1beta2InputConfig",
+          "description": "Required. Information about the input file."
         },
         "ocrParams": {
-          "description": "Controls OCR behavior. If not specified, the system will decide reasonable defaults.",
-          "$ref": "GoogleCloudDocumentaiV1beta2OcrParams"
+          "$ref": "GoogleCloudDocumentaiV1beta2OcrParams",
+          "description": "Controls OCR behavior. If not specified, the system will decide reasonable defaults."
         },
         "outputConfig": {
-          "description": "The desired output location. This field is only needed in BatchProcessDocumentsRequest.",
-          "$ref": "GoogleCloudDocumentaiV1beta2OutputConfig"
+          "$ref": "GoogleCloudDocumentaiV1beta2OutputConfig",
+          "description": "The desired output location. This field is only needed in BatchProcessDocumentsRequest."
         },
         "parent": {
           "description": "Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no location is specified, a region will be chosen automatically. This field is only populated when used in ProcessDocument method.",
           "type": "string"
         },
         "tableExtractionParams": {
-          "description": "Controls table extraction behavior. If not specified, the system will decide reasonable defaults.",
-          "$ref": "GoogleCloudDocumentaiV1beta2TableExtractionParams"
+          "$ref": "GoogleCloudDocumentaiV1beta2TableExtractionParams",
+          "description": "Controls table extraction behavior. If not specified, the system will decide reasonable defaults."
         }
       },
       "type": "object"
@@ -3150,12 +3142,12 @@
       "id": "GoogleCloudDocumentaiV1beta2ProcessDocumentResponse",
       "properties": {
         "inputConfig": {
-          "description": "Information about the input file. This is the same as the corresponding input config in the request.",
-          "$ref": "GoogleCloudDocumentaiV1beta2InputConfig"
+          "$ref": "GoogleCloudDocumentaiV1beta2InputConfig",
+          "description": "Information about the input file. This is the same as the corresponding input config in the request."
         },
         "outputConfig": {
-          "description": "The output location of the parsed responses. The responses are written to this location as JSON-serialized `Document` objects.",
-          "$ref": "GoogleCloudDocumentaiV1beta2OutputConfig"
+          "$ref": "GoogleCloudDocumentaiV1beta2OutputConfig",
+          "description": "The output location of the parsed responses. The responses are written to this location as JSON-serialized `Document` objects."
         }
       },
       "type": "object"
@@ -3165,8 +3157,8 @@
       "id": "GoogleCloudDocumentaiV1beta2TableBoundHint",
       "properties": {
         "boundingBox": {
-          "description": "Bounding box hint for a table on this page. The coordinates must be normalized to [0,1] and the bounding box must be an axis-aligned rectangle.",
-          "$ref": "GoogleCloudDocumentaiV1beta2BoundingPoly"
+          "$ref": "GoogleCloudDocumentaiV1beta2BoundingPoly",
+          "description": "Bounding box hint for a table on this page. The coordinates must be normalized to [0,1] and the bounding box must be an axis-aligned rectangle."
         },
         "pageNumber": {
           "description": "Optional. Page number for multi-paged inputs this hint applies to. If not provided, this hint will apply to all pages by default. This value is 1-based.",
@@ -3240,15 +3232,6 @@
         },
         "state": {
           "description": "The state of the current batch processing.",
-          "enumDescriptions": [
-            "The default value. This value is used if the state is omitted.",
-            "Request operation is waiting for scheduling.",
-            "Request is being processed.",
-            "The batch processing completed successfully.",
-            "The batch processing was being cancelled.",
-            "The batch processing was cancelled.",
-            "The batch processing has failed."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "WAITING",
@@ -3257,6 +3240,15 @@
             "CANCELLING",
             "CANCELLED",
             "FAILED"
+          ],
+          "enumDescriptions": [
+            "The default value. This value is used if the state is omitted.",
+            "Request operation is waiting for scheduling.",
+            "Request is being processed.",
+            "The batch processing completed successfully.",
+            "The batch processing was being cancelled.",
+            "The batch processing was cancelled.",
+            "The batch processing has failed."
           ],
           "type": "string"
         },
@@ -3281,8 +3273,8 @@
           "type": "string"
         },
         "humanReviewStatus": {
-          "description": "The status of human review on the processed document.",
-          "$ref": "GoogleCloudDocumentaiV1beta3HumanReviewStatus"
+          "$ref": "GoogleCloudDocumentaiV1beta3HumanReviewStatus",
+          "description": "The status of human review on the processed document."
         },
         "inputGcsSource": {
           "description": "The source of the document, same as the [input_gcs_source] field in the request when the batch process started. The batch process is started by take snapshot of that document, since a user can move or change that document during the process.",
@@ -3293,8 +3285,8 @@
           "type": "string"
         },
         "status": {
-          "description": "The status of the processing of the document.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The status of the processing of the document."
         }
       },
       "type": "object"
@@ -3316,14 +3308,6 @@
         },
         "state": {
           "description": "The state of the operation.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Operation is still running.",
-            "Operation is being cancelled.",
-            "Operation succeeded.",
-            "Operation failed.",
-            "Operation is cancelled."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "RUNNING",
@@ -3331,6 +3315,14 @@
             "SUCCEEDED",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Operation is still running.",
+            "Operation is being cancelled.",
+            "Operation succeeded.",
+            "Operation failed.",
+            "Operation is cancelled."
           ],
           "type": "string"
         },
@@ -3356,19 +3348,19 @@
         },
         "state": {
           "description": "The state of human review on the processing request.",
-          "enumDescriptions": [
-            "Human review state is unspecified. Most likely due to an internal error.",
-            "Human review is skipped for the document. This can happen because human review is not enabled on the processor or the processing request has been set to skip this document.",
-            "Human review validation is triggered and passed, so no review is needed.",
-            "Human review validation is triggered and the document is under review.",
-            "Some error happened during triggering human review, see the [state_message] for details."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "HUMAN_REVIEW_SKIPPED",
             "HUMAN_REVIEW_VALIDATION_PASSED",
             "HUMAN_REVIEW_IN_PROGRESS",
             "HUMAN_REVIEW_ERROR"
+          ],
+          "enumDescriptions": [
+            "Human review state is unspecified. Most likely due to an internal error.",
+            "Human review is skipped for the document. This can happen because human review is not enabled on the processor or the processing request has been set to skip this document.",
+            "Human review validation is triggered and passed, so no review is needed.",
+            "Human review validation is triggered and the document is under review.",
+            "Some error happened during triggering human review, see the [state_message] for details."
           ],
           "type": "string"
         },
@@ -3384,8 +3376,8 @@
       "id": "GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata",
       "properties": {
         "commonMetadata": {
-          "description": "The basic metadata of the long running operation.",
-          "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata"
+          "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
+          "description": "The basic metadata of the long running operation."
         },
         "createTime": {
           "description": "The creation time of the operation.",
@@ -3394,14 +3386,6 @@
         },
         "state": {
           "description": "Used only when Operation.done is false.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Operation is still running.",
-            "Operation is being cancelled.",
-            "Operation succeeded.",
-            "Operation failed.",
-            "Operation is cancelled."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "RUNNING",
@@ -3409,6 +3393,14 @@
             "SUCCEEDED",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Operation is still running.",
+            "Operation is being cancelled.",
+            "Operation succeeded.",
+            "Operation failed.",
+            "Operation is cancelled."
           ],
           "type": "string"
         },
@@ -3444,8 +3436,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -3587,8 +3579,8 @@
           "type": "integer"
         },
         "timeZone": {
-          "description": "Time zone.",
-          "$ref": "GoogleTypeTimeZone"
+          "$ref": "GoogleTypeTimeZone",
+          "description": "Time zone."
         },
         "utcOffset": {
           "description": "UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }.",
@@ -3700,6 +3692,6 @@
   },
   "servicePath": "",
   "title": "Cloud Document AI API",
-  "version_module": true,
-  "version": "v1beta2"
+  "version": "v1beta2",
+  "version_module": true
 }

@@ -15,29 +15,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://ads.google.com/local-services-ads/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "localservices:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://localservices.mtls.googleapis.com/",
   "name": "localservices",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "search": {
           "description": "Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts.",
           "httpMethod": "GET",
-          "flatPath": "v1/accountReports:search",
           "id": "localservices.accountReports.search",
           "parameterOrder": [],
           "parameters": {
@@ -182,7 +179,6 @@
         "search": {
           "description": "Get detailed lead reports containing leads that have been received by all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts.",
           "httpMethod": "GET",
-          "flatPath": "v1/detailedLeadReports:search",
           "id": "localservices.detailedLeadReports.search",
           "parameterOrder": [],
           "parameters": {
@@ -263,8 +259,8 @@
           "type": "string"
         },
         "aggregatorInfo": {
-          "description": "Aggregator specific information related to the account.",
-          "$ref": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo"
+          "$ref": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
+          "description": "Aggregator specific information related to the account."
         },
         "averageFiveStarRating": {
           "description": "Average review rating score from 1-5 stars.",
@@ -358,8 +354,8 @@
           "type": "string"
         },
         "aggregatorInfo": {
-          "description": "Aggregator specific information related to the lead.",
-          "$ref": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo"
+          "$ref": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
+          "description": "Aggregator specific information related to the lead."
         },
         "businessName": {
           "description": "Business name associated to the account.",
@@ -367,15 +363,15 @@
         },
         "chargeStatus": {
           "description": "Whether the lead has been charged.",
-          "enumDescriptions": [
-            "Not specified.",
-            "Charged.",
-            "Not charged."
-          ],
           "enum": [
             "CHARGE_STATUS_UNSPECIFIED",
             "CHARGED",
             "NOT_CHARGED"
+          ],
+          "enumDescriptions": [
+            "Not specified.",
+            "Charged.",
+            "Not charged."
           ],
           "type": "string"
         },
@@ -412,29 +408,29 @@
         },
         "leadType": {
           "description": "Lead type.",
-          "enumDescriptions": [
-            "Not specified.",
-            "Message lead.",
-            "Phone call lead."
-          ],
           "enum": [
             "LEAD_TYPE_UNSPECIFIED",
             "MESSAGE",
             "PHONE_CALL"
           ],
+          "enumDescriptions": [
+            "Not specified.",
+            "Message lead.",
+            "Phone call lead."
+          ],
           "type": "string"
         },
         "messageLead": {
-          "description": "More information associated to only message leads.",
-          "$ref": "GoogleAdsHomeservicesLocalservicesV1MessageLead"
+          "$ref": "GoogleAdsHomeservicesLocalservicesV1MessageLead",
+          "description": "More information associated to only message leads."
         },
         "phoneLead": {
-          "description": "More information associated to only phone leads.",
-          "$ref": "GoogleAdsHomeservicesLocalservicesV1PhoneLead"
+          "$ref": "GoogleAdsHomeservicesLocalservicesV1PhoneLead",
+          "description": "More information associated to only phone leads."
         },
         "timezone": {
-          "description": "Timezone of the particular provider associated to a lead.",
-          "$ref": "GoogleTypeTimeZone"
+          "$ref": "GoogleTypeTimeZone",
+          "description": "Timezone of the particular provider associated to a lead."
         }
       },
       "type": "object"
@@ -537,6 +533,6 @@
   },
   "servicePath": "",
   "title": "Local Services API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

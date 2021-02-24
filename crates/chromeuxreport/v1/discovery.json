@@ -6,29 +6,27 @@
   "description": "The Chrome UX Report API lets you view real user experience data for millions of websites. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/web/tools/chrome-user-experience-report/api/reference",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "chromeuxreport:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://chromeuxreport.mtls.googleapis.com/",
   "name": "chromeuxreport",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -39,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -101,7 +99,6 @@
         "queryRecord": {
           "description": "Queries the Chrome User Experience for a single `record` for a given site. Returns a `record` that contains one or more `metrics` corresponding to performance data about the requested site.",
           "httpMethod": "POST",
-          "flatPath": "v1/records:queryRecord",
           "id": "chromeuxreport.records.queryRecord",
           "parameterOrder": [],
           "parameters": {},
@@ -116,7 +113,7 @@
       }
     }
   },
-  "revision": "20210222",
+  "revision": "20210223",
   "rootUrl": "https://chromeuxreport.googleapis.com/",
   "schemas": {
     "Bin": {
@@ -149,17 +146,17 @@
         },
         "formFactor": {
           "description": "The form factor is the device class that all users used to access the site for this record. If the form factor is unspecified, then aggregated data over all form factors will be returned.",
-          "enumDescriptions": [
-            "The default value, representing all device classes.",
-            "The device class representing a \"mobile\"/\"phone\" sized client.",
-            "The device class representing a \"desktop\"/\"laptop\" type full size client.",
-            "The device class representing a \"tablet\" type client."
-          ],
           "enum": [
             "ALL_FORM_FACTORS",
             "PHONE",
             "DESKTOP",
             "TABLET"
+          ],
+          "enumDescriptions": [
+            "The default value, representing all device classes.",
+            "The device class representing a \"mobile\"/\"phone\" sized client.",
+            "The device class representing a \"desktop\"/\"laptop\" type full size client.",
+            "The device class representing a \"tablet\" type client."
           ],
           "type": "string"
         },
@@ -186,8 +183,8 @@
           "type": "array"
         },
         "percentiles": {
-          "description": "Common useful percentiles of the Metric. The value type for the percentiles will be the same as the value types given for the Histogram bins.",
-          "$ref": "Percentiles"
+          "$ref": "Percentiles",
+          "description": "Common useful percentiles of the Metric. The value type for the percentiles will be the same as the value types given for the Histogram bins."
         }
       },
       "type": "object"
@@ -213,17 +210,17 @@
         },
         "formFactor": {
           "description": "The form factor is a query dimension that specifies the device class that the record's data should belong to. Note: If no form factor is specified, then a special record with aggregated data over all form factors will be returned.",
-          "enumDescriptions": [
-            "The default value, representing all device classes.",
-            "The device class representing a \"mobile\"/\"phone\" sized client.",
-            "The device class representing a \"desktop\"/\"laptop\" type full size client.",
-            "The device class representing a \"tablet\" type client."
-          ],
           "enum": [
             "ALL_FORM_FACTORS",
             "PHONE",
             "DESKTOP",
             "TABLET"
+          ],
+          "enumDescriptions": [
+            "The default value, representing all device classes.",
+            "The device class representing a \"mobile\"/\"phone\" sized client.",
+            "The device class representing a \"desktop\"/\"laptop\" type full size client.",
+            "The device class representing a \"tablet\" type client."
           ],
           "type": "string"
         },
@@ -250,12 +247,12 @@
       "id": "QueryResponse",
       "properties": {
         "record": {
-          "description": "The record that was found.",
-          "$ref": "Record"
+          "$ref": "Record",
+          "description": "The record that was found."
         },
         "urlNormalizationDetails": {
-          "description": "These are details about automated normalization actions that were taken in order to make the requested `url_pattern` valid.",
-          "$ref": "UrlNormalization"
+          "$ref": "UrlNormalization",
+          "description": "These are details about automated normalization actions that were taken in order to make the requested `url_pattern` valid."
         }
       },
       "type": "object"
@@ -265,8 +262,8 @@
       "id": "Record",
       "properties": {
         "key": {
-          "description": "Key defines all of the unique querying parameters needed to look up a user experience record.",
-          "$ref": "Key"
+          "$ref": "Key",
+          "description": "Key defines all of the unique querying parameters needed to look up a user experience record."
         },
         "metrics": {
           "additionalProperties": {
@@ -296,6 +293,6 @@
   },
   "servicePath": "",
   "title": "Chrome UX Report API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

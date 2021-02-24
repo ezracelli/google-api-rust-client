@@ -24,22 +24,21 @@
   },
   "id": "youtubereporting:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://youtubereporting.mtls.googleapis.com/",
   "name": "youtubereporting",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -50,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +111,6 @@
         "create": {
           "description": "Creates a job and returns it.",
           "httpMethod": "POST",
-          "flatPath": "v1/jobs",
           "id": "youtubereporting.jobs.create",
           "parameterOrder": [],
           "parameters": {
@@ -137,7 +135,6 @@
         "delete": {
           "description": "Deletes a job.",
           "httpMethod": "DELETE",
-          "flatPath": "v1/jobs/{jobId}",
           "id": "youtubereporting.jobs.delete",
           "parameterOrder": [
             "jobId"
@@ -146,8 +143,8 @@
             "jobId": {
               "description": "The ID of the job to delete.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "onBehalfOfContentOwner": {
               "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
@@ -167,7 +164,6 @@
         "get": {
           "description": "Gets a job.",
           "httpMethod": "GET",
-          "flatPath": "v1/jobs/{jobId}",
           "id": "youtubereporting.jobs.get",
           "parameterOrder": [
             "jobId"
@@ -176,8 +172,8 @@
             "jobId": {
               "description": "The ID of the job to retrieve.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "onBehalfOfContentOwner": {
               "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
@@ -197,7 +193,6 @@
         "list": {
           "description": "Lists jobs.",
           "httpMethod": "GET",
-          "flatPath": "v1/jobs",
           "id": "youtubereporting.jobs.list",
           "parameterOrder": [],
           "parameters": {
@@ -239,7 +234,6 @@
             "get": {
               "description": "Gets the metadata of a specific report.",
               "httpMethod": "GET",
-              "flatPath": "v1/jobs/{jobId}/reports/{reportId}",
               "id": "youtubereporting.jobs.reports.get",
               "parameterOrder": [
                 "jobId",
@@ -249,8 +243,8 @@
                 "jobId": {
                   "description": "The ID of the job.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "onBehalfOfContentOwner": {
                   "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
@@ -260,8 +254,8 @@
                 "reportId": {
                   "description": "The ID of the report to retrieve.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/jobs/{jobId}/reports/{reportId}",
@@ -276,7 +270,6 @@
             "list": {
               "description": "Lists reports created by a specific job. Returns NOT_FOUND if the job does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1/jobs/{jobId}/reports",
               "id": "youtubereporting.jobs.reports.list",
               "parameterOrder": [
                 "jobId"
@@ -291,8 +284,8 @@
                 "jobId": {
                   "description": "The ID of the job.",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "onBehalfOfContentOwner": {
                   "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
@@ -341,7 +334,6 @@
         "download": {
           "description": "Method for media download. Download is supported on the URI `/v1/media/{+name}?alt=media`.",
           "httpMethod": "GET",
-          "flatPath": "v1/media/{mediaId}",
           "id": "youtubereporting.media.download",
           "parameterOrder": [
             "resourceName"
@@ -351,8 +343,8 @@
               "description": "Name of the media that is being downloaded.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/media/{+resourceName}",
@@ -373,7 +365,6 @@
         "list": {
           "description": "Lists report types.",
           "httpMethod": "GET",
-          "flatPath": "v1/reportTypes",
           "id": "youtubereporting.reportTypes.list",
           "parameterOrder": [],
           "parameters": {
@@ -411,7 +402,7 @@
       }
     }
   },
-  "revision": "20210222",
+  "revision": "20210223",
   "rootUrl": "https://youtubereporting.googleapis.com/",
   "schemas": {
     "Empty": {
@@ -460,8 +451,8 @@
           "type": "string"
         },
         "blobstore2Info": {
-          "description": "gdata",
-          "$ref": "GdataBlobstore2Info"
+          "$ref": "GdataBlobstore2Info",
+          "description": "gdata"
         },
         "cosmoBinaryReference": {
           "description": "gdata",
@@ -489,8 +480,8 @@
           "type": "string"
         },
         "objectId": {
-          "description": "gdata",
-          "$ref": "GdataObjectId"
+          "$ref": "GdataObjectId",
+          "description": "gdata"
         },
         "path": {
           "description": "gdata",
@@ -498,19 +489,19 @@
         },
         "referenceType": {
           "description": "gdata",
-          "enumDescriptions": [
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata"
-          ],
           "enum": [
             "PATH",
             "BLOB_REF",
             "INLINE",
             "BIGSTORE_REF",
             "COSMO_BINARY_REFERENCE"
+          ],
+          "enumDescriptions": [
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata"
           ],
           "type": "string"
         },
@@ -554,8 +545,8 @@
       "id": "GdataDiffChecksumsResponse",
       "properties": {
         "checksumsLocation": {
-          "description": "gdata",
-          "$ref": "GdataCompositeMedia"
+          "$ref": "GdataCompositeMedia",
+          "description": "gdata"
         },
         "chunkSizeBytes": {
           "description": "gdata",
@@ -563,8 +554,8 @@
           "type": "string"
         },
         "objectLocation": {
-          "description": "gdata",
-          "$ref": "GdataCompositeMedia"
+          "$ref": "GdataCompositeMedia",
+          "description": "gdata"
         },
         "objectSizeBytes": {
           "description": "gdata",
@@ -583,8 +574,8 @@
       "id": "GdataDiffDownloadResponse",
       "properties": {
         "objectLocation": {
-          "description": "gdata",
-          "$ref": "GdataCompositeMedia"
+          "$ref": "GdataCompositeMedia",
+          "description": "gdata"
         }
       },
       "type": "object"
@@ -594,12 +585,12 @@
       "id": "GdataDiffUploadRequest",
       "properties": {
         "checksumsInfo": {
-          "description": "gdata",
-          "$ref": "GdataCompositeMedia"
+          "$ref": "GdataCompositeMedia",
+          "description": "gdata"
         },
         "objectInfo": {
-          "description": "gdata",
-          "$ref": "GdataCompositeMedia"
+          "$ref": "GdataCompositeMedia",
+          "description": "gdata"
         },
         "objectVersion": {
           "description": "gdata",
@@ -617,8 +608,8 @@
           "type": "string"
         },
         "originalObject": {
-          "description": "gdata",
-          "$ref": "GdataCompositeMedia"
+          "$ref": "GdataCompositeMedia",
+          "description": "gdata"
         }
       },
       "type": "object"
@@ -673,8 +664,8 @@
           "type": "string"
         },
         "blobstore2Info": {
-          "description": "gdata",
-          "$ref": "GdataBlobstore2Info"
+          "$ref": "GdataBlobstore2Info",
+          "description": "gdata"
         },
         "compositeMedia": {
           "description": "gdata",
@@ -688,8 +679,8 @@
           "type": "string"
         },
         "contentTypeInfo": {
-          "description": "gdata",
-          "$ref": "GdataContentTypeInfo"
+          "$ref": "GdataContentTypeInfo",
+          "description": "gdata"
         },
         "cosmoBinaryReference": {
           "description": "gdata",
@@ -702,28 +693,28 @@
           "type": "integer"
         },
         "diffChecksumsResponse": {
-          "description": "gdata",
-          "$ref": "GdataDiffChecksumsResponse"
+          "$ref": "GdataDiffChecksumsResponse",
+          "description": "gdata"
         },
         "diffDownloadResponse": {
-          "description": "gdata",
-          "$ref": "GdataDiffDownloadResponse"
+          "$ref": "GdataDiffDownloadResponse",
+          "description": "gdata"
         },
         "diffUploadRequest": {
-          "description": "gdata",
-          "$ref": "GdataDiffUploadRequest"
+          "$ref": "GdataDiffUploadRequest",
+          "description": "gdata"
         },
         "diffUploadResponse": {
-          "description": "gdata",
-          "$ref": "GdataDiffUploadResponse"
+          "$ref": "GdataDiffUploadResponse",
+          "description": "gdata"
         },
         "diffVersionResponse": {
-          "description": "gdata",
-          "$ref": "GdataDiffVersionResponse"
+          "$ref": "GdataDiffVersionResponse",
+          "description": "gdata"
         },
         "downloadParameters": {
-          "description": "gdata",
-          "$ref": "GdataDownloadParameters"
+          "$ref": "GdataDownloadParameters",
+          "description": "gdata"
         },
         "filename": {
           "description": "gdata",
@@ -762,8 +753,8 @@
           "type": "string"
         },
         "objectId": {
-          "description": "gdata",
-          "$ref": "GdataObjectId"
+          "$ref": "GdataObjectId",
+          "description": "gdata"
         },
         "path": {
           "description": "gdata",
@@ -771,21 +762,6 @@
         },
         "referenceType": {
           "description": "gdata",
-          "enumDescriptions": [
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata"
-          ],
           "enum": [
             "PATH",
             "BLOB_REF",
@@ -800,6 +776,21 @@
             "DIFF_UPLOAD_RESPONSE",
             "COSMO_BINARY_REFERENCE",
             "ARBITRARY_BYTES"
+          ],
+          "enumDescriptions": [
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata"
           ],
           "type": "string"
         },

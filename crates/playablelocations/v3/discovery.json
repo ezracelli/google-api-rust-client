@@ -6,29 +6,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/maps/contact-sales/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "playablelocations:v3",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://playablelocations.mtls.googleapis.com/",
   "name": "playablelocations",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -39,17 +37,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -101,7 +99,6 @@
         "logImpressions": {
           "description": "Logs new events when playable locations are displayed, and when they are interacted with. Impressions are not partially saved; either all impressions are saved and this request succeeds, or no impressions are saved, and this request fails.",
           "httpMethod": "POST",
-          "flatPath": "v3:logImpressions",
           "id": "playablelocations.logImpressions",
           "parameterOrder": [],
           "parameters": {},
@@ -116,7 +113,6 @@
         "logPlayerReports": {
           "description": "Logs bad playable location reports submitted by players. Reports are not partially saved; either all reports are saved and this request succeeds, or no reports are saved, and this request fails.",
           "httpMethod": "POST",
-          "flatPath": "v3:logPlayerReports",
           "id": "playablelocations.logPlayerReports",
           "parameterOrder": [],
           "parameters": {},
@@ -131,7 +127,6 @@
         "samplePlayableLocations": {
           "description": "Returns a set of playable locations that lie within a specified area, that satisfy optional filter criteria. Note: Identical `SamplePlayableLocations` requests can return different results as the state of the world changes over time.",
           "httpMethod": "POST",
-          "flatPath": "v3:samplePlayableLocations",
           "id": "playablelocations.samplePlayableLocations",
           "parameterOrder": [],
           "parameters": {},
@@ -160,15 +155,15 @@
         },
         "impressionType": {
           "description": "Required. The type of impression event.",
-          "enumDescriptions": [
-            "Unspecified type. Do not use.",
-            "The playable location was presented to a player.",
-            "A player interacted with the playable location."
-          ],
           "enum": [
             "IMPRESSION_TYPE_UNSPECIFIED",
             "PRESENTED",
             "INTERACTED"
+          ],
+          "enumDescriptions": [
+            "Unspecified type. Do not use.",
+            "The playable location was presented to a player.",
+            "A player interacted with the playable location."
           ],
           "type": "string"
         },
@@ -184,8 +179,8 @@
       "id": "GoogleMapsPlayablelocationsV3LogImpressionsRequest",
       "properties": {
         "clientInfo": {
-          "description": "Required. Information about the client device. For example, device model and operating system.",
-          "$ref": "GoogleMapsUnityClientInfo"
+          "$ref": "GoogleMapsUnityClientInfo",
+          "description": "Required. Information about the client device. For example, device model and operating system."
         },
         "impressions": {
           "description": "Required. Impression event details. The maximum number of impression reports that you can log at once is 50.",
@@ -212,8 +207,8 @@
       "id": "GoogleMapsPlayablelocationsV3LogPlayerReportsRequest",
       "properties": {
         "clientInfo": {
-          "description": "Required. Information about the client device (for example, device model and operating system).",
-          "$ref": "GoogleMapsUnityClientInfo"
+          "$ref": "GoogleMapsUnityClientInfo",
+          "description": "Required. Information about the client device (for example, device model and operating system)."
         },
         "playerReports": {
           "description": "Required. Player reports. The maximum number of player reports that you can log at once is 50.",
@@ -254,14 +249,6 @@
         "reasons": {
           "description": "Required. One or more reasons why this playable location is considered bad.",
           "items": {
-            "enumDescriptions": [
-              "Unspecified reason. Do not use.",
-              "The reason isn't one of the reasons in this enumeration.",
-              "The playable location isn't accessible to pedestrians. For example, if it's in the middle of a highway.",
-              "The playable location isn't open to the public. For example, a private office building.",
-              "The playable location is permanently closed. For example, when a business has been shut down.",
-              "The playable location is temporarily inaccessible. For example, when a business has closed for renovations."
-            ],
             "enum": [
               "BAD_LOCATION_REASON_UNSPECIFIED",
               "OTHER",
@@ -269,6 +256,14 @@
               "NOT_OPEN_TO_PUBLIC",
               "PERMANENTLY_CLOSED",
               "TEMPORARILY_INACCESSIBLE"
+            ],
+            "enumDescriptions": [
+              "Unspecified reason. Do not use.",
+              "The reason isn't one of the reasons in this enumeration.",
+              "The playable location isn't accessible to pedestrians. For example, if it's in the middle of a highway.",
+              "The playable location isn't open to the public. For example, a private office building.",
+              "The playable location is permanently closed. For example, when a business has been shut down.",
+              "The playable location is temporarily inaccessible. For example, when a business has closed for renovations."
             ],
             "type": "string"
           },
@@ -299,8 +294,8 @@
           "type": "string"
         },
         "filter": {
-          "description": "Specifies filtering options, and specifies what will be included in the result set.",
-          "$ref": "GoogleMapsPlayablelocationsV3SampleFilter"
+          "$ref": "GoogleMapsPlayablelocationsV3SampleFilter",
+          "description": "Specifies filtering options, and specifies what will be included in the result set."
         },
         "gameObjectType": {
           "description": "Required. An arbitrary, developer-defined identifier of the type of game object that the playable location is used for. This field allows you to specify criteria per game object type when searching for playable locations. You should assign a unique `game_object_type` ID across all `request_criteria` to represent a distinct type of game object. For example, 1=monster location, 2=powerup location. The response contains a map.",
@@ -327,8 +322,8 @@
           "type": "integer"
         },
         "spacing": {
-          "description": "A set of options that control the spacing between playable locations. By default the minimum distance between locations is 200m.",
-          "$ref": "GoogleMapsPlayablelocationsV3SampleSpacingOptions"
+          "$ref": "GoogleMapsPlayablelocationsV3SampleSpacingOptions",
+          "description": "A set of options that control the spacing between playable locations. By default the minimum distance between locations is 200m."
         }
       },
       "type": "object"
@@ -338,8 +333,8 @@
       "id": "GoogleMapsPlayablelocationsV3SamplePlayableLocation",
       "properties": {
         "centerPoint": {
-          "description": "Required. The latitude and longitude associated with the center of the playable location. By default, the set of playable locations returned from SamplePlayableLocations use center-point coordinates.",
-          "$ref": "GoogleTypeLatLng"
+          "$ref": "GoogleTypeLatLng",
+          "description": "Required. The latitude and longitude associated with the center of the playable location. By default, the set of playable locations returned from SamplePlayableLocations use center-point coordinates."
         },
         "name": {
           "description": "Required. The name of this playable location.",
@@ -354,8 +349,8 @@
           "type": "string"
         },
         "snappedPoint": {
-          "description": "The playable location's coordinates, snapped to the sidewalk of the nearest road, if a nearby road exists.",
-          "$ref": "GoogleTypeLatLng"
+          "$ref": "GoogleTypeLatLng",
+          "description": "The playable location's coordinates, snapped to the sidewalk of the nearest road, if a nearby road exists."
         },
         "types": {
           "description": "A collection of [Playable Location Types](/maps/documentation/gaming/tt/types) for this playable location. The first type in the collection is the primary type. Type information might not be available for all playable locations.",
@@ -386,8 +381,8 @@
       "id": "GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest",
       "properties": {
         "areaFilter": {
-          "description": "Required. Specifies the area to search within for playable locations.",
-          "$ref": "GoogleMapsPlayablelocationsV3SampleAreaFilter"
+          "$ref": "GoogleMapsPlayablelocationsV3SampleAreaFilter",
+          "description": "Required. Specifies the area to search within for playable locations."
         },
         "criteria": {
           "description": "Required. Specifies one or more (up to 5) criteria for filtering the returned playable locations.",
@@ -429,15 +424,15 @@
         },
         "pointType": {
           "description": "Specifies whether the minimum spacing constraint applies to the center-point or to the snapped point of playable locations. The default value is `CENTER_POINT`. If a snapped point is not available for a playable location, its center-point is used instead. Set this to the point type used in your game.",
-          "enumDescriptions": [
-            "Unspecified point type. Do not use this value.",
-            "The geographic coordinates correspond to the center of the location.",
-            "The geographic coordinates correspond to the location snapped to the sidewalk of the nearest road (when a nearby road exists)."
-          ],
           "enum": [
             "POINT_TYPE_UNSPECIFIED",
             "CENTER_POINT",
             "SNAPPED_POINT"
+          ],
+          "enumDescriptions": [
+            "Unspecified point type. Do not use this value.",
+            "The geographic coordinates correspond to the center of the location.",
+            "The geographic coordinates correspond to the location snapped to the sidewalk of the nearest road (when a nearby road exists)."
           ],
           "type": "string"
         }
@@ -478,16 +473,6 @@
         },
         "platform": {
           "description": "Platform where the application is running.",
-          "enumDescriptions": [
-            "Unspecified or unknown OS.",
-            "Development environment.",
-            "macOS.",
-            "Windows.",
-            "Linux",
-            "Android",
-            "iOS",
-            "WebGL."
-          ],
           "enum": [
             "PLATFORM_UNSPECIFIED",
             "EDITOR",
@@ -497,6 +482,16 @@
             "ANDROID",
             "IOS",
             "WEB_GL"
+          ],
+          "enumDescriptions": [
+            "Unspecified or unknown OS.",
+            "Development environment.",
+            "macOS.",
+            "Windows.",
+            "Linux",
+            "Android",
+            "iOS",
+            "WebGL."
           ],
           "type": "string"
         }
@@ -523,6 +518,6 @@
   },
   "servicePath": "",
   "title": "Playable Locations API",
-  "version_module": true,
-  "version": "v3"
+  "version": "v3",
+  "version_module": true
 }

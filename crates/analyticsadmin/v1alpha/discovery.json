@@ -24,29 +24,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "http://code.google.com/apis/analytics/docs/mgmt/home.html",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "analyticsadmin:v1alpha",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://analyticsadmin.mtls.googleapis.com/",
   "name": "analyticsadmin",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -57,17 +55,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -119,7 +117,6 @@
         "list": {
           "description": "Returns summaries of all accounts accessible by the caller.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha/accountSummaries",
           "id": "analyticsadmin.accountSummaries.list",
           "parameterOrder": [],
           "parameters": {
@@ -151,7 +148,6 @@
         "delete": {
           "description": "Marks target Account as soft-deleted (ie: \"trashed\") and returns it. This API does not have a method to restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks, Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found.",
           "httpMethod": "DELETE",
-          "flatPath": "v1alpha/accounts/{accountsId}",
           "id": "analyticsadmin.accounts.delete",
           "parameterOrder": [
             "name"
@@ -161,8 +157,8 @@
               "description": "Required. The name of the Account to soft-delete. Format: accounts/{account} Example: \"accounts/100\"",
               "location": "path",
               "pattern": "^accounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha/{+name}",
@@ -176,7 +172,6 @@
         "get": {
           "description": "Lookup for a single Account.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha/accounts/{accountsId}",
           "id": "analyticsadmin.accounts.get",
           "parameterOrder": [
             "name"
@@ -186,8 +181,8 @@
               "description": "Required. The name of the account to lookup. Format: accounts/{account} Example: \"accounts/100\"",
               "location": "path",
               "pattern": "^accounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha/{+name}",
@@ -202,7 +197,6 @@
         "getDataSharingSettings": {
           "description": "Get data sharing settings on an account. Data sharing settings are singletons.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha/accounts/{accountsId}/dataSharingSettings",
           "id": "analyticsadmin.accounts.getDataSharingSettings",
           "parameterOrder": [
             "name"
@@ -212,8 +206,8 @@
               "description": "Required. The name of the settings to lookup. Format: accounts/{account}/dataSharingSettings Example: \"accounts/1000/dataSharingSettings\"",
               "location": "path",
               "pattern": "^accounts/[^/]+/dataSharingSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha/{+name}",
@@ -228,7 +222,6 @@
         "list": {
           "description": "Returns all accounts accessible by the caller. Note that these accounts might not currently have GA4 properties. Soft-deleted (ie: \"trashed\") accounts are excluded by default. Returns an empty list if no relevant accounts are found.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha/accounts",
           "id": "analyticsadmin.accounts.list",
           "parameterOrder": [],
           "parameters": {
@@ -261,7 +254,6 @@
         "patch": {
           "description": "Updates an account.",
           "httpMethod": "PATCH",
-          "flatPath": "v1alpha/accounts/{accountsId}",
           "id": "analyticsadmin.accounts.patch",
           "parameterOrder": [
             "name"
@@ -271,8 +263,8 @@
               "description": "Output only. Resource name of this account. Format: accounts/{account} Example: \"accounts/100\"",
               "location": "path",
               "pattern": "^accounts/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "Required. The list of fields to be updated. Field names must be in snake case (e.g., \"field_to_update\"). Omitted fields will not be updated. To replace the entire entity, use one path with the string \"*\" to match all fields.",
@@ -295,7 +287,6 @@
         "provisionAccountTicket": {
           "description": "Requests a ticket for creating an account.",
           "httpMethod": "POST",
-          "flatPath": "v1alpha/accounts:provisionAccountTicket",
           "id": "analyticsadmin.accounts.provisionAccountTicket",
           "parameterOrder": [],
           "parameters": {},
@@ -317,7 +308,6 @@
             "audit": {
               "description": "Lists all user links on an account or property, including implicit ones that come from effective permissions granted by groups or organization admin roles. If a returned user link does not have direct permissions, they cannot be removed from the account or property directly with the DeleteUserLink command. They have to be removed from the group/etc that gives them permissions, which is currently only usable/discoverable in the GA or GMP UIs.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks:audit",
               "id": "analyticsadmin.accounts.userLinks.audit",
               "parameterOrder": [
                 "parent"
@@ -327,8 +317,8 @@
                   "description": "Required. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:audit",
@@ -346,7 +336,6 @@
             "batchCreate": {
               "description": "Creates information about multiple users' links to an account or property. This method is transactional. If any UserLink cannot be created, none of the UserLinks will be created.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks:batchCreate",
               "id": "analyticsadmin.accounts.userLinks.batchCreate",
               "parameterOrder": [
                 "parent"
@@ -356,8 +345,8 @@
                   "description": "Required. The account or property that all user links in the request are for. This field is required. The parent field in the CreateUserLinkRequest messages must either be empty or match this field. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:batchCreate",
@@ -374,7 +363,6 @@
             "batchDelete": {
               "description": "Deletes information about multiple users' links to an account or property.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks:batchDelete",
               "id": "analyticsadmin.accounts.userLinks.batchDelete",
               "parameterOrder": [
                 "parent"
@@ -384,8 +372,8 @@
                   "description": "Required. The account or property that all user links in the request are for. The parent of all values for user link names to delete must match this field. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:batchDelete",
@@ -402,7 +390,6 @@
             "batchGet": {
               "description": "Gets information about multiple users' links to an account or property.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks:batchGet",
               "id": "analyticsadmin.accounts.userLinks.batchGet",
               "parameterOrder": [
                 "parent"
@@ -411,15 +398,15 @@
                 "names": {
                   "description": "Required. The names of the user links to retrieve. A maximum of 1000 user links can be retrieved in a batch. Format: accounts/{accountId}/userLinks/{userLinkId}",
                   "location": "query",
-                  "type": "string",
-                  "repeated": true
+                  "repeated": true,
+                  "type": "string"
                 },
                 "parent": {
                   "description": "Required. The account or property that all user links in the request are for. The parent of all provided values for the 'names' field must match this field. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:batchGet",
@@ -434,7 +421,6 @@
             "batchUpdate": {
               "description": "Updates information about multiple users' links to an account or property.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks:batchUpdate",
               "id": "analyticsadmin.accounts.userLinks.batchUpdate",
               "parameterOrder": [
                 "parent"
@@ -444,8 +430,8 @@
                   "description": "Required. The account or property that all user links in the request are for. The parent field in the UpdateUserLinkRequest messages must either be empty or match this field. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:batchUpdate",
@@ -462,7 +448,6 @@
             "create": {
               "description": "Creates a user link on an account or property. If the user with the specified email already has permissions on the account or property, then the user's existing permissions will be unioned with the permissions specified in the new UserLink.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks",
               "id": "analyticsadmin.accounts.userLinks.create",
               "parameterOrder": [
                 "parent"
@@ -477,8 +462,8 @@
                   "description": "Required. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks",
@@ -495,7 +480,6 @@
             "delete": {
               "description": "Deletes a user link on an account or property.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks/{userLinksId}",
               "id": "analyticsadmin.accounts.userLinks.delete",
               "parameterOrder": [
                 "name"
@@ -505,8 +489,8 @@
                   "description": "Required. Example format: accounts/1234/userLinks/5678",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/userLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -520,7 +504,6 @@
             "get": {
               "description": "Gets information about a user's link to an account or property.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks/{userLinksId}",
               "id": "analyticsadmin.accounts.userLinks.get",
               "parameterOrder": [
                 "name"
@@ -530,8 +513,8 @@
                   "description": "Required. Example format: accounts/1234/userLinks/5678",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/userLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -546,7 +529,6 @@
             "list": {
               "description": "Lists all user links on an account or property.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks",
               "id": "analyticsadmin.accounts.userLinks.list",
               "parameterOrder": [
                 "parent"
@@ -567,8 +549,8 @@
                   "description": "Required. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks",
@@ -583,7 +565,6 @@
             "patch": {
               "description": "Updates a user link on an account or property.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/accounts/{accountsId}/userLinks/{userLinksId}",
               "id": "analyticsadmin.accounts.userLinks.patch",
               "parameterOrder": [
                 "name"
@@ -593,8 +574,8 @@
                   "description": "Example format: properties/1234/userLinks/5678",
                   "location": "path",
                   "pattern": "^accounts/[^/]+/userLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -617,7 +598,6 @@
         "create": {
           "description": "Creates an \"GA4\" property with the specified location and attributes.",
           "httpMethod": "POST",
-          "flatPath": "v1alpha/properties",
           "id": "analyticsadmin.properties.create",
           "parameterOrder": [],
           "parameters": {},
@@ -635,7 +615,6 @@
         "delete": {
           "description": "Marks target Property as soft-deleted (ie: \"trashed\") and returns it. This API does not have a method to restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found, or is not an GA4 Property.",
           "httpMethod": "DELETE",
-          "flatPath": "v1alpha/properties/{propertiesId}",
           "id": "analyticsadmin.properties.delete",
           "parameterOrder": [
             "name"
@@ -645,8 +624,8 @@
               "description": "Required. The name of the Property to soft-delete. Format: properties/{property_id} Example: \"properties/1000\"",
               "location": "path",
               "pattern": "^properties/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha/{+name}",
@@ -660,7 +639,6 @@
         "get": {
           "description": "Lookup for a single \"GA4\" Property.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha/properties/{propertiesId}",
           "id": "analyticsadmin.properties.get",
           "parameterOrder": [
             "name"
@@ -670,8 +648,8 @@
               "description": "Required. The name of the property to lookup. Format: properties/{property_id} Example: \"properties/1000\"",
               "location": "path",
               "pattern": "^properties/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1alpha/{+name}",
@@ -686,7 +664,6 @@
         "list": {
           "description": "Returns child Properties under the specified parent Account. Only \"GA4\" properties will be returned. Properties will be excluded if the caller does not have access. Soft-deleted (ie: \"trashed\") properties are excluded by default. Returns an empty list if no relevant properties are found.",
           "httpMethod": "GET",
-          "flatPath": "v1alpha/properties",
           "id": "analyticsadmin.properties.list",
           "parameterOrder": [],
           "parameters": {
@@ -724,7 +701,6 @@
         "patch": {
           "description": "Updates a property.",
           "httpMethod": "PATCH",
-          "flatPath": "v1alpha/properties/{propertiesId}",
           "id": "analyticsadmin.properties.patch",
           "parameterOrder": [
             "name"
@@ -734,8 +710,8 @@
               "description": "Output only. Resource name of this property. Format: properties/{property_id} Example: \"properties/1000\"",
               "location": "path",
               "pattern": "^properties/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "Required. The list of fields to be updated. Field names must be in snake case (e.g., \"field_to_update\"). Omitted fields will not be updated. To replace the entire entity, use one path with the string \"*\" to match all fields.",
@@ -762,7 +738,6 @@
             "create": {
               "description": "Creates an Android app stream with the specified location and attributes. Note that an Android app stream must be linked to a Firebase app to receive traffic. To create a working app stream, make sure your property is linked to a Firebase project. Then, use the Firebase API to create a Firebase app, which will also create an appropriate data stream in Analytics (may take up to 24 hours).",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams",
               "id": "analyticsadmin.properties.androidAppDataStreams.create",
               "parameterOrder": [
                 "parent"
@@ -772,8 +747,8 @@
                   "description": "Required. The parent resource where this android app data stream will be created. Format: properties/123",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/androidAppDataStreams",
@@ -790,7 +765,6 @@
             "delete": {
               "description": "Deletes an android app stream on a property.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}",
               "id": "analyticsadmin.properties.androidAppDataStreams.delete",
               "parameterOrder": [
                 "name"
@@ -800,8 +774,8 @@
                   "description": "Required. The name of the android app data stream to delete. Format: properties/{property_id}/androidAppDataStreams/{stream_id} Example: \"properties/123/androidAppDataStreams/456\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/androidAppDataStreams/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -815,7 +789,6 @@
             "get": {
               "description": "Lookup for a single AndroidAppDataStream",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}",
               "id": "analyticsadmin.properties.androidAppDataStreams.get",
               "parameterOrder": [
                 "name"
@@ -825,8 +798,8 @@
                   "description": "Required. The name of the android app data stream to lookup. Format: properties/{property_id}/androidAppDataStreams/{stream_id} Example: \"properties/123/androidAppDataStreams/456\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/androidAppDataStreams/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -841,7 +814,6 @@
             "list": {
               "description": "Returns child android app streams under the specified parent property. Android app streams will be excluded if the caller does not have access. Returns an empty list if no relevant android app streams are found.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams",
               "id": "analyticsadmin.properties.androidAppDataStreams.list",
               "parameterOrder": [
                 "parent"
@@ -862,8 +834,8 @@
                   "description": "Required. The name of the parent property. For example, to limit results to app streams under the property with Id 123: \"properties/123\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/androidAppDataStreams",
@@ -878,7 +850,6 @@
             "patch": {
               "description": "Updates an android app stream on a property.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/properties/{propertiesId}/androidAppDataStreams/{androidAppDataStreamsId}",
               "id": "analyticsadmin.properties.androidAppDataStreams.patch",
               "parameterOrder": [
                 "name"
@@ -888,8 +859,8 @@
                   "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/androidAppDataStreams/{stream_id} Example: \"properties/1000/androidAppDataStreams/2000\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/androidAppDataStreams/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. The list of fields to be updated. Field names must be in snake case (e.g., \"field_to_update\"). Omitted fields will not be updated. To replace the entire entity, use one path with the string \"*\" to match all fields.",
@@ -916,7 +887,6 @@
             "create": {
               "description": "Creates a FirebaseLink. Properties can have at most one FirebaseLink.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/firebaseLinks",
               "id": "analyticsadmin.properties.firebaseLinks.create",
               "parameterOrder": [
                 "parent"
@@ -926,8 +896,8 @@
                   "description": "Required. Format: properties/{property_id} Example: properties/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/firebaseLinks",
@@ -944,7 +914,6 @@
             "delete": {
               "description": "Deletes a FirebaseLink on a property",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/properties/{propertiesId}/firebaseLinks/{firebaseLinksId}",
               "id": "analyticsadmin.properties.firebaseLinks.delete",
               "parameterOrder": [
                 "name"
@@ -954,8 +923,8 @@
                   "description": "Required. Format: properties/{property_id}/firebaseLinks/{firebase_link_id} Example: properties/1234/firebaseLinks/5678",
                   "location": "path",
                   "pattern": "^properties/[^/]+/firebaseLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -969,7 +938,6 @@
             "list": {
               "description": "Lists FirebaseLinks on a property. Properties can have at most one FirebaseLink.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/firebaseLinks",
               "id": "analyticsadmin.properties.firebaseLinks.list",
               "parameterOrder": [
                 "parent"
@@ -990,8 +958,8 @@
                   "description": "Required. Format: properties/{property_id} Example: properties/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/firebaseLinks",
@@ -1006,7 +974,6 @@
             "patch": {
               "description": "Updates a FirebaseLink on a property",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/properties/{propertiesId}/firebaseLinks/{firebaseLinksId}",
               "id": "analyticsadmin.properties.firebaseLinks.patch",
               "parameterOrder": [
                 "name"
@@ -1016,8 +983,8 @@
                   "description": "Output only. Example format: properties/1234/firebaseLinks/5678",
                   "location": "path",
                   "pattern": "^properties/[^/]+/firebaseLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. The list of fields to be updated. Field names must be in snake case (e.g., \"field_to_update\"). Omitted fields will not be updated. To replace the entire entity, use one path with the string \"*\" to match all fields.",
@@ -1044,7 +1011,6 @@
             "create": {
               "description": "Creates a GoogleAdsLink.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/googleAdsLinks",
               "id": "analyticsadmin.properties.googleAdsLinks.create",
               "parameterOrder": [
                 "parent"
@@ -1054,8 +1020,8 @@
                   "description": "Required. Example format: properties/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/googleAdsLinks",
@@ -1072,7 +1038,6 @@
             "delete": {
               "description": "Deletes a GoogleAdsLink on a property",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/properties/{propertiesId}/googleAdsLinks/{googleAdsLinksId}",
               "id": "analyticsadmin.properties.googleAdsLinks.delete",
               "parameterOrder": [
                 "name"
@@ -1082,8 +1047,8 @@
                   "description": "Required. Example format: properties/1234/googleAdsLinks/5678",
                   "location": "path",
                   "pattern": "^properties/[^/]+/googleAdsLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1097,7 +1062,6 @@
             "list": {
               "description": "Lists GoogleAdsLinks on a property.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/googleAdsLinks",
               "id": "analyticsadmin.properties.googleAdsLinks.list",
               "parameterOrder": [
                 "parent"
@@ -1118,8 +1082,8 @@
                   "description": "Required. Example format: properties/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/googleAdsLinks",
@@ -1134,7 +1098,6 @@
             "patch": {
               "description": "Updates a GoogleAdsLink on a property",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/properties/{propertiesId}/googleAdsLinks/{googleAdsLinksId}",
               "id": "analyticsadmin.properties.googleAdsLinks.patch",
               "parameterOrder": [
                 "name"
@@ -1144,8 +1107,8 @@
                   "description": "Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID.",
                   "location": "path",
                   "pattern": "^properties/[^/]+/googleAdsLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. The list of fields to be updated. Field names must be in snake case (e.g., \"field_to_update\"). Omitted fields will not be updated. To replace the entire entity, use one path with the string \"*\" to match all fields.",
@@ -1172,7 +1135,6 @@
             "create": {
               "description": "Creates an iOS app stream with the specified location and attributes. Note that an iOS app stream must be linked to a Firebase app to receive traffic. To create a working app stream, make sure your property is linked to a Firebase project. Then, use the Firebase API to create a Firebase app, which will also create an appropriate data stream in Analytics (may take up to 24 hours).",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams",
               "id": "analyticsadmin.properties.iosAppDataStreams.create",
               "parameterOrder": [
                 "parent"
@@ -1182,8 +1144,8 @@
                   "description": "Required. The parent resource where this ios app data stream will be created. Format: properties/123",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/iosAppDataStreams",
@@ -1200,7 +1162,6 @@
             "delete": {
               "description": "Deletes an iOS app stream on a property.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}",
               "id": "analyticsadmin.properties.iosAppDataStreams.delete",
               "parameterOrder": [
                 "name"
@@ -1210,8 +1171,8 @@
                   "description": "Required. The name of the iOS app data stream to delete. Format: properties/{property_id}/iosAppDataStreams/{stream_id} Example: \"properties/123/iosAppDataStreams/456\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/iosAppDataStreams/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1225,7 +1186,6 @@
             "get": {
               "description": "Lookup for a single IosAppDataStream",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}",
               "id": "analyticsadmin.properties.iosAppDataStreams.get",
               "parameterOrder": [
                 "name"
@@ -1235,8 +1195,8 @@
                   "description": "Required. The name of the iOS app data stream to lookup. Format: properties/{property_id}/iosAppDataStreams/{stream_id} Example: \"properties/123/iosAppDataStreams/456\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/iosAppDataStreams/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1251,7 +1211,6 @@
             "list": {
               "description": "Returns child iOS app data streams under the specified parent property. iOS app data streams will be excluded if the caller does not have access. Returns an empty list if no relevant iOS app data streams are found.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams",
               "id": "analyticsadmin.properties.iosAppDataStreams.list",
               "parameterOrder": [
                 "parent"
@@ -1272,8 +1231,8 @@
                   "description": "Required. The name of the parent property. For example, to list results of app streams under the property with Id 123: \"properties/123\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/iosAppDataStreams",
@@ -1288,7 +1247,6 @@
             "patch": {
               "description": "Updates an iOS app stream on a property.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/properties/{propertiesId}/iosAppDataStreams/{iosAppDataStreamsId}",
               "id": "analyticsadmin.properties.iosAppDataStreams.patch",
               "parameterOrder": [
                 "name"
@@ -1298,8 +1256,8 @@
                   "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/iosAppDataStreams/{stream_id} Example: \"properties/1000/iosAppDataStreams/2000\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/iosAppDataStreams/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. The list of fields to be updated. Field names must be in snake case (e.g., \"field_to_update\"). Omitted fields will not be updated. To replace the entire entity, use one path with the string \"*\" to match all fields.",
@@ -1326,7 +1284,6 @@
             "audit": {
               "description": "Lists all user links on an account or property, including implicit ones that come from effective permissions granted by groups or organization admin roles. If a returned user link does not have direct permissions, they cannot be removed from the account or property directly with the DeleteUserLink command. They have to be removed from the group/etc that gives them permissions, which is currently only usable/discoverable in the GA or GMP UIs.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks:audit",
               "id": "analyticsadmin.properties.userLinks.audit",
               "parameterOrder": [
                 "parent"
@@ -1336,8 +1293,8 @@
                   "description": "Required. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:audit",
@@ -1355,7 +1312,6 @@
             "batchCreate": {
               "description": "Creates information about multiple users' links to an account or property. This method is transactional. If any UserLink cannot be created, none of the UserLinks will be created.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks:batchCreate",
               "id": "analyticsadmin.properties.userLinks.batchCreate",
               "parameterOrder": [
                 "parent"
@@ -1365,8 +1321,8 @@
                   "description": "Required. The account or property that all user links in the request are for. This field is required. The parent field in the CreateUserLinkRequest messages must either be empty or match this field. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:batchCreate",
@@ -1383,7 +1339,6 @@
             "batchDelete": {
               "description": "Deletes information about multiple users' links to an account or property.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks:batchDelete",
               "id": "analyticsadmin.properties.userLinks.batchDelete",
               "parameterOrder": [
                 "parent"
@@ -1393,8 +1348,8 @@
                   "description": "Required. The account or property that all user links in the request are for. The parent of all values for user link names to delete must match this field. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:batchDelete",
@@ -1411,7 +1366,6 @@
             "batchGet": {
               "description": "Gets information about multiple users' links to an account or property.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks:batchGet",
               "id": "analyticsadmin.properties.userLinks.batchGet",
               "parameterOrder": [
                 "parent"
@@ -1420,15 +1374,15 @@
                 "names": {
                   "description": "Required. The names of the user links to retrieve. A maximum of 1000 user links can be retrieved in a batch. Format: accounts/{accountId}/userLinks/{userLinkId}",
                   "location": "query",
-                  "type": "string",
-                  "repeated": true
+                  "repeated": true,
+                  "type": "string"
                 },
                 "parent": {
                   "description": "Required. The account or property that all user links in the request are for. The parent of all provided values for the 'names' field must match this field. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:batchGet",
@@ -1443,7 +1397,6 @@
             "batchUpdate": {
               "description": "Updates information about multiple users' links to an account or property.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks:batchUpdate",
               "id": "analyticsadmin.properties.userLinks.batchUpdate",
               "parameterOrder": [
                 "parent"
@@ -1453,8 +1406,8 @@
                   "description": "Required. The account or property that all user links in the request are for. The parent field in the UpdateUserLinkRequest messages must either be empty or match this field. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks:batchUpdate",
@@ -1471,7 +1424,6 @@
             "create": {
               "description": "Creates a user link on an account or property. If the user with the specified email already has permissions on the account or property, then the user's existing permissions will be unioned with the permissions specified in the new UserLink.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks",
               "id": "analyticsadmin.properties.userLinks.create",
               "parameterOrder": [
                 "parent"
@@ -1486,8 +1438,8 @@
                   "description": "Required. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks",
@@ -1504,7 +1456,6 @@
             "delete": {
               "description": "Deletes a user link on an account or property.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks/{userLinksId}",
               "id": "analyticsadmin.properties.userLinks.delete",
               "parameterOrder": [
                 "name"
@@ -1514,8 +1465,8 @@
                   "description": "Required. Example format: accounts/1234/userLinks/5678",
                   "location": "path",
                   "pattern": "^properties/[^/]+/userLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1529,7 +1480,6 @@
             "get": {
               "description": "Gets information about a user's link to an account or property.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks/{userLinksId}",
               "id": "analyticsadmin.properties.userLinks.get",
               "parameterOrder": [
                 "name"
@@ -1539,8 +1489,8 @@
                   "description": "Required. Example format: accounts/1234/userLinks/5678",
                   "location": "path",
                   "pattern": "^properties/[^/]+/userLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1555,7 +1505,6 @@
             "list": {
               "description": "Lists all user links on an account or property.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks",
               "id": "analyticsadmin.properties.userLinks.list",
               "parameterOrder": [
                 "parent"
@@ -1576,8 +1525,8 @@
                   "description": "Required. Example format: accounts/1234",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/userLinks",
@@ -1592,7 +1541,6 @@
             "patch": {
               "description": "Updates a user link on an account or property.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/properties/{propertiesId}/userLinks/{userLinksId}",
               "id": "analyticsadmin.properties.userLinks.patch",
               "parameterOrder": [
                 "name"
@@ -1602,8 +1550,8 @@
                   "description": "Example format: properties/1234/userLinks/5678",
                   "location": "path",
                   "pattern": "^properties/[^/]+/userLinks/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1624,7 +1572,6 @@
             "create": {
               "description": "Creates a web stream with the specified location and attributes.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams",
               "id": "analyticsadmin.properties.webDataStreams.create",
               "parameterOrder": [
                 "parent"
@@ -1634,8 +1581,8 @@
                   "description": "Required. The parent resource where this web data stream will be created. Format: properties/123",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/webDataStreams",
@@ -1652,7 +1599,6 @@
             "delete": {
               "description": "Deletes a web stream on a property.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}",
               "id": "analyticsadmin.properties.webDataStreams.delete",
               "parameterOrder": [
                 "name"
@@ -1662,8 +1608,8 @@
                   "description": "Required. The name of the web data stream to delete. Format: properties/{property_id}/webDataStreams/{stream_id} Example: \"properties/123/webDataStreams/456\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/webDataStreams/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1677,7 +1623,6 @@
             "get": {
               "description": "Lookup for a single WebDataStream",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}",
               "id": "analyticsadmin.properties.webDataStreams.get",
               "parameterOrder": [
                 "name"
@@ -1687,8 +1632,8 @@
                   "description": "Required. The name of the web data stream to lookup. Format: properties/{property_id}/webDataStreams/{stream_id} Example: \"properties/123/webDataStreams/456\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/webDataStreams/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1703,7 +1648,6 @@
             "getEnhancedMeasurementSettings": {
               "description": "Returns the singleton enhanced measurement settings for this web stream. Note that the stream must enable enhanced measurement for these settings to take effect.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/enhancedMeasurementSettings",
               "id": "analyticsadmin.properties.webDataStreams.getEnhancedMeasurementSettings",
               "parameterOrder": [
                 "name"
@@ -1713,8 +1657,8 @@
                   "description": "Required. The name of the settings to lookup. Format: properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example: \"properties/1000/webDataStreams/2000/enhancedMeasurementSettings\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/webDataStreams/[^/]+/enhancedMeasurementSettings$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1729,7 +1673,6 @@
             "getGlobalSiteTag": {
               "description": "Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/globalSiteTag",
               "id": "analyticsadmin.properties.webDataStreams.getGlobalSiteTag",
               "parameterOrder": [
                 "name"
@@ -1739,8 +1682,8 @@
                   "description": "Required. The name of the site tag to lookup. Note that site tags are singletons and do not have unique IDs. Format: properties/{property_id}/webDataStreams/{stream_id}/globalSiteTag Example: \"properties/123/webDataStreams/456/globalSiteTag\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/webDataStreams/[^/]+/globalSiteTag$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -1755,7 +1698,6 @@
             "list": {
               "description": "Returns child web data streams under the specified parent property. Web data streams will be excluded if the caller does not have access. Returns an empty list if no relevant web data streams are found.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams",
               "id": "analyticsadmin.properties.webDataStreams.list",
               "parameterOrder": [
                 "parent"
@@ -1776,8 +1718,8 @@
                   "description": "Required. The name of the parent property. For example, to list results of web streams under the property with Id 123: \"properties/123\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/webDataStreams",
@@ -1792,7 +1734,6 @@
             "patch": {
               "description": "Updates a web stream on a property.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}",
               "id": "analyticsadmin.properties.webDataStreams.patch",
               "parameterOrder": [
                 "name"
@@ -1802,8 +1743,8 @@
                   "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/webDataStreams/{stream_id} Example: \"properties/1000/webDataStreams/2000\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/webDataStreams/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. The list of fields to be updated. Field names must be in snake case (e.g., \"field_to_update\"). Omitted fields will not be updated. To replace the entire entity, use one path with the string \"*\" to match all fields.",
@@ -1826,7 +1767,6 @@
             "updateEnhancedMeasurementSettings": {
               "description": "Updates the singleton enhanced measurement settings for this web stream. Note that the stream must enable enhanced measurement for these settings to take effect.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/properties/{propertiesId}/webDataStreams/{webDataStreamsId}/enhancedMeasurementSettings",
               "id": "analyticsadmin.properties.webDataStreams.updateEnhancedMeasurementSettings",
               "parameterOrder": [
                 "name"
@@ -1836,8 +1776,8 @@
                   "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example: \"properties/1000/webDataStreams/2000/enhancedMeasurementSettings\"",
                   "location": "path",
                   "pattern": "^properties/[^/]+/webDataStreams/[^/]+/enhancedMeasurementSettings$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "updateMask": {
                   "description": "Required. The list of fields to be updated. Field names must be in snake case (e.g., \"field_to_update\"). Omitted fields will not be updated. To replace the entire entity, use one path with the string \"*\" to match all fields.",
@@ -1872,13 +1812,13 @@
         "createTime": {
           "description": "Output only. Time when this account was originally created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "deleted": {
           "description": "Output only. Indicates whether this Account is soft-deleted or not. Deleted accounts are excluded from List results unless specifically requested.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "displayName": {
           "description": "Required. Human-readable display name for this account.",
@@ -1886,8 +1826,8 @@
         },
         "name": {
           "description": "Output only. Resource name of this account. Format: accounts/{account} Example: \"accounts/100\"",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "regionCode": {
           "description": "Country of business. Must be a Unicode CLDR region code.",
@@ -1896,8 +1836,8 @@
         "updateTime": {
           "description": "Output only. Time when account payload fields were last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1935,8 +1875,8 @@
         "createTime": {
           "description": "Output only. Time when this stream was originally created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "displayName": {
           "description": "Human-readable display name for the Data Stream. The max allowed display name length is 255 UTF-16 code units.",
@@ -1944,13 +1884,13 @@
         },
         "firebaseAppId": {
           "description": "Output only. ID of the corresponding Android app in Firebase, if any. This ID can change if the Android app is deleted and recreated.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/androidAppDataStreams/{stream_id} Example: \"properties/1000/androidAppDataStreams/2000\"",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "packageName": {
           "description": "Immutable. The package name for the app being measured. Example: \"com.example.myandroidapp\"",
@@ -1959,8 +1899,8 @@
         "updateTime": {
           "description": "Output only. Time when stream payload fields were last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2129,8 +2069,8 @@
           "type": "string"
         },
         "userLink": {
-          "description": "Required. The user link to create.",
-          "$ref": "GoogleAnalyticsAdminV1alphaUserLink"
+          "$ref": "GoogleAnalyticsAdminV1alphaUserLink",
+          "description": "Required. The user link to create."
         }
       },
       "type": "object"
@@ -2141,8 +2081,8 @@
       "properties": {
         "name": {
           "description": "Output only. Resource name. Format: accounts/{account}/dataSharingSettings Example: \"accounts/1000/dataSharingSettings\"",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "sharingWithGoogleAnySalesEnabled": {
           "description": "Allows any of Google sales to access the data in order to suggest configuration changes to improve results.",
@@ -2188,8 +2128,8 @@
         },
         "name": {
           "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example: \"properties/1000/webDataStreams/2000/enhancedMeasurementSettings\"",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "outboundClicksEnabled": {
           "description": "If enabled, capture an outbound click event each time a visitor clicks a link that leads them away from your domain.",
@@ -2201,13 +2141,13 @@
         },
         "pageLoadsEnabled": {
           "description": "Output only. If enabled, capture a page view event each time a page loads.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "pageViewsEnabled": {
           "description": "Output only. If enabled, capture a page view event each time a page loads or the website changes the browser history state.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "scrollsEnabled": {
           "description": "If enabled, capture scroll events each time a visitor gets to the bottom of a page.",
@@ -2243,18 +2183,11 @@
         "createTime": {
           "description": "Output only. Time when this FirebaseLink was originally created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "maximumUserAccess": {
           "description": "Maximum user access to the GA4 property allowed to admins of the linked Firebase project.",
-          "enumDescriptions": [
-            "Unspecified maximum user access.",
-            "Firebase users have no access to the Analytics property.",
-            "Firebase users have Read & Analyze access to the Analytics property.",
-            "Firebase users have edit access to the Analytics property, but may not manage the Firebase link.",
-            "Firebase users have edit access to the Analytics property and may manage the Firebase link."
-          ],
           "enum": [
             "MAXIMUM_USER_ACCESS_UNSPECIFIED",
             "NO_ACCESS",
@@ -2262,12 +2195,19 @@
             "EDITOR_WITHOUT_LINK_MANAGEMENT",
             "EDITOR_INCLUDING_LINK_MANAGEMENT"
           ],
+          "enumDescriptions": [
+            "Unspecified maximum user access.",
+            "Firebase users have no access to the Analytics property.",
+            "Firebase users have Read & Analyze access to the Analytics property.",
+            "Firebase users have edit access to the Analytics property, but may not manage the Firebase link.",
+            "Firebase users have edit access to the Analytics property and may manage the Firebase link."
+          ],
           "type": "string"
         },
         "name": {
           "description": "Output only. Example format: properties/1234/firebaseLinks/5678",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "project": {
           "description": "Immutable. Firebase project resource name. When creating a FirebaseLink, you may provide this resource name using either a project number or project ID. Once this resource has been created, returned FirebaseLinks will always have a project_name that contains a project number. Format: 'projects/{project number}' Example: 'projects/1234'",
@@ -2282,8 +2222,8 @@
       "properties": {
         "name": {
           "description": "Output only. Resource name for this GlobalSiteTag resource. Format: properties/{propertyId}/globalSiteTag",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "snippet": {
           "description": "Immutable. JavaScript code snippet to be pasted as the first item into the head tag of every webpage to measure.",
@@ -2302,14 +2242,14 @@
         },
         "canManageClients": {
           "description": "Output only. If true, this link is for a Google Ads manager account.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "createTime": {
           "description": "Output only. Time when this link was originally created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "customerId": {
           "description": "Immutable. Google Ads customer ID.",
@@ -2317,19 +2257,19 @@
         },
         "emailAddress": {
           "description": "Output only. Email address of the user that created the link. An empty string will be returned if the email address can't be retrieved.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. Time when this link was last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2345,8 +2285,8 @@
         "createTime": {
           "description": "Output only. Time when this stream was originally created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "displayName": {
           "description": "Human-readable display name for the Data Stream. The max allowed display name length is 255 UTF-16 code units.",
@@ -2354,19 +2294,19 @@
         },
         "firebaseAppId": {
           "description": "Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app is deleted and recreated.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/iosAppDataStreams/{stream_id} Example: \"properties/1000/iosAppDataStreams/2000\"",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. Time when stream payload fields were last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2540,8 +2480,8 @@
         "createTime": {
           "description": "Output only. Time when the entity was originally created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "currencyCode": {
           "description": "The currency type used in reports involving monetary values. Format: https://en.wikipedia.org/wiki/ISO_4217 Examples: \"USD\", \"EUR\", \"JPY\"",
@@ -2549,8 +2489,8 @@
         },
         "deleted": {
           "description": "Output only. Indicates whether this Property is soft-deleted or not. Deleted properties are excluded from List results unless specifically requested.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "displayName": {
           "description": "Required. Human-readable display name for this property. The max allowed display name length is 100 UTF-16 code units.",
@@ -2558,35 +2498,6 @@
         },
         "industryCategory": {
           "description": "Industry associated with this property Example: AUTOMOTIVE, FOOD_AND_DRINK",
-          "enumDescriptions": [
-            "Industry category unspecified",
-            "Automotive",
-            "Business and industrial markets",
-            "Finance",
-            "Healthcare",
-            "Technology",
-            "Travel",
-            "Other",
-            "Arts and entertainment",
-            "Beauty and fitness",
-            "Books and literature",
-            "Food and drink",
-            "Games",
-            "Hobbies and leisure",
-            "Home and garden",
-            "Internet and telecom",
-            "Law and government",
-            "News",
-            "Online communities",
-            "People and society",
-            "Pets and animals",
-            "Real estate",
-            "Reference",
-            "Science",
-            "Sports",
-            "Jobs and education",
-            "Shopping"
-          ],
           "enum": [
             "INDUSTRY_CATEGORY_UNSPECIFIED",
             "AUTOMOTIVE",
@@ -2616,12 +2527,41 @@
             "JOBS_AND_EDUCATION",
             "SHOPPING"
           ],
+          "enumDescriptions": [
+            "Industry category unspecified",
+            "Automotive",
+            "Business and industrial markets",
+            "Finance",
+            "Healthcare",
+            "Technology",
+            "Travel",
+            "Other",
+            "Arts and entertainment",
+            "Beauty and fitness",
+            "Books and literature",
+            "Food and drink",
+            "Games",
+            "Hobbies and leisure",
+            "Home and garden",
+            "Internet and telecom",
+            "Law and government",
+            "News",
+            "Online communities",
+            "People and society",
+            "Pets and animals",
+            "Real estate",
+            "Reference",
+            "Science",
+            "Sports",
+            "Jobs and education",
+            "Shopping"
+          ],
           "type": "string"
         },
         "name": {
           "description": "Output only. Resource name of this property. Format: properties/{property_id} Example: \"properties/1000\"",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "parent": {
           "description": "Immutable. Resource name of this property's logical parent. Note: The Property-Moving UI can be used to change the parent. Format: accounts/{account} Example: \"accounts/100\"",
@@ -2634,8 +2574,8 @@
         "updateTime": {
           "description": "Output only. Time when entity payload fields were last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2660,8 +2600,8 @@
       "id": "GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest",
       "properties": {
         "account": {
-          "description": "The account to create.",
-          "$ref": "GoogleAnalyticsAdminV1alphaAccount"
+          "$ref": "GoogleAnalyticsAdminV1alphaAccount",
+          "description": "The account to create."
         },
         "redirectUri": {
           "description": "Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Developers Console as a Redirect URI",
@@ -2686,8 +2626,8 @@
       "id": "GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest",
       "properties": {
         "userLink": {
-          "description": "Required. The user link to update.",
-          "$ref": "GoogleAnalyticsAdminV1alphaUserLink"
+          "$ref": "GoogleAnalyticsAdminV1alphaUserLink",
+          "description": "Required. The user link to update."
         }
       },
       "type": "object"
@@ -2721,8 +2661,8 @@
         "createTime": {
           "description": "Output only. Time when this stream was originally created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "defaultUri": {
           "description": "Immutable. Domain name of the web app being measured, or empty. Example: \"http://www.google.com\", \"https://www.google.com\"",
@@ -2734,24 +2674,24 @@
         },
         "firebaseAppId": {
           "description": "Output only. ID of the corresponding web app in Firebase, if any. This ID can change if the web app is deleted and recreated.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "measurementId": {
           "description": "Output only. Analytics \"Measurement ID\", without the \"G-\" prefix. Example: \"G-1A2BCD345E\" would just be \"1A2BCD345E\"",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. Resource name of this Data Stream. Format: properties/{property_id}/webDataStreams/{stream_id} Example: \"properties/1000/webDataStreams/2000\"",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. Time when stream payload fields were last updated.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -2765,6 +2705,6 @@
   },
   "servicePath": "",
   "title": "Google Analytics Admin API",
-  "version_module": true,
-  "version": "v1alpha"
+  "version": "v1alpha",
+  "version_module": true
 }

@@ -18,29 +18,27 @@
   "description": "Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/firestore",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "firestore:v1beta2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://firestore.mtls.googleapis.com/",
   "name": "firestore",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -115,7 +113,6 @@
             "exportDocuments": {
               "description": "Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.",
               "httpMethod": "POST",
-              "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}:exportDocuments",
               "id": "firestore.projects.databases.exportDocuments",
               "parameterOrder": [
                 "name"
@@ -125,8 +122,8 @@
                   "description": "Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/databases/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta2/{+name}:exportDocuments",
@@ -144,7 +141,6 @@
             "importDocuments": {
               "description": "Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.",
               "httpMethod": "POST",
-              "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}:importDocuments",
               "id": "firestore.projects.databases.importDocuments",
               "parameterOrder": [
                 "name"
@@ -154,8 +150,8 @@
                   "description": "Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/databases/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta2/{+name}:importDocuments",
@@ -179,7 +175,6 @@
                     "get": {
                       "description": "Gets the metadata and configuration for a Field.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
                       "id": "firestore.projects.databases.collectionGroups.fields.get",
                       "parameterOrder": [
                         "name"
@@ -189,8 +184,8 @@
                           "description": "A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta2/{+name}",
@@ -205,7 +200,6 @@
                     "list": {
                       "description": "Lists the field configuration and metadata for this database. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false`.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields",
                       "id": "firestore.projects.databases.collectionGroups.fields.list",
                       "parameterOrder": [
                         "parent"
@@ -231,8 +225,8 @@
                           "description": "A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta2/{+parent}/fields",
@@ -247,7 +241,6 @@
                     "patch": {
                       "description": "Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: `{ paths: \"index_config\" }`. This call returns a google.longrunning.Operation which may be used to track the status of the field update. The metadata for the operation will be the type FieldOperationMetadata. To configure the default field settings for the database, use the special `Field` with resource name: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
                       "id": "firestore.projects.databases.collectionGroups.fields.patch",
                       "parameterOrder": [
                         "name"
@@ -257,8 +250,8 @@
                           "description": "A field name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`, or a special field path. The only valid special field is `*`, which represents any field. Field paths may be quoted using ` (backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a code block) `\\`address.city\\`` represents a field named `address.city`, not the map key `city` in the field `address`. `\\`*\\`` represents a field named `*`, not any field. A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "updateMask": {
                           "description": "A mask, relative to the field. If specified, only configuration specified by this field_mask will be updated in the field.",
@@ -286,7 +279,6 @@
                     "create": {
                       "description": "Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.",
                       "httpMethod": "POST",
-                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
                       "id": "firestore.projects.databases.collectionGroups.indexes.create",
                       "parameterOrder": [
                         "parent"
@@ -296,8 +288,8 @@
                           "description": "A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta2/{+parent}/indexes",
@@ -315,7 +307,6 @@
                     "delete": {
                       "description": "Deletes a composite index.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
                       "id": "firestore.projects.databases.collectionGroups.indexes.delete",
                       "parameterOrder": [
                         "name"
@@ -325,8 +316,8 @@
                           "description": "A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta2/{+name}",
@@ -341,7 +332,6 @@
                     "get": {
                       "description": "Gets a composite index.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
                       "id": "firestore.projects.databases.collectionGroups.indexes.get",
                       "parameterOrder": [
                         "name"
@@ -351,8 +341,8 @@
                           "description": "A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta2/{+name}",
@@ -367,7 +357,6 @@
                     "list": {
                       "description": "Lists composite indexes.",
                       "httpMethod": "GET",
-                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
                       "id": "firestore.projects.databases.collectionGroups.indexes.list",
                       "parameterOrder": [
                         "parent"
@@ -393,8 +382,8 @@
                           "description": "A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1beta2/{+parent}/indexes",
@@ -442,16 +431,6 @@
         },
         "operationState": {
           "description": "The state of the export operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "OPERATION_STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -462,6 +441,16 @@
             "FAILED",
             "CANCELLED"
           ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
+          ],
           "type": "string"
         },
         "outputUriPrefix": {
@@ -469,12 +458,12 @@
           "type": "string"
         },
         "progressBytes": {
-          "description": "The progress, in bytes, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+          "$ref": "GoogleFirestoreAdminV1beta2Progress",
+          "description": "The progress, in bytes, of this operation."
         },
         "progressDocuments": {
-          "description": "The progress, in documents, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+          "$ref": "GoogleFirestoreAdminV1beta2Progress",
+          "description": "The progress, in documents, of this operation."
         },
         "startTime": {
           "description": "The time this operation started.",
@@ -518,8 +507,8 @@
       "id": "GoogleFirestoreAdminV1beta2Field",
       "properties": {
         "indexConfig": {
-          "description": "The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestor_field`. To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.",
-          "$ref": "GoogleFirestoreAdminV1beta2IndexConfig"
+          "$ref": "GoogleFirestoreAdminV1beta2IndexConfig",
+          "description": "The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestor_field`. To explicitly remove all indexes for this field, specify an index config with an empty list of indexes."
         },
         "name": {
           "description": "A field name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`, or a special field path. The only valid special field is `*`, which represents any field. Field paths may be quoted using ` (backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a code block) `\\`address.city\\`` represents a field named `address.city`, not the map key `city` in the field `address`. `\\`*\\`` represents a field named `*`, not any field. A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration.",
@@ -533,12 +522,12 @@
       "id": "GoogleFirestoreAdminV1beta2FieldOperationMetadata",
       "properties": {
         "bytesProgress": {
-          "description": "The progress, in bytes, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+          "$ref": "GoogleFirestoreAdminV1beta2Progress",
+          "description": "The progress, in bytes, of this operation."
         },
         "documentProgress": {
-          "description": "The progress, in documents, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+          "$ref": "GoogleFirestoreAdminV1beta2Progress",
+          "description": "The progress, in documents, of this operation."
         },
         "endTime": {
           "description": "The time this operation completed. Will be unset if operation still in progress.",
@@ -563,16 +552,6 @@
         },
         "state": {
           "description": "The state of the operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "OPERATION_STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -582,6 +561,16 @@
             "SUCCESSFUL",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
           ],
           "type": "string"
         }
@@ -610,16 +599,6 @@
         },
         "operationState": {
           "description": "The state of the import operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "OPERATION_STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -630,15 +609,25 @@
             "FAILED",
             "CANCELLED"
           ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
+          ],
           "type": "string"
         },
         "progressBytes": {
-          "description": "The progress, in bytes, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+          "$ref": "GoogleFirestoreAdminV1beta2Progress",
+          "description": "The progress, in bytes, of this operation."
         },
         "progressDocuments": {
-          "description": "The progress, in documents, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+          "$ref": "GoogleFirestoreAdminV1beta2Progress",
+          "description": "The progress, in documents, of this operation."
         },
         "startTime": {
           "description": "The time this operation started.",
@@ -683,31 +672,31 @@
         },
         "queryScope": {
           "description": "Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.",
-          "enumDescriptions": [
-            "The query scope is unspecified. Not a valid option.",
-            "Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the collection id specified by the index.",
-            "Indexes with a collection group query scope specified allow queries against all collections that has the collection id specified by the index."
-          ],
           "enum": [
             "QUERY_SCOPE_UNSPECIFIED",
             "COLLECTION",
             "COLLECTION_GROUP"
           ],
+          "enumDescriptions": [
+            "The query scope is unspecified. Not a valid option.",
+            "Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the collection id specified by the index.",
+            "Indexes with a collection group query scope specified allow queries against all collections that has the collection id specified by the index."
+          ],
           "type": "string"
         },
         "state": {
           "description": "Output only. The serving state of the index.",
-          "enumDescriptions": [
-            "The state is unspecified.",
-            "The index is being created. There is an active long-running operation for the index. The index is updated when writing a document. Some index data may exist.",
-            "The index is ready to be used. The index is updated when writing a document. The index is fully populated from all stored documents it applies to.",
-            "The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist. Use the google.longrunning.Operations API to determine why the operation that last attempted to create this index failed, then re-create the index."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
             "READY",
             "NEEDS_REPAIR"
+          ],
+          "enumDescriptions": [
+            "The state is unspecified.",
+            "The index is being created. There is an active long-running operation for the index. The index is updated when writing a document. Some index data may exist.",
+            "The index is ready to be used. The index is updated when writing a document. The index is fully populated from all stored documents it applies to.",
+            "The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist. Use the google.longrunning.Operations API to determine why the operation that last attempted to create this index failed, then re-create the index."
           ],
           "type": "string"
         }
@@ -746,21 +735,21 @@
       "properties": {
         "changeType": {
           "description": "Specifies how the index is changing.",
-          "enumDescriptions": [
-            "The type of change is not specified or known.",
-            "The single field index is being added.",
-            "The single field index is being removed."
-          ],
           "enum": [
             "CHANGE_TYPE_UNSPECIFIED",
             "ADD",
             "REMOVE"
           ],
+          "enumDescriptions": [
+            "The type of change is not specified or known.",
+            "The single field index is being added.",
+            "The single field index is being removed."
+          ],
           "type": "string"
         },
         "index": {
-          "description": "The index being changed.",
-          "$ref": "GoogleFirestoreAdminV1beta2Index"
+          "$ref": "GoogleFirestoreAdminV1beta2Index",
+          "description": "The index being changed."
         }
       },
       "type": "object"
@@ -771,13 +760,13 @@
       "properties": {
         "arrayConfig": {
           "description": "Indicates that this field supports operations on `array_value`s.",
-          "enumDescriptions": [
-            "The index does not support additional array queries.",
-            "The index supports array containment queries."
-          ],
           "enum": [
             "ARRAY_CONFIG_UNSPECIFIED",
             "CONTAINS"
+          ],
+          "enumDescriptions": [
+            "The index does not support additional array queries.",
+            "The index supports array containment queries."
           ],
           "type": "string"
         },
@@ -787,15 +776,15 @@
         },
         "order": {
           "description": "Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.",
-          "enumDescriptions": [
-            "The ordering is unspecified. Not a valid option.",
-            "The field is ordered by ascending field value.",
-            "The field is ordered by descending field value."
-          ],
           "enum": [
             "ORDER_UNSPECIFIED",
             "ASCENDING",
             "DESCENDING"
+          ],
+          "enumDescriptions": [
+            "The ordering is unspecified. Not a valid option.",
+            "The field is ordered by ascending field value.",
+            "The field is ordered by descending field value."
           ],
           "type": "string"
         }
@@ -816,12 +805,12 @@
           "type": "string"
         },
         "progressBytes": {
-          "description": "The progress, in bytes, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+          "$ref": "GoogleFirestoreAdminV1beta2Progress",
+          "description": "The progress, in bytes, of this operation."
         },
         "progressDocuments": {
-          "description": "The progress, in documents, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+          "$ref": "GoogleFirestoreAdminV1beta2Progress",
+          "description": "The progress, in documents, of this operation."
         },
         "startTime": {
           "description": "The time this operation started.",
@@ -830,16 +819,6 @@
         },
         "state": {
           "description": "The state of the operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "OPERATION_STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -849,6 +828,16 @@
             "SUCCESSFUL",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
           ],
           "type": "string"
         }
@@ -917,8 +906,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -973,6 +962,6 @@
   },
   "servicePath": "",
   "title": "Cloud Firestore API",
-  "version_module": true,
-  "version": "v1beta2"
+  "version": "v1beta2",
+  "version_module": true
 }

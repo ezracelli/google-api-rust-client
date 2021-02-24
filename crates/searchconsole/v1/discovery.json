@@ -18,29 +18,27 @@
   "description": "The Search Console API provides access to both Search Console data (verified users only) and to public information on an URL basis (anyone)",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/webmaster-tools/search-console-api/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "searchconsole:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://searchconsole.mtls.googleapis.com/",
   "name": "searchconsole",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -113,7 +111,6 @@
         "query": {
           "description": "Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.",
           "httpMethod": "POST",
-          "flatPath": "webmasters/v3/sites/{siteUrl}/searchAnalytics/query",
           "id": "webmasters.searchanalytics.query",
           "parameterOrder": [
             "siteUrl"
@@ -122,8 +119,8 @@
             "siteUrl": {
               "description": "The site's URL, including protocol. For example: `http://www.example.com/`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "webmasters/v3/sites/{siteUrl}/searchAnalytics/query",
@@ -145,7 +142,6 @@
         "delete": {
           "description": "Deletes a sitemap from this site.",
           "httpMethod": "DELETE",
-          "flatPath": "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
           "id": "webmasters.sitemaps.delete",
           "parameterOrder": [
             "siteUrl",
@@ -155,14 +151,14 @@
             "feedpath": {
               "description": "The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "siteUrl": {
               "description": "The site's URL, including protocol. For example: `http://www.example.com/`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
@@ -173,7 +169,6 @@
         "get": {
           "description": "Retrieves information about a specific sitemap.",
           "httpMethod": "GET",
-          "flatPath": "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
           "id": "webmasters.sitemaps.get",
           "parameterOrder": [
             "siteUrl",
@@ -183,14 +178,14 @@
             "feedpath": {
               "description": "The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "siteUrl": {
               "description": "The site's URL, including protocol. For example: `http://www.example.com/`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
@@ -205,7 +200,6 @@
         "list": {
           "description": " Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request).",
           "httpMethod": "GET",
-          "flatPath": "webmasters/v3/sites/{siteUrl}/sitemaps",
           "id": "webmasters.sitemaps.list",
           "parameterOrder": [
             "siteUrl"
@@ -214,8 +208,8 @@
             "siteUrl": {
               "description": "The site's URL, including protocol. For example: `http://www.example.com/`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sitemapIndex": {
               "description": " A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`.",
@@ -235,7 +229,6 @@
         "submit": {
           "description": "Submits a sitemap for a site.",
           "httpMethod": "PUT",
-          "flatPath": "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
           "id": "webmasters.sitemaps.submit",
           "parameterOrder": [
             "siteUrl",
@@ -245,14 +238,14 @@
             "feedpath": {
               "description": "The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "siteUrl": {
               "description": "The site's URL, including protocol. For example: `http://www.example.com/`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
@@ -267,7 +260,6 @@
         "add": {
           "description": " Adds a site to the set of the user's sites in Search Console.",
           "httpMethod": "PUT",
-          "flatPath": "webmasters/v3/sites/{siteUrl}",
           "id": "webmasters.sites.add",
           "parameterOrder": [
             "siteUrl"
@@ -276,8 +268,8 @@
             "siteUrl": {
               "description": "The URL of the site to add.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "webmasters/v3/sites/{siteUrl}",
@@ -288,7 +280,6 @@
         "delete": {
           "description": " Removes a site from the set of the user's Search Console sites.",
           "httpMethod": "DELETE",
-          "flatPath": "webmasters/v3/sites/{siteUrl}",
           "id": "webmasters.sites.delete",
           "parameterOrder": [
             "siteUrl"
@@ -297,8 +288,8 @@
             "siteUrl": {
               "description": "The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "webmasters/v3/sites/{siteUrl}",
@@ -309,7 +300,6 @@
         "get": {
           "description": " Retrieves information about specific site.",
           "httpMethod": "GET",
-          "flatPath": "webmasters/v3/sites/{siteUrl}",
           "id": "webmasters.sites.get",
           "parameterOrder": [
             "siteUrl"
@@ -318,8 +308,8 @@
             "siteUrl": {
               "description": "The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "webmasters/v3/sites/{siteUrl}",
@@ -334,7 +324,6 @@
         "list": {
           "description": " Lists the user's Search Console sites.",
           "httpMethod": "GET",
-          "flatPath": "webmasters/v3/sites",
           "id": "webmasters.sites.list",
           "parameterOrder": [],
           "parameters": {},
@@ -356,7 +345,6 @@
             "run": {
               "description": "Runs Mobile-Friendly Test for a given URL.",
               "httpMethod": "POST",
-              "flatPath": "v1/urlTestingTools/mobileFriendlyTest:run",
               "id": "searchconsole.urlTestingTools.mobileFriendlyTest.run",
               "parameterOrder": [],
               "parameters": {},
@@ -409,13 +397,6 @@
       "id": "ApiDimensionFilter",
       "properties": {
         "dimension": {
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "QUERY",
             "PAGE",
@@ -423,23 +404,30 @@
             "DEVICE",
             "SEARCH_APPEARANCE"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "type": "string"
         },
         "expression": {
           "type": "string"
         },
         "operator": {
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "EQUALS",
             "NOT_EQUALS",
             "CONTAINS",
             "NOT_CONTAINS"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         }
@@ -457,11 +445,11 @@
           "type": "array"
         },
         "groupType": {
-          "enumDescriptions": [
-            ""
-          ],
           "enum": [
             "AND"
+          ],
+          "enumDescriptions": [
+            ""
           ],
           "type": "string"
         }
@@ -501,15 +489,6 @@
       "properties": {
         "rule": {
           "description": "Rule violated.",
-          "enumDescriptions": [
-            "Unknown rule. Sorry, we don't have any description for the rule that was broken.",
-            "Plugins incompatible with mobile devices are being used. [Learn more] (https://support.google.com/webmasters/answer/6352293#flash_usage).",
-            "Viewsport is not specified using the meta viewport tag. [Learn more] (https://support.google.com/webmasters/answer/6352293#viewport_not_configured).",
-            "Viewport defined to a fixed width. [Learn more] (https://support.google.com/webmasters/answer/6352293#fixed-width_viewport).",
-            "Content not sized to viewport. [Learn more] (https://support.google.com/webmasters/answer/6352293#content_not_sized_to_viewport).",
-            "Font size is too small for easy reading on a small screen. [Learn More] (https://support.google.com/webmasters/answer/6352293#small_font_size).",
-            "Touch elements are too close to each other. [Learn more] (https://support.google.com/webmasters/answer/6352293#touch_elements_too_close)."
-          ],
           "enum": [
             "MOBILE_FRIENDLY_RULE_UNSPECIFIED",
             "USES_INCOMPATIBLE_PLUGINS",
@@ -518,6 +497,15 @@
             "SIZE_CONTENT_TO_VIEWPORT",
             "USE_LEGIBLE_FONT_SIZES",
             "TAP_TARGETS_TOO_CLOSE"
+          ],
+          "enumDescriptions": [
+            "Unknown rule. Sorry, we don't have any description for the rule that was broken.",
+            "Plugins incompatible with mobile devices are being used. [Learn more] (https://support.google.com/webmasters/answer/6352293#flash_usage).",
+            "Viewsport is not specified using the meta viewport tag. [Learn more] (https://support.google.com/webmasters/answer/6352293#viewport_not_configured).",
+            "Viewport defined to a fixed width. [Learn more] (https://support.google.com/webmasters/answer/6352293#fixed-width_viewport).",
+            "Content not sized to viewport. [Learn more] (https://support.google.com/webmasters/answer/6352293#content_not_sized_to_viewport).",
+            "Font size is too small for easy reading on a small screen. [Learn More] (https://support.google.com/webmasters/answer/6352293#small_font_size).",
+            "Touch elements are too close to each other. [Learn more] (https://support.google.com/webmasters/answer/6352293#touch_elements_too_close)."
           ],
           "type": "string"
         }
@@ -529,8 +517,8 @@
       "id": "ResourceIssue",
       "properties": {
         "blockedResource": {
-          "description": "Describes a blocked resource issue.",
-          "$ref": "BlockedResource"
+          "$ref": "BlockedResource",
+          "description": "Describes a blocked resource issue."
         }
       },
       "type": "object"
@@ -556,15 +544,15 @@
       "properties": {
         "mobileFriendliness": {
           "description": "Test verdict, whether the page is mobile friendly or not.",
-          "enumDescriptions": [
-            "Internal error when running this test. Please try running the test again.",
-            "The page is mobile friendly.",
-            "The page is not mobile friendly."
-          ],
           "enum": [
             "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED",
             "MOBILE_FRIENDLY",
             "NOT_MOBILE_FRIENDLY"
+          ],
+          "enumDescriptions": [
+            "Internal error when running this test. Please try running the test again.",
+            "The page is mobile friendly.",
+            "The page is not mobile friendly."
           ],
           "type": "string"
         },
@@ -583,12 +571,12 @@
           "type": "array"
         },
         "screenshot": {
-          "description": "Screenshot of the requested URL.",
-          "$ref": "Image"
+          "$ref": "Image",
+          "description": "Screenshot of the requested URL."
         },
         "testStatus": {
-          "description": "Final state of the test, can be either complete or an error.",
-          "$ref": "TestStatus"
+          "$ref": "TestStatus",
+          "description": "Final state of the test, can be either complete or an error."
         }
       },
       "type": "object"
@@ -598,29 +586,29 @@
       "properties": {
         "aggregationType": {
           "description": "[Optional; Default is \\\"auto\\\"] How data is aggregated. If aggregated by property, all data for the same property is aggregated; if aggregated by page, all data is aggregated by canonical URI. If you filter or group by page, choose AUTO; otherwise you can aggregate either by property or by page, depending on how you want your data calculated; see the help documentation to learn how data is calculated differently by site versus by page. **Note:** If you group or filter by page, you cannot aggregate by property. If you specify any value other than AUTO, the aggregation type in the result will match the requested type, or if you request an invalid type, you will get an error. The API will never change your aggregation type if the requested type is invalid.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "AUTO",
             "BY_PROPERTY",
             "BY_PAGE"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ],
           "type": "string"
         },
         "dataState": {
           "description": "The data state to be fetched, can be full or all, the latter including full and partial data.",
-          "enumDescriptions": [
-            "Default value, should not be used.",
-            "Include full final data only, without partial.",
-            "Include all data, full and partial."
-          ],
           "enum": [
             "DATA_STATE_UNSPECIFIED",
             "FINAL",
             "ALL"
+          ],
+          "enumDescriptions": [
+            "Default value, should not be used.",
+            "Include full final data only, without partial.",
+            "Include all data, full and partial."
           ],
           "type": "string"
         },
@@ -634,14 +622,6 @@
         "dimensions": {
           "description": "[Optional] Zero or more dimensions to group results by. Dimensions are the group-by values in the Search Analytics page. Dimensions are combined to create a unique row key for each row. Results are grouped in the order that you supply these dimensions.",
           "items": {
-            "enumDescriptions": [
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
             "enum": [
               "DATE",
               "QUERY",
@@ -649,6 +629,14 @@
               "COUNTRY",
               "DEVICE",
               "SEARCH_APPEARANCE"
+            ],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
             ],
             "type": "string"
           },
@@ -665,17 +653,17 @@
         },
         "searchType": {
           "description": "[Optional; Default is \\\"web\\\"] The search type to filter for.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "WEB",
             "IMAGE",
             "VIDEO",
             "NEWS"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -697,15 +685,15 @@
       "properties": {
         "responseAggregationType": {
           "description": "How the results were aggregated.",
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
           "enum": [
             "AUTO",
             "BY_PROPERTY",
             "BY_PAGE"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -757,17 +745,17 @@
         },
         "status": {
           "description": "Status of the test.",
-          "enumDescriptions": [
-            "Internal error when running this test. Please try running the test again.",
-            "Inspection has completed without errors.",
-            "Inspection terminated in an error state. This indicates a problem in Google's infrastructure, not a user error. Please try again later.",
-            "Google can not access the URL because of a user error such as a robots.txt blockage, a 403 or 500 code etc. Please make sure that the URL provided is accessible by Googlebot and is not password protected."
-          ],
           "enum": [
             "TEST_STATUS_UNSPECIFIED",
             "COMPLETE",
             "INTERNAL_ERROR",
             "PAGE_UNREACHABLE"
+          ],
+          "enumDescriptions": [
+            "Internal error when running this test. Please try running the test again.",
+            "Inspection has completed without errors.",
+            "Inspection terminated in an error state. This indicates a problem in Google's infrastructure, not a user error. Please try again later.",
+            "Google can not access the URL because of a user error such as a robots.txt blockage, a 403 or 500 code etc. Please make sure that the URL provided is accessible by Googlebot and is not password protected."
           ],
           "type": "string"
         }
@@ -780,19 +768,19 @@
       "properties": {
         "permissionLevel": {
           "description": "The user's permission level for the site.",
-          "enumDescriptions": [
-            "",
-            "Owner has complete access to the site.",
-            "Full users can access all data, and perform most of the operations.",
-            "Restricted users can access most of the data, and perform some operations.",
-            "Unverified user has no access to site's data."
-          ],
           "enum": [
             "SITE_PERMISSION_LEVEL_UNSPECIFIED",
             "SITE_OWNER",
             "SITE_FULL_USER",
             "SITE_RESTRICTED_USER",
             "SITE_UNVERIFIED_USER"
+          ],
+          "enumDescriptions": [
+            "",
+            "Owner has complete access to the site.",
+            "Full users can access all data, and perform most of the operations.",
+            "Restricted users can access most of the data, and perform some operations.",
+            "Unverified user has no access to site's data."
           ],
           "type": "string"
         },
@@ -843,15 +831,6 @@
         },
         "type": {
           "description": "The type of the sitemap. For example: `rssFeed`.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "Unsupported sitemap types.",
-            ""
-          ],
           "enum": [
             "NOT_SITEMAP",
             "URL_LIST",
@@ -860,6 +839,15 @@
             "ATOM_FEED",
             "PATTERN_SITEMAP",
             "OCEANFRONT"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Unsupported sitemap types.",
+            ""
           ],
           "type": "string"
         },
@@ -887,17 +875,6 @@
         },
         "type": {
           "description": "The specific type of content in this sitemap. For example: `web`.",
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "Unsupported content type.",
-            "",
-            "Unsupported content type."
-          ],
           "enum": [
             "WEB",
             "IMAGE",
@@ -909,6 +886,17 @@
             "IOS_APP",
             "DATA_FEED_ELEMENT"
           ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Unsupported content type.",
+            "",
+            "Unsupported content type."
+          ],
           "type": "string"
         }
       },
@@ -917,6 +905,6 @@
   },
   "servicePath": "",
   "title": "Google Search Console API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

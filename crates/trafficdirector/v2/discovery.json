@@ -15,29 +15,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/traffic-director",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "trafficdirector:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://trafficdirector.mtls.googleapis.com/",
   "name": "trafficdirector",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "client_status": {
           "description": "",
           "httpMethod": "POST",
-          "flatPath": "v2/discovery:client_status",
           "id": "trafficdirector.discovery.client_status",
           "parameterOrder": [],
           "parameters": {},
@@ -157,8 +154,8 @@
           "type": "object"
         },
         "version": {
-          "description": "SemVer version of extension.",
-          "$ref": "SemanticVersion"
+          "$ref": "SemanticVersion",
+          "description": "SemVer version of extension."
         }
       },
       "type": "object"
@@ -168,8 +165,8 @@
       "id": "ClientConfig",
       "properties": {
         "node": {
-          "description": "Node for a particular client.",
-          "$ref": "Node"
+          "$ref": "Node",
+          "description": "Node for a particular client."
         },
         "xdsConfig": {
           "items": {
@@ -249,8 +246,8 @@
           "type": "number"
         },
         "range": {
-          "description": "If specified, the input double value must be in the range specified here. Note: The range is using half-open interval semantics [start, end).",
-          "$ref": "DoubleRange"
+          "$ref": "DoubleRange",
+          "description": "If specified, the input double value must be in the range specified here. Note: The range is using half-open interval semantics [start, end)."
         }
       },
       "type": "object"
@@ -301,24 +298,24 @@
       "id": "DynamicListener",
       "properties": {
         "activeState": {
-          "description": "The listener state for any active listener by this name. These are listeners that are available to service data plane traffic.",
-          "$ref": "DynamicListenerState"
+          "$ref": "DynamicListenerState",
+          "description": "The listener state for any active listener by this name. These are listeners that are available to service data plane traffic."
         },
         "drainingState": {
-          "description": "The listener state for any draining listener by this name. These are listeners that are currently undergoing draining in preparation to stop servicing data plane traffic. Note that if attempting to recreate an Envoy configuration from a configuration dump, the draining listeners should generally be discarded.",
-          "$ref": "DynamicListenerState"
+          "$ref": "DynamicListenerState",
+          "description": "The listener state for any draining listener by this name. These are listeners that are currently undergoing draining in preparation to stop servicing data plane traffic. Note that if attempting to recreate an Envoy configuration from a configuration dump, the draining listeners should generally be discarded."
         },
         "errorState": {
-          "description": "Set if the last update failed, cleared after the next successful update.",
-          "$ref": "UpdateFailureState"
+          "$ref": "UpdateFailureState",
+          "description": "Set if the last update failed, cleared after the next successful update."
         },
         "name": {
           "description": "The name or unique id of this listener, pulled from the DynamicListenerState config.",
           "type": "string"
         },
         "warmingState": {
-          "description": "The listener state for any warming listener by this name. These are listeners that are currently undergoing warming in preparation to service data plane traffic. Note that if attempting to recreate an Envoy configuration from a configuration dump, the warming listeners should generally be discarded.",
-          "$ref": "DynamicListenerState"
+          "$ref": "DynamicListenerState",
+          "description": "The listener state for any warming listener by this name. These are listeners that are currently undergoing warming in preparation to service data plane traffic. Note that if attempting to recreate an Envoy configuration from a configuration dump, the warming listeners should generally be discarded."
         }
       },
       "type": "object"
@@ -420,8 +417,8 @@
           "type": "string"
         },
         "version": {
-          "description": "The version is a property of the extension and maintained independently of other extensions and the Envoy API. This field is not set when extension did not provide version information.",
-          "$ref": "BuildVersion"
+          "$ref": "BuildVersion",
+          "description": "The version is a property of the extension and maintained independently of other extensions and the Envoy API. This field is not set when extension did not provide version information."
         }
       },
       "type": "object"
@@ -469,8 +466,8 @@
       "id": "ListMatcher",
       "properties": {
         "oneOf": {
-          "description": "If specified, at least one of the values in the list must match the value specified.",
-          "$ref": "ValueMatcher"
+          "$ref": "ValueMatcher",
+          "description": "If specified, at least one of the values in the list must match the value specified."
         }
       },
       "type": "object"
@@ -557,8 +554,8 @@
           "type": "array"
         },
         "locality": {
-          "description": "Locality specifying where the Envoy instance is running.",
-          "$ref": "Locality"
+          "$ref": "Locality",
+          "description": "Locality specifying where the Envoy instance is running."
         },
         "metadata": {
           "additionalProperties": {
@@ -569,8 +566,8 @@
           "type": "object"
         },
         "userAgentBuildVersion": {
-          "description": "Structured version of the entity requesting config.",
-          "$ref": "BuildVersion"
+          "$ref": "BuildVersion",
+          "description": "Structured version of the entity requesting config."
         },
         "userAgentName": {
           "description": "Free-form string that identifies the entity requesting config. E.g. \"envoy\" or \"grpc\"",
@@ -588,8 +585,8 @@
       "id": "NodeMatcher",
       "properties": {
         "nodeId": {
-          "description": "Specifies match criteria on the node id.",
-          "$ref": "StringMatcher"
+          "$ref": "StringMatcher",
+          "description": "Specifies match criteria on the node id."
         },
         "nodeMetadatas": {
           "description": "Specifies match criteria on the node metadata.",
@@ -635,19 +632,19 @@
           "$ref": "ScopedRoutesConfigDump"
         },
         "status": {
-          "enumDescriptions": [
-            "Status info is not available/unknown.",
-            "Management server has sent the config to client and received ACK.",
-            "Config is not sent.",
-            "Management server has sent the config to client but hasn’t received ACK/NACK.",
-            "Management server has sent the config to client but received NACK."
-          ],
           "enum": [
             "UNKNOWN",
             "SYNCED",
             "NOT_SENT",
             "STALE",
             "ERROR"
+          ],
+          "enumDescriptions": [
+            "Status info is not available/unknown.",
+            "Management server has sent the config to client and received ACK.",
+            "Config is not sent.",
+            "Management server has sent the config to client but hasn’t received ACK/NACK.",
+            "Management server has sent the config to client but received NACK."
           ],
           "type": "string"
         }
@@ -674,8 +671,8 @@
       "id": "RegexMatcher",
       "properties": {
         "googleRe2": {
-          "description": "Google's RE2 regex engine.",
-          "$ref": "GoogleRE2"
+          "$ref": "GoogleRE2",
+          "description": "Google's RE2 regex engine."
         },
         "regex": {
           "description": "The regex match string. The string must be supported by the configured engine.",
@@ -766,13 +763,13 @@
           "type": "integer"
         },
         "protocol": {
-          "enumDescriptions": [
-            "",
-            ""
-          ],
           "enum": [
             "TCP",
             "UDP"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
           ],
           "type": "string"
         },
@@ -863,8 +860,8 @@
           "type": "string"
         },
         "safeRegex": {
-          "description": "The input string must match the regular expression specified here.",
-          "$ref": "RegexMatcher"
+          "$ref": "RegexMatcher",
+          "description": "The input string must match the regular expression specified here."
         },
         "suffix": {
           "description": "The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead. Examples: * *abc* matches the value *xyz.abc*",
@@ -885,8 +882,8 @@
           "type": "array"
         },
         "value": {
-          "description": "The StructMatcher is matched if the value retrieved by path is matched to this value.",
-          "$ref": "ValueMatcher"
+          "$ref": "ValueMatcher",
+          "description": "The StructMatcher is matched if the value retrieved by path is matched to this value."
         }
       },
       "type": "object"
@@ -923,24 +920,24 @@
           "type": "boolean"
         },
         "doubleMatch": {
-          "description": "If specified, a match occurs if and only if the target value is a double value and is matched to this field.",
-          "$ref": "DoubleMatcher"
+          "$ref": "DoubleMatcher",
+          "description": "If specified, a match occurs if and only if the target value is a double value and is matched to this field."
         },
         "listMatch": {
-          "description": "If specified, a match occurs if and only if the target value is a list value and is matched to this field.",
-          "$ref": "ListMatcher"
+          "$ref": "ListMatcher",
+          "description": "If specified, a match occurs if and only if the target value is a list value and is matched to this field."
         },
         "nullMatch": {
-          "description": "If specified, a match occurs if and only if the target value is a NullValue.",
-          "$ref": "NullMatch"
+          "$ref": "NullMatch",
+          "description": "If specified, a match occurs if and only if the target value is a NullValue."
         },
         "presentMatch": {
           "description": "If specified, value match will be performed based on whether the path is referring to a valid primitive value in the metadata. If the path is referring to a non-primitive value, the result is always not matched.",
           "type": "boolean"
         },
         "stringMatch": {
-          "description": "If specified, a match occurs if and only if the target value is a string value and is matched to this field.",
-          "$ref": "StringMatcher"
+          "$ref": "StringMatcher",
+          "description": "If specified, a match occurs if and only if the target value is a string value and is matched to this field."
         }
       },
       "type": "object"
@@ -948,6 +945,6 @@
   },
   "servicePath": "",
   "title": "Traffic Director API",
-  "version_module": true,
-  "version": "v2"
+  "version": "v2",
+  "version_module": true
 }

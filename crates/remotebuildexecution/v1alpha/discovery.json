@@ -15,29 +15,27 @@
   "description": "Supplies a Remote Execution API service for tools such as bazel.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/remote-build-execution/docs/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "remotebuildexecution:v1alpha",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://admin-remotebuildexecution.mtls.googleapis.com/",
   "name": "remotebuildexecution",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "create": {
               "description": "Creates a new instance in the specified region. Returns a long running operation which contains an instance on completion. While the long running operation is in progress, any call to `GetInstance` returns an instance in state `CREATING`.",
               "httpMethod": "POST",
-              "flatPath": "v1alpha/projects/{projectsId}/instances",
               "id": "remotebuildexecution.projects.instances.create",
               "parameterOrder": [
                 "parent"
@@ -122,8 +119,8 @@
                   "description": "Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/instances",
@@ -140,7 +137,6 @@
             "delete": {
               "description": "Deletes the specified instance. Returns a long running operation which contains a `google.protobuf.Empty` response on completion. Deleting an instance with worker pools in it will delete these worker pools.",
               "httpMethod": "DELETE",
-              "flatPath": "v1alpha/projects/{projectsId}/instances/{instancesId}",
               "id": "remotebuildexecution.projects.instances.delete",
               "parameterOrder": [
                 "name"
@@ -150,8 +146,8 @@
                   "description": "Name of the instance to delete. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/instances/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -165,7 +161,6 @@
             "get": {
               "description": "Returns the specified instance.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/projects/{projectsId}/instances/{instancesId}",
               "id": "remotebuildexecution.projects.instances.get",
               "parameterOrder": [
                 "name"
@@ -175,8 +170,8 @@
                   "description": "Name of the instance to retrieve. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/instances/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -190,7 +185,6 @@
             "list": {
               "description": "Lists instances in a project.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/projects/{projectsId}/instances",
               "id": "remotebuildexecution.projects.instances.list",
               "parameterOrder": [
                 "parent"
@@ -200,8 +194,8 @@
                   "description": "Resource name of the project. Format: `projects/[PROJECT_ID]`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+parent}/instances",
@@ -215,7 +209,6 @@
             "patch": {
               "description": "Updates the specified instance. Returns a long running operation which contains the updated instance in the response on completion.",
               "httpMethod": "PATCH",
-              "flatPath": "v1alpha/projects/{projectsId}/instances/{instancesId}",
               "id": "remotebuildexecution.projects.instances.patch",
               "parameterOrder": [
                 "name"
@@ -230,8 +223,8 @@
                   "description": "Output only. Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/instances/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "name1": {
                   "description": "Deprecated, use instance.Name instead. Name of the instance to update. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.",
@@ -263,7 +256,6 @@
                 "create": {
                   "description": "Creates a new worker pool with a specified size and configuration. Returns a long running operation which contains a worker pool on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `CREATING`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1alpha/projects/{projectsId}/instances/{instancesId}/workerpools",
                   "id": "remotebuildexecution.projects.instances.workerpools.create",
                   "parameterOrder": [
                     "parent"
@@ -273,8 +265,8 @@
                       "description": "Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/instances/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha/{+parent}/workerpools",
@@ -291,7 +283,6 @@
                 "delete": {
                   "description": "Deletes the specified worker pool. Returns a long running operation, which contains a `google.protobuf.Empty` response on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `DELETING`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1alpha/projects/{projectsId}/instances/{instancesId}/workerpools/{workerpoolsId}",
                   "id": "remotebuildexecution.projects.instances.workerpools.delete",
                   "parameterOrder": [
                     "name"
@@ -301,8 +292,8 @@
                       "description": "Name of the worker pool to delete. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/instances/[^/]+/workerpools/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha/{+name}",
@@ -316,7 +307,6 @@
                 "get": {
                   "description": "Returns the specified worker pool.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha/projects/{projectsId}/instances/{instancesId}/workerpools/{workerpoolsId}",
                   "id": "remotebuildexecution.projects.instances.workerpools.get",
                   "parameterOrder": [
                     "name"
@@ -326,8 +316,8 @@
                       "description": "Name of the worker pool to retrieve. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/instances/[^/]+/workerpools/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha/{+name}",
@@ -341,7 +331,6 @@
                 "list": {
                   "description": "Lists worker pools in an instance.",
                   "httpMethod": "GET",
-                  "flatPath": "v1alpha/projects/{projectsId}/instances/{instancesId}/workerpools",
                   "id": "remotebuildexecution.projects.instances.workerpools.list",
                   "parameterOrder": [
                     "parent"
@@ -356,8 +345,8 @@
                       "description": "Resource name of the instance. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/instances/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha/{+parent}/workerpools",
@@ -371,7 +360,6 @@
                 "patch": {
                   "description": "Updates an existing worker pool with a specified size and/or configuration. Returns a long running operation, which contains a worker pool on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `UPDATING`.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1alpha/projects/{projectsId}/instances/{instancesId}/workerpools/{workerpoolsId}",
                   "id": "remotebuildexecution.projects.instances.workerpools.patch",
                   "parameterOrder": [
                     "name"
@@ -381,8 +369,8 @@
                       "description": "WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/instances/[^/]+/workerpools/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1alpha/{+name}",
@@ -405,7 +393,6 @@
             "get": {
               "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
               "httpMethod": "GET",
-              "flatPath": "v1alpha/projects/{projectsId}/operations/{operationsId}",
               "id": "remotebuildexecution.projects.operations.get",
               "parameterOrder": [
                 "name"
@@ -415,8 +402,8 @@
                   "description": "The name of the operation resource.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/operations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1alpha/{+name}",
@@ -440,16 +427,16 @@
       "id": "BuildBazelRemoteExecutionV2Action",
       "properties": {
         "commandDigest": {
-          "description": "The digest of the Command to run, which MUST be present in the ContentAddressableStorage.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the Command to run, which MUST be present in the ContentAddressableStorage."
         },
         "doNotCache": {
           "description": "If true, then the `Action`'s result cannot be cached, and in-flight requests for the same `Action` may not be merged.",
           "type": "boolean"
         },
         "inputRootDigest": {
-          "description": "The digest of the root Directory for the input files. The files in the directory tree are available in the correct location on the build machine before the command is executed. The root directory, as well as every subdirectory and content blob referred to, MUST be in the ContentAddressableStorage.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the root Directory for the input files. The files in the directory tree are available in the correct location on the build machine before the command is executed. The root directory, as well as every subdirectory and content blob referred to, MUST be in the ContentAddressableStorage."
         },
         "outputNodeProperties": {
           "description": "List of required supported NodeProperty keys. In order to ensure that equivalent `Action`s always hash to the same value, the supported node properties MUST be lexicographically sorted by name. Sorting of strings is done by code point, equivalently, by the UTF-8 bytes. The interpretation of these properties is server-dependent. If a property is not recognized by the server, the server will return an `INVALID_ARGUMENT` error.",
@@ -471,8 +458,8 @@
       "id": "BuildBazelRemoteExecutionV2ActionResult",
       "properties": {
         "executionMetadata": {
-          "description": "The details of the execution that originally produced this result.",
-          "$ref": "BuildBazelRemoteExecutionV2ExecutedActionMetadata"
+          "$ref": "BuildBazelRemoteExecutionV2ExecutedActionMetadata",
+          "description": "The details of the execution that originally produced this result."
         },
         "exitCode": {
           "description": "The exit code of the command.",
@@ -515,8 +502,8 @@
           "type": "array"
         },
         "stderrDigest": {
-          "description": "The digest for a blob containing the standard error of the action, which can be retrieved from the ContentAddressableStorage.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest for a blob containing the standard error of the action, which can be retrieved from the ContentAddressableStorage."
         },
         "stderrRaw": {
           "description": "The standard error buffer of the action. The server SHOULD NOT inline stderr unless requested by the client in the GetActionResultRequest message. The server MAY omit inlining, even if requested, and MUST do so if inlining would cause the response to exceed message size limits.",
@@ -524,8 +511,8 @@
           "type": "string"
         },
         "stdoutDigest": {
-          "description": "The digest for a blob containing the standard output of the action, which can be retrieved from the ContentAddressableStorage.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest for a blob containing the standard output of the action, which can be retrieved from the ContentAddressableStorage."
         },
         "stdoutRaw": {
           "description": "The standard output buffer of the action. The server SHOULD NOT inline stdout unless requested by the client in the GetActionResultRequest message. The server MAY omit inlining, even if requested, and MUST do so if inlining would cause the response to exceed message size limits.",
@@ -575,8 +562,8 @@
           "type": "array"
         },
         "platform": {
-          "description": "The platform requirements for the execution environment. The server MAY choose to execute the action on any worker satisfying the requirements, so the client SHOULD ensure that running the action on any such worker will have the same result. A detailed lexicon for this can be found in the accompanying platform.md.",
-          "$ref": "BuildBazelRemoteExecutionV2Platform"
+          "$ref": "BuildBazelRemoteExecutionV2Platform",
+          "description": "The platform requirements for the execution environment. The server MAY choose to execute the action on any worker satisfying the requirements, so the client SHOULD ensure that running the action on any such worker will have the same result. A detailed lexicon for this can be found in the accompanying platform.md."
         },
         "workingDirectory": {
           "description": "The working directory, relative to the input root, for the command to run in. It must be a directory which exists in the input tree. If it is left empty, then the action is run in the input root.",
@@ -656,8 +643,8 @@
       "id": "BuildBazelRemoteExecutionV2DirectoryNode",
       "properties": {
         "digest": {
-          "description": "The digest of the Directory object represented. See Digest for information about how to take the digest of a proto message.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the Directory object represented. See Digest for information about how to take the digest of a proto message."
         },
         "name": {
           "description": "The name of the directory.",
@@ -671,24 +658,24 @@
       "id": "BuildBazelRemoteExecutionV2ExecuteOperationMetadata",
       "properties": {
         "actionDigest": {
-          "description": "The digest of the Action being executed.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the Action being executed."
         },
         "stage": {
           "description": "The current stage of execution.",
-          "enumDescriptions": [
-            "Invalid value.",
-            "Checking the result against the cache.",
-            "Currently idle, awaiting a free machine to execute.",
-            "Currently being executed by a worker.",
-            "Finished execution."
-          ],
           "enum": [
             "UNKNOWN",
             "CACHE_CHECK",
             "QUEUED",
             "EXECUTING",
             "COMPLETED"
+          ],
+          "enumDescriptions": [
+            "Invalid value.",
+            "Checking the result against the cache.",
+            "Currently idle, awaiting a free machine to execute.",
+            "Currently being executed by a worker.",
+            "Finished execution."
           ],
           "type": "string"
         },
@@ -716,8 +703,8 @@
           "type": "string"
         },
         "result": {
-          "description": "The result of the action.",
-          "$ref": "BuildBazelRemoteExecutionV2ActionResult"
+          "$ref": "BuildBazelRemoteExecutionV2ActionResult",
+          "description": "The result of the action."
         },
         "serverLogs": {
           "additionalProperties": {
@@ -727,8 +714,8 @@
           "type": "object"
         },
         "status": {
-          "description": "If the status has a code other than `OK`, it indicates that the action did not finish execution. For example, if the operation times out during execution, the status will have a `DEADLINE_EXCEEDED` code. Servers MUST use this field for errors in execution, rather than the error field on the `Operation` object. If the status code is other than `OK`, then the result MUST NOT be cached. For an error status, the `result` field is optional; the server may populate the output-, stdout-, and stderr-related fields if it has any information available, such as the stdout and stderr of a timed-out action.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "If the status has a code other than `OK`, it indicates that the action did not finish execution. For example, if the operation times out during execution, the status will have a `DEADLINE_EXCEEDED` code. Servers MUST use this field for errors in execution, rather than the error field on the `Operation` object. If the status code is other than `OK`, then the result MUST NOT be cached. For an error status, the `result` field is optional; the server may populate the output-, stdout-, and stderr-related fields if it has any information available, such as the stdout and stderr of a timed-out action."
         }
       },
       "type": "object"
@@ -794,8 +781,8 @@
       "id": "BuildBazelRemoteExecutionV2FileNode",
       "properties": {
         "digest": {
-          "description": "The digest of the file's content.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the file's content."
         },
         "isExecutable": {
           "description": "True if file is executable, false otherwise.",
@@ -820,8 +807,8 @@
       "id": "BuildBazelRemoteExecutionV2LogFile",
       "properties": {
         "digest": {
-          "description": "The digest of the log contents.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the log contents."
         },
         "humanReadable": {
           "description": "This is a hint as to the purpose of the log, and is set to true if the log is human-readable text that can be usefully displayed to a user, and false otherwise. For instance, if a command-line client wishes to print the server logs to the terminal for a failed action, this allows it to avoid displaying a binary file.",
@@ -854,8 +841,8 @@
           "type": "string"
         },
         "treeDigest": {
-          "description": "The digest of the encoded Tree proto containing the directory's contents.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the encoded Tree proto containing the directory's contents."
         }
       },
       "type": "object"
@@ -870,8 +857,8 @@
           "type": "string"
         },
         "digest": {
-          "description": "The digest of the file's content.",
-          "$ref": "BuildBazelRemoteExecutionV2Digest"
+          "$ref": "BuildBazelRemoteExecutionV2Digest",
+          "description": "The digest of the file's content."
         },
         "isExecutable": {
           "description": "True if file is executable, false otherwise.",
@@ -955,8 +942,8 @@
           "type": "string"
         },
         "toolDetails": {
-          "description": "The details for the tool invoking the requests.",
-          "$ref": "BuildBazelRemoteExecutionV2ToolDetails"
+          "$ref": "BuildBazelRemoteExecutionV2ToolDetails",
+          "description": "The details for the tool invoking the requests."
         },
         "toolInvocationId": {
           "description": "An identifier that ties multiple actions together to a final result. For example, multiple actions are required to build and run foo_test.",
@@ -1014,8 +1001,8 @@
           "type": "array"
         },
         "root": {
-          "description": "The root directory in the tree.",
-          "$ref": "BuildBazelRemoteExecutionV2Directory"
+          "$ref": "BuildBazelRemoteExecutionV2Directory",
+          "description": "The root directory in the tree."
         }
       },
       "type": "object"
@@ -1093,15 +1080,15 @@
       "properties": {
         "cmUsage": {
           "description": "Indicates if and how Container Manager is being used for task execution.",
-          "enumDescriptions": [
-            "Container Manager is disabled or not running for this execution.",
-            "Container Manager is enabled and there was a matching container available for use during execution.",
-            "Container Manager is enabled, but there was no matching container available for execution."
-          ],
           "enum": [
             "NONE",
             "CONFIG_MATCH",
             "CONFIG_MISMATCH"
+          ],
+          "enumDescriptions": [
+            "Container Manager is disabled or not running for this execution.",
+            "Container Manager is enabled and there was a matching container available for use during execution.",
+            "Container Manager is enabled, but there was no matching container available for execution."
           ],
           "type": "string"
         },
@@ -1141,48 +1128,6 @@
       "properties": {
         "code": {
           "description": "The status code.",
-          "enumDescriptions": [
-            "The command succeeded.",
-            "The command input was invalid.",
-            "The command had passed its expiry time while it was still running.",
-            "The resources requested by the command were not found.",
-            "The command failed due to permission errors.",
-            "The command failed because of some invariants expected by the underlying system have been broken. This usually indicates a bug wit the system.",
-            "The command was aborted.",
-            "The command failed because the system is not in a state required for the command, e.g. the command inputs cannot be found on the server.",
-            "The bot failed to do the cleanup, e.g. unable to delete the command working directory or the command process.",
-            "The bot failed to download the inputs.",
-            "Unknown error.",
-            "The bot failed to upload the outputs.",
-            "The bot tried to upload files having a total size that is too large.",
-            "The bot failed to login to docker.",
-            "The bot failed to pull docker image.",
-            "The bot failed to check docker images.",
-            "The inputs contain duplicate files.",
-            "The bot doesn't have the permissions to pull docker images.",
-            "The docker image cannot be found.",
-            "Working directory is not found.",
-            "Working directory is not under the base directory",
-            "There are issues with docker service/runtime.",
-            "The command failed with \"no cuda-capable device is detected\" error.",
-            "The bot encountered errors from remote CAS when downloading blobs.",
-            "The bot encountered errors from remote CAS when uploading blobs.",
-            "The local casproxy is not running.",
-            "The bot couldn't start the container.",
-            "The docker ulimit is not valid.",
-            "The docker runtime is unknown.",
-            "The docker capability is unknown.",
-            "The command failed with unknown docker errors.",
-            "Docker failed to run containers with CreateComputeSystem error.",
-            "Docker failed to run containers with hcsshim::PrepareLayer error.",
-            "Docker incompatible operating system error.",
-            "Docker failed to create OCI runtime because of file not found.",
-            "Docker failed to create OCI runtime because of permission denied.",
-            "Docker failed to create process because of file not found.",
-            "Docker failed to run containers with CreateComputeSystem error that involves an incorrect parameter (more specific version of DOCKER_CREATE_COMPUTE_SYSTEM_ERROR that is user-caused).",
-            "Docker failed to create an overlay mount because of too many levels of symbolic links.",
-            "The local Container Manager is not running."
-          ],
           "enum": [
             "OK",
             "INVALID_ARGUMENT",
@@ -1224,6 +1169,48 @@
             "DOCKER_CREATE_COMPUTE_SYSTEM_INCORRECT_PARAMETER_ERROR",
             "DOCKER_TOO_MANY_SYMBOLIC_LINK_LEVELS",
             "LOCAL_CONTAINER_MANAGER_NOT_RUNNING"
+          ],
+          "enumDescriptions": [
+            "The command succeeded.",
+            "The command input was invalid.",
+            "The command had passed its expiry time while it was still running.",
+            "The resources requested by the command were not found.",
+            "The command failed due to permission errors.",
+            "The command failed because of some invariants expected by the underlying system have been broken. This usually indicates a bug wit the system.",
+            "The command was aborted.",
+            "The command failed because the system is not in a state required for the command, e.g. the command inputs cannot be found on the server.",
+            "The bot failed to do the cleanup, e.g. unable to delete the command working directory or the command process.",
+            "The bot failed to download the inputs.",
+            "Unknown error.",
+            "The bot failed to upload the outputs.",
+            "The bot tried to upload files having a total size that is too large.",
+            "The bot failed to login to docker.",
+            "The bot failed to pull docker image.",
+            "The bot failed to check docker images.",
+            "The inputs contain duplicate files.",
+            "The bot doesn't have the permissions to pull docker images.",
+            "The docker image cannot be found.",
+            "Working directory is not found.",
+            "Working directory is not under the base directory",
+            "There are issues with docker service/runtime.",
+            "The command failed with \"no cuda-capable device is detected\" error.",
+            "The bot encountered errors from remote CAS when downloading blobs.",
+            "The bot encountered errors from remote CAS when uploading blobs.",
+            "The local casproxy is not running.",
+            "The bot couldn't start the container.",
+            "The docker ulimit is not valid.",
+            "The docker runtime is unknown.",
+            "The docker capability is unknown.",
+            "The command failed with unknown docker errors.",
+            "Docker failed to run containers with CreateComputeSystem error.",
+            "Docker failed to run containers with hcsshim::PrepareLayer error.",
+            "Docker incompatible operating system error.",
+            "Docker failed to create OCI runtime because of file not found.",
+            "Docker failed to create OCI runtime because of permission denied.",
+            "Docker failed to create process because of file not found.",
+            "Docker failed to run containers with CreateComputeSystem error that involves an incorrect parameter (more specific version of DOCKER_CREATE_COMPUTE_SYSTEM_ERROR that is user-caused).",
+            "Docker failed to create an overlay mount because of too many levels of symbolic links.",
+            "The local Container Manager is not running."
           ],
           "type": "string"
         },
@@ -1303,8 +1290,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest",
       "properties": {
         "instance": {
-          "description": "Specifies the instance to create. The name in the instance, if specified in the instance, is ignored.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance",
+          "description": "Specifies the instance to create. The name in the instance, if specified in the instance, is ignored."
         },
         "instanceId": {
           "description": "ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.",
@@ -1330,8 +1317,8 @@
           "type": "string"
         },
         "workerPool": {
-          "description": "Specifies the worker pool to create. The name in the worker pool, if specified, is ignored.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool",
+          "description": "Specifies the worker pool to create. The name in the worker pool, if specified, is ignored."
         }
       },
       "type": "object"
@@ -1363,48 +1350,48 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy",
       "properties": {
         "containerImageSources": {
-          "description": "Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ \"gcr.io/project-foo\", \"gcr.io/project-bar/repo-baz\", ] } will allow any repositories under \"gcr.io/project-foo\" plus the repository \"gcr.io/project-bar/repo-baz\". Default (UNSPECIFIED) is equivalent to any source is allowed.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ \"gcr.io/project-foo\", \"gcr.io/project-bar/repo-baz\", ] } will allow any repositories under \"gcr.io/project-foo\" plus the repository \"gcr.io/project-bar/repo-baz\". Default (UNSPECIFIED) is equivalent to any source is allowed."
         },
         "dockerAddCapabilities": {
-          "description": "Whether dockerAddCapabilities can be used or what capabilities are allowed.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerAddCapabilities can be used or what capabilities are allowed."
         },
         "dockerChrootPath": {
-          "description": "Whether dockerChrootPath can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerChrootPath can be used."
         },
         "dockerNetwork": {
-          "description": "Whether dockerNetwork can be used or what network modes are allowed. E.g. one may allow `off` value only via `allowed_values`.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerNetwork can be used or what network modes are allowed. E.g. one may allow `off` value only via `allowed_values`."
         },
         "dockerPrivileged": {
-          "description": "Whether dockerPrivileged can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerPrivileged can be used."
         },
         "dockerRunAsRoot": {
-          "description": "Whether dockerRunAsRoot can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerRunAsRoot can be used."
         },
         "dockerRuntime": {
-          "description": "Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected isolation.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected isolation."
         },
         "dockerSiblingContainers": {
-          "description": "Whether dockerSiblingContainers can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+          "description": "Whether dockerSiblingContainers can be used."
         },
         "linuxIsolation": {
           "description": "linux_isolation allows overriding the docker runtime used for containers started on Linux.",
-          "enumDescriptions": [
-            "Default value. Will be using Linux default runtime.",
-            "Use gVisor runsc runtime.",
-            "Use stardard Linux runtime. This has the same behaviour as unspecified, but it can be used to revert back from gVisor."
-          ],
           "enum": [
             "LINUX_ISOLATION_UNSPECIFIED",
             "GVISOR",
             "OFF"
+          ],
+          "enumDescriptions": [
+            "Default value. Will be using Linux default runtime.",
+            "Use gVisor runsc runtime.",
+            "Use stardard Linux runtime. This has the same behaviour as unspecified, but it can be used to revert back from gVisor."
           ],
           "type": "string"
         }
@@ -1424,17 +1411,17 @@
         },
         "policy": {
           "description": "The policy of the feature.",
-          "enumDescriptions": [
-            "Default value, if not explicitly set. Equivalent to FORBIDDEN, unless otherwise documented on a specific Feature.",
-            "Feature is explicitly allowed.",
-            "Feature is forbidden. Requests attempting to leverage it will get an FailedPrecondition error, with a message like: \"Feature forbidden by FeaturePolicy: Feature on instance \"",
-            "Only the values specified in the `allowed_values` are allowed."
-          ],
           "enum": [
             "POLICY_UNSPECIFIED",
             "ALLOWED",
             "FORBIDDEN",
             "RESTRICTED"
+          ],
+          "enumDescriptions": [
+            "Default value, if not explicitly set. Equivalent to FORBIDDEN, unless otherwise documented on a specific Feature.",
+            "Feature is explicitly allowed.",
+            "Feature is forbidden. Requests attempting to leverage it will get an FailedPrecondition error, with a message like: \"Feature forbidden by FeaturePolicy: Feature on instance \"",
+            "Only the values specified in the `allowed_values` are allowed."
           ],
           "type": "string"
         }
@@ -1468,8 +1455,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance",
       "properties": {
         "featurePolicy": {
-          "description": "The policy to define whether or not RBE features can be used or how they can be used.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy",
+          "description": "The policy to define whether or not RBE features can be used or how they can be used."
         },
         "location": {
           "description": "The location is a GCP region. Currently only `us-central1` is supported.",
@@ -1485,17 +1472,17 @@
         },
         "state": {
           "description": "Output only. State of the instance.",
-          "enumDescriptions": [
-            "Not a valid state, but the default value of the enum.",
-            "The instance is in state `CREATING` once `CreateInstance` is called and before the instance is ready for use.",
-            "The instance is in state `RUNNING` when it is ready for use.",
-            "An `INACTIVE` instance indicates that there is a problem that needs to be fixed. Such instances cannot be used for execution and instances that remain in this state for a significant period of time will be removed permanently."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
             "RUNNING",
             "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Not a valid state, but the default value of the enum.",
+            "The instance is in state `CREATING` once `CreateInstance` is called and before the instance is ready for use.",
+            "The instance is in state `RUNNING` when it is ready for use.",
+            "An `INACTIVE` instance indicates that there is a problem that needs to be fixed. Such instances cannot be used for execution and instances that remain in this state for a significant period of time will be removed permanently."
           ],
           "type": "string"
         }
@@ -1557,8 +1544,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest",
       "properties": {
         "instance": {
-          "description": "Specifies the instance to update.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance",
+          "description": "Specifies the instance to update."
         },
         "loggingEnabled": {
           "description": "Deprecated, use instance.logging_enabled instead. Whether to enable Stackdriver logging for this instance.",
@@ -1586,8 +1573,8 @@
           "type": "string"
         },
         "workerPool": {
-          "description": "Specifies the worker pool to update.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool",
+          "description": "Specifies the worker pool to update."
         }
       },
       "type": "object"
@@ -1597,8 +1584,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig",
       "properties": {
         "accelerator": {
-          "description": "The accelerator card attached to each VM.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig",
+          "description": "The accelerator card attached to each VM."
         },
         "diskSizeGb": {
           "description": "Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/",
@@ -1653,8 +1640,8 @@
       "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool",
       "properties": {
         "autoscale": {
-          "description": "The autoscale policy to apply on a pool.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale",
+          "description": "The autoscale policy to apply on a pool."
         },
         "channel": {
           "description": "Channel specifies the release channel of the pool.",
@@ -1666,14 +1653,6 @@
         },
         "state": {
           "description": "Output only. State of the worker pool.",
-          "enumDescriptions": [
-            "Not a valid state, but the default value of the enum.",
-            "The worker pool is in state `CREATING` once `CreateWorkerPool` is called and before all requested workers are ready.",
-            "The worker pool is in state `RUNNING` when all its workers are ready for use.",
-            "The worker pool is in state `UPDATING` once `UpdateWorkerPool` is called and before the new configuration has all the requested workers ready for use, and no older configuration has any workers. At that point the state transitions to `RUNNING`.",
-            "The worker pool is in state `DELETING` once the `Delete` method is called and before the deletion completes.",
-            "The worker pool is in state `INACTIVE` when the instance hosting the worker pool in not running."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -1682,11 +1661,19 @@
             "DELETING",
             "INACTIVE"
           ],
+          "enumDescriptions": [
+            "Not a valid state, but the default value of the enum.",
+            "The worker pool is in state `CREATING` once `CreateWorkerPool` is called and before all requested workers are ready.",
+            "The worker pool is in state `RUNNING` when all its workers are ready for use.",
+            "The worker pool is in state `UPDATING` once `UpdateWorkerPool` is called and before the new configuration has all the requested workers ready for use, and no older configuration has any workers. At that point the state transitions to `RUNNING`.",
+            "The worker pool is in state `DELETING` once the `Delete` method is called and before the deletion completes.",
+            "The worker pool is in state `INACTIVE` when the instance hosting the worker pool in not running."
+          ],
           "type": "string"
         },
         "workerConfig": {
-          "description": "Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.",
-          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig"
+          "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig",
+          "description": "Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool."
         },
         "workerCount": {
           "description": "The desired number of workers in the worker pool. Must be a value between 0 and 15000.",
@@ -1706,19 +1693,19 @@
         },
         "command": {
           "description": "The admin action; see `Command` for legal values.",
-          "enumDescriptions": [
-            "Illegal value.",
-            "Download and run a new version of the bot. `arg` will be a resource accessible via `ByteStream.Read` to obtain the new bot code.",
-            "Restart the bot without downloading a new version. `arg` will be a message to log.",
-            "Shut down the bot. `arg` will be a task resource name (similar to those in tasks.proto) that the bot can use to tell the server that it is terminating.",
-            "Restart the host computer. `arg` will be a message to log."
-          ],
           "enum": [
             "UNSPECIFIED",
             "BOT_UPDATE",
             "BOT_RESTART",
             "BOT_TERMINATE",
             "HOST_RESTART"
+          ],
+          "enumDescriptions": [
+            "Illegal value.",
+            "Download and run a new version of the bot. `arg` will be a resource accessible via `ByteStream.Read` to obtain the new bot code.",
+            "Restart the bot without downloading a new version. `arg` will be a message to log.",
+            "Shut down the bot. `arg` will be a task resource name (similar to those in tasks.proto) that the bot can use to tell the server that it is terminating.",
+            "Restart the host computer. `arg` will be a message to log."
           ],
           "type": "string"
         }
@@ -1735,8 +1722,8 @@
           "type": "string"
         },
         "digest": {
-          "description": "The digest of the blob. This should be verified by the receiver.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "The digest of the blob. This should be verified by the receiver."
         }
       },
       "type": "object"
@@ -1751,8 +1738,8 @@
           "type": "integer"
         },
         "outputs": {
-          "description": "The output files. The blob referenced by the digest should contain one of the following (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style .isolated file",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "The output files. The blob referenced by the digest should contain one of the following (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style .isolated file"
         }
       },
       "type": "object"
@@ -1800,8 +1787,8 @@
           "type": "array"
         },
         "outputs": {
-          "description": "The output files. The blob referenced by the digest should contain one of the following (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style .isolated file",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "The output files. The blob referenced by the digest should contain one of the following (implementation-dependent): * A marshalled DirectoryMetadata of the returned filesystem * A LUCI-style .isolated file"
         },
         "overhead": {
           "description": "The amount of time *not* spent executing the command (ie uploading/downloading files).",
@@ -1809,8 +1796,8 @@
           "type": "string"
         },
         "status": {
-          "description": "An overall status for the command. For example, if the command timed out, this might have a code of DEADLINE_EXCEEDED; if it was killed by the OS for memory exhaustion, it might have a code of RESOURCE_EXHAUSTED.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "An overall status for the command. For example, if the command timed out, this might have a code of DEADLINE_EXCEEDED; if it was killed by the OS for memory exhaustion, it might have a code of RESOURCE_EXHAUSTED."
         }
       },
       "type": "object"
@@ -1820,16 +1807,16 @@
       "id": "GoogleDevtoolsRemoteworkersV1test2CommandTask",
       "properties": {
         "expectedOutputs": {
-          "description": "The expected outputs from the task.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs",
+          "description": "The expected outputs from the task."
         },
         "inputs": {
-          "description": "The inputs to the task.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs",
+          "description": "The inputs to the task."
         },
         "timeouts": {
-          "description": "The timeouts of this task.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts",
+          "description": "The timeouts of this task."
         }
       },
       "type": "object"
@@ -1981,8 +1968,8 @@
       "id": "GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata",
       "properties": {
         "digest": {
-          "description": "A pointer to the contents of the directory, in the form of a marshalled Directory message.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "A pointer to the contents of the directory, in the form of a marshalled Directory message."
         },
         "path": {
           "description": "The path of the directory, as in FileMetadata.path.",
@@ -2001,8 +1988,8 @@
           "type": "string"
         },
         "digest": {
-          "description": "A pointer to the contents of the file. The method by which a client retrieves the contents from a CAS system is not defined here.",
-          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest"
+          "$ref": "GoogleDevtoolsRemoteworkersV1test2Digest",
+          "description": "A pointer to the contents of the file. The method by which a client retrieves the contents from a CAS system is not defined here."
         },
         "isExecutable": {
           "description": "Properties of the file",
@@ -2024,8 +2011,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -2080,6 +2067,6 @@
   },
   "servicePath": "",
   "title": "Remote Build Execution API",
-  "version_module": true,
-  "version": "v1alpha"
+  "version": "v1alpha",
+  "version_module": true
 }

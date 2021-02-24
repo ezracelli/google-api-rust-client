@@ -15,29 +15,27 @@
   "description": "A simple Google Example Library API.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/docs/quota",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "libraryagent:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://libraryagent.mtls.googleapis.com/",
   "name": "libraryagent",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "get": {
           "description": "Gets a shelf. Returns NOT_FOUND if the shelf does not exist.",
           "httpMethod": "GET",
-          "flatPath": "v1/shelves/{shelvesId}",
           "id": "libraryagent.shelves.get",
           "parameterOrder": [
             "name"
@@ -120,8 +117,8 @@
               "description": "Required. The name of the shelf to retrieve.",
               "location": "path",
               "pattern": "^shelves/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -135,7 +132,6 @@
         "list": {
           "description": "Lists shelves. The order is unspecified but deterministic. Newly created shelves will not necessarily be added to the end of this list.",
           "httpMethod": "GET",
-          "flatPath": "v1/shelves",
           "id": "libraryagent.shelves.list",
           "parameterOrder": [],
           "parameters": {
@@ -166,7 +162,6 @@
             "borrow": {
               "description": "Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions.",
               "httpMethod": "POST",
-              "flatPath": "v1/shelves/{shelvesId}/books/{booksId}:borrow",
               "id": "libraryagent.shelves.books.borrow",
               "parameterOrder": [
                 "name"
@@ -176,8 +171,8 @@
                   "description": "Required. The name of the book to borrow.",
                   "location": "path",
                   "pattern": "^shelves/[^/]+/books/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:borrow",
@@ -191,7 +186,6 @@
             "get": {
               "description": "Gets a book. Returns NOT_FOUND if the book does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1/shelves/{shelvesId}/books/{booksId}",
               "id": "libraryagent.shelves.books.get",
               "parameterOrder": [
                 "name"
@@ -201,8 +195,8 @@
                   "description": "Required. The name of the book to retrieve.",
                   "location": "path",
                   "pattern": "^shelves/[^/]+/books/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -216,7 +210,6 @@
             "list": {
               "description": "Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1/shelves/{shelvesId}/books",
               "id": "libraryagent.shelves.books.list",
               "parameterOrder": [
                 "parent"
@@ -237,8 +230,8 @@
                   "description": "Required. The name of the shelf whose books we'd like to list.",
                   "location": "path",
                   "pattern": "^shelves/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/books",
@@ -252,7 +245,6 @@
             "return": {
               "description": "Return a book to the library. Returns the book if it is returned to the library successfully. Returns error if the book does not belong to the library or the users didn't borrow before.",
               "httpMethod": "POST",
-              "flatPath": "v1/shelves/{shelvesId}/books/{booksId}:return",
               "id": "libraryagent.shelves.books.return",
               "parameterOrder": [
                 "name"
@@ -262,8 +254,8 @@
                   "description": "Required. The name of the book to return.",
                   "location": "path",
                   "pattern": "^shelves/[^/]+/books/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:return",
@@ -359,6 +351,6 @@
   },
   "servicePath": "",
   "title": "Library Agent API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

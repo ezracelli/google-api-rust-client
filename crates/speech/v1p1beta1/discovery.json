@@ -15,29 +15,27 @@
   "description": "Converts audio to text by applying powerful neural network models.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/speech-to-text/docs/quickstart-protocol",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "speech:v1p1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://speech.mtls.googleapis.com/",
   "name": "speech",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "get": {
           "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
           "httpMethod": "GET",
-          "flatPath": "v1p1beta1/operations/{operationsId}",
           "id": "speech.operations.get",
           "parameterOrder": [
             "name"
@@ -120,8 +117,8 @@
               "description": "The name of the operation resource.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1p1beta1/operations/{+name}",
@@ -135,7 +132,6 @@
         "list": {
           "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
           "httpMethod": "GET",
-          "flatPath": "v1p1beta1/operations",
           "id": "speech.operations.list",
           "parameterOrder": [],
           "parameters": {
@@ -176,7 +172,6 @@
         "longrunningrecognize": {
           "description": "Performs asynchronous speech recognition: receive results via the google.longrunning.Operations interface. Returns either an `Operation.error` or an `Operation.response` which contains a `LongRunningRecognizeResponse` message. For more information on asynchronous speech recognition, see the [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).",
           "httpMethod": "POST",
-          "flatPath": "v1p1beta1/speech:longrunningrecognize",
           "id": "speech.speech.longrunningrecognize",
           "parameterOrder": [],
           "parameters": {},
@@ -194,7 +189,6 @@
         "recognize": {
           "description": "Performs synchronous speech recognition: receive results after all audio has been sent and processed.",
           "httpMethod": "POST",
-          "flatPath": "v1p1beta1/speech:recognize",
           "id": "speech.speech.recognize",
           "parameterOrder": [],
           "parameters": {},
@@ -287,8 +281,8 @@
         },
         "uri": {
           "description": "Output only. The URI of the audio file being transcribed. Empty if the audio was sent as byte content.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -298,12 +292,12 @@
       "id": "LongRunningRecognizeRequest",
       "properties": {
         "audio": {
-          "description": "Required. The audio data to be recognized.",
-          "$ref": "RecognitionAudio"
+          "$ref": "RecognitionAudio",
+          "description": "Required. The audio data to be recognized."
         },
         "config": {
-          "description": "Required. Provides information to the recognizer that specifies how to process the request.",
-          "$ref": "RecognitionConfig"
+          "$ref": "RecognitionConfig",
+          "description": "Required. Provides information to the recognizer that specifies how to process the request."
         }
       },
       "type": "object"
@@ -331,8 +325,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -417,8 +411,8 @@
       "id": "RecognitionConfig",
       "properties": {
         "adaptation": {
-          "description": "Speech adaptation configuration improves the accuracy of speech recognition. When speech adaptation is set it supersedes the `speech_contexts` field. For more information, see the [speech adaptation](https://cloud.google.com/speech-to-text/docs/context-strength) documentation.",
-          "$ref": "SpeechAdaptation"
+          "$ref": "SpeechAdaptation",
+          "description": "Speech adaptation configuration improves the accuracy of speech recognition. When speech adaptation is set it supersedes the `speech_contexts` field. For more information, see the [speech adaptation](https://cloud.google.com/speech-to-text/docs/context-strength) documentation."
         },
         "alternativeLanguageCodes": {
           "description": "A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags, listing possible alternative languages of the supplied audio. See [Language Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported language codes. If alternative languages are listed, recognition result will contain recognition in the most likely language detected including the main language_code. The recognition result will include the language tag of the language detected in the audio. Note: This feature is only supported for Voice Command and Voice Search use cases and performance may vary for other use cases (e.g., phone call transcription).",
@@ -433,8 +427,8 @@
           "type": "integer"
         },
         "diarizationConfig": {
-          "description": "Config to enable speaker diarization and set additional parameters to make diarization better suited for your application. Note: When this is enabled, we send all the words from the beginning of the audio for the top alternative in every consecutive STREAMING responses. This is done in order to improve our speaker tags as our models learn to identify the speakers in the conversation over time. For non-streaming requests, the diarization results will be provided only in the top alternative of the FINAL SpeechRecognitionResult.",
-          "$ref": "SpeakerDiarizationConfig"
+          "$ref": "SpeakerDiarizationConfig",
+          "description": "Config to enable speaker diarization and set additional parameters to make diarization better suited for your application. Note: When this is enabled, we send all the words from the beginning of the audio for the top alternative in every consecutive STREAMING responses. This is done in order to improve our speaker tags as our models learn to identify the speakers in the conversation over time. For non-streaming requests, the diarization results will be provided only in the top alternative of the FINAL SpeechRecognitionResult."
         },
         "diarizationSpeakerCount": {
           "description": "If set, specifies the estimated number of speakers in the conversation. Defaults to '2'. Ignored unless enable_speaker_diarization is set to true. Note: Use diarization_config instead.",
@@ -463,17 +457,6 @@
         },
         "encoding": {
           "description": "Encoding of audio data sent in all `RecognitionAudio` messages. This field is optional for `FLAC` and `WAV` audio files and required for all other audio formats. For details, see AudioEncoding.",
-          "enumDescriptions": [
-            "Not specified.",
-            "Uncompressed 16-bit signed little-endian samples (Linear PCM).",
-            "`FLAC` (Free Lossless Audio Codec) is the recommended encoding because it is lossless--therefore recognition is not compromised--and requires only about half the bandwidth of `LINEAR16`. `FLAC` stream encoding supports 16-bit and 24-bit samples, however, not all fields in `STREAMINFO` are supported.",
-            "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.",
-            "Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000.",
-            "Adaptive Multi-Rate Wideband codec. `sample_rate_hertz` must be 16000.",
-            "Opus encoded audio frames in Ogg container ([OggOpus](https://wiki.xiph.org/OggOpus)). `sample_rate_hertz` must be one of 8000, 12000, 16000, 24000, or 48000.",
-            "Although the use of lossy encodings is not recommended, if a very low bitrate encoding is required, `OGG_OPUS` is highly preferred over Speex encoding. The [Speex](https://speex.org/) encoding supported by Cloud Speech API has a header byte in each block, as in MIME type `audio/x-speex-with-header-byte`. It is a variant of the RTP Speex encoding defined in [RFC 5574](https://tools.ietf.org/html/rfc5574). The stream is a sequence of blocks, one block per RTP packet. Each block starts with a byte containing the length of the block, in bytes, followed by one or more frames of Speex data, padded to an integral number of bytes (octets) as specified in RFC 5574. In other words, each RTP header is replaced with a single byte containing the block length. Only Speex wideband is supported. `sample_rate_hertz` must be 16000.",
-            "MP3 audio. MP3 encoding is a Beta feature and only available in v1p1beta1. Support all standard MP3 bitrates (which range from 32-320 kbps). When using this encoding, `sample_rate_hertz` has to match the sample rate of the file being used."
-          ],
           "enum": [
             "ENCODING_UNSPECIFIED",
             "LINEAR16",
@@ -484,6 +467,17 @@
             "OGG_OPUS",
             "SPEEX_WITH_HEADER_BYTE",
             "MP3"
+          ],
+          "enumDescriptions": [
+            "Not specified.",
+            "Uncompressed 16-bit signed little-endian samples (Linear PCM).",
+            "`FLAC` (Free Lossless Audio Codec) is the recommended encoding because it is lossless--therefore recognition is not compromised--and requires only about half the bandwidth of `LINEAR16`. `FLAC` stream encoding supports 16-bit and 24-bit samples, however, not all fields in `STREAMINFO` are supported.",
+            "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.",
+            "Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000.",
+            "Adaptive Multi-Rate Wideband codec. `sample_rate_hertz` must be 16000.",
+            "Opus encoded audio frames in Ogg container ([OggOpus](https://wiki.xiph.org/OggOpus)). `sample_rate_hertz` must be one of 8000, 12000, 16000, 24000, or 48000.",
+            "Although the use of lossy encodings is not recommended, if a very low bitrate encoding is required, `OGG_OPUS` is highly preferred over Speex encoding. The [Speex](https://speex.org/) encoding supported by Cloud Speech API has a header byte in each block, as in MIME type `audio/x-speex-with-header-byte`. It is a variant of the RTP Speex encoding defined in [RFC 5574](https://tools.ietf.org/html/rfc5574). The stream is a sequence of blocks, one block per RTP packet. Each block starts with a byte containing the length of the block, in bytes, followed by one or more frames of Speex data, padded to an integral number of bytes (octets) as specified in RFC 5574. In other words, each RTP header is replaced with a single byte containing the block length. Only Speex wideband is supported. `sample_rate_hertz` must be 16000.",
+            "MP3 audio. MP3 encoding is a Beta feature and only available in v1p1beta1. Support all standard MP3 bitrates (which range from 32-320 kbps). When using this encoding, `sample_rate_hertz` has to match the sample rate of the file being used."
           ],
           "type": "string"
         },
@@ -497,8 +491,8 @@
           "type": "integer"
         },
         "metadata": {
-          "description": "Metadata regarding this request.",
-          "$ref": "RecognitionMetadata"
+          "$ref": "RecognitionMetadata",
+          "description": "Metadata regarding this request."
         },
         "model": {
           "description": "Which model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the RecognitionConfig. *Model* *Description* command_and_search Best for short queries such as voice commands or voice search. phone_call Best for audio that originated from a phone call (typically recorded at an 8khz sampling rate). video Best for audio that originated from from video or includes multiple speakers. Ideally the audio is recorded at a 16khz or greater sampling rate. This is a premium model that costs more than the standard rate. default Best for audio that is not one of the specific audio models. For example, long-form audio. Ideally the audio is high-fidelity, recorded at a 16khz or greater sampling rate. ",
@@ -542,17 +536,6 @@
         },
         "interactionType": {
           "description": "The use case most closely describing the audio content to be recognized.",
-          "enumDescriptions": [
-            "Use case is either unknown or is something other than one of the other values below.",
-            "Multiple people in a conversation or discussion. For example in a meeting with two or more people actively participating. Typically all the primary people speaking would be in the same room (if not, see PHONE_CALL)",
-            "One or more persons lecturing or presenting to others, mostly uninterrupted.",
-            "A phone-call or video-conference in which two or more people, who are not in the same room, are actively participating.",
-            "A recorded message intended for another person to listen to.",
-            "Professionally produced audio (eg. TV Show, Podcast).",
-            "Transcribe spoken questions and queries into text.",
-            "Transcribe voice commands, such as for controlling a device.",
-            "Transcribe speech to text to create a written document, such as a text-message, email or report."
-          ],
           "enum": [
             "INTERACTION_TYPE_UNSPECIFIED",
             "DISCUSSION",
@@ -564,21 +547,32 @@
             "VOICE_COMMAND",
             "DICTATION"
           ],
+          "enumDescriptions": [
+            "Use case is either unknown or is something other than one of the other values below.",
+            "Multiple people in a conversation or discussion. For example in a meeting with two or more people actively participating. Typically all the primary people speaking would be in the same room (if not, see PHONE_CALL)",
+            "One or more persons lecturing or presenting to others, mostly uninterrupted.",
+            "A phone-call or video-conference in which two or more people, who are not in the same room, are actively participating.",
+            "A recorded message intended for another person to listen to.",
+            "Professionally produced audio (eg. TV Show, Podcast).",
+            "Transcribe spoken questions and queries into text.",
+            "Transcribe voice commands, such as for controlling a device.",
+            "Transcribe speech to text to create a written document, such as a text-message, email or report."
+          ],
           "type": "string"
         },
         "microphoneDistance": {
           "description": "The audio type that most closely describes the audio being recognized.",
-          "enumDescriptions": [
-            "Audio type is not known.",
-            "The audio was captured from a closely placed microphone. Eg. phone, dictaphone, or handheld microphone. Generally if there speaker is within 1 meter of the microphone.",
-            "The speaker if within 3 meters of the microphone.",
-            "The speaker is more than 3 meters away from the microphone."
-          ],
           "enum": [
             "MICROPHONE_DISTANCE_UNSPECIFIED",
             "NEARFIELD",
             "MIDFIELD",
             "FARFIELD"
+          ],
+          "enumDescriptions": [
+            "Audio type is not known.",
+            "The audio was captured from a closely placed microphone. Eg. phone, dictaphone, or handheld microphone. Generally if there speaker is within 1 meter of the microphone.",
+            "The speaker if within 3 meters of the microphone.",
+            "The speaker is more than 3 meters away from the microphone."
           ],
           "type": "string"
         },
@@ -589,15 +583,15 @@
         },
         "originalMediaType": {
           "description": "The original media the speech was recorded on.",
-          "enumDescriptions": [
-            "Unknown original media type.",
-            "The speech data is an audio recording.",
-            "The speech data originally recorded on a video."
-          ],
           "enum": [
             "ORIGINAL_MEDIA_TYPE_UNSPECIFIED",
             "AUDIO",
             "VIDEO"
+          ],
+          "enumDescriptions": [
+            "Unknown original media type.",
+            "The speech data is an audio recording.",
+            "The speech data originally recorded on a video."
           ],
           "type": "string"
         },
@@ -611,15 +605,6 @@
         },
         "recordingDeviceType": {
           "description": "The type of device the speech was recorded with.",
-          "enumDescriptions": [
-            "The recording device is unknown.",
-            "Speech was recorded on a smartphone.",
-            "Speech was recorded using a personal computer or tablet.",
-            "Speech was recorded over a phone line.",
-            "Speech was recorded in a vehicle.",
-            "Speech was recorded outdoors.",
-            "Speech was recorded indoors."
-          ],
           "enum": [
             "RECORDING_DEVICE_TYPE_UNSPECIFIED",
             "SMARTPHONE",
@@ -628,6 +613,15 @@
             "VEHICLE",
             "OTHER_OUTDOOR_DEVICE",
             "OTHER_INDOOR_DEVICE"
+          ],
+          "enumDescriptions": [
+            "The recording device is unknown.",
+            "Speech was recorded on a smartphone.",
+            "Speech was recorded using a personal computer or tablet.",
+            "Speech was recorded over a phone line.",
+            "Speech was recorded in a vehicle.",
+            "Speech was recorded outdoors.",
+            "Speech was recorded indoors."
           ],
           "type": "string"
         }
@@ -639,12 +633,12 @@
       "id": "RecognizeRequest",
       "properties": {
         "audio": {
-          "description": "Required. The audio data to be recognized.",
-          "$ref": "RecognitionAudio"
+          "$ref": "RecognitionAudio",
+          "description": "Required. The audio data to be recognized."
         },
         "config": {
-          "description": "Required. Provides information to the recognizer that specifies how to process the request.",
-          "$ref": "RecognitionConfig"
+          "$ref": "RecognitionConfig",
+          "description": "Required. Provides information to the recognizer that specifies how to process the request."
         }
       },
       "type": "object"
@@ -684,8 +678,8 @@
         "speakerTag": {
           "description": "Output only. Unused.",
           "format": "int32",
-          "type": "integer",
-          "readOnly": true
+          "readOnly": true,
+          "type": "integer"
         }
       },
       "type": "object"
@@ -771,8 +765,8 @@
         },
         "languageCode": {
           "description": "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -821,8 +815,8 @@
         "speakerTag": {
           "description": "Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only in the top alternative.",
           "format": "int32",
-          "type": "integer",
-          "readOnly": true
+          "readOnly": true,
+          "type": "integer"
         },
         "startTime": {
           "description": "Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary.",
@@ -839,6 +833,6 @@
   },
   "servicePath": "",
   "title": "Cloud Speech-to-Text API",
-  "version_module": true,
-  "version": "v1p1beta1"
+  "version": "v1p1beta1",
+  "version_module": true
 }

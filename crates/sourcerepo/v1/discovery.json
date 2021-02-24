@@ -24,29 +24,27 @@
   "description": "Accesses source code repositories hosted by Google.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/source-repositories/docs/apis",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "sourcerepo:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://sourcerepo.mtls.googleapis.com/",
   "name": "sourcerepo",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -57,17 +55,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -119,7 +117,6 @@
         "getConfig": {
           "description": "Returns the Cloud Source Repositories configuration of the project.",
           "httpMethod": "GET",
-          "flatPath": "v1/projects/{projectsId}/config",
           "id": "sourcerepo.projects.getConfig",
           "parameterOrder": [
             "name"
@@ -129,8 +126,8 @@
               "description": "The name of the requested project. Values are of the form `projects/`.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}/config",
@@ -144,7 +141,6 @@
         "updateConfig": {
           "description": "Updates the Cloud Source Repositories configuration of the project.",
           "httpMethod": "PATCH",
-          "flatPath": "v1/projects/{projectsId}/config",
           "id": "sourcerepo.projects.updateConfig",
           "parameterOrder": [
             "name"
@@ -154,8 +150,8 @@
               "description": "The name of the requested project. Values are of the form `projects/`.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}/config",
@@ -176,7 +172,6 @@
             "create": {
               "description": "Creates a repo in the given project with the given name. If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/repos",
               "id": "sourcerepo.projects.repos.create",
               "parameterOrder": [
                 "parent"
@@ -186,8 +181,8 @@
                   "description": "The project in which to create the repo. Values are of the form `projects/`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/repos",
@@ -205,7 +200,6 @@
             "delete": {
               "description": "Deletes a repo.",
               "httpMethod": "DELETE",
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
               "id": "sourcerepo.projects.repos.delete",
               "parameterOrder": [
                 "name"
@@ -215,8 +209,8 @@
                   "description": "The name of the repo to delete. Values are of the form `projects//repos/`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/repos/.*$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -231,7 +225,6 @@
             "get": {
               "description": "Returns information about a repo.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
               "id": "sourcerepo.projects.repos.get",
               "parameterOrder": [
                 "name"
@@ -241,8 +234,8 @@
                   "description": "The name of the requested repository. Values are of the form `projects//repos/`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/repos/.*$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -259,7 +252,6 @@
             "getIamPolicy": {
               "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}:getIamPolicy",
               "id": "sourcerepo.projects.repos.getIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -275,8 +267,8 @@
                   "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/repos/.*$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:getIamPolicy",
@@ -293,7 +285,6 @@
             "list": {
               "description": "Returns all repos belonging to a project. The sizes of the repos are not set by ListRepos. To get the size of a repo, use GetRepo.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/repos",
               "id": "sourcerepo.projects.repos.list",
               "parameterOrder": [
                 "name"
@@ -303,8 +294,8 @@
                   "description": "The project ID whose repos should be listed. Values are of the form `projects/`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "Maximum number of repositories to return; between 1 and 500. If not set or zero, defaults to 100 at the server.",
@@ -332,7 +323,6 @@
             "patch": {
               "description": "Updates information about a repo.",
               "httpMethod": "PATCH",
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
               "id": "sourcerepo.projects.repos.patch",
               "parameterOrder": [
                 "name"
@@ -342,8 +332,8 @@
                   "description": "The name of the requested repository. Values are of the form `projects//repos/`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/repos/.*$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -360,7 +350,6 @@
             "setIamPolicy": {
               "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}:setIamPolicy",
               "id": "sourcerepo.projects.repos.setIamPolicy",
               "parameterOrder": [
                 "resource"
@@ -370,8 +359,8 @@
                   "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/repos/.*$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:setIamPolicy",
@@ -389,7 +378,6 @@
             "sync": {
               "description": "Synchronize a connected repo. The response contains SyncRepoMetadata in the metadata field.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}:sync",
               "id": "sourcerepo.projects.repos.sync",
               "parameterOrder": [
                 "name"
@@ -399,8 +387,8 @@
                   "description": "The name of the repo to synchronize. Values are of the form `projects//repos/`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/repos/.*$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:sync",
@@ -417,7 +405,6 @@
             "testIamPermissions": {
               "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}:testIamPermissions",
               "id": "sourcerepo.projects.repos.testIamPermissions",
               "parameterOrder": [
                 "resource"
@@ -427,8 +414,8 @@
                   "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/repos/.*$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+resource}:testIamPermissions",
@@ -484,17 +471,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -506,8 +493,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -598,8 +585,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -683,15 +670,15 @@
       "properties": {
         "messageFormat": {
           "description": "The format of the Cloud Pub/Sub messages.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "The message payload is a serialized protocol buffer of SourceRepoEvent.",
-            "The message payload is a JSON string of SourceRepoEvent."
-          ],
           "enum": [
             "MESSAGE_FORMAT_UNSPECIFIED",
             "PROTOBUF",
             "JSON"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "The message payload is a serialized protocol buffer of SourceRepoEvent.",
+            "The message payload is a JSON string of SourceRepoEvent."
           ],
           "type": "string"
         },
@@ -711,8 +698,8 @@
       "id": "Repo",
       "properties": {
         "mirrorConfig": {
-          "description": "How this repository mirrors a repository managed by another service. Read-only field.",
-          "$ref": "MirrorConfig"
+          "$ref": "MirrorConfig",
+          "description": "How this repository mirrors a repository managed by another service. Read-only field."
         },
         "name": {
           "description": "Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`",
@@ -742,8 +729,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -844,8 +831,8 @@
       "id": "UpdateProjectConfigRequest",
       "properties": {
         "projectConfig": {
-          "description": "The new configuration for the project.",
-          "$ref": "ProjectConfig"
+          "$ref": "ProjectConfig",
+          "description": "The new configuration for the project."
         },
         "updateMask": {
           "description": "A FieldMask specifying which fields of the project_config to modify. Only the fields in the mask will be modified. If no mask is provided, this request is no-op.",
@@ -860,8 +847,8 @@
       "id": "UpdateRepoRequest",
       "properties": {
         "repo": {
-          "description": "The new configuration for the repository.",
-          "$ref": "Repo"
+          "$ref": "Repo",
+          "description": "The new configuration for the repository."
         },
         "updateMask": {
           "description": "A FieldMask specifying which fields of the repo to modify. Only the fields in the mask will be modified. If no mask is provided, this request is no-op.",
@@ -874,6 +861,6 @@
   },
   "servicePath": "",
   "title": "Cloud Source Repositories API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

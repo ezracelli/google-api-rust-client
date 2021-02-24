@@ -15,29 +15,27 @@
   "description": "The Cloud Filestore API is used for creating and managing cloud file servers.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/filestore/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "file:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://file.mtls.googleapis.com/",
   "name": "file",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
               "id": "file.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations",
               "id": "file.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -157,8 +153,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -187,7 +183,6 @@
                 "create": {
                   "description": "Creates a backup.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups",
                   "id": "file.projects.locations.backups.create",
                   "parameterOrder": [
                     "parent"
@@ -202,8 +197,8 @@
                       "description": "Required. The backup's project and location, in the format projects/{project_number}/locations/{location}. In Cloud Filestore, backup locations map to GCP regions, for example **us-west1**.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/backups",
@@ -220,7 +215,6 @@
                 "delete": {
                   "description": "Deletes a backup.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups/{backupsId}",
                   "id": "file.projects.locations.backups.delete",
                   "parameterOrder": [
                     "name"
@@ -230,8 +224,8 @@
                       "description": "Required. The backup resource name, in the format projects/{project_number}/locations/{location}/backups/{backup_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -245,7 +239,6 @@
                 "get": {
                   "description": "Gets the details of a specific backup.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups/{backupsId}",
                   "id": "file.projects.locations.backups.get",
                   "parameterOrder": [
                     "name"
@@ -255,8 +248,8 @@
                       "description": "Required. The backup resource name, in the format projects/{project_number}/locations/{location}/backups/{backup_id}.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -270,7 +263,6 @@
                 "list": {
                   "description": "Lists all backups in a project for either a specified location or for all locations.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups",
                   "id": "file.projects.locations.backups.list",
                   "parameterOrder": [
                     "parent"
@@ -301,8 +293,8 @@
                       "description": "Required. The project and location for which to retrieve backup information, in the format projects/{project_number}/locations/{location}. In Cloud Filestore, backup locations map to GCP regions, for example **us-west1**. To retrieve backup information for all locations, use \"-\" for the {location} value.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/backups",
@@ -316,7 +308,6 @@
                 "patch": {
                   "description": "Updates the settings of a specific backup.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/backups/{backupsId}",
                   "id": "file.projects.locations.backups.patch",
                   "parameterOrder": [
                     "name"
@@ -326,8 +317,8 @@
                       "description": "Output only. The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "Required. Mask of fields to update. At least one path must be supplied in this field.",
@@ -354,7 +345,6 @@
                 "create": {
                   "description": "Creates an instance. When creating from a backup, the capacity of the new instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
                   "id": "file.projects.locations.instances.create",
                   "parameterOrder": [
                     "parent"
@@ -369,8 +359,8 @@
                       "description": "Required. The instance's project and location, in the format projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-west1-b**.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/instances",
@@ -387,7 +377,6 @@
                 "delete": {
                   "description": "Deletes an instance.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
                   "id": "file.projects.locations.instances.delete",
                   "parameterOrder": [
                     "name"
@@ -397,8 +386,8 @@
                       "description": "Required. The instance resource name, in the format projects/{project_id}/locations/{location}/instances/{instance_id}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -412,7 +401,6 @@
                 "get": {
                   "description": "Gets the details of a specific instance.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
                   "id": "file.projects.locations.instances.get",
                   "parameterOrder": [
                     "name"
@@ -422,8 +410,8 @@
                       "description": "Required. The instance resource name, in the format projects/{project_id}/locations/{location}/instances/{instance_id}.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -437,7 +425,6 @@
                 "list": {
                   "description": "Lists all instances in a project for either a specified location or for all locations.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
                   "id": "file.projects.locations.instances.list",
                   "parameterOrder": [
                     "parent"
@@ -468,8 +455,8 @@
                       "description": "Required. The project and location for which to retrieve instance information, in the format projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-west1-b**. To retrieve instance information for all locations, use \"-\" for the {location} value.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/instances",
@@ -483,7 +470,6 @@
                 "patch": {
                   "description": "Updates the settings of a specific instance.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
                   "id": "file.projects.locations.instances.patch",
                   "parameterOrder": [
                     "name"
@@ -493,8 +479,8 @@
                       "description": "Output only. The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields: * \"description\" * \"file_shares\" * \"labels\"",
@@ -517,7 +503,6 @@
                 "restore": {
                   "description": "Restores an existing instance's file share from a backup. The capacity of the instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:restore",
                   "id": "file.projects.locations.instances.restore",
                   "parameterOrder": [
                     "name"
@@ -527,8 +512,8 @@
                       "description": "Required. The resource name of the instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}:restore",
@@ -549,7 +534,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "file.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -559,8 +543,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}:cancel",
@@ -577,7 +561,6 @@
                 "delete": {
                   "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "file.projects.locations.operations.delete",
                   "parameterOrder": [
                     "name"
@@ -587,8 +570,8 @@
                       "description": "The name of the operation resource to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -602,7 +585,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "file.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -612,8 +594,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -627,7 +609,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                   "id": "file.projects.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -642,8 +623,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -682,14 +663,14 @@
         "capacityGb": {
           "description": "Output only. Capacity of the source file share when the backup was created.",
           "format": "int64",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. The time when the backup was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "description": {
           "description": "A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.",
@@ -698,8 +679,8 @@
         "downloadBytes": {
           "description": "Output only. Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.",
           "format": "int64",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "labels": {
           "additionalProperties": {
@@ -710,8 +691,8 @@
         },
         "name": {
           "description": "Output only. The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "sourceFileShare": {
           "description": "Name of the file share in the source Cloud Filestore instance that the backup is created from.",
@@ -723,14 +704,6 @@
         },
         "sourceInstanceTier": {
           "description": "Output only. The service tier of the source Cloud Filestore instance that this backup is created from.",
-          "enumDescriptions": [
-            "Not set.",
-            "STANDARD tier.",
-            "PREMIUM tier.",
-            "BASIC instances offer a maximum capacity of 63.9 TB. BASIC_HDD is an alias for STANDARD Tier, offering economical performance backed by HDD.",
-            "BASIC instances offer a maximum capacity of 63.9 TB. BASIC_SSD is an alias for PREMIUM Tier, and offers improved performance backed by SSD.",
-            "HIGH_SCALE instances offer expanded capacity and performance scaling capabilities."
-          ],
           "enum": [
             "TIER_UNSPECIFIED",
             "STANDARD",
@@ -739,18 +712,19 @@
             "BASIC_SSD",
             "HIGH_SCALE_SSD"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Not set.",
+            "STANDARD tier.",
+            "PREMIUM tier.",
+            "BASIC instances offer a maximum capacity of 63.9 TB. BASIC_HDD is an alias for STANDARD Tier, offering economical performance backed by HDD.",
+            "BASIC instances offer a maximum capacity of 63.9 TB. BASIC_SSD is an alias for PREMIUM Tier, and offers improved performance backed by SSD.",
+            "HIGH_SCALE instances offer expanded capacity and performance scaling capabilities."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "state": {
           "description": "Output only. The backup state.",
-          "enumDescriptions": [
-            "State not set.",
-            "Backup is being created.",
-            "Backup has been taken and the operation is being finalized. At this point, changes to the file share will not be reflected in the backup.",
-            "Backup is available for use.",
-            "Backup is being deleted."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -758,14 +732,21 @@
             "READY",
             "DELETING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "State not set.",
+            "Backup is being created.",
+            "Backup has been taken and the operation is being finalized. At this point, changes to the file share will not be reflected in the backup.",
+            "Backup is available for use.",
+            "Backup is being deleted."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "storageBytes": {
           "description": "Output only. The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.",
           "format": "int64",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -786,8 +767,8 @@
           "type": "string"
         },
         "startTime": {
-          "description": "Time within the day to start the operations.",
-          "$ref": "TimeOfDay"
+          "$ref": "TimeOfDay",
+          "description": "Time within the day to start the operations."
         }
       },
       "type": "object"
@@ -819,16 +800,16 @@
       "id": "DenyMaintenancePeriod",
       "properties": {
         "endDate": {
-          "description": "Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be before the end.",
-          "$ref": "Date"
+          "$ref": "Date",
+          "description": "Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be before the end."
         },
         "startDate": {
-          "description": "Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be the same or after the start.",
-          "$ref": "Date"
+          "$ref": "Date",
+          "description": "Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be the same or after the start."
         },
         "time": {
-          "description": "Time in UTC when the Blackout period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC",
-          "$ref": "TimeOfDay"
+          "$ref": "TimeOfDay",
+          "description": "Time in UTC when the Blackout period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC"
         }
       },
       "type": "object"
@@ -876,8 +857,8 @@
         "createTime": {
           "description": "Output only. Timestamp when the resource was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "labels": {
           "additionalProperties": {
@@ -901,8 +882,8 @@
           "type": "object"
         },
         "maintenanceSettings": {
-          "description": "Optional. The MaintenanceSettings associated with instance.",
-          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings"
+          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings",
+          "description": "Optional. The MaintenanceSettings associated with instance."
         },
         "name": {
           "description": "Unique name of the resource. It uses the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}`",
@@ -913,24 +894,24 @@
             "type": "string"
           },
           "description": "Output only. Custom string attributes used primarily to expose producer-specific information in monitoring dashboards. See go/get-instance-metadata.",
-          "type": "object",
-          "readOnly": true
+          "readOnly": true,
+          "type": "object"
         },
         "provisionedResources": {
           "description": "Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See go/get-instance-metadata.",
           "items": {
             "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "slmInstanceTemplate": {
           "description": "Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this field. Instead they should use software_versions.",
           "type": "string"
         },
         "sloMetadata": {
-          "description": "Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform. See go/cloud-ssa-standard-slo for feature description.",
           "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata",
+          "description": "Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform. See go/cloud-ssa-standard-slo for feature description.",
           "readOnly": true
         },
         "softwareVersions": {
@@ -942,15 +923,6 @@
         },
         "state": {
           "description": "Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to use).",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Instance is being created.",
-            "Instance has been created and is ready to use.",
-            "Instance is being updated.",
-            "Instance is unheathy and under repair.",
-            "Instance is being deleted.",
-            "Instance encountered an error and is in indeterministic state."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -960,19 +932,28 @@
             "DELETING",
             "ERROR"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Instance is being created.",
+            "Instance has been created and is ready to use.",
+            "Instance is being updated.",
+            "Instance is unheathy and under repair.",
+            "Instance is being deleted.",
+            "Instance encountered an error and is in indeterministic state."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "tenantProjectId": {
           "description": "Output only. ID of the associated GCP tenant project. See go/get-instance-metadata.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. Timestamp when the resource was last modified.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1125,8 +1106,8 @@
       "id": "GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata",
       "properties": {
         "eligibility": {
-          "description": "Optional. Global per-instance SLI eligibility which applies to all defined SLIs. Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be used.",
-          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility"
+          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility",
+          "description": "Optional. Global per-instance SLI eligibility which applies to all defined SLIs. Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be used."
         },
         "exclusions": {
           "description": "List of SLO exclusion windows. When multiple entries in the list match (matching the exclusion time-window against current time point) the exclusion reason used in the first matching entry will be published. It is not needed to include expired exclusion in this list, as only the currently applicable exclusions are taken into account by the eligibility exporting subsystem (the historical state of exclusions will be reflected in the historically produced timeseries regardless of the current state). This field can be used to mark the instance as temporary ineligible for the purpose of SLO calculation. For permanent instance SLO exclusion, use of custom instance eligibility is recommended. See 'eligibility' field below.",
@@ -1143,8 +1124,8 @@
           "type": "array"
         },
         "perSliEligibility": {
-          "description": "Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be used.",
-          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility"
+          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility",
+          "description": "Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. Exactly one of 'eligibility' and 'per_sli_eligibility' fields must be used."
         },
         "tier": {
           "description": "Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the service SLO configuration. Field is mandatory and must not be empty.",
@@ -1160,8 +1141,8 @@
         "createTime": {
           "description": "Output only. The time when the instance was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "description": {
           "description": "The description of the instance (2048 characters or less).",
@@ -1187,8 +1168,8 @@
         },
         "name": {
           "description": "Output only. The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "networks": {
           "description": "VPC networks to which the instance is connected. For this version, only a single network is supported.",
@@ -1199,15 +1180,6 @@
         },
         "state": {
           "description": "Output only. The instance state.",
-          "enumDescriptions": [
-            "State not set.",
-            "The instance is being created.",
-            "The instance is available for use.",
-            "Work is being done on the instance. You can get further details from the `statusMessage` field of the `Instance` resource.",
-            "The instance is shutting down.",
-            "The instance is experiencing an issue and might be unusable. You can get further details from the `statusMessage` field of the `Instance` resource.",
-            "The instance is restoring a backup to an existing file share and may be unusable during this time."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -1217,24 +1189,25 @@
             "ERROR",
             "RESTORING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "State not set.",
+            "The instance is being created.",
+            "The instance is available for use.",
+            "Work is being done on the instance. You can get further details from the `statusMessage` field of the `Instance` resource.",
+            "The instance is shutting down.",
+            "The instance is experiencing an issue and might be unusable. You can get further details from the `statusMessage` field of the `Instance` resource.",
+            "The instance is restoring a backup to an existing file share and may be unusable during this time."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "statusMessage": {
           "description": "Output only. Additional information about the instance state, if available.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "tier": {
           "description": "The service tier of the instance.",
-          "enumDescriptions": [
-            "Not set.",
-            "STANDARD tier.",
-            "PREMIUM tier.",
-            "BASIC instances offer a maximum capacity of 63.9 TB. BASIC_HDD is an alias for STANDARD Tier, offering economical performance backed by HDD.",
-            "BASIC instances offer a maximum capacity of 63.9 TB. BASIC_SSD is an alias for PREMIUM Tier, and offers improved performance backed by SSD.",
-            "HIGH_SCALE instances offer expanded capacity and performance scaling capabilities."
-          ],
           "enum": [
             "TIER_UNSPECIFIED",
             "STANDARD",
@@ -1242,6 +1215,14 @@
             "BASIC_HDD",
             "BASIC_SSD",
             "HIGH_SCALE_SSD"
+          ],
+          "enumDescriptions": [
+            "Not set.",
+            "STANDARD tier.",
+            "PREMIUM tier.",
+            "BASIC instances offer a maximum capacity of 63.9 TB. BASIC_HDD is an alias for STANDARD Tier, offering economical performance backed by HDD.",
+            "BASIC instances offer a maximum capacity of 63.9 TB. BASIC_SSD is an alias for PREMIUM Tier, and offers improved performance backed by SSD.",
+            "HIGH_SCALE instances offer expanded capacity and performance scaling capabilities."
           ],
           "type": "string"
         }
@@ -1394,21 +1375,21 @@
         },
         "state": {
           "description": "Optional. The state of the policy.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Resource is ready to be used.",
-            "Resource is being deleted. It can no longer be attached to instances."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "READY",
             "DELETING"
           ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Resource is ready to be used.",
+            "Resource is being deleted. It can no longer be attached to instances."
+          ],
           "type": "string"
         },
         "updatePolicy": {
-          "description": "Maintenance policy applicable to instance update.",
-          "$ref": "UpdatePolicy"
+          "$ref": "UpdatePolicy",
+          "description": "Maintenance policy applicable to instance update."
         },
         "updateTime": {
           "description": "Output only. The time when the resource was updated.",
@@ -1423,12 +1404,12 @@
       "id": "MaintenanceWindow",
       "properties": {
         "dailyCycle": {
-          "description": "Daily cycle.",
-          "$ref": "DailyCycle"
+          "$ref": "DailyCycle",
+          "description": "Daily cycle."
         },
         "weeklyCycle": {
-          "description": "Weekly cycle.",
-          "$ref": "WeeklyCycle"
+          "$ref": "WeeklyCycle",
+          "description": "Weekly cycle."
         }
       },
       "type": "object"
@@ -1442,19 +1423,19 @@
           "items": {
             "type": "string"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "modes": {
           "description": "Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.",
           "items": {
-            "enumDescriptions": [
-              "Internet protocol not set.",
-              "Use the IPv4 internet protocol."
-            ],
             "enum": [
               "ADDRESS_MODE_UNSPECIFIED",
               "MODE_IPV4"
+            ],
+            "enumDescriptions": [
+              "Internet protocol not set.",
+              "Use the IPv4 internet protocol."
             ],
             "type": "string"
           },
@@ -1477,15 +1458,15 @@
       "properties": {
         "accessMode": {
           "description": "Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.",
-          "enumDescriptions": [
-            "AccessMode not set.",
-            "The client can only read the file share.",
-            "The client can read and write the file share (default)."
-          ],
           "enum": [
             "ACCESS_MODE_UNSPECIFIED",
             "READ_ONLY",
             "READ_WRITE"
+          ],
+          "enumDescriptions": [
+            "AccessMode not set.",
+            "The client can only read the file share.",
+            "The client can read and write the file share (default)."
           ],
           "type": "string"
         },
@@ -1508,15 +1489,15 @@
         },
         "squashMode": {
           "description": "Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.",
-          "enumDescriptions": [
-            "SquashMode not set.",
-            "The Root user has root access to the file share (default).",
-            "The Root user has squashed access to the anonymous uid/gid."
-          ],
           "enum": [
             "SQUASH_MODE_UNSPECIFIED",
             "NO_ROOT_SQUASH",
             "ROOT_SQUASH"
+          ],
+          "enumDescriptions": [
+            "SquashMode not set.",
+            "The Root user has root access to the file share (default).",
+            "The Root user has squashed access to the anonymous uid/gid."
           ],
           "type": "string"
         }
@@ -1532,8 +1513,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1616,16 +1597,6 @@
       "properties": {
         "day": {
           "description": "Allows to define schedule that runs specified day of the week.",
-          "enumDescriptions": [
-            "The day of the week is unspecified.",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
           "enum": [
             "DAY_OF_WEEK_UNSPECIFIED",
             "MONDAY",
@@ -1636,6 +1607,16 @@
             "SATURDAY",
             "SUNDAY"
           ],
+          "enumDescriptions": [
+            "The day of the week is unspecified.",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
           "type": "string"
         },
         "duration": {
@@ -1644,8 +1625,8 @@
           "type": "string"
         },
         "startTime": {
-          "description": "Time within the window to start the operations.",
-          "$ref": "TimeOfDay"
+          "$ref": "TimeOfDay",
+          "description": "Time within the window to start the operations."
         }
       },
       "type": "object"
@@ -1710,15 +1691,15 @@
       "properties": {
         "channel": {
           "description": "Optional. Relative scheduling channel applied to resource.",
-          "enumDescriptions": [
-            "Unspecified channel.",
-            "Early channel within a customer project.",
-            "Later channel within a customer project."
-          ],
           "enum": [
             "UPDATE_CHANNEL_UNSPECIFIED",
             "EARLIER",
             "LATER"
+          ],
+          "enumDescriptions": [
+            "Unspecified channel.",
+            "Early channel within a customer project.",
+            "Later channel within a customer project."
           ],
           "type": "string"
         },
@@ -1730,8 +1711,8 @@
           "type": "array"
         },
         "window": {
-          "description": "Optional. Maintenance window that is applied to resources covered by this policy.",
-          "$ref": "MaintenanceWindow"
+          "$ref": "MaintenanceWindow",
+          "description": "Optional. Maintenance window that is applied to resources covered by this policy."
         }
       },
       "type": "object"
@@ -1753,6 +1734,6 @@
   },
   "servicePath": "",
   "title": "Cloud Filestore API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

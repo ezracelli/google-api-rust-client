@@ -18,29 +18,27 @@
   "description": "Creates, reads, and updates metadata for Google Cloud Platform resource containers.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/resource-manager",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudresourcemanager:v2",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudresourcemanager.mtls.googleapis.com/",
   "name": "cloudresourcemanager",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -113,7 +111,6 @@
         "create": {
           "description": "Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of the folder creation workflow. Upon success the Operation.response field will be populated with the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the CreateFolder request, with status code FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field. The caller must have `resourcemanager.folders.create` permission on the identified parent.",
           "httpMethod": "POST",
-          "flatPath": "v2/folders",
           "id": "cloudresourcemanager.folders.create",
           "parameterOrder": [],
           "parameters": {
@@ -137,7 +134,6 @@
         "delete": {
           "description": "Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is deleted approximately 30 days later. This method may only be called on an empty Folder in the ACTIVE state, where a Folder is empty if it doesn't contain any Folders or Projects in the ACTIVE state. The caller must have `resourcemanager.folders.delete` permission on the identified folder.",
           "httpMethod": "DELETE",
-          "flatPath": "v2/folders/{foldersId}",
           "id": "cloudresourcemanager.folders.delete",
           "parameterOrder": [
             "name"
@@ -147,8 +143,8 @@
               "description": "Required. the resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+name}",
@@ -162,7 +158,6 @@
         "get": {
           "description": "Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.",
           "httpMethod": "GET",
-          "flatPath": "v2/folders/{foldersId}",
           "id": "cloudresourcemanager.folders.get",
           "parameterOrder": [
             "name"
@@ -172,8 +167,8 @@
               "description": "Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+name}",
@@ -188,7 +183,6 @@
         "getIamPolicy": {
           "description": "Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the Folder's resource name, e.g. \"folders/1234\". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.",
           "httpMethod": "POST",
-          "flatPath": "v2/folders/{foldersId}:getIamPolicy",
           "id": "cloudresourcemanager.folders.getIamPolicy",
           "parameterOrder": [
             "resource"
@@ -198,8 +192,8 @@
               "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+resource}:getIamPolicy",
@@ -217,7 +211,6 @@
         "list": {
           "description": "Lists the Folders that are direct descendants of supplied parent resource. List provides a strongly consistent view of the Folders underneath the specified parent resource. List returns Folders sorted based upon the (ascending) lexical ordering of their display_name. The caller must have `resourcemanager.folders.list` permission on the identified parent.",
           "httpMethod": "GET",
-          "flatPath": "v2/folders",
           "id": "cloudresourcemanager.folders.list",
           "parameterOrder": [],
           "parameters": {
@@ -255,7 +248,6 @@
         "move": {
           "description": "Moves a Folder under a new resource parent. Returns an Operation which can be used to track the progress of the folder move workflow. Upon success the Operation.response field will be populated with the moved Folder. Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the failure occurs synchronously then the FolderOperationError will be returned via the Status.details field and if it occurs asynchronously then the FolderOperation will be returned via the Operation.error field. In addition, the Operation.metadata field will be populated with a FolderOperation message as an aid to stateless clients. Folder moves will be rejected if they violate either the naming, height or fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move` permission on the folder's current and proposed new parent.",
           "httpMethod": "POST",
-          "flatPath": "v2/folders/{foldersId}:move",
           "id": "cloudresourcemanager.folders.move",
           "parameterOrder": [
             "name"
@@ -265,8 +257,8 @@
               "description": "Required. The resource name of the Folder to move. Must be of the form folders/{folder_id}",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+name}:move",
@@ -283,7 +275,6 @@
         "patch": {
           "description": "Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if they violate either the display_name formatting rules or naming constraints described in the CreateFolder documentation. The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the regular expression: `\\p{L}\\p{N}{1,28}[\\p{L}\\p{N}]`. The caller must have `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details field.",
           "httpMethod": "PATCH",
-          "flatPath": "v2/folders/{foldersId}",
           "id": "cloudresourcemanager.folders.patch",
           "parameterOrder": [
             "name"
@@ -293,8 +284,8 @@
               "description": "Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: \"folders/1234\".",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "Required. Fields to be updated. Only the `display_name` can be updated.",
@@ -317,7 +308,6 @@
         "search": {
           "description": "Search for folders that match specific filter criteria. Search provides an eventually consistent view of the folders a user has access to which meet the specified filter criteria. This will only return folders on which the caller has the permission `resourcemanager.folders.get`.",
           "httpMethod": "POST",
-          "flatPath": "v2/folders:search",
           "id": "cloudresourcemanager.folders.search",
           "parameterOrder": [],
           "parameters": {},
@@ -336,7 +326,6 @@
         "setIamPolicy": {
           "description": "Sets the access control policy on a Folder, replacing any existing policy. The `resource` field should be the Folder's resource name, e.g. \"folders/1234\". The caller must have `resourcemanager.folders.setIamPolicy` permission on the identified folder.",
           "httpMethod": "POST",
-          "flatPath": "v2/folders/{foldersId}:setIamPolicy",
           "id": "cloudresourcemanager.folders.setIamPolicy",
           "parameterOrder": [
             "resource"
@@ -346,8 +335,8 @@
               "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+resource}:setIamPolicy",
@@ -364,7 +353,6 @@
         "testIamPermissions": {
           "description": "Returns permissions that a caller has on the specified Folder. The `resource` field should be the Folder's resource name, e.g. \"folders/1234\". There are no permissions required for making this API call.",
           "httpMethod": "POST",
-          "flatPath": "v2/folders/{foldersId}:testIamPermissions",
           "id": "cloudresourcemanager.folders.testIamPermissions",
           "parameterOrder": [
             "resource"
@@ -374,8 +362,8 @@
               "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+resource}:testIamPermissions",
@@ -392,7 +380,6 @@
         "undelete": {
           "description": "Cancels the deletion request for a Folder. This method may only be called on a Folder in the DELETE_REQUESTED state. In order to succeed, the Folder's parent must be in the ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming, height and fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.undelete` permission on the identified folder.",
           "httpMethod": "POST",
-          "flatPath": "v2/folders/{foldersId}:undelete",
           "id": "cloudresourcemanager.folders.undelete",
           "parameterOrder": [
             "name"
@@ -402,8 +389,8 @@
               "description": "Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v2/{+name}:undelete",
@@ -424,7 +411,6 @@
         "get": {
           "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
           "httpMethod": "GET",
-          "flatPath": "v1/operations/{operationsId}",
           "id": "cloudresourcemanager.operations.get",
           "parameterOrder": [
             "name"
@@ -434,8 +420,8 @@
               "description": "The name of the operation resource.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -484,17 +470,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -506,8 +492,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -537,15 +523,15 @@
         },
         "operationType": {
           "description": "The type of this operation.",
-          "enumDescriptions": [
-            "Operation type not specified.",
-            "A create folder operation.",
-            "A move folder operation."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "CREATE",
             "MOVE"
+          ],
+          "enumDescriptions": [
+            "Operation type not specified.",
+            "A create folder operation.",
+            "A move folder operation."
           ],
           "type": "string"
         },
@@ -570,15 +556,15 @@
         },
         "operationType": {
           "description": "The type of this operation.",
-          "enumDescriptions": [
-            "Operation type not specified.",
-            "A create folder operation.",
-            "A move folder operation."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "CREATE",
             "MOVE"
+          ],
+          "enumDescriptions": [
+            "Operation type not specified.",
+            "A create folder operation.",
+            "A move folder operation."
           ],
           "type": "string"
         },
@@ -643,8 +629,8 @@
         "createTime": {
           "description": "Output only. Timestamp when the Folder was created. Assigned by the server.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "displayName": {
           "description": "The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\\p{L}\\p{N}]([\\p{L}\\p{N}_- ]{0,28}[\\p{L}\\p{N}])?`.",
@@ -652,23 +638,23 @@
         },
         "lifecycleState": {
           "description": "Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "The normal and active state.",
-            "The folder has been marked for deletion by the user."
-          ],
           "enum": [
             "LIFECYCLE_STATE_UNSPECIFIED",
             "ACTIVE",
             "DELETE_REQUESTED"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The normal and active state.",
+            "The folder has been marked for deletion by the user."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "name": {
           "description": "Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: \"folders/1234\".",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "parent": {
           "description": "Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.",
@@ -691,15 +677,15 @@
         },
         "operationType": {
           "description": "The type of this operation.",
-          "enumDescriptions": [
-            "Operation type not specified.",
-            "A create folder operation.",
-            "A move folder operation."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "CREATE",
             "MOVE"
+          ],
+          "enumDescriptions": [
+            "Operation type not specified.",
+            "A create folder operation.",
+            "A move folder operation."
           ],
           "type": "string"
         },
@@ -716,18 +702,6 @@
       "properties": {
         "errorMessageId": {
           "description": "The type of operation error experienced.",
-          "enumDescriptions": [
-            "The error type was unrecognized or unspecified.",
-            "The attempted action would violate the max folder depth constraint.",
-            "The attempted action would violate the max child folders constraint.",
-            "The attempted action would violate the locally-unique folder display_name constraint.",
-            "The resource being moved has been deleted.",
-            "The resource a folder was being added to has been deleted.",
-            "The attempted action would introduce cycle in resource path.",
-            "The attempted action would move a folder that is already being moved.",
-            "The folder the caller is trying to delete contains active resources.",
-            "The attempted action would violate the max deleted folder depth constraint."
-          ],
           "enum": [
             "ERROR_TYPE_UNSPECIFIED",
             "ACTIVE_FOLDER_HEIGHT_VIOLATION",
@@ -740,6 +714,18 @@
             "FOLDER_TO_DELETE_NON_EMPTY_VIOLATION",
             "DELETED_FOLDER_HEIGHT_VIOLATION"
           ],
+          "enumDescriptions": [
+            "The error type was unrecognized or unspecified.",
+            "The attempted action would violate the max folder depth constraint.",
+            "The attempted action would violate the max child folders constraint.",
+            "The attempted action would violate the locally-unique folder display_name constraint.",
+            "The resource being moved has been deleted.",
+            "The resource a folder was being added to has been deleted.",
+            "The attempted action would introduce cycle in resource path.",
+            "The attempted action would move a folder that is already being moved.",
+            "The folder the caller is trying to delete contains active resources.",
+            "The attempted action would violate the max deleted folder depth constraint."
+          ],
           "type": "string"
         }
       },
@@ -750,8 +736,8 @@
       "id": "GetIamPolicyRequest",
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.",
-          "$ref": "GetPolicyOptions"
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`."
         }
       },
       "type": "object"
@@ -806,8 +792,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -926,8 +912,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",

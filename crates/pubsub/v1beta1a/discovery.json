@@ -24,22 +24,21 @@
   },
   "id": "pubsub:v1beta1a",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://pubsub.mtls.googleapis.com/",
   "name": "pubsub",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -50,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +111,6 @@
         "acknowledge": {
           "description": "Acknowledges a particular received message: the Pub/Sub system can remove the given message from the subscription. Acknowledging a message whose Ack deadline has expired may succeed, but the message could have been already redelivered. Acknowledging a message more than once will not result in an error. This is only used for messages received via pull.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1a/subscriptions/acknowledge",
           "id": "pubsub.subscriptions.acknowledge",
           "parameterOrder": [],
           "parameters": {},
@@ -131,7 +129,6 @@
         "create": {
           "description": "Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1a/subscriptions",
           "id": "pubsub.subscriptions.create",
           "parameterOrder": [],
           "parameters": {},
@@ -150,7 +147,6 @@
         "delete": {
           "description": "Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND.",
           "httpMethod": "DELETE",
-          "flatPath": "v1beta1a/subscriptions/{subscriptionsId}",
           "id": "pubsub.subscriptions.delete",
           "parameterOrder": [
             "subscription"
@@ -160,8 +156,8 @@
               "description": "The subscription to delete.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1a/subscriptions/{+subscription}",
@@ -176,7 +172,6 @@
         "get": {
           "description": "Gets the configuration details of a subscription.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1a/subscriptions/{subscriptionsId}",
           "id": "pubsub.subscriptions.get",
           "parameterOrder": [
             "subscription"
@@ -186,8 +181,8 @@
               "description": "The name of the subscription to get.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1a/subscriptions/{+subscription}",
@@ -202,7 +197,6 @@
         "list": {
           "description": "Lists matching subscriptions.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1a/subscriptions",
           "id": "pubsub.subscriptions.list",
           "parameterOrder": [],
           "parameters": {
@@ -235,7 +229,6 @@
         "modifyAckDeadline": {
           "description": "Modifies the Ack deadline for a message received from a pull request.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1a/subscriptions/modifyAckDeadline",
           "id": "pubsub.subscriptions.modifyAckDeadline",
           "parameterOrder": [],
           "parameters": {},
@@ -254,7 +247,6 @@
         "modifyPushConfig": {
           "description": "Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1a/subscriptions/modifyPushConfig",
           "id": "pubsub.subscriptions.modifyPushConfig",
           "parameterOrder": [],
           "parameters": {},
@@ -273,7 +265,6 @@
         "pull": {
           "description": "Pulls a single message from the server. If return_immediately is true, and no messages are available in the subscription, this method returns FAILED_PRECONDITION. The system is free to return an UNAVAILABLE error if no messages are available in a reasonable amount of time (to reduce system load).",
           "httpMethod": "POST",
-          "flatPath": "v1beta1a/subscriptions/pull",
           "id": "pubsub.subscriptions.pull",
           "parameterOrder": [],
           "parameters": {},
@@ -292,7 +283,6 @@
         "pullBatch": {
           "description": "Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1a/subscriptions/pullBatch",
           "id": "pubsub.subscriptions.pullBatch",
           "parameterOrder": [],
           "parameters": {},
@@ -315,7 +305,6 @@
         "create": {
           "description": "Creates the given topic with the given name.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1a/topics",
           "id": "pubsub.topics.create",
           "parameterOrder": [],
           "parameters": {},
@@ -334,7 +323,6 @@
         "delete": {
           "description": "Deletes the topic with the given name. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name.",
           "httpMethod": "DELETE",
-          "flatPath": "v1beta1a/topics/{topicsId}",
           "id": "pubsub.topics.delete",
           "parameterOrder": [
             "topic"
@@ -344,8 +332,8 @@
               "description": "Name of the topic to delete.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1a/topics/{+topic}",
@@ -360,7 +348,6 @@
         "get": {
           "description": "Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1a/topics/{topicsId}",
           "id": "pubsub.topics.get",
           "parameterOrder": [
             "topic"
@@ -370,8 +357,8 @@
               "description": "The name of the topic to get.",
               "location": "path",
               "pattern": "^.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1beta1a/topics/{+topic}",
@@ -386,7 +373,6 @@
         "list": {
           "description": "Lists matching topics.",
           "httpMethod": "GET",
-          "flatPath": "v1beta1a/topics",
           "id": "pubsub.topics.list",
           "parameterOrder": [],
           "parameters": {
@@ -419,7 +405,6 @@
         "publish": {
           "description": "Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1a/topics/publish",
           "id": "pubsub.topics.publish",
           "parameterOrder": [],
           "parameters": {},
@@ -438,7 +423,6 @@
         "publishBatch": {
           "description": "Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.",
           "httpMethod": "POST",
-          "flatPath": "v1beta1a/topics/publishBatch",
           "id": "pubsub.topics.publishBatch",
           "parameterOrder": [],
           "parameters": {},
@@ -572,8 +556,8 @@
       "id": "ModifyPushConfigRequest",
       "properties": {
         "pushConfig": {
-          "description": "An empty push_config indicates that the Pub/Sub system should pause pushing messages from the given subscription.",
-          "$ref": "PushConfig"
+          "$ref": "PushConfig",
+          "description": "An empty push_config indicates that the Pub/Sub system should pause pushing messages from the given subscription."
         },
         "subscription": {
           "description": "The name of the subscription.",
@@ -619,8 +603,8 @@
       "id": "PublishRequest",
       "properties": {
         "message": {
-          "description": "The message to publish.",
-          "$ref": "PubsubMessage"
+          "$ref": "PubsubMessage",
+          "description": "The message to publish."
         },
         "topic": {
           "description": "The message in the request will be published on this topic.",
@@ -638,8 +622,8 @@
           "type": "boolean"
         },
         "message": {
-          "description": "A received message.",
-          "$ref": "PubsubMessage"
+          "$ref": "PubsubMessage",
+          "description": "A received message."
         },
         "subscription": {
           "description": "The subscription that received the event.",
@@ -738,8 +722,8 @@
           "type": "string"
         },
         "pubsubEvent": {
-          "description": "A pubsub message or truncation event.",
-          "$ref": "PubsubEvent"
+          "$ref": "PubsubEvent",
+          "description": "A pubsub message or truncation event."
         }
       },
       "type": "object"
@@ -769,8 +753,8 @@
           "type": "string"
         },
         "pushConfig": {
-          "description": "If push delivery is used with this subscription, this field is used to configure it.",
-          "$ref": "PushConfig"
+          "$ref": "PushConfig",
+          "description": "If push delivery is used with this subscription, this field is used to configure it."
         },
         "topic": {
           "description": "The name of the topic from which this subscription is receiving messages.",

@@ -21,22 +21,21 @@
   },
   "id": "gamesConfiguration:v1configuration",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://gamesconfiguration.mtls.googleapis.com/",
   "name": "gamesConfiguration",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -47,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -109,7 +108,6 @@
         "delete": {
           "description": "Delete the achievement configuration with the given ID.",
           "httpMethod": "DELETE",
-          "flatPath": "games/v1configuration/achievements/{achievementId}",
           "id": "gamesConfiguration.achievementConfigurations.delete",
           "parameterOrder": [
             "achievementId"
@@ -118,8 +116,8 @@
             "achievementId": {
               "description": "The ID of the achievement used by this method.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1configuration/achievements/{achievementId}",
@@ -130,7 +128,6 @@
         "get": {
           "description": "Retrieves the metadata of the achievement configuration with the given ID.",
           "httpMethod": "GET",
-          "flatPath": "games/v1configuration/achievements/{achievementId}",
           "id": "gamesConfiguration.achievementConfigurations.get",
           "parameterOrder": [
             "achievementId"
@@ -139,8 +136,8 @@
             "achievementId": {
               "description": "The ID of the achievement used by this method.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1configuration/achievements/{achievementId}",
@@ -154,7 +151,6 @@
         "insert": {
           "description": "Insert a new achievement configuration in this application.",
           "httpMethod": "POST",
-          "flatPath": "games/v1configuration/applications/{applicationId}/achievements",
           "id": "gamesConfiguration.achievementConfigurations.insert",
           "parameterOrder": [
             "applicationId"
@@ -163,8 +159,8 @@
             "applicationId": {
               "description": "The application ID from the Google Play developer console.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1configuration/applications/{applicationId}/achievements",
@@ -181,7 +177,6 @@
         "list": {
           "description": "Returns a list of the achievement configurations in this application.",
           "httpMethod": "GET",
-          "flatPath": "games/v1configuration/applications/{applicationId}/achievements",
           "id": "gamesConfiguration.achievementConfigurations.list",
           "parameterOrder": [
             "applicationId"
@@ -190,8 +185,8 @@
             "applicationId": {
               "description": "The application ID from the Google Play developer console.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`.",
@@ -216,7 +211,6 @@
         "update": {
           "description": "Update the metadata of the achievement configuration with the given ID.",
           "httpMethod": "PUT",
-          "flatPath": "games/v1configuration/achievements/{achievementId}",
           "id": "gamesConfiguration.achievementConfigurations.update",
           "parameterOrder": [
             "achievementId"
@@ -225,8 +219,8 @@
             "achievementId": {
               "description": "The ID of the achievement used by this method.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1configuration/achievements/{achievementId}",
@@ -247,7 +241,6 @@
         "upload": {
           "description": "Uploads an image for a resource with the given ID and image type.",
           "httpMethod": "POST",
-          "flatPath": "games/v1configuration/images/{resourceId}/imageType/{imageType}",
           "id": "gamesConfiguration.imageConfigurations.upload",
           "mediaUpload": {
             "accept": [
@@ -256,8 +249,8 @@
             "maxSize": "15728640",
             "protocols": {
               "simple": {
-                "path": "/upload/games/v1configuration/images/{resourceId}/imageType/{imageType}",
-                "multipart": true
+                "multipart": true,
+                "path": "/upload/games/v1configuration/images/{resourceId}/imageType/{imageType}"
               }
             }
           },
@@ -268,25 +261,25 @@
           "parameters": {
             "imageType": {
               "description": "Selects which image in a resource for this method.",
+              "enum": [
+                "IMAGE_TYPE_UNSPECIFIED",
+                "ACHIEVEMENT_ICON",
+                "LEADERBOARD_ICON"
+              ],
               "enumDescriptions": [
                 "Default value. This value is unused.",
                 "The icon image for an achievement resource.",
                 "The icon image for a leaderboard resource."
               ],
               "location": "path",
-              "enum": [
-                "IMAGE_TYPE_UNSPECIFIED",
-                "ACHIEVEMENT_ICON",
-                "LEADERBOARD_ICON"
-              ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "resourceId": {
               "description": "The ID of the resource used by this method.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1configuration/images/{resourceId}/imageType/{imageType}",
@@ -305,7 +298,6 @@
         "delete": {
           "description": "Delete the leaderboard configuration with the given ID.",
           "httpMethod": "DELETE",
-          "flatPath": "games/v1configuration/leaderboards/{leaderboardId}",
           "id": "gamesConfiguration.leaderboardConfigurations.delete",
           "parameterOrder": [
             "leaderboardId"
@@ -314,8 +306,8 @@
             "leaderboardId": {
               "description": "The ID of the leaderboard.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1configuration/leaderboards/{leaderboardId}",
@@ -326,7 +318,6 @@
         "get": {
           "description": "Retrieves the metadata of the leaderboard configuration with the given ID.",
           "httpMethod": "GET",
-          "flatPath": "games/v1configuration/leaderboards/{leaderboardId}",
           "id": "gamesConfiguration.leaderboardConfigurations.get",
           "parameterOrder": [
             "leaderboardId"
@@ -335,8 +326,8 @@
             "leaderboardId": {
               "description": "The ID of the leaderboard.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1configuration/leaderboards/{leaderboardId}",
@@ -350,7 +341,6 @@
         "insert": {
           "description": "Insert a new leaderboard configuration in this application.",
           "httpMethod": "POST",
-          "flatPath": "games/v1configuration/applications/{applicationId}/leaderboards",
           "id": "gamesConfiguration.leaderboardConfigurations.insert",
           "parameterOrder": [
             "applicationId"
@@ -359,8 +349,8 @@
             "applicationId": {
               "description": "The application ID from the Google Play developer console.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1configuration/applications/{applicationId}/leaderboards",
@@ -377,7 +367,6 @@
         "list": {
           "description": "Returns a list of the leaderboard configurations in this application.",
           "httpMethod": "GET",
-          "flatPath": "games/v1configuration/applications/{applicationId}/leaderboards",
           "id": "gamesConfiguration.leaderboardConfigurations.list",
           "parameterOrder": [
             "applicationId"
@@ -386,8 +375,8 @@
             "applicationId": {
               "description": "The application ID from the Google Play developer console.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`.",
@@ -412,7 +401,6 @@
         "update": {
           "description": "Update the metadata of the leaderboard configuration with the given ID.",
           "httpMethod": "PUT",
-          "flatPath": "games/v1configuration/leaderboards/{leaderboardId}",
           "id": "gamesConfiguration.leaderboardConfigurations.update",
           "parameterOrder": [
             "leaderboardId"
@@ -421,8 +409,8 @@
             "leaderboardId": {
               "description": "The ID of the leaderboard.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "games/v1configuration/leaderboards/{leaderboardId}",
@@ -448,21 +436,21 @@
       "properties": {
         "achievementType": {
           "description": "The type of the achievement.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "Achievement is either locked or unlocked.",
-            "Achievement is incremental."
-          ],
           "enum": [
             "ACHIEVEMENT_TYPE_UNSPECIFIED",
             "STANDARD",
             "INCREMENTAL"
           ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "Achievement is either locked or unlocked.",
+            "Achievement is incremental."
+          ],
           "type": "string"
         },
         "draft": {
-          "description": "The draft data of the achievement.",
-          "$ref": "AchievementConfigurationDetail"
+          "$ref": "AchievementConfigurationDetail",
+          "description": "The draft data of the achievement."
         },
         "id": {
           "description": "The ID of the achievement.",
@@ -470,15 +458,15 @@
         },
         "initialState": {
           "description": "The initial state of the achievement.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "Achievement is hidden.",
-            "Achievement is revealed."
-          ],
           "enum": [
             "INITIAL_STATE_UNSPECIFIED",
             "HIDDEN",
             "REVEALED"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "Achievement is hidden.",
+            "Achievement is revealed."
           ],
           "type": "string"
         },
@@ -487,8 +475,8 @@
           "type": "string"
         },
         "published": {
-          "description": "The read-only published data of the achievement.",
-          "$ref": "AchievementConfigurationDetail"
+          "$ref": "AchievementConfigurationDetail",
+          "description": "The read-only published data of the achievement."
         },
         "stepsToUnlock": {
           "description": "Steps to unlock. Only applicable to incremental achievements.",
@@ -507,8 +495,8 @@
       "id": "AchievementConfigurationDetail",
       "properties": {
         "description": {
-          "description": "Localized strings for the achievement description.",
-          "$ref": "LocalizedStringBundle"
+          "$ref": "LocalizedStringBundle",
+          "description": "Localized strings for the achievement description."
         },
         "iconUrl": {
           "description": "The icon url of this achievement. Writes to this field are ignored.",
@@ -519,8 +507,8 @@
           "type": "string"
         },
         "name": {
-          "description": "Localized strings for the achievement name.",
-          "$ref": "LocalizedStringBundle"
+          "$ref": "LocalizedStringBundle",
+          "description": "Localized strings for the achievement name."
         },
         "pointValue": {
           "description": "Point value for the achievement.",
@@ -562,28 +550,28 @@
       "id": "GamesNumberAffixConfiguration",
       "properties": {
         "few": {
-          "description": "When the language requires special treatment of \"small\" numbers (as with 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish).",
-          "$ref": "LocalizedStringBundle"
+          "$ref": "LocalizedStringBundle",
+          "description": "When the language requires special treatment of \"small\" numbers (as with 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish)."
         },
         "many": {
-          "description": "When the language requires special treatment of \"large\" numbers (as with numbers ending 11-99 in Maltese).",
-          "$ref": "LocalizedStringBundle"
+          "$ref": "LocalizedStringBundle",
+          "description": "When the language requires special treatment of \"large\" numbers (as with numbers ending 11-99 in Maltese)."
         },
         "one": {
-          "description": "When the language requires special treatment of numbers like one (as with the number 1 in English and most other languages; in Russian, any number ending in 1 but not ending in 11 is in this class).",
-          "$ref": "LocalizedStringBundle"
+          "$ref": "LocalizedStringBundle",
+          "description": "When the language requires special treatment of numbers like one (as with the number 1 in English and most other languages; in Russian, any number ending in 1 but not ending in 11 is in this class)."
         },
         "other": {
-          "description": "When the language does not require special treatment of the given quantity (as with all numbers in Chinese, or 42 in English).",
-          "$ref": "LocalizedStringBundle"
+          "$ref": "LocalizedStringBundle",
+          "description": "When the language does not require special treatment of the given quantity (as with all numbers in Chinese, or 42 in English)."
         },
         "two": {
-          "description": "When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in Slovenian).",
-          "$ref": "LocalizedStringBundle"
+          "$ref": "LocalizedStringBundle",
+          "description": "When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in Slovenian)."
         },
         "zero": {
-          "description": "When the language requires special treatment of the number 0 (as in Arabic).",
-          "$ref": "LocalizedStringBundle"
+          "$ref": "LocalizedStringBundle",
+          "description": "When the language requires special treatment of the number 0 (as in Arabic)."
         }
       },
       "type": "object"
@@ -603,23 +591,23 @@
         },
         "numberFormatType": {
           "description": "The formatting for the number.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "Numbers are formatted to have no digits or fixed number of digits after the decimal point according to locale. An optional custom unit can be added.",
-            "Numbers are formatted to hours, minutes and seconds.",
-            "Numbers are formatted to currency according to locale."
-          ],
           "enum": [
             "NUMBER_FORMAT_TYPE_UNSPECIFIED",
             "NUMERIC",
             "TIME_DURATION",
             "CURRENCY"
           ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "Numbers are formatted to have no digits or fixed number of digits after the decimal point according to locale. An optional custom unit can be added.",
+            "Numbers are formatted to hours, minutes and seconds.",
+            "Numbers are formatted to currency according to locale."
+          ],
           "type": "string"
         },
         "suffix": {
-          "description": "An optional suffix for the NUMERIC format type. These strings follow the same plural rules as all Android string resources.",
-          "$ref": "GamesNumberAffixConfiguration"
+          "$ref": "GamesNumberAffixConfiguration",
+          "description": "An optional suffix for the NUMERIC format type. These strings follow the same plural rules as all Android string resources."
         }
       },
       "type": "object"
@@ -630,15 +618,15 @@
       "properties": {
         "imageType": {
           "description": "The image type for the image.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The icon image for an achievement resource.",
-            "The icon image for a leaderboard resource."
-          ],
           "enum": [
             "IMAGE_TYPE_UNSPECIFIED",
             "ACHIEVEMENT_ICON",
             "LEADERBOARD_ICON"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The icon image for an achievement resource.",
+            "The icon image for a leaderboard resource."
           ],
           "type": "string"
         },
@@ -662,8 +650,8 @@
       "id": "LeaderboardConfiguration",
       "properties": {
         "draft": {
-          "description": "The draft data of the leaderboard.",
-          "$ref": "LeaderboardConfigurationDetail"
+          "$ref": "LeaderboardConfigurationDetail",
+          "description": "The draft data of the leaderboard."
         },
         "id": {
           "description": "The ID of the leaderboard.",
@@ -674,8 +662,8 @@
           "type": "string"
         },
         "published": {
-          "description": "The read-only published data of the leaderboard.",
-          "$ref": "LeaderboardConfigurationDetail"
+          "$ref": "LeaderboardConfigurationDetail",
+          "description": "The read-only published data of the leaderboard."
         },
         "scoreMax": {
           "description": "Maximum score that can be posted to this leaderboard.",
@@ -688,15 +676,15 @@
           "type": "string"
         },
         "scoreOrder": {
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "Larger scores posted are ranked higher.",
-            "Smaller scores posted are ranked higher."
-          ],
           "enum": [
             "SCORE_ORDER_UNSPECIFIED",
             "LARGER_IS_BETTER",
             "SMALLER_IS_BETTER"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "Larger scores posted are ranked higher.",
+            "Smaller scores posted are ranked higher."
           ],
           "type": "string"
         },
@@ -720,12 +708,12 @@
           "type": "string"
         },
         "name": {
-          "description": "Localized strings for the leaderboard name.",
-          "$ref": "LocalizedStringBundle"
+          "$ref": "LocalizedStringBundle",
+          "description": "Localized strings for the leaderboard name."
         },
         "scoreFormat": {
-          "description": "The score formatting for the leaderboard.",
-          "$ref": "GamesNumberFormatConfiguration"
+          "$ref": "GamesNumberFormatConfiguration",
+          "description": "The score formatting for the leaderboard."
         },
         "sortRank": {
           "description": "The sort rank of this leaderboard. Writes to this field are ignored.",

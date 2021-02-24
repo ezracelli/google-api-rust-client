@@ -18,29 +18,27 @@
   "description": "Creates, reads, and updates metadata for Google Cloud Platform resource containers.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/resource-manager",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudresourcemanager:v3",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudresourcemanager.mtls.googleapis.com/",
   "name": "cloudresourcemanager",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -113,7 +111,6 @@
         "create": {
           "description": "Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied.",
           "httpMethod": "POST",
-          "flatPath": "v3/liens",
           "id": "cloudresourcemanager.liens.create",
           "parameterOrder": [],
           "parameters": {},
@@ -132,7 +129,6 @@
         "delete": {
           "description": "Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.updateLiens`.",
           "httpMethod": "DELETE",
-          "flatPath": "v3/liens/{liensId}",
           "id": "cloudresourcemanager.liens.delete",
           "parameterOrder": [
             "name"
@@ -142,8 +138,8 @@
               "description": "Required. The name/identifier of the Lien to delete.",
               "location": "path",
               "pattern": "^liens/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+name}",
@@ -158,7 +154,6 @@
         "get": {
           "description": "Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`",
           "httpMethod": "GET",
-          "flatPath": "v3/liens/{liensId}",
           "id": "cloudresourcemanager.liens.get",
           "parameterOrder": [
             "name"
@@ -168,8 +163,8 @@
               "description": "Required. The name/identifier of the Lien.",
               "location": "path",
               "pattern": "^liens/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+name}",
@@ -184,7 +179,6 @@
         "list": {
           "description": "List all Liens applied to the `parent` resource. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`.",
           "httpMethod": "GET",
-          "flatPath": "v3/liens",
           "id": "cloudresourcemanager.liens.list",
           "parameterOrder": [],
           "parameters": {
@@ -221,7 +215,6 @@
         "get": {
           "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
           "httpMethod": "GET",
-          "flatPath": "v3/operations/{operationsId}",
           "id": "cloudresourcemanager.operations.get",
           "parameterOrder": [
             "name"
@@ -231,8 +224,8 @@
               "description": "The name of the operation resource.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+name}",
@@ -251,7 +244,6 @@
         "create": {
           "description": "Creates a TagBinding between a TagValue and a cloud resource (currently project, folder, or organization).",
           "httpMethod": "POST",
-          "flatPath": "v3/tagBindings",
           "id": "cloudresourcemanager.tagBindings.create",
           "parameterOrder": [],
           "parameters": {
@@ -275,7 +267,6 @@
         "delete": {
           "description": "Deletes a TagBinding.",
           "httpMethod": "DELETE",
-          "flatPath": "v3/tagBindings/{tagBindingsId}",
           "id": "cloudresourcemanager.tagBindings.delete",
           "parameterOrder": [
             "name"
@@ -285,8 +276,8 @@
               "description": "Required. The name of the TagBinding. This is a String of the form: `tagBindings/{id}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).",
               "location": "path",
               "pattern": "^tagBindings/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+name}",
@@ -300,7 +291,6 @@
         "list": {
           "description": "Lists the TagBindings for the given cloud resource, as specified with `parent`. NOTE: The `parent` field is expected to be a full resource name: https://cloud.google.com/apis/design/resource_names#full_resource_name",
           "httpMethod": "GET",
-          "flatPath": "v3/tagBindings",
           "id": "cloudresourcemanager.tagBindings.list",
           "parameterOrder": [],
           "parameters": {
@@ -337,7 +327,6 @@
         "create": {
           "description": "Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 300 TagKeys can exist under a parent at any given time.",
           "httpMethod": "POST",
-          "flatPath": "v3/tagKeys",
           "id": "cloudresourcemanager.tagKeys.create",
           "parameterOrder": [],
           "parameters": {
@@ -361,7 +350,6 @@
         "delete": {
           "description": "Deletes a TagKey. The TagKey cannot be deleted if it has any child TagValues.",
           "httpMethod": "DELETE",
-          "flatPath": "v3/tagKeys/{tagKeysId}",
           "id": "cloudresourcemanager.tagKeys.delete",
           "parameterOrder": [
             "name"
@@ -376,8 +364,8 @@
               "description": "Required. The resource name of a TagKey to be deleted in the format `tagKeys/123`. The TagKey cannot be a parent of any existing TagValues or it will not be deleted successfully.",
               "location": "path",
               "pattern": "^tagKeys/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "validateOnly": {
               "description": "Optional. Set as true to perform validations necessary for deletion, but not actually perform the action.",
@@ -396,7 +384,6 @@
         "get": {
           "description": "Retrieves a TagKey. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it.",
           "httpMethod": "GET",
-          "flatPath": "v3/tagKeys/{tagKeysId}",
           "id": "cloudresourcemanager.tagKeys.get",
           "parameterOrder": [
             "name"
@@ -406,8 +393,8 @@
               "description": "Required. A resource name in the format `tagKeys/{id}`, such as `tagKeys/123`.",
               "location": "path",
               "pattern": "^tagKeys/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+name}",
@@ -422,7 +409,6 @@
         "getIamPolicy": {
           "description": "Gets the access control policy for a TagKey. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagKey's resource name. For example, \"tagKeys/1234\". The caller must have `cloudresourcemanager.googleapis.com/tagKeys.getIamPolicy` permission on the specified TagKey.",
           "httpMethod": "POST",
-          "flatPath": "v3/tagKeys/{tagKeysId}:getIamPolicy",
           "id": "cloudresourcemanager.tagKeys.getIamPolicy",
           "parameterOrder": [
             "resource"
@@ -432,8 +418,8 @@
               "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^tagKeys/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+resource}:getIamPolicy",
@@ -451,7 +437,6 @@
         "list": {
           "description": "Lists all TagKeys for a parent resource.",
           "httpMethod": "GET",
-          "flatPath": "v3/tagKeys",
           "id": "cloudresourcemanager.tagKeys.list",
           "parameterOrder": [],
           "parameters": {
@@ -484,7 +469,6 @@
         "patch": {
           "description": "Updates the attributes of the TagKey resource.",
           "httpMethod": "PATCH",
-          "flatPath": "v3/tagKeys/{tagKeysId}",
           "id": "cloudresourcemanager.tagKeys.patch",
           "parameterOrder": [
             "name"
@@ -494,8 +478,8 @@
               "description": "Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.",
               "location": "path",
               "pattern": "^tagKeys/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "Fields to be updated. The mask may only contain `description` or `etag`. If omitted entirely, both `description` and `etag` are assumed to be significant.",
@@ -523,7 +507,6 @@
         "setIamPolicy": {
           "description": "Sets the access control policy on a TagKey, replacing any existing policy. The `resource` field should be the TagKey's resource name. For example, \"tagKeys/1234\". The caller must have `resourcemanager.tagKeys.setIamPolicy` permission on the identified tagValue.",
           "httpMethod": "POST",
-          "flatPath": "v3/tagKeys/{tagKeysId}:setIamPolicy",
           "id": "cloudresourcemanager.tagKeys.setIamPolicy",
           "parameterOrder": [
             "resource"
@@ -533,8 +516,8 @@
               "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^tagKeys/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+resource}:setIamPolicy",
@@ -551,7 +534,6 @@
         "testIamPermissions": {
           "description": "Returns permissions that a caller has on the specified TagKey. The `resource` field should be the TagKey's resource name. For example, \"tagKeys/1234\". There are no permissions required for making this API call.",
           "httpMethod": "POST",
-          "flatPath": "v3/tagKeys/{tagKeysId}:testIamPermissions",
           "id": "cloudresourcemanager.tagKeys.testIamPermissions",
           "parameterOrder": [
             "resource"
@@ -561,8 +543,8 @@
               "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^tagKeys/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+resource}:testIamPermissions",
@@ -583,7 +565,6 @@
         "create": {
           "description": "Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 300 TagValues can exist under a TagKey at any given time.",
           "httpMethod": "POST",
-          "flatPath": "v3/tagValues",
           "id": "cloudresourcemanager.tagValues.create",
           "parameterOrder": [],
           "parameters": {
@@ -607,7 +588,6 @@
         "delete": {
           "description": "Deletes a TagValue. The TagValue cannot have any bindings when it is deleted.",
           "httpMethod": "DELETE",
-          "flatPath": "v3/tagValues/{tagValuesId}",
           "id": "cloudresourcemanager.tagValues.delete",
           "parameterOrder": [
             "name"
@@ -622,8 +602,8 @@
               "description": "Required. Resource name for TagValue to be deleted in the format tagValues/456.",
               "location": "path",
               "pattern": "^tagValues/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "validateOnly": {
               "description": "Optional. Set as true to perform the validations necessary for deletion, but not actually perform the action.",
@@ -642,7 +622,6 @@
         "get": {
           "description": "Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.",
           "httpMethod": "GET",
-          "flatPath": "v3/tagValues/{tagValuesId}",
           "id": "cloudresourcemanager.tagValues.get",
           "parameterOrder": [
             "name"
@@ -652,8 +631,8 @@
               "description": "Required. Resource name for TagValue to be fetched in the format `tagValues/456`.",
               "location": "path",
               "pattern": "^tagValues/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+name}",
@@ -668,7 +647,6 @@
         "getIamPolicy": {
           "description": "Gets the access control policy for a TagValue. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have the `cloudresourcemanager.googleapis.com/tagValues.getIamPolicy` permission on the identified TagValue to get the access control policy.",
           "httpMethod": "POST",
-          "flatPath": "v3/tagValues/{tagValuesId}:getIamPolicy",
           "id": "cloudresourcemanager.tagValues.getIamPolicy",
           "parameterOrder": [
             "resource"
@@ -678,8 +656,8 @@
               "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^tagValues/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+resource}:getIamPolicy",
@@ -697,7 +675,6 @@
         "list": {
           "description": "Lists all TagValues for a specific TagKey.",
           "httpMethod": "GET",
-          "flatPath": "v3/tagValues",
           "id": "cloudresourcemanager.tagValues.list",
           "parameterOrder": [],
           "parameters": {
@@ -730,7 +707,6 @@
         "patch": {
           "description": "Updates the attributes of the TagValue resource.",
           "httpMethod": "PATCH",
-          "flatPath": "v3/tagValues/{tagValuesId}",
           "id": "cloudresourcemanager.tagValues.patch",
           "parameterOrder": [
             "name"
@@ -740,8 +716,8 @@
               "description": "Immutable. Resource name for TagValue in the format `tagValues/456`.",
               "location": "path",
               "pattern": "^tagValues/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "Optional. Fields to be updated.",
@@ -769,7 +745,6 @@
         "setIamPolicy": {
           "description": "Sets the access control policy on a TagValue, replacing any existing policy. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have `resourcemanager.tagValues.setIamPolicy` permission on the identified tagValue.",
           "httpMethod": "POST",
-          "flatPath": "v3/tagValues/{tagValuesId}:setIamPolicy",
           "id": "cloudresourcemanager.tagValues.setIamPolicy",
           "parameterOrder": [
             "resource"
@@ -779,8 +754,8 @@
               "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^tagValues/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+resource}:setIamPolicy",
@@ -797,7 +772,6 @@
         "testIamPermissions": {
           "description": "Returns permissions that a caller has on the specified TagValue. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. There are no permissions required for making this API call.",
           "httpMethod": "POST",
-          "flatPath": "v3/tagValues/{tagValuesId}:testIamPermissions",
           "id": "cloudresourcemanager.tagValues.testIamPermissions",
           "parameterOrder": [
             "resource"
@@ -807,8 +781,8 @@
               "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^tagValues/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v3/{+resource}:testIamPermissions",
@@ -859,17 +833,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -881,8 +855,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -912,15 +886,15 @@
         },
         "operationType": {
           "description": "The type of this operation.",
-          "enumDescriptions": [
-            "Operation type not specified.",
-            "A create folder operation.",
-            "A move folder operation."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "CREATE",
             "MOVE"
+          ],
+          "enumDescriptions": [
+            "Operation type not specified.",
+            "A create folder operation.",
+            "A move folder operation."
           ],
           "type": "string"
         },
@@ -945,15 +919,15 @@
         },
         "operationType": {
           "description": "The type of this operation.",
-          "enumDescriptions": [
-            "Operation type not specified.",
-            "A create folder operation.",
-            "A move folder operation."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "CREATE",
             "MOVE"
+          ],
+          "enumDescriptions": [
+            "Operation type not specified.",
+            "A create folder operation.",
+            "A move folder operation."
           ],
           "type": "string"
         },
@@ -1031,15 +1005,15 @@
         },
         "operationType": {
           "description": "The type of this operation.",
-          "enumDescriptions": [
-            "Operation type not specified.",
-            "A create folder operation.",
-            "A move folder operation."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "CREATE",
             "MOVE"
+          ],
+          "enumDescriptions": [
+            "Operation type not specified.",
+            "A create folder operation.",
+            "A move folder operation."
           ],
           "type": "string"
         },
@@ -1056,18 +1030,6 @@
       "properties": {
         "errorMessageId": {
           "description": "The type of operation error experienced.",
-          "enumDescriptions": [
-            "The error type was unrecognized or unspecified.",
-            "The attempted action would violate the max folder depth constraint.",
-            "The attempted action would violate the max child folders constraint.",
-            "The attempted action would violate the locally-unique folder display_name constraint.",
-            "The resource being moved has been deleted.",
-            "The resource a folder was being added to has been deleted.",
-            "The attempted action would introduce cycle in resource path.",
-            "The attempted action would move a folder that is already being moved.",
-            "The folder the caller is trying to delete contains active resources.",
-            "The attempted action would violate the max deleted folder depth constraint."
-          ],
           "enum": [
             "ERROR_TYPE_UNSPECIFIED",
             "ACTIVE_FOLDER_HEIGHT_VIOLATION",
@@ -1080,6 +1042,18 @@
             "FOLDER_TO_DELETE_NON_EMPTY_VIOLATION",
             "DELETED_FOLDER_HEIGHT_VIOLATION"
           ],
+          "enumDescriptions": [
+            "The error type was unrecognized or unspecified.",
+            "The attempted action would violate the max folder depth constraint.",
+            "The attempted action would violate the max child folders constraint.",
+            "The attempted action would violate the locally-unique folder display_name constraint.",
+            "The resource being moved has been deleted.",
+            "The resource a folder was being added to has been deleted.",
+            "The attempted action would introduce cycle in resource path.",
+            "The attempted action would move a folder that is already being moved.",
+            "The folder the caller is trying to delete contains active resources.",
+            "The attempted action would violate the max deleted folder depth constraint."
+          ],
           "type": "string"
         }
       },
@@ -1090,8 +1064,8 @@
       "id": "GetIamPolicyRequest",
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.",
-          "$ref": "GetPolicyOptions"
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`."
         }
       },
       "type": "object"
@@ -1224,8 +1198,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1306,8 +1280,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -1350,8 +1324,8 @@
       "properties": {
         "name": {
           "description": "Output only. The name of the TagBinding. This is a String of the form: `tagBindings/{full-resource-name}/{tag-value-name}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "parent": {
           "description": "The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`",
@@ -1371,8 +1345,8 @@
         "createTime": {
           "description": "Output only. Creation time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "description": {
           "description": "Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.",
@@ -1388,8 +1362,8 @@
         },
         "namespacedName": {
           "description": "Output only. Immutable. Namespaced name of the TagKey.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "parent": {
           "description": "Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.",
@@ -1402,8 +1376,8 @@
         "updateTime": {
           "description": "Output only. Update time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1415,8 +1389,8 @@
         "createTime": {
           "description": "Output only. Creation time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "description": {
           "description": "Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.",
@@ -1432,8 +1406,8 @@
         },
         "namespacedName": {
           "description": "Output only. Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "parent": {
           "description": "Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.",
@@ -1446,8 +1420,8 @@
         "updateTime": {
           "description": "Output only. Update time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1495,6 +1469,6 @@
   },
   "servicePath": "",
   "title": "Cloud Resource Manager API",
-  "version_module": true,
-  "version": "v3"
+  "version": "v3",
+  "version_module": true
 }

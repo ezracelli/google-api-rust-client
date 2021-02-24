@@ -19,13 +19,13 @@
     "alt": {
       "default": "json",
       "description": "Data format for the response.",
+      "enum": [
+        "json"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json"
       ],
       "location": "query",
-      "enum": [
-        "json"
-      ],
       "type": "string"
     },
     "fields": {
@@ -76,14 +76,14 @@
             "api": {
               "description": "The name of the API.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "version": {
               "description": "The version of the API.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "apis/{api}/{version}/rest",
@@ -214,8 +214,8 @@
           "type": "string"
         },
         "additionalProperties": {
-          "description": "If this is a schema for an object, this property is the schema for any additional properties with dynamic keys on this object.",
-          "$ref": "JsonSchema"
+          "$ref": "JsonSchema",
+          "description": "If this is a schema for an object, this property is the schema for any additional properties with dynamic keys on this object."
         },
         "annotations": {
           "description": "Additional information about this property.",
@@ -261,8 +261,8 @@
           "type": "string"
         },
         "items": {
-          "description": "If this is a schema for an array, this property is the schema for each element in the array.",
-          "$ref": "JsonSchema"
+          "$ref": "JsonSchema",
+          "description": "If this is a schema for an array, this property is the schema for each element in the array."
         },
         "location": {
           "description": "Whether this parameter goes in the query or the path for REST requests.",
@@ -282,8 +282,8 @@
         },
         "properties": {
           "additionalProperties": {
-            "description": "A single property of this object. The value is itself a JSON Schema object describing this property.",
-            "$ref": "JsonSchema"
+            "$ref": "JsonSchema",
+            "description": "A single property of this object. The value is itself a JSON Schema object describing this property."
           },
           "description": "If this is a schema for an object, list the schema for each property of this object.",
           "type": "object"
@@ -392,8 +392,8 @@
         },
         "etag": {
           "description": "The ETag for this response.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "exponentialBackoffDefault": {
           "description": "Enable exponential backoff for suitable methods in the generated clients.",
@@ -438,8 +438,8 @@
         },
         "methods": {
           "additionalProperties": {
-            "description": "An individual method description.",
-            "$ref": "RestMethod"
+            "$ref": "RestMethod",
+            "description": "An individual method description."
           },
           "description": "API-level methods for this API.",
           "type": "object"
@@ -462,8 +462,8 @@
         },
         "parameters": {
           "additionalProperties": {
-            "description": "Description of a single parameter.",
-            "$ref": "JsonSchema"
+            "$ref": "JsonSchema",
+            "description": "Description of a single parameter."
           },
           "description": "Common parameters that apply across all apis.",
           "type": "object"
@@ -475,8 +475,8 @@
         },
         "resources": {
           "additionalProperties": {
-            "description": "An individual resource description. Contains methods and sub-resources related to this resource.",
-            "$ref": "RestResource"
+            "$ref": "RestResource",
+            "description": "An individual resource description. Contains methods and sub-resources related to this resource."
           },
           "description": "The resources in this API.",
           "type": "object"
@@ -491,8 +491,8 @@
         },
         "schemas": {
           "additionalProperties": {
-            "description": "An individual schema description.",
-            "$ref": "JsonSchema"
+            "$ref": "JsonSchema",
+            "description": "An individual schema description."
           },
           "description": "The schemas for this API.",
           "type": "object"
@@ -596,8 +596,8 @@
         },
         "parameters": {
           "additionalProperties": {
-            "description": "Details for a single parameter in this method.",
-            "$ref": "JsonSchema"
+            "$ref": "JsonSchema",
+            "description": "Details for a single parameter in this method."
           },
           "description": "Details for all parameters in this method.",
           "type": "object"
@@ -661,16 +661,16 @@
       "properties": {
         "methods": {
           "additionalProperties": {
-            "description": "Description for any methods on this resource.",
-            "$ref": "RestMethod"
+            "$ref": "RestMethod",
+            "description": "Description for any methods on this resource."
           },
           "description": "Methods on this resource.",
           "type": "object"
         },
         "resources": {
           "additionalProperties": {
-            "description": "Description for any sub-resources on this resource.",
-            "$ref": "RestResource"
+            "$ref": "RestResource",
+            "description": "Description for any sub-resources on this resource."
           },
           "description": "Sub-resources on this resource.",
           "type": "object"

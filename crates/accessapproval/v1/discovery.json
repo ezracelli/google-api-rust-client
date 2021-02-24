@@ -15,29 +15,27 @@
   "description": "An API for controlling access to data by Google personnel.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/access-approval/docs",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "accessapproval:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://accessapproval.mtls.googleapis.com/",
   "name": "accessapproval",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -110,7 +108,6 @@
         "deleteAccessApprovalSettings": {
           "description": "Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access Approval will still be enabled at this level as the settings are inherited.",
           "httpMethod": "DELETE",
-          "flatPath": "v1/folders/{foldersId}/accessApprovalSettings",
           "id": "accessapproval.folders.deleteAccessApprovalSettings",
           "parameterOrder": [
             "name"
@@ -120,8 +117,8 @@
               "description": "Name of the AccessApprovalSettings to delete.",
               "location": "path",
               "pattern": "^folders/[^/]+/accessApprovalSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -135,7 +132,6 @@
         "getAccessApprovalSettings": {
           "description": "Gets the settings associated with a project, folder, or organization.",
           "httpMethod": "GET",
-          "flatPath": "v1/folders/{foldersId}/accessApprovalSettings",
           "id": "accessapproval.folders.getAccessApprovalSettings",
           "parameterOrder": [
             "name"
@@ -145,8 +141,8 @@
               "description": "Name of the AccessApprovalSettings to retrieve.",
               "location": "path",
               "pattern": "^folders/[^/]+/accessApprovalSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -160,7 +156,6 @@
         "updateAccessApprovalSettings": {
           "description": "Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.",
           "httpMethod": "PATCH",
-          "flatPath": "v1/folders/{foldersId}/accessApprovalSettings",
           "id": "accessapproval.folders.updateAccessApprovalSettings",
           "parameterOrder": [
             "name"
@@ -170,8 +165,8 @@
               "description": "The resource name of the settings. Format is one of: * \"projects/{project}/accessApprovalSettings\" * \"folders/{folder}/accessApprovalSettings\" * \"organizations/{organization}/accessApprovalSettings\"",
               "location": "path",
               "pattern": "^folders/[^/]+/accessApprovalSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "The update mask applies to the settings. Only the top level fields of AccessApprovalSettings (notification_emails & enrolled_services) are supported. For each field, if it is included, the currently stored value will be entirely overwritten with the value of the field passed in this request. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the notification_emails field will be updated.",
@@ -198,7 +193,6 @@
             "approve": {
               "description": "Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
               "httpMethod": "POST",
-              "flatPath": "v1/folders/{foldersId}/approvalRequests/{approvalRequestsId}:approve",
               "id": "accessapproval.folders.approvalRequests.approve",
               "parameterOrder": [
                 "name"
@@ -208,8 +202,8 @@
                   "description": "Name of the approval request to approve.",
                   "location": "path",
                   "pattern": "^folders/[^/]+/approvalRequests/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:approve",
@@ -226,7 +220,6 @@
             "dismiss": {
               "description": "Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the resource if another request has been made and approved. It is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
               "httpMethod": "POST",
-              "flatPath": "v1/folders/{foldersId}/approvalRequests/{approvalRequestsId}:dismiss",
               "id": "accessapproval.folders.approvalRequests.dismiss",
               "parameterOrder": [
                 "name"
@@ -236,8 +229,8 @@
                   "description": "Name of the ApprovalRequest to dismiss.",
                   "location": "path",
                   "pattern": "^folders/[^/]+/approvalRequests/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:dismiss",
@@ -254,7 +247,6 @@
             "get": {
               "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1/folders/{foldersId}/approvalRequests/{approvalRequestsId}",
               "id": "accessapproval.folders.approvalRequests.get",
               "parameterOrder": [
                 "name"
@@ -264,8 +256,8 @@
                   "description": "Name of the approval request to retrieve.",
                   "location": "path",
                   "pattern": "^folders/[^/]+/approvalRequests/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -279,7 +271,6 @@
             "list": {
               "description": "Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.",
               "httpMethod": "GET",
-              "flatPath": "v1/folders/{foldersId}/approvalRequests",
               "id": "accessapproval.folders.approvalRequests.list",
               "parameterOrder": [
                 "parent"
@@ -305,8 +296,8 @@
                   "description": "The parent resource. This may be \"projects/{project}\", \"folders/{folder}\", or \"organizations/{organization}\".",
                   "location": "path",
                   "pattern": "^folders/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/approvalRequests",
@@ -326,7 +317,6 @@
         "deleteAccessApprovalSettings": {
           "description": "Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access Approval will still be enabled at this level as the settings are inherited.",
           "httpMethod": "DELETE",
-          "flatPath": "v1/organizations/{organizationsId}/accessApprovalSettings",
           "id": "accessapproval.organizations.deleteAccessApprovalSettings",
           "parameterOrder": [
             "name"
@@ -336,8 +326,8 @@
               "description": "Name of the AccessApprovalSettings to delete.",
               "location": "path",
               "pattern": "^organizations/[^/]+/accessApprovalSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -351,7 +341,6 @@
         "getAccessApprovalSettings": {
           "description": "Gets the settings associated with a project, folder, or organization.",
           "httpMethod": "GET",
-          "flatPath": "v1/organizations/{organizationsId}/accessApprovalSettings",
           "id": "accessapproval.organizations.getAccessApprovalSettings",
           "parameterOrder": [
             "name"
@@ -361,8 +350,8 @@
               "description": "Name of the AccessApprovalSettings to retrieve.",
               "location": "path",
               "pattern": "^organizations/[^/]+/accessApprovalSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -376,7 +365,6 @@
         "updateAccessApprovalSettings": {
           "description": "Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.",
           "httpMethod": "PATCH",
-          "flatPath": "v1/organizations/{organizationsId}/accessApprovalSettings",
           "id": "accessapproval.organizations.updateAccessApprovalSettings",
           "parameterOrder": [
             "name"
@@ -386,8 +374,8 @@
               "description": "The resource name of the settings. Format is one of: * \"projects/{project}/accessApprovalSettings\" * \"folders/{folder}/accessApprovalSettings\" * \"organizations/{organization}/accessApprovalSettings\"",
               "location": "path",
               "pattern": "^organizations/[^/]+/accessApprovalSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "The update mask applies to the settings. Only the top level fields of AccessApprovalSettings (notification_emails & enrolled_services) are supported. For each field, if it is included, the currently stored value will be entirely overwritten with the value of the field passed in this request. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the notification_emails field will be updated.",
@@ -414,7 +402,6 @@
             "approve": {
               "description": "Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
               "httpMethod": "POST",
-              "flatPath": "v1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}:approve",
               "id": "accessapproval.organizations.approvalRequests.approve",
               "parameterOrder": [
                 "name"
@@ -424,8 +411,8 @@
                   "description": "Name of the approval request to approve.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/approvalRequests/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:approve",
@@ -442,7 +429,6 @@
             "dismiss": {
               "description": "Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the resource if another request has been made and approved. It is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
               "httpMethod": "POST",
-              "flatPath": "v1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}:dismiss",
               "id": "accessapproval.organizations.approvalRequests.dismiss",
               "parameterOrder": [
                 "name"
@@ -452,8 +438,8 @@
                   "description": "Name of the ApprovalRequest to dismiss.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/approvalRequests/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:dismiss",
@@ -470,7 +456,6 @@
             "get": {
               "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}",
               "id": "accessapproval.organizations.approvalRequests.get",
               "parameterOrder": [
                 "name"
@@ -480,8 +465,8 @@
                   "description": "Name of the approval request to retrieve.",
                   "location": "path",
                   "pattern": "^organizations/[^/]+/approvalRequests/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -495,7 +480,6 @@
             "list": {
               "description": "Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.",
               "httpMethod": "GET",
-              "flatPath": "v1/organizations/{organizationsId}/approvalRequests",
               "id": "accessapproval.organizations.approvalRequests.list",
               "parameterOrder": [
                 "parent"
@@ -521,8 +505,8 @@
                   "description": "The parent resource. This may be \"projects/{project}\", \"folders/{folder}\", or \"organizations/{organization}\".",
                   "location": "path",
                   "pattern": "^organizations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/approvalRequests",
@@ -542,7 +526,6 @@
         "deleteAccessApprovalSettings": {
           "description": "Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access Approval will still be enabled at this level as the settings are inherited.",
           "httpMethod": "DELETE",
-          "flatPath": "v1/projects/{projectsId}/accessApprovalSettings",
           "id": "accessapproval.projects.deleteAccessApprovalSettings",
           "parameterOrder": [
             "name"
@@ -552,8 +535,8 @@
               "description": "Name of the AccessApprovalSettings to delete.",
               "location": "path",
               "pattern": "^projects/[^/]+/accessApprovalSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -567,7 +550,6 @@
         "getAccessApprovalSettings": {
           "description": "Gets the settings associated with a project, folder, or organization.",
           "httpMethod": "GET",
-          "flatPath": "v1/projects/{projectsId}/accessApprovalSettings",
           "id": "accessapproval.projects.getAccessApprovalSettings",
           "parameterOrder": [
             "name"
@@ -577,8 +559,8 @@
               "description": "Name of the AccessApprovalSettings to retrieve.",
               "location": "path",
               "pattern": "^projects/[^/]+/accessApprovalSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -592,7 +574,6 @@
         "updateAccessApprovalSettings": {
           "description": "Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.",
           "httpMethod": "PATCH",
-          "flatPath": "v1/projects/{projectsId}/accessApprovalSettings",
           "id": "accessapproval.projects.updateAccessApprovalSettings",
           "parameterOrder": [
             "name"
@@ -602,8 +583,8 @@
               "description": "The resource name of the settings. Format is one of: * \"projects/{project}/accessApprovalSettings\" * \"folders/{folder}/accessApprovalSettings\" * \"organizations/{organization}/accessApprovalSettings\"",
               "location": "path",
               "pattern": "^projects/[^/]+/accessApprovalSettings$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "updateMask": {
               "description": "The update mask applies to the settings. Only the top level fields of AccessApprovalSettings (notification_emails & enrolled_services) are supported. For each field, if it is included, the currently stored value will be entirely overwritten with the value of the field passed in this request. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the notification_emails field will be updated.",
@@ -630,7 +611,6 @@
             "approve": {
               "description": "Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/approvalRequests/{approvalRequestsId}:approve",
               "id": "accessapproval.projects.approvalRequests.approve",
               "parameterOrder": [
                 "name"
@@ -640,8 +620,8 @@
                   "description": "Name of the approval request to approve.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/approvalRequests/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:approve",
@@ -658,7 +638,6 @@
             "dismiss": {
               "description": "Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the resource if another request has been made and approved. It is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/approvalRequests/{approvalRequestsId}:dismiss",
               "id": "accessapproval.projects.approvalRequests.dismiss",
               "parameterOrder": [
                 "name"
@@ -668,8 +647,8 @@
                   "description": "Name of the ApprovalRequest to dismiss.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/approvalRequests/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:dismiss",
@@ -686,7 +665,6 @@
             "get": {
               "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/approvalRequests/{approvalRequestsId}",
               "id": "accessapproval.projects.approvalRequests.get",
               "parameterOrder": [
                 "name"
@@ -696,8 +674,8 @@
                   "description": "Name of the approval request to retrieve.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/approvalRequests/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -711,7 +689,6 @@
             "list": {
               "description": "Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/approvalRequests",
               "id": "accessapproval.projects.approvalRequests.list",
               "parameterOrder": [
                 "parent"
@@ -737,8 +714,8 @@
                   "description": "The parent resource. This may be \"projects/{project}\", \"folders/{folder}\", or \"organizations/{organization}\".",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+parent}/approvalRequests",
@@ -763,8 +740,8 @@
       "properties": {
         "enrolledAncestor": {
           "description": "Output only. This field is read only (not settable via UpdateAccessAccessApprovalSettings method). If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project or Folder (this field will always be unset for the organization since organizations do not have ancestors).",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "enrolledServices": {
           "description": "A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the resource given by name against any of these services contained here will be required to have explicit approval. If name refers to an organization, enrollment can be done for individual services. If name refers to a folder or project, enrollment can only be done on an all or nothing basis. If a cloud_product is repeated in this list, the first entry will be honored and all following entries will be discarded. A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.",
@@ -811,17 +788,17 @@
         },
         "type": {
           "description": "Type of access justification.",
-          "enumDescriptions": [
-            "Default value for proto, shouldn't be used.",
-            "Customer made a request or raised an issue that required the principal to access customer data. `detail` is of the form (\"#####\" is the issue ID): * \"Feedback Report: #####\" * \"Case Number: #####\" * \"Case ID: #####\" * \"E-PIN Reference: #####\" * \"Google-#####\" * \"T-#####\"",
-            "The principal accessed customer data in order to diagnose or resolve a suspected issue in services or a known outage. Often this access is used to confirm that customers are not affected by a suspected service issue or to remediate a reversible system issue.",
-            "Google initiated service for security, fraud, abuse, or compliance purposes."
-          ],
           "enum": [
             "TYPE_UNSPECIFIED",
             "CUSTOMER_INITIATED_SUPPORT",
             "GOOGLE_INITIATED_SERVICE",
             "GOOGLE_INITIATED_REVIEW"
+          ],
+          "enumDescriptions": [
+            "Default value for proto, shouldn't be used.",
+            "Customer made a request or raised an issue that required the principal to access customer data. `detail` is of the form (\"#####\" is the issue ID): * \"Feedback Report: #####\" * \"Case Number: #####\" * \"Case ID: #####\" * \"E-PIN Reference: #####\" * \"Google-#####\" * \"T-#####\"",
+            "The principal accessed customer data in order to diagnose or resolve a suspected issue in services or a known outage. Often this access is used to confirm that customers are not affected by a suspected service issue or to remediate a reversible system issue.",
+            "Google initiated service for security, fraud, abuse, or compliance purposes."
           ],
           "type": "string"
         }
@@ -833,12 +810,12 @@
       "id": "ApprovalRequest",
       "properties": {
         "approve": {
-          "description": "Access was approved.",
-          "$ref": "ApproveDecision"
+          "$ref": "ApproveDecision",
+          "description": "Access was approved."
         },
         "dismiss": {
-          "description": "The request was dismissed.",
-          "$ref": "DismissDecision"
+          "$ref": "DismissDecision",
+          "description": "The request was dismissed."
         },
         "name": {
           "description": "The resource name of the request. Format is \"{projects|folders|organizations}/{id}/approvalRequests/{approval_request}\".",
@@ -855,20 +832,20 @@
           "type": "string"
         },
         "requestedLocations": {
-          "description": "The locations for which approval is being requested.",
-          "$ref": "AccessLocations"
+          "$ref": "AccessLocations",
+          "description": "The locations for which approval is being requested."
         },
         "requestedReason": {
-          "description": "The justification for which approval is being requested.",
-          "$ref": "AccessReason"
+          "$ref": "AccessReason",
+          "description": "The justification for which approval is being requested."
         },
         "requestedResourceName": {
           "description": "The resource for which approval is being requested. The format of the resource name is defined at https://cloud.google.com/apis/design/resource_names. The resource name here may either be a \"full\" resource name (e.g. \"//library.googleapis.com/shelves/shelf1/books/book2\") or a \"relative\" resource name (e.g. \"shelves/shelf1/books/book2\") as described in the resource name specification.",
           "type": "string"
         },
         "requestedResourceProperties": {
-          "description": "Properties related to the resource represented by requested_resource_name.",
-          "$ref": "ResourceProperties"
+          "$ref": "ResourceProperties",
+          "description": "Properties related to the resource represented by requested_resource_name."
         }
       },
       "type": "object"
@@ -940,13 +917,13 @@
         },
         "enrollmentLevel": {
           "description": "The enrollment level of the service.",
-          "enumDescriptions": [
-            "Default value for proto, shouldn't be used.",
-            "Service is enrolled in Access Approval for all requests"
-          ],
           "enum": [
             "ENROLLMENT_LEVEL_UNSPECIFIED",
             "BLOCK_ALL"
+          ],
+          "enumDescriptions": [
+            "Default value for proto, shouldn't be used.",
+            "Service is enrolled in Access Approval for all requests"
           ],
           "type": "string"
         }
@@ -985,6 +962,6 @@
   },
   "servicePath": "",
   "title": "Access Approval API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

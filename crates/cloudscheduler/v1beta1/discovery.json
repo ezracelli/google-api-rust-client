@@ -15,29 +15,27 @@
   "description": "Creates and manages jobs run on a regular recurring schedule.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/scheduler/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudscheduler:v1beta1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudscheduler.mtls.googleapis.com/",
   "name": "cloudscheduler",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -48,17 +46,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -112,7 +110,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}",
               "id": "cloudscheduler.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -122,8 +119,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1beta1/{+name}",
@@ -137,7 +134,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1beta1/projects/{projectsId}/locations",
               "id": "cloudscheduler.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -152,8 +148,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -182,7 +178,6 @@
                 "create": {
                   "description": "Creates a job.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs",
                   "id": "cloudscheduler.projects.locations.jobs.create",
                   "parameterOrder": [
                     "parent"
@@ -192,8 +187,8 @@
                       "description": "Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/jobs",
@@ -210,7 +205,6 @@
                 "delete": {
                   "description": "Deletes a job.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
                   "id": "cloudscheduler.projects.locations.jobs.delete",
                   "parameterOrder": [
                     "name"
@@ -225,8 +219,8 @@
                       "description": "Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -240,7 +234,6 @@
                 "get": {
                   "description": "Gets a job.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
                   "id": "cloudscheduler.projects.locations.jobs.get",
                   "parameterOrder": [
                     "name"
@@ -250,8 +243,8 @@
                       "description": "Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}",
@@ -265,7 +258,6 @@
                 "list": {
                   "description": "Lists jobs.",
                   "httpMethod": "GET",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs",
                   "id": "cloudscheduler.projects.locations.jobs.list",
                   "parameterOrder": [
                     "parent"
@@ -291,8 +283,8 @@
                       "description": "Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+parent}/jobs",
@@ -306,7 +298,6 @@
                 "patch": {
                   "description": "Updates a job. If successful, the updated Job is returned. If the job does not exist, `NOT_FOUND` is returned. If UpdateJob does not successfully return, it is possible for the job to be in an Job.State.UPDATE_FAILED state. A job in this state may not be executed. If this happens, retry the UpdateJob request until a successful response is received.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
                   "id": "cloudscheduler.projects.locations.jobs.patch",
                   "parameterOrder": [
                     "name"
@@ -316,8 +307,8 @@
                       "description": "Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "A mask used to specify which fields of the job are being updated.",
@@ -340,7 +331,6 @@
                 "pause": {
                   "description": "Pauses a job. If a job is paused then the system will stop executing the job until it is re-enabled via ResumeJob. The state of the job is stored in state; if paused it will be set to Job.State.PAUSED. A job must be in Job.State.ENABLED to be paused.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:pause",
                   "id": "cloudscheduler.projects.locations.jobs.pause",
                   "parameterOrder": [
                     "name"
@@ -350,8 +340,8 @@
                       "description": "Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:pause",
@@ -368,7 +358,6 @@
                 "resume": {
                   "description": "Resume a job. This method reenables a job after it has been Job.State.PAUSED. The state of a job is stored in Job.state; after calling this method it will be set to Job.State.ENABLED. A job must be in Job.State.PAUSED to be resumed.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:resume",
                   "id": "cloudscheduler.projects.locations.jobs.resume",
                   "parameterOrder": [
                     "name"
@@ -378,8 +367,8 @@
                       "description": "Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:resume",
@@ -396,7 +385,6 @@
                 "run": {
                   "description": "Forces a job to run now. When this method is called, Cloud Scheduler will dispatch the job, even if the job is already running.",
                   "httpMethod": "POST",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:run",
                   "id": "cloudscheduler.projects.locations.jobs.run",
                   "parameterOrder": [
                     "name"
@@ -406,8 +394,8 @@
                       "description": "Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1beta1/{+name}:run",
@@ -436,8 +424,8 @@
       "id": "AppEngineHttpTarget",
       "properties": {
         "appEngineRouting": {
-          "description": "App Engine Routing setting for the job.",
-          "$ref": "AppEngineRouting"
+          "$ref": "AppEngineRouting",
+          "description": "App Engine Routing setting for the job."
         },
         "body": {
           "description": "Body. HTTP request body. A request body is allowed only if the HTTP method is POST or PUT. It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.",
@@ -453,16 +441,6 @@
         },
         "httpMethod": {
           "description": "The HTTP method to use for the request. PATCH and OPTIONS are not permitted.",
-          "enumDescriptions": [
-            "HTTP method unspecified. Defaults to POST.",
-            "HTTP POST",
-            "HTTP GET",
-            "HTTP HEAD",
-            "HTTP PUT",
-            "HTTP DELETE",
-            "HTTP PATCH",
-            "HTTP OPTIONS"
-          ],
           "enum": [
             "HTTP_METHOD_UNSPECIFIED",
             "POST",
@@ -472,6 +450,16 @@
             "DELETE",
             "PATCH",
             "OPTIONS"
+          ],
+          "enumDescriptions": [
+            "HTTP method unspecified. Defaults to POST.",
+            "HTTP POST",
+            "HTTP GET",
+            "HTTP HEAD",
+            "HTTP PUT",
+            "HTTP DELETE",
+            "HTTP PATCH",
+            "HTTP OPTIONS"
           ],
           "type": "string"
         },
@@ -529,16 +517,6 @@
         },
         "httpMethod": {
           "description": "Which HTTP method to use for the request.",
-          "enumDescriptions": [
-            "HTTP method unspecified. Defaults to POST.",
-            "HTTP POST",
-            "HTTP GET",
-            "HTTP HEAD",
-            "HTTP PUT",
-            "HTTP DELETE",
-            "HTTP PATCH",
-            "HTTP OPTIONS"
-          ],
           "enum": [
             "HTTP_METHOD_UNSPECIFIED",
             "POST",
@@ -549,15 +527,25 @@
             "PATCH",
             "OPTIONS"
           ],
+          "enumDescriptions": [
+            "HTTP method unspecified. Defaults to POST.",
+            "HTTP POST",
+            "HTTP GET",
+            "HTTP HEAD",
+            "HTTP PUT",
+            "HTTP DELETE",
+            "HTTP PATCH",
+            "HTTP OPTIONS"
+          ],
           "type": "string"
         },
         "oauthToken": {
-          "description": "If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.",
-          "$ref": "OAuthToken"
+          "$ref": "OAuthToken",
+          "description": "If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com."
         },
         "oidcToken": {
-          "description": "If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.",
-          "$ref": "OidcToken"
+          "$ref": "OidcToken",
+          "description": "If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself."
         },
         "uri": {
           "description": "Required. The full URI path that the request will be sent to. This string must begin with either \"http://\" or \"https://\". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.",
@@ -571,8 +559,8 @@
       "id": "Job",
       "properties": {
         "appEngineHttpTarget": {
-          "description": "App Engine HTTP target.",
-          "$ref": "AppEngineHttpTarget"
+          "$ref": "AppEngineHttpTarget",
+          "description": "App Engine HTTP target."
         },
         "attemptDeadline": {
           "description": "The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. * For PubSub targets, this field is ignored.",
@@ -584,8 +572,8 @@
           "type": "string"
         },
         "httpTarget": {
-          "description": "HTTP target.",
-          "$ref": "HttpTarget"
+          "$ref": "HttpTarget",
+          "description": "HTTP target."
         },
         "lastAttemptTime": {
           "description": "Output only. The time the last job attempt started.",
@@ -601,12 +589,12 @@
           "type": "string"
         },
         "pubsubTarget": {
-          "description": "Pub/Sub target.",
-          "$ref": "PubsubTarget"
+          "$ref": "PubsubTarget",
+          "description": "Pub/Sub target."
         },
         "retryConfig": {
-          "description": "Settings that determine the retry behavior.",
-          "$ref": "RetryConfig"
+          "$ref": "RetryConfig",
+          "description": "Settings that determine the retry behavior."
         },
         "schedule": {
           "description": "Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.",
@@ -619,13 +607,6 @@
         },
         "state": {
           "description": "Output only. State of the job.",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "The job is executing normally.",
-            "The job is paused by the user. It will not execute. A user can intentionally pause the job using PauseJobRequest.",
-            "The job is disabled by the system due to error. The user cannot directly set a job to be disabled.",
-            "The job state resulting from a failed CloudScheduler.UpdateJob operation. To recover a job from this state, retry CloudScheduler.UpdateJob until a successful response is received."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "ENABLED",
@@ -633,11 +614,18 @@
             "DISABLED",
             "UPDATE_FAILED"
           ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The job is executing normally.",
+            "The job is paused by the user. It will not execute. A user can intentionally pause the job using PauseJobRequest.",
+            "The job is disabled by the system due to error. The user cannot directly set a job to be disabled.",
+            "The job state resulting from a failed CloudScheduler.UpdateJob operation. To recover a job from this state, retry CloudScheduler.UpdateJob until a successful response is received."
+          ],
           "type": "string"
         },
         "status": {
-          "description": "Output only. The response from the target for the last attempted execution.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "Output only. The response from the target for the last attempted execution."
         },
         "timeZone": {
           "description": "Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string \"utc\". If a time zone is not specified, the default will be in UTC (also known as GMT).",
@@ -891,6 +879,6 @@
   },
   "servicePath": "",
   "title": "Cloud Scheduler API",
-  "version_module": true,
-  "version": "v1beta1"
+  "version": "v1beta1",
+  "version_module": true
 }

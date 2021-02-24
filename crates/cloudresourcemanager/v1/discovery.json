@@ -18,29 +18,27 @@
   "description": "Creates, reads, and updates metadata for Google Cloud Platform resource containers.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/resource-manager",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "cloudresourcemanager:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://cloudresourcemanager.mtls.googleapis.com/",
   "name": "cloudresourcemanager",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -113,7 +111,6 @@
         "clearOrgPolicy": {
           "description": "Clears a `Policy` from a resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/folders/{foldersId}:clearOrgPolicy",
           "id": "cloudresourcemanager.folders.clearOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -123,8 +120,8 @@
               "description": "Name of the resource for the `Policy` to clear.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:clearOrgPolicy",
@@ -141,7 +138,6 @@
         "getEffectiveOrgPolicy": {
           "description": "Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
           "httpMethod": "POST",
-          "flatPath": "v1/folders/{foldersId}:getEffectiveOrgPolicy",
           "id": "cloudresourcemanager.folders.getEffectiveOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -151,8 +147,8 @@
               "description": "The name of the resource to start computing the effective `Policy`.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:getEffectiveOrgPolicy",
@@ -170,7 +166,6 @@
         "getOrgPolicy": {
           "description": "Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.",
           "httpMethod": "POST",
-          "flatPath": "v1/folders/{foldersId}:getOrgPolicy",
           "id": "cloudresourcemanager.folders.getOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -180,8 +175,8 @@
               "description": "Name of the resource the `Policy` is set on.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:getOrgPolicy",
@@ -199,7 +194,6 @@
         "listAvailableOrgPolicyConstraints": {
           "description": "Lists `Constraints` that could be applied on the specified resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/folders/{foldersId}:listAvailableOrgPolicyConstraints",
           "id": "cloudresourcemanager.folders.listAvailableOrgPolicyConstraints",
           "parameterOrder": [
             "resource"
@@ -209,8 +203,8 @@
               "description": "Name of the resource to list `Constraints` for.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:listAvailableOrgPolicyConstraints",
@@ -228,7 +222,6 @@
         "listOrgPolicies": {
           "description": "Lists all the `Policies` set for a particular resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/folders/{foldersId}:listOrgPolicies",
           "id": "cloudresourcemanager.folders.listOrgPolicies",
           "parameterOrder": [
             "resource"
@@ -238,8 +231,8 @@
               "description": "Name of the resource to list Policies for.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:listOrgPolicies",
@@ -257,7 +250,6 @@
         "setOrgPolicy": {
           "description": "Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.",
           "httpMethod": "POST",
-          "flatPath": "v1/folders/{foldersId}:setOrgPolicy",
           "id": "cloudresourcemanager.folders.setOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -267,8 +259,8 @@
               "description": "Resource name of the resource to attach the `Policy`.",
               "location": "path",
               "pattern": "^folders/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:setOrgPolicy",
@@ -289,7 +281,6 @@
         "create": {
           "description": "Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied.",
           "httpMethod": "POST",
-          "flatPath": "v1/liens",
           "id": "cloudresourcemanager.liens.create",
           "parameterOrder": [],
           "parameters": {},
@@ -308,7 +299,6 @@
         "delete": {
           "description": "Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.updateLiens`.",
           "httpMethod": "DELETE",
-          "flatPath": "v1/liens/{liensId}",
           "id": "cloudresourcemanager.liens.delete",
           "parameterOrder": [
             "name"
@@ -318,8 +308,8 @@
               "description": "Required. The name/identifier of the Lien to delete.",
               "location": "path",
               "pattern": "^liens/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -334,7 +324,6 @@
         "get": {
           "description": "Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`",
           "httpMethod": "GET",
-          "flatPath": "v1/liens/{liensId}",
           "id": "cloudresourcemanager.liens.get",
           "parameterOrder": [
             "name"
@@ -344,8 +333,8 @@
               "description": "Required. The name/identifier of the Lien.",
               "location": "path",
               "pattern": "^liens/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -360,7 +349,6 @@
         "list": {
           "description": "List all Liens applied to the `parent` resource. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`.",
           "httpMethod": "GET",
-          "flatPath": "v1/liens",
           "id": "cloudresourcemanager.liens.list",
           "parameterOrder": [],
           "parameters": {
@@ -397,7 +385,6 @@
         "get": {
           "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
           "httpMethod": "GET",
-          "flatPath": "v1/operations/{operationsId}",
           "id": "cloudresourcemanager.operations.get",
           "parameterOrder": [
             "name"
@@ -407,8 +394,8 @@
               "description": "The name of the operation resource.",
               "location": "path",
               "pattern": "^operations/.*$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -427,7 +414,6 @@
         "clearOrgPolicy": {
           "description": "Clears a `Policy` from a resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations/{organizationsId}:clearOrgPolicy",
           "id": "cloudresourcemanager.organizations.clearOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -437,8 +423,8 @@
               "description": "Name of the resource for the `Policy` to clear.",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:clearOrgPolicy",
@@ -455,7 +441,6 @@
         "get": {
           "description": "Fetches an Organization resource identified by the specified resource name.",
           "httpMethod": "GET",
-          "flatPath": "v1/organizations/{organizationsId}",
           "id": "cloudresourcemanager.organizations.get",
           "parameterOrder": [
             "name"
@@ -465,8 +450,8 @@
               "description": "The resource name of the Organization to fetch. This is the organization's relative path in the API, formatted as \"organizations/[organizationId]\". For example, \"organizations/1234\".",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+name}",
@@ -481,7 +466,6 @@
         "getEffectiveOrgPolicy": {
           "description": "Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations/{organizationsId}:getEffectiveOrgPolicy",
           "id": "cloudresourcemanager.organizations.getEffectiveOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -491,8 +475,8 @@
               "description": "The name of the resource to start computing the effective `Policy`.",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:getEffectiveOrgPolicy",
@@ -510,7 +494,6 @@
         "getIamPolicy": {
           "description": "Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. \"organizations/123\". Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations/{organizationsId}:getIamPolicy",
           "id": "cloudresourcemanager.organizations.getIamPolicy",
           "parameterOrder": [
             "resource"
@@ -520,8 +503,8 @@
               "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:getIamPolicy",
@@ -539,7 +522,6 @@
         "getOrgPolicy": {
           "description": "Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations/{organizationsId}:getOrgPolicy",
           "id": "cloudresourcemanager.organizations.getOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -549,8 +531,8 @@
               "description": "Name of the resource the `Policy` is set on.",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:getOrgPolicy",
@@ -568,7 +550,6 @@
         "listAvailableOrgPolicyConstraints": {
           "description": "Lists `Constraints` that could be applied on the specified resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations/{organizationsId}:listAvailableOrgPolicyConstraints",
           "id": "cloudresourcemanager.organizations.listAvailableOrgPolicyConstraints",
           "parameterOrder": [
             "resource"
@@ -578,8 +559,8 @@
               "description": "Name of the resource to list `Constraints` for.",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:listAvailableOrgPolicyConstraints",
@@ -597,7 +578,6 @@
         "listOrgPolicies": {
           "description": "Lists all the `Policies` set for a particular resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations/{organizationsId}:listOrgPolicies",
           "id": "cloudresourcemanager.organizations.listOrgPolicies",
           "parameterOrder": [
             "resource"
@@ -607,8 +587,8 @@
               "description": "Name of the resource to list Policies for.",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:listOrgPolicies",
@@ -626,7 +606,6 @@
         "search": {
           "description": "Searches Organization resources that are visible to the user and satisfy the specified filter. This method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the results. Search will only return organizations on which the user has the permission `resourcemanager.organizations.get`",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations:search",
           "id": "cloudresourcemanager.organizations.search",
           "parameterOrder": [],
           "parameters": {},
@@ -645,7 +624,6 @@
         "setIamPolicy": {
           "description": "Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. \"organizations/123\". Authorization requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations/{organizationsId}:setIamPolicy",
           "id": "cloudresourcemanager.organizations.setIamPolicy",
           "parameterOrder": [
             "resource"
@@ -655,8 +633,8 @@
               "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:setIamPolicy",
@@ -673,7 +651,6 @@
         "setOrgPolicy": {
           "description": "Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations/{organizationsId}:setOrgPolicy",
           "id": "cloudresourcemanager.organizations.setOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -683,8 +660,8 @@
               "description": "Resource name of the resource to attach the `Policy`.",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:setOrgPolicy",
@@ -701,7 +678,6 @@
         "testIamPermissions": {
           "description": "Returns permissions that a caller has on the specified Organization. The `resource` field should be the organization's resource name, e.g. \"organizations/123\". There are no permissions required for making this API call.",
           "httpMethod": "POST",
-          "flatPath": "v1/organizations/{organizationsId}:testIamPermissions",
           "id": "cloudresourcemanager.organizations.testIamPermissions",
           "parameterOrder": [
             "resource"
@@ -711,8 +687,8 @@
               "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
               "pattern": "^organizations/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:testIamPermissions",
@@ -734,7 +710,6 @@
         "clearOrgPolicy": {
           "description": "Clears a `Policy` from a resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{projectsId}:clearOrgPolicy",
           "id": "cloudresourcemanager.projects.clearOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -744,8 +719,8 @@
               "description": "Name of the resource for the `Policy` to clear.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:clearOrgPolicy",
@@ -762,7 +737,6 @@
         "create": {
           "description": "Request that a new Project be created. The result is an Operation which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects",
           "id": "cloudresourcemanager.projects.create",
           "parameterOrder": [],
           "parameters": {},
@@ -780,7 +754,6 @@
         "delete": {
           "description": "Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE. This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to ListProjects. However, you cannot update the project. After the deletion completes, the Project is not retrievable by the GetProject and ListProjects methods. The caller must have delete permissions for this Project.",
           "httpMethod": "DELETE",
-          "flatPath": "v1/projects/{projectId}",
           "id": "cloudresourcemanager.projects.delete",
           "parameterOrder": [
             "projectId"
@@ -789,8 +762,8 @@
             "projectId": {
               "description": "The Project ID (for example, `foo-bar-123`). Required.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/projects/{projectId}",
@@ -804,7 +777,6 @@
         "get": {
           "description": "Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project.",
           "httpMethod": "GET",
-          "flatPath": "v1/projects/{projectId}",
           "id": "cloudresourcemanager.projects.get",
           "parameterOrder": [
             "projectId"
@@ -813,8 +785,8 @@
             "projectId": {
               "description": "Required. The Project ID (for example, `my-project-123`).",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/projects/{projectId}",
@@ -829,7 +801,6 @@
         "getAncestry": {
           "description": "Gets a list of ancestors in the resource hierarchy for the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{projectId}:getAncestry",
           "id": "cloudresourcemanager.projects.getAncestry",
           "parameterOrder": [
             "projectId"
@@ -838,8 +809,8 @@
             "projectId": {
               "description": "Required. The Project ID (for example, `my-project-123`).",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/projects/{projectId}:getAncestry",
@@ -857,7 +828,6 @@
         "getEffectiveOrgPolicy": {
           "description": "Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{projectsId}:getEffectiveOrgPolicy",
           "id": "cloudresourcemanager.projects.getEffectiveOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -867,8 +837,8 @@
               "description": "The name of the resource to start computing the effective `Policy`.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:getEffectiveOrgPolicy",
@@ -886,7 +856,6 @@
         "getIamPolicy": {
           "description": "Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names).",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{resource}:getIamPolicy",
           "id": "cloudresourcemanager.projects.getIamPolicy",
           "parameterOrder": [
             "resource"
@@ -895,8 +864,8 @@
             "resource": {
               "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/projects/{resource}:getIamPolicy",
@@ -914,7 +883,6 @@
         "getOrgPolicy": {
           "description": "Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{projectsId}:getOrgPolicy",
           "id": "cloudresourcemanager.projects.getOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -924,8 +892,8 @@
               "description": "Name of the resource the `Policy` is set on.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:getOrgPolicy",
@@ -943,7 +911,6 @@
         "list": {
           "description": "Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the specified filter. This method returns Projects in an unspecified order. This method is eventually consistent with project mutations; this means that a newly created project may not appear in the results or recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index which provides more consistent results. In future versions of this API, this List method will be split into List and Search to properly capture the behavioral difference.",
           "httpMethod": "GET",
-          "flatPath": "v1/projects",
           "id": "cloudresourcemanager.projects.list",
           "parameterOrder": [],
           "parameters": {
@@ -976,7 +943,6 @@
         "listAvailableOrgPolicyConstraints": {
           "description": "Lists `Constraints` that could be applied on the specified resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{projectsId}:listAvailableOrgPolicyConstraints",
           "id": "cloudresourcemanager.projects.listAvailableOrgPolicyConstraints",
           "parameterOrder": [
             "resource"
@@ -986,8 +952,8 @@
               "description": "Name of the resource to list `Constraints` for.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:listAvailableOrgPolicyConstraints",
@@ -1005,7 +971,6 @@
         "listOrgPolicies": {
           "description": "Lists all the `Policies` set for a particular resource.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{projectsId}:listOrgPolicies",
           "id": "cloudresourcemanager.projects.listOrgPolicies",
           "parameterOrder": [
             "resource"
@@ -1015,8 +980,8 @@
               "description": "Name of the resource to list Policies for.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:listOrgPolicies",
@@ -1034,7 +999,6 @@
         "setIamPolicy": {
           "description": "Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the existing policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from policies or changing their roles can render services completely inoperable. It is important to understand how the service account is being used before removing or updating its roles. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). The following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can be made owners of a project directly without any restrictions. However, to be added as an owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. + You can only grant ownership of a project to a member by using the GCP Console. Inviting a member will deliver an invitation email that they must accept. An invitation email is not generated if you are granting a role other than owner, or if both the member you are inviting and the project are part of your organization. + Membership changes that leave the project without any owners that have accepted the Terms of Service (ToS) will be rejected. + If the project is not part of an organization, there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. Authorization requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the project",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{resource}:setIamPolicy",
           "id": "cloudresourcemanager.projects.setIamPolicy",
           "parameterOrder": [
             "resource"
@@ -1043,8 +1007,8 @@
             "resource": {
               "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/projects/{resource}:setIamPolicy",
@@ -1061,7 +1025,6 @@
         "setOrgPolicy": {
           "description": "Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{projectsId}:setOrgPolicy",
           "id": "cloudresourcemanager.projects.setOrgPolicy",
           "parameterOrder": [
             "resource"
@@ -1071,8 +1034,8 @@
               "description": "Resource name of the resource to attach the `Policy`.",
               "location": "path",
               "pattern": "^projects/[^/]+$",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/{+resource}:setOrgPolicy",
@@ -1089,7 +1052,6 @@
         "testIamPermissions": {
           "description": "Returns permissions that a caller has on the specified Project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). There are no permissions required for making this API call.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{resource}:testIamPermissions",
           "id": "cloudresourcemanager.projects.testIamPermissions",
           "parameterOrder": [
             "resource"
@@ -1098,8 +1060,8 @@
             "resource": {
               "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/projects/{resource}:testIamPermissions",
@@ -1117,7 +1079,6 @@
         "undelete": {
           "description": "Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the Project cannot be restored. The caller must have undelete permissions for this Project.",
           "httpMethod": "POST",
-          "flatPath": "v1/projects/{projectId}:undelete",
           "id": "cloudresourcemanager.projects.undelete",
           "parameterOrder": [
             "projectId"
@@ -1126,8 +1087,8 @@
             "projectId": {
               "description": "Required. The project ID (for example, `foo-bar-123`).",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/projects/{projectId}:undelete",
@@ -1144,7 +1105,6 @@
         "update": {
           "description": "Updates the attributes of the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have modify permissions for this Project.",
           "httpMethod": "PUT",
-          "flatPath": "v1/projects/{projectId}",
           "id": "cloudresourcemanager.projects.update",
           "parameterOrder": [
             "projectId"
@@ -1153,8 +1113,8 @@
             "projectId": {
               "description": "The project ID (for example, `my-project-123`). Required.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "v1/projects/{projectId}",
@@ -1179,8 +1139,8 @@
       "id": "Ancestor",
       "properties": {
         "resourceId": {
-          "description": "Resource id of the ancestor.",
-          "$ref": "ResourceId"
+          "$ref": "ResourceId",
+          "description": "Resource id of the ancestor."
         }
       },
       "type": "object"
@@ -1216,17 +1176,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -1238,8 +1198,8 @@
       "id": "Binding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "Expr"
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1302,15 +1262,15 @@
         },
         "operationType": {
           "description": "The type of this operation.",
-          "enumDescriptions": [
-            "Operation type not specified.",
-            "A create folder operation.",
-            "A move folder operation."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "CREATE",
             "MOVE"
+          ],
+          "enumDescriptions": [
+            "Operation type not specified.",
+            "A create folder operation.",
+            "A move folder operation."
           ],
           "type": "string"
         },
@@ -1335,15 +1295,15 @@
         },
         "operationType": {
           "description": "The type of this operation.",
-          "enumDescriptions": [
-            "Operation type not specified.",
-            "A create folder operation.",
-            "A move folder operation."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "CREATE",
             "MOVE"
+          ],
+          "enumDescriptions": [
+            "Operation type not specified.",
+            "A create folder operation.",
+            "A move folder operation."
           ],
           "type": "string"
         },
@@ -1359,20 +1319,20 @@
       "id": "Constraint",
       "properties": {
         "booleanConstraint": {
-          "description": "Defines this constraint as being a BooleanConstraint.",
-          "$ref": "BooleanConstraint"
+          "$ref": "BooleanConstraint",
+          "description": "Defines this constraint as being a BooleanConstraint."
         },
         "constraintDefault": {
           "description": "The evaluation behavior of this constraint in the absence of 'Policy'.",
-          "enumDescriptions": [
-            "This is only used for distinguishing unset values and should never be used.",
-            "Indicate that all values are allowed for list constraints. Indicate that enforcement is off for boolean constraints.",
-            "Indicate that all values are denied for list constraints. Indicate that enforcement is on for boolean constraints."
-          ],
           "enum": [
             "CONSTRAINT_DEFAULT_UNSPECIFIED",
             "ALLOW",
             "DENY"
+          ],
+          "enumDescriptions": [
+            "This is only used for distinguishing unset values and should never be used.",
+            "Indicate that all values are allowed for list constraints. Indicate that enforcement is off for boolean constraints.",
+            "Indicate that all values are denied for list constraints. Indicate that enforcement is on for boolean constraints."
           ],
           "type": "string"
         },
@@ -1385,8 +1345,8 @@
           "type": "string"
         },
         "listConstraint": {
-          "description": "Defines this constraint as being a ListConstraint.",
-          "$ref": "ListConstraint"
+          "$ref": "ListConstraint",
+          "description": "Defines this constraint as being a ListConstraint."
         },
         "name": {
           "description": "Immutable value, required to globally be unique. For example, `constraints/serviceuser.services`",
@@ -1467,15 +1427,15 @@
         },
         "operationType": {
           "description": "The type of this operation.",
-          "enumDescriptions": [
-            "Operation type not specified.",
-            "A create folder operation.",
-            "A move folder operation."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "CREATE",
             "MOVE"
+          ],
+          "enumDescriptions": [
+            "Operation type not specified.",
+            "A create folder operation.",
+            "A move folder operation."
           ],
           "type": "string"
         },
@@ -1492,18 +1452,6 @@
       "properties": {
         "errorMessageId": {
           "description": "The type of operation error experienced.",
-          "enumDescriptions": [
-            "The error type was unrecognized or unspecified.",
-            "The attempted action would violate the max folder depth constraint.",
-            "The attempted action would violate the max child folders constraint.",
-            "The attempted action would violate the locally-unique folder display_name constraint.",
-            "The resource being moved has been deleted.",
-            "The resource a folder was being added to has been deleted.",
-            "The attempted action would introduce cycle in resource path.",
-            "The attempted action would move a folder that is already being moved.",
-            "The folder the caller is trying to delete contains active resources.",
-            "The attempted action would violate the max deleted folder depth constraint."
-          ],
           "enum": [
             "ERROR_TYPE_UNSPECIFIED",
             "ACTIVE_FOLDER_HEIGHT_VIOLATION",
@@ -1515,6 +1463,18 @@
             "FOLDER_BEING_MOVED_VIOLATION",
             "FOLDER_TO_DELETE_NON_EMPTY_VIOLATION",
             "DELETED_FOLDER_HEIGHT_VIOLATION"
+          ],
+          "enumDescriptions": [
+            "The error type was unrecognized or unspecified.",
+            "The attempted action would violate the max folder depth constraint.",
+            "The attempted action would violate the max child folders constraint.",
+            "The attempted action would violate the locally-unique folder display_name constraint.",
+            "The resource being moved has been deleted.",
+            "The resource a folder was being added to has been deleted.",
+            "The attempted action would introduce cycle in resource path.",
+            "The attempted action would move a folder that is already being moved.",
+            "The folder the caller is trying to delete contains active resources.",
+            "The attempted action would violate the max deleted folder depth constraint."
           ],
           "type": "string"
         }
@@ -1557,8 +1517,8 @@
       "id": "GetIamPolicyRequest",
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.",
-          "$ref": "GetPolicyOptions"
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`."
         }
       },
       "type": "object"
@@ -1728,15 +1688,15 @@
       "properties": {
         "allValues": {
           "description": "The policy all_values state.",
-          "enumDescriptions": [
-            "Indicates that allowed_values or denied_values must be set.",
-            "A policy with this set allows all values.",
-            "A policy with this set denies all values."
-          ],
           "enum": [
             "ALL_VALUES_UNSPECIFIED",
             "ALLOW",
             "DENY"
+          ],
+          "enumDescriptions": [
+            "Indicates that allowed_values or denied_values must be set.",
+            "A policy with this set allows all values.",
+            "A policy with this set denies all values."
           ],
           "type": "string"
         },
@@ -1792,8 +1752,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1823,8 +1783,8 @@
       "id": "OrgPolicy",
       "properties": {
         "booleanPolicy": {
-          "description": "For boolean `Constraints`, whether to enforce the `Constraint` or not.",
-          "$ref": "BooleanPolicy"
+          "$ref": "BooleanPolicy",
+          "description": "For boolean `Constraints`, whether to enforce the `Constraint` or not."
         },
         "constraint": {
           "description": "The name of the `Constraint` the `Policy` is configuring, for example, `constraints/serviceuser.services`. A [list of available constraints](/resource-manager/docs/organization-policy/org-policy-constraints) is available. Immutable after creation.",
@@ -1836,12 +1796,12 @@
           "type": "string"
         },
         "listPolicy": {
-          "description": "List of values either allowed or disallowed.",
-          "$ref": "ListPolicy"
+          "$ref": "ListPolicy",
+          "description": "List of values either allowed or disallowed."
         },
         "restoreDefault": {
-          "description": "Restores the default behavior of the constraint; independent of `Constraint` type.",
-          "$ref": "RestoreDefault"
+          "$ref": "RestoreDefault",
+          "description": "Restores the default behavior of the constraint; independent of `Constraint` type."
         },
         "updateTime": {
           "description": "The time stamp the `Policy` was previously updated. This is set by the server, not specified by the caller, and represents the last time a call to `SetOrgPolicy` was made for that `Policy`. Any value set by the client will be ignored.",
@@ -1871,15 +1831,15 @@
         },
         "lifecycleState": {
           "description": "The organization's current lifecycle state. Assigned by the server.",
-          "enumDescriptions": [
-            "Unspecified state. This is only useful for distinguishing unset values.",
-            "The normal and active state.",
-            "The organization has been marked for deletion by the user."
-          ],
           "enum": [
             "LIFECYCLE_STATE_UNSPECIFIED",
             "ACTIVE",
             "DELETE_REQUESTED"
+          ],
+          "enumDescriptions": [
+            "Unspecified state. This is only useful for distinguishing unset values.",
+            "The normal and active state.",
+            "The organization has been marked for deletion by the user."
           ],
           "type": "string"
         },
@@ -1888,8 +1848,8 @@
           "type": "string"
         },
         "owner": {
-          "description": "The owner of this Organization. The owner should be specified on creation. Once set, it cannot be changed. This field is required.",
-          "$ref": "OrganizationOwner"
+          "$ref": "OrganizationOwner",
+          "description": "The owner of this Organization. The owner should be specified on creation. Once set, it cannot be changed. This field is required."
         }
       },
       "type": "object"
@@ -1954,17 +1914,17 @@
         },
         "lifecycleState": {
           "description": "The Project lifecycle state. Read-only.",
-          "enumDescriptions": [
-            "Unspecified state. This is only used/useful for distinguishing unset values.",
-            "The normal and active state.",
-            "The project has been marked for deletion by the user (by invoking DeleteProject) or by the system (Google Cloud Platform). This can generally be reversed by invoking UndeleteProject.",
-            "This lifecycle state is no longer used and not returned by the API."
-          ],
           "enum": [
             "LIFECYCLE_STATE_UNSPECIFIED",
             "ACTIVE",
             "DELETE_REQUESTED",
             "DELETE_IN_PROGRESS"
+          ],
+          "enumDescriptions": [
+            "Unspecified state. This is only used/useful for distinguishing unset values.",
+            "The normal and active state.",
+            "The project has been marked for deletion by the user (by invoking DeleteProject) or by the system (Google Cloud Platform). This can generally be reversed by invoking UndeleteProject.",
+            "This lifecycle state is no longer used and not returned by the API."
           ],
           "type": "string"
         },
@@ -1973,8 +1933,8 @@
           "type": "string"
         },
         "parent": {
-          "description": "An optional reference to a parent Resource. Supported parent types include \"organization\" and \"folder\". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.",
-          "$ref": "ResourceId"
+          "$ref": "ResourceId",
+          "description": "An optional reference to a parent Resource. Supported parent types include \"organization\" and \"folder\". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent."
         },
         "projectId": {
           "description": "The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.",
@@ -2072,8 +2032,8 @@
       "id": "SetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -2088,8 +2048,8 @@
       "id": "SetOrgPolicyRequest",
       "properties": {
         "policy": {
-          "description": "`Policy` to set on the resource.",
-          "$ref": "OrgPolicy"
+          "$ref": "OrgPolicy",
+          "description": "`Policy` to set on the resource."
         }
       },
       "type": "object"

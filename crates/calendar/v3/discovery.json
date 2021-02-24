@@ -39,13 +39,13 @@
     "alt": {
       "default": "json",
       "description": "Data format for the response.",
+      "enum": [
+        "json"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json"
       ],
       "location": "query",
-      "enum": [
-        "json"
-      ],
       "type": "string"
     },
     "fields": {
@@ -96,14 +96,14 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ruleId": {
               "description": "ACL rule identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "calendars/{calendarId}/acl/{ruleId}",
@@ -123,14 +123,14 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ruleId": {
               "description": "ACL rule identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "calendars/{calendarId}/acl/{ruleId}",
@@ -153,8 +153,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sendNotifications": {
               "description": "Whether to send notifications about the calendar sharing change. Optional. The default is True.",
@@ -184,8 +184,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional.",
@@ -231,14 +231,14 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ruleId": {
               "description": "ACL rule identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sendNotifications": {
               "description": "Whether to send notifications about the calendar sharing change. Note that there are no notifications on access removal. Optional. The default is True.",
@@ -269,14 +269,14 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "ruleId": {
               "description": "ACL rule identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sendNotifications": {
               "description": "Whether to send notifications about the calendar sharing change. Note that there are no notifications on access removal. Optional. The default is True.",
@@ -306,8 +306,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxResults": {
               "description": "Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional.",
@@ -360,8 +360,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "users/me/calendarList/{calendarId}",
@@ -380,8 +380,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "users/me/calendarList/{calendarId}",
@@ -429,6 +429,12 @@
             },
             "minAccessRole": {
               "description": "The minimum access role for the user in the returned entries. Optional. The default is no restriction.",
+              "enum": [
+                "freeBusyReader",
+                "owner",
+                "reader",
+                "writer"
+              ],
               "enumDescriptions": [
                 "The user can read free/busy information.",
                 "The user can read and modify events and access control lists.",
@@ -436,12 +442,6 @@
                 "The user can read and modify events."
               ],
               "location": "query",
-              "enum": [
-                "freeBusyReader",
-                "owner",
-                "reader",
-                "writer"
-              ],
               "type": "string"
             },
             "pageToken": {
@@ -486,8 +486,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "colorRgbFormat": {
               "description": "Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False.",
@@ -517,8 +517,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "colorRgbFormat": {
               "description": "Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False.",
@@ -551,6 +551,12 @@
             },
             "minAccessRole": {
               "description": "The minimum access role for the user in the returned entries. Optional. The default is no restriction.",
+              "enum": [
+                "freeBusyReader",
+                "owner",
+                "reader",
+                "writer"
+              ],
               "enumDescriptions": [
                 "The user can read free/busy information.",
                 "The user can read and modify events and access control lists.",
@@ -558,12 +564,6 @@
                 "The user can read and modify events."
               ],
               "location": "query",
-              "enum": [
-                "freeBusyReader",
-                "owner",
-                "reader",
-                "writer"
-              ],
               "type": "string"
             },
             "pageToken": {
@@ -616,8 +616,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "calendars/{calendarId}/clear",
@@ -636,8 +636,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "calendars/{calendarId}",
@@ -656,8 +656,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "calendars/{calendarId}",
@@ -695,8 +695,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "calendars/{calendarId}",
@@ -721,8 +721,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "calendars/{calendarId}",
@@ -790,14 +790,14 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "eventId": {
               "description": "Event identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sendNotifications": {
               "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the deletion of the event. Note that some emails might still be sent even if you set the value to false. The default is false.",
@@ -806,17 +806,17 @@
             },
             "sendUpdates": {
               "description": "Guests who should receive notifications about the deletion of the event.",
+              "enum": [
+                "all",
+                "externalOnly",
+                "none"
+              ],
               "enumDescriptions": [
                 "Notifications are sent to all guests.",
                 "Notifications are sent to non-Google Calendar guests only.",
                 "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
               ],
               "location": "query",
-              "enum": [
-                "all",
-                "externalOnly",
-                "none"
-              ],
               "type": "string"
             }
           },
@@ -843,14 +843,14 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "eventId": {
               "description": "Event identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxAttendees": {
               "description": "The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.",
@@ -887,8 +887,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "conferenceDataVersion": {
               "description": "Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.",
@@ -927,8 +927,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "conferenceDataVersion": {
               "description": "Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.",
@@ -952,17 +952,17 @@
             },
             "sendUpdates": {
               "description": "Whether to send notifications about the creation of the new event. Note that some emails might still be sent. The default is false.",
+              "enum": [
+                "all",
+                "externalOnly",
+                "none"
+              ],
               "enumDescriptions": [
                 "Notifications are sent to all guests.",
                 "Notifications are sent to non-Google Calendar guests only.",
                 "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
               ],
               "location": "query",
-              "enum": [
-                "all",
-                "externalOnly",
-                "none"
-              ],
               "type": "string"
             },
             "supportsAttachments": {
@@ -1000,14 +1000,14 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "eventId": {
               "description": "Recurring event identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxAttendees": {
               "description": "The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.",
@@ -1084,8 +1084,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "iCalUID": {
               "description": "Specifies event ID in the iCalendar format to be included in the response. Optional.",
@@ -1109,15 +1109,15 @@
             },
             "orderBy": {
               "description": "The order of the events returned in the result. Optional. The default is an unspecified, stable order.",
+              "enum": [
+                "startTime",
+                "updated"
+              ],
               "enumDescriptions": [
                 "Order by the start date/time (ascending). This is only available when querying single events (i.e. the parameter singleEvents is True)",
                 "Order by last modification time (ascending)."
               ],
               "location": "query",
-              "enum": [
-                "startTime",
-                "updated"
-              ],
               "type": "string"
             },
             "pageToken": {
@@ -1128,8 +1128,8 @@
             "privateExtendedProperty": {
               "description": "Extended properties constraint specified as propertyName=value. Matches only private properties. This parameter might be repeated multiple times to return events that match all given constraints.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "q": {
               "description": "Free text search terms to find events that match these terms in any field, except for extended properties. Optional.",
@@ -1139,8 +1139,8 @@
             "sharedExtendedProperty": {
               "description": "Extended properties constraint specified as propertyName=value. Matches only shared properties. This parameter might be repeated multiple times to return events that match all given constraints.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "showDeleted": {
               "description": "Whether to include deleted events (with status equals \"cancelled\") in the result. Cancelled instances of recurring events (but not the underlying recurring event) will still be included if showDeleted and singleEvents are both False. If showDeleted and singleEvents are both True, only single instances of deleted events (but not the underlying recurring events) are returned. Optional. The default is False.",
@@ -1211,20 +1211,20 @@
             "calendarId": {
               "description": "Calendar identifier of the source calendar where the event currently is on.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "destination": {
               "description": "Calendar identifier of the target calendar where the event is to be moved to.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "eventId": {
               "description": "Event identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sendNotifications": {
               "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the change of the event's organizer. Note that some emails might still be sent even if you set the value to false. The default is false.",
@@ -1233,17 +1233,17 @@
             },
             "sendUpdates": {
               "description": "Guests who should receive notifications about the change of the event's organizer.",
+              "enum": [
+                "all",
+                "externalOnly",
+                "none"
+              ],
               "enumDescriptions": [
                 "Notifications are sent to all guests.",
                 "Notifications are sent to non-Google Calendar guests only.",
                 "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
               ],
               "location": "query",
-              "enum": [
-                "all",
-                "externalOnly",
-                "none"
-              ],
               "type": "string"
             }
           },
@@ -1273,8 +1273,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "conferenceDataVersion": {
               "description": "Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.",
@@ -1287,8 +1287,8 @@
             "eventId": {
               "description": "Event identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxAttendees": {
               "description": "The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.",
@@ -1304,17 +1304,17 @@
             },
             "sendUpdates": {
               "description": "Guests who should receive notifications about the event update (for example, title changes, etc.).",
+              "enum": [
+                "all",
+                "externalOnly",
+                "none"
+              ],
               "enumDescriptions": [
                 "Notifications are sent to all guests.",
                 "Notifications are sent to non-Google Calendar guests only.",
                 "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
               ],
               "location": "query",
-              "enum": [
-                "all",
-                "externalOnly",
-                "none"
-              ],
               "type": "string"
             },
             "supportsAttachments": {
@@ -1347,8 +1347,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "sendNotifications": {
               "description": "Deprecated. Please use sendUpdates instead.\n\nWhether to send notifications about the creation of the event. Note that some emails might still be sent even if you set the value to false. The default is false.",
@@ -1357,24 +1357,24 @@
             },
             "sendUpdates": {
               "description": "Guests who should receive notifications about the creation of the new event.",
+              "enum": [
+                "all",
+                "externalOnly",
+                "none"
+              ],
               "enumDescriptions": [
                 "Notifications are sent to all guests.",
                 "Notifications are sent to non-Google Calendar guests only.",
                 "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
               ],
               "location": "query",
-              "enum": [
-                "all",
-                "externalOnly",
-                "none"
-              ],
               "type": "string"
             },
             "text": {
               "description": "The text describing the event to be created.",
               "location": "query",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "calendars/{calendarId}/events/quickAdd",
@@ -1403,8 +1403,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "conferenceDataVersion": {
               "description": "Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.",
@@ -1417,8 +1417,8 @@
             "eventId": {
               "description": "Event identifier.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "maxAttendees": {
               "description": "The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.",
@@ -1434,17 +1434,17 @@
             },
             "sendUpdates": {
               "description": "Guests who should receive notifications about the event update (for example, title changes, etc.).",
+              "enum": [
+                "all",
+                "externalOnly",
+                "none"
+              ],
               "enumDescriptions": [
                 "Notifications are sent to all guests.",
                 "Notifications are sent to non-Google Calendar guests only.",
                 "No notifications are sent. This value should only be used for migration use cases (note that in most migration cases the import method should be used)."
               ],
               "location": "query",
-              "enum": [
-                "all",
-                "externalOnly",
-                "none"
-              ],
               "type": "string"
             },
             "supportsAttachments": {
@@ -1481,8 +1481,8 @@
             "calendarId": {
               "description": "Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the \"primary\" keyword.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             },
             "iCalUID": {
               "description": "Specifies event ID in the iCalendar format to be included in the response. Optional.",
@@ -1506,15 +1506,15 @@
             },
             "orderBy": {
               "description": "The order of the events returned in the result. Optional. The default is an unspecified, stable order.",
+              "enum": [
+                "startTime",
+                "updated"
+              ],
               "enumDescriptions": [
                 "Order by the start date/time (ascending). This is only available when querying single events (i.e. the parameter singleEvents is True)",
                 "Order by last modification time (ascending)."
               ],
               "location": "query",
-              "enum": [
-                "startTime",
-                "updated"
-              ],
               "type": "string"
             },
             "pageToken": {
@@ -1525,8 +1525,8 @@
             "privateExtendedProperty": {
               "description": "Extended properties constraint specified as propertyName=value. Matches only private properties. This parameter might be repeated multiple times to return events that match all given constraints.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "q": {
               "description": "Free text search terms to find events that match these terms in any field, except for extended properties. Optional.",
@@ -1536,8 +1536,8 @@
             "sharedExtendedProperty": {
               "description": "Extended properties constraint specified as propertyName=value. Matches only shared properties. This parameter might be repeated multiple times to return events that match all given constraints.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "showDeleted": {
               "description": "Whether to include deleted events (with status equals \"cancelled\") in the result. Cancelled instances of recurring events (but not the underlying recurring event) will still be included if showDeleted and singleEvents are both False. If showDeleted and singleEvents are both True, only single instances of deleted events (but not the underlying recurring events) are returned. Optional. The default is False.",
@@ -1634,8 +1634,8 @@
             "setting": {
               "description": "The id of the user setting.",
               "location": "path",
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           "path": "users/me/settings/{setting}",
@@ -1814,8 +1814,8 @@
       "id": "Calendar",
       "properties": {
         "conferenceProperties": {
-          "description": "Conferencing properties for this calendar, for example what types of conferences are allowed.",
-          "$ref": "ConferenceProperties"
+          "$ref": "ConferenceProperties",
+          "description": "Conferencing properties for this calendar, for example what types of conferences are allowed."
         },
         "description": {
           "description": "Description of the calendar. Optional.",
@@ -1900,8 +1900,8 @@
           "type": "string"
         },
         "conferenceProperties": {
-          "description": "Conferencing properties for this calendar, for example what types of conferences are allowed.",
-          "$ref": "ConferenceProperties"
+          "$ref": "ConferenceProperties",
+          "description": "Conferencing properties for this calendar, for example what types of conferences are allowed."
         },
         "defaultReminders": {
           "description": "The default reminders that the authenticated user has for this calendar.",
@@ -2073,16 +2073,16 @@
       "properties": {
         "calendar": {
           "additionalProperties": {
-            "description": "A calendar color defintion.",
-            "$ref": "ColorDefinition"
+            "$ref": "ColorDefinition",
+            "description": "A calendar color defintion."
           },
           "description": "A global palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry resource refers to one of these color IDs in its color field. Read-only.",
           "type": "object"
         },
         "event": {
           "additionalProperties": {
-            "description": "An event color definition.",
-            "$ref": "ColorDefinition"
+            "$ref": "ColorDefinition",
+            "description": "An event color definition."
           },
           "description": "A global palette of event colors, mapping from the color ID to its definition. An event resource may refer to one of these color IDs in its color field. Read-only.",
           "type": "object"
@@ -2108,12 +2108,12 @@
           "type": "string"
         },
         "conferenceSolution": {
-          "description": "The conference solution, such as Hangouts or Google Meet.\nUnset for a conference with a failed create request.\nEither conferenceSolution and at least one entryPoint, or createRequest is required.",
-          "$ref": "ConferenceSolution"
+          "$ref": "ConferenceSolution",
+          "description": "The conference solution, such as Hangouts or Google Meet.\nUnset for a conference with a failed create request.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."
         },
         "createRequest": {
-          "description": "A request to generate a new conference and attach it to the event. The data is generated asynchronously. To see whether the data is present check the status field.\nEither conferenceSolution and at least one entryPoint, or createRequest is required.",
-          "$ref": "CreateConferenceRequest"
+          "$ref": "CreateConferenceRequest",
+          "description": "A request to generate a new conference and attach it to the event. The data is generated asynchronously. To see whether the data is present check the status field.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."
         },
         "entryPoints": {
           "description": "Information about individual conference entry points, such as URLs or phone numbers.\nAll of them must belong to the same conference.\nEither conferenceSolution and at least one entryPoint, or createRequest is required.",
@@ -2127,8 +2127,8 @@
           "type": "string"
         },
         "parameters": {
-          "description": "Additional properties related to a conference. An example would be a solution-specific setting for enabling video streaming.",
-          "$ref": "ConferenceParameters"
+          "$ref": "ConferenceParameters",
+          "description": "Additional properties related to a conference. An example would be a solution-specific setting for enabling video streaming."
         },
         "signature": {
           "description": "The signature of the conference data.\nGenerated on server side. Must be preserved while copying the conference data between events, otherwise the conference data will not be copied.\nUnset for a conference with a failed create request.\nOptional for a conference with a pending create request.",
@@ -2141,8 +2141,8 @@
       "id": "ConferenceParameters",
       "properties": {
         "addOnParameters": {
-          "description": "Additional add-on specific data.",
-          "$ref": "ConferenceParametersAddOnParameters"
+          "$ref": "ConferenceParametersAddOnParameters",
+          "description": "Additional add-on specific data."
         }
       },
       "type": "object"
@@ -2190,8 +2190,8 @@
           "type": "string"
         },
         "key": {
-          "description": "The key which can uniquely identify the conference solution for this event.",
-          "$ref": "ConferenceSolutionKey"
+          "$ref": "ConferenceSolutionKey",
+          "description": "The key which can uniquely identify the conference solution for this event."
         },
         "name": {
           "description": "The user-visible name of this solution. Not localized.",
@@ -2214,16 +2214,16 @@
       "id": "CreateConferenceRequest",
       "properties": {
         "conferenceSolutionKey": {
-          "description": "The conference solution, such as Hangouts or Google Meet.",
-          "$ref": "ConferenceSolutionKey"
+          "$ref": "ConferenceSolutionKey",
+          "description": "The conference solution, such as Hangouts or Google Meet."
         },
         "requestId": {
           "description": "The client-generated unique ID for this request.\nClients should regenerate this ID for every new request. If an ID provided is the same as for the previous request, the request is ignored.",
           "type": "string"
         },
         "status": {
-          "description": "The status of the conference create request.",
-          "$ref": "ConferenceRequestStatus"
+          "$ref": "ConferenceRequestStatus",
+          "description": "The status of the conference create request."
         }
       },
       "type": "object"
@@ -2323,8 +2323,8 @@
           "type": "string"
         },
         "conferenceData": {
-          "description": "The conference-related information, such as details of a Google Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests.",
-          "$ref": "ConferenceData"
+          "$ref": "ConferenceData",
+          "description": "The conference-related information, such as details of a Google Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests."
         },
         "created": {
           "description": "Creation time of the event (as a RFC3339 timestamp). Read-only.",
@@ -2359,6 +2359,7 @@
           "type": "string"
         },
         "end": {
+          "$ref": "EventDateTime",
           "annotations": {
             "required": [
               "calendar.events.import",
@@ -2366,8 +2367,7 @@
               "calendar.events.update"
             ]
           },
-          "description": "The (exclusive) end time of the event. For a recurring event, this is the end time of the first instance.",
-          "$ref": "EventDateTime"
+          "description": "The (exclusive) end time of the event. For a recurring event, this is the end time of the first instance."
         },
         "endTimeUnspecified": {
           "default": "false",
@@ -2523,8 +2523,8 @@
           "type": "object"
         },
         "originalStartTime": {
-          "description": "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the instance within the recurring event series even if the instance was moved to a different time. Immutable.",
-          "$ref": "EventDateTime"
+          "$ref": "EventDateTime",
+          "description": "For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the instance within the recurring event series even if the instance was moved to a different time. Immutable."
         },
         "privateCopy": {
           "default": "false",
@@ -2579,6 +2579,7 @@
           "type": "object"
         },
         "start": {
+          "$ref": "EventDateTime",
           "annotations": {
             "required": [
               "calendar.events.import",
@@ -2586,8 +2587,7 @@
               "calendar.events.update"
             ]
           },
-          "description": "The (inclusive) start time of the event. For a recurring event, this is the start time of the first instance.",
-          "$ref": "EventDateTime"
+          "description": "The (inclusive) start time of the event. For a recurring event, this is the start time of the first instance."
         },
         "status": {
           "description": "Status of the event. Optional. Possible values are:  \n- \"confirmed\" - The event is confirmed. This is the default status. \n- \"tentative\" - The event is tentatively confirmed. \n- \"cancelled\" - The event is cancelled (deleted). The list method returns cancelled events only on incremental sync (when syncToken or updatedMin are specified) or if the showDeleted flag is set to true. The get method always returns them.\nA cancelled status represents two different states depending on the event type:  \n- Cancelled exceptions of an uncancelled recurring event indicate that this instance should no longer be presented to the user. Clients should store these events for the lifetime of the parent recurring event.\nCancelled exceptions are only guaranteed to have values for the id, recurringEventId and originalStartTime fields populated. The other fields might be empty.  \n- All other cancelled events represent deleted events. Clients should remove their locally synced copies. Such cancelled events will eventually disappear, so do not rely on them being available indefinitely.\nDeleted events are only guaranteed to have the id field populated.   On the organizer's calendar, cancelled events continue to expose event details (summary, location, etc.) so that they can be restored (undeleted). Similarly, the events to which the user was invited and that they manually removed continue to provide details. However, incremental sync requests with showDeleted set to false will not return these details.\nIf an event changes its organizer (for example via the move operation) and the original organizer is not on the attendee list, it will leave behind a cancelled event where only the id field is guaranteed to be populated.",
@@ -2878,16 +2878,16 @@
       "properties": {
         "calendars": {
           "additionalProperties": {
-            "description": "Free/busy expansions for a single calendar.",
-            "$ref": "FreeBusyCalendar"
+            "$ref": "FreeBusyCalendar",
+            "description": "Free/busy expansions for a single calendar."
           },
           "description": "List of free/busy information for calendars.",
           "type": "object"
         },
         "groups": {
           "additionalProperties": {
-            "description": "List of calendars that are members of this group.",
-            "$ref": "FreeBusyGroup"
+            "$ref": "FreeBusyGroup",
+            "description": "List of calendars that are members of this group."
           },
           "description": "Expansion of groups.",
           "type": "object"

@@ -14,29 +14,27 @@
   "description": "",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/api-gateway/docs",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "apigateway:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://apigateway.mtls.googleapis.com/",
   "name": "apigateway",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -47,17 +45,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -111,7 +109,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
               "id": "apigateway.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -121,8 +118,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -136,7 +133,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations",
               "id": "apigateway.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -151,8 +147,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -181,7 +177,6 @@
                 "create": {
                   "description": "Creates a new Api in a given project and location.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis",
                   "id": "apigateway.projects.locations.apis.create",
                   "parameterOrder": [
                     "parent"
@@ -196,8 +191,8 @@
                       "description": "Required. Parent resource of the API, of the form: `projects/*/locations/global`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/apis",
@@ -214,7 +209,6 @@
                 "delete": {
                   "description": "Deletes a single Api.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
                   "id": "apigateway.projects.locations.apis.delete",
                   "parameterOrder": [
                     "name"
@@ -224,8 +218,8 @@
                       "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -239,7 +233,6 @@
                 "get": {
                   "description": "Gets details of a single Api.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
                   "id": "apigateway.projects.locations.apis.get",
                   "parameterOrder": [
                     "name"
@@ -249,8 +242,8 @@
                       "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -264,7 +257,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}:getIamPolicy",
                   "id": "apigateway.projects.locations.apis.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -280,8 +272,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+resource}:getIamPolicy",
@@ -295,7 +287,6 @@
                 "list": {
                   "description": "Lists Apis in a given project and location.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis",
                   "id": "apigateway.projects.locations.apis.list",
                   "parameterOrder": [
                     "parent"
@@ -326,8 +317,8 @@
                       "description": "Required. Parent resource of the API, of the form: `projects/*/locations/global`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/apis",
@@ -341,7 +332,6 @@
                 "patch": {
                   "description": "Updates the parameters of a single Api.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
                   "id": "apigateway.projects.locations.apis.patch",
                   "parameterOrder": [
                     "name"
@@ -351,8 +341,8 @@
                       "description": "Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "Field mask is used to specify the fields to be overwritten in the Api resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
@@ -375,7 +365,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}:setIamPolicy",
                   "id": "apigateway.projects.locations.apis.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -385,8 +374,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+resource}:setIamPolicy",
@@ -403,7 +392,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}:testIamPermissions",
                   "id": "apigateway.projects.locations.apis.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -413,8 +401,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+resource}:testIamPermissions",
@@ -435,7 +423,6 @@
                     "create": {
                       "description": "Creates a new ApiConfig in a given project and location.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs",
                       "id": "apigateway.projects.locations.apis.configs.create",
                       "parameterOrder": [
                         "parent"
@@ -450,8 +437,8 @@
                           "description": "Required. Parent resource of the API Config, of the form: `projects/*/locations/global/apis/*`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/configs",
@@ -468,7 +455,6 @@
                     "delete": {
                       "description": "Deletes a single ApiConfig.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}",
                       "id": "apigateway.projects.locations.apis.configs.delete",
                       "parameterOrder": [
                         "name"
@@ -478,8 +464,8 @@
                           "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*/configs/*`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -493,7 +479,6 @@
                     "get": {
                       "description": "Gets details of a single ApiConfig.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}",
                       "id": "apigateway.projects.locations.apis.configs.get",
                       "parameterOrder": [
                         "name"
@@ -503,22 +488,22 @@
                           "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*/configs/*`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "view": {
                           "description": "Specifies which fields of the API Config are returned in the response. Defaults to `BASIC` view.",
+                          "enum": [
+                            "CONFIG_VIEW_UNSPECIFIED",
+                            "BASIC",
+                            "FULL"
+                          ],
                           "enumDescriptions": [
                             "",
                             "Do not include configuration source files.",
                             "Include configuration source files."
                           ],
                           "location": "query",
-                          "enum": [
-                            "CONFIG_VIEW_UNSPECIFIED",
-                            "BASIC",
-                            "FULL"
-                          ],
                           "type": "string"
                         }
                       },
@@ -533,7 +518,6 @@
                     "getIamPolicy": {
                       "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}:getIamPolicy",
                       "id": "apigateway.projects.locations.apis.configs.getIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -549,8 +533,8 @@
                           "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+resource}:getIamPolicy",
@@ -564,7 +548,6 @@
                     "list": {
                       "description": "Lists ApiConfigs in a given project and location.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs",
                       "id": "apigateway.projects.locations.apis.configs.list",
                       "parameterOrder": [
                         "parent"
@@ -595,8 +578,8 @@
                           "description": "Required. Parent resource of the API Config, of the form: `projects/*/locations/global/apis/*`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/configs",
@@ -610,7 +593,6 @@
                     "patch": {
                       "description": "Updates the parameters of a single ApiConfig.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}",
                       "id": "apigateway.projects.locations.apis.configs.patch",
                       "parameterOrder": [
                         "name"
@@ -620,8 +602,8 @@
                           "description": "Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "updateMask": {
                           "description": "Field mask is used to specify the fields to be overwritten in the ApiConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
@@ -644,7 +626,6 @@
                     "setIamPolicy": {
                       "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}:setIamPolicy",
                       "id": "apigateway.projects.locations.apis.configs.setIamPolicy",
                       "parameterOrder": [
                         "resource"
@@ -654,8 +635,8 @@
                           "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+resource}:setIamPolicy",
@@ -672,7 +653,6 @@
                     "testIamPermissions": {
                       "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}:testIamPermissions",
                       "id": "apigateway.projects.locations.apis.configs.testIamPermissions",
                       "parameterOrder": [
                         "resource"
@@ -682,8 +662,8 @@
                           "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+resource}:testIamPermissions",
@@ -706,7 +686,6 @@
                 "create": {
                   "description": "Creates a new Gateway in a given project and location.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gateways",
                   "id": "apigateway.projects.locations.gateways.create",
                   "parameterOrder": [
                     "parent"
@@ -721,8 +700,8 @@
                       "description": "Required. Parent resource of the Gateway, of the form: `projects/*/locations/*`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/gateways",
@@ -739,7 +718,6 @@
                 "delete": {
                   "description": "Deletes a single Gateway.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}",
                   "id": "apigateway.projects.locations.gateways.delete",
                   "parameterOrder": [
                     "name"
@@ -749,8 +727,8 @@
                       "description": "Required. Resource name of the form: `projects/*/locations/*/gateways/*`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -764,7 +742,6 @@
                 "get": {
                   "description": "Gets details of a single Gateway.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}",
                   "id": "apigateway.projects.locations.gateways.get",
                   "parameterOrder": [
                     "name"
@@ -774,8 +751,8 @@
                       "description": "Required. Resource name of the form: `projects/*/locations/*/gateways/*`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -789,7 +766,6 @@
                 "getIamPolicy": {
                   "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}:getIamPolicy",
                   "id": "apigateway.projects.locations.gateways.getIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -805,8 +781,8 @@
                       "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+resource}:getIamPolicy",
@@ -820,7 +796,6 @@
                 "list": {
                   "description": "Lists Gateways in a given project and location.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gateways",
                   "id": "apigateway.projects.locations.gateways.list",
                   "parameterOrder": [
                     "parent"
@@ -851,8 +826,8 @@
                       "description": "Required. Parent resource of the Gateway, of the form: `projects/*/locations/*`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/gateways",
@@ -866,7 +841,6 @@
                 "patch": {
                   "description": "Updates the parameters of a single Gateway.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}",
                   "id": "apigateway.projects.locations.gateways.patch",
                   "parameterOrder": [
                     "name"
@@ -876,8 +850,8 @@
                       "description": "Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask": {
                       "description": "Field mask is used to specify the fields to be overwritten in the Gateway resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
@@ -900,7 +874,6 @@
                 "setIamPolicy": {
                   "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}:setIamPolicy",
                   "id": "apigateway.projects.locations.gateways.setIamPolicy",
                   "parameterOrder": [
                     "resource"
@@ -910,8 +883,8 @@
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+resource}:setIamPolicy",
@@ -928,7 +901,6 @@
                 "testIamPermissions": {
                   "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}:testIamPermissions",
                   "id": "apigateway.projects.locations.gateways.testIamPermissions",
                   "parameterOrder": [
                     "resource"
@@ -938,8 +910,8 @@
                       "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+resource}:testIamPermissions",
@@ -960,7 +932,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "id": "apigateway.projects.locations.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -970,8 +941,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}:cancel",
@@ -988,7 +959,6 @@
                 "delete": {
                   "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "apigateway.projects.locations.operations.delete",
                   "parameterOrder": [
                     "name"
@@ -998,8 +968,8 @@
                       "description": "The name of the operation resource to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -1013,7 +983,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "id": "apigateway.projects.locations.operations.get",
                   "parameterOrder": [
                     "name"
@@ -1023,8 +992,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -1038,7 +1007,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                   "id": "apigateway.projects.locations.operations.list",
                   "parameterOrder": [
                     "name"
@@ -1053,8 +1021,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -1093,8 +1061,8 @@
         "createTime": {
           "description": "Output only. Created time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "displayName": {
           "description": "Optional. Display name.",
@@ -1113,19 +1081,11 @@
         },
         "name": {
           "description": "Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "state": {
           "description": "Output only. State of the API.",
-          "enumDescriptions": [
-            "API does not have a state yet.",
-            "API is being created.",
-            "API is active.",
-            "API creation failed.",
-            "API is being deleted.",
-            "API is being updated."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -1134,14 +1094,22 @@
             "DELETING",
             "UPDATING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "API does not have a state yet.",
+            "API is being created.",
+            "API is active.",
+            "API creation failed.",
+            "API is being deleted.",
+            "API is being updated."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. Updated time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1153,8 +1121,8 @@
         "createTime": {
           "description": "Output only. Created time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "displayName": {
           "description": "Optional. Display name.",
@@ -1187,8 +1155,8 @@
         },
         "name": {
           "description": "Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "openapiDocuments": {
           "description": "Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.",
@@ -1199,20 +1167,11 @@
         },
         "serviceConfigId": {
           "description": "Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "state": {
           "description": "Output only. State of the API Config.",
-          "enumDescriptions": [
-            "API Config does not have a state yet.",
-            "API Config is being created and deployed to the API Controller.",
-            "API Config is ready for use by Gateways.",
-            "API Config creation failed.",
-            "API Config is being deleted.",
-            "API Config is being updated.",
-            "API Config settings are being activated in downstream systems. API Configs in this state cannot be used by Gateways."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -1222,14 +1181,23 @@
             "UPDATING",
             "ACTIVATING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "API Config does not have a state yet.",
+            "API Config is being created and deployed to the API Controller.",
+            "API Config is ready for use by Gateways.",
+            "API Config creation failed.",
+            "API Config is being deleted.",
+            "API Config is being updated.",
+            "API Config settings are being activated in downstream systems. API Configs in this state cannot be used by Gateways."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. Updated time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1255,8 +1223,8 @@
       "id": "ApigatewayApiConfigGrpcServiceDefinition",
       "properties": {
         "fileDescriptorSet": {
-          "description": "Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb",
-          "$ref": "ApigatewayApiConfigFile"
+          "$ref": "ApigatewayApiConfigFile",
+          "description": "Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb"
         },
         "source": {
           "description": "Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set.",
@@ -1273,8 +1241,8 @@
       "id": "ApigatewayApiConfigOpenApiDocument",
       "properties": {
         "document": {
-          "description": "The OpenAPI Specification document file.",
-          "$ref": "ApigatewayApiConfigFile"
+          "$ref": "ApigatewayApiConfigFile",
+          "description": "The OpenAPI Specification document file."
         }
       },
       "type": "object"
@@ -1310,17 +1278,17 @@
         },
         "logType": {
           "description": "The log type that this config enables.",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
           ],
           "type": "string"
         }
@@ -1332,8 +1300,8 @@
       "id": "ApigatewayBinding",
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "$ref": "ApigatewayExpr"
+          "$ref": "ApigatewayExpr",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
@@ -1389,13 +1357,13 @@
         "createTime": {
           "description": "Output only. Created time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "defaultHostname": {
           "description": "Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "displayName": {
           "description": "Optional. Display name.",
@@ -1410,19 +1378,11 @@
         },
         "name": {
           "description": "Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "state": {
           "description": "Output only. The current state of the Gateway.",
-          "enumDescriptions": [
-            "Gateway does not have a state yet.",
-            "Gateway is being created.",
-            "Gateway is running and ready for requests.",
-            "Gateway creation failed.",
-            "Gateway is being deleted.",
-            "Gateway is being updated."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -1431,14 +1391,22 @@
             "DELETING",
             "UPDATING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Gateway does not have a state yet.",
+            "Gateway is being created.",
+            "Gateway is running and ready for requests.",
+            "Gateway creation failed.",
+            "Gateway is being deleted.",
+            "Gateway is being updated."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "updateTime": {
           "description": "Output only. Updated time.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1597,8 +1565,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "ApigatewayStatus"
+          "$ref": "ApigatewayStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -1629,48 +1597,48 @@
       "properties": {
         "apiVersion": {
           "description": "Output only. API version used to start the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. The time the operation was created.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "diagnostics": {
           "description": "Output only. Diagnostics generated during processing of configuration source files.",
           "items": {
             "$ref": "ApigatewayOperationMetadataDiagnostic"
           },
-          "type": "array",
-          "readOnly": true
+          "readOnly": true,
+          "type": "array"
         },
         "endTime": {
           "description": "Output only. The time the operation finished running.",
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "requestedCancellation": {
           "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "type": "boolean",
-          "readOnly": true
+          "readOnly": true,
+          "type": "boolean"
         },
         "statusMessage": {
           "description": "Output only. Human-readable status of the operation, if any.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "target": {
           "description": "Output only. Server-defined resource path for the target of the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "verb": {
           "description": "Output only. Name of the verb executed by the operation.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         }
       },
       "type": "object"
@@ -1726,8 +1694,8 @@
       "id": "ApigatewaySetIamPolicyRequest",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
-          "$ref": "ApigatewayPolicy"
+          "$ref": "ApigatewayPolicy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."
         },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
@@ -1801,6 +1769,6 @@
   },
   "servicePath": "",
   "title": "API Gateway API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

@@ -18,29 +18,27 @@
   "description": "Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development. ",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/firestore",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "firestore:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://firestore.mtls.googleapis.com/",
   "name": "firestore",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -51,17 +49,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -115,7 +113,6 @@
             "exportDocuments": {
               "description": "Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/databases/{databasesId}:exportDocuments",
               "id": "firestore.projects.databases.exportDocuments",
               "parameterOrder": [
                 "name"
@@ -125,8 +122,8 @@
                   "description": "Required. Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/databases/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:exportDocuments",
@@ -144,7 +141,6 @@
             "importDocuments": {
               "description": "Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.",
               "httpMethod": "POST",
-              "flatPath": "v1/projects/{projectsId}/databases/{databasesId}:importDocuments",
               "id": "firestore.projects.databases.importDocuments",
               "parameterOrder": [
                 "name"
@@ -154,8 +150,8 @@
                   "description": "Required. Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}`.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/databases/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}:importDocuments",
@@ -179,7 +175,6 @@
                     "get": {
                       "description": "Gets the metadata and configuration for a Field.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
                       "id": "firestore.projects.databases.collectionGroups.fields.get",
                       "parameterOrder": [
                         "name"
@@ -189,8 +184,8 @@
                           "description": "Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -205,7 +200,6 @@
                     "list": {
                       "description": "Lists the field configuration and metadata for this database. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false`.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields",
                       "id": "firestore.projects.databases.collectionGroups.fields.list",
                       "parameterOrder": [
                         "parent"
@@ -231,8 +225,8 @@
                           "description": "Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/fields",
@@ -247,7 +241,6 @@
                     "patch": {
                       "description": "Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: `{ paths: \"index_config\" }`. This call returns a google.longrunning.Operation which may be used to track the status of the field update. The metadata for the operation will be the type FieldOperationMetadata. To configure the default field settings for the database, use the special `Field` with resource name: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`.",
                       "httpMethod": "PATCH",
-                      "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
                       "id": "firestore.projects.databases.collectionGroups.fields.patch",
                       "parameterOrder": [
                         "name"
@@ -257,8 +250,8 @@
                           "description": "A field name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`, or a special field path. The only valid special field is `*`, which represents any field. Field paths may be quoted using ` (backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a code block) `\\`address.city\\`` represents a field named `address.city`, not the map key `city` in the field `address`. `\\`*\\`` represents a field named `*`, not any field. A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         },
                         "updateMask": {
                           "description": "A mask, relative to the field. If specified, only configuration specified by this field_mask will be updated in the field.",
@@ -286,7 +279,6 @@
                     "create": {
                       "description": "Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.",
                       "httpMethod": "POST",
-                      "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
                       "id": "firestore.projects.databases.collectionGroups.indexes.create",
                       "parameterOrder": [
                         "parent"
@@ -296,8 +288,8 @@
                           "description": "Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/indexes",
@@ -315,7 +307,6 @@
                     "delete": {
                       "description": "Deletes a composite index.",
                       "httpMethod": "DELETE",
-                      "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
                       "id": "firestore.projects.databases.collectionGroups.indexes.delete",
                       "parameterOrder": [
                         "name"
@@ -325,8 +316,8 @@
                           "description": "Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -341,7 +332,6 @@
                     "get": {
                       "description": "Gets a composite index.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
                       "id": "firestore.projects.databases.collectionGroups.indexes.get",
                       "parameterOrder": [
                         "name"
@@ -351,8 +341,8 @@
                           "description": "Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+name}",
@@ -367,7 +357,6 @@
                     "list": {
                       "description": "Lists composite indexes.",
                       "httpMethod": "GET",
-                      "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
                       "id": "firestore.projects.databases.collectionGroups.indexes.list",
                       "parameterOrder": [
                         "parent"
@@ -393,8 +382,8 @@
                           "description": "Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`",
                           "location": "path",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                          "type": "string",
-                          "required": true
+                          "required": true,
+                          "type": "string"
                         }
                       },
                       "path": "v1/{+parent}/indexes",
@@ -415,7 +404,6 @@
                 "batchGet": {
                   "description": "Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:batchGet",
                   "id": "firestore.projects.databases.documents.batchGet",
                   "parameterOrder": [
                     "database"
@@ -425,8 +413,8 @@
                       "description": "Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+database}/documents:batchGet",
@@ -444,7 +432,6 @@
                 "batchWrite": {
                   "description": "Applies a batch of write operations. The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the BatchWriteResponse for the success status of each write. If you require an atomically applied set of writes, use Commit instead.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:batchWrite",
                   "id": "firestore.projects.databases.documents.batchWrite",
                   "parameterOrder": [
                     "database"
@@ -454,8 +441,8 @@
                       "description": "Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+database}/documents:batchWrite",
@@ -473,7 +460,6 @@
                 "beginTransaction": {
                   "description": "Starts a new transaction.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:beginTransaction",
                   "id": "firestore.projects.databases.documents.beginTransaction",
                   "parameterOrder": [
                     "database"
@@ -483,8 +469,8 @@
                       "description": "Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+database}/documents:beginTransaction",
@@ -502,7 +488,6 @@
                 "commit": {
                   "description": "Commits a transaction, while optionally updating documents.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:commit",
                   "id": "firestore.projects.databases.documents.commit",
                   "parameterOrder": [
                     "database"
@@ -512,8 +497,8 @@
                       "description": "Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+database}/documents:commit",
@@ -531,7 +516,6 @@
                 "createDocument": {
                   "description": "Creates a new document.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{collectionId}",
                   "id": "firestore.projects.databases.documents.createDocument",
                   "parameterOrder": [
                     "parent",
@@ -541,8 +525,8 @@
                     "collectionId": {
                       "description": "Required. The collection ID, relative to `parent`, to list. For example: `chatrooms`.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "documentId": {
                       "description": "The client-assigned document ID to use for this document. Optional. If not specified, an ID will be assigned by the service.",
@@ -552,15 +536,15 @@
                     "mask.fieldPaths": {
                       "description": "The list of field paths in the mask. See Document.fields for a field path syntax reference.",
                       "location": "query",
-                      "type": "string",
-                      "repeated": true
+                      "repeated": true,
+                      "type": "string"
                     },
                     "parent": {
                       "description": "Required. The parent resource. For example: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/documents/.*$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}/{collectionId}",
@@ -578,7 +562,6 @@
                 "delete": {
                   "description": "Deletes a document.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
                   "id": "firestore.projects.databases.documents.delete",
                   "parameterOrder": [
                     "name"
@@ -599,8 +582,8 @@
                       "description": "Required. The resource name of the Document to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -615,7 +598,6 @@
                 "get": {
                   "description": "Gets a single document.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
                   "id": "firestore.projects.databases.documents.get",
                   "parameterOrder": [
                     "name"
@@ -624,15 +606,15 @@
                     "mask.fieldPaths": {
                       "description": "The list of field paths in the mask. See Document.fields for a field path syntax reference.",
                       "location": "query",
-                      "type": "string",
-                      "repeated": true
+                      "repeated": true,
+                      "type": "string"
                     },
                     "name": {
                       "description": "Required. The resource name of the Document to get. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "readTime": {
                       "description": "Reads the version of the document at the given time. This may not be older than 270 seconds.",
@@ -659,7 +641,6 @@
                 "list": {
                   "description": "Lists documents.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}/{collectionId}",
                   "id": "firestore.projects.databases.documents.list",
                   "parameterOrder": [
                     "parent",
@@ -669,14 +650,14 @@
                     "collectionId": {
                       "description": "Required. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`.",
                       "location": "path",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "mask.fieldPaths": {
                       "description": "The list of field paths in the mask. See Document.fields for a field path syntax reference.",
                       "location": "query",
-                      "type": "string",
-                      "repeated": true
+                      "repeated": true,
+                      "type": "string"
                     },
                     "orderBy": {
                       "description": "The order to sort results by. For example: `priority desc, name`.",
@@ -698,8 +679,8 @@
                       "description": "Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "readTime": {
                       "description": "Reads documents as they were at the given time. This may not be older than 270 seconds.",
@@ -731,7 +712,6 @@
                 "listCollectionIds": {
                   "description": "Lists all the collection IDs underneath a document.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:listCollectionIds",
                   "id": "firestore.projects.databases.documents.listCollectionIds",
                   "parameterOrder": [
                     "parent"
@@ -741,8 +721,8 @@
                       "description": "Required. The parent document. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}:listCollectionIds",
@@ -760,7 +740,6 @@
                 "listen": {
                   "description": "Listens to changes.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:listen",
                   "id": "firestore.projects.databases.documents.listen",
                   "parameterOrder": [
                     "database"
@@ -770,8 +749,8 @@
                       "description": "Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+database}/documents:listen",
@@ -789,7 +768,6 @@
                 "partitionQuery": {
                   "description": "Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:partitionQuery",
                   "id": "firestore.projects.databases.documents.partitionQuery",
                   "parameterOrder": [
                     "parent"
@@ -799,8 +777,8 @@
                       "description": "Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not supported; only database resource names can be specified.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}:partitionQuery",
@@ -818,7 +796,6 @@
                 "patch": {
                   "description": "Updates or inserts a document.",
                   "httpMethod": "PATCH",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
                   "id": "firestore.projects.databases.documents.patch",
                   "parameterOrder": [
                     "name"
@@ -838,21 +815,21 @@
                     "mask.fieldPaths": {
                       "description": "The list of field paths in the mask. See Document.fields for a field path syntax reference.",
                       "location": "query",
-                      "type": "string",
-                      "repeated": true
+                      "repeated": true,
+                      "type": "string"
                     },
                     "name": {
                       "description": "The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "updateMask.fieldPaths": {
                       "description": "The list of field paths in the mask. See Document.fields for a field path syntax reference.",
                       "location": "query",
-                      "type": "string",
-                      "repeated": true
+                      "repeated": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -870,7 +847,6 @@
                 "rollback": {
                   "description": "Rolls back a transaction.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:rollback",
                   "id": "firestore.projects.databases.documents.rollback",
                   "parameterOrder": [
                     "database"
@@ -880,8 +856,8 @@
                       "description": "Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+database}/documents:rollback",
@@ -899,7 +875,6 @@
                 "runQuery": {
                   "description": "Runs a query.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:runQuery",
                   "id": "firestore.projects.databases.documents.runQuery",
                   "parameterOrder": [
                     "parent"
@@ -909,8 +884,8 @@
                       "description": "Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+parent}:runQuery",
@@ -928,7 +903,6 @@
                 "write": {
                   "description": "Streams batches of document updates and deletes, in order.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:write",
                   "id": "firestore.projects.databases.documents.write",
                   "parameterOrder": [
                     "database"
@@ -938,8 +912,8 @@
                       "description": "Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. This is only required in the first message.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+database}/documents:write",
@@ -961,7 +935,6 @@
                 "cancel": {
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                   "httpMethod": "POST",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/operations/{operationsId}:cancel",
                   "id": "firestore.projects.databases.operations.cancel",
                   "parameterOrder": [
                     "name"
@@ -971,8 +944,8 @@
                       "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}:cancel",
@@ -990,7 +963,6 @@
                 "delete": {
                   "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                   "httpMethod": "DELETE",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/operations/{operationsId}",
                   "id": "firestore.projects.databases.operations.delete",
                   "parameterOrder": [
                     "name"
@@ -1000,8 +972,8 @@
                       "description": "The name of the operation resource to be deleted.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -1016,7 +988,6 @@
                 "get": {
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/operations/{operationsId}",
                   "id": "firestore.projects.databases.operations.get",
                   "parameterOrder": [
                     "name"
@@ -1026,8 +997,8 @@
                       "description": "The name of the operation resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -1042,7 +1013,6 @@
                 "list": {
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
                   "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/operations",
                   "id": "firestore.projects.databases.operations.list",
                   "parameterOrder": [
                     "name"
@@ -1057,8 +1027,8 @@
                       "description": "The name of the operation's parent resource.",
                       "location": "path",
                       "pattern": "^projects/[^/]+/databases/[^/]+$",
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     },
                     "pageSize": {
                       "description": "The standard list page size.",
@@ -1090,7 +1060,6 @@
             "get": {
               "description": "Gets information about a location.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
               "id": "firestore.projects.locations.get",
               "parameterOrder": [
                 "name"
@@ -1100,8 +1069,8 @@
                   "description": "Resource name for the location.",
                   "location": "path",
                   "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "v1/{+name}",
@@ -1116,7 +1085,6 @@
             "list": {
               "description": "Lists information about the supported locations for this service.",
               "httpMethod": "GET",
-              "flatPath": "v1/projects/{projectsId}/locations",
               "id": "firestore.projects.locations.list",
               "parameterOrder": [
                 "name"
@@ -1131,8 +1099,8 @@
                   "description": "The resource that owns the locations collection, if applicable.",
                   "location": "path",
                   "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "The standard list page size.",
@@ -1189,12 +1157,12 @@
           "type": "array"
         },
         "mask": {
-          "description": "The fields to return. If not set, returns all fields. If a document has a field that is not present in this mask, that field will not be returned in the response.",
-          "$ref": "DocumentMask"
+          "$ref": "DocumentMask",
+          "description": "The fields to return. If not set, returns all fields. If a document has a field that is not present in this mask, that field will not be returned in the response."
         },
         "newTransaction": {
-          "description": "Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream.",
-          "$ref": "TransactionOptions"
+          "$ref": "TransactionOptions",
+          "description": "Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream."
         },
         "readTime": {
           "description": "Reads documents as they were at the given time. This may not be older than 270 seconds.",
@@ -1214,8 +1182,8 @@
       "id": "BatchGetDocumentsResponse",
       "properties": {
         "found": {
-          "description": "A document that was requested.",
-          "$ref": "Document"
+          "$ref": "Document",
+          "description": "A document that was requested."
         },
         "missing": {
           "description": "A document name that was requested but does not exist. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.",
@@ -1281,8 +1249,8 @@
       "id": "BeginTransactionRequest",
       "properties": {
         "options": {
-          "description": "The options for the transaction. Defaults to a read-write transaction.",
-          "$ref": "TransactionOptions"
+          "$ref": "TransactionOptions",
+          "description": "The options for the transaction. Defaults to a read-write transaction."
         }
       },
       "type": "object"
@@ -1365,13 +1333,13 @@
         },
         "op": {
           "description": "The operator for combining multiple filters.",
-          "enumDescriptions": [
-            "Unspecified. This value must not be used.",
-            "The results are required to satisfy each of the combined filters."
-          ],
           "enum": [
             "OPERATOR_UNSPECIFIED",
             "AND"
+          ],
+          "enumDescriptions": [
+            "Unspecified. This value must not be used.",
+            "The results are required to satisfy each of the combined filters."
           ],
           "type": "string"
         }
@@ -1429,8 +1397,8 @@
       "id": "DocumentChange",
       "properties": {
         "document": {
-          "description": "The new state of the Document. If `mask` is set, contains only fields that were updated or added.",
-          "$ref": "Document"
+          "$ref": "Document",
+          "description": "The new state of the Document. If `mask` is set, contains only fields that were updated or added."
         },
         "removedTargetIds": {
           "description": "A set of target IDs for targets that no longer match this document.",
@@ -1573,24 +1541,11 @@
       "id": "FieldFilter",
       "properties": {
         "field": {
-          "description": "The field to filter by.",
-          "$ref": "FieldReference"
+          "$ref": "FieldReference",
+          "description": "The field to filter by."
         },
         "op": {
           "description": "The operator to filter by.",
-          "enumDescriptions": [
-            "Unspecified. This value must not be used.",
-            "The given `field` is less than the given `value`. Requires: * That `field` come first in `order_by`.",
-            "The given `field` is less than or equal to the given `value`. Requires: * That `field` come first in `order_by`.",
-            "The given `field` is greater than the given `value`. Requires: * That `field` come first in `order_by`.",
-            "The given `field` is greater than or equal to the given `value`. Requires: * That `field` come first in `order_by`.",
-            "The given `field` is equal to the given `value`.",
-            "The given `field` is not equal to the given `value`. Requires: * No other `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That `field` comes first in the `order_by`.",
-            "The given `field` is an array that contains the given `value`.",
-            "The given `field` is equal to at least one value in the given array. Requires: * That `value` is a non-empty `ArrayValue` with at most 10 values. * No other `IN` or `ARRAY_CONTAINS_ANY` or `NOT_IN`.",
-            "The given `field` is an array that contains any of the values in the given array. Requires: * That `value` is a non-empty `ArrayValue` with at most 10 values. * No other `IN` or `ARRAY_CONTAINS_ANY` or `NOT_IN`.",
-            "The value of the `field` is not in the given array. Requires: * That `value` is a non-empty `ArrayValue` with at most 10 values. * No other `IN`, `ARRAY_CONTAINS_ANY`, `NOT_IN`, `NOT_EQUAL`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That `field` comes first in the `order_by`."
-          ],
           "enum": [
             "OPERATOR_UNSPECIFIED",
             "LESS_THAN",
@@ -1604,11 +1559,24 @@
             "ARRAY_CONTAINS_ANY",
             "NOT_IN"
           ],
+          "enumDescriptions": [
+            "Unspecified. This value must not be used.",
+            "The given `field` is less than the given `value`. Requires: * That `field` come first in `order_by`.",
+            "The given `field` is less than or equal to the given `value`. Requires: * That `field` come first in `order_by`.",
+            "The given `field` is greater than the given `value`. Requires: * That `field` come first in `order_by`.",
+            "The given `field` is greater than or equal to the given `value`. Requires: * That `field` come first in `order_by`.",
+            "The given `field` is equal to the given `value`.",
+            "The given `field` is not equal to the given `value`. Requires: * No other `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That `field` comes first in the `order_by`.",
+            "The given `field` is an array that contains the given `value`.",
+            "The given `field` is equal to at least one value in the given array. Requires: * That `value` is a non-empty `ArrayValue` with at most 10 values. * No other `IN` or `ARRAY_CONTAINS_ANY` or `NOT_IN`.",
+            "The given `field` is an array that contains any of the values in the given array. Requires: * That `value` is a non-empty `ArrayValue` with at most 10 values. * No other `IN` or `ARRAY_CONTAINS_ANY` or `NOT_IN`.",
+            "The value of the `field` is not in the given array. Requires: * That `value` is a non-empty `ArrayValue` with at most 10 values. * No other `IN`, `ARRAY_CONTAINS_ANY`, `NOT_IN`, `NOT_EQUAL`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That `field` comes first in the `order_by`."
+          ],
           "type": "string"
         },
         "value": {
-          "description": "The value to compare to.",
-          "$ref": "Value"
+          "$ref": "Value",
+          "description": "The value to compare to."
         }
       },
       "type": "object"
@@ -1628,38 +1596,38 @@
       "id": "FieldTransform",
       "properties": {
         "appendMissingElements": {
-          "description": "Append the given elements in order if they are not already present in the current field value. If the field is not an array, or if the field does not yet exist, it is first set to the empty array. Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal when checking if a value is missing. NaN is equal to NaN, and Null is equal to Null. If the input contains multiple equivalent values, only the first will be considered. The corresponding transform_result will be the null value.",
-          "$ref": "ArrayValue"
+          "$ref": "ArrayValue",
+          "description": "Append the given elements in order if they are not already present in the current field value. If the field is not an array, or if the field does not yet exist, it is first set to the empty array. Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal when checking if a value is missing. NaN is equal to NaN, and Null is equal to Null. If the input contains multiple equivalent values, only the first will be considered. The corresponding transform_result will be the null value."
         },
         "fieldPath": {
           "description": "The path of the field. See Document.fields for the field path syntax reference.",
           "type": "string"
         },
         "increment": {
-          "description": "Adds the given value to the field's current value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the given value. If either of the given value or the current field value are doubles, both values will be interpreted as doubles. Double arithmetic and representation of double values follow IEEE 754 semantics. If there is positive/negative integer overflow, the field is resolved to the largest magnitude positive/negative integer.",
-          "$ref": "Value"
+          "$ref": "Value",
+          "description": "Adds the given value to the field's current value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the given value. If either of the given value or the current field value are doubles, both values will be interpreted as doubles. Double arithmetic and representation of double values follow IEEE 754 semantics. If there is positive/negative integer overflow, the field is resolved to the largest magnitude positive/negative integer."
         },
         "maximum": {
-          "description": "Sets the field to the maximum of its current value and the given value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the given value. If a maximum operation is applied where the field and the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input value is always the stored value. The maximum of any numeric value x and NaN is NaN.",
-          "$ref": "Value"
+          "$ref": "Value",
+          "description": "Sets the field to the maximum of its current value and the given value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the given value. If a maximum operation is applied where the field and the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input value is always the stored value. The maximum of any numeric value x and NaN is NaN."
         },
         "minimum": {
-          "description": "Sets the field to the minimum of its current value and the given value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the input value. If a minimum operation is applied where the field and the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored value. The minimum of any numeric value x and NaN is NaN.",
-          "$ref": "Value"
+          "$ref": "Value",
+          "description": "Sets the field to the minimum of its current value and the given value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the input value. If a minimum operation is applied where the field and the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored value. The minimum of any numeric value x and NaN is NaN."
         },
         "removeAllFromArray": {
-          "description": "Remove all of the given elements from the array in the field. If the field is not an array, or if the field does not yet exist, it is set to the empty array. Equivalent numbers of the different types (e.g. 3L and 3.0) are considered equal when deciding whether an element should be removed. NaN is equal to NaN, and Null is equal to Null. This will remove all equivalent values if there are duplicates. The corresponding transform_result will be the null value.",
-          "$ref": "ArrayValue"
+          "$ref": "ArrayValue",
+          "description": "Remove all of the given elements from the array in the field. If the field is not an array, or if the field does not yet exist, it is set to the empty array. Equivalent numbers of the different types (e.g. 3L and 3.0) are considered equal when deciding whether an element should be removed. NaN is equal to NaN, and Null is equal to Null. This will remove all equivalent values if there are duplicates. The corresponding transform_result will be the null value."
         },
         "setToServerValue": {
           "description": "Sets the field to the given server value.",
-          "enumDescriptions": [
-            "Unspecified. This value must not be used.",
-            "The time at which the server processed the request, with millisecond precision. If used on multiple fields (same or different documents) in a transaction, all the fields will get the same server timestamp."
-          ],
           "enum": [
             "SERVER_VALUE_UNSPECIFIED",
             "REQUEST_TIME"
+          ],
+          "enumDescriptions": [
+            "Unspecified. This value must not be used.",
+            "The time at which the server processed the request, with millisecond precision. If used on multiple fields (same or different documents) in a transaction, all the fields will get the same server timestamp."
           ],
           "type": "string"
         }
@@ -1671,16 +1639,16 @@
       "id": "Filter",
       "properties": {
         "compositeFilter": {
-          "description": "A composite filter.",
-          "$ref": "CompositeFilter"
+          "$ref": "CompositeFilter",
+          "description": "A composite filter."
         },
         "fieldFilter": {
-          "description": "A filter on a document field.",
-          "$ref": "FieldFilter"
+          "$ref": "FieldFilter",
+          "description": "A filter on a document field."
         },
         "unaryFilter": {
-          "description": "A filter that takes exactly one argument.",
-          "$ref": "UnaryFilter"
+          "$ref": "UnaryFilter",
+          "description": "A filter that takes exactly one argument."
         }
       },
       "type": "object"
@@ -1703,16 +1671,6 @@
         },
         "operationState": {
           "description": "The state of the export operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "OPERATION_STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -1723,6 +1681,16 @@
             "FAILED",
             "CANCELLED"
           ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
+          ],
           "type": "string"
         },
         "outputUriPrefix": {
@@ -1730,12 +1698,12 @@
           "type": "string"
         },
         "progressBytes": {
-          "description": "The progress, in bytes, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1Progress"
+          "$ref": "GoogleFirestoreAdminV1Progress",
+          "description": "The progress, in bytes, of this operation."
         },
         "progressDocuments": {
-          "description": "The progress, in documents, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1Progress"
+          "$ref": "GoogleFirestoreAdminV1Progress",
+          "description": "The progress, in documents, of this operation."
         },
         "startTime": {
           "description": "The time this operation started.",
@@ -1779,8 +1747,8 @@
       "id": "GoogleFirestoreAdminV1Field",
       "properties": {
         "indexConfig": {
-          "description": "The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestor_field`. To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.",
-          "$ref": "GoogleFirestoreAdminV1IndexConfig"
+          "$ref": "GoogleFirestoreAdminV1IndexConfig",
+          "description": "The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestor_field`. To explicitly remove all indexes for this field, specify an index config with an empty list of indexes."
         },
         "name": {
           "description": "A field name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`, or a special field path. The only valid special field is `*`, which represents any field. Field paths may be quoted using ` (backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a code block) `\\`address.city\\`` represents a field named `address.city`, not the map key `city` in the field `address`. `\\`*\\`` represents a field named `*`, not any field. A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration.",
@@ -1810,12 +1778,12 @@
           "type": "array"
         },
         "progressBytes": {
-          "description": "The progress, in bytes, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1Progress"
+          "$ref": "GoogleFirestoreAdminV1Progress",
+          "description": "The progress, in bytes, of this operation."
         },
         "progressDocuments": {
-          "description": "The progress, in documents, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1Progress"
+          "$ref": "GoogleFirestoreAdminV1Progress",
+          "description": "The progress, in documents, of this operation."
         },
         "startTime": {
           "description": "The time this operation started.",
@@ -1824,16 +1792,6 @@
         },
         "state": {
           "description": "The state of the operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "OPERATION_STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -1843,6 +1801,16 @@
             "SUCCESSFUL",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
           ],
           "type": "string"
         }
@@ -1871,16 +1839,6 @@
         },
         "operationState": {
           "description": "The state of the import operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "OPERATION_STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -1891,15 +1849,25 @@
             "FAILED",
             "CANCELLED"
           ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
+          ],
           "type": "string"
         },
         "progressBytes": {
-          "description": "The progress, in bytes, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1Progress"
+          "$ref": "GoogleFirestoreAdminV1Progress",
+          "description": "The progress, in bytes, of this operation."
         },
         "progressDocuments": {
-          "description": "The progress, in documents, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1Progress"
+          "$ref": "GoogleFirestoreAdminV1Progress",
+          "description": "The progress, in documents, of this operation."
         },
         "startTime": {
           "description": "The time this operation started.",
@@ -1944,31 +1912,31 @@
         },
         "queryScope": {
           "description": "Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.",
-          "enumDescriptions": [
-            "The query scope is unspecified. Not a valid option.",
-            "Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the collection id specified by the index.",
-            "Indexes with a collection group query scope specified allow queries against all collections that has the collection id specified by the index."
-          ],
           "enum": [
             "QUERY_SCOPE_UNSPECIFIED",
             "COLLECTION",
             "COLLECTION_GROUP"
           ],
+          "enumDescriptions": [
+            "The query scope is unspecified. Not a valid option.",
+            "Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the collection id specified by the index.",
+            "Indexes with a collection group query scope specified allow queries against all collections that has the collection id specified by the index."
+          ],
           "type": "string"
         },
         "state": {
           "description": "Output only. The serving state of the index.",
-          "enumDescriptions": [
-            "The state is unspecified.",
-            "The index is being created. There is an active long-running operation for the index. The index is updated when writing a document. Some index data may exist.",
-            "The index is ready to be used. The index is updated when writing a document. The index is fully populated from all stored documents it applies to.",
-            "The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist. Use the google.longrunning.Operations API to determine why the operation that last attempted to create this index failed, then re-create the index."
-          ],
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
             "READY",
             "NEEDS_REPAIR"
+          ],
+          "enumDescriptions": [
+            "The state is unspecified.",
+            "The index is being created. There is an active long-running operation for the index. The index is updated when writing a document. Some index data may exist.",
+            "The index is ready to be used. The index is updated when writing a document. The index is fully populated from all stored documents it applies to.",
+            "The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist. Use the google.longrunning.Operations API to determine why the operation that last attempted to create this index failed, then re-create the index."
           ],
           "type": "string"
         }
@@ -2007,21 +1975,21 @@
       "properties": {
         "changeType": {
           "description": "Specifies how the index is changing.",
-          "enumDescriptions": [
-            "The type of change is not specified or known.",
-            "The single field index is being added.",
-            "The single field index is being removed."
-          ],
           "enum": [
             "CHANGE_TYPE_UNSPECIFIED",
             "ADD",
             "REMOVE"
           ],
+          "enumDescriptions": [
+            "The type of change is not specified or known.",
+            "The single field index is being added.",
+            "The single field index is being removed."
+          ],
           "type": "string"
         },
         "index": {
-          "description": "The index being changed.",
-          "$ref": "GoogleFirestoreAdminV1Index"
+          "$ref": "GoogleFirestoreAdminV1Index",
+          "description": "The index being changed."
         }
       },
       "type": "object"
@@ -2032,13 +2000,13 @@
       "properties": {
         "arrayConfig": {
           "description": "Indicates that this field supports operations on `array_value`s.",
-          "enumDescriptions": [
-            "The index does not support additional array queries.",
-            "The index supports array containment queries."
-          ],
           "enum": [
             "ARRAY_CONFIG_UNSPECIFIED",
             "CONTAINS"
+          ],
+          "enumDescriptions": [
+            "The index does not support additional array queries.",
+            "The index supports array containment queries."
           ],
           "type": "string"
         },
@@ -2048,15 +2016,15 @@
         },
         "order": {
           "description": "Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.",
-          "enumDescriptions": [
-            "The ordering is unspecified. Not a valid option.",
-            "The field is ordered by ascending field value.",
-            "The field is ordered by descending field value."
-          ],
           "enum": [
             "ORDER_UNSPECIFIED",
             "ASCENDING",
             "DESCENDING"
+          ],
+          "enumDescriptions": [
+            "The ordering is unspecified. Not a valid option.",
+            "The field is ordered by ascending field value.",
+            "The field is ordered by descending field value."
           ],
           "type": "string"
         }
@@ -2077,12 +2045,12 @@
           "type": "string"
         },
         "progressBytes": {
-          "description": "The progress, in bytes, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1Progress"
+          "$ref": "GoogleFirestoreAdminV1Progress",
+          "description": "The progress, in bytes, of this operation."
         },
         "progressDocuments": {
-          "description": "The progress, in documents, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1Progress"
+          "$ref": "GoogleFirestoreAdminV1Progress",
+          "description": "The progress, in documents, of this operation."
         },
         "startTime": {
           "description": "The time this operation started.",
@@ -2091,16 +2059,6 @@
         },
         "state": {
           "description": "The state of the operation.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Request is being prepared for processing.",
-            "Request is actively being processed.",
-            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
-            "Request has been processed and is in its finalization stage.",
-            "Request has completed successfully.",
-            "Request has finished being processed, but encountered an error.",
-            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
-          ],
           "enum": [
             "OPERATION_STATE_UNSPECIFIED",
             "INITIALIZING",
@@ -2110,6 +2068,16 @@
             "SUCCESSFUL",
             "FAILED",
             "CANCELLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Request is being prepared for processing.",
+            "Request is actively being processed.",
+            "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.",
+            "Request has been processed and is in its finalization stage.",
+            "Request has completed successfully.",
+            "Request has finished being processed, but encountered an error.",
+            "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."
           ],
           "type": "string"
         }
@@ -2208,8 +2176,8 @@
           "type": "boolean"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
           "additionalProperties": {
@@ -2326,8 +2294,8 @@
       "id": "ListenRequest",
       "properties": {
         "addTarget": {
-          "description": "A target to add to this stream.",
-          "$ref": "Target"
+          "$ref": "Target",
+          "description": "A target to add to this stream."
         },
         "labels": {
           "additionalProperties": {
@@ -2349,24 +2317,24 @@
       "id": "ListenResponse",
       "properties": {
         "documentChange": {
-          "description": "A Document has changed.",
-          "$ref": "DocumentChange"
+          "$ref": "DocumentChange",
+          "description": "A Document has changed."
         },
         "documentDelete": {
-          "description": "A Document has been deleted.",
-          "$ref": "DocumentDelete"
+          "$ref": "DocumentDelete",
+          "description": "A Document has been deleted."
         },
         "documentRemove": {
-          "description": "A Document has been removed from a target (because it is no longer relevant to that target).",
-          "$ref": "DocumentRemove"
+          "$ref": "DocumentRemove",
+          "description": "A Document has been removed from a target (because it is no longer relevant to that target)."
         },
         "filter": {
-          "description": "A filter to apply to the set of documents previously returned for the given target. Returned when documents may have been removed from the given target, but the exact documents are unknown.",
-          "$ref": "ExistenceFilter"
+          "$ref": "ExistenceFilter",
+          "description": "A filter to apply to the set of documents previously returned for the given target. Returned when documents may have been removed from the given target, but the exact documents are unknown."
         },
         "targetChange": {
-          "description": "Targets have changed.",
-          "$ref": "TargetChange"
+          "$ref": "TargetChange",
+          "description": "Targets have changed."
         }
       },
       "type": "object"
@@ -2425,21 +2393,21 @@
       "properties": {
         "direction": {
           "description": "The direction to order by. Defaults to `ASCENDING`.",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Ascending.",
-            "Descending."
-          ],
           "enum": [
             "DIRECTION_UNSPECIFIED",
             "ASCENDING",
             "DESCENDING"
           ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Ascending.",
+            "Descending."
+          ],
           "type": "string"
         },
         "field": {
-          "description": "The field to order by.",
-          "$ref": "FieldReference"
+          "$ref": "FieldReference",
+          "description": "The field to order by."
         }
       },
       "type": "object"
@@ -2463,8 +2431,8 @@
           "type": "string"
         },
         "structuredQuery": {
-          "description": "A structured query. Query must specify collection with all descendants and be ordered by name ascending. Other filters, order bys, limits, offsets, and start/end cursors are not supported.",
-          "$ref": "StructuredQuery"
+          "$ref": "StructuredQuery",
+          "description": "A structured query. Query must specify collection with all descendants and be ordered by name ascending. Other filters, order bys, limits, offsets, and start/end cursors are not supported."
         }
       },
       "type": "object"
@@ -2526,8 +2494,8 @@
           "type": "string"
         },
         "structuredQuery": {
-          "description": "A structured query.",
-          "$ref": "StructuredQuery"
+          "$ref": "StructuredQuery",
+          "description": "A structured query."
         }
       },
       "type": "object"
@@ -2573,8 +2541,8 @@
       "id": "RunQueryRequest",
       "properties": {
         "newTransaction": {
-          "description": "Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream.",
-          "$ref": "TransactionOptions"
+          "$ref": "TransactionOptions",
+          "description": "Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream."
         },
         "readTime": {
           "description": "Reads documents as they were at the given time. This may not be older than 270 seconds.",
@@ -2582,8 +2550,8 @@
           "type": "string"
         },
         "structuredQuery": {
-          "description": "A structured query.",
-          "$ref": "StructuredQuery"
+          "$ref": "StructuredQuery",
+          "description": "A structured query."
         },
         "transaction": {
           "description": "Reads documents in a transaction.",
@@ -2598,8 +2566,8 @@
       "id": "RunQueryResponse",
       "properties": {
         "document": {
-          "description": "A query result. Not set when reporting partial progress.",
-          "$ref": "Document"
+          "$ref": "Document",
+          "description": "A query result. Not set when reporting partial progress."
         },
         "readTime": {
           "description": "The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `document` will be sent, and this represents the time at which the query was run.",
@@ -2651,8 +2619,8 @@
       "id": "StructuredQuery",
       "properties": {
         "endAt": {
-          "description": "A end point for the query results.",
-          "$ref": "Cursor"
+          "$ref": "Cursor",
+          "description": "A end point for the query results."
         },
         "from": {
           "description": "The collections to query.",
@@ -2679,16 +2647,16 @@
           "type": "array"
         },
         "select": {
-          "description": "The projection to return.",
-          "$ref": "Projection"
+          "$ref": "Projection",
+          "description": "The projection to return."
         },
         "startAt": {
-          "description": "A starting point for the query results.",
-          "$ref": "Cursor"
+          "$ref": "Cursor",
+          "description": "A starting point for the query results."
         },
         "where": {
-          "description": "The filter to apply.",
-          "$ref": "Filter"
+          "$ref": "Filter",
+          "description": "The filter to apply."
         }
       },
       "type": "object"
@@ -2698,16 +2666,16 @@
       "id": "Target",
       "properties": {
         "documents": {
-          "description": "A target specified by a set of document names.",
-          "$ref": "DocumentsTarget"
+          "$ref": "DocumentsTarget",
+          "description": "A target specified by a set of document names."
         },
         "once": {
           "description": "If the target should be removed once it is current and consistent.",
           "type": "boolean"
         },
         "query": {
-          "description": "A target specified by a query.",
-          "$ref": "QueryTarget"
+          "$ref": "QueryTarget",
+          "description": "A target specified by a query."
         },
         "readTime": {
           "description": "Start listening after a specific `read_time`. The client must know the state of matching documents at this time.",
@@ -2732,8 +2700,8 @@
       "id": "TargetChange",
       "properties": {
         "cause": {
-          "description": "The error that resulted in this change, if applicable.",
-          "$ref": "Status"
+          "$ref": "Status",
+          "description": "The error that resulted in this change, if applicable."
         },
         "readTime": {
           "description": "The consistent `read_time` for the given `target_ids` (omitted when the target_ids are not at a consistent snapshot). The stream is guaranteed to send a `read_time` with `target_ids` empty whenever the entire stream reaches a new consistent snapshot. ADD, CURRENT, and RESET messages are guaranteed to (eventually) result in a new consistent snapshot (while NO_CHANGE and REMOVE messages are not). For a given stream, `read_time` is guaranteed to be monotonically increasing.",
@@ -2747,19 +2715,19 @@
         },
         "targetChangeType": {
           "description": "The type of change that occurred.",
-          "enumDescriptions": [
-            "No change has occurred. Used only to send an updated `resume_token`.",
-            "The targets have been added.",
-            "The targets have been removed.",
-            "The targets reflect all changes committed before the targets were added to the stream. This will be sent after or with a `read_time` that is greater than or equal to the time at which the targets were added. Listeners can wait for this change if read-after-write semantics are desired.",
-            "The targets have been reset, and a new initial state for the targets will be returned in subsequent changes. After the initial state is complete, `CURRENT` will be returned even if the target was previously indicated to be `CURRENT`."
-          ],
           "enum": [
             "NO_CHANGE",
             "ADD",
             "REMOVE",
             "CURRENT",
             "RESET"
+          ],
+          "enumDescriptions": [
+            "No change has occurred. Used only to send an updated `resume_token`.",
+            "The targets have been added.",
+            "The targets have been removed.",
+            "The targets reflect all changes committed before the targets were added to the stream. This will be sent after or with a `read_time` that is greater than or equal to the time at which the targets were added. Listeners can wait for this change if read-after-write semantics are desired.",
+            "The targets have been reset, and a new initial state for the targets will be returned in subsequent changes. After the initial state is complete, `CURRENT` will be returned even if the target was previously indicated to be `CURRENT`."
           ],
           "type": "string"
         },
@@ -2779,12 +2747,12 @@
       "id": "TransactionOptions",
       "properties": {
         "readOnly": {
-          "description": "The transaction can only be used for read operations.",
-          "$ref": "ReadOnly"
+          "$ref": "ReadOnly",
+          "description": "The transaction can only be used for read operations."
         },
         "readWrite": {
-          "description": "The transaction can be used for both read and write operations.",
-          "$ref": "ReadWrite"
+          "$ref": "ReadWrite",
+          "description": "The transaction can be used for both read and write operations."
         }
       },
       "type": "object"
@@ -2794,24 +2762,24 @@
       "id": "UnaryFilter",
       "properties": {
         "field": {
-          "description": "The field to which to apply the operator.",
-          "$ref": "FieldReference"
+          "$ref": "FieldReference",
+          "description": "The field to which to apply the operator."
         },
         "op": {
           "description": "The unary operator to apply.",
-          "enumDescriptions": [
-            "Unspecified. This value must not be used.",
-            "The given `field` is equal to `NaN`.",
-            "The given `field` is equal to `NULL`.",
-            "The given `field` is not equal to `NaN`. Requires: * No other `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That `field` comes first in the `order_by`.",
-            "The given `field` is not equal to `NULL`. Requires: * A single `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That `field` comes first in the `order_by`."
-          ],
           "enum": [
             "OPERATOR_UNSPECIFIED",
             "IS_NAN",
             "IS_NULL",
             "IS_NOT_NAN",
             "IS_NOT_NULL"
+          ],
+          "enumDescriptions": [
+            "Unspecified. This value must not be used.",
+            "The given `field` is equal to `NaN`.",
+            "The given `field` is equal to `NULL`.",
+            "The given `field` is not equal to `NaN`. Requires: * No other `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That `field` comes first in the `order_by`.",
+            "The given `field` is not equal to `NULL`. Requires: * A single `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That `field` comes first in the `order_by`."
           ],
           "type": "string"
         }
@@ -2823,8 +2791,8 @@
       "id": "Value",
       "properties": {
         "arrayValue": {
-          "description": "An array value. Cannot directly contain another array value, though can contain an map which contains another array.",
-          "$ref": "ArrayValue"
+          "$ref": "ArrayValue",
+          "description": "An array value. Cannot directly contain another array value, though can contain an map which contains another array."
         },
         "booleanValue": {
           "description": "A boolean value.",
@@ -2841,8 +2809,8 @@
           "type": "number"
         },
         "geoPointValue": {
-          "description": "A geo point value representing a point on the surface of Earth.",
-          "$ref": "LatLng"
+          "$ref": "LatLng",
+          "description": "A geo point value representing a point on the surface of Earth."
         },
         "integerValue": {
           "description": "An integer value.",
@@ -2850,16 +2818,16 @@
           "type": "string"
         },
         "mapValue": {
-          "description": "A map value.",
-          "$ref": "MapValue"
+          "$ref": "MapValue",
+          "description": "A map value."
         },
         "nullValue": {
           "description": "A null value.",
-          "enumDescriptions": [
-            "Null value."
-          ],
           "enum": [
             "NULL_VALUE"
+          ],
+          "enumDescriptions": [
+            "Null value."
           ],
           "type": "string"
         },
@@ -2884,24 +2852,24 @@
       "id": "Write",
       "properties": {
         "currentDocument": {
-          "description": "An optional precondition on the document. The write will fail if this is set and not met by the target document.",
-          "$ref": "Precondition"
+          "$ref": "Precondition",
+          "description": "An optional precondition on the document. The write will fail if this is set and not met by the target document."
         },
         "delete": {
           "description": "A document name to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.",
           "type": "string"
         },
         "transform": {
-          "description": "Applies a transformation to a document.",
-          "$ref": "DocumentTransform"
+          "$ref": "DocumentTransform",
+          "description": "Applies a transformation to a document."
         },
         "update": {
-          "description": "A document to write.",
-          "$ref": "Document"
+          "$ref": "Document",
+          "description": "A document to write."
         },
         "updateMask": {
-          "description": "The fields to update in this write. This field can be set only when the operation is `update`. If the mask is not set for an `update` and the document exists, any existing data will be overwritten. If the mask is set and the document on the server has fields not covered by the mask, they are left unchanged. Fields referenced in the mask, but not present in the input document, are deleted from the document on the server. The field paths in this mask must not contain a reserved field name.",
-          "$ref": "DocumentMask"
+          "$ref": "DocumentMask",
+          "description": "The fields to update in this write. This field can be set only when the operation is `update`. If the mask is not set for an `update` and the document exists, any existing data will be overwritten. If the mask is set and the document on the server has fields not covered by the mask, they are left unchanged. Fields referenced in the mask, but not present in the input document, are deleted from the document on the server. The field paths in this mask must not contain a reserved field name."
         },
         "updateTransforms": {
           "description": "The transforms to perform after update. This field can be set only when the operation is `update`. If present, this write is equivalent to performing `update` and `transform` to the same document atomically and in order.",
@@ -2993,6 +2961,6 @@
   },
   "servicePath": "",
   "title": "Cloud Firestore API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

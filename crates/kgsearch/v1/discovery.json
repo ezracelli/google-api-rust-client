@@ -11,22 +11,21 @@
   },
   "id": "kgsearch:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://kgsearch.mtls.googleapis.com/",
   "name": "kgsearch",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -37,17 +36,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -99,15 +98,14 @@
         "search": {
           "description": "Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be returned in response, which will be in JSON-LD format and compatible with http://schema.org",
           "httpMethod": "GET",
-          "flatPath": "v1/entities:search",
           "id": "kgsearch.entities.search",
           "parameterOrder": [],
           "parameters": {
             "ids": {
               "description": "The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "indent": {
               "description": "Enables indenting of json results.",
@@ -117,8 +115,8 @@
             "languages": {
               "description": "The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             },
             "limit": {
               "description": "Limits the number of entities to be returned.",
@@ -139,8 +137,8 @@
             "types": {
               "description": "Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types.",
               "location": "query",
-              "type": "string",
-              "repeated": true
+              "repeated": true,
+              "type": "string"
             }
           },
           "path": "v1/entities:search",
@@ -179,6 +177,6 @@
   },
   "servicePath": "",
   "title": "Knowledge Graph Search API",
-  "version_module": true,
-  "version": "v1"
+  "version": "v1",
+  "version_module": true
 }

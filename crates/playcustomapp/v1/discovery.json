@@ -14,29 +14,27 @@
   "description": "API to create and publish custom Android apps",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/android/work/play/custom-app-api/",
-  "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "id": "playcustomapp:v1",
   "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://playcustomapp.mtls.googleapis.com/",
   "name": "playcustomapp",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "parameters": {
     "$.xgafv": {
       "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string"
     },
     "access_token": {
@@ -47,17 +45,17 @@
     "alt": {
       "default": "json",
       "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string"
     },
     "callback": {
@@ -111,7 +109,6 @@
             "create": {
               "description": "Creates a new custom app.",
               "httpMethod": "POST",
-              "flatPath": "playcustomapp/v1/accounts/{account}/customApps",
               "id": "playcustomapp.accounts.customApps.create",
               "mediaUpload": {
                 "accept": [
@@ -120,12 +117,12 @@
                 "maxSize": "10737418240",
                 "protocols": {
                   "resumable": {
-                    "path": "/resumable/upload/playcustomapp/v1/accounts/{account}/customApps",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/resumable/upload/playcustomapp/v1/accounts/{account}/customApps"
                   },
                   "simple": {
-                    "path": "/upload/playcustomapp/v1/accounts/{account}/customApps",
-                    "multipart": true
+                    "multipart": true,
+                    "path": "/upload/playcustomapp/v1/accounts/{account}/customApps"
                   }
                 }
               },
@@ -137,8 +134,8 @@
                   "description": "Developer account ID.",
                   "format": "int64",
                   "location": "path",
-                  "type": "string",
-                  "required": true
+                  "required": true,
+                  "type": "string"
                 }
               },
               "path": "playcustomapp/v1/accounts/{account}/customApps",
@@ -171,8 +168,8 @@
         },
         "packageName": {
           "description": "Output only. Package name of the created Android app. Only present in the API response.",
-          "type": "string",
-          "readOnly": true
+          "readOnly": true,
+          "type": "string"
         },
         "title": {
           "description": "Title for the Android app.",
