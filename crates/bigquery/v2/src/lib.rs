@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -1653,7 +1653,7 @@ pub mod schemas {
     }
     mod csv_options_defaults {
         pub fn quote() -> ::std::string::String {
-            String::from("\"")
+            serde_json::from_str(&"\"\\\"\"").unwrap()
         }
     }
     #[derive(
@@ -1770,7 +1770,7 @@ pub mod schemas {
     }
     mod dataset_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#dataset")
+            serde_json::from_str(&"\"bigquery#dataset\"").unwrap()
         }
     }
     #[derive(
@@ -1894,7 +1894,7 @@ pub mod schemas {
     }
     mod dataset_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#datasetList")
+            serde_json::from_str(&"\"bigquery#datasetList\"").unwrap()
         }
     }
     #[derive(
@@ -1943,7 +1943,7 @@ pub mod schemas {
     }
     mod dataset_list_datasets_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#dataset")
+            serde_json::from_str(&"\"bigquery#dataset\"").unwrap()
         }
     }
     #[derive(
@@ -2560,7 +2560,7 @@ pub mod schemas {
     }
     mod get_query_results_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#getQueryResultsResponse")
+            serde_json::from_str(&"\"bigquery#getQueryResultsResponse\"").unwrap()
         }
     }
     #[derive(
@@ -2588,7 +2588,7 @@ pub mod schemas {
     }
     mod get_service_account_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#getServiceAccountResponse")
+            serde_json::from_str(&"\"bigquery#getServiceAccountResponse\"").unwrap()
         }
     }
     #[derive(
@@ -2765,7 +2765,7 @@ pub mod schemas {
     }
     mod job_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#job")
+            serde_json::from_str(&"\"bigquery#job\"").unwrap()
         }
     }
     #[derive(
@@ -2790,7 +2790,7 @@ pub mod schemas {
     }
     mod job_cancel_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#jobCancelResponse")
+            serde_json::from_str(&"\"bigquery#jobCancelResponse\"").unwrap()
         }
     }
     #[derive(
@@ -3070,7 +3070,7 @@ pub mod schemas {
     }
     mod job_configuration_load_defaults {
         pub fn quote() -> ::std::string::String {
-            String::from("\"")
+            serde_json::from_str(&"\"\\\"\"").unwrap()
         }
     }
     #[derive(
@@ -3320,7 +3320,7 @@ pub mod schemas {
     }
     mod job_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#jobList")
+            serde_json::from_str(&"\"bigquery#jobList\"").unwrap()
         }
     }
     #[derive(
@@ -3380,7 +3380,7 @@ pub mod schemas {
     }
     mod job_list_jobs_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#job")
+            serde_json::from_str(&"\"bigquery#job\"").unwrap()
         }
     }
     #[derive(
@@ -4207,7 +4207,7 @@ pub mod schemas {
     }
     mod project_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#projectList")
+            serde_json::from_str(&"\"bigquery#projectList\"").unwrap()
         }
     }
     #[derive(
@@ -4250,7 +4250,7 @@ pub mod schemas {
     }
     mod project_list_projects_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#project")
+            serde_json::from_str(&"\"bigquery#project\"").unwrap()
         }
     }
     #[derive(
@@ -4472,7 +4472,7 @@ pub mod schemas {
     }
     mod query_request_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#queryRequest")
+            serde_json::from_str(&"\"bigquery#queryRequest\"").unwrap()
         }
         pub fn use_legacy_sql() -> ::std::primitive::bool {
             serde_json::from_str(&"true").unwrap()
@@ -4548,7 +4548,7 @@ pub mod schemas {
     }
     mod query_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#queryResponse")
+            serde_json::from_str(&"\"bigquery#queryResponse\"").unwrap()
         }
     }
     #[derive(
@@ -5357,7 +5357,7 @@ pub mod schemas {
     }
     mod table_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#table")
+            serde_json::from_str(&"\"bigquery#table\"").unwrap()
         }
         pub fn require_partition_filter() -> ::std::primitive::bool {
             serde_json::from_str(&"false").unwrap()
@@ -5417,7 +5417,7 @@ pub mod schemas {
     }
     mod table_data_insert_all_request_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#tableDataInsertAllRequest")
+            serde_json::from_str(&"\"bigquery#tableDataInsertAllRequest\"").unwrap()
         }
     }
     #[derive(
@@ -5466,7 +5466,7 @@ pub mod schemas {
     }
     mod table_data_insert_all_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#tableDataInsertAllResponse")
+            serde_json::from_str(&"\"bigquery#tableDataInsertAllResponse\"").unwrap()
         }
     }
     #[derive(
@@ -5526,7 +5526,7 @@ pub mod schemas {
     }
     mod table_data_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#tableDataList")
+            serde_json::from_str(&"\"bigquery#tableDataList\"").unwrap()
         }
     }
     #[derive(
@@ -5641,7 +5641,7 @@ pub mod schemas {
     }
     mod table_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#tableList")
+            serde_json::from_str(&"\"bigquery#tableList\"").unwrap()
         }
     }
     #[derive(
@@ -5717,7 +5717,7 @@ pub mod schemas {
     }
     mod table_list_tables_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("bigquery#table")
+            serde_json::from_str(&"\"bigquery#table\"").unwrap()
         }
     }
     #[derive(

@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"false").unwrap()
@@ -1032,7 +1032,7 @@ pub mod resources {
                         }
                         mod query_parameters_defaults {
                             pub fn _type() -> ::std::string::String {
-                                String::from("all")
+                                serde_json::from_str(&"\"all\"").unwrap()
                             }
                         }
                     }
@@ -1322,7 +1322,7 @@ pub mod schemas {
     }
     mod account_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#account")
+            serde_json::from_str(&"\"analytics#account\"").unwrap()
         }
     }
     #[derive(
@@ -1348,7 +1348,7 @@ pub mod schemas {
     }
     mod account_child_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#webproperties")
+            serde_json::from_str(&"\"analytics#webproperties\"").unwrap()
         }
     }
     #[derive(
@@ -1400,7 +1400,7 @@ pub mod schemas {
     }
     mod account_ref_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#accountRef")
+            serde_json::from_str(&"\"analytics#accountRef\"").unwrap()
         }
     }
     #[derive(
@@ -1456,7 +1456,7 @@ pub mod schemas {
     }
     mod account_summaries_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#accountSummaries")
+            serde_json::from_str(&"\"analytics#accountSummaries\"").unwrap()
         }
     }
     #[derive(
@@ -1498,7 +1498,7 @@ pub mod schemas {
     }
     mod account_summary_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#accountSummary")
+            serde_json::from_str(&"\"analytics#accountSummary\"").unwrap()
         }
     }
     #[derive(
@@ -1544,7 +1544,7 @@ pub mod schemas {
     }
     mod account_ticket_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#accountTicket")
+            serde_json::from_str(&"\"analytics#accountTicket\"").unwrap()
         }
     }
     #[derive(
@@ -1585,7 +1585,7 @@ pub mod schemas {
     }
     mod account_tree_request_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#accountTreeRequest")
+            serde_json::from_str(&"\"analytics#accountTreeRequest\"").unwrap()
         }
     }
     #[derive(
@@ -1624,7 +1624,7 @@ pub mod schemas {
     }
     mod account_tree_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#accountTreeResponse")
+            serde_json::from_str(&"\"analytics#accountTreeResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1680,7 +1680,7 @@ pub mod schemas {
     }
     mod accounts_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#accounts")
+            serde_json::from_str(&"\"analytics#accounts\"").unwrap()
         }
     }
     #[derive(
@@ -1711,7 +1711,7 @@ pub mod schemas {
     }
     mod ad_words_account_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#adWordsAccount")
+            serde_json::from_str(&"\"analytics#adWordsAccount\"").unwrap()
         }
     }
     #[derive(
@@ -1759,7 +1759,7 @@ pub mod schemas {
     }
     mod column_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#column")
+            serde_json::from_str(&"\"analytics#column\"").unwrap()
         }
     }
     #[derive(
@@ -1800,7 +1800,7 @@ pub mod schemas {
     }
     mod columns_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#columns")
+            serde_json::from_str(&"\"analytics#columns\"").unwrap()
         }
     }
     #[derive(
@@ -1894,7 +1894,7 @@ pub mod schemas {
     }
     mod custom_data_source_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#customDataSource")
+            serde_json::from_str(&"\"analytics#customDataSource\"").unwrap()
         }
     }
     #[derive(
@@ -1943,7 +1943,7 @@ pub mod schemas {
     }
     mod custom_data_source_parent_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#webproperty")
+            serde_json::from_str(&"\"analytics#webproperty\"").unwrap()
         }
     }
     #[derive(
@@ -1999,7 +1999,7 @@ pub mod schemas {
     }
     mod custom_data_sources_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#customDataSources")
+            serde_json::from_str(&"\"analytics#customDataSources\"").unwrap()
         }
     }
     #[derive(
@@ -2075,7 +2075,7 @@ pub mod schemas {
     }
     mod custom_dimension_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#customDimension")
+            serde_json::from_str(&"\"analytics#customDimension\"").unwrap()
         }
     }
     #[derive(
@@ -2104,7 +2104,7 @@ pub mod schemas {
     }
     mod custom_dimension_parent_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#webproperty")
+            serde_json::from_str(&"\"analytics#webproperty\"").unwrap()
         }
     }
     #[derive(
@@ -2160,7 +2160,7 @@ pub mod schemas {
     }
     mod custom_dimensions_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#customDimensions")
+            serde_json::from_str(&"\"analytics#customDimensions\"").unwrap()
         }
     }
     #[derive(
@@ -2251,7 +2251,7 @@ pub mod schemas {
     }
     mod custom_metric_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#customMetric")
+            serde_json::from_str(&"\"analytics#customMetric\"").unwrap()
         }
     }
     #[derive(
@@ -2280,7 +2280,7 @@ pub mod schemas {
     }
     mod custom_metric_parent_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#webproperty")
+            serde_json::from_str(&"\"analytics#webproperty\"").unwrap()
         }
     }
     #[derive(
@@ -2336,7 +2336,7 @@ pub mod schemas {
     }
     mod custom_metrics_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#customMetrics")
+            serde_json::from_str(&"\"analytics#customMetrics\"").unwrap()
         }
     }
     #[derive(
@@ -2388,7 +2388,7 @@ pub mod schemas {
     }
     mod entity_ad_words_link_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#entityAdWordsLink")
+            serde_json::from_str(&"\"analytics#entityAdWordsLink\"").unwrap()
         }
     }
     #[derive(
@@ -2457,7 +2457,7 @@ pub mod schemas {
     }
     mod entity_ad_words_links_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#entityAdWordsLinks")
+            serde_json::from_str(&"\"analytics#entityAdWordsLinks\"").unwrap()
         }
     }
     #[derive(
@@ -2503,7 +2503,7 @@ pub mod schemas {
     }
     mod entity_user_link_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#entityUserLink")
+            serde_json::from_str(&"\"analytics#entityUserLink\"").unwrap()
         }
     }
     #[derive(
@@ -2601,7 +2601,7 @@ pub mod schemas {
     }
     mod entity_user_links_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#entityUserLinks")
+            serde_json::from_str(&"\"analytics#entityUserLinks\"").unwrap()
         }
     }
     #[derive(
@@ -2757,7 +2757,7 @@ pub mod schemas {
     }
     mod experiment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#experiment")
+            serde_json::from_str(&"\"analytics#experiment\"").unwrap()
         }
     }
     #[derive(
@@ -2786,7 +2786,7 @@ pub mod schemas {
     }
     mod experiment_parent_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#profile")
+            serde_json::from_str(&"\"analytics#profile\"").unwrap()
         }
     }
     #[derive(
@@ -2877,7 +2877,7 @@ pub mod schemas {
     }
     mod experiments_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#experiments")
+            serde_json::from_str(&"\"analytics#experiments\"").unwrap()
         }
     }
     #[derive(
@@ -2968,7 +2968,7 @@ pub mod schemas {
     }
     mod filter_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#filter")
+            serde_json::from_str(&"\"analytics#filter\"").unwrap()
         }
     }
     #[derive(
@@ -3091,7 +3091,7 @@ pub mod schemas {
     }
     mod filter_parent_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#account")
+            serde_json::from_str(&"\"analytics#account\"").unwrap()
         }
     }
     #[derive(
@@ -3194,7 +3194,7 @@ pub mod schemas {
     }
     mod filter_expression_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#filterExpression")
+            serde_json::from_str(&"\"analytics#filterExpression\"").unwrap()
         }
     }
     #[derive(
@@ -3235,7 +3235,7 @@ pub mod schemas {
     }
     mod filter_ref_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#filterRef")
+            serde_json::from_str(&"\"analytics#filterRef\"").unwrap()
         }
     }
     #[derive(
@@ -3291,7 +3291,7 @@ pub mod schemas {
     }
     mod filters_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#filters")
+            serde_json::from_str(&"\"analytics#filters\"").unwrap()
         }
     }
     #[derive(
@@ -3392,7 +3392,7 @@ pub mod schemas {
     }
     mod ga_data_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#gaData")
+            serde_json::from_str(&"\"analytics#gaData\"").unwrap()
         }
     }
     #[derive(
@@ -3698,7 +3698,7 @@ pub mod schemas {
     }
     mod goal_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#goal")
+            serde_json::from_str(&"\"analytics#goal\"").unwrap()
         }
     }
     #[derive(
@@ -3781,7 +3781,7 @@ pub mod schemas {
     }
     mod goal_parent_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#profile")
+            serde_json::from_str(&"\"analytics#profile\"").unwrap()
         }
     }
     #[derive(
@@ -3940,7 +3940,7 @@ pub mod schemas {
     }
     mod goals_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#goals")
+            serde_json::from_str(&"\"analytics#goals\"").unwrap()
         }
     }
     #[derive(
@@ -3971,7 +3971,7 @@ pub mod schemas {
     }
     mod hash_client_id_request_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#hashClientIdRequest")
+            serde_json::from_str(&"\"analytics#hashClientIdRequest\"").unwrap()
         }
     }
     #[derive(
@@ -4006,7 +4006,7 @@ pub mod schemas {
     }
     mod hash_client_id_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#hashClientIdResponse")
+            serde_json::from_str(&"\"analytics#hashClientIdResponse\"").unwrap()
         }
     }
     #[derive(
@@ -4047,7 +4047,7 @@ pub mod schemas {
     }
     mod include_conditions_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#includeConditions")
+            serde_json::from_str(&"\"analytics#includeConditions\"").unwrap()
         }
     }
     #[derive(
@@ -4116,7 +4116,7 @@ pub mod schemas {
     }
     mod linked_foreign_account_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#linkedForeignAccount")
+            serde_json::from_str(&"\"analytics#linkedForeignAccount\"").unwrap()
         }
     }
     #[derive(
@@ -4208,7 +4208,7 @@ pub mod schemas {
     }
     mod mcf_data_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#mcfData")
+            serde_json::from_str(&"\"analytics#mcfData\"").unwrap()
         }
     }
     #[derive(
@@ -4528,7 +4528,7 @@ pub mod schemas {
     }
     mod profile_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#profile")
+            serde_json::from_str(&"\"analytics#profile\"").unwrap()
         }
     }
     #[derive(
@@ -4554,7 +4554,7 @@ pub mod schemas {
     }
     mod profile_child_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#goals")
+            serde_json::from_str(&"\"analytics#goals\"").unwrap()
         }
     }
     #[derive(
@@ -4580,7 +4580,7 @@ pub mod schemas {
     }
     mod profile_parent_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#webproperty")
+            serde_json::from_str(&"\"analytics#webproperty\"").unwrap()
         }
     }
     #[derive(
@@ -4642,7 +4642,7 @@ pub mod schemas {
     }
     mod profile_filter_link_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#profileFilterLink")
+            serde_json::from_str(&"\"analytics#profileFilterLink\"").unwrap()
         }
     }
     #[derive(
@@ -4698,7 +4698,7 @@ pub mod schemas {
     }
     mod profile_filter_links_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#profileFilterLinks")
+            serde_json::from_str(&"\"analytics#profileFilterLinks\"").unwrap()
         }
     }
     #[derive(
@@ -4749,7 +4749,7 @@ pub mod schemas {
     }
     mod profile_ref_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#profileRef")
+            serde_json::from_str(&"\"analytics#profileRef\"").unwrap()
         }
     }
     #[derive(
@@ -4790,7 +4790,7 @@ pub mod schemas {
     }
     mod profile_summary_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#profileSummary")
+            serde_json::from_str(&"\"analytics#profileSummary\"").unwrap()
         }
     }
     #[derive(
@@ -4846,7 +4846,7 @@ pub mod schemas {
     }
     mod profiles_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#profiles")
+            serde_json::from_str(&"\"analytics#profiles\"").unwrap()
         }
     }
     #[derive(
@@ -4908,7 +4908,7 @@ pub mod schemas {
     }
     mod realtime_data_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#realtimeData")
+            serde_json::from_str(&"\"analytics#realtimeData\"").unwrap()
         }
     }
     #[derive(
@@ -5103,7 +5103,7 @@ pub mod schemas {
     }
     mod remarketing_audience_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#remarketingAudience")
+            serde_json::from_str(&"\"analytics#remarketingAudience\"").unwrap()
         }
     }
     #[derive(
@@ -5222,7 +5222,7 @@ pub mod schemas {
     }
     mod remarketing_audiences_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#remarketingAudiences")
+            serde_json::from_str(&"\"analytics#remarketingAudiences\"").unwrap()
         }
     }
     #[derive(
@@ -5283,7 +5283,7 @@ pub mod schemas {
     }
     mod segment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#segment")
+            serde_json::from_str(&"\"analytics#segment\"").unwrap()
         }
     }
     #[derive(
@@ -5339,7 +5339,7 @@ pub mod schemas {
     }
     mod segments_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#segments")
+            serde_json::from_str(&"\"analytics#segments\"").unwrap()
         }
     }
     #[derive(
@@ -5451,7 +5451,7 @@ pub mod schemas {
     }
     mod unsampled_report_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#unsampledReport")
+            serde_json::from_str(&"\"analytics#unsampledReport\"").unwrap()
         }
     }
     #[derive(
@@ -5544,7 +5544,7 @@ pub mod schemas {
     }
     mod unsampled_reports_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#unsampledReports")
+            serde_json::from_str(&"\"analytics#unsampledReports\"").unwrap()
         }
     }
     #[derive(
@@ -5595,7 +5595,7 @@ pub mod schemas {
     }
     mod upload_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#upload")
+            serde_json::from_str(&"\"analytics#upload\"").unwrap()
         }
     }
     #[derive(
@@ -5646,7 +5646,7 @@ pub mod schemas {
     }
     mod uploads_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#uploads")
+            serde_json::from_str(&"\"analytics#uploads\"").unwrap()
         }
     }
     #[derive(
@@ -5695,7 +5695,7 @@ pub mod schemas {
     }
     mod user_deletion_request_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#userDeletionRequest")
+            serde_json::from_str(&"\"analytics#userDeletionRequest\"").unwrap()
         }
     }
     #[derive(
@@ -5746,7 +5746,7 @@ pub mod schemas {
     }
     mod user_ref_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#userRef")
+            serde_json::from_str(&"\"analytics#userRef\"").unwrap()
         }
     }
     #[derive(
@@ -5792,7 +5792,7 @@ pub mod schemas {
     }
     mod web_property_ref_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#webPropertyRef")
+            serde_json::from_str(&"\"analytics#webPropertyRef\"").unwrap()
         }
     }
     #[derive(
@@ -5848,7 +5848,7 @@ pub mod schemas {
     }
     mod web_property_summary_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#webPropertySummary")
+            serde_json::from_str(&"\"analytics#webPropertySummary\"").unwrap()
         }
     }
     #[derive(
@@ -5904,7 +5904,7 @@ pub mod schemas {
     }
     mod webproperties_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#webproperties")
+            serde_json::from_str(&"\"analytics#webproperties\"").unwrap()
         }
     }
     #[derive(
@@ -6015,7 +6015,7 @@ pub mod schemas {
     }
     mod webproperty_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("analytics#webproperty")
+            serde_json::from_str(&"\"analytics#webproperty\"").unwrap()
         }
     }
     #[derive(
@@ -6044,7 +6044,7 @@ pub mod schemas {
     }
     mod webproperty_child_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#profiles")
+            serde_json::from_str(&"\"analytics#profiles\"").unwrap()
         }
     }
     #[derive(
@@ -6073,7 +6073,7 @@ pub mod schemas {
     }
     mod webproperty_parent_link_defaults {
         pub fn _type() -> ::std::string::String {
-            String::from("analytics#account")
+            serde_json::from_str(&"\"analytics#account\"").unwrap()
         }
     }
     #[derive(

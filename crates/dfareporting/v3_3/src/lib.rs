@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -185,10 +185,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -316,10 +316,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -528,10 +528,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -709,10 +709,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -855,10 +855,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1012,10 +1012,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1137,7 +1137,7 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1258,10 +1258,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1697,10 +1697,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1823,10 +1823,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1954,10 +1954,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -2090,10 +2090,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -2266,10 +2266,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -2545,10 +2545,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -2776,10 +2776,10 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -2917,13 +2917,13 @@ pub mod resources {
                         serde_json::from_str(&"10").unwrap()
                     }
                     pub fn scope() -> super::QueryParametersScopeEnum {
-                        serde_json::from_str(&"MINE").unwrap()
+                        serde_json::from_str(&"\"MINE\"").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"LAST_MODIFIED_TIME").unwrap()
+                        serde_json::from_str(&"\"LAST_MODIFIED_TIME\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"DESCENDING").unwrap()
+                        serde_json::from_str(&"\"DESCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -3105,10 +3105,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -3263,10 +3263,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -3468,10 +3468,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -3679,10 +3679,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -3789,10 +3789,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -3960,10 +3960,10 @@ pub mod resources {
                         serde_json::from_str(&"800").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -4132,10 +4132,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -4438,10 +4438,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -4644,10 +4644,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -4783,10 +4783,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -4904,13 +4904,13 @@ pub mod resources {
                         serde_json::from_str(&"10").unwrap()
                     }
                     pub fn scope() -> super::QueryParametersScopeEnum {
-                        serde_json::from_str(&"MINE").unwrap()
+                        serde_json::from_str(&"\"MINE\"").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"LAST_MODIFIED_TIME").unwrap()
+                        serde_json::from_str(&"\"LAST_MODIFIED_TIME\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"DESCENDING").unwrap()
+                        serde_json::from_str(&"\"DESCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -5055,10 +5055,10 @@ pub mod resources {
                                 serde_json::from_str(&"10").unwrap()
                             }
                             pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                                serde_json::from_str(&"LAST_MODIFIED_TIME").unwrap()
+                                serde_json::from_str(&"\"LAST_MODIFIED_TIME\"").unwrap()
                             }
                             pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                                serde_json::from_str(&"DESCENDING").unwrap()
+                                serde_json::from_str(&"\"DESCENDING\"").unwrap()
                             }
                         }
                         #[derive(
@@ -5210,10 +5210,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -5377,10 +5377,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -5507,10 +5507,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -5617,10 +5617,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(
@@ -5779,10 +5779,10 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn sort_field() -> super::QueryParametersSortFieldEnum {
-                        serde_json::from_str(&"ID").unwrap()
+                        serde_json::from_str(&"\"ID\"").unwrap()
                     }
                     pub fn sort_order() -> super::QueryParametersSortOrderEnum {
-                        serde_json::from_str(&"ASCENDING").unwrap()
+                        serde_json::from_str(&"\"ASCENDING\"").unwrap()
                     }
                 }
                 #[derive(

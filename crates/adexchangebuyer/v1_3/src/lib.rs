@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -231,7 +231,7 @@ pub mod schemas {
     }
     mod account_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#account")
+            serde_json::from_str(&"\"adexchangebuyer#account\"").unwrap()
         }
     }
     #[derive(
@@ -282,7 +282,7 @@ pub mod schemas {
     }
     mod accounts_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#accountsList")
+            serde_json::from_str(&"\"adexchangebuyer#accountsList\"").unwrap()
         }
     }
     #[derive(
@@ -318,7 +318,7 @@ pub mod schemas {
     }
     mod billing_info_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#billingInfo")
+            serde_json::from_str(&"\"adexchangebuyer#billingInfo\"").unwrap()
         }
     }
     #[derive(
@@ -344,7 +344,7 @@ pub mod schemas {
     }
     mod billing_info_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#billingInfoList")
+            serde_json::from_str(&"\"adexchangebuyer#billingInfoList\"").unwrap()
         }
     }
     #[derive(
@@ -390,7 +390,7 @@ pub mod schemas {
     }
     mod budget_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#budget")
+            serde_json::from_str(&"\"adexchangebuyer#budget\"").unwrap()
         }
     }
     #[derive(
@@ -530,7 +530,7 @@ pub mod schemas {
     }
     mod creative_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#creative")
+            serde_json::from_str(&"\"adexchangebuyer#creative\"").unwrap()
         }
     }
     #[derive(
@@ -796,7 +796,7 @@ pub mod schemas {
     }
     mod creatives_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#creativesList")
+            serde_json::from_str(&"\"adexchangebuyer#creativesList\"").unwrap()
         }
     }
     #[derive(
@@ -887,7 +887,7 @@ pub mod schemas {
     }
     mod direct_deal_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#directDeal")
+            serde_json::from_str(&"\"adexchangebuyer#directDeal\"").unwrap()
         }
     }
     #[derive(
@@ -913,7 +913,7 @@ pub mod schemas {
     }
     mod direct_deals_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#directDealsList")
+            serde_json::from_str(&"\"adexchangebuyer#directDealsList\"").unwrap()
         }
     }
     #[derive(
@@ -1039,7 +1039,7 @@ pub mod schemas {
     }
     mod performance_report_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#performanceReport")
+            serde_json::from_str(&"\"adexchangebuyer#performanceReport\"").unwrap()
         }
     }
     #[derive(
@@ -1069,7 +1069,7 @@ pub mod schemas {
     }
     mod performance_report_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#performanceReportList")
+            serde_json::from_str(&"\"adexchangebuyer#performanceReportList\"").unwrap()
         }
     }
     #[derive(
@@ -1208,7 +1208,7 @@ pub mod schemas {
     }
     mod pretargeting_config_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#pretargetingConfig")
+            serde_json::from_str(&"\"adexchangebuyer#pretargetingConfig\"").unwrap()
         }
     }
     #[derive(
@@ -1296,7 +1296,7 @@ pub mod schemas {
     }
     mod pretargeting_config_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#pretargetingConfigList")
+            serde_json::from_str(&"\"adexchangebuyer#pretargetingConfigList\"").unwrap()
         }
     }
 }

@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -15479,7 +15479,7 @@ pub mod schemas {
     }
     mod accelerator_type_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#acceleratorType")
+            serde_json::from_str(&"\"compute#acceleratorType\"").unwrap()
         }
     }
     #[derive(
@@ -15534,7 +15534,7 @@ pub mod schemas {
     }
     mod accelerator_type_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#acceleratorTypeAggregatedList")
+            serde_json::from_str(&"\"compute#acceleratorTypeAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -15713,7 +15713,7 @@ pub mod schemas {
     }
     mod accelerator_type_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#acceleratorTypeList")
+            serde_json::from_str(&"\"compute#acceleratorTypeList\"").unwrap()
         }
     }
     #[derive(
@@ -16045,10 +16045,10 @@ pub mod schemas {
     }
     mod access_config_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#accessConfig")
+            serde_json::from_str(&"\"compute#accessConfig\"").unwrap()
         }
         pub fn _type() -> super::AccessConfigTypeEnum {
-            serde_json::from_str(&"ONE_TO_ONE_NAT").unwrap()
+            serde_json::from_str(&"\"ONE_TO_ONE_NAT\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -16187,7 +16187,7 @@ pub mod schemas {
     }
     mod address_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#address")
+            serde_json::from_str(&"\"compute#address\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -16338,7 +16338,7 @@ pub mod schemas {
     }
     mod address_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#addressAggregatedList")
+            serde_json::from_str(&"\"compute#addressAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -16514,7 +16514,7 @@ pub mod schemas {
     }
     mod address_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#addressList")
+            serde_json::from_str(&"\"compute#addressList\"").unwrap()
         }
     }
     #[derive(
@@ -17036,7 +17036,7 @@ pub mod schemas {
     }
     mod attached_disk_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#attachedDisk")
+            serde_json::from_str(&"\"compute#attachedDisk\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -17387,7 +17387,7 @@ pub mod schemas {
     }
     mod autoscaler_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#autoscaler")
+            serde_json::from_str(&"\"compute#autoscaler\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -17463,7 +17463,7 @@ pub mod schemas {
     }
     mod autoscaler_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#autoscalerAggregatedList")
+            serde_json::from_str(&"\"compute#autoscalerAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -17639,7 +17639,7 @@ pub mod schemas {
     }
     mod autoscaler_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#autoscalerList")
+            serde_json::from_str(&"\"compute#autoscalerList\"").unwrap()
         }
     }
     #[derive(
@@ -18442,7 +18442,7 @@ pub mod schemas {
     }
     mod backend_bucket_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#backendBucket")
+            serde_json::from_str(&"\"compute#backendBucket\"").unwrap()
         }
     }
     #[derive(
@@ -18616,7 +18616,7 @@ pub mod schemas {
     }
     mod backend_bucket_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#backendBucketList")
+            serde_json::from_str(&"\"compute#backendBucketList\"").unwrap()
         }
     }
     #[derive(
@@ -18927,7 +18927,7 @@ pub mod schemas {
     }
     mod backend_service_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#backendService")
+            serde_json::from_str(&"\"compute#backendService\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -19097,7 +19097,7 @@ pub mod schemas {
     }
     mod backend_service_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#backendServiceAggregatedList")
+            serde_json::from_str(&"\"compute#backendServiceAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -19487,7 +19487,7 @@ pub mod schemas {
     }
     mod backend_service_group_health_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#backendServiceGroupHealth")
+            serde_json::from_str(&"\"compute#backendServiceGroupHealth\"").unwrap()
         }
     }
     #[derive(
@@ -19564,7 +19564,7 @@ pub mod schemas {
     }
     mod backend_service_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#backendServiceList")
+            serde_json::from_str(&"\"compute#backendServiceList\"").unwrap()
         }
     }
     #[derive(
@@ -20502,7 +20502,7 @@ pub mod schemas {
     }
     mod commitment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#commitment")
+            serde_json::from_str(&"\"compute#commitment\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -20647,7 +20647,7 @@ pub mod schemas {
     }
     mod commitment_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#commitmentAggregatedList")
+            serde_json::from_str(&"\"compute#commitmentAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -20823,7 +20823,7 @@ pub mod schemas {
     }
     mod commitment_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#commitmentList")
+            serde_json::from_str(&"\"compute#commitmentList\"").unwrap()
         }
     }
     #[derive(
@@ -21691,7 +21691,7 @@ pub mod schemas {
     }
     mod disk_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#disk")
+            serde_json::from_str(&"\"compute#disk\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -21800,7 +21800,7 @@ pub mod schemas {
     }
     mod disk_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#diskAggregatedList")
+            serde_json::from_str(&"\"compute#diskAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -22037,7 +22037,7 @@ pub mod schemas {
     }
     mod disk_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#diskList")
+            serde_json::from_str(&"\"compute#diskList\"").unwrap()
         }
     }
     #[derive(
@@ -22258,7 +22258,7 @@ pub mod schemas {
     }
     mod disk_type_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#diskType")
+            serde_json::from_str(&"\"compute#diskType\"").unwrap()
         }
     }
     #[derive(
@@ -22313,7 +22313,7 @@ pub mod schemas {
     }
     mod disk_type_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#diskTypeAggregatedList")
+            serde_json::from_str(&"\"compute#diskTypeAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -22489,7 +22489,7 @@ pub mod schemas {
     }
     mod disk_type_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#diskTypeList")
+            serde_json::from_str(&"\"compute#diskTypeList\"").unwrap()
         }
     }
     #[derive(
@@ -23157,7 +23157,7 @@ pub mod schemas {
     }
     mod exchanged_peering_routes_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#exchangedPeeringRoutesList")
+            serde_json::from_str(&"\"compute#exchangedPeeringRoutesList\"").unwrap()
         }
     }
     #[derive(
@@ -23386,7 +23386,7 @@ pub mod schemas {
     }
     mod external_vpn_gateway_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#externalVpnGateway")
+            serde_json::from_str(&"\"compute#externalVpnGateway\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -23478,7 +23478,7 @@ pub mod schemas {
     }
     mod external_vpn_gateway_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#externalVpnGatewayList")
+            serde_json::from_str(&"\"compute#externalVpnGatewayList\"").unwrap()
         }
     }
     #[derive(
@@ -23762,7 +23762,7 @@ pub mod schemas {
     }
     mod firewall_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#firewall")
+            serde_json::from_str(&"\"compute#firewall\"").unwrap()
         }
     }
     #[derive(
@@ -23863,7 +23863,7 @@ pub mod schemas {
     }
     mod firewall_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#firewallList")
+            serde_json::from_str(&"\"compute#firewallList\"").unwrap()
         }
     }
     #[derive(
@@ -24058,7 +24058,7 @@ pub mod schemas {
     }
     mod firewall_policies_list_associations_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#firewallPoliciesListAssociationsResponse")
+            serde_json::from_str(&"\"compute#firewallPoliciesListAssociationsResponse\"").unwrap()
         }
     }
     #[derive(
@@ -24140,7 +24140,7 @@ pub mod schemas {
     }
     mod firewall_policy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#firewallPolicy")
+            serde_json::from_str(&"\"compute#firewallPolicy\"").unwrap()
         }
     }
     #[derive(
@@ -24210,7 +24210,7 @@ pub mod schemas {
     }
     mod firewall_policy_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#firewallPolicyList")
+            serde_json::from_str(&"\"compute#firewallPolicyList\"").unwrap()
         }
     }
     #[derive(
@@ -24416,7 +24416,7 @@ pub mod schemas {
     }
     mod firewall_policy_rule_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#firewallPolicyRule")
+            serde_json::from_str(&"\"compute#firewallPolicyRule\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -24675,7 +24675,7 @@ pub mod schemas {
     }
     mod forwarding_rule_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#forwardingRule")
+            serde_json::from_str(&"\"compute#forwardingRule\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -24814,7 +24814,7 @@ pub mod schemas {
     }
     mod forwarding_rule_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#forwardingRuleAggregatedList")
+            serde_json::from_str(&"\"compute#forwardingRuleAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -24990,7 +24990,7 @@ pub mod schemas {
     }
     mod forwarding_rule_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#forwardingRuleList")
+            serde_json::from_str(&"\"compute#forwardingRuleList\"").unwrap()
         }
     }
     #[derive(
@@ -25508,7 +25508,7 @@ pub mod schemas {
     }
     mod guest_attributes_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#guestAttributes")
+            serde_json::from_str(&"\"compute#guestAttributes\"").unwrap()
         }
     }
     #[derive(
@@ -25937,7 +25937,7 @@ pub mod schemas {
     }
     mod health_check_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#healthCheck")
+            serde_json::from_str(&"\"compute#healthCheck\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -26013,7 +26013,7 @@ pub mod schemas {
     }
     mod health_check_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#healthCheckList")
+            serde_json::from_str(&"\"compute#healthCheckList\"").unwrap()
         }
     }
     #[derive(
@@ -26257,7 +26257,7 @@ pub mod schemas {
     }
     mod health_check_service_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#healthCheckService")
+            serde_json::from_str(&"\"compute#healthCheckService\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -26350,7 +26350,7 @@ pub mod schemas {
     }
     mod health_check_services_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#healthCheckServicesList")
+            serde_json::from_str(&"\"compute#healthCheckServicesList\"").unwrap()
         }
     }
     #[derive(
@@ -26535,7 +26535,7 @@ pub mod schemas {
     }
     mod health_checks_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#healthChecksAggregatedList")
+            serde_json::from_str(&"\"compute#healthChecksAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -27227,7 +27227,7 @@ pub mod schemas {
     }
     mod http_health_check_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#httpHealthCheckList")
+            serde_json::from_str(&"\"compute#httpHealthCheckList\"").unwrap()
         }
     }
     #[derive(
@@ -27683,7 +27683,7 @@ pub mod schemas {
     }
     mod https_health_check_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#httpsHealthCheckList")
+            serde_json::from_str(&"\"compute#httpsHealthCheckList\"").unwrap()
         }
     }
     #[derive(
@@ -27990,10 +27990,10 @@ pub mod schemas {
     }
     mod image_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#image")
+            serde_json::from_str(&"\"compute#image\"").unwrap()
         }
         pub fn source_type() -> super::ImageSourceTypeEnum {
-            serde_json::from_str(&"RAW").unwrap()
+            serde_json::from_str(&"\"RAW\"").unwrap()
         }
     }
     #[derive(
@@ -28110,7 +28110,7 @@ pub mod schemas {
     }
     mod image_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#imageList")
+            serde_json::from_str(&"\"compute#imageList\"").unwrap()
         }
     }
     #[derive(
@@ -28514,7 +28514,7 @@ pub mod schemas {
     }
     mod instance_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instance")
+            serde_json::from_str(&"\"compute#instance\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -28626,7 +28626,7 @@ pub mod schemas {
     }
     mod instance_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceAggregatedList")
+            serde_json::from_str(&"\"compute#instanceAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -28837,7 +28837,7 @@ pub mod schemas {
     }
     mod instance_group_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceGroup")
+            serde_json::from_str(&"\"compute#instanceGroup\"").unwrap()
         }
     }
     #[derive(
@@ -28892,7 +28892,7 @@ pub mod schemas {
     }
     mod instance_group_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceGroupAggregatedList")
+            serde_json::from_str(&"\"compute#instanceGroupAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -29068,7 +29068,7 @@ pub mod schemas {
     }
     mod instance_group_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceGroupList")
+            serde_json::from_str(&"\"compute#instanceGroupList\"").unwrap()
         }
     }
     #[derive(
@@ -29342,7 +29342,7 @@ pub mod schemas {
     }
     mod instance_group_manager_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceGroupManager")
+            serde_json::from_str(&"\"compute#instanceGroupManager\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -29470,7 +29470,7 @@ pub mod schemas {
     }
     mod instance_group_manager_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceGroupManagerAggregatedList")
+            serde_json::from_str(&"\"compute#instanceGroupManagerAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -29671,7 +29671,7 @@ pub mod schemas {
     }
     mod instance_group_manager_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceGroupManagerList")
+            serde_json::from_str(&"\"compute#instanceGroupManagerList\"").unwrap()
         }
     }
     #[derive(
@@ -30704,7 +30704,7 @@ pub mod schemas {
     }
     mod instance_groups_list_instances_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceGroupsListInstances")
+            serde_json::from_str(&"\"compute#instanceGroupsListInstances\"").unwrap()
         }
     }
     #[derive(
@@ -31097,7 +31097,7 @@ pub mod schemas {
     }
     mod instance_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceList")
+            serde_json::from_str(&"\"compute#instanceList\"").unwrap()
         }
     }
     #[derive(
@@ -31276,7 +31276,7 @@ pub mod schemas {
     }
     mod instance_list_referrers_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceListReferrers")
+            serde_json::from_str(&"\"compute#instanceListReferrers\"").unwrap()
         }
     }
     #[derive(
@@ -31776,7 +31776,7 @@ pub mod schemas {
     }
     mod instance_template_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceTemplate")
+            serde_json::from_str(&"\"compute#instanceTemplate\"").unwrap()
         }
     }
     #[derive(
@@ -31825,7 +31825,7 @@ pub mod schemas {
     }
     mod instance_template_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#instanceTemplateList")
+            serde_json::from_str(&"\"compute#instanceTemplateList\"").unwrap()
         }
     }
     #[derive(
@@ -32610,7 +32610,7 @@ pub mod schemas {
     }
     mod interconnect_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#interconnect")
+            serde_json::from_str(&"\"compute#interconnect\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -32836,7 +32836,7 @@ pub mod schemas {
     }
     mod interconnect_attachment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#interconnectAttachment")
+            serde_json::from_str(&"\"compute#interconnectAttachment\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -33020,7 +33020,7 @@ pub mod schemas {
     }
     mod interconnect_attachment_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#interconnectAttachmentAggregatedList")
+            serde_json::from_str(&"\"compute#interconnectAttachmentAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -33201,7 +33201,7 @@ pub mod schemas {
     }
     mod interconnect_attachment_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#interconnectAttachmentList")
+            serde_json::from_str(&"\"compute#interconnectAttachmentList\"").unwrap()
         }
     }
     #[derive(
@@ -33776,7 +33776,7 @@ pub mod schemas {
     }
     mod interconnect_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#interconnectList")
+            serde_json::from_str(&"\"compute#interconnectList\"").unwrap()
         }
     }
     #[derive(
@@ -34002,7 +34002,7 @@ pub mod schemas {
     }
     mod interconnect_location_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#interconnectLocation")
+            serde_json::from_str(&"\"compute#interconnectLocation\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -34105,7 +34105,7 @@ pub mod schemas {
     }
     mod interconnect_location_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#interconnectLocationList")
+            serde_json::from_str(&"\"compute#interconnectLocationList\"").unwrap()
         }
     }
     #[derive(
@@ -34475,7 +34475,7 @@ pub mod schemas {
     }
     mod license_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#license")
+            serde_json::from_str(&"\"compute#license\"").unwrap()
         }
     }
     #[derive(
@@ -34537,7 +34537,7 @@ pub mod schemas {
     }
     mod license_code_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#licenseCode")
+            serde_json::from_str(&"\"compute#licenseCode\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -35106,7 +35106,7 @@ pub mod schemas {
     }
     mod machine_image_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#machineImage")
+            serde_json::from_str(&"\"compute#machineImage\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -35176,7 +35176,7 @@ pub mod schemas {
     }
     mod machine_image_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#machineImageList")
+            serde_json::from_str(&"\"compute#machineImageList\"").unwrap()
         }
     }
     #[derive(
@@ -35392,7 +35392,7 @@ pub mod schemas {
     }
     mod machine_type_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#machineType")
+            serde_json::from_str(&"\"compute#machineType\"").unwrap()
         }
     }
     #[derive(
@@ -35467,7 +35467,7 @@ pub mod schemas {
     }
     mod machine_type_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#machineTypeAggregatedList")
+            serde_json::from_str(&"\"compute#machineTypeAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -35643,7 +35643,7 @@ pub mod schemas {
     }
     mod machine_type_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#machineTypeList")
+            serde_json::from_str(&"\"compute#machineTypeList\"").unwrap()
         }
     }
     #[derive(
@@ -36208,7 +36208,7 @@ pub mod schemas {
     }
     mod metadata_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#metadata")
+            serde_json::from_str(&"\"compute#metadata\"").unwrap()
         }
     }
     #[derive(
@@ -36391,7 +36391,7 @@ pub mod schemas {
     }
     mod network_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#network")
+            serde_json::from_str(&"\"compute#network\"").unwrap()
         }
     }
     #[derive(
@@ -36541,7 +36541,7 @@ pub mod schemas {
     }
     mod network_endpoint_group_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#networkEndpointGroup")
+            serde_json::from_str(&"\"compute#networkEndpointGroup\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -36626,7 +36626,7 @@ pub mod schemas {
     }
     mod network_endpoint_group_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#networkEndpointGroupAggregatedList")
+            serde_json::from_str(&"\"compute#networkEndpointGroupAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -36909,7 +36909,7 @@ pub mod schemas {
     }
     mod network_endpoint_group_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#networkEndpointGroupList")
+            serde_json::from_str(&"\"compute#networkEndpointGroupList\"").unwrap()
         }
     }
     #[derive(
@@ -37170,7 +37170,7 @@ pub mod schemas {
     }
     mod network_endpoint_groups_list_network_endpoints_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#networkEndpointGroupsListNetworkEndpoints")
+            serde_json::from_str(&"\"compute#networkEndpointGroupsListNetworkEndpoints\"").unwrap()
         }
     }
     #[derive(
@@ -37543,7 +37543,7 @@ pub mod schemas {
     }
     mod network_interface_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#networkInterface")
+            serde_json::from_str(&"\"compute#networkInterface\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -37607,7 +37607,7 @@ pub mod schemas {
     }
     mod network_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#networkList")
+            serde_json::from_str(&"\"compute#networkList\"").unwrap()
         }
     }
     #[derive(
@@ -38133,7 +38133,7 @@ pub mod schemas {
     }
     mod node_group_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeGroup")
+            serde_json::from_str(&"\"compute#nodeGroup\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -38229,7 +38229,7 @@ pub mod schemas {
     }
     mod node_group_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeGroupAggregatedList")
+            serde_json::from_str(&"\"compute#nodeGroupAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -38451,7 +38451,7 @@ pub mod schemas {
     }
     mod node_group_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeGroupList")
+            serde_json::from_str(&"\"compute#nodeGroupList\"").unwrap()
         }
     }
     #[derive(
@@ -38781,7 +38781,7 @@ pub mod schemas {
     }
     mod node_groups_list_nodes_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeGroupsListNodes")
+            serde_json::from_str(&"\"compute#nodeGroupsListNodes\"").unwrap()
         }
     }
     #[derive(
@@ -39173,7 +39173,7 @@ pub mod schemas {
     }
     mod node_template_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeTemplate")
+            serde_json::from_str(&"\"compute#nodeTemplate\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -39267,7 +39267,7 @@ pub mod schemas {
     }
     mod node_template_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeTemplateAggregatedList")
+            serde_json::from_str(&"\"compute#nodeTemplateAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -39443,7 +39443,7 @@ pub mod schemas {
     }
     mod node_template_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeTemplateList")
+            serde_json::from_str(&"\"compute#nodeTemplateList\"").unwrap()
         }
     }
     #[derive(
@@ -39821,7 +39821,7 @@ pub mod schemas {
     }
     mod node_type_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeType")
+            serde_json::from_str(&"\"compute#nodeType\"").unwrap()
         }
     }
     #[derive(
@@ -39876,7 +39876,7 @@ pub mod schemas {
     }
     mod node_type_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeTypeAggregatedList")
+            serde_json::from_str(&"\"compute#nodeTypeAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -40052,7 +40052,7 @@ pub mod schemas {
     }
     mod node_type_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#nodeTypeList")
+            serde_json::from_str(&"\"compute#nodeTypeList\"").unwrap()
         }
     }
     #[derive(
@@ -40392,7 +40392,7 @@ pub mod schemas {
     }
     mod notification_endpoint_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#notificationEndpoint")
+            serde_json::from_str(&"\"compute#notificationEndpoint\"").unwrap()
         }
     }
     #[derive(
@@ -40476,7 +40476,7 @@ pub mod schemas {
     }
     mod notification_endpoint_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#notificationEndpointList")
+            serde_json::from_str(&"\"compute#notificationEndpointList\"").unwrap()
         }
     }
     #[derive(
@@ -40742,7 +40742,7 @@ pub mod schemas {
     }
     mod operation_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#operation")
+            serde_json::from_str(&"\"compute#operation\"").unwrap()
         }
     }
     #[derive(
@@ -40985,7 +40985,7 @@ pub mod schemas {
     }
     mod operation_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#operationAggregatedList")
+            serde_json::from_str(&"\"compute#operationAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -41161,7 +41161,7 @@ pub mod schemas {
     }
     mod operation_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#operationList")
+            serde_json::from_str(&"\"compute#operationList\"").unwrap()
         }
     }
     #[derive(
@@ -41472,7 +41472,10 @@ pub mod schemas {
     }
     mod organization_security_policies_list_associations_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#organizationSecurityPoliciesListAssociationsResponse")
+            serde_json::from_str(
+                &"\"compute#organizationSecurityPoliciesListAssociationsResponse\"",
+            )
+            .unwrap()
         }
     }
     #[derive(
@@ -41704,7 +41707,7 @@ pub mod schemas {
     }
     mod packet_mirroring_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#packetMirroring")
+            serde_json::from_str(&"\"compute#packetMirroring\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -41775,7 +41778,7 @@ pub mod schemas {
     }
     mod packet_mirroring_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#packetMirroringAggregatedList")
+            serde_json::from_str(&"\"compute#packetMirroringAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -42017,7 +42020,7 @@ pub mod schemas {
     }
     mod packet_mirroring_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#packetMirroringList")
+            serde_json::from_str(&"\"compute#packetMirroringList\"").unwrap()
         }
     }
     #[derive(
@@ -42743,7 +42746,7 @@ pub mod schemas {
     }
     mod project_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#project")
+            serde_json::from_str(&"\"compute#project\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -42836,7 +42839,7 @@ pub mod schemas {
     }
     mod projects_get_xpn_resources_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#projectsGetXpnResources")
+            serde_json::from_str(&"\"compute#projectsGetXpnResources\"").unwrap()
         }
     }
     #[derive(
@@ -42963,7 +42966,7 @@ pub mod schemas {
     }
     mod public_advertised_prefix_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#publicAdvertisedPrefix")
+            serde_json::from_str(&"\"compute#publicAdvertisedPrefix\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -43042,7 +43045,7 @@ pub mod schemas {
     }
     mod public_advertised_prefix_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#publicAdvertisedPrefixList")
+            serde_json::from_str(&"\"compute#publicAdvertisedPrefixList\"").unwrap()
         }
     }
     #[derive(
@@ -43294,7 +43297,7 @@ pub mod schemas {
     }
     mod public_delegated_prefix_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#publicDelegatedPrefix")
+            serde_json::from_str(&"\"compute#publicDelegatedPrefix\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -43370,7 +43373,7 @@ pub mod schemas {
     }
     mod public_delegated_prefix_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#publicDelegatedPrefixAggregatedList")
+            serde_json::from_str(&"\"compute#publicDelegatedPrefixAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -43549,7 +43552,7 @@ pub mod schemas {
     }
     mod public_delegated_prefix_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#publicDelegatedPrefixList")
+            serde_json::from_str(&"\"compute#publicDelegatedPrefixList\"").unwrap()
         }
     }
     #[derive(
@@ -44304,7 +44307,7 @@ pub mod schemas {
     }
     mod reference_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#reference")
+            serde_json::from_str(&"\"compute#reference\"").unwrap()
         }
     }
     #[derive(
@@ -44375,7 +44378,7 @@ pub mod schemas {
     }
     mod region_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#region")
+            serde_json::from_str(&"\"compute#region\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -44439,7 +44442,7 @@ pub mod schemas {
     }
     mod region_autoscaler_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#regionAutoscalerList")
+            serde_json::from_str(&"\"compute#regionAutoscalerList\"").unwrap()
         }
     }
     #[derive(
@@ -44632,7 +44635,7 @@ pub mod schemas {
     }
     mod region_disk_type_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#regionDiskTypeList")
+            serde_json::from_str(&"\"compute#regionDiskTypeList\"").unwrap()
         }
     }
     #[derive(
@@ -44856,7 +44859,7 @@ pub mod schemas {
     }
     mod region_instance_group_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#regionInstanceGroupList")
+            serde_json::from_str(&"\"compute#regionInstanceGroupList\"").unwrap()
         }
     }
     #[derive(
@@ -45051,7 +45054,7 @@ pub mod schemas {
     }
     mod region_instance_group_manager_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#regionInstanceGroupManagerList")
+            serde_json::from_str(&"\"compute#regionInstanceGroupManagerList\"").unwrap()
         }
     }
     #[derive(
@@ -45656,7 +45659,7 @@ pub mod schemas {
     }
     mod region_instance_groups_list_instances_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#regionInstanceGroupsListInstances")
+            serde_json::from_str(&"\"compute#regionInstanceGroupsListInstances\"").unwrap()
         }
     }
     #[derive(
@@ -45889,7 +45892,7 @@ pub mod schemas {
     }
     mod region_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#regionList")
+            serde_json::from_str(&"\"compute#regionList\"").unwrap()
         }
     }
     #[derive(
@@ -46188,7 +46191,7 @@ pub mod schemas {
     }
     mod reservation_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#reservation")
+            serde_json::from_str(&"\"compute#reservation\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -46319,7 +46322,7 @@ pub mod schemas {
     }
     mod reservation_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#reservationAggregatedList")
+            serde_json::from_str(&"\"compute#reservationAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -46494,7 +46497,7 @@ pub mod schemas {
     }
     mod reservation_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#reservationList")
+            serde_json::from_str(&"\"compute#reservationList\"").unwrap()
         }
     }
     #[derive(
@@ -47082,7 +47085,7 @@ pub mod schemas {
     }
     mod resource_policy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#resourcePolicy")
+            serde_json::from_str(&"\"compute#resourcePolicy\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -47166,7 +47169,7 @@ pub mod schemas {
     }
     mod resource_policy_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#resourcePolicyAggregatedList")
+            serde_json::from_str(&"\"compute#resourcePolicyAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -47492,7 +47495,7 @@ pub mod schemas {
     }
     mod resource_policy_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#resourcePolicyList")
+            serde_json::from_str(&"\"compute#resourcePolicyList\"").unwrap()
         }
     }
     #[derive(
@@ -47976,7 +47979,7 @@ pub mod schemas {
     }
     mod route_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#route")
+            serde_json::from_str(&"\"compute#route\"").unwrap()
         }
     }
     #[derive(
@@ -48151,7 +48154,7 @@ pub mod schemas {
     }
     mod route_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#routeList")
+            serde_json::from_str(&"\"compute#routeList\"").unwrap()
         }
     }
     #[derive(
@@ -48357,7 +48360,7 @@ pub mod schemas {
     }
     mod router_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#router")
+            serde_json::from_str(&"\"compute#router\"").unwrap()
         }
     }
     #[derive(
@@ -48434,7 +48437,7 @@ pub mod schemas {
     }
     mod router_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#routerAggregatedList")
+            serde_json::from_str(&"\"compute#routerAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -48900,7 +48903,7 @@ pub mod schemas {
     }
     mod router_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#routerList")
+            serde_json::from_str(&"\"compute#routerList\"").unwrap()
         }
     }
     #[derive(
@@ -49422,7 +49425,7 @@ pub mod schemas {
     }
     mod router_status_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#routerStatusResponse")
+            serde_json::from_str(&"\"compute#routerStatusResponse\"").unwrap()
         }
     }
     #[derive(
@@ -49830,7 +49833,7 @@ pub mod schemas {
     }
     mod saved_attached_disk_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#savedAttachedDisk")
+            serde_json::from_str(&"\"compute#savedAttachedDisk\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -50063,7 +50066,7 @@ pub mod schemas {
     }
     mod screenshot_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#screenshot")
+            serde_json::from_str(&"\"compute#screenshot\"").unwrap()
         }
     }
     #[derive(
@@ -50195,7 +50198,7 @@ pub mod schemas {
     }
     mod security_policy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#securityPolicy")
+            serde_json::from_str(&"\"compute#securityPolicy\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -50338,7 +50341,7 @@ pub mod schemas {
     }
     mod security_policy_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#securityPolicyList")
+            serde_json::from_str(&"\"compute#securityPolicyList\"").unwrap()
         }
     }
     #[derive(
@@ -50558,7 +50561,7 @@ pub mod schemas {
     }
     mod security_policy_rule_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#securityPolicyRule")
+            serde_json::from_str(&"\"compute#securityPolicyRule\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -50728,7 +50731,7 @@ pub mod schemas {
     }
     mod serial_port_output_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#serialPortOutput")
+            serde_json::from_str(&"\"compute#serialPortOutput\"").unwrap()
         }
     }
     #[derive(
@@ -50858,7 +50861,7 @@ pub mod schemas {
     }
     mod service_attachment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#serviceAttachment")
+            serde_json::from_str(&"\"compute#serviceAttachment\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -50929,7 +50932,7 @@ pub mod schemas {
     }
     mod service_attachment_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#serviceAttachmentAggregatedList")
+            serde_json::from_str(&"\"compute#serviceAttachmentAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -51150,7 +51153,7 @@ pub mod schemas {
     }
     mod service_attachment_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#serviceAttachmentList")
+            serde_json::from_str(&"\"compute#serviceAttachmentList\"").unwrap()
         }
     }
     #[derive(
@@ -51490,7 +51493,7 @@ pub mod schemas {
     }
     mod shielded_instance_identity_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#shieldedInstanceIdentity")
+            serde_json::from_str(&"\"compute#shieldedInstanceIdentity\"").unwrap()
         }
     }
     #[derive(
@@ -51584,7 +51587,7 @@ pub mod schemas {
     }
     mod shielded_vm_identity_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#shieldedVmIdentity")
+            serde_json::from_str(&"\"compute#shieldedVmIdentity\"").unwrap()
         }
     }
     #[derive(
@@ -51786,7 +51789,7 @@ pub mod schemas {
     }
     mod snapshot_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#snapshot")
+            serde_json::from_str(&"\"compute#snapshot\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -51871,7 +51874,7 @@ pub mod schemas {
     }
     mod snapshot_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#snapshotList")
+            serde_json::from_str(&"\"compute#snapshotList\"").unwrap()
         }
     }
     #[derive(
@@ -52230,7 +52233,7 @@ pub mod schemas {
     }
     mod ssl_certificate_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#sslCertificate")
+            serde_json::from_str(&"\"compute#sslCertificate\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -52303,7 +52306,7 @@ pub mod schemas {
     }
     mod ssl_certificate_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#sslCertificateAggregatedList")
+            serde_json::from_str(&"\"compute#sslCertificateAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -52479,7 +52482,7 @@ pub mod schemas {
     }
     mod ssl_certificate_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#sslCertificateList")
+            serde_json::from_str(&"\"compute#sslCertificateList\"").unwrap()
         }
     }
     #[derive(
@@ -52913,7 +52916,7 @@ pub mod schemas {
     }
     mod ssl_policies_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#sslPoliciesList")
+            serde_json::from_str(&"\"compute#sslPoliciesList\"").unwrap()
         }
     }
     #[derive(
@@ -53133,7 +53136,7 @@ pub mod schemas {
     }
     mod ssl_policy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#sslPolicy")
+            serde_json::from_str(&"\"compute#sslPolicy\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -53505,7 +53508,7 @@ pub mod schemas {
     }
     mod subnetwork_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#subnetwork")
+            serde_json::from_str(&"\"compute#subnetwork\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -53629,7 +53632,7 @@ pub mod schemas {
     }
     mod subnetwork_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#subnetworkAggregatedList")
+            serde_json::from_str(&"\"compute#subnetworkAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -53805,7 +53808,7 @@ pub mod schemas {
     }
     mod subnetwork_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#subnetworkList")
+            serde_json::from_str(&"\"compute#subnetworkList\"").unwrap()
         }
     }
     #[derive(
@@ -54381,7 +54384,7 @@ pub mod schemas {
     }
     mod target_grpc_proxy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetGrpcProxy")
+            serde_json::from_str(&"\"compute#targetGrpcProxy\"").unwrap()
         }
     }
     #[derive(
@@ -54429,7 +54432,7 @@ pub mod schemas {
     }
     mod target_grpc_proxy_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetGrpcProxyList")
+            serde_json::from_str(&"\"compute#targetGrpcProxyList\"").unwrap()
         }
     }
     #[derive(
@@ -54781,7 +54784,7 @@ pub mod schemas {
     }
     mod target_http_proxy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetHttpProxy")
+            serde_json::from_str(&"\"compute#targetHttpProxy\"").unwrap()
         }
     }
     #[derive(
@@ -54836,7 +54839,7 @@ pub mod schemas {
     }
     mod target_http_proxy_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetHttpProxyAggregatedList")
+            serde_json::from_str(&"\"compute#targetHttpProxyAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -55015,7 +55018,7 @@ pub mod schemas {
     }
     mod target_http_proxy_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetHttpProxyList")
+            serde_json::from_str(&"\"compute#targetHttpProxyList\"").unwrap()
         }
     }
     #[derive(
@@ -55446,7 +55449,7 @@ pub mod schemas {
     }
     mod target_https_proxy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetHttpsProxy")
+            serde_json::from_str(&"\"compute#targetHttpsProxy\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -55519,7 +55522,7 @@ pub mod schemas {
     }
     mod target_https_proxy_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetHttpsProxyAggregatedList")
+            serde_json::from_str(&"\"compute#targetHttpsProxyAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -55698,7 +55701,7 @@ pub mod schemas {
     }
     mod target_https_proxy_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetHttpsProxyList")
+            serde_json::from_str(&"\"compute#targetHttpsProxyList\"").unwrap()
         }
     }
     #[derive(
@@ -55894,7 +55897,7 @@ pub mod schemas {
     }
     mod target_instance_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetInstance")
+            serde_json::from_str(&"\"compute#targetInstance\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -55961,7 +55964,7 @@ pub mod schemas {
     }
     mod target_instance_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetInstanceAggregatedList")
+            serde_json::from_str(&"\"compute#targetInstanceAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -56137,7 +56140,7 @@ pub mod schemas {
     }
     mod target_instance_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetInstanceList")
+            serde_json::from_str(&"\"compute#targetInstanceList\"").unwrap()
         }
     }
     #[derive(
@@ -56494,7 +56497,7 @@ pub mod schemas {
     }
     mod target_pool_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetPool")
+            serde_json::from_str(&"\"compute#targetPool\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -56579,7 +56582,7 @@ pub mod schemas {
     }
     mod target_pool_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetPoolAggregatedList")
+            serde_json::from_str(&"\"compute#targetPoolAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -56736,7 +56739,7 @@ pub mod schemas {
     }
     mod target_pool_instance_health_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetPoolInstanceHealth")
+            serde_json::from_str(&"\"compute#targetPoolInstanceHealth\"").unwrap()
         }
     }
     #[derive(
@@ -56782,7 +56785,7 @@ pub mod schemas {
     }
     mod target_pool_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetPoolList")
+            serde_json::from_str(&"\"compute#targetPoolList\"").unwrap()
         }
     }
     #[derive(
@@ -57265,7 +57268,7 @@ pub mod schemas {
     }
     mod target_ssl_proxy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetSslProxy")
+            serde_json::from_str(&"\"compute#targetSslProxy\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -57329,7 +57332,7 @@ pub mod schemas {
     }
     mod target_ssl_proxy_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetSslProxyList")
+            serde_json::from_str(&"\"compute#targetSslProxyList\"").unwrap()
         }
     }
     #[derive(
@@ -57566,7 +57569,7 @@ pub mod schemas {
     }
     mod target_tcp_proxy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetTcpProxy")
+            serde_json::from_str(&"\"compute#targetTcpProxy\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -57630,7 +57633,7 @@ pub mod schemas {
     }
     mod target_tcp_proxy_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetTcpProxyList")
+            serde_json::from_str(&"\"compute#targetTcpProxyList\"").unwrap()
         }
     }
     #[derive(
@@ -57842,7 +57845,7 @@ pub mod schemas {
     }
     mod target_vpn_gateway_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetVpnGateway")
+            serde_json::from_str(&"\"compute#targetVpnGateway\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -57918,7 +57921,7 @@ pub mod schemas {
     }
     mod target_vpn_gateway_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetVpnGatewayAggregatedList")
+            serde_json::from_str(&"\"compute#targetVpnGatewayAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -58097,7 +58100,7 @@ pub mod schemas {
     }
     mod target_vpn_gateway_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#targetVpnGatewayList")
+            serde_json::from_str(&"\"compute#targetVpnGatewayList\"").unwrap()
         }
     }
     #[derive(
@@ -58554,7 +58557,7 @@ pub mod schemas {
     }
     mod url_map_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#urlMap")
+            serde_json::from_str(&"\"compute#urlMap\"").unwrap()
         }
     }
     #[derive(
@@ -58600,7 +58603,7 @@ pub mod schemas {
     }
     mod url_map_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#urlMapList")
+            serde_json::from_str(&"\"compute#urlMapList\"").unwrap()
         }
     }
     #[derive(
@@ -58895,7 +58898,7 @@ pub mod schemas {
     }
     mod url_maps_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#urlMapsAggregatedList")
+            serde_json::from_str(&"\"compute#urlMapsAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -59327,7 +59330,7 @@ pub mod schemas {
     }
     mod usable_subnetworks_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#usableSubnetworksAggregatedList")
+            serde_json::from_str(&"\"compute#usableSubnetworksAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -59592,7 +59595,7 @@ pub mod schemas {
     }
     mod vm_endpoint_nat_mappings_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#vmEndpointNatMappingsList")
+            serde_json::from_str(&"\"compute#vmEndpointNatMappingsList\"").unwrap()
         }
     }
     #[derive(
@@ -59796,7 +59799,7 @@ pub mod schemas {
     }
     mod vpn_gateway_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#vpnGateway")
+            serde_json::from_str(&"\"compute#vpnGateway\"").unwrap()
         }
     }
     #[derive(
@@ -59851,7 +59854,7 @@ pub mod schemas {
     }
     mod vpn_gateway_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#vpnGatewayAggregatedList")
+            serde_json::from_str(&"\"compute#vpnGatewayAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -60027,7 +60030,7 @@ pub mod schemas {
     }
     mod vpn_gateway_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#vpnGatewayList")
+            serde_json::from_str(&"\"compute#vpnGatewayList\"").unwrap()
         }
     }
     #[derive(
@@ -60608,7 +60611,7 @@ pub mod schemas {
     }
     mod vpn_tunnel_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#vpnTunnel")
+            serde_json::from_str(&"\"compute#vpnTunnel\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -60711,7 +60714,7 @@ pub mod schemas {
     }
     mod vpn_tunnel_aggregated_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#vpnTunnelAggregatedList")
+            serde_json::from_str(&"\"compute#vpnTunnelAggregatedList\"").unwrap()
         }
     }
     #[derive(
@@ -60887,7 +60890,7 @@ pub mod schemas {
     }
     mod vpn_tunnel_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#vpnTunnelList")
+            serde_json::from_str(&"\"compute#vpnTunnelList\"").unwrap()
         }
     }
     #[derive(
@@ -61279,7 +61282,7 @@ pub mod schemas {
     }
     mod xpn_host_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#xpnHostList")
+            serde_json::from_str(&"\"compute#xpnHostList\"").unwrap()
         }
     }
     #[derive(
@@ -61516,7 +61519,7 @@ pub mod schemas {
     }
     mod zone_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#zone")
+            serde_json::from_str(&"\"compute#zone\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -61577,7 +61580,7 @@ pub mod schemas {
     }
     mod zone_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("compute#zoneList")
+            serde_json::from_str(&"\"compute#zoneList\"").unwrap()
         }
     }
     #[derive(

@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -195,7 +195,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn sort_by() -> super::QueryParametersSortByEnum {
-                        serde_json::from_str(&"changeSequence").unwrap()
+                        serde_json::from_str(&"\"changeSequence\"").unwrap()
                     }
                 }
                 #[derive(
@@ -338,7 +338,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn sort_by() -> super::QueryParametersSortByEnum {
-                        serde_json::from_str(&"startTime").unwrap()
+                        serde_json::from_str(&"\"startTime\"").unwrap()
                     }
                 }
                 #[derive(
@@ -764,7 +764,7 @@ pub mod schemas {
     }
     mod change_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#change")
+            serde_json::from_str(&"\"dns#change\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -817,7 +817,7 @@ pub mod schemas {
     }
     mod changes_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#changesListResponse")
+            serde_json::from_str(&"\"dns#changesListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -887,7 +887,7 @@ pub mod schemas {
     }
     mod dns_key_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#dnsKey")
+            serde_json::from_str(&"\"dns#dnsKey\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -999,7 +999,7 @@ pub mod schemas {
     }
     mod dns_key_spec_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#dnsKeySpec")
+            serde_json::from_str(&"\"dns#dnsKeySpec\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -1076,7 +1076,7 @@ pub mod schemas {
     }
     mod dns_keys_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#dnsKeysListResponse")
+            serde_json::from_str(&"\"dns#dnsKeysListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1176,7 +1176,7 @@ pub mod schemas {
     }
     mod managed_zone_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZone")
+            serde_json::from_str(&"\"dns#managedZone\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -1229,7 +1229,7 @@ pub mod schemas {
     }
     mod managed_zone_dns_sec_config_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZoneDnsSecConfig")
+            serde_json::from_str(&"\"dns#managedZoneDnsSecConfig\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -1291,7 +1291,7 @@ pub mod schemas {
     }
     mod managed_zone_forwarding_config_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZoneForwardingConfig")
+            serde_json::from_str(&"\"dns#managedZoneForwardingConfig\"").unwrap()
         }
     }
     #[derive(
@@ -1324,7 +1324,7 @@ pub mod schemas {
     }
     mod managed_zone_forwarding_config_name_server_target_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZoneForwardingConfigNameServerTarget")
+            serde_json::from_str(&"\"dns#managedZoneForwardingConfigNameServerTarget\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -1375,7 +1375,7 @@ pub mod schemas {
     }
     mod managed_zone_operations_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZoneOperationsListResponse")
+            serde_json::from_str(&"\"dns#managedZoneOperationsListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1403,7 +1403,7 @@ pub mod schemas {
     }
     mod managed_zone_peering_config_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZonePeeringConfig")
+            serde_json::from_str(&"\"dns#managedZonePeeringConfig\"").unwrap()
         }
     }
     #[derive(
@@ -1435,7 +1435,7 @@ pub mod schemas {
     }
     mod managed_zone_peering_config_target_network_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZonePeeringConfigTargetNetwork")
+            serde_json::from_str(&"\"dns#managedZonePeeringConfigTargetNetwork\"").unwrap()
         }
     }
     #[derive(
@@ -1464,7 +1464,7 @@ pub mod schemas {
     }
     mod managed_zone_private_visibility_config_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZonePrivateVisibilityConfig")
+            serde_json::from_str(&"\"dns#managedZonePrivateVisibilityConfig\"").unwrap()
         }
     }
     #[derive(
@@ -1491,7 +1491,7 @@ pub mod schemas {
     }
     mod managed_zone_private_visibility_config_network_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZonePrivateVisibilityConfigNetwork")
+            serde_json::from_str(&"\"dns#managedZonePrivateVisibilityConfigNetwork\"").unwrap()
         }
     }
     #[derive(
@@ -1513,7 +1513,7 @@ pub mod schemas {
     }
     mod managed_zone_reverse_lookup_config_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZoneReverseLookupConfig")
+            serde_json::from_str(&"\"dns#managedZoneReverseLookupConfig\"").unwrap()
         }
     }
     #[derive(
@@ -1542,7 +1542,7 @@ pub mod schemas {
     }
     mod managed_zone_service_directory_config_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZoneServiceDirectoryConfig")
+            serde_json::from_str(&"\"dns#managedZoneServiceDirectoryConfig\"").unwrap()
         }
     }
     #[derive(
@@ -1574,7 +1574,7 @@ pub mod schemas {
     }
     mod managed_zone_service_directory_config_namespace_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZoneServiceDirectoryConfigNamespace")
+            serde_json::from_str(&"\"dns#managedZoneServiceDirectoryConfigNamespace\"").unwrap()
         }
     }
     #[derive(
@@ -1611,7 +1611,7 @@ pub mod schemas {
     }
     mod managed_zones_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#managedZonesListResponse")
+            serde_json::from_str(&"\"dns#managedZonesListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1666,7 +1666,7 @@ pub mod schemas {
     }
     mod operation_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#operation")
+            serde_json::from_str(&"\"dns#operation\"").unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -1758,7 +1758,7 @@ pub mod schemas {
     }
     mod policies_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#policiesListResponse")
+            serde_json::from_str(&"\"dns#policiesListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1850,7 +1850,7 @@ pub mod schemas {
     }
     mod policy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#policy")
+            serde_json::from_str(&"\"dns#policy\"").unwrap()
         }
     }
     #[derive(
@@ -1879,7 +1879,7 @@ pub mod schemas {
     }
     mod policy_alternative_name_server_config_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#policyAlternativeNameServerConfig")
+            serde_json::from_str(&"\"dns#policyAlternativeNameServerConfig\"").unwrap()
         }
     }
     #[derive(
@@ -1915,7 +1915,8 @@ pub mod schemas {
     }
     mod policy_alternative_name_server_config_target_name_server_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#policyAlternativeNameServerConfigTargetNameServer")
+            serde_json::from_str(&"\"dns#policyAlternativeNameServerConfigTargetNameServer\"")
+                .unwrap()
         }
     }
     #[derive(Debug, PartialEq, Copy, Clone, serde :: Serialize, serde :: Deserialize)]
@@ -1956,7 +1957,7 @@ pub mod schemas {
     }
     mod policy_network_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#policyNetwork")
+            serde_json::from_str(&"\"dns#policyNetwork\"").unwrap()
         }
     }
     #[derive(
@@ -1991,7 +1992,7 @@ pub mod schemas {
     }
     mod project_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#project")
+            serde_json::from_str(&"\"dns#project\"").unwrap()
         }
     }
     #[derive(
@@ -2082,7 +2083,7 @@ pub mod schemas {
     }
     mod quota_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#quota")
+            serde_json::from_str(&"\"dns#quota\"").unwrap()
         }
     }
     #[derive(
@@ -2127,7 +2128,7 @@ pub mod schemas {
     }
     mod resource_record_set_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#resourceRecordSet")
+            serde_json::from_str(&"\"dns#resourceRecordSet\"").unwrap()
         }
     }
     #[derive(
@@ -2164,7 +2165,7 @@ pub mod schemas {
     }
     mod resource_record_sets_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("dns#resourceRecordSetsListResponse")
+            serde_json::from_str(&"\"dns#resourceRecordSetsListResponse\"").unwrap()
         }
     }
     #[derive(

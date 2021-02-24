@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -187,7 +187,7 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn org_unit_id() -> ::std::string::String {
-                        String::from("")
+                        serde_json::from_str(&"\"\"").unwrap()
                     }
                 }
             }
@@ -268,7 +268,7 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn org_unit_id() -> ::std::string::String {
-                        String::from("")
+                        serde_json::from_str(&"\"\"").unwrap()
                     }
                 }
             }
@@ -428,7 +428,7 @@ pub mod resources {
                         serde_json::from_str(&"1000").unwrap()
                     }
                     pub fn org_unit_id() -> ::std::string::String {
-                        String::from("")
+                        serde_json::from_str(&"\"\"").unwrap()
                     }
                 }
             }
@@ -469,7 +469,7 @@ pub mod schemas {
     }
     mod activities_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#reports#activities")
+            serde_json::from_str(&"\"admin#reports#activities\"").unwrap()
         }
     }
     #[derive(
@@ -520,7 +520,7 @@ pub mod schemas {
     }
     mod activity_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#reports#activity")
+            serde_json::from_str(&"\"admin#reports#activity\"").unwrap()
         }
     }
     #[derive(
@@ -756,7 +756,7 @@ pub mod schemas {
     }
     mod channel_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("api#channel")
+            serde_json::from_str(&"\"api#channel\"").unwrap()
         }
     }
     #[derive(
@@ -843,7 +843,7 @@ pub mod schemas {
     }
     mod usage_report_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#reports#usageReport")
+            serde_json::from_str(&"\"admin#reports#usageReport\"").unwrap()
         }
     }
     #[derive(
@@ -961,7 +961,7 @@ pub mod schemas {
     }
     mod usage_reports_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#reports#usageReports")
+            serde_json::from_str(&"\"admin#reports#usageReports\"").unwrap()
         }
     }
     #[derive(

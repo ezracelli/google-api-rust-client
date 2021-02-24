@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -249,7 +249,7 @@ pub mod resources {
                         serde_json::from_str(&"false").unwrap()
                     }
                     pub fn spaces() -> ::std::string::String {
-                        String::from("drive")
+                        serde_json::from_str(&"\"drive\"").unwrap()
                     }
                     pub fn supports_all_drives() -> ::std::primitive::bool {
                         serde_json::from_str(&"false").unwrap()
@@ -388,7 +388,7 @@ pub mod resources {
                         serde_json::from_str(&"false").unwrap()
                     }
                     pub fn spaces() -> ::std::string::String {
-                        String::from("drive")
+                        serde_json::from_str(&"\"drive\"").unwrap()
                     }
                     pub fn supports_all_drives() -> ::std::primitive::bool {
                         serde_json::from_str(&"false").unwrap()
@@ -938,7 +938,7 @@ pub mod resources {
                         serde_json::from_str(&"10").unwrap()
                     }
                     pub fn space() -> ::std::string::String {
-                        String::from("drive")
+                        serde_json::from_str(&"\"drive\"").unwrap()
                     }
                 }
             }
@@ -1116,7 +1116,7 @@ pub mod resources {
                         serde_json::from_str(&"100").unwrap()
                     }
                     pub fn spaces() -> ::std::string::String {
-                        String::from("drive")
+                        serde_json::from_str(&"\"drive\"").unwrap()
                     }
                     pub fn supports_all_drives() -> ::std::primitive::bool {
                         serde_json::from_str(&"false").unwrap()
@@ -2012,7 +2012,7 @@ pub mod schemas {
     }
     mod about_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#about")
+            serde_json::from_str(&"\"drive#about\"").unwrap()
         }
     }
     #[derive(
@@ -2164,7 +2164,7 @@ pub mod schemas {
     }
     mod change_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#change")
+            serde_json::from_str(&"\"drive#change\"").unwrap()
         }
     }
     #[derive(
@@ -2200,7 +2200,7 @@ pub mod schemas {
     }
     mod change_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#changeList")
+            serde_json::from_str(&"\"drive#changeList\"").unwrap()
         }
     }
     #[derive(
@@ -2267,7 +2267,7 @@ pub mod schemas {
     }
     mod channel_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("api#channel")
+            serde_json::from_str(&"\"api#channel\"").unwrap()
         }
     }
     #[derive(
@@ -2343,7 +2343,7 @@ pub mod schemas {
     }
     mod comment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#comment")
+            serde_json::from_str(&"\"drive#comment\"").unwrap()
         }
     }
     #[derive(
@@ -2395,7 +2395,7 @@ pub mod schemas {
     }
     mod comment_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#commentList")
+            serde_json::from_str(&"\"drive#commentList\"").unwrap()
         }
     }
     #[derive(
@@ -2502,7 +2502,7 @@ pub mod schemas {
     }
     mod drive_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#drive")
+            serde_json::from_str(&"\"drive#drive\"").unwrap()
         }
     }
     #[derive(
@@ -2698,7 +2698,7 @@ pub mod schemas {
     }
     mod drive_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#driveList")
+            serde_json::from_str(&"\"drive#driveList\"").unwrap()
         }
     }
     #[derive(
@@ -3003,7 +3003,7 @@ pub mod schemas {
     }
     mod file_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#file")
+            serde_json::from_str(&"\"drive#file\"").unwrap()
         }
     }
     #[derive(
@@ -3452,7 +3452,7 @@ pub mod schemas {
     }
     mod file_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#fileList")
+            serde_json::from_str(&"\"drive#fileList\"").unwrap()
         }
     }
     #[derive(
@@ -3483,7 +3483,7 @@ pub mod schemas {
     }
     mod generated_ids_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#generatedIds")
+            serde_json::from_str(&"\"drive#generatedIds\"").unwrap()
         }
     }
     #[derive(
@@ -3570,7 +3570,7 @@ pub mod schemas {
     }
     mod permission_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#permission")
+            serde_json::from_str(&"\"drive#permission\"").unwrap()
         }
     }
     #[derive(
@@ -3661,7 +3661,7 @@ pub mod schemas {
     }
     mod permission_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#permissionList")
+            serde_json::from_str(&"\"drive#permissionList\"").unwrap()
         }
     }
     #[derive(
@@ -3722,7 +3722,7 @@ pub mod schemas {
     }
     mod reply_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#reply")
+            serde_json::from_str(&"\"drive#reply\"").unwrap()
         }
     }
     #[derive(
@@ -3753,7 +3753,7 @@ pub mod schemas {
     }
     mod reply_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#replyList")
+            serde_json::from_str(&"\"drive#replyList\"").unwrap()
         }
     }
     #[derive(
@@ -3840,7 +3840,7 @@ pub mod schemas {
     }
     mod revision_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#revision")
+            serde_json::from_str(&"\"drive#revision\"").unwrap()
         }
     }
     #[derive(
@@ -3871,7 +3871,7 @@ pub mod schemas {
     }
     mod revision_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#revisionList")
+            serde_json::from_str(&"\"drive#revisionList\"").unwrap()
         }
     }
     #[derive(
@@ -3896,7 +3896,7 @@ pub mod schemas {
     }
     mod start_page_token_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#startPageToken")
+            serde_json::from_str(&"\"drive#startPageToken\"").unwrap()
         }
     }
     #[derive(
@@ -3962,7 +3962,7 @@ pub mod schemas {
     }
     mod team_drive_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#teamDrive")
+            serde_json::from_str(&"\"drive#teamDrive\"").unwrap()
         }
     }
     #[derive(
@@ -4162,7 +4162,7 @@ pub mod schemas {
     }
     mod team_drive_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#teamDriveList")
+            serde_json::from_str(&"\"drive#teamDriveList\"").unwrap()
         }
     }
     #[derive(
@@ -4208,7 +4208,7 @@ pub mod schemas {
     }
     mod user_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("drive#user")
+            serde_json::from_str(&"\"drive#user\"").unwrap()
         }
     }
 }

@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -185,7 +185,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn delete_policy() -> super::QueryParametersDeletePolicyEnum {
-                        serde_json::from_str(&"DELETE").unwrap()
+                        serde_json::from_str(&"\"DELETE\"").unwrap()
                     }
                 }
                 #[derive(
@@ -260,7 +260,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn create_policy() -> super::QueryParametersCreatePolicyEnum {
-                        serde_json::from_str(&"CREATE_OR_ACQUIRE").unwrap()
+                        serde_json::from_str(&"\"CREATE_OR_ACQUIRE\"").unwrap()
                     }
                 }
                 #[derive(
@@ -371,10 +371,10 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn create_policy() -> super::QueryParametersCreatePolicyEnum {
-                        serde_json::from_str(&"CREATE_OR_ACQUIRE").unwrap()
+                        serde_json::from_str(&"\"CREATE_OR_ACQUIRE\"").unwrap()
                     }
                     pub fn delete_policy() -> super::QueryParametersDeletePolicyEnum {
-                        serde_json::from_str(&"DELETE").unwrap()
+                        serde_json::from_str(&"\"DELETE\"").unwrap()
                     }
                     pub fn preview() -> ::std::primitive::bool {
                         serde_json::from_str(&"false").unwrap()
@@ -460,10 +460,10 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn create_policy() -> super::QueryParametersCreatePolicyEnum {
-                        serde_json::from_str(&"CREATE_OR_ACQUIRE").unwrap()
+                        serde_json::from_str(&"\"CREATE_OR_ACQUIRE\"").unwrap()
                     }
                     pub fn delete_policy() -> super::QueryParametersDeletePolicyEnum {
-                        serde_json::from_str(&"DELETE").unwrap()
+                        serde_json::from_str(&"\"DELETE\"").unwrap()
                     }
                     pub fn preview() -> ::std::primitive::bool {
                         serde_json::from_str(&"false").unwrap()
@@ -1794,7 +1794,7 @@ pub mod schemas {
     }
     mod operation_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("deploymentmanager#operation")
+            serde_json::from_str(&"\"deploymentmanager#operation\"").unwrap()
         }
     }
     #[derive(

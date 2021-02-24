@@ -211,10 +211,9 @@ pub fn generate_tokens_for_schema<S: AsRef<str>>(
                             };
 
                             let default_fn = schema._default.as_ref().map(|default| {
-                                let default = if Some(String::from("string")) == schema._type
-                                    && schema._enum.is_none()
-                                {
-                                    quote::quote!(String::from(#default))
+                                let default = if Some(String::from("string")) == schema._type {
+                                    let default = serde_json::to_string(&*default).unwrap();
+                                    quote::quote!(serde_json::from_str(&#default).unwrap())
                                 } else {
                                     quote::quote!(serde_json::from_str(&#default).unwrap())
                                 };

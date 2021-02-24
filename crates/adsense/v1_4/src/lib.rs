@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -1146,7 +1146,7 @@ pub mod schemas {
     }
     mod account_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#account")
+            serde_json::from_str(&"\"adsense#account\"").unwrap()
         }
     }
     #[derive(
@@ -1181,7 +1181,7 @@ pub mod schemas {
     }
     mod accounts_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#accounts")
+            serde_json::from_str(&"\"adsense#accounts\"").unwrap()
         }
     }
     #[derive(
@@ -1221,7 +1221,7 @@ pub mod schemas {
     }
     mod ad_client_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#adClient")
+            serde_json::from_str(&"\"adsense#adClient\"").unwrap()
         }
     }
     #[derive(
@@ -1256,7 +1256,7 @@ pub mod schemas {
     }
     mod ad_clients_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#adClients")
+            serde_json::from_str(&"\"adsense#adClients\"").unwrap()
         }
     }
     #[derive(
@@ -1291,7 +1291,7 @@ pub mod schemas {
     }
     mod ad_code_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#adCode")
+            serde_json::from_str(&"\"adsense#adCode\"").unwrap()
         }
     }
     #[derive(
@@ -1326,7 +1326,7 @@ pub mod schemas {
     }
     mod ad_style_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#adStyle")
+            serde_json::from_str(&"\"adsense#adStyle\"").unwrap()
         }
     }
     #[derive(
@@ -1448,7 +1448,7 @@ pub mod schemas {
     }
     mod ad_unit_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#adUnit")
+            serde_json::from_str(&"\"adsense#adUnit\"").unwrap()
         }
     }
     #[derive(
@@ -1597,7 +1597,7 @@ pub mod schemas {
     }
     mod ad_units_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#adUnits")
+            serde_json::from_str(&"\"adsense#adUnits\"").unwrap()
         }
     }
     #[derive(
@@ -1660,7 +1660,7 @@ pub mod schemas {
     }
     mod adsense_reports_generate_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#report")
+            serde_json::from_str(&"\"adsense#report\"").unwrap()
         }
     }
     #[derive(
@@ -1730,7 +1730,7 @@ pub mod schemas {
     }
     mod alert_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#alert")
+            serde_json::from_str(&"\"adsense#alert\"").unwrap()
         }
     }
     #[derive(
@@ -1755,7 +1755,7 @@ pub mod schemas {
     }
     mod alerts_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#alerts")
+            serde_json::from_str(&"\"adsense#alerts\"").unwrap()
         }
     }
     #[derive(
@@ -1795,7 +1795,7 @@ pub mod schemas {
     }
     mod custom_channel_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#customChannel")
+            serde_json::from_str(&"\"adsense#customChannel\"").unwrap()
         }
     }
     #[derive(
@@ -1861,7 +1861,7 @@ pub mod schemas {
     }
     mod custom_channels_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#customChannels")
+            serde_json::from_str(&"\"adsense#customChannels\"").unwrap()
         }
     }
     #[derive(
@@ -1886,7 +1886,7 @@ pub mod schemas {
     }
     mod metadata_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#metadata")
+            serde_json::from_str(&"\"adsense#metadata\"").unwrap()
         }
     }
     #[derive(
@@ -1926,7 +1926,7 @@ pub mod schemas {
     }
     mod payment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#payment")
+            serde_json::from_str(&"\"adsense#payment\"").unwrap()
         }
     }
     #[derive(
@@ -1951,7 +1951,7 @@ pub mod schemas {
     }
     mod payments_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#payments")
+            serde_json::from_str(&"\"adsense#payments\"").unwrap()
         }
     }
     #[derive(
@@ -2004,7 +2004,7 @@ pub mod schemas {
     }
     mod reporting_metadata_entry_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#reportingMetadataEntry")
+            serde_json::from_str(&"\"adsense#reportingMetadataEntry\"").unwrap()
         }
     }
     #[derive(
@@ -2039,7 +2039,7 @@ pub mod schemas {
     }
     mod saved_ad_style_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#savedAdStyle")
+            serde_json::from_str(&"\"adsense#savedAdStyle\"").unwrap()
         }
     }
     #[derive(
@@ -2074,7 +2074,7 @@ pub mod schemas {
     }
     mod saved_ad_styles_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#savedAdStyles")
+            serde_json::from_str(&"\"adsense#savedAdStyles\"").unwrap()
         }
     }
     #[derive(
@@ -2104,7 +2104,7 @@ pub mod schemas {
     }
     mod saved_report_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#savedReport")
+            serde_json::from_str(&"\"adsense#savedReport\"").unwrap()
         }
     }
     #[derive(
@@ -2139,7 +2139,7 @@ pub mod schemas {
     }
     mod saved_reports_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#savedReports")
+            serde_json::from_str(&"\"adsense#savedReports\"").unwrap()
         }
     }
     #[derive(
@@ -2169,7 +2169,7 @@ pub mod schemas {
     }
     mod url_channel_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#urlChannel")
+            serde_json::from_str(&"\"adsense#urlChannel\"").unwrap()
         }
     }
     #[derive(
@@ -2204,7 +2204,7 @@ pub mod schemas {
     }
     mod url_channels_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adsense#urlChannels")
+            serde_json::from_str(&"\"adsense#urlChannels\"").unwrap()
         }
     }
 }

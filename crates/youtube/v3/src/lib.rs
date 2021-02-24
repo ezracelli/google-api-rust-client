@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -769,13 +769,13 @@ pub mod resources {
                         serde_json::from_str(&"20").unwrap()
                     }
                     pub fn moderation_status() -> super::QueryParametersModerationStatusEnum {
-                        serde_json::from_str(&"published").unwrap()
+                        serde_json::from_str(&"\"published\"").unwrap()
                     }
                     pub fn order() -> super::QueryParametersOrderEnum {
-                        serde_json::from_str(&"time").unwrap()
+                        serde_json::from_str(&"\"time\"").unwrap()
                     }
                     pub fn text_format() -> super::QueryParametersTextFormatEnum {
-                        serde_json::from_str(&"html").unwrap()
+                        serde_json::from_str(&"\"html\"").unwrap()
                     }
                 }
                 #[derive(
@@ -963,7 +963,7 @@ pub mod resources {
                         serde_json::from_str(&"20").unwrap()
                     }
                     pub fn text_format() -> super::QueryParametersTextFormatEnum {
-                        serde_json::from_str(&"html").unwrap()
+                        serde_json::from_str(&"\"html\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1120,7 +1120,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn hl() -> ::std::string::String {
-                        String::from("en_US")
+                        serde_json::from_str(&"\"en_US\"").unwrap()
                     }
                 }
             }
@@ -1154,7 +1154,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn hl() -> ::std::string::String {
-                        String::from("en_US")
+                        serde_json::from_str(&"\"en_US\"").unwrap()
                     }
                 }
             }
@@ -1335,7 +1335,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn broadcast_type() -> super::QueryParametersBroadcastTypeEnum {
-                        serde_json::from_str(&"event").unwrap()
+                        serde_json::from_str(&"\"event\"").unwrap()
                     }
                     pub fn max_results() -> ::std::primitive::i64 {
                         serde_json::from_str(&"5").unwrap()
@@ -1932,7 +1932,7 @@ pub mod resources {
                         serde_json::from_str(&"5").unwrap()
                     }
                     pub fn mode() -> super::QueryParametersModeEnum {
-                        serde_json::from_str(&"all_current").unwrap()
+                        serde_json::from_str(&"\"all_current\"").unwrap()
                     }
                 }
                 #[derive(
@@ -2462,13 +2462,13 @@ pub mod resources {
                         serde_json::from_str(&"5").unwrap()
                     }
                     pub fn order() -> super::QueryParametersOrderEnum {
-                        serde_json::from_str(&"relevance").unwrap()
+                        serde_json::from_str(&"\"relevance\"").unwrap()
                     }
                     pub fn safe_search() -> super::QueryParametersSafeSearchEnum {
-                        serde_json::from_str(&"moderate").unwrap()
+                        serde_json::from_str(&"\"moderate\"").unwrap()
                     }
                     pub fn _type() -> ::std::string::String {
-                        String::from("video,channel,playlist")
+                        serde_json::from_str(&"\"video,channel,playlist\"").unwrap()
                     }
                 }
                 #[derive(
@@ -2870,7 +2870,7 @@ pub mod resources {
                         serde_json::from_str(&"5").unwrap()
                     }
                     pub fn order() -> super::QueryParametersOrderEnum {
-                        serde_json::from_str(&"relevance").unwrap()
+                        serde_json::from_str(&"\"relevance\"").unwrap()
                     }
                 }
                 #[derive(
@@ -3170,7 +3170,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn hl() -> ::std::string::String {
-                        String::from("en-US")
+                        serde_json::from_str(&"\"en-US\"").unwrap()
                     }
                 }
             }
@@ -3213,7 +3213,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn hl() -> ::std::string::String {
-                        String::from("en-US")
+                        serde_json::from_str(&"\"en-US\"").unwrap()
                     }
                 }
             }
@@ -3415,7 +3415,7 @@ pub mod resources {
                         serde_json::from_str(&"5").unwrap()
                     }
                     pub fn video_category_id() -> ::std::string::String {
-                        String::from("0")
+                        serde_json::from_str(&"\"0\"").unwrap()
                     }
                 }
                 #[derive(
@@ -3704,7 +3704,7 @@ pub mod schemas {
     }
     mod activity_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#activity")
+            serde_json::from_str(&"\"youtube#activity\"").unwrap()
         }
     }
     #[derive(
@@ -4154,7 +4154,7 @@ pub mod schemas {
     }
     mod activity_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#activityListResponse")
+            serde_json::from_str(&"\"youtube#activityListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -4286,7 +4286,7 @@ pub mod schemas {
     }
     mod caption_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#caption")
+            serde_json::from_str(&"\"youtube#caption\"").unwrap()
         }
     }
     #[derive(
@@ -4329,7 +4329,7 @@ pub mod schemas {
     }
     mod caption_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#captionListResponse")
+            serde_json::from_str(&"\"youtube#captionListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -4672,7 +4672,7 @@ pub mod schemas {
     }
     mod channel_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#channel")
+            serde_json::from_str(&"\"youtube#channel\"").unwrap()
         }
     }
     #[derive(
@@ -4731,7 +4731,7 @@ pub mod schemas {
     }
     mod channel_banner_resource_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#channelBannerResource")
+            serde_json::from_str(&"\"youtube#channelBannerResource\"").unwrap()
         }
     }
     #[derive(
@@ -4949,7 +4949,7 @@ pub mod schemas {
     }
     mod channel_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#channelListResponse")
+            serde_json::from_str(&"\"youtube#channelListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -5052,7 +5052,7 @@ pub mod schemas {
     }
     mod channel_section_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#channelSection")
+            serde_json::from_str(&"\"youtube#channelSection\"").unwrap()
         }
     }
     #[derive(
@@ -5116,7 +5116,7 @@ pub mod schemas {
     }
     mod channel_section_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#channelSectionListResponse")
+            serde_json::from_str(&"\"youtube#channelSectionListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -5600,7 +5600,7 @@ pub mod schemas {
     }
     mod comment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#comment")
+            serde_json::from_str(&"\"youtube#comment\"").unwrap()
         }
     }
     #[derive(
@@ -5657,7 +5657,7 @@ pub mod schemas {
     }
     mod comment_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#commentListResponse")
+            serde_json::from_str(&"\"youtube#commentListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -5838,7 +5838,7 @@ pub mod schemas {
     }
     mod comment_thread_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#commentThread")
+            serde_json::from_str(&"\"youtube#commentThread\"").unwrap()
         }
     }
     #[derive(
@@ -5895,7 +5895,7 @@ pub mod schemas {
     }
     mod comment_thread_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#commentThreadListResponse")
+            serde_json::from_str(&"\"youtube#commentThreadListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -8778,7 +8778,7 @@ pub mod schemas {
     }
     mod i18n_language_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#i18nLanguage")
+            serde_json::from_str(&"\"youtube#i18nLanguage\"").unwrap()
         }
     }
     #[derive(
@@ -8821,7 +8821,7 @@ pub mod schemas {
     }
     mod i18n_language_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#i18nLanguageListResponse")
+            serde_json::from_str(&"\"youtube#i18nLanguageListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -8878,7 +8878,7 @@ pub mod schemas {
     }
     mod i18n_region_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#i18nRegion")
+            serde_json::from_str(&"\"youtube#i18nRegion\"").unwrap()
         }
     }
     #[derive(
@@ -8921,7 +8921,7 @@ pub mod schemas {
     }
     mod i18n_region_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#i18nRegionListResponse")
+            serde_json::from_str(&"\"youtube#i18nRegionListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -9313,7 +9313,7 @@ pub mod schemas {
     }
     mod live_broadcast_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#liveBroadcast")
+            serde_json::from_str(&"\"youtube#liveBroadcast\"").unwrap()
         }
     }
     #[derive(
@@ -9555,7 +9555,7 @@ pub mod schemas {
     }
     mod live_broadcast_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#liveBroadcastListResponse")
+            serde_json::from_str(&"\"youtube#liveBroadcastListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -9811,7 +9811,7 @@ pub mod schemas {
     }
     mod live_chat_ban_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#liveChatBan")
+            serde_json::from_str(&"\"youtube#liveChatBan\"").unwrap()
         }
     }
     #[derive(
@@ -9929,7 +9929,7 @@ pub mod schemas {
     }
     mod live_chat_message_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#liveChatMessage")
+            serde_json::from_str(&"\"youtube#liveChatMessage\"").unwrap()
         }
     }
     #[derive(
@@ -10058,7 +10058,7 @@ pub mod schemas {
     }
     mod live_chat_message_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#liveChatMessageListResponse")
+            serde_json::from_str(&"\"youtube#liveChatMessageListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -10233,7 +10233,7 @@ pub mod schemas {
     }
     mod live_chat_moderator_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#liveChatModerator")
+            serde_json::from_str(&"\"youtube#liveChatModerator\"").unwrap()
         }
     }
     #[derive(
@@ -10295,7 +10295,7 @@ pub mod schemas {
     }
     mod live_chat_moderator_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#liveChatModeratorListResponse")
+            serde_json::from_str(&"\"youtube#liveChatModeratorListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -10491,7 +10491,7 @@ pub mod schemas {
     }
     mod live_stream_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#liveStream")
+            serde_json::from_str(&"\"youtube#liveStream\"").unwrap()
         }
     }
     #[derive(
@@ -10782,7 +10782,7 @@ pub mod schemas {
     }
     mod live_stream_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#liveStreamListResponse")
+            serde_json::from_str(&"\"youtube#liveStreamListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -10931,7 +10931,7 @@ pub mod schemas {
     }
     mod member_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#member")
+            serde_json::from_str(&"\"youtube#member\"").unwrap()
         }
     }
     #[derive(
@@ -10984,7 +10984,7 @@ pub mod schemas {
     }
     mod member_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#memberListResponse")
+            serde_json::from_str(&"\"youtube#memberListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -11126,7 +11126,7 @@ pub mod schemas {
     }
     mod memberships_level_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#membershipsLevel")
+            serde_json::from_str(&"\"youtube#membershipsLevel\"").unwrap()
         }
     }
     #[derive(
@@ -11169,7 +11169,7 @@ pub mod schemas {
     }
     mod memberships_level_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#membershipsLevelListResponse")
+            serde_json::from_str(&"\"youtube#membershipsLevelListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -11294,7 +11294,7 @@ pub mod schemas {
     }
     mod playlist_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#playlist")
+            serde_json::from_str(&"\"youtube#playlist\"").unwrap()
         }
     }
     #[derive(
@@ -11355,7 +11355,7 @@ pub mod schemas {
     }
     mod playlist_item_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#playlistItem")
+            serde_json::from_str(&"\"youtube#playlistItem\"").unwrap()
         }
     }
     #[derive(
@@ -11451,7 +11451,7 @@ pub mod schemas {
     }
     mod playlist_item_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#playlistItemListResponse")
+            serde_json::from_str(&"\"youtube#playlistItemListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -11613,7 +11613,7 @@ pub mod schemas {
     }
     mod playlist_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#playlistListResponse")
+            serde_json::from_str(&"\"youtube#playlistListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -11872,7 +11872,7 @@ pub mod schemas {
     }
     mod search_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#searchListResponse")
+            serde_json::from_str(&"\"youtube#searchListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -11908,7 +11908,7 @@ pub mod schemas {
     }
     mod search_result_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#searchResult")
+            serde_json::from_str(&"\"youtube#searchResult\"").unwrap()
         }
     }
     #[derive(
@@ -12023,7 +12023,7 @@ pub mod schemas {
     }
     mod subscription_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#subscription")
+            serde_json::from_str(&"\"youtube#subscription\"").unwrap()
         }
     }
     #[derive(
@@ -12128,7 +12128,7 @@ pub mod schemas {
     }
     mod subscription_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#subscriptionListResponse")
+            serde_json::from_str(&"\"youtube#subscriptionListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -12241,7 +12241,7 @@ pub mod schemas {
     }
     mod super_chat_event_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#superChatEvent")
+            serde_json::from_str(&"\"youtube#superChatEvent\"").unwrap()
         }
     }
     #[derive(
@@ -12297,7 +12297,7 @@ pub mod schemas {
     }
     mod super_chat_event_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#superChatEventListResponse")
+            serde_json::from_str(&"\"youtube#superChatEventListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -12454,7 +12454,7 @@ pub mod schemas {
     }
     mod third_party_link_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#thirdPartyLink")
+            serde_json::from_str(&"\"youtube#thirdPartyLink\"").unwrap()
         }
     }
     #[derive(
@@ -12631,7 +12631,7 @@ pub mod schemas {
     }
     mod thumbnail_set_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#thumbnailSetResponse")
+            serde_json::from_str(&"\"youtube#thumbnailSetResponse\"").unwrap()
         }
     }
     #[derive(
@@ -12751,7 +12751,7 @@ pub mod schemas {
     }
     mod video_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#video")
+            serde_json::from_str(&"\"youtube#video\"").unwrap()
         }
     }
     #[derive(
@@ -12825,7 +12825,7 @@ pub mod schemas {
     }
     mod video_abuse_report_reason_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#videoAbuseReportReason")
+            serde_json::from_str(&"\"youtube#videoAbuseReportReason\"").unwrap()
         }
     }
     #[derive(
@@ -12869,7 +12869,7 @@ pub mod schemas {
     }
     mod video_abuse_report_reason_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#videoAbuseReportReasonListResponse")
+            serde_json::from_str(&"\"youtube#videoAbuseReportReasonListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -12994,7 +12994,7 @@ pub mod schemas {
     }
     mod video_category_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#videoCategory")
+            serde_json::from_str(&"\"youtube#videoCategory\"").unwrap()
         }
     }
     #[derive(
@@ -13056,7 +13056,7 @@ pub mod schemas {
     }
     mod video_category_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#videoCategoryListResponse")
+            serde_json::from_str(&"\"youtube#videoCategoryListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -13089,7 +13089,7 @@ pub mod schemas {
     }
     mod video_category_snippet_defaults {
         pub fn channel_id() -> ::std::string::String {
-            String::from("UCBR8-60-B28hp2BmDPdntcQ")
+            serde_json::from_str(&"\"UCBR8-60-B28hp2BmDPdntcQ\"").unwrap()
         }
     }
     #[derive(
@@ -13469,7 +13469,7 @@ pub mod schemas {
     }
     mod video_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#videoListResponse")
+            serde_json::from_str(&"\"youtube#videoListResponse\"").unwrap()
         }
     }
     #[derive(
@@ -13785,7 +13785,7 @@ pub mod schemas {
     }
     mod video_rating_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("youtube#videoGetRatingResponse")
+            serde_json::from_str(&"\"youtube#videoGetRatingResponse\"").unwrap()
         }
     }
     #[derive(

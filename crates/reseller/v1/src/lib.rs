@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -356,7 +356,7 @@ pub mod schemas {
     }
     mod address_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("customers#address")
+            serde_json::from_str(&"\"customers#address\"").unwrap()
         }
     }
     #[derive(
@@ -397,7 +397,7 @@ pub mod schemas {
     }
     mod change_plan_request_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("subscriptions#changePlanRequest")
+            serde_json::from_str(&"\"subscriptions#changePlanRequest\"").unwrap()
         }
     }
     #[derive(
@@ -453,7 +453,7 @@ pub mod schemas {
     }
     mod customer_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("reseller#customer")
+            serde_json::from_str(&"\"reseller#customer\"").unwrap()
         }
     }
     #[derive(
@@ -479,7 +479,7 @@ pub mod schemas {
     }
     mod renewal_settings_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("subscriptions#renewalSettings")
+            serde_json::from_str(&"\"subscriptions#renewalSettings\"").unwrap()
         }
     }
     #[derive(
@@ -553,7 +553,7 @@ pub mod schemas {
     }
     mod seats_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("subscriptions#seats")
+            serde_json::from_str(&"\"subscriptions#seats\"").unwrap()
         }
     }
     #[derive(
@@ -659,7 +659,7 @@ pub mod schemas {
     }
     mod subscription_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("reseller#subscription")
+            serde_json::from_str(&"\"reseller#subscription\"").unwrap()
         }
     }
     #[derive(
@@ -779,7 +779,7 @@ pub mod schemas {
     }
     mod subscriptions_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("reseller#subscriptions")
+            serde_json::from_str(&"\"reseller#subscriptions\"").unwrap()
         }
     }
 }

@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -831,7 +831,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn org_unit_path() -> ::std::string::String {
-                        String::from("")
+                        serde_json::from_str(&"\"\"").unwrap()
                     }
                 }
                 #[derive(
@@ -933,7 +933,7 @@ pub mod resources {
                             pub fn coordinates_source(
                             ) -> super::QueryParametersCoordinatesSourceEnum
                             {
-                                serde_json::from_str(&"SOURCE_UNSPECIFIED").unwrap()
+                                serde_json::from_str(&"\"SOURCE_UNSPECIFIED\"").unwrap()
                             }
                         }
                         #[derive(
@@ -1021,7 +1021,7 @@ pub mod resources {
                             pub fn coordinates_source(
                             ) -> super::QueryParametersCoordinatesSourceEnum
                             {
-                                serde_json::from_str(&"SOURCE_UNSPECIFIED").unwrap()
+                                serde_json::from_str(&"\"SOURCE_UNSPECIFIED\"").unwrap()
                             }
                         }
                         #[derive(
@@ -1076,7 +1076,7 @@ pub mod resources {
                             pub fn coordinates_source(
                             ) -> super::QueryParametersCoordinatesSourceEnum
                             {
-                                serde_json::from_str(&"SOURCE_UNSPECIFIED").unwrap()
+                                serde_json::from_str(&"\"SOURCE_UNSPECIFIED\"").unwrap()
                             }
                         }
                         #[derive(
@@ -1310,10 +1310,10 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn projection() -> super::QueryParametersProjectionEnum {
-                        serde_json::from_str(&"basic").unwrap()
+                        serde_json::from_str(&"\"basic\"").unwrap()
                     }
                     pub fn view_type() -> super::QueryParametersViewTypeEnum {
-                        serde_json::from_str(&"admin_view").unwrap()
+                        serde_json::from_str(&"\"admin_view\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1445,10 +1445,10 @@ pub mod resources {
                         serde_json::from_str(&"100").unwrap()
                     }
                     pub fn projection() -> super::QueryParametersProjectionEnum {
-                        serde_json::from_str(&"basic").unwrap()
+                        serde_json::from_str(&"\"basic\"").unwrap()
                     }
                     pub fn view_type() -> super::QueryParametersViewTypeEnum {
-                        serde_json::from_str(&"admin_view").unwrap()
+                        serde_json::from_str(&"\"admin_view\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1628,10 +1628,10 @@ pub mod resources {
                         serde_json::from_str(&"100").unwrap()
                     }
                     pub fn projection() -> super::QueryParametersProjectionEnum {
-                        serde_json::from_str(&"basic").unwrap()
+                        serde_json::from_str(&"\"basic\"").unwrap()
                     }
                     pub fn view_type() -> super::QueryParametersViewTypeEnum {
-                        serde_json::from_str(&"admin_view").unwrap()
+                        serde_json::from_str(&"\"admin_view\"").unwrap()
                     }
                 }
                 #[derive(
@@ -1835,7 +1835,7 @@ pub mod schemas {
     }
     mod alias_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#alias")
+            serde_json::from_str(&"\"admin#directory#alias\"").unwrap()
         }
     }
     #[derive(
@@ -1863,7 +1863,7 @@ pub mod schemas {
     }
     mod aliases_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#aliases")
+            serde_json::from_str(&"\"admin#directory#aliases\"").unwrap()
         }
     }
     #[derive(
@@ -1914,7 +1914,7 @@ pub mod schemas {
     }
     mod asp_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#asp")
+            serde_json::from_str(&"\"admin#directory#asp\"").unwrap()
         }
     }
     #[derive(
@@ -1944,7 +1944,7 @@ pub mod schemas {
     }
     mod asps_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#aspList")
+            serde_json::from_str(&"\"admin#directory#aspList\"").unwrap()
         }
     }
     #[derive(
@@ -2000,7 +2000,7 @@ pub mod schemas {
     }
     mod building_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#resources#buildings#Building")
+            serde_json::from_str(&"\"admin#directory#resources#buildings#Building\"").unwrap()
         }
     }
     #[derive(
@@ -2103,7 +2103,7 @@ pub mod schemas {
     }
     mod buildings_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#resources#buildings#buildingsList")
+            serde_json::from_str(&"\"admin#directory#resources#buildings#buildingsList\"").unwrap()
         }
     }
     #[derive(
@@ -2194,7 +2194,8 @@ pub mod schemas {
     }
     mod calendar_resource_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#resources#calendars#CalendarResource")
+            serde_json::from_str(&"\"admin#directory#resources#calendars#CalendarResource\"")
+                .unwrap()
         }
     }
     #[derive(
@@ -2230,7 +2231,8 @@ pub mod schemas {
     }
     mod calendar_resources_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#resources#calendars#calendarResourcesList")
+            serde_json::from_str(&"\"admin#directory#resources#calendars#calendarResourcesList\"")
+                .unwrap()
         }
     }
     #[derive(
@@ -2297,7 +2299,7 @@ pub mod schemas {
     }
     mod channel_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("api#channel")
+            serde_json::from_str(&"\"api#channel\"").unwrap()
         }
     }
     #[derive(
@@ -2498,7 +2500,7 @@ pub mod schemas {
     }
     mod chrome_os_device_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#chromeosdevice")
+            serde_json::from_str(&"\"admin#directory#chromeosdevice\"").unwrap()
         }
     }
     #[derive(
@@ -2773,7 +2775,7 @@ pub mod schemas {
     }
     mod chrome_os_devices_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#chromeosdevices")
+            serde_json::from_str(&"\"admin#directory#chromeosdevices\"").unwrap()
         }
     }
     #[derive(
@@ -2848,7 +2850,7 @@ pub mod schemas {
     }
     mod customer_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#customer")
+            serde_json::from_str(&"\"admin#directory#customer\"").unwrap()
         }
     }
     #[derive(
@@ -3164,7 +3166,7 @@ pub mod schemas {
     }
     mod domain_alias_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#domainAlias")
+            serde_json::from_str(&"\"admin#directory#domainAlias\"").unwrap()
         }
     }
     #[derive(
@@ -3194,7 +3196,7 @@ pub mod schemas {
     }
     mod domain_aliases_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#domainAliases")
+            serde_json::from_str(&"\"admin#directory#domainAliases\"").unwrap()
         }
     }
     #[derive(
@@ -3244,7 +3246,7 @@ pub mod schemas {
     }
     mod domains_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#domain")
+            serde_json::from_str(&"\"admin#directory#domain\"").unwrap()
         }
     }
     #[derive(
@@ -3274,7 +3276,7 @@ pub mod schemas {
     }
     mod domains2_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#domains")
+            serde_json::from_str(&"\"admin#directory#domains\"").unwrap()
         }
     }
     #[derive(
@@ -3305,7 +3307,7 @@ pub mod schemas {
     }
     mod feature_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#resources#features#Feature")
+            serde_json::from_str(&"\"admin#directory#resources#features#Feature\"").unwrap()
         }
     }
     #[derive(
@@ -3372,7 +3374,7 @@ pub mod schemas {
     }
     mod features_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#resources#features#featuresList")
+            serde_json::from_str(&"\"admin#directory#resources#features#featuresList\"").unwrap()
         }
     }
     #[derive(
@@ -3438,7 +3440,7 @@ pub mod schemas {
     }
     mod group_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#group")
+            serde_json::from_str(&"\"admin#directory#group\"").unwrap()
         }
     }
     #[derive(
@@ -3473,7 +3475,7 @@ pub mod schemas {
     }
     mod groups_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#groups")
+            serde_json::from_str(&"\"admin#directory#groups\"").unwrap()
         }
     }
     #[derive(
@@ -3529,7 +3531,7 @@ pub mod schemas {
     }
     mod member_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#member")
+            serde_json::from_str(&"\"admin#directory#member\"").unwrap()
         }
     }
     #[derive(
@@ -3564,7 +3566,7 @@ pub mod schemas {
     }
     mod members_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#members")
+            serde_json::from_str(&"\"admin#directory#members\"").unwrap()
         }
     }
     #[derive(
@@ -3796,7 +3798,7 @@ pub mod schemas {
     }
     mod mobile_device_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#mobiledevice")
+            serde_json::from_str(&"\"admin#directory#mobiledevice\"").unwrap()
         }
     }
     #[derive(
@@ -3881,7 +3883,7 @@ pub mod schemas {
     }
     mod mobile_devices_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#mobiledevices")
+            serde_json::from_str(&"\"admin#directory#mobiledevices\"").unwrap()
         }
     }
     #[derive(
@@ -3942,7 +3944,7 @@ pub mod schemas {
     }
     mod org_unit_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#orgUnit")
+            serde_json::from_str(&"\"admin#directory#orgUnit\"").unwrap()
         }
     }
     #[derive(
@@ -3972,7 +3974,7 @@ pub mod schemas {
     }
     mod org_units_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#orgUnits")
+            serde_json::from_str(&"\"admin#directory#orgUnits\"").unwrap()
         }
     }
     #[derive(
@@ -4022,7 +4024,7 @@ pub mod schemas {
     }
     mod privilege_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#privilege")
+            serde_json::from_str(&"\"admin#directory#privilege\"").unwrap()
         }
     }
     #[derive(
@@ -4052,7 +4054,7 @@ pub mod schemas {
     }
     mod privileges_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#privileges")
+            serde_json::from_str(&"\"admin#directory#privileges\"").unwrap()
         }
     }
     #[derive(
@@ -4128,7 +4130,7 @@ pub mod schemas {
     }
     mod role_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#role")
+            serde_json::from_str(&"\"admin#directory#role\"").unwrap()
         }
     }
     #[derive(
@@ -4198,7 +4200,7 @@ pub mod schemas {
     }
     mod role_assignment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#roleAssignment")
+            serde_json::from_str(&"\"admin#directory#roleAssignment\"").unwrap()
         }
     }
     #[derive(
@@ -4232,7 +4234,7 @@ pub mod schemas {
     }
     mod role_assignments_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#roleAssignments")
+            serde_json::from_str(&"\"admin#directory#roleAssignments\"").unwrap()
         }
     }
     #[derive(
@@ -4266,7 +4268,7 @@ pub mod schemas {
     }
     mod roles_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#roles")
+            serde_json::from_str(&"\"admin#directory#roles\"").unwrap()
         }
     }
     #[derive(
@@ -4312,7 +4314,7 @@ pub mod schemas {
     }
     mod schema_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#schema")
+            serde_json::from_str(&"\"admin#directory#schema\"").unwrap()
         }
     }
     #[derive(
@@ -4384,10 +4386,10 @@ pub mod schemas {
             serde_json::from_str(&"true").unwrap()
         }
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#schema#fieldspec")
+            serde_json::from_str(&"\"admin#directory#schema#fieldspec\"").unwrap()
         }
         pub fn read_access_type() -> ::std::string::String {
-            String::from("ALL_DOMAIN_USERS")
+            serde_json::from_str(&"\"ALL_DOMAIN_USERS\"").unwrap()
         }
     }
     #[derive(
@@ -4439,7 +4441,7 @@ pub mod schemas {
     }
     mod schemas_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#schemas")
+            serde_json::from_str(&"\"admin#directory#schemas\"").unwrap()
         }
     }
     #[derive(
@@ -4495,7 +4497,7 @@ pub mod schemas {
     }
     mod token_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#token")
+            serde_json::from_str(&"\"admin#directory#token\"").unwrap()
         }
     }
     #[derive(
@@ -4526,7 +4528,7 @@ pub mod schemas {
     }
     mod tokens_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#tokenList")
+            serde_json::from_str(&"\"admin#directory#tokenList\"").unwrap()
         }
     }
     #[derive(
@@ -4773,7 +4775,7 @@ pub mod schemas {
     }
     mod user_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#user")
+            serde_json::from_str(&"\"admin#directory#user\"").unwrap()
         }
     }
     #[derive(
@@ -5285,7 +5287,7 @@ pub mod schemas {
     }
     mod user_photo_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#user#photo")
+            serde_json::from_str(&"\"admin#directory#user#photo\"").unwrap()
         }
     }
     #[derive(
@@ -5484,7 +5486,7 @@ pub mod schemas {
     }
     mod users_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#users")
+            serde_json::from_str(&"\"admin#directory#users\"").unwrap()
         }
     }
     #[derive(
@@ -5520,7 +5522,7 @@ pub mod schemas {
     }
     mod verification_code_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#verificationCode")
+            serde_json::from_str(&"\"admin#directory#verificationCode\"").unwrap()
         }
     }
     #[derive(
@@ -5551,7 +5553,7 @@ pub mod schemas {
     }
     mod verification_codes_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#directory#verificationCodesList")
+            serde_json::from_str(&"\"admin#directory#verificationCodesList\"").unwrap()
         }
     }
 }

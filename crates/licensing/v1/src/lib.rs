@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -151,7 +151,7 @@ pub mod resources {
                         serde_json::from_str(&"100").unwrap()
                     }
                     pub fn page_token() -> ::std::string::String {
-                        String::from("")
+                        serde_json::from_str(&"\"\"").unwrap()
                     }
                 }
             }
@@ -196,7 +196,7 @@ pub mod resources {
                         serde_json::from_str(&"100").unwrap()
                     }
                     pub fn page_token() -> ::std::string::String {
-                        String::from("")
+                        serde_json::from_str(&"\"\"").unwrap()
                     }
                 }
             }
@@ -267,7 +267,7 @@ pub mod schemas {
     }
     mod license_assignment_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("licensing#licenseAssignment")
+            serde_json::from_str(&"\"licensing#licenseAssignment\"").unwrap()
         }
     }
     #[derive(
@@ -321,7 +321,7 @@ pub mod schemas {
     }
     mod license_assignment_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("licensing#licenseAssignmentList")
+            serde_json::from_str(&"\"licensing#licenseAssignmentList\"").unwrap()
         }
     }
 }

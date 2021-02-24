@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -178,7 +178,7 @@ pub mod schemas {
     }
     mod account_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#account")
+            serde_json::from_str(&"\"adexchangebuyer#account\"").unwrap()
         }
     }
     #[derive(
@@ -229,7 +229,7 @@ pub mod schemas {
     }
     mod accounts_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#accountsList")
+            serde_json::from_str(&"\"adexchangebuyer#accountsList\"").unwrap()
         }
     }
     #[derive(
@@ -360,7 +360,7 @@ pub mod schemas {
     }
     mod creative_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#creative")
+            serde_json::from_str(&"\"adexchangebuyer#creative\"").unwrap()
         }
     }
     #[derive(
@@ -472,7 +472,7 @@ pub mod schemas {
     }
     mod creatives_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("adexchangebuyer#creativesList")
+            serde_json::from_str(&"\"adexchangebuyer#creativesList\"").unwrap()
         }
     }
 }

@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -1252,7 +1252,7 @@ pub mod schemas {
     }
     mod acl_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#acl")
+            serde_json::from_str(&"\"calendar#acl\"").unwrap()
         }
     }
     #[derive(
@@ -1292,7 +1292,7 @@ pub mod schemas {
     }
     mod acl_rule_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#aclRule")
+            serde_json::from_str(&"\"calendar#aclRule\"").unwrap()
         }
     }
     #[derive(
@@ -1368,7 +1368,7 @@ pub mod schemas {
     }
     mod calendar_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#calendar")
+            serde_json::from_str(&"\"calendar#calendar\"").unwrap()
         }
     }
     #[derive(
@@ -1408,7 +1408,7 @@ pub mod schemas {
     }
     mod calendar_list_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#calendarList")
+            serde_json::from_str(&"\"calendar#calendarList\"").unwrap()
         }
     }
     #[derive(
@@ -1537,7 +1537,7 @@ pub mod schemas {
             serde_json::from_str(&"false").unwrap()
         }
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#calendarListEntry")
+            serde_json::from_str(&"\"calendar#calendarListEntry\"").unwrap()
         }
         pub fn primary() -> ::std::primitive::bool {
             serde_json::from_str(&"false").unwrap()
@@ -1646,7 +1646,7 @@ pub mod schemas {
     }
     mod channel_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("api#channel")
+            serde_json::from_str(&"\"api#channel\"").unwrap()
         }
     }
     #[derive(
@@ -1705,7 +1705,7 @@ pub mod schemas {
     }
     mod colors_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#colors")
+            serde_json::from_str(&"\"calendar#colors\"").unwrap()
         }
     }
     #[derive(
@@ -2186,7 +2186,7 @@ pub mod schemas {
             serde_json::from_str(&"false").unwrap()
         }
         pub fn event_type() -> ::std::string::String {
-            String::from("default")
+            serde_json::from_str(&"\"default\"").unwrap()
         }
         pub fn guests_can_invite_others() -> ::std::primitive::bool {
             serde_json::from_str(&"true").unwrap()
@@ -2198,7 +2198,7 @@ pub mod schemas {
             serde_json::from_str(&"true").unwrap()
         }
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#event")
+            serde_json::from_str(&"\"calendar#event\"").unwrap()
         }
         pub fn locked() -> ::std::primitive::bool {
             serde_json::from_str(&"false").unwrap()
@@ -2207,10 +2207,10 @@ pub mod schemas {
             serde_json::from_str(&"false").unwrap()
         }
         pub fn transparency() -> ::std::string::String {
-            String::from("opaque")
+            serde_json::from_str(&"\"opaque\"").unwrap()
         }
         pub fn visibility() -> ::std::string::String {
-            String::from("default")
+            serde_json::from_str(&"\"default\"").unwrap()
         }
     }
     #[derive(
@@ -2627,7 +2627,7 @@ pub mod schemas {
     }
     mod events_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#events")
+            serde_json::from_str(&"\"calendar#events\"").unwrap()
         }
     }
     #[derive(
@@ -2715,7 +2715,7 @@ pub mod schemas {
     }
     mod free_busy_request_defaults {
         pub fn time_zone() -> ::std::string::String {
-            String::from("UTC")
+            serde_json::from_str(&"\"UTC\"").unwrap()
         }
     }
     #[derive(
@@ -2774,7 +2774,7 @@ pub mod schemas {
     }
     mod free_busy_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#freeBusy")
+            serde_json::from_str(&"\"calendar#freeBusy\"").unwrap()
         }
     }
     #[derive(
@@ -2809,7 +2809,7 @@ pub mod schemas {
     }
     mod setting_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#setting")
+            serde_json::from_str(&"\"calendar#setting\"").unwrap()
         }
     }
     #[derive(
@@ -2849,7 +2849,7 @@ pub mod schemas {
     }
     mod settings_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("calendar#settings")
+            serde_json::from_str(&"\"calendar#settings\"").unwrap()
         }
     }
     #[derive(

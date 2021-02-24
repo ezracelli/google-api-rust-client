@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -2875,7 +2875,7 @@ pub mod schemas {
     }
     mod bucket_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#bucket")
+            serde_json::from_str(&"\"storage#bucket\"").unwrap()
         }
     }
     #[derive(
@@ -3303,7 +3303,7 @@ pub mod schemas {
     }
     mod bucket_access_control_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#bucketAccessControl")
+            serde_json::from_str(&"\"storage#bucketAccessControl\"").unwrap()
         }
     }
     #[derive(
@@ -3353,7 +3353,7 @@ pub mod schemas {
     }
     mod bucket_access_controls_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#bucketAccessControls")
+            serde_json::from_str(&"\"storage#bucketAccessControls\"").unwrap()
         }
     }
     #[derive(
@@ -3384,7 +3384,7 @@ pub mod schemas {
     }
     mod buckets_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#buckets")
+            serde_json::from_str(&"\"storage#buckets\"").unwrap()
         }
     }
     #[derive(
@@ -3451,7 +3451,7 @@ pub mod schemas {
     }
     mod channel_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("api#channel")
+            serde_json::from_str(&"\"api#channel\"").unwrap()
         }
     }
     #[derive(
@@ -3482,7 +3482,7 @@ pub mod schemas {
     }
     mod compose_request_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#composeRequest")
+            serde_json::from_str(&"\"storage#composeRequest\"").unwrap()
         }
     }
     #[derive(
@@ -3586,7 +3586,7 @@ pub mod schemas {
     }
     mod hmac_key_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#hmacKey")
+            serde_json::from_str(&"\"storage#hmacKey\"").unwrap()
         }
     }
     #[derive(
@@ -3652,7 +3652,7 @@ pub mod schemas {
     }
     mod hmac_key_metadata_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#hmacKeyMetadata")
+            serde_json::from_str(&"\"storage#hmacKeyMetadata\"").unwrap()
         }
     }
     #[derive(
@@ -3683,7 +3683,7 @@ pub mod schemas {
     }
     mod hmac_keys_metadata_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#hmacKeysMetadata")
+            serde_json::from_str(&"\"storage#hmacKeysMetadata\"").unwrap()
         }
     }
     #[derive(
@@ -3748,10 +3748,10 @@ pub mod schemas {
     }
     mod notification_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#notification")
+            serde_json::from_str(&"\"storage#notification\"").unwrap()
         }
         pub fn payload_format() -> ::std::string::String {
-            String::from("JSON_API_V1")
+            serde_json::from_str(&"\"JSON_API_V1\"").unwrap()
         }
     }
     #[derive(
@@ -3777,7 +3777,7 @@ pub mod schemas {
     }
     mod notifications_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#notifications")
+            serde_json::from_str(&"\"storage#notifications\"").unwrap()
         }
     }
     #[derive(
@@ -3954,7 +3954,7 @@ pub mod schemas {
     }
     mod object_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#object")
+            serde_json::from_str(&"\"storage#object\"").unwrap()
         }
     }
     #[derive(
@@ -4080,7 +4080,7 @@ pub mod schemas {
     }
     mod object_access_control_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#objectAccessControl")
+            serde_json::from_str(&"\"storage#objectAccessControl\"").unwrap()
         }
     }
     #[derive(
@@ -4130,7 +4130,7 @@ pub mod schemas {
     }
     mod object_access_controls_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#objectAccessControls")
+            serde_json::from_str(&"\"storage#objectAccessControls\"").unwrap()
         }
     }
     #[derive(
@@ -4166,7 +4166,7 @@ pub mod schemas {
     }
     mod objects_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#objects")
+            serde_json::from_str(&"\"storage#objects\"").unwrap()
         }
     }
     #[derive(
@@ -4207,7 +4207,7 @@ pub mod schemas {
     }
     mod policy_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#policy")
+            serde_json::from_str(&"\"storage#policy\"").unwrap()
         }
     }
     #[derive(
@@ -4278,7 +4278,7 @@ pub mod schemas {
     }
     mod rewrite_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#rewriteResponse")
+            serde_json::from_str(&"\"storage#rewriteResponse\"").unwrap()
         }
     }
     #[derive(
@@ -4304,7 +4304,7 @@ pub mod schemas {
     }
     mod service_account_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#serviceAccount")
+            serde_json::from_str(&"\"storage#serviceAccount\"").unwrap()
         }
     }
     #[derive(
@@ -4333,7 +4333,7 @@ pub mod schemas {
     }
     mod test_iam_permissions_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("storage#testIamPermissionsResponse")
+            serde_json::from_str(&"\"storage#testIamPermissionsResponse\"").unwrap()
         }
     }
 }

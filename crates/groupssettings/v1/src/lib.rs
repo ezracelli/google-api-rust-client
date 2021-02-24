@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"atom").unwrap()
+        serde_json::from_str(&"\"atom\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -390,7 +390,7 @@ pub mod schemas {
     }
     mod groups_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("groupsSettings#groups")
+            serde_json::from_str(&"\"groupsSettings#groups\"").unwrap()
         }
     }
 }

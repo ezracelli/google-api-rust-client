@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -182,7 +182,7 @@ pub mod resources {
                 }
                 mod query_parameters_defaults {
                     pub fn election_id() -> ::std::string::String {
-                        String::from("0")
+                        serde_json::from_str(&"\"0\"").unwrap()
                     }
                     pub fn official_only() -> ::std::primitive::bool {
                         serde_json::from_str(&"false").unwrap()
@@ -872,7 +872,7 @@ pub mod schemas {
     }
     mod division_search_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("civicinfo#divisionSearchResponse")
+            serde_json::from_str(&"\"civicinfo#divisionSearchResponse\"").unwrap()
         }
     }
     #[derive(
@@ -994,7 +994,7 @@ pub mod schemas {
     }
     mod elections_query_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("civicinfo#electionsQueryResponse")
+            serde_json::from_str(&"\"civicinfo#electionsQueryResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1399,7 +1399,7 @@ pub mod schemas {
     }
     mod representative_info_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("civicinfo#representativeInfoResponse")
+            serde_json::from_str(&"\"civicinfo#representativeInfoResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1539,7 +1539,7 @@ pub mod schemas {
     }
     mod voter_info_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("civicinfo#voterInfoResponse")
+            serde_json::from_str(&"\"civicinfo#voterInfoResponse\"").unwrap()
         }
     }
 }

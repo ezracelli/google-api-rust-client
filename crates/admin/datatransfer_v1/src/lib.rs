@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -236,7 +236,7 @@ pub mod schemas {
     }
     mod application_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#datatransfer#ApplicationResource")
+            serde_json::from_str(&"\"admin#datatransfer#ApplicationResource\"").unwrap()
         }
     }
     #[derive(
@@ -323,7 +323,7 @@ pub mod schemas {
     }
     mod applications_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#datatransfer#applicationsList")
+            serde_json::from_str(&"\"admin#datatransfer#applicationsList\"").unwrap()
         }
     }
     #[derive(
@@ -380,7 +380,7 @@ pub mod schemas {
     }
     mod data_transfer_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#datatransfer#DataTransfer")
+            serde_json::from_str(&"\"admin#datatransfer#DataTransfer\"").unwrap()
         }
     }
     #[derive(
@@ -419,7 +419,7 @@ pub mod schemas {
     }
     mod data_transfers_list_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("admin#datatransfer#dataTransfersList")
+            serde_json::from_str(&"\"admin#datatransfer#dataTransfersList\"").unwrap()
         }
     }
 }

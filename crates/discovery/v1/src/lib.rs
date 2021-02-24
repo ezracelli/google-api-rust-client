@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -138,10 +138,10 @@ pub mod schemas {
     }
     mod directory_list_defaults {
         pub fn discovery_version() -> ::std::string::String {
-            String::from("v1")
+            serde_json::from_str(&"\"v1\"").unwrap()
         }
         pub fn kind() -> ::std::string::String {
-            String::from("discovery#directoryList")
+            serde_json::from_str(&"\"discovery#directoryList\"").unwrap()
         }
     }
     #[derive(
@@ -216,7 +216,7 @@ pub mod schemas {
     }
     mod directory_list_items_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("discovery#directoryItem")
+            serde_json::from_str(&"\"discovery#directoryItem\"").unwrap()
         }
     }
     #[derive(
@@ -581,13 +581,13 @@ pub mod schemas {
     }
     mod rest_description_defaults {
         pub fn discovery_version() -> ::std::string::String {
-            String::from("v1")
+            serde_json::from_str(&"\"v1\"").unwrap()
         }
         pub fn kind() -> ::std::string::String {
-            String::from("discovery#restDescription")
+            serde_json::from_str(&"\"discovery#restDescription\"").unwrap()
         }
         pub fn protocol() -> ::std::string::String {
-            String::from("rest")
+            serde_json::from_str(&"\"rest\"").unwrap()
         }
     }
     #[derive(

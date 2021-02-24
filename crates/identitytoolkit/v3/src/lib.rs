@@ -48,7 +48,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -161,7 +161,7 @@ pub mod schemas {
     }
     mod create_auth_uri_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#CreateAuthUriResponse")
+            serde_json::from_str(&"\"identitytoolkit#CreateAuthUriResponse\"").unwrap()
         }
     }
     #[derive(
@@ -185,7 +185,7 @@ pub mod schemas {
     }
     mod delete_account_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#DeleteAccountResponse")
+            serde_json::from_str(&"\"identitytoolkit#DeleteAccountResponse\"").unwrap()
         }
     }
     #[derive(
@@ -219,7 +219,7 @@ pub mod schemas {
     }
     mod download_account_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#DownloadAccountResponse")
+            serde_json::from_str(&"\"identitytoolkit#DownloadAccountResponse\"").unwrap()
         }
     }
     #[derive(
@@ -273,7 +273,7 @@ pub mod schemas {
     }
     mod email_link_signin_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#EmailLinkSigninResponse")
+            serde_json::from_str(&"\"identitytoolkit#EmailLinkSigninResponse\"").unwrap()
         }
     }
     #[derive(
@@ -343,7 +343,7 @@ pub mod schemas {
     }
     mod get_account_info_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#GetAccountInfoResponse")
+            serde_json::from_str(&"\"identitytoolkit#GetAccountInfoResponse\"").unwrap()
         }
     }
     #[derive(
@@ -377,7 +377,7 @@ pub mod schemas {
     }
     mod get_oob_confirmation_code_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#GetOobConfirmationCodeResponse")
+            serde_json::from_str(&"\"identitytoolkit#GetOobConfirmationCodeResponse\"").unwrap()
         }
     }
     #[derive(
@@ -411,7 +411,7 @@ pub mod schemas {
     }
     mod get_recaptcha_param_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#GetRecaptchaParamResponse")
+            serde_json::from_str(&"\"identitytoolkit#GetRecaptchaParamResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1573,7 +1573,7 @@ pub mod schemas {
     }
     mod relyingparty_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#relyingparty")
+            serde_json::from_str(&"\"identitytoolkit#relyingparty\"").unwrap()
         }
     }
     #[derive(
@@ -1612,7 +1612,7 @@ pub mod schemas {
     }
     mod reset_password_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#ResetPasswordResponse")
+            serde_json::from_str(&"\"identitytoolkit#ResetPasswordResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1692,7 +1692,7 @@ pub mod schemas {
     }
     mod set_account_info_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#SetAccountInfoResponse")
+            serde_json::from_str(&"\"identitytoolkit#SetAccountInfoResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1776,7 +1776,7 @@ pub mod schemas {
     }
     mod signup_new_user_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#SignupNewUserResponse")
+            serde_json::from_str(&"\"identitytoolkit#SignupNewUserResponse\"").unwrap()
         }
     }
     #[derive(
@@ -1805,7 +1805,7 @@ pub mod schemas {
     }
     mod upload_account_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#UploadAccountResponse")
+            serde_json::from_str(&"\"identitytoolkit#UploadAccountResponse\"").unwrap()
         }
     }
     #[derive(
@@ -2195,7 +2195,7 @@ pub mod schemas {
     }
     mod verify_assertion_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#VerifyAssertionResponse")
+            serde_json::from_str(&"\"identitytoolkit#VerifyAssertionResponse\"").unwrap()
         }
     }
     #[derive(
@@ -2239,7 +2239,7 @@ pub mod schemas {
     }
     mod verify_custom_token_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#VerifyCustomTokenResponse")
+            serde_json::from_str(&"\"identitytoolkit#VerifyCustomTokenResponse\"").unwrap()
         }
     }
     #[derive(
@@ -2318,7 +2318,7 @@ pub mod schemas {
     }
     mod verify_password_response_defaults {
         pub fn kind() -> ::std::string::String {
-            String::from("identitytoolkit#VerifyPasswordResponse")
+            serde_json::from_str(&"\"identitytoolkit#VerifyPasswordResponse\"").unwrap()
         }
     }
 }

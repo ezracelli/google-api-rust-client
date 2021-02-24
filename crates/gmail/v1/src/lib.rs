@@ -68,7 +68,7 @@ impl QueryParameters {
 }
 mod query_parameters_defaults {
     pub fn alt() -> super::QueryParametersAltEnum {
-        serde_json::from_str(&"json").unwrap()
+        serde_json::from_str(&"\"json\"").unwrap()
     }
     pub fn pretty_print() -> ::std::primitive::bool {
         serde_json::from_str(&"true").unwrap()
@@ -138,7 +138,7 @@ pub mod resources {
                         }
                         mod query_parameters_defaults {
                             pub fn format() -> super::QueryParametersFormatEnum {
-                                serde_json::from_str(&"full").unwrap()
+                                serde_json::from_str(&"\"full\"").unwrap()
                             }
                         }
                         #[derive(
@@ -350,7 +350,7 @@ pub mod resources {
                         }
                         mod query_parameters_defaults {
                             pub fn format() -> super::QueryParametersFormatEnum {
-                                serde_json::from_str(&"full").unwrap()
+                                serde_json::from_str(&"\"full\"").unwrap()
                             }
                         }
                         #[derive(
@@ -432,7 +432,7 @@ pub mod resources {
                             pub fn internal_date_source(
                             ) -> super::QueryParametersInternalDateSourceEnum
                             {
-                                serde_json::from_str(&"dateHeader").unwrap()
+                                serde_json::from_str(&"\"dateHeader\"").unwrap()
                             }
                             pub fn never_mark_spam() -> ::std::primitive::bool {
                                 serde_json::from_str(&"false").unwrap()
@@ -498,7 +498,7 @@ pub mod resources {
                             pub fn internal_date_source(
                             ) -> super::QueryParametersInternalDateSourceEnum
                             {
-                                serde_json::from_str(&"receivedTime").unwrap()
+                                serde_json::from_str(&"\"receivedTime\"").unwrap()
                             }
                         }
                         #[derive(
@@ -622,7 +622,7 @@ pub mod resources {
                         }
                         mod query_parameters_defaults {
                             pub fn format() -> super::QueryParametersFormatEnum {
-                                serde_json::from_str(&"full").unwrap()
+                                serde_json::from_str(&"\"full\"").unwrap()
                             }
                         }
                         #[derive(
